@@ -62,14 +62,6 @@ public record Divergence(
   }
 
   /**
-   * Returns whether the whole text of {@code base} differs: {@code base} itself is in force but
-   * does not apply yet, so its whole text is prospective. For example, 2016/679 on 1 March 2017.
-   */
-  public boolean whole(ActIdentifier base) {
-    return kind == Kind.PROSPECTIVE && act.equals(base);
-  }
-
-  /**
    * Returns the occurrences of a text that this divergence touches, in the order of the text, each
    * once. {@code eIds} are the occurrences of the text, in document order.
    *

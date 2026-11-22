@@ -9,9 +9,25 @@
   <dd>The day asked.</dd>
   <dt>until</dt>
   <dd>The day on which the next version starts. Null if no version starts later.</dd>
+  <dt>deferredApplication</dt>
+  <dd>
+    <p>The deferred application of the act itself: the act is in force, but it does not apply in full on the day
+      yet. For example, 2016/679 on 1 March 2017. Null if the act applies in full on the day. It has:</p>
+    <dl class="api-members">
+      <dt>inFull</dt>
+      <dd>The date from which the act applies in full, as in the dates of <span class="mono">amendments</span>:
+        <span class="mono">date</span>, <span class="mono">kind</span>, <span class="mono">partial</span> and
+        <span class="mono">clause</span>.</dd>
+      <dt>partial</dt>
+      <dd>Whether a part of the act applies on the day already. For example, 2018/1862 on 1 August 2022.</dd>
+      <dt>languages</dt>
+      <dd>The languages in which a version gives the text on the day.</dd>
+    </dl>
+  </dd>
   <dt>divergences</dt>
   <dd>
-    <p>Where the text of the versions is not the law on the day. Each has:</p>
+    <p>Where the text of the versions is not the law on the day, because of a pending or a prospective amendment. The
+      act itself is not among them: see <span class="mono">deferredApplication</span>. Each has:</p>
     <dl class="api-members">
       <dt>kind</dt>
       <dd><span class="mono">pending</span>: a pending amendment. The act applies, but the text does not include it.
@@ -25,7 +41,7 @@
       <dd>How the Official Journal cites it. For example, <span class="mono">2017/815</span>.</dd>
       <dt>appliesFrom</dt>
       <dd>The day from which the provisions in <span class="mono">places</span> apply. If
-        <span class="mono">places</span> is empty, the day from which the whole act applies. Null for an
+        <span class="mono">places</span> is empty, the day from which the whole amending act applies. Null for an
         <span class="mono">undated</span> one.</dd>
       <dt>includedIn</dt>
       <dd>The first version that includes its text: <span class="mono">oj</span>, or its date. Null for a pending

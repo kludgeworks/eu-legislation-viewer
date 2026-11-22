@@ -2,6 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Standing;
@@ -10,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -30,10 +34,10 @@ import org.jspecify.annotations.Nullable;
  *       data does not give a date for that day. 3 provisions, not in this text."
  * </ul>
  *
- * <p>The acts that get a line are the acts of {@link Act#divergences}: the act itself if it does
- * not apply in full, a prospective amendment (an amending act whose text is in the text before it
- * applies), and a pending amendment (an amending act with changes that the text does not show). The
- * tense obeys the day.
+ * <p>The acts that get a line are the act itself while its application is deferred ({@link
+ * Act#deferredApplicationOn}), first, and the acts of {@link Act#divergences}: a prospective
+ * amendment (an amending act whose text is in the text before it applies), and a pending amendment
+ * (an amending act with changes that the text does not show). The tense obeys the day.
  *
  * @param day the day, in words
  * @param lines the first lines, three at most
@@ -64,10 +68,12 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   public static StatusView of(
       Act act, LocalDate asked, Language language, LocalDate today, Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
-    var all =
-        act.divergences(asked, language, tags).stream()
-            .map(each -> line(act, each, eli, asked, language, today))
-            .toList();
+    var all = new ArrayList<Line>();
+    act.deferredApplicationOn(asked, language)
+        .ifPresent(deferred -> all.add(deferred(act, deferred, asked, today)));
+    act.divergences(asked, language, tags).stream()
+        .map(each -> line(act, each, eli, asked, language, today))
+        .forEach(all::add);
     var shown = Math.min(all.size(), SHOWN);
     return new StatusView(
         Dates.inWords(asked), all.subList(0, shown), all.subList(shown, all.size()));
@@ -76,6 +82,28 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   /** Returns how many lines there are. */
   public int size() {
     return lines.size() + more.size();
+  }
+
+  /**
+   * Returns the line of the act itself while its application is deferred. For example, "2018/1862
+   * applied in part. It applies in full from 7 March 2023 · Article 79(5) of 2018/1862."
+   */
+  private static Line deferred(
+      Act act, DeferredApplication deferred, LocalDate asked, LocalDate today) {
+    var past = asked.isBefore(today);
+    var state =
+        States.phrase(
+            deferred.partial() ? Standing.Whole.IN_PART : Standing.Whole.NOT_APPLYING, past);
+    return new Line(
+        act.cited(act.id()),
+        null,
+        state
+            + ". It "
+            + applies(deferred.day(), today)
+            + (deferred.partial() ? " in full from " : " from ")
+            + Dates.inWords(deferred.day())
+            + clause(act, deferred.inFull(), act.id())
+            + ".");
   }
 
   private static Line line(
@@ -89,21 +117,6 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
     var cited = act.cited(divergence.act());
     var from = divergence.appliesFrom();
     var day = Dates.inWords(from);
-    if (divergence.whole(act.id())) {
-      var inPart = act.appliesInPartOn(divergence.act(), asked);
-      var state =
-          States.phrase(inPart ? Standing.Whole.IN_PART : Standing.Whole.NOT_APPLYING, past);
-      return new Line(
-          cited,
-          null,
-          state
-              + ". It "
-              + applies(from, today)
-              + (inPart ? " in full from " : " from ")
-              + day
-              + clause(act, divergence)
-              + ".");
-    }
     var href = Links.amending(eli, divergence.act(), asked.equals(today) ? null : asked, language);
     var count =
         divergence.places().stream().map(place -> place.location().name()).distinct().count();
@@ -117,7 +130,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
                   + applies(from, today)
                   + " from "
                   + day
-                  + clause(act, divergence)
+                  + clause(act, divergence.applies(), divergence.act())
                   + "."
                   + count(count, ", with a note in the text."));
       case PENDING ->
@@ -127,7 +140,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
               applies(from, today)
                   + " from "
                   + day
-                  + clause(act, divergence)
+                  + clause(act, divergence.applies(), divergence.act())
                   + "."
                   + shown(divergence)
                   + count(count, ", not in this text."));
@@ -148,13 +161,13 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   }
 
   /**
-   * Returns the clause that sets the day of {@code divergence}, with a separator before it. For
-   * example, " · Article 99(2) of 2016/679". Returns an empty text if Cellar names none.
+   * Returns the clause that sets {@code date} of the act {@code of}, with a separator before it.
+   * For example, " · Article 99(2) of 2016/679". Returns an empty text if Cellar names none.
    */
-  private static String clause(Act act, Divergence divergence) {
-    return divergence.applies().clause().provisions().stream()
+  private static String clause(Act act, ActDate date, ActIdentifier of) {
+    return date.clause().provisions().stream()
         .findFirst()
-        .map(provision -> " · " + provision.cited() + " of " + act.cited(divergence.act()))
+        .map(provision -> " · " + provision.cited() + " of " + act.cited(of))
         .orElse("");
   }
 

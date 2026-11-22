@@ -25,8 +25,8 @@ import java.util.Objects;
  *       "Not in this text: Article 18a · 2021/1133". If the text has the occurrence, the note is
  *       before it. If not, the note is at the end of the occurrence that holds the place, or of the
  *       occurrence before it.
- *   <li>The act itself, where it does not apply at all on the day, has no note: the status line
- *       says so one time.
+ *   <li>The act itself, while its application is deferred, has no note: it is not a divergence. The
+ *       status line says so one time.
  * </ul>
  *
  * <p>The content module renders the text without the act. So the page sends the notes, and
@@ -70,9 +70,6 @@ public record DivergenceNotesView(List<Note> notes) {
     var kept = asked.equals(today) ? null : asked;
     var found = new ArrayList<Note>();
     for (var divergence : act.divergences(asked, language, tags)) {
-      if (divergence.whole(act.id())) {
-        continue;
-      }
       var cited = act.cited(divergence.act());
       var href = Links.amending(eli, divergence.act(), kept, language);
       var prospective = divergence.kind() == Divergence.Kind.PROSPECTIVE;

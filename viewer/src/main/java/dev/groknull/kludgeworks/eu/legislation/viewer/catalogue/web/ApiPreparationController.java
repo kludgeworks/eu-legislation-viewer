@@ -40,7 +40,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
- * The preparation of an act in a language, in the API: the state of the text of each of its
+ * The preparation of an act in a language, in the API: the progress of the text of each of its
  * versions in the language, its changes as server-sent events, and trying again.
  *
  * <p>Reading a preparation asks for nothing. A request for a text starts the preparation ({@link
@@ -67,7 +67,7 @@ class ApiPreparationController {
    * Returns the preparation of the act in the language {@code language}, for example {@code eng}:
    *
    * <ul>
-   *   <li>{@code item}: the state of the text of each version in the language, embedded, in date
+   *   <li>{@code item}: the progress of the text of each version in the language, embedded, in date
    *       order. A text that is ready has {@code av:text}.
    *   <li>{@code up}: the act.
    *   <li>{@code av:events}: its changes, as server-sent events.
@@ -106,11 +106,11 @@ class ApiPreparationController {
 
   /**
    * Returns the changes of the preparation, as server-sent events. Each event {@code preparation}
-   * has the state of the preparation, as JSON without links: when it started and settled, and how
-   * many texts are ready, failed, being built and ahead in the queue. The client reads the
+   * has the progress of the preparation, as JSON without links: when it started and settled, and
+   * how many texts are ready, failed, being built and ahead in the queue. The client reads the
    * preparation for the links. When every text is built or failed, the event {@code settled} has
-   * the state, and the stream ends. The stream sends the preparation when the client connects, and
-   * again each time it changes. It also ends after a while, and then the client connects again.
+   * the progress, and the stream ends. The stream sends the preparation when the client connects,
+   * and again each time it changes. It also ends after a while, and then the client connects again.
    */
   @GetMapping(path = PREPARATION + "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
   SseEmitter events(@PathVariable ActIdentifier celex, @PathVariable String language) {
@@ -142,7 +142,7 @@ class ApiPreparationController {
                 preparation.texts().entrySet().stream()
                     .map(
                         each ->
-                            state(celex, preparation.language(), each.getKey(), each.getValue()))
+                            progress(celex, preparation.language(), each.getKey(), each.getValue()))
                     .toList(),
                 IanaLinkRelations.ITEM)
             .link(to(celex, preparation.language()).withSelfRel())
@@ -161,9 +161,9 @@ class ApiPreparationController {
     return failure.name().toLowerCase(Locale.ROOT).replace('_', '-');
   }
 
-  private static EntityModel<TextState> state(
+  private static EntityModel<Progress> progress(
       ActIdentifier celex, Language language, Version version, Text text) {
-    var model = EntityModel.of(TextState.of(version, text));
+    var model = EntityModel.of(Progress.of(version, text));
     return switch (text) {
       case Text.Ready _ ->
           model.add(ApiTextController.to(celex, version, language, Relation.TEXT.rel()));
@@ -195,8 +195,8 @@ class ApiPreparationController {
   }
 
   /**
-   * Sends the state of the preparation, as the event {@code preparation}, or {@code settled} if it
-   * is settled.
+   * Sends the progress of the preparation, as the event {@code preparation}, or {@code settled} if
+   * it is settled.
    *
    * @return whether the preparation is settled
    */
@@ -244,34 +244,34 @@ class ApiPreparationController {
   }
 
   /**
-   * The state of the text of a version, as the API shows it.
+   * The progress of the text of a version, as the API shows it.
    *
    * @param version where the version is among the versions: {@code oj}, or its date
    * @param celex the CELEX number of the document that holds the text
-   * @param state {@code waiting}, {@code converting}, {@code ready} or {@code failed}
+   * @param progress {@code waiting}, {@code converting}, {@code ready} or {@code failed}
    * @param attempt the attempt it is on, or the last attempt that failed while it waits. It is 0
    *     before the first attempt and once it is settled.
    * @param failure why it failed, as on the problem {@code text-failed}. Null unless it failed.
    * @param retryable whether trying again may help. Null unless it failed.
    */
-  record TextState(
+  record Progress(
       String version,
       String celex,
-      String state,
+      String progress,
       int attempt,
       @Nullable String failure,
       @Nullable Boolean retryable) {
 
-    static TextState of(Version version, Text text) {
+    static Progress of(Version version, Text text) {
       var key = ApiActController.key(version);
       return switch (text) {
         case Text.Waiting(var attempt) ->
-            new TextState(key, version.celex(), "waiting", attempt, null, null);
+            new Progress(key, version.celex(), "waiting", attempt, null, null);
         case Text.Converting(var attempt) ->
-            new TextState(key, version.celex(), "converting", attempt, null, null);
-        case Text.Ready _ -> new TextState(key, version.celex(), "ready", 0, null, null);
+            new Progress(key, version.celex(), "converting", attempt, null, null);
+        case Text.Ready _ -> new Progress(key, version.celex(), "ready", 0, null, null);
         case Text.Failed failed ->
-            new TextState(
+            new Progress(
                 key,
                 version.celex(),
                 "failed",

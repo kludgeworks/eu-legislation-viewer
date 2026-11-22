@@ -280,8 +280,6 @@ public record Act(
    * Returns each period in which the text of the versions in {@code language} is not the law.
    *
    * <ul>
-   *   <li>The whole text is prospective while the act is in force but does not apply yet. For
-   *       example, 2016/679 is in force from 24 May 2016 and applies from 25 May 2018.
    *   <li>A provision of an amending act that applies, but that the text does not include yet, is a
    *       pending amendment. For example, 2017/815 applies from 1 June 2017, and the version of
    *       2015/1998 of 7 June 2017 is the first to include it.
@@ -289,6 +287,9 @@ public record Act(
    *       prospective amendment. For example, the version of 767/2008 of 12 January 2018 includes
    *       provisions of 2017/2226 that apply later.
    * </ul>
+   *
+   * <p>The act itself is not among them. While it is in force and does not apply in full, its
+   * application is deferred: a state of the act, {@link #deferredApplicationOn}.
    *
    * <p>{@code texts} gives the tags of the texts in {@code language} that are built. They tell
    * which version first includes each provision. {@link Divergences} tells how. An amending act
@@ -351,7 +352,7 @@ public record Act(
     var text = texts.get(version);
     if (text != null) {
       for (var divergence : divergences(day, language, texts)) {
-        if (divergence.kind() == Divergence.Kind.PROSPECTIVE && !divergence.whole(id)) {
+        if (divergence.kind() == Divergence.Kind.PROSPECTIVE) {
           divergence
               .in(text.eIds())
               .forEach(occurrence -> byOccurrence.putIfAbsent(occurrence.eId(), divergence.act()));
@@ -1016,6 +1017,29 @@ public record Act(
    */
   public Optional<LocalDate> inFullAfter(LocalDate day) {
     return appliesFrom(id).map(ActDate::date).filter(from -> from.isAfter(day));
+  }
+
+  /**
+   * Returns the deferred application of this act on {@code day}, in {@code language}: the act is in
+   * force, but it applies in full only from a later day. The reader gets a text on such a day: it
+   * is on or after the first version of the act in {@code language}, and the act applies in full
+   * after that version starts. For example, 2016/679 on 1 March 2017, and 2018/1862 on 1 August
+   * 2022, which applies in part on that day.
+   *
+   * <p>Returns empty on a day without a text, on or after the day from which the act applies in
+   * full, and where Cellar does not give that day.
+   */
+  public Optional<DeferredApplication> deferredApplicationOn(LocalDate day, Language language) {
+    var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
+    return appliesFrom(id)
+        .filter(inFull -> inFull.date() != null)
+        .filter(
+            inFull ->
+                first.isPresent()
+                    && Objects.requireNonNull(inFull.date()).isAfter(first.get().date())
+                    && !day.isBefore(first.get().date())
+                    && day.isBefore(inFull.date()))
+        .map(inFull -> new DeferredApplication(inFull, appliesInPartOn(id, day)));
   }
 
   /**

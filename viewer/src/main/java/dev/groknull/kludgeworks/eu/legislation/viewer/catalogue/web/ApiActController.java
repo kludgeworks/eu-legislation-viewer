@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -187,9 +188,9 @@ class ApiActController {
 
   /**
    * Returns the law on {@code date}: the day asked, the versions that apply on it, the day they
-   * apply until, and where their text is not the law on the day, because of a pending or a
-   * prospective amendment. More than one version applies when the original text and a consolidation
-   * share a day, in different languages.
+   * apply until, the deferred application of the act, and where their text is not the law on the
+   * day, because of a pending or a prospective amendment. More than one version applies when the
+   * original text and a consolidation share a day, in different languages.
    *
    * <p>A day before the first version returns 404, as a problem of the type {@link
    * ProblemType#BEFORE_FIRST_VERSION}. It has the day the act was adopted, the day its text first
@@ -207,13 +208,46 @@ class ApiActController {
     }
     var divergences = divergences(act, applying, date);
     return HalModelBuilder.halModelOf(
-            new LawModel(date, timeline.nextStartAfter(date).orElse(null), divergences))
+            new LawModel(
+                date,
+                timeline.nextStartAfter(date).orElse(null),
+                deferredApplication(act, applying, date),
+                divergences))
         .embed(
             applying.stream().map(version -> summary(celex, version)).toList(),
             Relation.VERSION.rel())
         .link(linkTo(methodOn(ApiActController.class).on(celex, date)).withSelfRel())
         .link(up(celex))
         .build();
+  }
+
+  /**
+   * Returns the deferred application of {@code act} on {@code date}, with the languages of the
+   * versions {@code applying} in which the reader gets a text on that day. Null if the act applies
+   * in full, or is not in force.
+   */
+  private @Nullable DeferredApplicationModel deferredApplication(
+      Act act, List<Version> applying, LocalDate date) {
+    var languages = new LinkedHashMap<DeferredApplication, List<String>>();
+    applying.stream()
+        .flatMap(version -> version.languages().stream())
+        .distinct()
+        .sorted()
+        .forEach(
+            language ->
+                act.deferredApplicationOn(date, language)
+                    .ifPresent(
+                        each ->
+                            languages
+                                .computeIfAbsent(each, key -> new ArrayList<>())
+                                .add(code(language.code()))));
+    return languages.entrySet().stream()
+        .findFirst()
+        .map(
+            each ->
+                new DeferredApplicationModel(
+                    DateModel.of(each.getKey().inFull()), each.getKey().partial(), each.getValue()))
+        .orElse(null);
   }
 
   /**
@@ -502,9 +536,26 @@ class ApiActController {
    *
    * @param date the day asked
    * @param until the day the next version starts, or null if no version starts later
-   * @param divergences where the text of the versions is not the law on the day
+   * @param deferredApplication the deferred application of the act itself on the day, or null if it
+   *     applies in full
+   * @param divergences where the text of the versions is not the law on the day: its pending and
+   *     prospective amendments
    */
-  record LawModel(LocalDate date, @Nullable LocalDate until, List<DivergenceModel> divergences) {}
+  record LawModel(
+      LocalDate date,
+      @Nullable LocalDate until,
+      @Nullable DeferredApplicationModel deferredApplication,
+      List<DivergenceModel> divergences) {}
+
+  /**
+   * The deferred application of the act on the day, as the API shows it: the act is in force, but
+   * it does not apply in full yet. For example, 2016/679 on 1 March 2017.
+   *
+   * @param inFull the date from which the act applies in full, with the clause that sets it
+   * @param partial whether a part of the act applies on the day already
+   * @param languages the languages in which the reader gets a text on the day
+   */
+  record DeferredApplicationModel(DateModel inFull, boolean partial, List<String> languages) {}
 
   /**
    * Where the text is not the law on a day, as the API shows it.
@@ -518,7 +569,8 @@ class ApiActController {
    * @param appliesFrom the day from which the act applies. Null if Cellar does not give it.
    * @param includedIn the first version that includes its text: {@code oj}, or its date. Null for a
    *     pending amendment that no version includes yet.
-   * @param places the provisions where the text differs. Empty where the whole act differs.
+   * @param places the provisions where the text differs. Empty where the whole amending act
+   *     differs.
    * @param languages the languages whose text differs
    */
   record DivergenceModel(

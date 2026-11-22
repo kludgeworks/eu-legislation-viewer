@@ -15,7 +15,7 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act being prepared in a language. It holds the state of the text of every version in that
+ * An act being prepared in a language. It holds the progress of the text of every version in that
  * language.
  *
  * <p>An act is prepared whole, up front. Thus its pages wait until it has settled. Then every text

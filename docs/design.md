@@ -96,7 +96,8 @@ The pages have no timeline. The day control sets the day of a page:
 | fold | A group of provisions that the page hides until the reader opens it. |
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
-| state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". |
+| state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". It is not a loading state of a page. |
+| deferred application | The state of an act that is in force but does not apply on the day yet, in full or in part. The status line names the day from which it applies in full. |
 | history | The list of the amending acts of an act, newest first. |
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 
@@ -124,7 +125,7 @@ are not in this rule: `versions` is the name of a resource of the API.
    2017." Do not hide the difference.
 5. **Give the source of each date.** Show the act, its Official Journal reference and the clause
    that sets the date.
-6. **Show the state of the page.** The reader must see the day, or the two days of a comparison.
+6. **Show the day of the page.** The reader must see the day, or the two days of a comparison.
 7. **Give a limit a way out.** Two days, a day of application or a provision that limits a page
    shows a link back to all.
 8. **A view only formats.** Rules about the law are domain methods with tests. See the
@@ -154,8 +155,8 @@ bar has words.
 
 **Open.**
 
-- Blue is also the colour of the "arriving" state. Red is also the colour of a failure. Decide if
-  these states get their own tokens.
+- Blue is also the colour of the "arriving" loading state. Red is also the colour of a failure.
+  Decide if these loading states get their own tokens.
 - `--target`, `--cor-ink` and `--cor-line` have no use in the stylesheets. Delete them or use them.
 
 ## Layout and width
@@ -175,11 +176,11 @@ narrower or wider. Do not design a different layout for a phone.
 **Open.** The widths for a review. The snapshot tool uses 1440 px only. A proposal: 1440 px and
 1024 px.
 
-## States
+## Loading states
 
-**Convention.** Each page that loads data has these states. Design all of them.
+**Convention.** Each page that loads data has these loading states. Design all of them.
 
-| State | What the reader sees |
+| Loading state | What the reader sees |
 | --- | --- |
 | Preparing | The steps, the progress, and what the viewer knows about the act already. |
 | Arriving | The frame of the page, with the text to come. |
@@ -190,7 +191,7 @@ narrower or wider. Do not design a different layout for a phone.
 
 **Convention.** A page that waits for the Publications Office shows a second line after 15 s:
 "The Publications Office is slow to answer." The line needs no script. If the wait stops, the
-page shows the Failed state. Example: the home page, when it looks up an act that the catalogue
+page shows the Failed loading state. Example: the home page, when it looks up an act that the catalogue
 does not have yet (`catalogue/home.jte`).
 
 **Convention.** An act's page whose act the catalogue does not have yet keeps its address. It
@@ -198,7 +199,7 @@ says "Looking up reg/2005/396 at the Publications Office…" at once, and the vi
 up in the background. When the act arrives, the page becomes the page of its address
 (`catalogue/actlookup.jte`). If no act has the address, the page says "No act has this address",
 with 404 and a link to Find an act (`catalogue/nosuchact.jte`). If the Publications Office does
-not answer, the page shows the Failed state, with Try again.
+not answer, the page shows the Failed loading state, with Try again.
 
 ## Content that breaks layouts
 

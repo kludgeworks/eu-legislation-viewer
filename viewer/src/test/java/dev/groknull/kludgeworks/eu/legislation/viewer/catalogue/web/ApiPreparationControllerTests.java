@@ -57,7 +57,7 @@ class ApiPreparationControllerTests {
   }
 
   @Test
-  void showsTheStateOfEachTextWithALinkToTheTextsThatAreReady()
+  void showsTheProgressOfEachTextWithALinkToTheTextsThatAreReady()
       throws UnsupportedEncodingException {
     preparationIs(
         null,
@@ -75,10 +75,10 @@ class ApiPreparationControllerTests {
     assertThat(preparation.at("/settledAt").isNull()).isTrue();
     var items = preparation.at("/_embedded/item");
     assertThat(items.at("/0/version").asString()).isEqualTo("oj");
-    assertThat(items.at("/0/state").asString()).isEqualTo("ready");
+    assertThat(items.at("/0/progress").asString()).isEqualTo("ready");
     assertThat(items.at("/0/_links/av:text/href").asString())
         .isEqualTo(ACT + "/versions/oj/texts/eng");
-    assertThat(items.at("/1/state").asString()).isEqualTo("converting");
+    assertThat(items.at("/1/progress").asString()).isEqualTo("converting");
     assertThat(items.at("/1/attempt").asInt()).isEqualTo(2);
     assertThat(items.at("/1/_links").isMissingNode()).isTrue();
     assertThat(items.at("/3/failure").asString()).isEqualTo("no-formex");

@@ -277,7 +277,6 @@ class DivergencesTest {
         .containsExactly(new Divergence.Occurrence(POINT, false, pending.places()));
     assertThat(pending.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
         .containsExactly(new Divergence.Occurrence("anx/pnt_1", true, pending.places()));
-    assertThat(pending.whole(BASE)).isFalse();
   }
 
   @Test
@@ -342,25 +341,6 @@ class DivergencesTest {
             act.prospective(including, LocalDate.parse("2019-10-11"), Language.ENG, texts(act))
                 .byOccurrence())
         .isEmpty();
-  }
-
-  @Test
-  void theProspectiveTextOfTheActItselfIsTheWholeText() {
-    var prospective =
-        new Divergence(
-            Divergence.Kind.PROSPECTIVE,
-            BASE,
-            new ActDate(
-                LocalDate.parse("2016-02-01"),
-                Kind.APPLICATION,
-                false,
-                new ActDate.Clause(null, null, List.of(), List.of(), "")),
-            Version.original(
-                LocalDate.parse("2015-11-15"), BASE, EnumSet.of(Language.ENG), Map.of()),
-            List.of());
-
-    assertThat(prospective.whole(BASE)).isTrue();
-    assertThat(prospective.in(OCCURRENCES)).isEmpty();
   }
 
   // ------------------------------------------------------------------------------------ helpers

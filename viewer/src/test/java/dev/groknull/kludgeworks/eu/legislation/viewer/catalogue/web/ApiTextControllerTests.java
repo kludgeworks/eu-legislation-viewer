@@ -153,7 +153,7 @@ class ApiTextControllerTests {
     assertThat(preparation.at("/_links/self/href").asString()).isEqualTo(ACT + "/preparations/eng");
     assertThat(preparation.at("/_links/av:events/href").asString())
         .isEqualTo(ACT + "/preparations/eng/events");
-    assertThat(preparation.at("/_embedded/item/0/state").asString()).isEqualTo("converting");
+    assertThat(preparation.at("/_embedded/item/0/progress").asString()).isEqualTo("converting");
     assertThat(preparation.at("/_embedded/item/0/_links/av:text").isMissingNode()).isTrue();
   }
 

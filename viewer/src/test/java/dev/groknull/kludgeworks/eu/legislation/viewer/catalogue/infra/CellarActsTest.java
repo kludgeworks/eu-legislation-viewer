@@ -318,8 +318,7 @@ class CellarActsTest {
   }
 
   @Test
-  void
-      theTextHasAProspectiveAmendmentUntilTheActAppliesAndAPendingOneWhileTheTextLacksAnActThatApplies() {
+  void theTextHasAPendingAmendmentWhileItLacksAnActThatApplies() {
     assertThat(act(AVSEC).divergences(Language.ENG, Map.of()))
         .extracting(
             Divergence::kind,
@@ -327,8 +326,6 @@ class CellarActsTest {
             Divergence::appliesFrom,
             each -> Objects.requireNonNull(each.included()).celex())
         .containsExactly(
-            tuple(
-                Divergence.Kind.PROSPECTIVE, "32015R1998", LocalDate.of(2016, 2, 1), "32015R1998"),
             tuple(
                 Divergence.Kind.PENDING,
                 "32017R0815",
@@ -352,10 +349,12 @@ class CellarActsTest {
         .containsExactly("32017R0815");
     assertThat(act.divergences(LocalDate.of(2017, 6, 6), Language.ENG, Map.of())).hasSize(1);
     assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of())).isEmpty();
-    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of()))
-        .extracting(Divergence::kind)
-        .containsExactly(Divergence.Kind.PROSPECTIVE);
-    assertThat(act.divergences(LocalDate.of(2016, 2, 1), Language.ENG, Map.of())).isEmpty();
+    // Before 2015/1998 applies, its application is deferred: a state of the act, not a divergence.
+    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of())).isEmpty();
+    assertThat(act.deferredApplicationOn(LocalDate.of(2016, 1, 31), Language.ENG))
+        .hasValueSatisfying(
+            deferred -> assertThat(deferred.day()).isEqualTo(LocalDate.of(2016, 2, 1)));
+    assertThat(act.deferredApplicationOn(LocalDate.of(2016, 2, 1), Language.ENG)).isEmpty();
   }
 
   @Test

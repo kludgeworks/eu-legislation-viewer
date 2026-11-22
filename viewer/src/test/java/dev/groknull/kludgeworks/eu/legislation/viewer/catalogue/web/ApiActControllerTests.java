@@ -213,6 +213,8 @@ class ApiActControllerTests {
 
     assertThat(law.at("/date").asString()).isEqualTo("2022-02-14");
     assertThat(law.at("/until").asString()).isEqualTo("2026-03-22");
+    // 2015/1998 applies in full: its application is not deferred.
+    assertThat(law.at("/deferredApplication").isNull()).isTrue();
     assertThat(texts(law.at("/_embedded/av:version"), "/version")).containsExactly("2021-12-31");
     assertThat(law.at("/_links/self/href").asString()).isEqualTo(ACT + "/on/2022-02-14");
     assertThat(law.at("/_links/up/href").asString()).isEqualTo(ACT);

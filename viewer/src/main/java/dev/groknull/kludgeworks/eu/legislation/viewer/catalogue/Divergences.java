@@ -96,8 +96,8 @@ final class Divergences {
 
   /**
    * Returns each period in which the text of the versions of {@code act} in {@code language} is not
-   * the law. The prospective text of the act itself is first. The others are in the order of the
-   * day on which they start.
+   * the law, in the order of the day on which they start. The act itself is not among them: its
+   * deferred application is a state of the act, {@link Act#deferredApplicationOn}.
    *
    * @param texts the tags of the texts in {@code language} that are built, by version
    */
@@ -112,11 +112,6 @@ final class Divergences {
     if (versions.isEmpty()) {
       return found;
     }
-    var first = versions.getFirst();
-    act.appliesFrom(act.id())
-        .filter(from -> day(from).isAfter(first.date()))
-        .ifPresent(
-            from -> found.add(new Divergence(Kind.PROSPECTIVE, act.id(), from, first, List.of())));
     var amending = new LinkedHashSet<ActIdentifier>();
     versions.forEach(each -> amending.addAll(each.integrates()));
     act.amendments().forEach(each -> amending.add(each.act()));

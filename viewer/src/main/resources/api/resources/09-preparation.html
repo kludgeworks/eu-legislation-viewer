@@ -19,14 +19,14 @@
   <dd>About how many texts of all acts are before its texts in the queue, while the viewer makes none of its
     texts.</dd>
 </dl>
-<p>The state of each text is in <span class="mono">_embedded.item</span>. A text that is ready links to it,
-  <a class="mono" href="#text">av:text</a>. Each state has:</p>
+<p>The progress of each text is in <span class="mono">_embedded.item</span>. A text that is ready links to it,
+  <a class="mono" href="#text">av:text</a>. Each has:</p>
 <dl class="api-members">
   <dt>version</dt>
   <dd>Where the version is among the versions: <span class="mono">oj</span>, or its date.</dd>
   <dt>celex</dt>
   <dd>The CELEX number of the document that holds the text.</dd>
-  <dt>state</dt>
+  <dt>progress</dt>
   <dd><span class="mono">waiting</span>, <span class="mono">converting</span>, <span class="mono">ready</span> or
     <span class="mono">failed</span>.</dd>
   <dt>attempt</dt>
@@ -48,11 +48,11 @@
       Use it to wait for a text without asking again.</p>
     <dl class="api-members">
       <dt>preparation</dt>
-      <dd>The preparation changed. The data is its state, as JSON.</dd>
+      <dd>The preparation changed. The data is its progress, as JSON.</dd>
       <dt>settled</dt>
-      <dd>Every text is ready or failed. The data is the last state. Then the stream ends.</dd>
+      <dd>Every text is ready or failed. The data is the progress at the end. Then the stream ends.</dd>
     </dl>
-    <p>The state has no links. To follow a link, ask for the preparation.</p>
+    <p>The data has no links. To follow a link, ask for the preparation.</p>
   </dd>
   <dt id="retry">av:retry</dt>
   <dd>Tries again to make the texts that failed, if to try again may help. Send <span class="mono">POST</span>, with no

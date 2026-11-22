@@ -7,7 +7,7 @@ import java.util.Map;
 /**
  * The texts of versions. They are built in the background. When a page of an act is first opened in
  * a language, the texts of all its versions in that language are built at once. Each change to the
- * state of a text is a {@link PreparationChanged} event.
+ * progress of a text is a {@link PreparationChanged} event.
  */
 public interface Texts {
 
@@ -25,7 +25,9 @@ public interface Texts {
    */
   void retry(Act act, Language language);
 
-  /** Returns the state of the act's preparation in the language, as stored. It asks for nothing. */
+  /**
+   * Returns the progress of the act's preparation in the language, as stored. It asks for nothing.
+   */
   Preparation preparation(Act act, Language language);
 
   /**
