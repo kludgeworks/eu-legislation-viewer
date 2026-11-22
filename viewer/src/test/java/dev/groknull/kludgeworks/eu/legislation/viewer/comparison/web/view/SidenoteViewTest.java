@@ -434,7 +434,7 @@ class SidenoteViewTest {
 
   @Test
   void namesTheVersionWhereAChangeNothingAttributesFirstAppearsAndWhatItConsolidates() {
-    // As points 12.9.3.14 and 12.9.3.15 of 2015/1998, deleted in the version of 22 March 2026.
+    // As points 12.9.3.14 and 12.9.3.15 of 2015/1998, deleted in the text of 22 March 2026.
     var deleted = deleted("anx/pnt_12.9.3.14", new Tag("32019R0103", Modification.REPLACED, null));
     var march = version("02015R1998-20260322");
     var included = Inclusions.listed(AVSEC.timeline());
@@ -442,7 +442,7 @@ class SidenoteViewTest {
     var sidenote = SidenoteView.appeared(AVSEC, included, march, deleted);
 
     assertThat(sidenote.made())
-        .startsWith("Deleted in the version of 22 March 2026, which consolidates ")
+        .startsWith("Deleted in the text of 22 March 2026, which consolidates ")
         .contains("2026/449");
     // It names no act as the one that made it.
     assertThat(sidenote.attribution().acts()).isEmpty();
@@ -467,7 +467,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.appeared(AVSEC, Inclusions.listed(AVSEC.timeline()), empty, changed);
 
-    assertThat(sidenote.made()).isEqualTo("Amended in the version of 22 March 2026");
+    assertThat(sidenote.made()).isEqualTo("Amended in the text of 22 March 2026");
   }
 
   @Test

@@ -117,6 +117,20 @@ its module.
 | neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
 | Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |
 
+The date line of a sidenote says from when the change of each act applies (R-WHO-15 to
+R-WHO-20). It names the act, its Official Journal reference, the date, and the clause that sets
+the date. The clause links to EUR-Lex. The forms:
+
+| Case | Words |
+| --- | --- |
+| One day | "2017/815 · OJ L 122, 13.5.2017 · applies from 1 June 2017 · Article 2 of 2017/815" |
+| Only its entry into force | "2019/1583 · OJ L 246, 26.9.2019 · applies from 31 December 2021, its entry into force · Article 2 of 2019/1583, as amended by 2020/910" |
+| In parts | "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in parts: from 22 March 2026, its entry into force; in part from 1 October 2026 · Article 2 of 2026/449 says which part from when" |
+| A clause sets the day | "2019/413 · OJ L 73, 15.3.2019 · applies from a date set in Article 3 of 2019/413" |
+| A directive in force | "Dir. 2002/73/EC · OJ L 269, 5.10.2002 · in force from 5 October 2002 · Article 3 of Dir. 2002/73/EC" |
+| A correction | "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text of 31 December 2021" |
+| Nothing is known | no date line |
+
 ### Page words (all modules)
 
 | Term | Meaning |

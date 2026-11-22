@@ -8,19 +8,36 @@ import java.util.regex.Pattern;
 
 /** Reads acts as the rules cite them: a regulation by its number, a corrigendum with its act. */
 final class Cited {
-  /** The number of a regulation. For example, 2015/1998. */
-  private static final Pattern REGULATION = Pattern.compile("(\\d{4})/(\\d+)");
+  /**
+   * The number of a regulation, as the Official Journal cites it: the year first from 2015, for
+   * example 2015/1998, and the number first before 2015, for example 917/2004.
+   */
+  private static final Pattern REGULATION = Pattern.compile("(\\d{1,4})/(\\d{1,4})");
+
+  /** The year from which a regulation's number starts with its year. */
+  private static final int YEAR_FIRST = 2015;
 
   /** A corrigendum, as the pages cite it. For example, "Corrigendum 1 to 2017/815". */
   private static final Pattern CORRIGENDUM = Pattern.compile("Corrigendum (\\d+) to (\\d{4}/\\d+)");
+
+  /** A directive, by its number. For example, "Directive 2019/878". */
+  private static final Pattern DIRECTIVE = Pattern.compile("Directive (\\d{4})/(\\d+)");
 
   /** The words for a difference that no known act made. */
   static final String NO_KNOWN_ACT = "no known act";
 
   private Cited() {}
 
-  /** Returns the act cited as {@code cited}: "2015/1998" or "Corrigendum 1 to 2017/815". */
+  /**
+   * Returns the act cited as {@code cited}: "2015/1998", "917/2004", "Directive 2002/73" or
+   * "Corrigendum 1 to 2017/815".
+   */
   static ActIdentifier act(String cited) {
+    var directive = DIRECTIVE.matcher(cited);
+    if (directive.matches()) {
+      return new ActIdentifier(
+          "3" + directive.group(1) + "L" + "%04d".formatted(Integer.parseInt(directive.group(2))));
+    }
     var corrigendum = CORRIGENDUM.matcher(cited);
     if (corrigendum.matches()) {
       return new ActIdentifier(
@@ -31,8 +48,11 @@ final class Cited {
     if (!regulation.matches()) {
       throw new IllegalArgumentException("Not an act as the rules cite one: " + cited);
     }
+    var first = Integer.parseInt(regulation.group(1));
+    var second = Integer.parseInt(regulation.group(2));
+    var yearFirst = first >= YEAR_FIRST;
     return new ActIdentifier(
-        "3" + regulation.group(1) + "R" + "%04d".formatted(Integer.parseInt(regulation.group(2))));
+        "3" + (yearFirst ? first : second) + "R" + "%04d".formatted(yearFirst ? second : first));
   }
 
   /**

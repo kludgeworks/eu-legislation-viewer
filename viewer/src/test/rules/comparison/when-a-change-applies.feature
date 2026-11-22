@@ -1,0 +1,104 @@
+# SPDX-License-Identifier: MIT
+Feature: From when a change applies
+  The sidenote of a difference says, for each act that made it, from when the change applies. The
+  date comes from the act's dates in Cellar.
+
+  Rule: R-WHO-15 The date is the act's
+    The date of a change comes from the dates of the act that made it, never from the date of the
+    text that first has the change.
+
+    Example: A change applies from its act's date, before the text that has it
+      Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 7 June 2017
+      When the reader asks from when the change of 2017/815 applies
+      Then it applies from 1 June 2017
+      And no act moved the date
+
+  Rule: R-WHO-16 Cellar's day for the occurrence
+    Cellar can give a day for the change at the occurrence. That day chooses the date if it is one
+    of the act's dates and it is after From. A day that is not after From is stale: the earlier text
+    does not have the change, so the change does not apply from that day.
+
+    Example: Cellar's day is one of the act's dates, after From
+      Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
+      And Cellar dates the change of 2026/449 at the occurrence from 1 October 2026
+      When the reader asks from when the change of 2026/449 applies
+      Then it applies from 1 October 2026
+
+    Example: Cellar's day is not one of the act's dates
+      Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
+      And Cellar dates the change of 2026/449 at the occurrence from 15 May 2026
+      When the reader asks from when the change of 2026/449 applies
+      Then it applies in parts
+        | from            | what                 |
+        | 22 March 2026   | its entry into force |
+        | 1 October 2026  | a part               |
+
+    Example: Cellar's day is not after From, so it is stale
+      Given the comparison of the texts of 2015/1998 of 1 July 2021 and of 31 December 2021
+      And Cellar dates the change of 2019/103 at the occurrence from 1 February 2019
+      When the reader asks from when the change of 2019/103 applies
+      Then it applies in parts
+        | from             | what                 |
+        | 1 February 2019  | its entry into force |
+        | 31 December 2021 | a part               |
+
+  Rule: R-WHO-17 An act that applies in parts
+    If no day chooses the date, the act applies in parts, and the sidenote lists each day from
+    which a part applies.
+
+    Example: Cellar gives no day for the occurrence
+      Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
+      When the reader asks from when the change of 2026/449 applies
+      Then it applies in parts
+        | from            | what                 |
+        | 22 March 2026   | its entry into force |
+        | 1 October 2026  | a part               |
+
+  Rule: R-WHO-18 No day known
+    If Cellar has no day for the act's application, a clause of the act sets the day, and the
+    sidenote names the clause. If Cellar names no such clause, the sidenote says nothing of when the
+    change applies.
+
+    Example: A clause sets the day
+      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
+      When the reader asks from when the change of 2019/413 applies
+      Then it applies from a day that Article 3 of 2019/413 sets
+
+    Example: An event sets the day, and Cellar names no clause
+      Given the comparison of the texts of 917/2004 of 1 May 2004 and of 24 August 2004
+      When the reader asks from when the change of 1484/2004 applies
+      Then the sidenote says nothing of when it applies
+
+  Rule: R-WHO-19 Only an entry into force
+    An act whose only date is its entry into force applies from that day. A directive that has only
+    its entry into force is in force from that day, and the data does not say from when it applies:
+    the Member States apply it through their own measures. The acts that changed the clause that
+    sets the date moved the date, and the sidenote names them.
+
+    Example: An act applies from its entry into force, which another act moved
+      Given the comparison of the texts of 2015/1998 of 1 July 2021 and of 31 December 2021
+      When the reader asks from when the change of 2019/1583 applies
+      Then it applies from 31 December 2021, its entry into force
+      And 2020/910 moved the date
+
+    Example: A directive that has only its entry into force
+      Given the comparison of the texts of Directive 1976/207 of 12 February 1976 and of 5 October 2002
+      When the reader asks from when the change of Directive 2002/73 applies
+      Then it is in force from 5 October 2002, and the data does not say from when it applies
+
+  Rule: R-WHO-20 A corrigendum corrects from the start
+    A corrigendum corrects its act from the start: from the earliest day from which the act
+    applies, or from its entry into force if the act has no day of application. The sidenote also
+    names the first text between the two days that has the corrigendum.
+
+    Example: A corrigendum of an act with a day of application
+      Given the comparison of the texts of 2015/1998 of 1 July 2021 and of 31 December 2021
+      When the reader asks from when the change of Corrigendum 1 to 2019/103 applies
+      Then it corrects 2019/103 from 31 December 2021
+      And the first text between the two days that has it is of 31 December 2021
+
+    Example: A corrigendum of an act that has only its entry into force
+      Given the comparison of the texts of 2015/1998 of 1 April 2023 and of 26 May 2024
+      When the reader asks from when the change of Corrigendum 1 to 2024/1255 applies
+      Then it corrects 2024/1255 from 26 May 2024
+      And the first text between the two days that has it is of 26 May 2024

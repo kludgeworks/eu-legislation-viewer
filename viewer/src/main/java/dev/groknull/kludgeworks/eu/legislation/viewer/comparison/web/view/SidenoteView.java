@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
@@ -158,7 +159,7 @@ public record SidenoteView(
             .map(
                 each ->
                     Optional.ofNullable(parts.get(each))
-                        .or(() -> version(included, from, to, each)))
+                        .or(() -> Applicability.firstIncluding(included, from, to, each)))
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
     var made = new LinkedHashMap<>(tagged);
@@ -168,7 +169,9 @@ public record SidenoteView(
       // priority.
       if (between.contains(each)
           && !made.containsKey(each)
-          && version(included, from, to, each).filter(markedVersions::contains).isEmpty()) {
+          && Applicability.firstIncluding(included, from, to, each)
+              .filter(markedVersions::contains)
+              .isEmpty()) {
         made.put(each, Modification.of(amendment.role()));
       }
     }
@@ -186,22 +189,9 @@ public record SidenoteView(
             together(difference, between));
     var dates = new ArrayList<Applies>();
     for (var each : steps.stream().flatMap(List::stream).toList()) {
-      if (each.corrigendum()) {
-        dates.add(corrects(act, included, from, to, each));
-      } else {
-        var days =
-            parts.containsKey(each)
-                ? partDays(act, each, from, to)
-                : amendments.stream()
-                    .filter(amendment -> amendment.act().equals(each))
-                    .map(Amendment::from)
-                    .filter(Objects::nonNull)
-                    // A day that is not after the earlier text is stale, because the earlier
-                    // text does not have the change. The points of 2019/103 are an example.
-                    .filter(day -> day.isAfter(from.date()))
-                    .collect(Collectors.toSet());
-        applies(act, each, days, language).ifPresent(dates::add);
-      }
+      Applicability.of(act, included, from, to, each, amendments, parts.containsKey(each))
+          .map(applicability -> applies(act, applicability, language))
+          .ifPresent(dates::add);
     }
     var chain = new ArrayList<String>();
     for (var i = 0; i < steps.size(); i++) {
@@ -248,7 +238,7 @@ public record SidenoteView(
         included.between(from, to).stream().filter(each -> !each.corrigendum()).toList();
     var versions =
         candidates.stream()
-            .map(each -> version(included, from, to, each))
+            .map(each -> Applicability.firstIncluding(included, from, to, each))
             .flatMap(Optional::stream)
             .distinct()
             .count();
@@ -256,13 +246,19 @@ public record SidenoteView(
       return new SidenoteView(unsaid(difference), Attribution.NONE, List.of(), null, null);
     }
     var ordered =
-        included.of(version(included, from, to, candidates.getFirst()).orElseThrow()).stream()
+        included
+            .of(
+                Applicability.firstIncluding(included, from, to, candidates.getFirst())
+                    .orElseThrow())
+            .stream()
             .filter(candidates::contains)
             .toList();
     var names = ordered.stream().map(act::cited).toList();
     var dates = new ArrayList<Applies>();
     for (var each : ordered) {
-      applies(act, each, Set.of(), language).ifPresent(dates::add);
+      Applicability.of(act, each, Set.of())
+          .map(applicability -> applies(act, applicability, language))
+          .ifPresent(dates::add);
     }
     return new SidenoteView(
         unsaid(difference)
@@ -279,10 +275,11 @@ public record SidenoteView(
 
   /**
    * Returns the sidenote of {@code difference}, which no tag and no amendment in Cellar attributes,
-   * in {@code version}, the version where the change first appears. It names the version and what
-   * the version consolidates, and no act as the one that made the change. For example, "Deleted in
-   * the version of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449". If
-   * the version consolidates no act, it names the version only.
+   * in {@code version}, the version where the change first appears. It names the text of that
+   * version and what the version consolidates, and no act as the one that made the change. The page
+   * says "text", not "version". For example, "Deleted in the text of 22 March 2026, which
+   * consolidates 2026/449 and Corrigendum 1 to 2026/449". If the version consolidates no act, it
+   * names the text only.
    */
   public static SidenoteView appeared(
       Act act, Inclusions included, Version version, Difference difference) {
@@ -290,7 +287,7 @@ public record SidenoteView(
     var consolidates = included.of(version);
     return new SidenoteView(
         did
-            + " in the version of "
+            + " in the text of "
             + Dates.inWords(version.date())
             + (consolidates.isEmpty() ? "" : ", which consolidates " + names(act, consolidates)),
         Attribution.NONE,
@@ -311,43 +308,6 @@ public record SidenoteView(
           case CHANGED -> "changed";
         };
     return "The data does not say which act " + did + " this.";
-  }
-
-  /**
-   * Returns the date line of {@code corrigendum}. A corrigendum corrects its act from the start:
-   * from the day the act applies, else from its entry into force. For example, "Corrigendum 4 to
-   * 2017/815 corrects 2017/815 from 1 June 2017 · first in the text of 1 January 2026". The day is
-   * left out if the act has none.
-   */
-  private static Applies corrects(
-      Act act, Inclusions included, Version from, Version to, ActIdentifier corrigendum) {
-    var corrected = corrigendum.corrected().orElseThrow();
-    var dated = act.datesOf(corrected).stream().filter(date -> date.date() != null).toList();
-    var applying =
-        dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
-    var start =
-        (applying.isEmpty() ? dated : applying)
-            .stream().map(ActDate::date).filter(Objects::nonNull).min(Comparator.naturalOrder());
-    var when =
-        corrigendum.cited()
-            + " corrects "
-            + act.cited(corrected)
-            + start.map(day -> " from " + Dates.inWords(day)).orElse("")
-            + version(included, from, to, corrigendum)
-                .map(version -> " · first in the text of " + Dates.inWords(version.date()))
-                .orElse("");
-    return new Applies(when, "", null, List.of(), "");
-  }
-
-  /**
-   * Returns the first version after {@code from}, up to {@code to}, that includes {@code amending}.
-   */
-  private static Optional<Version> version(
-      Inclusions included, Version from, Version to, ActIdentifier amending) {
-    return included.timeline().versions().stream()
-        .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-        .filter(v -> included.includes(v, amending))
-        .findFirst();
   }
 
   /**
@@ -374,7 +334,7 @@ public record SidenoteView(
       if (between.contains(each) || earlier.contains(tag.act()) || parts.containsKey(each)) {
         continue;
       }
-      partDays(act, each, from, to).stream()
+      Applicability.daysBetween(act, each, from, to).stream()
           .min(Comparator.naturalOrder())
           .flatMap(
               day ->
@@ -385,16 +345,6 @@ public record SidenoteView(
           .ifPresent(version -> parts.put(each, version));
     }
     return parts;
-  }
-
-  /** Returns the dates of {@code amending} after {@code from}, up to {@code to}. */
-  private static Set<LocalDate> partDays(
-      Act act, ActIdentifier amending, Version from, Version to) {
-    return act.datesOf(amending).stream()
-        .map(ActDate::date)
-        .filter(Objects::nonNull)
-        .filter(day -> day.isAfter(from.date()) && !day.isAfter(to.date()))
-        .collect(Collectors.toSet());
   }
 
   /**
@@ -529,64 +479,61 @@ public record SidenoteView(
   }
 
   /**
-   * Returns when {@code amending} applies, in words, from {@link Act#applying}. {@code days} holds
-   * the days that the amendments of the occurrence in Cellar have. Returns empty if Cellar has no
-   * dates of the act, or if it has no day and no clause that sets one.
+   * Returns {@code applicability} as the date line of the sidenote says it. For example, "2017/815
+   * · OJ L 122, 13.5.2017 · applies from 1 June 2017 · Article 2 of 2017/815", or "Corrigendum 4 to
+   * 2017/815 corrects 2017/815 from 1 June 2017 · first in the text of 1 January 2026".
    */
-  private static Optional<Applies> applies(
-      Act act, ActIdentifier amending, Set<LocalDate> days, Language language) {
-    var name = named(act, amending);
-    return act.applying(amending, days)
-        .flatMap(
-            applying ->
-                switch (applying) {
-                  case Applying.SetBy set -> {
-                    var words =
-                        applies(
-                            act,
-                            name + " applies from a date set in",
-                            set.dates(),
-                            amending,
-                            language,
-                            "");
-                    // There is nothing to say if no clause sets the date.
-                    yield words.clause() == null ? Optional.empty() : Optional.of(words);
-                  }
-                  case Applying.From from ->
-                      Optional.of(
-                          applies(
-                              act,
-                              name
-                                  + " applies from "
-                                  + Dates.inWords(from.day())
-                                  + (from.entryIntoForce() ? ", its entry into force" : ""),
-                              from.dates(),
-                              amending,
-                              language,
-                              ""));
-                  case Applying.InForce inForce ->
-                      Optional.of(
-                          applies(
-                              act,
-                              name + " in force from " + Dates.inWords(inForce.day()),
-                              inForce.dates(),
-                              amending,
-                              language,
-                              ""));
-                  case Applying.InParts parts ->
-                      Optional.of(
-                          applies(
-                              act,
-                              name
-                                  + " applies in parts: "
-                                  + parts.starts().stream()
-                                      .map(SidenoteView::part)
-                                      .collect(Collectors.joining("; ")),
-                              parts.dates(),
-                              amending,
-                              language,
-                              " says which part from when"));
-                });
+  private static Applies applies(Act act, Applicability applicability, Language language) {
+    return switch (applicability) {
+      case Applicability.Corrects corrects ->
+          new Applies(
+              corrects.act().cited()
+                  + " corrects "
+                  + act.cited(corrects.corrected())
+                  + (corrects.from() == null ? "" : " from " + Dates.inWords(corrects.from()))
+                  + (corrects.firstIn() == null
+                      ? ""
+                      : " · first in the text of " + Dates.inWords(corrects.firstIn())),
+              "",
+              null,
+              List.of(),
+              "");
+      case Applicability.Applies applies -> {
+        var name = named(act, applies.act());
+        yield switch (applies.applying()) {
+          case Applying.SetBy _ ->
+              applies(act, name + " applies from a date set in", applies, language, "");
+          case Applying.From from ->
+              applies(
+                  act,
+                  name
+                      + " applies from "
+                      + Dates.inWords(from.day())
+                      + (from.entryIntoForce() ? ", its entry into force" : ""),
+                  applies,
+                  language,
+                  "");
+          case Applying.InForce inForce ->
+              applies(
+                  act,
+                  name + " in force from " + Dates.inWords(inForce.day()),
+                  applies,
+                  language,
+                  "");
+          case Applying.InParts parts ->
+              applies(
+                  act,
+                  name
+                      + " applies in parts: "
+                      + parts.starts().stream()
+                          .map(SidenoteView::part)
+                          .collect(Collectors.joining("; ")),
+                  applies,
+                  language,
+                  " says which part from when");
+        };
+      }
+    };
   }
 
   /** Returns a part in words. For example, "in part from 1 October 2026". */
@@ -598,23 +545,15 @@ public record SidenoteView(
   }
 
   private static Applies applies(
-      Act act,
-      String when,
-      List<ActDate> dates,
-      ActIdentifier amending,
-      Language language,
-      String after) {
-    var provisions = new LinkedHashSet<ActDate.Provision>();
-    var amendedBy = new LinkedHashSet<ActIdentifier>();
-    for (var date : dates) {
-      provisions.addAll(date.clause().provisions());
-      amendedBy.addAll(date.clause().amendedBy());
-    }
+      Act act, String when, Applicability.Applies applies, Language language, String after) {
+    var amending = applies.act();
     var clause =
-        provisions.isEmpty()
+        applies.clause().isEmpty()
             ? null
             : new Link(
-                provisions.stream().map(ActDate.Provision::cited).collect(Collectors.joining(", "))
+                applies.clause().stream()
+                        .map(ActDate.Provision::cited)
+                        .collect(Collectors.joining(", "))
                     + " of "
                     + act.cited(amending),
                 act.eurLex(amending, language).toString());
@@ -622,7 +561,7 @@ public record SidenoteView(
         when,
         when.endsWith(" in") ? " " : " · ",
         clause,
-        amendedBy.stream()
+        applies.amendedBy().stream()
             .map(each -> new Link(act.cited(each), act.eurLex(each, language).toString()))
             .toList(),
         clause == null ? "" : after);
@@ -700,8 +639,8 @@ public record SidenoteView(
       var first = act.timeline().versions().getFirst();
       return new History(
           "As in the original act",
-          applies(act, act.id(), Set.of(), language)
-              .map(applies -> unnamed(applies, act, act.id()))
+          Applicability.of(act, act.id(), Set.of())
+              .map(applicability -> unnamed(applies(act, applicability, language), act, act.id()))
               .orElseGet(
                   () ->
                       new Applies(
@@ -710,8 +649,8 @@ public record SidenoteView(
     var each = new ActIdentifier(last.act());
     return new History(
         "Last changed by " + act.cited(each) + " (" + last.modification().word() + ")",
-        applies(act, each, Set.of(), language)
-            .map(applies -> unnamed(applies, act, each))
+        Applicability.of(act, each, Set.of())
+            .map(applicability -> unnamed(applies(act, applicability, language), act, each))
             .orElse(null));
   }
 

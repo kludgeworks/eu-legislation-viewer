@@ -109,11 +109,16 @@ java_test_suite(
 # model/ (the rules)
 # The business rules that the comparison's domain applies (viewer/src/test/rules/comparison), run
 # by Cucumber. The steps depend on the domains of the comparison, the content and the catalogue
-# only: a rule that only a view or a controller applies cannot be tested here
+# only: a rule that only a view or a controller applies cannot be tested here.
+# One exception: catalogue:recorded-acts, the acts as Cellar's recorded answers make them. It
+# depends on catalogue:infra, which parses those answers. So the steps can reach the catalogue's
+# infrastructure, though they must call only its domain. The comparison's web and view stay out
+# of reach. Kept for now, to see how big the problem becomes (decided 2026-11-22).
 java_junit5_test(
     name = "rules",
     size = "small",
     srcs = [
+        "model/ApplicabilitySteps.java",
         "model/AttributionSteps.java",
         "model/Cited.java",
         "model/ComparisonRules.java",
@@ -137,6 +142,7 @@ java_junit5_test(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:recorded-acts",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:io_cucumber_cucumber_java",
         "@maven//:io_cucumber_cucumber_junit_platform_engine",

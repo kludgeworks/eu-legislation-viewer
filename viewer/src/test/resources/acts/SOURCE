@@ -46,3 +46,14 @@ publications-32010R0185.json        publications.rq, celex 32010R0185. Recorded 
                                     same way.
 search-aviation-security.json       search.rq, words 'aviation' AND 'security', types RLD, amending no,
                                     limit 21, offset 0. Recorded 2026-11-05. 21 acts, one row each.
+
+31976L0207: Directive 76/207/EEC, amended by Directive 2002/73/EC, whose only date in Cellar is
+its entry into force (EV, 5 October 2002, Article 3), with no date of transposition. Recorded
+2026-11-22 with the queries above, celex 31976L0207: act-, versions-, languages-, dates-,
+titles-, amendments- and publications-31976L0207.json. 2 consolidations, of 5 October 2002 and
+15 August 2006.
+
+32004R0917: Regulation (EC) No 917/2004, amended by Regulation (EC) No 1484/2004, whose day of
+application Cellar does not give: an MA date of 1001-01-01, set from the start of the 2004/2005
+marketing year (DEB/CAMP), with no article. Recorded 2026-11-22 in the same way: act-, versions-,
+languages-, dates-, titles-, amendments- and publications-32004R0917.json. 8 consolidations.

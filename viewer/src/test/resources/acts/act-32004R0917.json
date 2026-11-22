@@ -1,0 +1,4 @@
+
+{ "head": { "link": [], "vars": ["eli", "type", "dateOfDocument", "inForce", "entryIntoForce", "endOfValidity"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "eli": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#anyURI", "value": "http://data.europa.eu/eli/reg/2004/917/oj" }	, "type": { "type": "uri", "value": "http://publications.europa.eu/resource/authority/resource-type/REG" }	, "dateOfDocument": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2004-04-29" }	, "inForce": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#boolean", "value": "0" }	, "entryIntoForce": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2004-05-01" }	, "endOfValidity": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2015-08-08" }} ] } }
