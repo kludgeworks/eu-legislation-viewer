@@ -152,7 +152,19 @@ the change. The page says "text", not "version". If the text consolidates no act
 | Case | Words |
 | --- | --- |
 | The text where the change first appears | "Deleted in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449" |
-| Nothing shows where it appears | "The data does not say which act changed this." The verb is that of the difference: inserted, deleted or changed. |
+| Nothing shows where it appears | "The data does not say which act amended this." The verb is the modification of the difference: inserted, deleted or amended (R-WHO-14). |
+
+Synopsis shows the two texts side by side, provision by provision (R-SHOW-10). Near each
+difference it shows its neighbours. Where more than three neighbours are in a row, it shows the
+first and the last, and a fold holds the others. With three or fewer, it shows all of them. Beside
+each neighbour, a line says what last made it as it is (R-WHO-21), with the date of that act. A
+corrigendum is not named there. The forms:
+
+| Case | Words |
+| --- | --- |
+| An act last changed it | "Last changed by 2020/910 (replaced) · applies from 2 July 2020, its entry into force · Article 5 of 2020/910" |
+| No act changed it | "As in the original act · applies from 1 February 2016 · Article 2 of 2015/1998" |
+| No act changed it, in a directive | "As in the original act · in force from 17 July 2013 · Article 164 of Dir. 2013/36/EU" |
 
 ### Page words (all modules)
 
@@ -188,7 +200,7 @@ Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its
 
 The pages do not use these words in text that the reader sees: "late", "early", "included",
 "version", "stage", "an act not known", "an act not named", "not included". Say what the reader sees. Examples:
-"the text", "does not apply yet", "applies in parts", "the data does not say which act changed this". The pages of the API
+"the text", "does not apply yet", "applies in parts", "the data does not say which act amended this". The pages of the API
 are not in this rule: `versions` is the name of a resource of the API.
 
 ## Principles

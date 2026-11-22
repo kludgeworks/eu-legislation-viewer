@@ -425,7 +425,7 @@ class SidenoteViewTest {
             Language.ENG);
 
     // The line is never empty. It says that no act is named.
-    assertThat(sidenote.made()).isEqualTo("The data does not say which act changed this.");
+    assertThat(sidenote.made()).isEqualTo("The data does not say which act amended this.");
     assertThat(sidenote.dates()).isEmpty();
   }
 
@@ -696,7 +696,7 @@ class SidenoteViewTest {
 
     assertThat(sidenote.made())
         .isEqualTo(
-            "The data does not say which act changed this. It was 2019/103, 2019/1583 or"
+            "The data does not say which act amended this. It was 2019/103, 2019/1583 or"
                 + " 2020/910.");
     assertThat(sidenote.attribution().acts()).isEmpty();
     assertThat(sidenote.attribution().candidates()).hasSize(3);

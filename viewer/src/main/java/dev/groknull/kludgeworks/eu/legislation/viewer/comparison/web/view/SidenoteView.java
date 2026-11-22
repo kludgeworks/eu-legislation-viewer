@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -39,7 +40,7 @@ import org.jspecify.annotations.Nullable;
  *       <li>"Replaced by 2026/449"
  *       <li>"Inserted by 2019/103, then replaced by 2021/255"
  *       <li>"Replaced by 2019/103 and 2019/1583 together"
- *       <li>"The data does not say which act changed this. It was 2019/103 or 2019/1583."
+ *       <li>"The data does not say which act amended this. It was 2019/103 or 2019/1583."
  *       <li>"The data does not say which act deleted this.", where nothing names an act between the
  *           two versions
  *     </ul>
@@ -217,13 +218,9 @@ public record SidenoteView(
    * which act deleted this."
    */
   private static String unsaid(Difference difference) {
-    var did =
-        switch (difference.kind()) {
-          case INSERTED -> "inserted";
-          case DELETED -> "deleted";
-          case CHANGED -> "changed";
-        };
-    return "The data does not say which act " + did + " this.";
+    return "The data does not say which act "
+        + Modification.of(difference.kind()).word()
+        + " this.";
   }
 
   /**
@@ -372,54 +369,25 @@ public record SidenoteView(
   public record Link(String label, String href) {}
 
   /**
-   * Returns the history of a provision that is the same in both versions. The Synopsis shows it
-   * beside the provision.
-   *
-   * <p>The history names the act that the versions of {@code act} integrated last, among the acts
-   * that the tags in {@code to} name. The tags are those of the provision, or those of the
-   * occurrence that an act put in its form as a whole. {@link Tag} has them. Corrigenda are left
-   * out. The history says what the act did and when it applies.
-   *
-   * <p>If no act changed the provision, the history says "As in the original act". It then applies
-   * from the dates of the act, or else from the first version of the act.
+   * Returns the history of a provision that is the same in both texts, as the Synopsis shows it
+   * beside the provision: what last made it as it is ({@link LastChange}, R-WHO-21), in words.
    */
   public static History history(
       Act act, Inclusions included, Version to, List<Tag> tags, Language language) {
-    @Nullable Tag last = null;
-    @Nullable LocalDate integrated = null;
-    for (var tag : tags) {
-      var each = new ActIdentifier(tag.act());
-      if (each.corrigendum()) {
-        continue;
-      }
-      var on =
-          included.timeline().versions().stream()
-              .filter(version -> !version.date().isAfter(to.date()))
-              .filter(version -> included.includes(version, each))
-              .map(Version::date)
-              .min(LocalDate::compareTo);
-      if (on.isPresent() && (integrated == null || on.get().isAfter(integrated))) {
-        last = tag;
-        integrated = on.get();
-      }
-    }
-    if (last == null) {
-      var first = act.timeline().versions().getFirst();
-      return new History(
-          "As in the original act",
-          Applicability.of(act, act.id(), Set.of())
-              .map(applicability -> unnamed(applies(act, applicability, language), act, act.id()))
-              .orElseGet(
-                  () ->
-                      new Applies(
-                          "applies from " + Dates.inWords(first.date()), "", null, List.of(), "")));
-    }
-    var each = new ActIdentifier(last.act());
-    return new History(
-        "Last changed by " + act.cited(each) + " (" + last.modification().word() + ")",
-        Applicability.of(act, each, Set.of())
-            .map(applicability -> unnamed(applies(act, applicability, language), act, each))
-            .orElse(null));
+    return switch (LastChange.of(act, included, to, tags)) {
+      case LastChange.Original(var applicability) ->
+          new History(
+              "As in the original act",
+              applicability == null
+                  ? null
+                  : unnamed(applies(act, applicability, language), act, act.id()));
+      case LastChange.ByAct(var each, var modification, var applicability) ->
+          new History(
+              "Last changed by " + act.cited(each) + " (" + modification.word() + ")",
+              applicability == null
+                  ? null
+                  : unnamed(applies(act, applicability, language), act, each));
+    };
   }
 
   /**
