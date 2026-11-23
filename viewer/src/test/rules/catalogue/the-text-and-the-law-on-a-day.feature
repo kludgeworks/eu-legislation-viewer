@@ -21,7 +21,9 @@ Feature: The text and the law on a day
   Rule: the-version-date-of-a-change · The place date and the version date of a change
     The place date is the day that Cellar gives for the changed place. The version date is the
     first day of the first version whose text newly tags the place with the amending act. An
-    occurrence tags the place if it is the occurrence of the place, or an occurrence in it.
+    occurrence tags the place if it is the occurrence of the place, or an occurrence in it. If no
+    version tags the place so, the first version that tags an occurrence around it gives the
+    version date.
 
     Example: A place that the text tags before Cellar's day
       Given the act 767/2008 as Cellar has it
@@ -30,7 +32,7 @@ Feature: The text and the law on a day
       And 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
       And its divergence is at Article 10(1)(da)
 
-    Example: A provision that an act deletes, which the text keeps until the deletion applies
+    Example: A provision that an act deletes, which the text keeps until the deletion applies, and tags only around it
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
       Then Cellar gives 15 October 2026 for the change of 2022/1190 at Article 48(9)

@@ -32,7 +32,6 @@ class DivergencesTest {
   private final List<Planned> planned = new ArrayList<>();
   private final Map<ActIdentifier, List<ActDate>> dates = new HashMap<>();
   private @Nullable LocalDate placeDate;
-  private Role role = Role.REPLACEMENT;
   private Set<Language> changedLanguages = Set.of();
 
   @Test
@@ -79,38 +78,6 @@ class DivergencesTest {
     assertThat(divergences())
         .extracting(Divergence::kind, Divergence::appliesFrom, Divergence::included)
         .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2026-11-12"), null));
-  }
-
-  @Test
-  void aDeletionHasItsNoteOnTheOccurrenceAroundWhereTheDeletedProvisionStood() {
-    // As point (d) of Article 1(2) of 2014/65, deleted by 2019/2177: the consolidation keeps a tag
-    // and a line of dashes where the point stood, in the occurrence around it.
-    role = Role.DELETION;
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    versionWithoutThePoint("2017-06-07", true, "anx/pnt_1");
-
-    // The place answers, not the act as a whole.
-    assertThat(divergences())
-        .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d), d -> places(d))
-        .containsExactly(
-            tuple(
-                Divergence.Kind.PENDING,
-                LocalDate.parse("2017-06-01"),
-                LocalDate.parse("2017-06-07"),
-                List.of("AN PO 1.1")));
-  }
-
-  @Test
-  void aReplacedProvisionThatTheVersionBeforeDoesNotHaveIsNoPendingAmendment() {
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    versionWithoutThePoint("2017-03-01");
-    version("2017-06-07", true, POINT);
-
-    assertThat(divergences()).isEmpty();
   }
 
   @Test
@@ -288,25 +255,6 @@ class DivergencesTest {
     planned.add(new Planned(LocalDate.parse(day), lists, Set.of(occurrences), OCCURRENCES));
   }
 
-  /** Adds a consolidated version that starts on {@code day}, whose text does not have the point. */
-  private void versionWithoutThePoint(String day) {
-    versionWithoutThePoint(day, false);
-  }
-
-  /**
-   * Adds a consolidated version that starts on {@code day}, whose text does not have the point and
-   * tags {@code occurrences} with the amending act. {@code lists} tells whether the Publications
-   * Office lists the act for it.
-   */
-  private void versionWithoutThePoint(String day, boolean lists, String... occurrences) {
-    planned.add(
-        new Planned(
-            LocalDate.parse(day),
-            lists,
-            Set.of(occurrences),
-            OCCURRENCES.stream().filter(occurrence -> !occurrence.equals(POINT)).toList()));
-  }
-
   private List<Divergence> divergences() {
     var act = act();
     return act.divergences(Language.ENG, texts(act));
@@ -354,7 +302,12 @@ class DivergencesTest {
         dates,
         List.of(
             new Amendment(
-                AMENDING, new Location("AN PO 1.1"), role, placeDate, null, changedLanguages)),
+                AMENDING,
+                new Location("AN PO 1.1"),
+                Role.REPLACEMENT,
+                placeDate,
+                null,
+                changedLanguages)),
         Map.of());
   }
 

@@ -236,30 +236,16 @@ final class Divergences {
     if (from.isAfter(version.date())) {
       return Optional.of(Answer.differs(Kind.PROSPECTIVE, date(amending, from), version));
     }
-    if (place.role().changesExisting()) {
-      var before = versions.indexOf(version) - 1;
-      var text = before < 0 ? null : texts.get(versions.get(before));
-      if (text == null) {
-        return Optional.empty();
-      }
-      if (place.location().in(occurrencesOf(versions.get(before), text)).isEmpty()) {
-        // The provision is not in the text yet: an act that applies later puts it in.
-        return Optional.of(Answer.AGREES);
-      }
-    }
     return Optional.of(Answer.differs(Kind.PENDING, date(amending, from), version));
   }
 
   /**
    * Returns the first version whose text newly tags {@code place} with {@code amending}. An
    * occurrence tags the place if it is an occurrence of the place, or an occurrence in it. If no
-   * version tags it, it is the first version that tags an occurrence around the place. It is the
-   * version that starts on the place date instead, if that version also newly tags the place.
-   *
-   * <p>A deletion or a repeal leaves no occurrence where the provision stood. The consolidation
-   * keeps its tag there, in the occurrence around it, with a line of dashes: point (d) of Article
-   * 1(2) of 2014/65, deleted by 2019/2177. So in a text that no longer has the occurrence of such a
-   * place, the occurrence around where it stood tags the place, by a tag on that occurrence itself.
+   * version tags it, it is the first version that tags an occurrence around the place: 2022/1190
+   * deletes Article 48(9) of 2018/1862, and the text of 1 August 2022 keeps the paragraph and tags
+   * Article 48. It is the version that starts on the place date instead, if that version also newly
+   * tags the place.
    *
    * <p>Returns a {@link Tagged} without a version if no version includes {@code amending}. Returns
    * empty if a version before the answer has no built text, or if no version tags the place while
@@ -288,15 +274,6 @@ final class Divergences {
               .in(occurrencesOf(version, text))
               .map(Location.Found::eIds)
               .orElseGet(List::of);
-      var gone = occurrences.isEmpty() && place.role().removes();
-      if (gone) {
-        occurrences =
-            place
-                .location()
-                .around(occurrencesOf(version, text))
-                .map(Location.Found::eIds)
-                .orElseGet(List::of);
-      }
       if (occurrences.isEmpty()) {
         continue;
       }
@@ -304,7 +281,7 @@ final class Divergences {
       var holders = holders(occurrences);
       var now = new HashSet<String>();
       for (var tag : text.tagged(amending)) {
-        if (gone ? found.contains(tag) : inOneOf(tag, found)) {
+        if (inOneOf(tag, found)) {
           now.add(tag);
         } else if (around == null && holders.contains(tag)) {
           around = version;
