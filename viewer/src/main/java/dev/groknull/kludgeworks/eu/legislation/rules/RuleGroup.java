@@ -28,7 +28,9 @@ public enum RuleGroup {
   /** The state of an act, or of one change, on a day, and how an amending act stands. */
   THE_STATE_ON_A_DAY,
   /** Where the text that a reader gets on a day is not the law on that day, and why. */
-  THE_TEXT_AND_THE_LAW_ON_A_DAY;
+  THE_TEXT_AND_THE_LAW_ON_A_DAY,
+  /** Which occurrences of a text the place of an amendment is. */
+  PLACES;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

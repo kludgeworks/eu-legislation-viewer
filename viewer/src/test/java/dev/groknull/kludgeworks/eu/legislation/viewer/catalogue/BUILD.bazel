@@ -510,6 +510,7 @@ CATALOGUE_RULES_GLUE = [
     "ApplyingSteps.java",
     "CatalogueTypes.java",
     "DivergenceSteps.java",
+    "PlaceSteps.java",
     "SampleTexts.java",
     "StateSteps.java",
     "TheAct.java",

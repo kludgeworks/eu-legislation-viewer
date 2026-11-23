@@ -50,8 +50,12 @@ public class CatalogueTypes {
     return Arrays.stream(days.split(", | and ")).map(this::day).toList();
   }
 
-  /** A place, as the pages name it. For example, "Article 79(7)". */
-  @ParameterType("(?:Article|Annex|Appendix|Chapter|point) \\S+")
+  /**
+   * A place, as the pages name it. For example, "Article 79(7)" or "Appendix 8-B, indent 1, point
+   * (b)".
+   */
+  @ParameterType(
+      "(?:Article|Annex|Appendix|Chapter|point) \\S+(?:, (?:indent|point|paragraph) \\S+)*")
   public Place place(String words) {
     return new Place(words);
   }

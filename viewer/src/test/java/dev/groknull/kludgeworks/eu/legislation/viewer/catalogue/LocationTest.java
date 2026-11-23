@@ -94,34 +94,14 @@ class LocationTest {
   }
 
   @Test
-  void findsWhatIsFinerThanOurOccurrencesInTheOccurrenceItIsIn() {
-    assertThat(in("AN PO 6.3.1.4 ALN 3", AVSEC))
-        .contains(new Found(List.of("anx/pnt_6.3.1.4"), true));
-    assertThat(in("AN PO 12.4.2.4 FR", AVSEC))
-        .contains(new Found(List.of("anx/pnt_12.4.2/pnt_12.4.2.4"), true));
-  }
-
-  @Test
-  void findsEachPointOfARange() {
-    assertThat(in("AN PO 11.3.2-11.3.4", AVSEC))
-        .contains(new Found(List.of("anx/pnt_11.3.2", "anx/pnt_11.3.3", "anx/pnt_11.3.4"), false));
-  }
-
-  @Test
-  void findsNoneWhereACodeFindsNoOccurrenceOrSeveral() {
-    // The text does not have this point.
-    assertThat(in("AN I SCT I PTA (j)", EMIR)).isEmpty();
-    // Both sections have a point (i), and the section in Cellar's code is not found.
-    assertThat(in("AN I SCT III PTA (i)", EMIR)).isEmpty();
+  void findsNoneForACodeThatItDoesNotKnow() {
+    // The rule "no-guess" (catalogue/places.feature) has the real examples.
     assertThat(in("DU 1", EMIR)).isEmpty();
   }
 
   @Test
-  void findsTheOccurrenceThatHoldsAPlaceTheTextDoesNotHave() {
-    // An act inserts point 6.3.1.5. The text from before it has point 6.3.1.4 only.
-    var points = List.of("anx", "anx/pnt_6.3.1", "anx/pnt_6.3.1.4");
-    assertThat(new Location("AN PO 6.3.1.5").around(points))
-        .contains(new Found(List.of("anx/pnt_6.3.1"), true));
+  void findsTheOccurrenceThatHoldsALetteredPointOrThePlaceItselfOrNone() {
+    // The rule "a-place-the-text-does-not-have" (catalogue/places.feature) has the real examples.
     assertThat(new Location("AN I SCT I PTA (j)").around(EMIR))
         .contains(new Found(List.of("anx_I/level_1/pnt_I"), true));
     assertThat(new Location("AR 89 PA 1 ALN 1").around(EMIR)).contains(exact("art_89/par_1/sub_1"));
@@ -261,10 +241,8 @@ class LocationTest {
   }
 
   @Test
-  void putsAnOccurrenceThatTheTextDoesNotHaveAtTheOccurrenceWithItsNumberAlone() {
-    // An act inserts Article 89a after Article 89.
-    assertThat(new Location("AR 89a").in(EMIR)).isEmpty();
-    assertThat(new Location("AR 89a").around(EMIR)).contains(new Found(List.of("art_89"), true));
+  void putsAParagraphOfAnArticleThatTheTextDoesNotHaveAtTheArticleWithItsNumberAlone() {
+    // The rule "a-place-the-text-does-not-have" (catalogue/places.feature) has the real examples.
     assertThat(new Location("AR 89a PA 2").around(EMIR))
         .contains(new Found(List.of("art_89"), true));
     // No Article 90 is in the text, so Article 90a has no place.

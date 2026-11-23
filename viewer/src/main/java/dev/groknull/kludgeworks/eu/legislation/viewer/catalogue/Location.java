@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -139,6 +141,8 @@ public record Location(String code) {
    * Returns the occurrences of a text that it is, as {@link #in(List)} does. Use this to find many
    * locations in one text: {@code occurrences} are made one time, {@link #occurrences}.
    */
+  @BusinessRule(group = RuleGroup.PLACES, name = "a-place-is-the-occurrences-it-names")
+  @BusinessRule(group = RuleGroup.PLACES, name = "no-guess")
   public Optional<Found> in(Occurrences occurrences) {
     return find(occurrences, false);
   }
@@ -164,6 +168,7 @@ public record Location(String code) {
   /**
    * Returns the occurrences of a text that it is or that hold it, as {@link #around(List)} does.
    */
+  @BusinessRule(group = RuleGroup.PLACES, name = "a-place-the-text-does-not-have")
   public Optional<Found> around(Occurrences occurrences) {
     return find(occurrences, true);
   }
