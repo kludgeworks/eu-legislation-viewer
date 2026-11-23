@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
@@ -123,8 +124,8 @@ public class AmendedSteps {
         .amended(
             comparing.from(),
             comparing.to(),
-            List.copyOf(Occurrences.of(comparing.earlier()).byEId().keySet()),
-            List.copyOf(Occurrences.of(comparing.later()).byEId().keySet()),
+            Outlines.of(comparing.earlier()).eIds(),
+            Outlines.of(comparing.later()).eIds(),
             Language.ENG);
   }
 }

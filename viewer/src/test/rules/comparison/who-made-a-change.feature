@@ -20,11 +20,13 @@ Feature: Who made a change, and from when
         | 21 May 2025   | amended      | 2025/920  |
       But 2019/413 is not named
 
+  @revision-2
   Rule: cellars-amendments-that-count · Which of Cellar's amendments count
     A sidenote reads only the amendments of the acts between the two texts that change the text in
     the language of the page. An amendment that applies only after the later text is left out: it
     is a later part of the act, which the later text does not have. A deletion or a repeal is found
-    on the earlier text, and an addition or a replacement on the later text.
+    on the earlier text, or else on the later text, which keeps the deleted occurrence. An addition
+    or a replacement is found on the later text.
 
     Example: The amendments of the acts between the two texts
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
@@ -45,7 +47,6 @@ Feature: Who made a change, and from when
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 1 January 2026
       Then Cellar's repeals of 2017/815 at point 6.5.5 and point 6.5.6 are found on the earlier text
 
-    @known-bug @ISS-280
     Example: A repeal of a point that the earlier text does not have yet
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 15 March 2021
       Then Cellar's repeal of 2021/255 at point 6.8.5.5 is found at point 6.8.5.5 of the later text

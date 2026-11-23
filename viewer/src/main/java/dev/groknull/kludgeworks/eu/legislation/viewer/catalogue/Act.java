@@ -209,12 +209,20 @@ public record Act(
    * <ul>
    *   <li>An addition or a replacement is placed at an occurrence of the later text. {@code later}
    *       holds the eIds of its occurrences, in document order.
-   *   <li>A deletion or a repeal is placed at an occurrence of the earlier text. {@code earlier}
-   *       holds the eIds of its occurrences, in document order.
+   *   <li>A deletion or a repeal is placed at an occurrence of the earlier text, or else at one of
+   *       the later text. {@code earlier} holds the eIds of the earlier text's occurrences, in
+   *       document order. The later text has the place of a deletion where it keeps the deleted
+   *       occurrence, and the earlier text does not have it where it came before the occurrence.
+   *       For example, 2021/255 repeals point 6.8.5.5 of 2015/1998, which came in after the text of
+   *       15 November 2015: in the comparison of that text with the text of 15 March 2021, the
+   *       repeal is at the later text's kept deletion. The two lists hold kept deletions too.
    *   <li>An amendment whose location is in neither text is counted as unplaced.
    * </ul>
    */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "cellars-amendments-that-count")
+  @BusinessRule(
+      group = RuleGroup.WHO_MADE_A_CHANGE,
+      name = "cellars-amendments-that-count",
+      revision = 2)
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
@@ -231,7 +239,10 @@ public record Act(
           || (applies != null && applies.isAfter(to.date()))) {
         continue;
       }
-      var found = amendment.location().in(amendment.role().removes() ? before : after);
+      var found =
+          amendment.role().removes()
+              ? amendment.location().in(before).or(() -> amendment.location().in(after))
+              : amendment.location().in(after);
       if (found.isEmpty()) {
         unplaced++;
         continue;

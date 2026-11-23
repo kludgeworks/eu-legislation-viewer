@@ -15,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -156,11 +157,7 @@ public class OneActSteps {
         comparing
             .act()
             .amended(
-                from,
-                to,
-                List.copyOf(Occurrences.of(earlier).byEId().keySet()),
-                List.copyOf(Occurrences.of(later).byEId().keySet()),
-                Language.ENG);
+                from, to, Outlines.of(earlier).eIds(), Outlines.of(later).eIds(), Language.ENG);
     var included = Inclusions.listed(comparing.act().timeline());
     return Differ.differences(earlier, later).differences().stream()
         .map(

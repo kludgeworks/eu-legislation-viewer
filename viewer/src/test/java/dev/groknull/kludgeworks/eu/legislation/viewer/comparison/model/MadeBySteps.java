@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -66,8 +67,8 @@ public class MadeBySteps {
             .amended(
                 comparing.from(),
                 comparing.to(),
-                List.copyOf(earlier.byEId().keySet()),
-                List.copyOf(later.byEId().keySet()),
+                Outlines.of(comparing.earlier()).eIds(),
+                Outlines.of(comparing.later()).eIds(),
                 Language.ENG);
     amendments = Attribution.amendmentsOf(amended, found);
     removals = Attribution.removalsOf(amended, found);
