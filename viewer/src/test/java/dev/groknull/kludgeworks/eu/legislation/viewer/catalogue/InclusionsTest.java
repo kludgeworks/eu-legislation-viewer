@@ -40,7 +40,6 @@ class InclusionsTest {
                 AUGUST_2021, tags(EES, LATER)));
 
     assertThat(included.of(DECEMBER_2017)).containsExactly(CORRIGENDUM, EES);
-    assertThat(included.between(OCTOBER_2013, DECEMBER_2017)).containsExactly(CORRIGENDUM, EES);
     // Cellar's list still counts where it lists the act again.
     assertThat(included.of(JUNE_2019)).containsExactly(EES);
     assertThat(included.of(AUGUST_2021)).containsExactly(LATER);
@@ -51,7 +50,6 @@ class InclusionsTest {
     var included = Inclusions.of(TIMELINE, Map.of(OCTOBER_2013, tags()));
 
     assertThat(included.of(DECEMBER_2017)).containsExactly(CORRIGENDUM);
-    assertThat(included.between(OCTOBER_2013, DECEMBER_2017)).containsExactly(CORRIGENDUM);
     assertThat(Inclusions.listed(TIMELINE).between(OCTOBER_2013, AUGUST_2021))
         .containsExactly(CORRIGENDUM, EES, LATER);
   }

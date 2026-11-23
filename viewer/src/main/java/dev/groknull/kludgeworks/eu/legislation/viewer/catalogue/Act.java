@@ -285,6 +285,22 @@ public record Act(
   }
 
   /**
+   * Returns the versions of a comparison of the law on {@code from} with the law on {@code to}, in
+   * {@code language}: the versions that apply on the two days ({@link #versionOn}). A comparison is
+   * between the first days of these versions. Returns empty if no version applies on a day.
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "a-comparison-is-of-two-versions")
+  public Optional<Timeline.TwoVersions> versionsOn(
+      LocalDate from, LocalDate to, Language language) {
+    return versionOn(from, language)
+        .flatMap(
+            earlier ->
+                versionOn(to, language).map(later -> new Timeline.TwoVersions(earlier, later)));
+  }
+
+  /**
    * Returns where the text that a reader gets on {@code day} is not the law on that day, as {@link
    * #divergences(Language, Map)} finds it.
    */
@@ -341,6 +357,7 @@ public record Act(
    * @param texts the tags of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
+  @BusinessRule(group = RuleGroup.THE_TEXT_A_COMPARISON_SHOWS, name = "the-text-for-a-day")
   public Optional<Version> textOn(LocalDate day, Language language, Map<Version, TextTags> texts) {
     var applies = timeline(language).flatMap(each -> each.applicableOn(day));
     if (applies.isEmpty()) {
@@ -358,14 +375,16 @@ public record Act(
   /**
    * Returns the occurrences of the text of {@code version} that have a change that does not apply
    * on {@code day} yet. They are the occurrences of each prospective amendment of the day, {@link
-   * Divergence#in}. A comparison gives the difference at such an occurrence an amber bar. Where the
-   * act itself does not apply yet, no occurrence is given: the whole text is prospective.
+   * Divergence#in}. A comparison gives the difference at such an occurrence an amber bar.
    *
    * <p>Empty if the text of {@code version} is not built.
    *
    * @param texts the tags of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_A_COMPARISON_SHOWS,
+      name = "changes-that-do-not-apply-yet")
   public Prospective prospective(
       Version version, LocalDate day, Language language, Map<Version, TextTags> texts) {
     var byOccurrence = new LinkedHashMap<String, ActIdentifier>();
@@ -462,6 +481,8 @@ public record Act(
    *
    * @param placeDays the days that Cellar gives for the provision, from its amendments
    */
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "entry-into-force-only")
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "cellar-day-else-the-parts")
   public Optional<Applying> applying(ActIdentifier act, Set<LocalDate> placeDays) {
     var all = datesOf(act);
     if (all.isEmpty()) {

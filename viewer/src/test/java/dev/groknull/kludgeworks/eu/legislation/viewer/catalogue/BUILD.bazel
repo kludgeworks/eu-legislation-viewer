@@ -509,6 +509,8 @@ java_library(
 CATALOGUE_RULES_GLUE = [
     "ApplyingSteps.java",
     "CatalogueTypes.java",
+    "CoverSteps.java",
+    "ComparedTextSteps.java",
     "DivergenceSteps.java",
     "HistorySteps.java",
     "PlaceSteps.java",

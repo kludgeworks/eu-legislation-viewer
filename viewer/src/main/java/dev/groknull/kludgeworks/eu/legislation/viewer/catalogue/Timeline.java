@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
 import java.time.LocalDate;
@@ -42,6 +44,9 @@ public final class Timeline {
    * language. An act's original text and a consolidation may share a day when they apply to
    * different languages.
    */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "one-version-a-day-in-each-language")
   public Timeline(List<Version> versions) {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
@@ -100,6 +105,9 @@ public final class Timeline {
    * same-day consolidation in different languages), it picks the one in {@code language}, falling
    * back to the other.
    */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "one-version-a-day-in-each-language")
   public Optional<Version> applicableOn(LocalDate date, Language language) {
     var entry = byDate.floorEntry(date);
     if (entry == null) {
@@ -152,6 +160,9 @@ public final class Timeline {
    * language}. When multiple versions share the start day, it picks the one in {@code language},
    * falling back to the other.
    */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "one-version-a-day-in-each-language")
   public Optional<Version> startingOn(LocalDate date, Language language) {
     var onDate = byDate.get(date);
     if (onDate == null || onDate.isEmpty()) {
@@ -235,6 +246,93 @@ public final class Timeline {
     checkSingleVersionPerDay();
     int index = indexOf(version);
     return index < versions.size() - 1 ? Optional.of(versions.get(index + 1)) : Optional.empty();
+  }
+
+  /**
+   * The two days of a comparison: From, the earlier day, and To, the later day. A day need not be
+   * the first day of a version: the address of a comparison keeps the days that the reader asked
+   * for.
+   *
+   * @param from the earlier day
+   * @param to the later day, or the same day
+   */
+  public record TwoDays(LocalDate from, LocalDate to) {
+    public TwoDays {
+      if (from.isAfter(to)) {
+        throw new IllegalArgumentException("From is after To: " + from + ", " + to);
+      }
+    }
+  }
+
+  /**
+   * The two versions that a comparison is between.
+   *
+   * @param from the version of the earlier day
+   * @param to the version of the later day, or the same version
+   */
+  public record TwoVersions(Version from, Version to) {}
+
+  /**
+   * Returns the two days of a comparison of the versions of this timeline, in one language, from
+   * the days that the reader gave. {@code today} is the day on which the reader asks ({@link
+   * #today}).
+   *
+   * <ul>
+   *   <li>Without To, To is the first day of the version that applies on {@code today}, or of the
+   *       latest version if none applies on {@code today}.
+   *   <li>Without From, From is the first day of the version before the version of To. If the
+   *       version of To is the first version, From is its first day, and To is the first day of the
+   *       version after it.
+   *   <li>A day that the reader gave stays as given. If From is after To, the two days change
+   *       places.
+   * </ul>
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "the-days-when-the-reader-gives-none")
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "the-days-as-the-reader-gives-them")
+  public TwoDays twoDays(@Nullable LocalDate from, @Nullable LocalDate to, LocalDate today) {
+    var later = to != null ? to : applicableOn(today).orElseGet(this::latest).date();
+    var earlier = from;
+    if (earlier == null) {
+      var version = applicableOn(later);
+      var predecessor = version.flatMap(this::predecessor);
+      if (version.isEmpty() || predecessor.isPresent()) {
+        earlier = predecessor.map(Version::date).orElse(later);
+      } else {
+        earlier = later;
+        later = successor(version.get()).map(Version::date).orElse(later);
+      }
+    }
+    return earlier.isAfter(later) ? new TwoDays(later, earlier) : new TwoDays(earlier, later);
+  }
+
+  /**
+   * Returns the day on which a comparison from the first version can end, where the reader asked
+   * for a From before the first version: {@code to}, or the first day of the second version if
+   * {@code to} is before the first version also.
+   */
+  public LocalDate endFromTheFirst(LocalDate to) {
+    var first = first();
+    return startsAfter(to) ? successor(first).map(Version::date).orElseGet(first::date) : to;
+  }
+
+  /**
+   * Returns the versions that start on {@code from} and on {@code to}: the two versions of a
+   * comparison at its canonical address. Returns empty if a day is not the first day of a version,
+   * or if {@code from} is after {@code to}.
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "a-comparison-is-of-two-versions")
+  public Optional<TwoVersions> versionsStartingOn(LocalDate from, LocalDate to) {
+    if (from.isAfter(to)) {
+      return Optional.empty();
+    }
+    return startingOn(from)
+        .flatMap(earlier -> startingOn(to).map(later -> new TwoVersions(earlier, later)));
   }
 
   private void checkSingleVersionPerDay() {

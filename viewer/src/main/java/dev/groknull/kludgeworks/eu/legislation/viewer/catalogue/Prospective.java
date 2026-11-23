@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
@@ -29,6 +31,9 @@ public record Prospective(LocalDate day, Map<String, ActIdentifier> byOccurrence
    * The change is at the occurrence itself, at an occurrence that the occurrence is in, or at an
    * occurrence in it. Empty if each change there applies.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_A_COMPARISON_SHOWS,
+      name = "changes-that-do-not-apply-yet")
   public Optional<ActIdentifier> at(String eId) {
     var exact = byOccurrence.get(eId);
     if (exact != null) {

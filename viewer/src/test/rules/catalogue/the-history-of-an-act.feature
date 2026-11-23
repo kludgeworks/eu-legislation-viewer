@@ -109,6 +109,10 @@ Feature: The history of an act
       Then the changes of 2021/255 show between the texts of 2 July 2020 and of 15 March 2021
       And the changes of 2019/413 show between the texts of 2 July 2020 and of 15 March 2021
 
+    Example: An act that a later version integrates
+      Given the act 2015/1998 as Cellar has it
+      Then the changes of 2026/449 show between the texts of 1 January 2026 and of 22 March 2026
+
     Example: An act that no version integrates
       Given the act 2018/1862 as Cellar has it
       Then no texts show the changes of 2021/1133

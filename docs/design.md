@@ -292,6 +292,8 @@ not apply yet".
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 | sequence | On the page of an amending act: changes that follow each other in the text and have the same state (`AmendingView.Sequence`). The sequence says the state, the date and the clause one time. |
 | group | On the page of an amending act: the changes that apply from one day (`AmendingView.Group`). The reader chooses a group to see only its changes. |
+| a day before the act | On Compare, where From is a day before the first version of the act: the panel says that the act did not exist yet on that day, or was not in force yet if it was adopted by then, and when it was adopted and came into force. Its first button, "Compare from 15 November 2015", compares from the first version with To, or with the first day of the second version if To is before the first version also (`Timeline.endFromTheFirst`). |
+| same wording on the two days | On Compare, where the texts of the two days are the text of one version: the page says "The wording is the same on the two days." and links to Read on To. |
 | tone | The class that gives a state its colour: `warn` (amber: does not apply yet, or applies in part), `unknown` (the data does not tell), `not-in-force`. A state that applies has no tone. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.

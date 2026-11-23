@@ -32,7 +32,11 @@ public enum RuleGroup {
   /** Which occurrences of a text the place of an amendment is. */
   PLACES,
   /** The acts in the history of an act, its corrigenda, its days of change and their changes. */
-  THE_HISTORY_OF_AN_ACT;
+  THE_HISTORY_OF_AN_ACT,
+  /** The text that a comparison shows for a day, and its changes that do not apply on the day. */
+  THE_TEXT_A_COMPARISON_SHOWS,
+  /** Which two versions a comparison is between, and which acts it shows. */
+  WHAT_A_COMPARISON_COVERS;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

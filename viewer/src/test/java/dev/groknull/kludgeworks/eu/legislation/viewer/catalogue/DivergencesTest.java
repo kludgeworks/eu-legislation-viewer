@@ -142,28 +142,6 @@ class DivergencesTest {
   }
 
   @Test
-  void theTextForADayWithAPendingAmendmentIsTheFirstVersionThatIncludesTheAct() {
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
-    var act = act();
-    var versions = act.timeline().versions();
-
-    // From 1 to 6 June 2017 the act applies, and the version of 29 February 2016 does not have it.
-    assertThat(act.textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
-        .contains(versions.get(2));
-    assertThat(act.textOn(LocalDate.parse("2017-06-01"), Language.ENG, texts(act)))
-        .contains(versions.get(2));
-    // Before the act applies, and from the version that includes it, the text is the version of
-    // the day.
-    assertThat(act.textOn(LocalDate.parse("2017-05-31"), Language.ENG, texts(act)))
-        .contains(versions.get(1));
-    assertThat(act.textOn(LocalDate.parse("2017-06-07"), Language.ENG, texts(act)))
-        .contains(versions.get(2));
-  }
-
-  @Test
   void theTextForADayWithAPendingAmendmentThatNoVersionIncludesIsTheVersionOfTheDay() {
     application("2017-06-01");
     place("2017-06-01");
@@ -172,37 +150,6 @@ class DivergencesTest {
 
     assertThat(act.textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
         .contains(act.timeline().versions().get(1));
-  }
-
-  @Test
-  void aDayBeforeTheFirstVersionHasNoText() {
-    version("2016-02-29", false);
-    var act = act();
-
-    assertThat(act.textOn(LocalDate.parse("2015-01-01"), Language.ENG, texts(act))).isEmpty();
-  }
-
-  @Test
-  void anOccurrenceWithAChangeThatDoesNotApplyOnTheDayYetIsProspective() {
-    entryIntoForce("2017-12-29");
-    partialApplication("2019-10-11");
-    place("2019-10-11");
-    version("2016-02-29", false);
-    version("2018-01-12", true, POINT);
-    var act = act();
-    var including = act.timeline().versions().get(2);
-
-    var prospective =
-        act.prospective(including, LocalDate.parse("2018-06-01"), Language.ENG, texts(act));
-    assertThat(prospective.at(POINT)).contains(AMENDING);
-    // The occurrence that the point is in has a change that does not apply yet also.
-    assertThat(prospective.at("anx/pnt_1")).contains(AMENDING);
-    assertThat(prospective.at("anx/pnt_1.2")).isEmpty();
-    // From the day the change applies, no occurrence has a prospective amendment.
-    assertThat(
-            act.prospective(including, LocalDate.parse("2019-10-11"), Language.ENG, texts(act))
-                .byOccurrence())
-        .isEmpty();
   }
 
   // ------------------------------------------------------------------------------------ helpers
@@ -225,10 +172,6 @@ class DivergencesTest {
                 Kind.APPLICATION,
                 false,
                 new ActDate.Clause(null, null, List.of(), List.of(), List.of(), "")));
-  }
-
-  private void entryIntoForce(String day) {
-    date(day, Kind.ENTRY_INTO_FORCE, false);
   }
 
   private void date(String day, Kind kind, boolean forPart) {

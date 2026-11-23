@@ -139,8 +139,9 @@ class ApiComparisonController {
     }
     var act = found(celex);
     var in = Requests.language(language);
-    var earlier = act.versionOn(from, in).orElseThrow(Requests::notFound);
-    var later = act.versionOn(to, in).orElseThrow(Requests::notFound);
+    var versions = act.versionsOn(from, to, in).orElseThrow(Requests::notFound);
+    var earlier = versions.from();
+    var later = versions.to();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(
             linkTo(

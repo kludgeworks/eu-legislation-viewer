@@ -105,7 +105,6 @@ public sealed interface Applicability {
    */
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "date-from-the-act")
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "no-day-known")
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "entry-into-force-only")
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {
     return act.applying(amending, days)
         .flatMap(
