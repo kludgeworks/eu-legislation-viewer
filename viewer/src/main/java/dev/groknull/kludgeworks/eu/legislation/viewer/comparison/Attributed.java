@@ -98,7 +98,7 @@ public record Attributed(
     } else {
       for (var step : attribution.steps()) {
         for (var each : step.acts()) {
-          Applicability.of(act, included, from, to, each, amendments, step.inPart().contains(each))
+          Applicability.of(act, included, from, to, each, amendments, step.forPart().contains(each))
               .ifPresent(applies::add);
         }
       }

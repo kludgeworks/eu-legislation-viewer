@@ -12,4 +12,4 @@ import org.jmolecules.event.annotation.DomainEvent;
  * @param act the act
  */
 @DomainEvent
-public record AmendmentsChanged(ActIdentifier act) {}
+public record AmendmentsUpdated(ActIdentifier act) {}

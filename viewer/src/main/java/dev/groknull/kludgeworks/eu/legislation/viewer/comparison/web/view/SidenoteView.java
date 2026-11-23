@@ -258,11 +258,11 @@ public record SidenoteView(
                   applies,
                   language,
                   "");
-          case Applying.InParts parts ->
+          case Applying.FromMoreThanOneDay parts ->
               applies(
                   act,
                   name
-                      + " applies in parts: "
+                      + " applies from more than one day: "
                       + parts.starts().stream()
                           .map(SidenoteView::part)
                           .collect(Collectors.joining("; ")),
@@ -274,12 +274,12 @@ public record SidenoteView(
     };
   }
 
-  /** Returns a part in words. For example, "in part from 1 October 2026". */
+  /** Returns a part in words. For example, "a part from 1 October 2026". */
   private static String part(Applying.Start part) {
     var from = "from " + Dates.inWords(part.day());
     return part.entryIntoForce()
         ? from + ", its entry into force"
-        : part.inPart() ? "in part " + from : from;
+        : part.forPart() ? "a part " + from : from;
   }
 
   private static Applies applies(
@@ -322,7 +322,8 @@ public record SidenoteView(
    * Article 2 of 2026/449, as amended by 2020/910".
    *
    * @param when when the act applies. For example, "applies from 1 October 2026", or "2026/449
-   *     applies in parts: from 22 March 2026, its entry into force; in part from 1 October 2026".
+   *     applies from more than one day: from 22 March 2026, its entry into force; a part from 1
+   *     October 2026".
    * @param between what goes between {@code when} and the clause. This is a dot, or a space after
    *     "set in".
    * @param clause the clause that sets the date, linked to EUR-Lex. For example, "Article 2 of

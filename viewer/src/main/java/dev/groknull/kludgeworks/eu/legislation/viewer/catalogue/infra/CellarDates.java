@@ -141,7 +141,7 @@ final class CellarDates {
                 days,
                 actDate.clause().text(),
                 fromClause);
-            list.add(new ActDate(fromClause, actDate.kind(), actDate.partial(), actDate.clause()));
+            list.add(new ActDate(fromClause, actDate.kind(), actDate.forPart(), actDate.clause()));
             continue;
           }
         }
@@ -169,9 +169,9 @@ final class CellarDates {
       return Optional.empty();
     }
     var text = CODE.matcher(comment).replaceAll("$1").strip();
-    var partial =
+    var forPart =
         split.length > 1 || text.startsWith(split[0] + "/PART") || text.startsWith("/PART");
-    return Optional.of(new ActDate(day(value), kind, partial, clause(text)));
+    return Optional.of(new ActDate(day(value), kind, forPart, clause(text)));
   }
 
   /**

@@ -45,17 +45,17 @@ STEP = AVSEC + "/eng/compare?from=2021-07-01&to=2021-12-31"
 
 @dataclass(frozen=True)
 class Shown:
-    """A page in one of its states.
+    """A page in one of its review scenarios.
 
-    name: the file's name; page: which page it is, as the design names it; state: what it shows;
+    name: the file's name; page: which page it is, as the design names it; scenario: what it shows;
     path: its address; settled: whether it finishes loading (a page being prepared streams until
     the act is ready, so it is saved as soon as it shows); click: what to click once the page has
-    loaded, for a state that the reader opens (a CSS selector, or None).
+    loaded, for a scenario that the reader opens (a CSS selector, or None).
     """
 
     name: str
     page: str
-    state: str
+    scenario: str
     path: str
     settled: bool = True
     click: str | None = None
@@ -67,7 +67,7 @@ PAGES = (
     Shown(
         "history",
         "History",
-        "An act that applies in parts, and a day that the data does not give",
+        "An act that applies from more than one day, and a day that the data does not give",
         SIS + "/eng/history?on=2022-08-01",
     ),
     Shown(
@@ -79,7 +79,7 @@ PAGES = (
     Shown(
         "amending",
         "The page of an amending act",
-        "An act that applies in parts, from two days",
+        "An act that applies from more than one day, two days",
         SIS + "/eng/history/32022R1190?on=2022-08-01",
     ),
     Shown("read-unchanged", "Read", "An act that no act changed opens on Read", GDPR + "/eng"),
@@ -126,7 +126,7 @@ PAGES = (
     Shown(
         "compare-provision",
         "Compare",
-        "One provision: the wording on the two days and the steps",
+        "One provision: the wording on the two days and the steps between them",
         VIS + "/eng/compare?from=2017-12-29&to=2026-06-12&occurrence=art_6%2Fpar_2",
     ),
     Shown(
@@ -223,7 +223,7 @@ def main() -> None:
                         "file": file.name,
                         "image": file.with_suffix(".png").name,
                         "page": shown.page,
-                        "state": shown.state,
+                        "scenario": shown.scenario,
                         "theme": theme,
                         "url": url,
                         "title": page.title(),

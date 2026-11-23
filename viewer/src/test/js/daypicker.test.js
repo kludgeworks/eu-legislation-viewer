@@ -228,15 +228,15 @@ describe("the day control", () => {
     click(picker, '[data-mode="two"]');
     const box = (/** @type {string} */ end) =>
       /** @type {HTMLInputElement} */ (picker.querySelector(`.day-ends input[data-end="${end}"]`)).value;
-    click(picker, '[data-step="next"]');
+    click(picker, '[data-direction="next"]');
     expect(box("first")).toBe("31 December 2021");
     expect(picker.querySelector(".day-ends .active input")?.getAttribute("data-end")).toBe("first");
-    expect(picker.querySelector('[data-step="next"]')?.hasAttribute("disabled")).toBe(true);
+    expect(picker.querySelector('[data-direction="next"]')?.hasAttribute("disabled")).toBe(true);
     // The second day takes the change when it has the frame, counted from its own day.
     /** @type {HTMLInputElement} */ (picker.querySelector('.day-ends input[data-end="second"]')).focus();
-    click(picker, '[data-step="next"]');
+    click(picker, '[data-direction="next"]');
     expect(box("second")).toBe("31 December 2021");
-    click(picker, '[data-step="previous"]');
+    click(picker, '[data-direction="previous"]');
     expect(box("second")).toBe("11 March 2021");
     expect(box("first")).toBe("31 December 2021");
     expect(sent).not.toHaveBeenCalled();

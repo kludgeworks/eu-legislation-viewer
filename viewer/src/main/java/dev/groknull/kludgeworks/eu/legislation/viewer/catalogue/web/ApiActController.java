@@ -180,14 +180,14 @@ class ApiActController {
                     .withRel(IanaLinkRelations.VERSION_HISTORY));
     latest(act).ifPresent(model::add);
     return model
-        .add(ApiRootController.template(self, "/on/{date}", Relation.ON))
+        .add(ApiRootController.template(self, "/on/{day}", Relation.ON))
         .add(
             linkTo(methodOn(ApiActController.class).amendments(celex))
                 .withRel(Relation.AMENDMENTS.rel()));
   }
 
   /**
-   * Returns the law on {@code date}: the day asked, the versions that apply on it, the day they
+   * Returns the law on {@code day}: the day asked, the versions that apply on it, the day they
    * apply until, the deferred application of the act, and where their text is not the law on the
    * day, because of a pending or a prospective amendment. More than one version applies when the
    * original text and a consolidation share a day, in different languages.
@@ -196,27 +196,27 @@ class ApiActController {
    * ProblemType#BEFORE_FIRST_VERSION}. It has the day the act was adopted, the day its text first
    * applies, and the address of its first version. The day asked is never moved.
    */
-  @GetMapping(ACT + "/on/{date}")
+  @GetMapping(ACT + "/on/{day}")
   RepresentationModel<?> on(
       @PathVariable ActIdentifier celex,
-      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
     var act = found(celex);
     var timeline = act.timeline();
-    var applying = timeline.allApplicableOn(date);
+    var applying = timeline.allApplicableOn(day);
     if (applying.isEmpty()) {
-      throw beforeTheFirstVersion(act, date);
+      throw beforeTheFirstVersion(act, day);
     }
-    var divergences = divergences(act, applying, date);
+    var divergences = divergences(act, applying, day);
     return HalModelBuilder.halModelOf(
             new LawModel(
-                date,
-                timeline.nextStartAfter(date).orElse(null),
-                deferredApplication(act, applying, date),
+                day,
+                timeline.nextStartAfter(day).orElse(null),
+                deferredApplication(act, applying, day),
                 divergences))
         .embed(
             applying.stream().map(version -> summary(celex, version)).toList(),
             Relation.VERSION.rel())
-        .link(linkTo(methodOn(ApiActController.class).on(celex, date)).withSelfRel())
+        .link(linkTo(methodOn(ApiActController.class).on(celex, day)).withSelfRel())
         .link(up(celex))
         .build();
   }
@@ -319,8 +319,8 @@ class ApiActController {
 
   /**
    * Returns the version at {@code key}: {@code oj} for the original text, or the date of a
-   * consolidation. Returns 404 for any other key. Its neighbours are the versions before and after
-   * it among all the versions of the act, in any language. It links to its text in each of its
+   * consolidation. Returns 404 for any other key. It links to the versions before and after it
+   * among all the versions of the act, in any language. It links to its text in each of its
    * languages, {@code av:text}, with the language in {@code hreflang}.
    */
   @GetMapping(VERSION)
@@ -413,7 +413,7 @@ class ApiActController {
     var problem =
         ProblemType.BEFORE_FIRST_VERSION.problem(
             "The text of " + act.id() + " first applies on " + first.date() + ".");
-    problem.setProperty("date", date);
+    problem.setProperty("day", date);
     problem.setProperty("dateOfDocument", act.dateOfDocument());
     problem.setProperty("firstApplies", first.date());
     problem.setProperty("firstVersion", to(act.id(), first, IanaLinkRelations.FIRST).getHref());
@@ -509,7 +509,7 @@ class ApiActController {
    * @param celex the CELEX number of the document that holds its text
    * @param interim whether it may still be revised
    * @param integrates the CELEX numbers of the acts that the Publications Office lists as
-   *     consolidated at this step
+   *     integrated in this version
    * @param languages the languages that the viewer can show its text in, by the EU's codes
    */
   record VersionModel(
@@ -534,9 +534,9 @@ class ApiActController {
   }
 
   /**
-   * The law on a date, as the API shows it.
+   * The law on a day, as the API shows it.
    *
-   * @param date the day asked
+   * @param day the day asked
    * @param until the day the next version starts, or null if no version starts later
    * @param deferredApplication the deferred application of the act itself on the day, or null if it
    *     applies in full
@@ -544,7 +544,7 @@ class ApiActController {
    *     prospective amendments
    */
   record LawModel(
-      LocalDate date,
+      LocalDate day,
       @Nullable LocalDate until,
       @Nullable DeferredApplicationModel deferredApplication,
       List<DivergenceModel> divergences) {}
@@ -640,14 +640,14 @@ class ApiActController {
    *
    * @param date the day, or null where Cellar has a placeholder or an impossible date
    * @param kind {@code entry_into_force}, {@code application} or {@code taking_effect}
-   * @param partial whether it is for part of the act only
+   * @param forPart whether it is for a part of the act only
    * @param clause what sets it, as Cellar writes it. For example, {@code DATPUB +20 V ART 2}.
    */
-  record DateModel(@Nullable LocalDate date, String kind, boolean partial, String clause) {
+  record DateModel(@Nullable LocalDate date, String kind, boolean forPart, String clause) {
 
     static DateModel of(ActDate date) {
       return new DateModel(
-          date.date(), code(date.kind().name()), date.partial(), date.clause().text());
+          date.date(), code(date.kind().name()), date.forPart(), date.clause().text());
     }
   }
 

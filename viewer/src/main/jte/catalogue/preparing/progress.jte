@@ -2,9 +2,9 @@
 @param Progress progress
 <%-- Shows the progress of the act's preparation. PreparingView.Progress supplies the data. While
      nothing has started for the act, it shows that the act waits its turn. The queue is shared by
-     all acts. After the start, it shows the three steps. The first converts each version and lists
+     all acts. After the start, it shows the three phases. The first converts each version and lists
      the versions that are being converted now, or that wait to be tried again after an attempt that
-     failed. The second matches the provisions of each pair of neighbouring versions, as soon as
+     failed. The second matches the provisions of each pair of consecutive versions, as soon as
      both are ready. The third is done at once: Cellar gives when each amended provision applies
      with the act.
      Under that, it shows the time the preparation has taken and how many versions are ready. The
@@ -19,7 +19,7 @@
       <rotating-aside class="aside" aria-hidden="true" asides="${progress.asides()}">${Progress.ASIDES.getFirst()}</rotating-aside>
     </div>
   @else
-    <ol class="progress-steps">
+    <ol class="progress-phases">
       <li>
         <strong>Convert each text</strong>
         @for(var line : progress.running())

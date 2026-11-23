@@ -541,10 +541,10 @@ export class DayPicker extends HTMLElement {
     wrap.append(grid, tip);
     const foot = element("div", { class: "day-foot" });
     foot.append(
-      element("button", { type: "button", class: "link", "data-step": "previous" }, "‹ Previous change"),
-      element("button", { type: "button", class: "link", "data-step": "next" }, "Next change ›"),
+      element("button", { type: "button", class: "link", "data-direction": "previous" }, "‹ Previous change"),
+      element("button", { type: "button", class: "link", "data-direction": "next" }, "Next change ›"),
     );
-    this.#steps(foot);
+    this.#moves(foot);
     foot.append(
       this.#two
         ? element("button", { type: "button", class: "day-show", "data-show": "" }, "Show")
@@ -572,26 +572,26 @@ export class DayPicker extends HTMLElement {
    *
    * @param {ParentNode | null | undefined} foot
    */
-  #steps(foot) {
+  #moves(foot) {
     const from = (this.#two && (this.#end === "first" ? this.#first : this.#day)) || this.#focus;
     const nearest = around([...this.changes.keys()], from);
-    for (const step of foot?.querySelectorAll("[data-step]") ?? []) {
-      if (!(step instanceof HTMLButtonElement)) {
+    for (const button of foot?.querySelectorAll("[data-direction]") ?? []) {
+      if (!(button instanceof HTMLButtonElement)) {
         continue;
       }
-      const day = step.dataset.step === "previous" ? nearest.previous : nearest.next;
-      step.disabled = !day;
+      const day = button.dataset.direction === "previous" ? nearest.previous : nearest.next;
+      button.disabled = !day;
       if (day) {
-        step.dataset.move = day;
+        button.dataset.move = day;
       } else {
-        delete step.dataset.move;
+        delete button.dataset.move;
       }
     }
   }
 
   /**
    * Moves the focus to `day`, turning the month if it is in another. With two days, `day` is also
-   * the day that has the frame, and the frame stays on it: the reader can step on from change to
+   * the day that has the frame, and the frame stays on it: the reader can move on from change to
    * change.
    *
    * @param {string} day an ISO date
@@ -683,7 +683,7 @@ export class DayPicker extends HTMLElement {
       for (const label of panel.querySelectorAll(".day-ends label")) {
         label.classList.toggle("active", label.contains(box));
       }
-      this.#steps(panel.querySelector(".day-foot"));
+      this.#moves(panel.querySelector(".day-foot"));
     }
     const button = event.target.closest(".day-grid button");
     if (event.type === "focusin" && !this.#keys) {

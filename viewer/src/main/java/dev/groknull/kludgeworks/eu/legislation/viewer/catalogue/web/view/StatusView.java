@@ -7,7 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Standing;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -91,9 +91,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   private static Line deferred(
       Act act, DeferredApplication deferred, LocalDate asked, LocalDate today) {
     var past = asked.isBefore(today);
-    var state =
-        States.phrase(
-            deferred.partial() ? Standing.Whole.IN_PART : Standing.Whole.NOT_APPLYING, past);
+    var state = StateWording.phrase(deferred.partial() ? State.IN_PART : State.NOT_APPLYING, past);
     return new Line(
         act.cited(act.id()),
         null,
@@ -128,7 +126,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
           new Line(
               cited,
               href,
-              States.phrase(Standing.Whole.NOT_APPLYING, past)
+              StateWording.phrase(State.NOT_APPLYING, past)
                   + ". It "
                   + applies(from, today)
                   + " from "
@@ -151,7 +149,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
           new Line(
               cited,
               href,
-              States.phrase(Standing.Whole.NOT_KNOWN, past)
+              StateWording.phrase(State.NOT_KNOWN, past)
                   + ". "
                   + setBy(act, divergence)
                   + count(count, ", not in this text."));

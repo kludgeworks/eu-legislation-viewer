@@ -26,7 +26,8 @@ class TagsViewTest {
     assertThat(last)
         .get()
         .extracting(Tag::applies)
-        .isEqualTo("applies in parts from 22 March 2026 · Article 2 of 2026/449");
+        .isEqualTo(
+            "applies from more than one day, first from 22 March 2026 · Article 2 of 2026/449");
   }
 
   @Test

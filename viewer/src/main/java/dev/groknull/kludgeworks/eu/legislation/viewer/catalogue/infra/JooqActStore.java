@@ -8,7 +8,7 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.EXPRESSION;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_STEP;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_ENTRY;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION_FORMEX;
 import static org.jooq.impl.DSL.any;
@@ -240,7 +240,7 @@ class JooqActStore implements ActStore {
   @Override
   @Transactional
   public void withdraw(ActIdentifier id, String celex) {
-    db.deleteFrom(PREPARATION_STEP).where(PREPARATION_STEP.CELEX.eq(celex)).execute();
+    db.deleteFrom(PREPARATION_ENTRY).where(PREPARATION_ENTRY.CELEX.eq(celex)).execute();
     db.deleteFrom(EXPRESSION).where(EXPRESSION.CELEX.eq(celex)).execute();
     // Its Formex goes with it (on delete cascade)
     db.deleteFrom(VERSION).where(VERSION.ACT.eq(id), VERSION.CELEX.eq(celex)).execute();
@@ -423,12 +423,12 @@ class JooqActStore implements ActStore {
         position,
         date.date(),
         date.kind(),
-        date.partial(),
         clause.from(),
         clause.days(),
         clause.provisions().stream().map(Provision::toString).toArray(String[]::new),
         clause.amendedBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
-        clause.text());
+        clause.text(),
+        date.forPart());
   }
 
   private static Act act(
@@ -465,7 +465,7 @@ class JooqActStore implements ActStore {
     return new ActDate(
         date.getFallsOn(),
         date.getKind(),
-        date.getInPart(),
+        date.getForPart(),
         new Clause(
             date.getAnchor(),
             date.getDaysAfter(),

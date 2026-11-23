@@ -36,8 +36,8 @@ public sealed interface Applicability {
    * An amending act's change applies as the act's dates tell ({@link Act#applying}).
    *
    * @param act the amending act
-   * @param applying when it applies: from one day, in parts, from a day that a clause sets, or in
-   *     force from a day
+   * @param applying when it applies: from one day, from more than one day, from a day that a clause
+   *     sets, or in force from a day
    * @param clause the provisions of the act that set its dates. Empty where Cellar does not say.
    * @param amendedBy the acts that changed those provisions since: they moved the date
    */
@@ -97,8 +97,8 @@ public sealed interface Applicability {
   /**
    * Returns when {@code amending} applies, from its dates in {@code act} ({@link Act#applying}).
    * {@code days} are the days that may choose the date among the act's dates. If none chooses one,
-   * the act applies in parts. Returns empty where Cellar has no dates of the act, or where the act
-   * applies from a day that no clause that Cellar names sets.
+   * the act applies from more than one day. Returns empty where Cellar has no dates of the act, or
+   * where the act applies from a day that no clause that Cellar names sets.
    */
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "date-from-the-act")
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "no-day-known")

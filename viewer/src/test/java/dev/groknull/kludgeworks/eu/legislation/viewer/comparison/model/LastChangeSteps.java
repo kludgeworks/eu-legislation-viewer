@@ -72,7 +72,7 @@ public class LastChangeSteps {
     }
     return switch (applies.applying()) {
       case Applying.From from -> from.day();
-      case Applying.InParts parts -> parts.starts().getFirst().day();
+      case Applying.FromMoreThanOneDay parts -> parts.starts().getFirst().day();
       case Applying.InForce inForce -> inForce.day();
       case Applying.SetBy _ -> null;
     };

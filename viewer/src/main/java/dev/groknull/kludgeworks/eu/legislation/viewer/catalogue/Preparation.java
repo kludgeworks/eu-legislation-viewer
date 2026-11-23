@@ -26,7 +26,7 @@ import org.jspecify.annotations.Nullable;
  * @param started when it was first opened in the language
  * @param settledAt when its last text was built or failed, or null while it is being prepared
  * @param texts the text of each of its versions in the language, in date order
- * @param steps what was done, in the order it was done
+ * @param entries its log: what was done, in the order it was done
  * @param ahead about how many texts are ahead of its own texts in the queue, counting the texts of
  *     all acts. This applies while none of its texts is being built.
  */
@@ -37,12 +37,12 @@ public record Preparation(
     Instant started,
     @Nullable Instant settledAt,
     SequencedMap<Version, Text> texts,
-    List<Step> steps,
+    List<Entry> entries,
     int ahead) {
 
   public Preparation {
     texts = Collections.unmodifiableSequencedMap(new LinkedHashMap<>(texts));
-    steps = List.copyOf(steps);
+    entries = List.copyOf(entries);
   }
 
   /**
@@ -110,15 +110,15 @@ public record Preparation(
   }
 
   /**
-   * A step of the preparation, as a reader is told it. The text of one version started, was built,
-   * was queued again or failed.
+   * An entry of the log of the preparation, as a reader is told it. The text of one version
+   * started, was built, was postponed (queued again after a failed attempt) or failed.
    *
    * @param celex the version's document
    * @param attempt the attempt it was on
    * @param took how long its attempt took, once built. It is null if its start is not known.
    * @param failure why it failed, once failed
    */
-  public record Step(
+  public record Entry(
       Instant at,
       String celex,
       Kind kind,
@@ -129,7 +129,7 @@ public record Preparation(
     public enum Kind {
       STARTED,
       BUILT,
-      DEFERRED,
+      POSTPONED,
       FAILED
     }
   }

@@ -388,7 +388,7 @@ public record Act(
    * 26 June 2021.
    */
   public Optional<ActDate> appliesFrom(ActIdentifier act) {
-    var whole = datesOf(act).stream().filter(date -> !date.partial()).toList();
+    var whole = datesOf(act).stream().filter(date -> !date.forPart()).toList();
     for (var kinds : WHOLE_ACT) {
       if (act.directive() && kinds.contains(ActDate.Kind.ENTRY_INTO_FORCE)) {
         return Optional.empty();
@@ -432,7 +432,7 @@ public record Act(
    *   <li>If it applies from one day, and not in part, it applies from {@link #appliesFrom}. A
    *       directive that has only an entry into force is in force, and Cellar does not tell from
    *       when it applies.
-   *   <li>Otherwise it applies in parts, one on each day of its dates.
+   *   <li>Otherwise it applies from more than one day, one on each day of its dates.
    * </ol>
    *
    * <p>Returns empty if Cellar has no dates of the act.
@@ -461,7 +461,7 @@ public record Act(
       }
     }
     var used = applying.isEmpty() ? dated : applying;
-    if (days(used).size() == 1 && applying.stream().noneMatch(ActDate::partial)) {
+    if (days(used).size() == 1 && applying.stream().noneMatch(ActDate::forPart)) {
       var whole = appliesFrom(act).map(ActDate::date);
       if (whole.isPresent()) {
         return Optional.of(new Applying.From(whole.get(), applying.isEmpty(), used));
@@ -477,7 +477,7 @@ public record Act(
                 day -> {
                   var on = on(dated, day);
                   return new Applying.Start(
-                      day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::partial));
+                      day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::forPart));
                 })
             .toList();
     var first =
@@ -486,7 +486,7 @@ public record Act(
             .findFirst()
             .orElseGet(parts::getFirst)
             .day();
-    return Optional.of(new Applying.InParts(parts, first, dated));
+    return Optional.of(new Applying.FromMoreThanOneDay(parts, first, dated));
   }
 
   /**
@@ -545,8 +545,9 @@ public record Act(
    *
    * <ul>
    *   <li>An act that applies from one day ({@link #applying}) changes the act on that day.
-   *   <li>An act that applies in parts changes it on each day from which a part applies. Its entry
-   *       into force is such a day only if it is the first day from which a part applies.
+   *   <li>An act that applies from more than one day changes it on each day from which a part
+   *       applies. Its entry into force is such a day only if it is the first day from which a part
+   *       applies.
    *   <li>An act that is in force, where Cellar does not tell from when it applies, has the day of
    *       its entry into force.
    *   <li>An act that applies from a day that Cellar does not know has no day. An act without dates
@@ -562,7 +563,7 @@ public record Act(
                   applying ->
                       switch (applying) {
                         case Applying.From from -> List.of(from.day());
-                        case Applying.InParts parts ->
+                        case Applying.FromMoreThanOneDay parts ->
                             parts.starts().stream()
                                 .filter(
                                     start ->
@@ -894,7 +895,8 @@ public record Act(
             applying ->
                 switch (applying) {
                   case Applying.From from -> Optional.of(from.day());
-                  case Applying.InParts _, Applying.SetBy _, Applying.InForce _ -> Optional.empty();
+                  case Applying.FromMoreThanOneDay _, Applying.SetBy _, Applying.InForce _ ->
+                      Optional.empty();
                 });
   }
 
@@ -907,9 +909,10 @@ public record Act(
    *   <li>Before the entry into force of the act, it is not in force.
    *   <li>If it applies from one day ({@link #applying}), it applies from that day, and does not
    *       apply yet before it.
-   *   <li>If it applies in parts, it does not apply yet before the first part. It applies from the
-   *       last part, unless a clause sets one more day that Cellar does not know. Between them,
-   *       Cellar does not tell which part the change is in, so the state is not known.
+   *   <li>If it applies from more than one day, it does not apply yet before the first part. It
+   *       applies from the last part, unless a clause sets one more day that Cellar does not know.
+   *       Between them, Cellar does not tell which part the change is in, so the state is not
+   *       known.
    *   <li>In each other case the state is not known. For example, a clause sets the day by an
    *       event, or Cellar has no dates of the act.
    * </ol>
@@ -927,7 +930,7 @@ public record Act(
                 switch (applying) {
                   case Applying.From from ->
                       day.isBefore(from.day()) ? State.NOT_APPLYING : State.APPLIES;
-                  case Applying.InParts parts -> {
+                  case Applying.FromMoreThanOneDay parts -> {
                     if (day.isBefore(parts.first())) {
                       yield State.NOT_APPLYING;
                     }
@@ -1007,7 +1010,7 @@ public record Act(
    * is for a part. For example, 2024/1689 applies in part from 2 February 2025.
    */
   public boolean inPartFrom(LocalDate day) {
-    return dates.stream().filter(date -> day.equals(date.date())).allMatch(ActDate::partial);
+    return dates.stream().filter(date -> day.equals(date.date())).allMatch(ActDate::forPart);
   }
 
   /**
@@ -1049,7 +1052,7 @@ public record Act(
    */
   public boolean appliesInPartOn(ActIdentifier act, LocalDate day) {
     return datesOf(act).stream()
-        .anyMatch(date -> date.partial() && date.date() != null && !date.date().isAfter(day));
+        .anyMatch(date -> date.forPart() && date.date() != null && !date.date().isAfter(day));
   }
 
   /**

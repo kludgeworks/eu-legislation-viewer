@@ -104,7 +104,8 @@ class HistoryControllerTests {
                 + " date for that day.");
     assertThat(page.select("table.acts tbody tr").get(5).select("td p").text())
         .isEqualTo(
-            "Applies in parts from 1 February 2019 and 31 December 2021 · Article 2 of 2019/103");
+            "Applies from more than one day: 1 February 2019 and 31 December 2021 · Article 2 of"
+                + " 2019/103");
     assertThat(page.select("nav.mode [aria-current]").text()).isEqualTo("Amending acts (6)");
   }
 
@@ -167,13 +168,13 @@ class HistoryControllerTests {
             "Does not apply yet, from 15 October 20262");
     assertThat(page.select("a.group.open")).isEmpty();
     assertThat(page.select("a.group.warn")).hasSize(1);
-    assertThat(page.select("section.run .statement").eachText())
+    assertThat(page.select("section.sequence .statement").eachText())
         .containsExactly(
             "Applies from 1 August 2022. 1 provision",
             "Does not apply yet. Applies from 15 October 2026. 2 provisions");
-    assertThat(page.select("section.run.warn .place").eachText())
+    assertThat(page.select("section.sequence.warn .place").eachText())
         .containsExactly("Article 3, point 8", "Article 20(1)");
-    assertThat(page.select("section.run:not(.warn) .place").eachText())
+    assertThat(page.select("section.sequence:not(.warn) .place").eachText())
         .containsExactly("Article 79(7)");
   }
 
@@ -185,7 +186,7 @@ class HistoryControllerTests {
     assertThat(page.select(".status a[rel=external]").text()).startsWith("Read Article 3");
     assertThat(page.select(".status a[rel=external]").attr("href")).endsWith("#art_3");
     assertThat(page.select("a.group")).isEmpty();
-    assertThat(page.select("section.run .statement")).isEmpty();
+    assertThat(page.select("section.sequence .statement")).isEmpty();
   }
 
   @Test
@@ -273,9 +274,9 @@ class HistoryControllerTests {
         Map.of());
   }
 
-  private static ActDate date(LocalDate day, ActDate.Kind kind, boolean partial) {
+  private static ActDate date(LocalDate day, ActDate.Kind kind, boolean forPart) {
     return new ActDate(
-        day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), ""));
   }
 
   private static Amendment change(String place, LocalDate from) {

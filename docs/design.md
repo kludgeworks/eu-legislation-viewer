@@ -114,7 +114,7 @@ its module.
 | token | A word, a space, a punctuation mark, a number, an image, a quotation mark or a formula of a block, as the comparison reads it (`Wording`). The edits compare tokens. A formula is one token. A kept deletion has no tokens. |
 | run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
 | pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
-| steps | The changes of one provision between the two days of a comparison, oldest first. |
+| steps | The changes of one provision between the two days of a comparison, oldest first: one step for each text. The changes of one act are one step (`one-act-is-one-step`). "step" has this meaning only. |
 | attribution | Who made a difference: the acts that made it, in their steps, or the acts of which one made it. `Attributions` finds the attribution of each difference of a comparison, and from when the change of each act applies. The sidenote says it in words. |
 | sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (`modification-without-an-act`). |
 | stages | The parts of the work that finds the differences of a comparison, in order: `Occurrences` reads the occurrences of each text. `Pairing` pairs them. `Comparer` compares each pair (`ComparedOccurrence`, `OccurrenceEdits`). `Ordering` puts the differences in the order of the later text, and `ShownOccurrence` gives an occurrence as its difference shows it. |
@@ -129,7 +129,7 @@ sets the date. The clause links to EUR-Lex. The forms:
 | --- | --- |
 | One day | "2017/815 · OJ L 122, 13.5.2017 · applies from 1 June 2017 · Article 2 of 2017/815" |
 | Only its entry into force | "2019/1583 · OJ L 246, 26.9.2019 · applies from 31 December 2021, its entry into force · Article 2 of 2019/1583, as amended by 2020/910" |
-| In parts | "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in parts: from 22 March 2026, its entry into force; in part from 1 October 2026 · Article 2 of 2026/449 says which part from when" |
+| From more than one day | "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from more than one day: from 22 March 2026, its entry into force; a part from 1 October 2026 · Article 2 of 2026/449 says which part from when" |
 | A clause sets the day | "2019/413 · OJ L 73, 15.3.2019 · applies from a date set in Article 3 of 2019/413" |
 | A directive in force | "Dir. 2002/73/EC · OJ L 269, 5.10.2002 · in force from 5 October 2002 · Article 3 of Dir. 2002/73/EC" |
 | A correction | "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text of 31 December 2021" |
@@ -221,35 +221,82 @@ of that act. A corrigendum is not named there. The forms:
 | summary | The line above the differences of a comparison: "No provisions differ", "1 provision differs" or "6 provisions differ". If one act made every difference, it adds the act: "by 2026/449" (`act-that-made-every-difference`). |
 | fold | A group that the page hides until the reader opens it: provisions, the rows of a table, or a list of dates. |
 | outline | The list of the parts of the text, beside the text. |
+| consolidates | The page word for "includes": "the text of 22 March 2026, which consolidates 2026/449". "text" is the page word for "version" in the same way. |
 
 ### Catalogue (module `catalogue`)
 
-The terms of this module are not reviewed yet.
+The catalogue knows the acts, their versions, their dates and their amendments, as Cellar gives
+them. It also prepares the texts. The terms come from the Joint Practical Guide (JPG), EUR-Lex and
+ELI where these have a term.
 
-Open terms of this module:
-
-- "step": the preparation of an act has steps, and the day picker steps from change to change.
-  In the comparison module, "steps" are the changes of one provision only.
-- "run": `AmendingView.Run` is a group of the changes of an amending act that have one state.
-  In the comparison module, a run is a sequence of words. Call this one a group.
+#### Dates and application
 
 | Term | Meaning |
 | --- | --- |
-| state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". It is not a loading state of a page. |
-| deferred application | The state of an act that is in force but does not apply on the day yet, in full or in part. The status line names the day from which it applies in full. |
+| date | A date of the data, with its kind and the clause that sets it (`ActDate`): the entry into force, the application, the taking of effect, or the day from which the Member States apply a directive. A date can be for a part of the act only (`ActDate.forPart`, Cellar's MA/PART). The first day of a version is also a date of the data. |
+| day | A day of the calendar that a rule or a page reasons about: "the day" of a page, the day from which an act applies, the day asked of the API (`/law`). |
+| in force | An act is in force from its entry into force (JPG 20). It can be in force before it applies. |
+| apply | An act applies from its date of application (JPG 20). Before that day, it is in force but does not apply yet. An act applies from more than one day where its parts apply from different days. |
+| state | The legal state of an act, or of one change, on a day (`State`). It is the legal state only: how far a text or a preparation is, is its progress. It is never a loading state of a page. |
+| deferred application | The state of an act that is in force but does not apply in full on the day yet (JPG 20.11). If a part of it applies already, its application is partial (JPG 20.12). The status line names the day from which it applies in full. It is a state of the act, not a divergence. |
+
+The values of the state, with their page words. A past day uses the past tense: "Applied", "Did
+not apply yet".
+
+| Value | Page words | Meaning |
+| --- | --- | --- |
+| `NOT_IN_FORCE` | "Not in force yet" | The act is not in force yet on the day. |
+| `NOT_APPLYING` | "In force, does not apply yet" | The act is in force and does not apply yet on the day. |
+| `APPLIES` | "Applies" | It applies on the day. |
+| `IN_PART` | "Applies in part" | Some changes of the act apply on the day, and some do not apply yet. Only an act as a whole is in this state, never one change. "in part" is this state only. |
+| `NOT_KNOWN` | "In force", or "No dates" | The data does not tell. For example, a clause sets the day by an event, or the day is between two days from which parts apply. |
+
+#### Amendments and the versions that include them
+
+| Term | Meaning |
+| --- | --- |
+| amendment | Cellar's record of what an amending act does at one place: its role, its place (a location) and its dates (`Amendment`). |
+| change | An amendment that changes the words of the text in the language (`Act.changesBy`). An amending act stands as its changes stand (`Standing`: the counts of the states of its changes). |
+| integrate | Cellar's list of the amending acts and corrigenda of a version (`Version.integrates`, the API's `integrates`). It is EUR-Lex's verb: a consolidation integrates the amendments. Cellar's list is not always complete. |
+| include | A version includes the acts that Cellar lists for it, and the acts that its text tags first (`Inclusions`). For example, the version of 767/2008 of 29 December 2017 includes 2017/2226: its text tags 16 occurrences with it, but Cellar lists it only from 11 June 2019. The pages say "consolidates" for "includes". |
+| divergence | Where the text of the day is not the law on the day: a pending amendment, an undated pending amendment or a prospective amendment (`Divergence`). |
 | pending amendment | An amending act that applies on the day, but the text of the day does not include it. EUR-Lex calls these "pending amendments". If the data does not give the day from which it applies, it is an undated pending amendment. |
-| prospective amendment | An amendment that the text of the day includes, but that does not apply on the day yet. |
+| prospective amendment | A change that the text of the day includes, but that does not apply on the day yet. |
+| timeline | The versions of an act, each from its first day until the first day of the next one (`Timeline`). The pages do not show it by this name. |
+| publication | How the Official Journal published an act: its ELI, its titles and its reference (`Publication`). |
+| resource type | The kind of an act, from the EU's resource-type authority table: `REG_IMPL`, `DIR`, `DEC` (`ResourceType`). |
+| location | Cellar's code of a place, for example `AN PO 8.1.2.3 PTA (c)` (`Location`). The shared term "place" names it in words. |
+| citation | A citation of the preamble ("Having regard to …"), as the JPG names it. The word names nothing else. |
+| cite | How the Official Journal names an act: "2017/815", "Dir. 2002/73/EC" (`Act.cited`, the API's `cited`). |
+
+#### Texts and their preparation
+
+| Term | Meaning |
+| --- | --- |
+| text | The text of a version in one language (`Text`). The shared term "version" says what a text is of. |
+| preparation | The building of the texts of every version of an act in one language (`Preparation`). It has a log: one entry for each start, build, postponement or failure of a text (`Preparation.Entry`). The preparing page shows it in three phases: convert the versions, match the provisions, read the dates. |
+| progress | How far a text is: waiting, converting, ready or failed. How far a preparation is: preparing, prepared or failed. The API calls it `progress`, and so do the tables. |
+| lookup | Asking the Publications Office for an act that the catalogue does not have yet (`Lookups`). |
+
+#### Pages of the catalogue
+
+| Term | Meaning |
+| --- | --- |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
 | divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. |
 | history | The list of the amending acts of an act, newest first. |
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
+| sequence | On the page of an amending act: changes that follow each other in the text and have the same state (`AmendingView.Sequence`). The sequence says the state, the date and the clause one time. |
+| group | On the page of an amending act: the changes that apply from one day (`AmendingView.Group`). The reader chooses a group to see only its changes. |
+| tone | The class that gives a state its colour: `warn` (amber: does not apply yet, or applies in part), `unknown` (the data does not tell), `not-in-force`. A state that applies has no tone. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
 
 The pages do not use these words in text that the reader sees: "late", "early", "included",
-"version", "stage", "an act not known", "an act not named", "not included". Say what the reader sees. Examples:
-"the text", "does not apply yet", "applies in parts", "the data does not say which act amended this". The pages of the API
-are not in this rule: `versions` is the name of a resource of the API.
+"version", "stage", "an act not known", "an act not named", "not included", "applies in parts".
+Say what the reader sees. Examples: "the text", "does not apply yet", "applies from more than one
+day", "a part from 1 October 2026", "the data does not say which act amended this". The pages of
+the API are not in this rule: `versions` is the name of a resource of the API.
 
 ## Principles
 
@@ -365,9 +412,9 @@ of the viewer before each path.
 | Case | Path |
 | --- | --- |
 | Home, with results | `/?q=aviation+security` |
-| History, with an act that applies in parts and a day that the data does not give | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
+| History, with an act that applies from more than one day and a day that the data does not give | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
 | History, two days | `/eli/reg_impl/2015/1998/eng/history?from=2020-07-02&to=2021-03-15` |
-| An amending act that applies in parts, from two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
+| An amending act that applies from more than one day, two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
 | Read the law on a day | `/eli/reg_impl/2015/1998/2021-12-31/eng` |
 | Read, a pending amendment: an act applies that the text does not have, with divergence notes | `/eli/reg_impl/2015/1998/2017-06-03/eng` |

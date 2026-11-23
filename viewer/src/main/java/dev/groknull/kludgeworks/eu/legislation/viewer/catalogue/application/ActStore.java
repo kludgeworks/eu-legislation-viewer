@@ -51,6 +51,8 @@ public interface ActStore {
    */
   void update(Act act, Map<String, Instant> missing);
 
-  /** Deletes a version of the act, with the states of its texts and the steps that name it. */
+  /**
+   * Deletes a version of the act, with the progress of its texts and the log entries that name it.
+   */
   void withdraw(ActIdentifier id, String celex);
 }

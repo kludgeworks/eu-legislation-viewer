@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendmentsChanged;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendmentsUpdated;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LanguageAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionAdded;
@@ -36,7 +36,7 @@ import org.jspecify.annotations.Nullable;
  *       one read is not enough. The first read that misses it records the time in {@code missing},
  *       and asks for a second read at {@link #recheckAt}. A version that comes back is no longer
  *       missing.
- *   <li>{@link AmendmentsChanged}: the act's amendments, or the dates of the acts that amend it,
+ *   <li>{@link AmendmentsUpdated}: the act's amendments, or the dates of the acts that amend it,
  *       changed.
  * </ul>
  *
@@ -112,7 +112,7 @@ record Refresh(
     }
     if (!Set.copyOf(stored.amendments()).equals(Set.copyOf(read.amendments()))
         || !stored.amendingDates().equals(read.amendingDates())) {
-      events.add(new AmendmentsChanged(read.id()));
+      events.add(new AmendmentsUpdated(read.id()));
     }
     return new Refresh(events, stillMissing, withdrawn, recheckAt);
   }

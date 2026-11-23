@@ -2,14 +2,14 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_STEP;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_ENTRY;
 import static org.jooq.impl.DSL.currentInstant;
 import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.selectOne;
 import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Step;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Entry;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.PreparationStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.PreparationRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
@@ -25,7 +25,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Repository;
 
 /**
- * Stores the preparations in the Postgres tables {@code preparation} and {@code preparation_step},
+ * Stores the preparations in the Postgres tables {@code preparation} and {@code preparation_entry},
  * with jOOQ.
  */
 @Repository
@@ -36,8 +36,8 @@ class JooqPreparationStore implements PreparationStore {
     this.db = db;
   }
 
-  /** The state of a preparation, as the column {@code preparation.state} holds it. */
-  private enum State {
+  /** How far a preparation is, as the column {@code preparation.progress} holds it. */
+  private enum Progress {
     PREPARING,
     PREPARED,
     FAILED
@@ -48,7 +48,7 @@ class JooqPreparationStore implements PreparationStore {
     db.insertInto(PREPARATION)
         .set(PREPARATION.ACT, act)
         .set(PREPARATION.LANGUAGE_CODE, language)
-        .set(PREPARATION.STATE, State.PREPARING.name())
+        .set(PREPARATION.PROGRESS, Progress.PREPARING.name())
         .set(PREPARATION.STARTED_AT, currentInstant())
         .onConflictDoNothing()
         .execute();
@@ -75,7 +75,7 @@ class JooqPreparationStore implements PreparationStore {
     return db.selectFrom(PREPARATION)
         .where(the(act, language))
         // The key of a preparation never changes. So this lock does not conflict with the
-        // foreign key of a step that refers to the preparation.
+        // foreign key of an entry that refers to the preparation.
         .forNoKeyUpdate()
         .fetchOptional()
         .map(JooqPreparationStore::kept);
@@ -84,9 +84,9 @@ class JooqPreparationStore implements PreparationStore {
   @Override
   public boolean settle(ActIdentifier act, Language language, boolean prepared) {
     return db.update(PREPARATION)
-            .set(PREPARATION.STATE, (prepared ? State.PREPARED : State.FAILED).name())
+            .set(PREPARATION.PROGRESS, (prepared ? Progress.PREPARED : Progress.FAILED).name())
             .set(PREPARATION.SETTLED_AT, currentInstant())
-            .where(the(act, language), PREPARATION.STATE.eq(State.PREPARING.name()))
+            .where(the(act, language), PREPARATION.PROGRESS.eq(Progress.PREPARING.name()))
             .execute()
         == 1;
   }
@@ -95,71 +95,71 @@ class JooqPreparationStore implements PreparationStore {
   public boolean restart(ActIdentifier act, Language language) {
     var restarted =
         db.update(PREPARATION)
-                .set(PREPARATION.STATE, State.PREPARING.name())
+                .set(PREPARATION.PROGRESS, Progress.PREPARING.name())
                 .set(PREPARATION.STARTED_AT, currentInstant())
                 .set(PREPARATION.SETTLED_AT, val(null, PREPARATION.SETTLED_AT))
-                .where(the(act, language), PREPARATION.STATE.ne(State.PREPARING.name()))
+                .where(the(act, language), PREPARATION.PROGRESS.ne(Progress.PREPARING.name()))
                 .execute()
             == 1;
     if (restarted) {
-      db.deleteFrom(PREPARATION_STEP)
-          .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE_CODE.eq(language))
+      db.deleteFrom(PREPARATION_ENTRY)
+          .where(PREPARATION_ENTRY.ACT.eq(act), PREPARATION_ENTRY.LANGUAGE_CODE.eq(language))
           .execute();
     }
     return restarted;
   }
 
   @Override
-  public void step(
+  public void entry(
       ActIdentifier act,
       Language language,
       String celex,
-      Step.Kind kind,
+      Entry.Kind kind,
       @Nullable Integer attempt,
       @Nullable Failure failure) {
     db.insertInto(
-            PREPARATION_STEP,
-            PREPARATION_STEP.ACT,
-            PREPARATION_STEP.LANGUAGE_CODE,
-            PREPARATION_STEP.HAPPENED_AT,
-            PREPARATION_STEP.CELEX,
-            PREPARATION_STEP.KIND,
-            PREPARATION_STEP.ATTEMPT,
-            PREPARATION_STEP.FAILURE)
+            PREPARATION_ENTRY,
+            PREPARATION_ENTRY.ACT,
+            PREPARATION_ENTRY.LANGUAGE_CODE,
+            PREPARATION_ENTRY.HAPPENED_AT,
+            PREPARATION_ENTRY.CELEX,
+            PREPARATION_ENTRY.KIND,
+            PREPARATION_ENTRY.ATTEMPT,
+            PREPARATION_ENTRY.FAILURE)
         .select(
             select(
-                    val(act, PREPARATION_STEP.ACT),
-                    val(language, PREPARATION_STEP.LANGUAGE_CODE),
+                    val(act, PREPARATION_ENTRY.ACT),
+                    val(language, PREPARATION_ENTRY.LANGUAGE_CODE),
                     currentInstant(),
                     val(celex),
                     val(kind.name()),
-                    val(attempt, PREPARATION_STEP.ATTEMPT),
-                    val(failure, PREPARATION_STEP.FAILURE))
+                    val(attempt, PREPARATION_ENTRY.ATTEMPT),
+                    val(failure, PREPARATION_ENTRY.FAILURE))
                 .whereExists(selectOne().from(PREPARATION).where(the(act, language))))
         .execute();
   }
 
   @Override
-  public List<Step> steps(ActIdentifier act, Language language) {
+  public List<Entry> entries(ActIdentifier act, Language language) {
     var rows =
-        db.selectFrom(PREPARATION_STEP)
-            .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE_CODE.eq(language))
-            .orderBy(PREPARATION_STEP.HAPPENED_AT)
+        db.selectFrom(PREPARATION_ENTRY)
+            .where(PREPARATION_ENTRY.ACT.eq(act), PREPARATION_ENTRY.LANGUAGE_CODE.eq(language))
+            .orderBy(PREPARATION_ENTRY.HAPPENED_AT)
             .fetch();
     // The last start of each text, which gives its attempt and its start time.
-    var starts = new HashMap<String, Step>();
-    var steps = new ArrayList<Step>(rows.size());
+    var starts = new HashMap<String, Entry>();
+    var entries = new ArrayList<Entry>(rows.size());
     for (var row : rows) {
-      var kind = Step.Kind.valueOf(row.getKind());
+      var kind = Entry.Kind.valueOf(row.getKind());
       var at = row.getHappenedAt();
       var celex = row.getCelex();
       var start = starts.get(celex);
-      var step =
+      var entry =
           switch (kind) {
-            case STARTED, DEFERRED ->
-                new Step(at, celex, kind, attempt(row.getAttempt()), null, null);
+            case STARTED, POSTPONED ->
+                new Entry(at, celex, kind, attempt(row.getAttempt()), null, null);
             case BUILT, FAILED ->
-                new Step(
+                new Entry(
                     at,
                     celex,
                     kind,
@@ -167,12 +167,12 @@ class JooqPreparationStore implements PreparationStore {
                     start == null ? null : Duration.between(start.at(), at),
                     row.getFailure());
           };
-      if (kind == Step.Kind.STARTED) {
-        starts.put(celex, step);
+      if (kind == Entry.Kind.STARTED) {
+        starts.put(celex, entry);
       }
-      steps.add(step);
+      entries.add(entry);
     }
-    return steps;
+    return entries;
   }
 
   private static int attempt(@Nullable Integer attempt) {

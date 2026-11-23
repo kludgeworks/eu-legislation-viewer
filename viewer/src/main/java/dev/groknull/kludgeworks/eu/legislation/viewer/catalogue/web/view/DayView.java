@@ -82,7 +82,8 @@ public record DayView(
         .map(
             applying ->
                 switch (applying) {
-                  case Applying.InParts _ -> "A part of " + cited + " applies from this day";
+                  case Applying.FromMoreThanOneDay _ ->
+                      "A part of " + cited + " applies from this day";
                   case Applying.InForce _ -> cited + " is in force from this day";
                   case Applying.From _, Applying.SetBy _ -> cited + " applies from this day";
                 })

@@ -96,9 +96,9 @@ class ActHistoryTest {
         Map.of());
   }
 
-  private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean partial) {
+  private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean forPart) {
     return new ActDate(
-        day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), ""));
   }
 
   private static Amendment change(
@@ -230,7 +230,7 @@ class ActHistoryTest {
   }
 
   @Test
-  void aChangeWithoutADayOfAnActInPartsHasNoKnownStateBetweenTheParts() {
+  void aChangeWithoutADayOfAnActFromMoreThanOneDayHasNoKnownStateBetweenTheParts() {
     assertThat(ACT.changeAppliesFrom(PHASED, Set.of())).isEmpty();
     assertThat(ACT.stateOn(PHASED, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
     assertThat(ACT.stateOn(PHASED, Set.of(), IN_FULL)).isEqualTo(State.APPLIES);
@@ -253,14 +253,12 @@ class ActHistoryTest {
   void anActStandsAsItsChangesStand() {
     assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART))
         .isEqualTo(new Standing(false, 1, 2, 0))
-        .extracting(Standing::whole)
-        .isEqualTo(Standing.Whole.IN_PART);
-    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_FULL).whole())
-        .isEqualTo(Standing.Whole.APPLIES);
-    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART.minusDays(1)).whole())
-        .isEqualTo(Standing.Whole.NOT_IN_FORCE);
-    assertThat(ACT.standingOn(EVENT, Language.ENG, IN_PART).whole())
-        .isEqualTo(Standing.Whole.NOT_KNOWN);
+        .extracting(Standing::state)
+        .isEqualTo(State.IN_PART);
+    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_FULL).state()).isEqualTo(State.APPLIES);
+    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART.minusDays(1)).state())
+        .isEqualTo(State.NOT_IN_FORCE);
+    assertThat(ACT.standingOn(EVENT, Language.ENG, IN_PART).state()).isEqualTo(State.NOT_KNOWN);
   }
 
   @Test

@@ -303,7 +303,7 @@ class CellarActsTest {
     var application = act(AVSEC).datesOf(new ActIdentifier("32019R0103")).getLast();
 
     assertThat(application.date()).isEqualTo(LocalDate.of(2021, 12, 31));
-    assertThat(application.partial()).isTrue();
+    assertThat(application.forPart()).isTrue();
     assertThat(application.clause().provisions()).containsExactly(article("2"));
     assertThat(application.clause().amendedBy()).containsExactly(new ActIdentifier("32020R0910"));
   }
@@ -371,7 +371,7 @@ class CellarActsTest {
 
     var read = dates.getOrDefault(directive, List.of());
     assertThat(read)
-        .extracting(ActDate::date, ActDate::kind, ActDate::partial)
+        .extracting(ActDate::date, ActDate::kind, ActDate::forPart)
         .containsExactly(
             tuple(LocalDate.of(2019, 12, 25), Kind.ENTRY_INTO_FORCE, false),
             tuple(LocalDate.of(2021, 6, 26), Kind.TRANSPOSITION, false));
@@ -410,7 +410,7 @@ class CellarActsTest {
                 .clause()
                 .provisions())
         .containsExactly(article("2.2(f)"), article("2.2(g)"));
-    assertThat(dates.getOrDefault(new ActIdentifier("32021R0255"), List.of()).getFirst().partial())
+    assertThat(dates.getOrDefault(new ActIdentifier("32021R0255"), List.of()).getFirst().forPart())
         .isTrue();
     assertThat(dates.getOrDefault(new ActIdentifier("32012R1064"), List.of()).getFirst().clause())
         .extracting(Clause::from, Clause::days, Clause::provisions)

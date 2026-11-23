@@ -16,8 +16,8 @@ Feature: From when a change applies
   Rule: cellar-day-else-the-parts · Cellar's day for the occurrence, else the parts
     Cellar can give a day for the change at the occurrence. That day chooses the date if it is one
     of the act's dates and it is after From. A day that is not after From is stale: the earlier
-    text does not have the change. If no day chooses the date, the act applies in parts, and the
-    sidenote lists each day from which a part applies.
+    text does not have the change. If no day chooses the date, the act applies from more than one
+    day, and the sidenote lists each day from which a part applies.
 
     Example: Cellar's day is one of the act's dates, after From
       Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
@@ -29,7 +29,7 @@ Feature: From when a change applies
       Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
       And Cellar dates the change of 2026/449 at the occurrence from 15 May 2026
       When the reader asks from when the change of 2026/449 applies
-      Then it applies in parts
+      Then it applies from more than one day
         | from            | what                 |
         | 22 March 2026   | its entry into force |
         | 1 October 2026  | a part               |
@@ -38,7 +38,7 @@ Feature: From when a change applies
       Given the comparison of the texts of 2015/1998 of 1 July 2021 and of 31 December 2021
       And Cellar dates the change of 2019/103 at the occurrence from 1 February 2019
       When the reader asks from when the change of 2019/103 applies
-      Then it applies in parts
+      Then it applies from more than one day
         | from             | what                 |
         | 1 February 2019  | its entry into force |
         | 31 December 2021 | a part               |

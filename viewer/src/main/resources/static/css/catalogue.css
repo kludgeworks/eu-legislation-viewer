@@ -9,14 +9,6 @@
   }
 }
 
-.steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  padding: 2px 0 8px 10px;
-  color: var(--disabled);
-}
-
 .mono {
   font-family: ui-monospace, monospace;
 }
@@ -244,7 +236,7 @@ section.selection.compare a {
   border-left-color: var(--warn-stripe);
 }
 
-.compare-steps li.open {
+.compare-steps li.unknown {
   border-left: 3px dashed var(--line-strong);
 }
 
@@ -435,7 +427,7 @@ section.selection.compare a {
   border-left-color: var(--warn-stripe);
 }
 
-.content .provision-history li.open {
+.content .provision-history li.unknown {
   border-left: 3px dashed var(--line-strong);
 }
 
@@ -1187,23 +1179,23 @@ form.find-act .ex a {
   }
 }
 
-.preparing .progress-steps {
+.preparing .progress-phases {
   margin: 0;
   padding-left: 1.4em;
 }
 
-.preparing .progress-steps p {
+.preparing .progress-phases p {
   margin: 4px 0;
   color: var(--muted);
   font-size: 14px;
 }
 
-.preparing .progress-steps li + li {
+.preparing .progress-phases li + li {
   margin-top: 10px;
 }
 
-/* A step that is done, or still to come, is quieter than the step that runs. */
-.preparing .progress-steps li.done strong::after {
+/* A phase that is done, or still to come, is quieter than the phase that runs. */
+.preparing .progress-phases li.done strong::after {
   content: " ✓";
   color: var(--accent);
 }
@@ -1669,17 +1661,17 @@ table.acts td p {
   color: var(--warn-ink);
 }
 
-.state.open {
+.state.unknown {
   border: 1px dashed var(--line-strong);
   color: var(--ink2);
 }
 
-.state.off {
+.state.not-in-force {
   padding-left: 0;
   color: var(--muted);
 }
 
-.state:not(.warn, .open, .off) {
+.state:not(.warn, .unknown, .not-in-force) {
   padding-left: 0;
 }
 
@@ -1717,7 +1709,7 @@ a.group.warn {
   color: var(--warn-ink);
 }
 
-a.group.open {
+a.group.unknown {
   border-style: dashed;
 }
 
@@ -1735,31 +1727,31 @@ ul.corrigenda {
 
 /* A run of changes with one state. The statement says the state one time. The provisions are in
  * columns, in the order of the text down each column. */
-section.run {
+section.sequence {
   margin: 14px 0 0;
   padding: 2px 0 2px 12px;
   border-left: 3px solid transparent;
 }
 
-section.run.warn {
+section.sequence.warn {
   border-left-color: var(--warn-stripe);
 }
 
-section.run.open {
+section.sequence.unknown {
   border-left: 3px dashed var(--line-strong);
 }
 
-section.run .statement {
+section.sequence .statement {
   margin: 0 0 4px;
   color: var(--muted);
   font-size: 13.5px;
 }
 
-section.run.warn .statement {
+section.sequence.warn .statement {
   color: var(--warn-ink);
 }
 
-section.run .size {
+section.sequence .size {
   margin-left: 6px;
   font-weight: 600;
 }

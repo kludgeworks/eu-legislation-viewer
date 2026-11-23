@@ -62,7 +62,7 @@ public record Attribution(
    * @param acts the acts, in the order that the version lists them. Two or more acts in one step
    *     changed the occurrence together, with one wording.
    * @param modification what the acts of the step did to the occurrence
-   * @param inPart the acts of the step that an earlier text included already. A part of each
+   * @param forPart the acts of the step that an earlier text included already. A part of each
    *     applies in the step.
    */
   @ValueObject
@@ -70,10 +70,10 @@ public record Attribution(
       Version version,
       List<ActIdentifier> acts,
       Modification modification,
-      Set<ActIdentifier> inPart) {
+      Set<ActIdentifier> forPart) {
     public Step {
       acts = List.copyOf(acts);
-      inPart = Set.copyOf(inPart);
+      forPart = Set.copyOf(forPart);
     }
   }
 
@@ -367,7 +367,8 @@ public record Attribution(
         included.timeline().versions().stream()
             .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
             .toList();
-    // The version of each act is the first version that has it. An act that applies in parts is
+    // The version of each act is the first version that has it. An act that applies from more than
+    // one day is
     // in several versions.
     var at = new HashMap<ActIdentifier, Version>();
     for (var each : acts) {

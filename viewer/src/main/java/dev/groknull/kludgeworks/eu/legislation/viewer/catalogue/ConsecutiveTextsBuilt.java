@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * The texts of two neighbouring versions of an act are both built, in one language. The catalogue
+ * The texts of two consecutive versions of an act are both built, in one language. The catalogue
  * publishes it when a text is built and the text of the version before it, or after it, is built
  * already. A reader will probably compare the two.
  *
@@ -13,4 +13,4 @@ import org.jmolecules.event.annotation.DomainEvent;
  * @param later the later version's text
  */
 @DomainEvent
-public record NeighboursBuilt(TextId earlier, TextId later) {}
+public record ConsecutiveTextsBuilt(TextId earlier, TextId later) {}

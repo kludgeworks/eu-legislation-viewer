@@ -21,8 +21,8 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Repository;
 
 /**
- * Stores the texts in the Postgres table {@code expression}, with jOOQ. Each change of state is a
- * conditional update.
+ * Stores the texts in the Postgres table {@code expression}, with jOOQ. Each change of progress is
+ * a conditional update.
  */
 @Repository
 class JooqExpressionStore implements ExpressionStore {
@@ -32,8 +32,8 @@ class JooqExpressionStore implements ExpressionStore {
     this.db = db;
   }
 
-  /** The state of a text, as the column {@code expression.state} holds it. */
-  private enum State {
+  /** How far a text is, as the column {@code expression.progress} holds it. */
+  private enum Progress {
     QUEUED,
     BUILDING,
     BUILT,
@@ -58,10 +58,10 @@ class JooqExpressionStore implements ExpressionStore {
             EXPRESSION,
             EXPRESSION.CELEX,
             EXPRESSION.LANGUAGE_CODE,
-            EXPRESSION.STATE,
+            EXPRESSION.PROGRESS,
             EXPRESSION.ATTEMPT);
     for (var celex : celexes) {
-      insert = insert.values(celex, language, State.QUEUED.name(), 0);
+      insert = insert.values(celex, language, Progress.QUEUED.name(), 0);
     }
     return insert.onConflictDoNothing().returning(EXPRESSION.CELEX).fetch(EXPRESSION.CELEX);
   }
@@ -69,7 +69,7 @@ class JooqExpressionStore implements ExpressionStore {
   @Override
   public boolean start(String celex, Language language, int attempt) {
     return db.update(EXPRESSION)
-            .set(EXPRESSION.STATE, State.BUILDING.name())
+            .set(EXPRESSION.PROGRESS, Progress.BUILDING.name())
             .set(EXPRESSION.ATTEMPT, attempt)
             .where(the(celex, language), unsettled(), EXPRESSION.ATTEMPT.lt(attempt))
             .execute()
@@ -79,7 +79,7 @@ class JooqExpressionStore implements ExpressionStore {
   @Override
   public boolean defer(String celex, Language language, int attempt) {
     return db.update(EXPRESSION)
-            .set(EXPRESSION.STATE, State.QUEUED.name())
+            .set(EXPRESSION.PROGRESS, Progress.QUEUED.name())
             .set(EXPRESSION.ATTEMPT, attempt)
             .where(
                 the(celex, language),
@@ -91,7 +91,7 @@ class JooqExpressionStore implements ExpressionStore {
                         EXPRESSION
                             .ATTEMPT
                             .eq(attempt)
-                            .and(EXPRESSION.STATE.eq(State.BUILDING.name()))))
+                            .and(EXPRESSION.PROGRESS.eq(Progress.BUILDING.name()))))
             .execute()
         == 1;
   }
@@ -101,16 +101,16 @@ class JooqExpressionStore implements ExpressionStore {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)
             .set(EXPRESSION.LANGUAGE_CODE, language)
-            .set(EXPRESSION.STATE, State.BUILT.name())
+            .set(EXPRESSION.PROGRESS, Progress.BUILT.name())
             .set(EXPRESSION.ATTEMPT, 0)
             .set(EXPRESSION.BUILT_AT, currentInstant())
             .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE_CODE)
             .doUpdate()
-            .set(EXPRESSION.STATE, State.BUILT.name())
+            .set(EXPRESSION.PROGRESS, Progress.BUILT.name())
             .set(EXPRESSION.BUILT_AT, currentInstant())
             .set(EXPRESSION.FAILURE, val(null, EXPRESSION.FAILURE))
             .set(EXPRESSION.TRACE, val(null, EXPRESSION.TRACE))
-            .where(EXPRESSION.STATE.ne(State.BUILT.name()))
+            .where(EXPRESSION.PROGRESS.ne(Progress.BUILT.name()))
             .execute()
         == 1;
   }
@@ -118,11 +118,11 @@ class JooqExpressionStore implements ExpressionStore {
   @Override
   public boolean requeue(String celex, Language language) {
     return db.update(EXPRESSION)
-            .set(EXPRESSION.STATE, State.QUEUED.name())
+            .set(EXPRESSION.PROGRESS, Progress.QUEUED.name())
             .set(EXPRESSION.ATTEMPT, 0)
             .set(EXPRESSION.FAILURE, val(null, EXPRESSION.FAILURE))
             .set(EXPRESSION.TRACE, val(null, EXPRESSION.TRACE))
-            .where(the(celex, language), EXPRESSION.STATE.eq(State.FAILED.name()))
+            .where(the(celex, language), EXPRESSION.PROGRESS.eq(Progress.FAILED.name()))
             .execute()
         == 1;
   }
@@ -132,13 +132,13 @@ class JooqExpressionStore implements ExpressionStore {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)
             .set(EXPRESSION.LANGUAGE_CODE, language)
-            .set(EXPRESSION.STATE, State.FAILED.name())
+            .set(EXPRESSION.PROGRESS, Progress.FAILED.name())
             .set(EXPRESSION.ATTEMPT, 0)
             .set(EXPRESSION.FAILURE, failure)
             .set(EXPRESSION.TRACE, trace)
             .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE_CODE)
             .doUpdate()
-            .set(EXPRESSION.STATE, State.FAILED.name())
+            .set(EXPRESSION.PROGRESS, Progress.FAILED.name())
             .set(EXPRESSION.FAILURE, failure)
             .set(EXPRESSION.TRACE, trace)
             .where(unsettled())
@@ -152,11 +152,11 @@ class JooqExpressionStore implements ExpressionStore {
 
   /** Matches a text that is queued or building. Such a text is not built and has not failed. */
   private static Condition unsettled() {
-    return EXPRESSION.STATE.in(State.QUEUED.name(), State.BUILDING.name());
+    return EXPRESSION.PROGRESS.in(Progress.QUEUED.name(), Progress.BUILDING.name());
   }
 
   private static Text text(ExpressionRecord row, @Nullable TextId stored) {
-    return switch (State.valueOf(row.getState())) {
+    return switch (Progress.valueOf(row.getProgress())) {
       case QUEUED -> new Text.Waiting(row.getAttempt());
       case BUILDING -> new Text.Converting(row.getAttempt());
       case BUILT -> stored == null ? new Text.Waiting(0) : new Text.Ready(stored);

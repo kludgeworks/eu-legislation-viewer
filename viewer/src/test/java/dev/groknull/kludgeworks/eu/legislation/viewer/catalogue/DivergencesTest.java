@@ -369,14 +369,14 @@ class DivergencesTest {
     date(day, Kind.ENTRY_INTO_FORCE, false);
   }
 
-  private void date(String day, Kind kind, boolean partial) {
+  private void date(String day, Kind kind, boolean forPart) {
     dates
         .computeIfAbsent(AMENDING, act -> new ArrayList<>())
         .add(
             new ActDate(
                 LocalDate.parse(day),
                 kind,
-                partial,
+                forPart,
                 new ActDate.Clause(null, null, List.of(), List.of(), "")));
   }
 

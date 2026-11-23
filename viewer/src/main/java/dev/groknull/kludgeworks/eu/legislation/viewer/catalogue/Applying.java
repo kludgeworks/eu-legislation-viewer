@@ -29,15 +29,16 @@ public sealed interface Applying {
   }
 
   /**
-   * The act applies in parts, and Cellar does not tell which part a provision is in.
+   * The act applies from more than one day, and Cellar does not tell which part a provision is in.
    *
    * @param starts each day from which a part applies, in order
    * @param first the first day from which a part of it applies. Its entry into force is a part, but
    *     a part applies from it only if no later day is for the whole act.
    * @param dates its dates that have a day
    */
-  record InParts(List<Start> starts, LocalDate first, List<ActDate> dates) implements Applying {
-    public InParts {
+  record FromMoreThanOneDay(List<Start> starts, LocalDate first, List<ActDate> dates)
+      implements Applying {
+    public FromMoreThanOneDay {
       starts = List.copyOf(starts);
       dates = List.copyOf(dates);
     }
@@ -48,9 +49,9 @@ public sealed interface Applying {
    *
    * @param day the day
    * @param entryIntoForce whether the day is only its entry into force
-   * @param inPart whether each of its dates on that day is for a part
+   * @param forPart whether each of its dates on that day is for a part
    */
-  record Start(LocalDate day, boolean entryIntoForce, boolean inPart) {}
+  record Start(LocalDate day, boolean entryIntoForce, boolean forPart) {}
 
   /**
    * The act applies from a day that Cellar does not know. Its clauses set the day, for example by

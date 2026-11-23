@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ConsecutiveTextsBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -40,8 +40,8 @@ import org.springframework.stereotype.Service;
  *   <li>Otherwise the service reads both texts whole with {@link Content#read}, works out the
  *       comparison on the executor, and keeps it. It keeps it in place of one that other rules
  *       worked out. It does this for the request that asks for the comparison, or before the
- *       request, on {@link NeighboursBuilt}: a reader will probably compare the texts of two
- *       neighbouring versions.
+ *       request, on {@link ConsecutiveTextsBuilt}: a reader will probably compare the texts of two
+ *       consecutive versions.
  *   <li>A request for a comparison that is being worked out waits for that work. A reader often
  *       asks while the comparison is being worked out before the reader asked.
  * </ul>
@@ -211,7 +211,7 @@ class ComparisonService implements Comparisons {
   }
 
   @ApplicationModuleListener
-  void on(NeighboursBuilt built) {
+  void on(ConsecutiveTextsBuilt built) {
     between(built.earlier(), built.later());
   }
 }

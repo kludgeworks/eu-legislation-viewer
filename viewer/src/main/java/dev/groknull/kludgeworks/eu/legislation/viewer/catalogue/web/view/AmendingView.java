@@ -44,8 +44,9 @@ import org.jspecify.annotations.Nullable;
  * @param groups its changes in groups, by the day from which they apply. Each is a link that limits
  *     the page. The first is all of its changes. Empty if the changes are in one group only: a
  *     limit would change nothing.
- * @param runs its changes, in the order of the text, limited to the group that is on. Changes that
- *     follow each other and have the same state are one run, so the page says the state one time.
+ * @param sequences its changes, in the order of the text, limited to the group that is on. Changes
+ *     that follow each other and have the same state are one sequence, so the page says the state
+ *     one time.
  * @param ordered whether the changes are in the order of the text. They are in the order of the
  *     data while no text of the act is built.
  * @param open whether the wording of each change shows when the page opens. It does if the page has
@@ -70,7 +71,7 @@ public record AmendingView(
     String dates,
     @Nullable Clause clause,
     List<Group> groups,
-    List<Run> runs,
+    List<Sequence> sequences,
     boolean ordered,
     boolean open,
     @Nullable String either,
@@ -84,7 +85,7 @@ public record AmendingView(
 
   public AmendingView {
     groups = List.copyOf(groups);
-    runs = List.copyOf(runs);
+    sequences = List.copyOf(sequences);
     corrigenda = List.copyOf(corrigenda);
   }
 
@@ -139,16 +140,16 @@ public record AmendingView(
         act.cited(act.id()),
         cited
             + " "
-            + States.phrase(standing.whole(), past)
+            + StateWording.phrase(standing.state(), past)
             + "."
             + (all.isEmpty()
                 ? " The data lists no changed provisions."
                 : " It changed "
                     + (all.size() == 1 ? "1 provision." : all.size() + " provisions.")),
-        States.dates(amending, act.applying(amending, Set.of()).orElse(null)),
+        Wording.dates(amending, act.applying(amending, Set.of()).orElse(null)),
         clause(act, amending, language),
         groups(act, amending, all, day, past, page, group),
-        runs(
+        sequences(
             shown.stream()
                 .map(change -> change(act, amending, change, day, past, compare, step))
                 .toList()),
@@ -200,7 +201,7 @@ public record AmendingView(
                   count,
                   page + separator + "applies=" + key,
                   key.equals(on),
-                  state.isPresent() ? States.tone(state.get()) : States.OPEN));
+                  state.isPresent() ? StateWording.tone(state.get()) : StateWording.UNKNOWN));
         });
     return groups;
   }
@@ -226,7 +227,7 @@ public record AmendingView(
                                   new Clause(
                                       "Read " + each.cited(),
                                       act.eurLex(amending, language) + "#art_" + article(each)));
-                  case Applying.From _, Applying.InParts _, Applying.InForce _ ->
+                  case Applying.From _, Applying.FromMoreThanOneDay _, Applying.InForce _ ->
                       Optional.<Clause>empty();
                 })
         .orElse(null);
@@ -248,29 +249,29 @@ public record AmendingView(
     return switch (state) {
       case APPLIES -> (past ? "Applied from " : "Applies from ") + day;
       case NOT_APPLYING -> (past ? "Did not apply yet, from " : "Does not apply yet, from ") + day;
-      case NOT_IN_FORCE, NOT_KNOWN -> "From " + day;
+      case NOT_IN_FORCE, IN_PART, NOT_KNOWN -> "From " + day;
     };
   }
 
   /**
-   * Returns {@code changes} as runs: changes that follow each other and have the same statement are
-   * one run. The order of the changes stays.
+   * Returns {@code changes} as sequences: changes that follow each other and have the same
+   * statement are one sequence. The order of the changes stays.
    */
-  private static List<Run> runs(List<Change> changes) {
-    var runs = new ArrayList<Run>();
+  private static List<Sequence> sequences(List<Change> changes) {
+    var sequences = new ArrayList<Sequence>();
     for (var change : changes) {
-      var last = runs.isEmpty() ? null : runs.getLast();
+      var last = sequences.isEmpty() ? null : sequences.getLast();
       if (last != null
           && Objects.equals(last.statement(), change.statement())
           && Objects.equals(last.tone(), change.tone())) {
         var joined = new ArrayList<>(last.changes());
         joined.add(change);
-        runs.set(runs.size() - 1, new Run(last.statement(), last.tone(), joined));
+        sequences.set(sequences.size() - 1, new Sequence(last.statement(), last.tone(), joined));
       } else {
-        runs.add(new Run(change.statement(), change.tone(), List.of(change)));
+        sequences.add(new Sequence(change.statement(), change.tone(), List.of(change)));
       }
     }
-    return runs;
+    return sequences;
   }
 
   private static Change change(
@@ -286,12 +287,12 @@ public record AmendingView(
     var days = Act.days(change);
     var state = act.stateOn(amending, days, day);
     var name = change.location().place().words();
-    var statement = States.statement(act, amending, days, day, past);
+    var statement = StateWording.statement(act, amending, days, day, past);
     return new Change(
         name.isEmpty() ? change.location().code() : name,
         made(change.role()),
         statement,
-        States.tone(state),
+        StateWording.tone(state),
         anchor(change),
         compare == null || occurrences.isEmpty() ? null : compare.place(occurrences));
   }
@@ -377,21 +378,21 @@ public record AmendingView(
    * Changes that follow each other in the text and have the same state.
    *
    * @param statement their state on the day, with the date and the clause, said one time for the
-   *     run
+   *     sequence
    * @param tone as {@link Change#tone}
    * @param changes the changes, in the order of the text
    */
-  public record Run(@Nullable String statement, @Nullable String tone, List<Change> changes) {
-    public Run {
+  public record Sequence(@Nullable String statement, @Nullable String tone, List<Change> changes) {
+    public Sequence {
       changes = List.copyOf(changes);
     }
 
-    /** Returns whether a change of the run has its wording to show. */
+    /** Returns whether a change of the sequence has its wording to show. */
     public boolean worded() {
       return changes.stream().anyMatch(change -> change.wording() != null);
     }
 
-    /** Returns how many provisions the run has, in words. For example, "17 provisions". */
+    /** Returns how many provisions the sequence has, in words. For example, "17 provisions". */
     public String size() {
       return changes.size() == 1 ? "1 provision" : changes.size() + " provisions";
     }

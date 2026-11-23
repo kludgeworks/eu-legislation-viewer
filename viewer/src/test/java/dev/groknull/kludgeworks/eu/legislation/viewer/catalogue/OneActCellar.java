@@ -178,19 +178,19 @@ public class OneActCellar {
       int month,
       int day,
       Kind kind,
-      boolean partial,
+      boolean forPart,
       @Nullable Anchor from,
       @Nullable Integer days,
       String article) {
     var text =
-        (partial ? "MA/PART " : "")
+        (forPart ? "MA/PART " : "")
             + (from == null ? "" : "DATPUB +" + days + " ")
             + "V ART "
             + article;
     return new ActDate(
         LocalDate.of(year, month, day),
         kind,
-        partial,
+        forPart,
         new Clause(from, days, List.of(article(article)), List.of(), text));
   }
 

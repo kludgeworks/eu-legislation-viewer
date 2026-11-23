@@ -114,7 +114,7 @@ public record PreparingView(
    *
    * <ul>
    *   <li>"from 1 February 2016, Article 3"
-   *   <li>"in part from …"
+   *   <li>"a part from …"
    *   <li>"20 days after its publication, Article 2"
    * </ul>
    */
@@ -125,7 +125,7 @@ public record PreparingView(
         clause.provisions().stream()
             .map(ActDate.Provision::cited)
             .collect(Collectors.joining(", "));
-    return (date.partial() ? "in part " : "") + when + (where.isEmpty() ? "" : ", " + where);
+    return (date.forPart() ? "a part " : "") + when + (where.isEmpty() ? "" : ", " + where);
   }
 
   /**
@@ -163,7 +163,7 @@ public record PreparingView(
    *     starts from this value.
    * @param elapsed the same time, as the page shows it. For example, 4:12.
    * @param dates when the amended provisions apply, which Cellar gave with the act. For example,
-   *     "386 dates, one for each amended provision". The third step shows it, done.
+   *     "386 dates, one for each amended provision". The third phase shows it, done.
    */
   public record Progress(
       @Nullable String waiting,

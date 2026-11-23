@@ -194,7 +194,7 @@ public class MadeBySteps {
             .filter(each -> each.acts().contains(act))
             .findFirst()
             .orElseThrow(() -> new AssertionError(act.cited() + " is not named"));
-    assertThat(step.inPart()).contains(act);
+    assertThat(step.forPart()).contains(act);
     var applicability =
         Applicability.of(
                 comparing.act(),

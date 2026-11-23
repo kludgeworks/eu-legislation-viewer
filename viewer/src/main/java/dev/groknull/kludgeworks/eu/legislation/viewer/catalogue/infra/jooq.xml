@@ -7,7 +7,6 @@
      - The kind and anchor of an act date are ActDate.Kind and ActDate.Anchor.
      - The location and role of an amendment are Location and Amendment.Role.
      - The language and failure of an expression are Language and Failure.
-     - The texts of a step count are TextId.
      - Times are Instants.
      - Every tsvector column is a TsVector of the library libs/jooq-extension. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
@@ -21,7 +20,7 @@
             <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new</from>
             <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex</to>
           </lambdaConverter>
-          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_step\.act|catalogue_search_(stage_)?(work|expression)\.celex|catalogue_search_(stage_)?amendment\.(act|amends)</includeExpression>
+          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_entry\.act|catalogue_search_(stage_)?(work|expression)\.celex|catalogue_search_(stage_)?amendment\.(act|amends)</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -70,12 +69,12 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code|catalogue_search_(stage_)?expression\.language_code</includeExpression>
+          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_entry\.language_code|catalogue_search_(stage_)?expression\.language_code</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.failure|preparation_step\.failure</includeExpression>
+          <includeExpression>expression\.failure|preparation_entry\.failure</includeExpression>
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>

@@ -44,7 +44,8 @@ class AttributedTest {
     var attributed = of("02015R1998-20260322", "02015R1998-20261001", c, List.of());
 
     assertThat(steps(attributed)).containsExactly("replaced 2026/449");
-    assertThat(applying(attributed.applies().getFirst())).isInstanceOf(Applying.InParts.class);
+    assertThat(applying(attributed.applies().getFirst()))
+        .isInstanceOf(Applying.FromMoreThanOneDay.class);
   }
 
   @Test
@@ -77,7 +78,7 @@ class AttributedTest {
   @Test
   void namesAnActThatAnEarlierVersionIncludedByItsNewTagWhereAPartOfItAppliesInTheStep() {
     // As 2024/1619 on 2013/36 on 11 January 2026, for which Cellar lists no act. Here 2026/449 on
-    // 2015/1998: included from 22 March 2026, and in part from 1 October 2026. Cellar's listing of
+    // 2015/1998: included from 22 March 2026, and a part from 1 October 2026. Cellar's listing of
     // it in October is taken away.
     var amending = new ActIdentifier("32026R0449");
     var from = version("02015R1998-20260322");
@@ -175,7 +176,8 @@ class AttributedTest {
             // already after that date.
             amendments("32019R0103", "AN PO 11.3.2"));
 
-    assertThat(applying(attributed.applies().getFirst())).isInstanceOf(Applying.InParts.class);
+    assertThat(applying(attributed.applies().getFirst()))
+        .isInstanceOf(Applying.FromMoreThanOneDay.class);
   }
 
   @Test
@@ -341,7 +343,8 @@ class AttributedTest {
 
   @Test
   void placesActsThatReplacedAnOccurrenceTogetherInTheFirstVersionThatHasThemAll() {
-    // 2019/103 applies in parts, in the versions of 1 February 2019 and 31 December 2021. It
+    // 2019/103 applies from more than one day, in the versions of 1 February 2019 and 31 December
+    // 2021. It
     // replaced 11.1.2 together with 2019/1583. Only the second version has 2019/1583.
     var point =
         changed(
@@ -360,7 +363,7 @@ class AttributedTest {
   void placesTheActTheTagNamesLastAfterThoseOnlyCellarNames() {
     // The text keeps 4.1.3.2 as a kept deletion, under the deletion by 2019/103. Cellar has
     // 2017/815 replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies
-    // in parts, and its first part is before 2019/413.
+    // from more than one day, and its first part is before 2019/413.
     var kept = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", Modification.DELETED, null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();

@@ -75,7 +75,7 @@ class PostgresSearch implements Search {
   /** The weight of each class of word in a rank: D, C, B and A. */
   private static final RankWeights WEIGHTS = new RankWeights(0.05f, 0.15f, 0.6f, 1.0f);
 
-  // The columns of the matches, as the steps of the search name them.
+  // The columns of the matches, as the subqueries of the search name them.
   private static final Field<ActIdentifier> CELEX =
       field(name("celex"), CATALOGUE_SEARCH_WORK.CELEX.getDataType());
   private static final Field<Boolean> IN_FORCE = field(name("in_force"), SQLDataType.BOOLEAN);
@@ -317,7 +317,7 @@ class PostgresSearch implements Search {
                 : matches(expression.SEARCH_TSV, words));
   }
 
-  /** Returns the column {@code like} of the step {@code table}. */
+  /** Returns the column {@code like} of the subquery {@code table}. */
   private static <T> Field<T> column(Table<?> table, Field<T> like) {
     return Objects.requireNonNull(table.field(like), () -> table.getName() + " has no " + like);
   }

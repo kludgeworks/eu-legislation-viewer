@@ -11,17 +11,17 @@
      to the article that sets the day. The groups are the changes that apply from the same day. Each is a link that limits the page to
      its changes, and "All changes" removes the limit. The page shows them only where the changes
      are in two or more groups. The changes are in the order of the text. Changes that follow each other and have
-     the same state are one run: the run says the state, the date and the clause one time, and then
+     the same state are one sequence: the sequence says the state, the date and the clause one time, and then
      lists its provisions. Under a provision is the wording of its change: the provision as it reads
      in the first text with the act, with the inserted and the deleted words shown. htmx loads it
      from the comparison module when the fold of the provision opens. The folds are open when the
      page has few changes, and then htmx loads each wording when the page loads: a fold that is
      open at the start gives no toggle event that htmx gets. A provision whose wording the texts do not give shows by its name only.
      Each change has an anchor, so the history of a provision on Read can link to it.
-     A run that does not apply on the day has an amber bar.
+     A sequence that does not apply on the day has an amber bar.
      Where the first version with the act integrates another act too, htmx loads a separate list
-     below the runs: the changes that this act or the other act made, where the data does not say
-     which. Its heading is "By this act or by …". A run that
+     below the sequences: the changes that this act or the other act made, where the data does not say
+     which. Its heading is "By this act or by …". A sequence that
      applies has no bar. Where the data does not give the day, the bar is grey and broken. --%>
 @template.layout.page(frame = frame, title = amending.title(), content = @`
   <div id="page" data-view="history" hx-boost:inherited="target:#page select:#page swap:outerHTML">
@@ -40,15 +40,15 @@
           @endfor
         </nav>
       @endif
-      @if(!amending.runs().isEmpty())
+      @if(!amending.sequences().isEmpty())
         @if(!amending.ordered())
           <p class="hint">The text of ${amending.base()} is not prepared yet. The changes are in the order of the data, not of the text.</p>
         @endif
-        @for(var run : amending.runs())
-          <section class="run ${run.tone()}">
-            @if(run.statement() != null)<p class="statement">${run.statement()} <span class="size">${run.size()}</span></p>@endif
-            <ul class="changes-list${run.worded() ? " worded" : ""}">
-              @for(var change : run.changes())
+        @for(var sequence : amending.sequences())
+          <section class="sequence ${sequence.tone()}">
+            @if(sequence.statement() != null)<p class="statement">${sequence.statement()} <span class="size">${sequence.size()}</span></p>@endif
+            <ul class="changes-list${sequence.worded() ? " worded" : ""}">
+              @for(var change : sequence.changes())
                 @if(change.wording() != null)
                   <li id="${change.anchor()}">
                     <details class="wording" open="${amending.open()}" hx-get="${change.wording()}" hx-trigger="${amending.open() ? "load" : "toggle once"}" hx-target="find .wording-text" hx-swap="innerHTML">

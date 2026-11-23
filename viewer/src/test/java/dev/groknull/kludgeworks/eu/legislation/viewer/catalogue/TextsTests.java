@@ -80,14 +80,14 @@ class TextsTests {
     await().until(() -> kept(version.celex()), kept -> kept == 1);
     // The preparation settles once. It records what was done to each version as it happened.
     assertThat(prepared.took()).isPresent();
-    assertThat(prepared.steps())
+    assertThat(prepared.entries())
         .filteredOn(step -> step.celex().equals(version.celex()))
-        .extracting(Preparation.Step::kind)
-        .containsExactly(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.BUILT);
+        .extracting(Preparation.Entry::kind)
+        .containsExactly(Preparation.Entry.Kind.STARTED, Preparation.Entry.Kind.BUILT);
     assertThat(
-            prepared.steps().stream()
-                .filter(step -> step.kind() == Preparation.Step.Kind.BUILT)
-                .map(Preparation.Step::took))
+            prepared.entries().stream()
+                .filter(step -> step.kind() == Preparation.Entry.Kind.BUILT)
+                .map(Preparation.Entry::took))
         .allSatisfy(took -> assertThat(took).isNotNull());
   }
 
@@ -165,16 +165,16 @@ class TextsTests {
                 () -> texts.preparation(act, Language.FRA),
                 preparation ->
                     preparation.settledAt() != null
-                        && preparation.steps().stream()
-                            .anyMatch(step -> step.kind() == Preparation.Step.Kind.FAILED));
+                        && preparation.entries().stream()
+                            .anyMatch(step -> step.kind() == Preparation.Entry.Kind.FAILED));
     // The steps are either "started, then failed" or only "failed". The events arrive in any
     // order, and a text that failed does not start after that.
-    assertThat(prepared.steps())
+    assertThat(prepared.entries())
         .allSatisfy(step -> assertThat(step.celex()).isEqualTo(celex))
-        .extracting(Preparation.Step::kind)
+        .extracting(Preparation.Entry::kind)
         .isIn(
-            List.of(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED),
-            List.of(Preparation.Step.Kind.FAILED));
+            List.of(Preparation.Entry.Kind.STARTED, Preparation.Entry.Kind.FAILED),
+            List.of(Preparation.Entry.Kind.FAILED));
     assertThat(prepared.texts().get(consolidation()))
         .isInstanceOfSatisfying(
             Text.Failed.class,

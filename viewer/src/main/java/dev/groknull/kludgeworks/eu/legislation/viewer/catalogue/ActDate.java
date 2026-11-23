@@ -12,18 +12,18 @@ import org.jspecify.annotations.Nullable;
  * applies or takes effect, wholly or in part. For a directive, it can also be the date from which
  * the Member States apply it. It comes with the clause that sets it.
  *
- * <p>Cellar keeps these dates up to date when a later act moves one. For example, 2019/103 applies
- * in part from 31 December 2021, by its Article 2 as amended by 2020/910. The per-provision dates
- * of Cellar are not always up to date in this way.
+ * <p>Cellar keeps these dates up to date when a later act moves one. For example, a part of
+ * 2019/103 applies from 31 December 2021, by its Article 2 as amended by 2020/910. The
+ * per-provision dates of Cellar are not always up to date in this way.
  *
  * @param date the day, or null where Cellar has a placeholder or an impossible date. The clause
  *     still tells where the act sets the date.
  * @param kind what happens on it
- * @param partial whether it is for part of the act only. Cellar's code is {@code MA/PART}.
+ * @param forPart whether it is for a part of the act only. Cellar's code is {@code MA/PART}.
  * @param clause what sets it
  */
 @ValueObject
-public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clause clause) {
+public record ActDate(@Nullable LocalDate date, Kind kind, boolean forPart, Clause clause) {
 
   /** What happens on an act's date. */
   public enum Kind {

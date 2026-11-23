@@ -49,7 +49,7 @@ class SidenoteViewTest {
     var applies =
         new Applicability.Applies(
             A2026_449,
-            new Applying.InParts(
+            new Applying.FromMoreThanOneDay(
                 List.of(
                     new Applying.Start(LocalDate.of(2026, 3, 22), true, false),
                     new Applying.Start(LocalDate.of(2026, 10, 1), false, true)),
@@ -64,8 +64,8 @@ class SidenoteViewTest {
     var line = sidenote.dates().getFirst();
     assertThat(line.when())
         .isEqualTo(
-            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in parts: from 22 March 2026, its entry"
-                + " into force; in part from 1 October 2026");
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from more than one day: from 22 March"
+                + " 2026, its entry into force; a part from 1 October 2026");
     assertThat(line.clause())
         .isEqualTo(
             new Link(

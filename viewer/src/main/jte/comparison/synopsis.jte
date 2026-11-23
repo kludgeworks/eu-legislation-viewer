@@ -71,7 +71,7 @@
           <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, page = page)@else${occurrence}@endif</div>
           <div class="what" role="cell">
             @template.comparison.sidenote(shown = shown, sidenote = sidenote, pieces = pieces, named = false)
-            <nav class="steps" aria-label="Differences">@if(shown.number() > 1)<a href="#difference-${shown.number() - 1}" aria-label="Previous difference">↑</a>@else<span aria-hidden="true">↑</span>@endif@if(shown.number() < total)<a href="#difference-${shown.number() + 1}" aria-label="Next difference">↓</a>@else<span aria-hidden="true">↓</span>@endif</nav>
+            <nav class="moves" aria-label="Differences">@if(shown.number() > 1)<a href="#difference-${shown.number() - 1}" aria-label="Previous difference">↑</a>@else<span aria-hidden="true">↑</span>@endif@if(shown.number() < total)<a href="#difference-${shown.number() + 1}" aria-label="Next difference">↓</a>@else<span aria-hidden="true">↓</span>@endif</nav>
           </div>
         </div>
       @endif

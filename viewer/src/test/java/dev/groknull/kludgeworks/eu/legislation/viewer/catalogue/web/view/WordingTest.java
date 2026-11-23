@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -17,8 +18,21 @@ import java.util.List;
 import java.util.Map;
 import org.junit.jupiter.api.Test;
 
-/** Tests how a card states the period of an act as published that applies in part. */
+/**
+ * Tests how a card states the period of an act as published that applies in part, and the words for
+ * a change whose state on a day the data does not give. The acts of the second are 2019/413, which
+ * applies from a day that a clause sets by an event, and 2022/1190, which applies from more than
+ * one day.
+ */
 class WordingTest {
+  private static final ActIdentifier EVENT = new ActIdentifier("32019R0413");
+  private static final ActIdentifier PHASED = new ActIdentifier("32022R1190");
+  private static final ActDate UNDATED =
+      new ActDate(
+          null,
+          ActDate.Kind.APPLICATION,
+          false,
+          new ActDate.Clause(null, null, List.of(), List.of(), ""));
   private static final ActIdentifier AI = new ActIdentifier("32024R1689");
   private static final LocalDate IN_FORCE = LocalDate.of(2024, 8, 1);
   private static final LocalDate TODAY = LocalDate.of(2026, 11, 12);
@@ -79,5 +93,38 @@ class WordingTest {
         .startsWith(
             "In force from 1 August 2024 · applies in part from 2 February 2025; other parts from"
                 + " dates set in Article 113");
+  }
+
+  @Test
+  void saysThatTheDataHasNoDatesForAnActWithout() {
+    assertThat(Wording.unknown(EVENT, null)).isEqualTo("The data has no dates for this act.");
+  }
+
+  @Test
+  void saysThatTheDataDoesNotGiveTheDayWhereNoClauseIsNamed() {
+    assertThat(Wording.dates(EVENT, new Applying.SetBy(List.of(UNDATED))))
+        .isEqualTo("The data does not give the day from which it applies.");
+    assertThat(Wording.unknown(EVENT, new Applying.InForce(LocalDate.of(2019, 3, 15), List.of())))
+        .isEqualTo("The data does not give the day from which this applies.");
+  }
+
+  @Test
+  void saysNothingForAChangeOfAnActWhoseDayASetByClauseGives() {
+    assertThat(Wording.unknown(EVENT, new Applying.SetBy(List.of(UNDATED)))).isNull();
+  }
+
+  @Test
+  void saysThatTheDataDoesNotGiveThePartOfAnActFromMoreThanOneDay() {
+    var parts =
+        new Applying.FromMoreThanOneDay(
+            List.of(
+                new Applying.Start(LocalDate.of(2022, 8, 1), true, true),
+                new Applying.Start(LocalDate.of(2026, 10, 15), false, false)),
+            LocalDate.of(2022, 8, 1),
+            List.of());
+    assertThat(Wording.unknown(PHASED, parts))
+        .isEqualTo(
+            "The data does not say from which of these days this change applies: 1 August 2022 or"
+                + " 15 October 2026");
   }
 }

@@ -151,8 +151,8 @@ public record ProvisionView(
                   + " "
                   + (place.isEmpty() || place.equals(name) ? "it" : place)
                   + ".",
-              sentence(States.statement(act, change.act(), Act.days(change), day, past)),
-              States.tone(act.stateOn(change.act(), Act.days(change), day)),
+              sentence(StateWording.statement(act, change.act(), Act.days(change), day, past)),
+              StateWording.tone(act.stateOn(change.act(), Act.days(change), day)),
               amending.contains(change.act())
                   ? page
                       + "#"
@@ -170,8 +170,8 @@ public record ProvisionView(
               each.corrigendum() ? "corrected it." : "changed it.",
               each.corrigendum()
                   ? null
-                  : sentence(States.statement(act, each, Set.of(), day, past)),
-              each.corrigendum() ? null : States.tone(act.stateOn(each, Set.of(), day)),
+                  : sentence(StateWording.statement(act, each, Set.of(), day, past)),
+              each.corrigendum() ? null : StateWording.tone(act.stateOn(each, Set.of(), day)),
               null));
     }
     return lines;

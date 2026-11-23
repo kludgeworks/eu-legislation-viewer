@@ -27,8 +27,8 @@ import org.jspecify.annotations.Nullable;
  *     for example {@code 02015R1998-20260322}.
  * @param interim whether it is a consolidated version published without a PDF, which may still be
  *     revised
- * @param integrates the amending acts and corrigenda that Cellar lists as consolidated at this
- *     step. They are for display only, because Cellar's lists are not always exact.
+ * @param integrates the amending acts and corrigenda that Cellar lists as integrated in this
+ *     version. They are for display only, because Cellar's lists are not always exact.
  * @param languages the languages that its text is in as Formex, the only text that the viewer
  *     reads. These are its expressions in Cellar that have a Formex manifestation. They are not
  *     always all 24. For example, the versions of 2015/1998 have no Irish.

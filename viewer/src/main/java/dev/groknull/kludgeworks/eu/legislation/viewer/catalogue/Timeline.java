@@ -170,7 +170,7 @@ public final class Timeline {
    * Returns the versions in {@code language}, as a timeline of their own. {@link Version#languages}
    * tells which languages a version is in.
    *
-   * <p>A reader of that language steps through this timeline: its first version, its latest
+   * <p>A reader of that language moves through this timeline: its first version, its latest
    * version, and the versions either side of a version. A version without the language is passed
    * over. Returns empty if no version is in the language.
    */

@@ -117,9 +117,9 @@ class ActTest {
           List.of(),
           Map.of());
 
-  private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean partial) {
+  private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean forPart) {
     return new ActDate(
-        day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), ""));
   }
 
   private static Publication published(String title) {
@@ -160,7 +160,7 @@ class ActTest {
   }
 
   @Test
-  void anActAsPublishedThatAppliesInPartsSaysWhenEachPartStarts() {
+  void anActAsPublishedThatAppliesFromMoreThanOneDaySaysWhenEachPartStarts() {
     var published = PHASED.timeline().first();
     var inPart = LocalDate.of(2025, 2, 2);
     assertThat(PHASED.appliesLater(published)).hasValue(inPart);
@@ -199,11 +199,11 @@ class ActTest {
   }
 
   @Test
-  void anActWithADateForAPartAppliesInPartsUnlessCellarGivesTheDayOfTheProvision() {
+  void anActWithADateForAPartAppliesFromMoreThanOneDayUnlessCellarGivesTheDayOfTheProvision() {
     assertThat(ACT.applying(SUPPLEMENT, Set.of()))
         .get()
         .isInstanceOfSatisfying(
-            Applying.InParts.class,
+            Applying.FromMoreThanOneDay.class,
             parts -> {
               assertThat(parts.first()).isEqualTo(LocalDate.of(2009, 4, 22));
               assertThat(parts.starts())

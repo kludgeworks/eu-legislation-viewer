@@ -123,7 +123,7 @@ class ApiActControllerTests {
     assertThat(act.at("/inForce").asBoolean()).isTrue();
     assertThat(act.at("/_links/self/href").asString()).isEqualTo(ACT);
     assertThat(act.at("/_links/version-history/href").asString()).isEqualTo(ACT + "/versions");
-    assertThat(act.at("/_links/av:on/href").asString()).isEqualTo(ACT + "/on/{date}");
+    assertThat(act.at("/_links/av:on/href").asString()).isEqualTo(ACT + "/on/{day}");
     assertThat(act.at("/_links/av:on/templated").asBoolean()).isTrue();
     assertThat(act.at("/_links/av:amendments/href").asString()).isEqualTo(ACT + "/amendments");
   }
@@ -148,7 +148,7 @@ class ApiActControllerTests {
     assertThat(act.at("/_links/version-history/href").asString())
         .isEqualTo("http://localhost/api/acts/12016E%2FTXT/versions");
     assertThat(act.at("/_links/av:on/href").asString())
-        .isEqualTo("http://localhost/api/acts/12016E%2FTXT/on/{date}");
+        .isEqualTo("http://localhost/api/acts/12016E%2FTXT/on/{day}");
   }
 
   @Test
@@ -211,7 +211,7 @@ class ApiActControllerTests {
       throws UnsupportedEncodingException {
     var law = json(mvc.get().uri("/api/acts/32015R1998/on/2022-02-14").exchange());
 
-    assertThat(law.at("/date").asString()).isEqualTo("2022-02-14");
+    assertThat(law.at("/day").asString()).isEqualTo("2022-02-14");
     assertThat(law.at("/until").asString()).isEqualTo("2026-03-22");
     // 2015/1998 applies in full: its application is not deferred.
     assertThat(law.at("/deferredApplication").isNull()).isTrue();
@@ -232,7 +232,7 @@ class ApiActControllerTests {
     assertThat(problem.at("/type").asString())
         .isEqualTo("http://localhost/api/docs#before-first-version");
     assertThat(problem.at("/title").asString()).isEqualTo("Before the first version");
-    assertThat(problem.at("/date").asString()).isEqualTo("2015-11-10");
+    assertThat(problem.at("/day").asString()).isEqualTo("2015-11-10");
     assertThat(problem.at("/dateOfDocument").asString()).isEqualTo("2015-11-09");
     assertThat(problem.at("/firstApplies").asString()).isEqualTo("2015-11-30");
     assertThat(problem.at("/firstVersion").asString()).isEqualTo(ACT + "/versions/oj");
@@ -286,7 +286,7 @@ class ApiActControllerTests {
     assertThat(amendments.at("/amendments/0/from").asString()).isEqualTo("2019-02-01");
     assertThat(amendments.at("/dates/32019R0103/1/date").asString()).isEqualTo("2021-12-31");
     assertThat(amendments.at("/dates/32019R0103/1/kind").asString()).isEqualTo("application");
-    assertThat(amendments.at("/dates/32019R0103/1/partial").asBoolean()).isTrue();
+    assertThat(amendments.at("/dates/32019R0103/1/forPart").asBoolean()).isTrue();
     assertThat(amendments.at("/dates/32019R0103/1/clause").asString())
         .isEqualTo("MA/PART V ART 2 ET 32020R0910");
     assertThat(amendments.at("/_links/up/href").asString()).isEqualTo(ACT);

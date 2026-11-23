@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendmentsChanged;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendmentsUpdated;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LanguageAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
@@ -238,7 +238,7 @@ class RefreshTest {
             STORED.publications());
 
     assertThat(Refresh.of(STORED, Map.of(), read, NOW, WITHDRAWN_AFTER).events())
-        .containsExactly(new AmendmentsChanged(ACT));
+        .containsExactly(new AmendmentsUpdated(ACT));
   }
 
   /** Returns 2015/1998 with the consolidation of 22 March 2026 changed by {@code change}. */

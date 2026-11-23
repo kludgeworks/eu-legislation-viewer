@@ -77,11 +77,11 @@ public class ApplicabilitySteps {
             });
   }
 
-  @Then("it applies in parts")
-  public void appliesInParts(List<Applying.Start> starts) {
+  @Then("it applies from more than one day")
+  public void appliesFromMoreThanOneDay(List<Applying.Start> starts) {
     assertThat(applying())
         .isInstanceOfSatisfying(
-            Applying.InParts.class,
+            Applying.FromMoreThanOneDay.class,
             parts -> assertThat(parts.starts()).containsExactlyElementsOf(starts));
   }
 

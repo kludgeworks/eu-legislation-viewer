@@ -80,7 +80,7 @@ class ProvisionViewTest {
             .findFirst()
             .orElseThrow();
     assertThat(oldest.statement()).isEqualTo("Was not in force yet.");
-    assertThat(oldest.tone()).isEqualTo("off");
+    assertThat(oldest.tone()).isEqualTo("not-in-force");
     assertThat(oldest.href()).endsWith("/history/32017R0815?on=2017-05-01");
   }
 

@@ -155,8 +155,8 @@ public record HistoryView(
       boolean past,
       Language language) {
     var standing = act.standingOn(each, language, day);
-    var whole = standing.whole();
-    var counts = States.counts(standing, past);
+    var state = standing.state();
+    var counts = StateWording.counts(standing, past);
     var changes = act.changesBy(each, language).size();
     var subject = Subject.of(act, each, language);
     return new Row(
@@ -165,9 +165,9 @@ public record HistoryView(
         subject.language(),
         act.eurLex(each, language).toString(),
         journal(act, each),
-        States.label(whole, !act.datesOf(each).isEmpty(), past),
-        States.tone(whole),
-        States.dates(each, act.applying(each, Set.of()).orElse(null)),
+        StateWording.label(state, !act.datesOf(each).isEmpty(), past),
+        StateWording.tone(state),
+        Wording.dates(each, act.applying(each, Set.of()).orElse(null)),
         counts.isEmpty() ? null : counts,
         changes == 0 ? "Its changes" : changes == 1 ? "1 provision" : changes + " provisions",
         Links.amending(eli, each, kept, language));
@@ -200,12 +200,12 @@ public record HistoryView(
                       case Applying.From one ->
                           " It applies from "
                               + Dates.inWords(one.day())
-                              + States.clauseOn(act, id, one.day())
+                              + Wording.clauseOn(act, id, one.day())
                               + ".";
-                      case Applying.InParts parts ->
+                      case Applying.FromMoreThanOneDay parts ->
                           " Its first part applies from "
                               + Dates.inWords(parts.first())
-                              + States.clauseOn(act, id, parts.first())
+                              + Wording.clauseOn(act, id, parts.first())
                               + ".";
                       case Applying.SetBy _, Applying.InForce _ -> "";
                     })
@@ -225,6 +225,8 @@ public record HistoryView(
                   : " is in force and does not apply yet.")
               + from;
       case NOT_KNOWN -> cited + notKnown(act, day, past);
+      case IN_PART ->
+          throw new IllegalStateException("The state of one act on its own is never in part");
     };
   }
 
@@ -244,7 +246,7 @@ public record HistoryView(
       return inPart
           + " It applies in full from "
           + Dates.inWords(full.get())
-          + States.clauseOn(act, id, full.get())
+          + Wording.clauseOn(act, id, full.get())
           + ".";
     }
     var unknown = act.unknownDays();

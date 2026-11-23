@@ -244,13 +244,13 @@ a.chip:hover {
   color: var(--accent);
 }
 
-.ledger .what .steps {
+.ledger .what .moves {
   display: flex;
   gap: 6px;
   margin-top: 6px;
 }
 
-.ledger .what .steps > * {
+.ledger .what .moves > * {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -262,7 +262,7 @@ a.chip:hover {
   text-decoration: none;
 }
 
-.ledger .what .steps span {
+.ledger .what .moves span {
   opacity: 0.4;
 }
 

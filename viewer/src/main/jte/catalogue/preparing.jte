@@ -8,7 +8,7 @@
 <%-- Shows an act's page while the act is being prepared in its language. The page can be for a
      version or for a comparison. It has the act's head, with a mode switch that is not a link yet.
      Then come the progress panel and what is already known about the act.
-     The stream (hx-sse:connect) pushes the progress and the steps when they change.
+     The stream (hx-sse:connect) pushes the progress and the log when they change.
      htmx swaps each fragment by its id (hx-partial). When the stream sends done, htmx requests this
      address again with prepared set, so that the page's content fades in. It swaps that page in for
      this one, at the same address.

@@ -3,10 +3,10 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ConsecutiveTextsBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LanguageAdded;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Step;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Entry;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationCompleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationFailed;
@@ -51,8 +51,8 @@ import org.springframework.transaction.annotation.Transactional;
  * after a failed attempt, ready, or failed.
  *
  * <ul>
- *   <li>Each change to a text is a step of the preparation of its act. It publishes a {@link
- *       PreparationChanged} event.
+ *   <li>Each change to a text is an entry of the log of the preparation of its act. It publishes a
+ *       {@link PreparationChanged} event.
  *   <li>The last text to settle settles the preparation, once. This publishes {@link
  *       PreparationCompleted}, or {@link PreparationFailed} if no text was built.
  *   <li>To prepare an act starts its preparation, and queues and asks for the texts that are not
@@ -61,8 +61,8 @@ import org.springframework.transaction.annotation.Transactional;
  *   <li>To try an act again queues its failed texts again, where that may help, and asks for them
  *       again. It also starts the preparation again.
  *   <li>When a text is built, and the text of the version before or after it in the language is
- *       built too, it publishes a {@link NeighboursBuilt} event for each such pair. A reader will
- *       probably compare them, so another module can get ready before the reader asks.
+ *       built too, it publishes a {@link ConsecutiveTextsBuilt} event for each such pair. A reader
+ *       will probably compare them, so another module can get ready before the reader asks.
  * </ul>
  *
  * <p>The texts themselves are in the content module. The service asks it for the texts of the
@@ -189,7 +189,7 @@ class TextService implements Texts {
         preparation.map(PreparationStore.Kept::started).orElseGet(clock::instant),
         preparation.map(PreparationStore.Kept::settledAt).orElse(null),
         texts,
-        preparations.steps(act.id(), language),
+        preparations.entries(act.id(), language),
         waiting ? ingest.ahead(celexes, language) : 0);
   }
 
@@ -240,7 +240,7 @@ class TextService implements Texts {
           act.get(),
           started.celex(),
           started.language(),
-          Step.Kind.STARTED,
+          Entry.Kind.STARTED,
           started.attempt(),
           null);
     }
@@ -260,7 +260,7 @@ class TextService implements Texts {
           act.get(),
           deferred.celex(),
           deferred.language(),
-          Step.Kind.DEFERRED,
+          Entry.Kind.POSTPONED,
           deferred.attempt(),
           null);
     }
@@ -277,7 +277,7 @@ class TextService implements Texts {
           failed.language().code(),
           failed.failure());
       changed(
-          act.get(), failed.celex(), failed.language(), Step.Kind.FAILED, null, failed.failure());
+          act.get(), failed.celex(), failed.language(), Entry.Kind.FAILED, null, failed.failure());
     }
   }
 
@@ -302,7 +302,7 @@ class TextService implements Texts {
    * Prepares the text of a version in a language, which Cellar added or, {@code again},
    * republished. It is queued and asked for, whether or not the act was ever prepared in the
    * language. A text ready already stays as it is, and is read, until the new text replaces it in
-   * the content module. A text that failed is queued again. Each step is idempotent: an event
+   * the content module. A text that failed is queued again. Each of these is idempotent: an event
    * handed out twice asks for the text once, or converts it again to the same text.
    */
   private void prepareText(ActIdentifier act, String celex, Language language, boolean again) {
@@ -337,7 +337,7 @@ class TextService implements Texts {
     }
     if (expressions.keep(built.celex(), built.language())) {
       LOG.info("{} in {} is ready", built.celex(), built.language().code());
-      changed(act.get(), built.celex(), built.language(), Step.Kind.BUILT, null, null);
+      changed(act.get(), built.celex(), built.language(), Entry.Kind.BUILT, null, null);
     }
     var timeline = act.get().timeline().in(built.language());
     if (timeline.isEmpty()) {
@@ -359,24 +359,24 @@ class TextService implements Texts {
       // The content module no longer has it: nothing to compare.
       return;
     }
-    before.map(each -> stored.get(each.celex())).ifPresent(earlier -> neighbours(earlier, text));
-    after.map(each -> stored.get(each.celex())).ifPresent(later -> neighbours(text, later));
+    before.map(each -> stored.get(each.celex())).ifPresent(earlier -> consecutive(earlier, text));
+    after.map(each -> stored.get(each.celex())).ifPresent(later -> consecutive(text, later));
   }
 
   /**
-   * Records that a text of the act changed. The change is a step of its preparation in the
-   * language, and it may settle the preparation. The preparation is locked first, so the reference
-   * of the step to it waits on no other change.
+   * Records that a text of the act changed. The change is an entry of the log of its preparation in
+   * the language, and it may settle the preparation. The preparation is locked first, so the
+   * reference of the entry to it waits on no other change.
    */
   private void changed(
       Act act,
       String celex,
       Language language,
-      Step.Kind kind,
+      Entry.Kind kind,
       @Nullable Integer attempt,
       @Nullable Failure failure) {
     var kept = preparations.lock(act.id(), language);
-    preparations.step(act.id(), language, celex, kind, attempt, failure);
+    preparations.entry(act.id(), language, celex, kind, attempt, failure);
     kept.ifPresent(each -> settle(act, language, each));
     events.publishEvent(new PreparationChanged(act.id(), language));
   }
@@ -389,10 +389,10 @@ class TextService implements Texts {
     return expressions.texts(celexes, language, content.texts(celexes, language));
   }
 
-  /** Tells that {@code earlier} and {@code later}, texts of neighbouring versions, are built. */
-  private void neighbours(TextId earlier, TextId later) {
+  /** Tells that {@code earlier} and {@code later}, texts of consecutive versions, are built. */
+  private void consecutive(TextId earlier, TextId later) {
     LOG.debug("Neighbouring texts {} and {} are built", earlier, later);
-    events.publishEvent(new NeighboursBuilt(earlier, later));
+    events.publishEvent(new ConsecutiveTextsBuilt(earlier, later));
   }
 
   private static List<Version> versions(Act act, Language language) {

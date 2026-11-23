@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Step;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Entry;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
-/** The acts' preparations, each in a language, with their steps. */
+/** The acts' preparations, each in a language, with their logs. */
 public interface PreparationStore {
 
   /** Starts the act's preparation in the language, unless it has started. */
@@ -37,27 +37,27 @@ public interface PreparationStore {
   boolean settle(ActIdentifier act, Language language, boolean prepared);
 
   /**
-   * Starts the act's settled preparation in the language again, from now, and removes its steps. It
+   * Starts the act's settled preparation in the language again, from now, and empties its log. It
    * does nothing if the act is being prepared.
    *
    * @return whether it started again
    */
   boolean restart(ActIdentifier act, Language language);
 
-  /** Adds a step, if the act is being prepared in the language. */
-  void step(
+  /** Adds an entry to the log, if the act is being prepared in the language. */
+  void entry(
       ActIdentifier act,
       Language language,
       String celex,
-      Step.Kind kind,
+      Entry.Kind kind,
       @Nullable Integer attempt,
       @Nullable Failure failure);
 
   /**
-   * Returns its steps, in the order they were taken. A built or failed step has the attempt of the
+   * Returns its log, in the order it was written. A built or failed entry has the attempt of the
    * last start of its text, and the time since that start.
    */
-  List<Step> steps(ActIdentifier act, Language language);
+  List<Entry> entries(ActIdentifier act, Language language);
 
   /** A preparation as stored. */
   record Kept(Instant started, @Nullable Instant settledAt) {}

@@ -85,9 +85,9 @@ class DifferencesPagesTests {
     assertThat(sidenote.select(".made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(sidenote.select(".applies").text())
         .isEqualTo(
-            "2026/449 applies in parts: from 22 March 2026, its entry into force; in part from 1"
-                + " October 2026 · Article 2 of 2026/449 ↗ (opens EUR-Lex) says which part from"
-                + " when");
+            "2026/449 applies from more than one day: from 22 March 2026, its entry into force; a"
+                + " part from 1 October 2026 · Article 2 of 2026/449 ↗ (opens EUR-Lex) says which"
+                + " part from when");
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
     assertThat(sidenote.select(".before")).isEmpty();
@@ -180,7 +180,7 @@ class DifferencesPagesTests {
         .isEqualTo(first.select(".to ins.diff").text())
         .isNotEmpty();
     assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
-    assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
+    assertThat(first.select(".what .moves a").eachAttr("href")).containsExactly("#difference-2");
     // Its neighbours are the same in both texts. Each shows what last made it as it is. In a run
     // of more than three, the occurrences between the first and the last are folded.
     assertThat(synopsis.select(".ledger-fold > summary").eachText())
