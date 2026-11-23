@@ -26,7 +26,7 @@ on:
         type: string
     secrets:
       app_private_key:
-        required: false
+        required: true
 
 permissions:
   contents: read
@@ -49,7 +49,7 @@ jobs:
           version: ${{ inputs.mise_version }}
           cache: false
 
-      - name: Exercise a real upgrade and cold locked install on manual runs
+      - name: Download and upgrade pack, then test a cold locked install (manual minor/patch run)
         if: github.event_name == 'workflow_dispatch' && inputs.branch == 'automation/dependencies-minor' && fromJSON(inputs.changes)[0] != null
         run: bats tools/test/integration/mise_dependency_upgrade.bats
 
@@ -78,8 +78,7 @@ jobs:
     runs-on: ubuntu-26.04
     timeout-minutes: 10
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         id: checkout
@@ -105,8 +104,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 tools/build/verify_dependency_patch.py "$RUNNER_TEMP/dependency-update/dependencies.patch" "$CHANGES" >> "$GITHUB_OUTPUT"
 
-      - name: Mint a branch token for workflow-file updates
-        if: steps.verify.outputs.workflows_changed == 'true'
+      - name: Mint Kludgebot token for branch and PR publication
+        if: steps.checkout.outputs.commit == inputs.base
         id: app-token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
@@ -115,14 +114,15 @@ jobs:
           private-key: ${{ secrets.app_private_key }}
           # Omit owner and repositories to scope the token to this repository.
           permission-contents: write
-          permission-workflows: write
+          permission-pull-requests: write
+          permission-workflows: ${{ steps.verify.outputs.workflows_changed == 'true' && 'write' || '' }}
 
       - name: Open, refresh or retire the pull request
         if: steps.checkout.outputs.commit == inputs.base
         uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
         with:
-          # A workflow-writing token is needed to push updated .github/workflows files.
-          branch-token: ${{ steps.app-token.outputs.token || github.token }}
+          # Using the App for PR creation and branch pushes triggers pull_request CI.
+          token: ${{ steps.app-token.outputs.token }}
           branch: ${{ inputs.branch }}
           base: main
           delete-branch: true

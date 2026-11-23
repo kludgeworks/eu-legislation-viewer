@@ -139,8 +139,17 @@ def report_skipped(skipped):
     if summary and skipped:
         with open(summary, "a") as output:
             print("### Pins outside this update plan\n", file=output)
+            coordinated = []
             for pin, reason in sorted(skipped):
-                print(f"- `{pin}` — {reason}", file=output)
+                if reason == "coordinated toolchain pin":
+                    coordinated.append(pin)
+                else:
+                    print(f"- `{pin}` — {reason}", file=output)
+            if coordinated:
+                print("\n<details><summary>Coordinated toolchain pins</summary>\n", file=output)
+                for pin in coordinated:
+                    print(f"- `{pin}`", file=output)
+                print("\n</details>", file=output)
 
 
 def discover():
@@ -213,6 +222,17 @@ def pr_body(changes):
             if before != after
         )
         rows.append(f"| {source} | `{name}` | `{old}` | `{new}` | {level} |")
+    if any(kind == "bazel" for kind, *_ in changes):
+        rows.extend(
+            [
+                "",
+                (
+                    "Review the resolved Bazel module graph and Maven transitive version changes. "
+                    "The verifier checks the Bazel lockfile format and rejects Maven checksum or "
+                    "repository changes for artifacts that retain their version."
+                ),
+            ]
+        )
     return "\n".join(rows)
 
 

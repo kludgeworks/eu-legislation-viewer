@@ -60,8 +60,7 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     name: ${{ matrix.title }}
     permissions:
-      contents: write
-      pull-requests: write
+      contents: read
     uses: ./.github/workflows/publish-dependency-update.yml
     with:
       base: ${{ needs.plan.outputs.base }}

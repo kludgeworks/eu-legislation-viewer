@@ -75,12 +75,12 @@ assert existing in [job["branch"] for job in major_jobs]
 for job in major_jobs:
     change, = job["changes"]
     assert change[2].split(".")[0] != change[3].split(".")[0]
-    assert len(job["body"].splitlines()) == 3
+    assert len(job["body"].split("\n\n")[0].splitlines()) == 3
     assert f"| `{change[1]}` | `{change[2]}` | `{change[3]}` | Major |" in job["body"]
 assert len({job["changes"][0][1] for job in major_jobs}) == 3
 minor_job, = [job for job in jobs if job["branch"] == planner["MINOR_BRANCH"]]
 assert len(minor_job["changes"]) == 6
-assert len(minor_job["body"].splitlines()) == 8
+assert len(minor_job["body"].split("\n\n")[0].splitlines()) == 8
 assert "| Maven | `org:lib` | `2.0.0` | `2.1` | Minor |" in minor_job["body"]
 assert "| mise | `a` | `1.0` | `1.0.1` | Patch |" in minor_job["body"]
 assert {c[0] for c in minor_job["changes"]} == {"bazel", "mise"}
@@ -199,5 +199,66 @@ for contents, extra, valid in [(new, False, True), (new + "  - run: echo extra\n
 artifact.write_bytes(b"")
 assert not publisher.verify_patch(artifact, [])
 assert not git("diff","--cached")
+PY
+}
+
+@test "mise locks can change only the planned tool version; other pins retain their URLs and checksums" {
+	VERIFY="$project/tools/build" python3 -B - <<'PY'
+import os, sys
+from copy import deepcopy
+sys.path.insert(0, os.environ["VERIFY"])
+from verify_dependency_patch import verify_mise_lock
+
+def entry(version):
+    return {"version": version, "backend": "github:example/tool", "specifiers": [version],
+            "platforms.linux-x64": {"url": "https://example.com/tool", "checksum": "original"}}
+
+before = {"lockfile_version": 4, "tools": {"tool": [entry("1.0")], "other": [entry("3.0")]}}
+good = deepcopy(before)
+good["tools"]["tool"] = [entry("1.1")]
+planned = {"tool": ("1.0", "1.1")}
+verify_mise_lock(before, good, planned)
+for mutate in (
+    lambda lock: lock["tools"]["other"][0]["platforms.linux-x64"].update(url="https://elsewhere.invalid/tool"),
+    lambda lock: lock["tools"]["other"][0]["platforms.linux-x64"].update(checksum="replaced"),
+    lambda lock: lock["tools"]["tool"][0].update(version="2.0"),
+    lambda lock: lock["tools"].pop("other"),
+    lambda lock: lock.update(lockfile_version=5),
+):
+    bad = deepcopy(good)
+    mutate(bad)
+    try:
+        verify_mise_lock(before, bad, planned)
+    except ValueError:
+        continue
+    raise AssertionError("unplanned mise lock edit passed verification")
+PY
+}
+
+@test "Maven repins may upgrade transitives but cannot replace the bytes or source of an unchanged version" {
+	VERIFY="$project/tools/build" python3 -B - <<'PY'
+import os, sys
+from copy import deepcopy
+sys.path.insert(0, os.environ["VERIFY"])
+from verify_dependency_patch import verify_maven_lock
+
+artifact = {"version": "1.0", "shasums": {"jar": "old"}}
+before = {"version": "2", "artifacts": {"g:a": artifact}, "repositories": {
+    "https://one/": ["g:a","g:a:jar:data"], "https://two/": []}}
+good = deepcopy(before)
+good["artifacts"]["g:a"] = {"version": "1.1", "shasums": {"jar": "new"}}
+verify_maven_lock(before, good)
+for mutate in (
+    lambda l: l["artifacts"]["g:a"]["shasums"].update(jar="changed"),
+    lambda l: l["repositories"]["https://two/"].append("g:a:jar:data"),
+    lambda l: l["repositories"].update({"https://unplanned/": ["g:a"]}),
+):
+    bad = deepcopy(before)
+    mutate(bad)
+    try:
+        verify_maven_lock(before, bad)
+    except ValueError:
+        continue
+    raise AssertionError("Maven artifact replacement passed verification")
 PY
 }

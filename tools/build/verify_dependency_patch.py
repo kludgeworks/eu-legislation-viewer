@@ -26,6 +26,61 @@ def release_pin(repo, version):
     return f"{sha} # {tag}"
 
 
+def verify_mise_lock(before, after, planned):
+    if {k: v for k, v in before.items() if k != "tools"} != {
+        k: v for k, v in after.items() if k != "tools"
+    }:
+        raise ValueError("Unplanned mise lock metadata change")
+    old_tools, new_tools = before["tools"], after["tools"]
+    if old_tools.keys() != new_tools.keys():
+        raise ValueError("Unplanned change to the locked mise tool inventory")
+    for name, old_entries in old_tools.items():
+        new_entries = new_tools[name]
+        if name not in planned:
+            if new_entries != old_entries:
+                raise ValueError(f"Unplanned mise lock change for {name}")
+            continue
+        old, new = planned[name]
+        previous = [entry for entry in old_entries if entry["version"] == old]
+        updated = [entry for entry in new_entries if entry["version"] == new]
+        if (
+            len(previous) != 1
+            or len(updated) != 1
+            or updated[0]["backend"] != previous[0]["backend"]
+            or updated[0]["specifiers"] != [new]
+            or [e for e in old_entries if e["version"] != old]
+            != [e for e in new_entries if e["version"] != new]
+        ):
+            raise ValueError(f"Unexpected locked versions or backend for {name}")
+    if not planned.keys() <= new_tools.keys():
+        raise ValueError("Missing planned mise tool in lock")
+
+
+def maven_sources(lock):
+    # Repository entries can identify a classifier, e.g. org.xmlresolver:xmlresolver:jar:data.
+    sources = {}
+    for url, coordinates in lock["repositories"].items():
+        for coordinate in coordinates:
+            artifact = ":".join(coordinate.split(":")[:2])
+            sources.setdefault(artifact, {}).setdefault(coordinate, []).append(url)
+    return sources
+
+
+def verify_maven_lock(before, after):
+    if (
+        after["version"] != before["version"]
+        or not after["repositories"].keys() <= before["repositories"].keys()
+    ):
+        raise ValueError("Unexpected Maven lock format or repository URL")
+    old_sources, new_sources = maven_sources(before), maven_sources(after)
+    for coordinate in before["artifacts"].keys() & after["artifacts"].keys():
+        old, new = before["artifacts"][coordinate], after["artifacts"][coordinate]
+        if old["version"] == new["version"] and (
+            old != new or old_sources.get(coordinate) != new_sources.get(coordinate)
+        ):
+            raise ValueError(f"Immutable Maven artifact changed: {coordinate}:{old['version']}")
+
+
 def verify_patch(patch, changes):
     mise = {n: (o, v) for kind, n, o, v in changes if kind == "mise"}
     bazel = {(n, o): v for kind, n, o, v in changes if kind == "bazel"}
@@ -63,6 +118,8 @@ def verify_patch(patch, changes):
     changed = git("diff", "--cached", "--no-renames", "--name-only", "-z").decode().split("\0")[:-1]
     if not expected.keys() <= set(changed):
         raise ValueError("Patch omits planned pin changes")
+    if mise and "mise.lock" not in changed:
+        raise ValueError("Patch omits the planned mise lock update")
     for name in changed:
         path = Path(name)
         nested_lock = (
@@ -79,6 +136,7 @@ def verify_patch(patch, changes):
         if name not in expected and name not in lockfiles and not nested_lock:
             raise ValueError(f"Unplanned path: {name}")
         entry = git("ls-files", "--stage", "--", name)
+        # A deleted per-tool lock has no entry in the proposed index.
         if not entry and nested_lock:
             continue
         # The committed Maven lock is 100755. Preserve existing modes and only add 100644 files.
@@ -86,7 +144,17 @@ def verify_patch(patch, changes):
         mode = baseline[0] if baseline else b"100644"
         if mode not in {b"100644", b"100755"} or not entry.startswith(mode + b" "):
             raise ValueError(f"Missing file or unexpected mode: {name}")
-        if name.endswith(".json") or name == "MODULE.bazel.lock":
+        if name == "mise.lock":
+            import tomllib
+
+            verify_mise_lock(
+                tomllib.loads(path.read_text()),
+                tomllib.loads(git("show", f":{name}").decode()),
+                mise,
+            )
+        elif name == "maven_install.json":
+            verify_maven_lock(json.loads(path.read_bytes()), json.loads(git("show", f":{name}")))
+        elif name.endswith(".json") or name == "MODULE.bazel.lock":
             json.loads(git("show", f":{name}"))
         if name in expected:
             actual = git("show", f":{name}").decode()
