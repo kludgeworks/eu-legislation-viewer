@@ -57,7 +57,13 @@ class AttributionService implements Attributions {
     for (var difference : comparison.get().differences()) {
       found.add(
           Attributed.of(
-              act, included, from, to, difference, Attribution.amendmentsOf(amended, difference)));
+              act,
+              included,
+              from,
+              to,
+              difference,
+              Attribution.amendmentsOf(amended, difference),
+              Attribution.removalsOf(amended, difference)));
     }
     var unattributed =
         found.stream()

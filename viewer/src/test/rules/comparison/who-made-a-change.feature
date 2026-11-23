@@ -316,12 +316,13 @@ Feature: Who made a change, and from when
         | AP     | partial repeal   | deleted      |
         | M      | amendment        | amended      |
 
-  Rule: act-changes-only-what-the-text-has · An act changes only what the text has
-    An act can change an occurrence only while the text has it. So an amendment counts for an
-    occurrence only if the occurrence is in the text when the amendment applies: an act that
-    changed the occurrence around a deleted occurrence after the deletion did not change it.
+  Rule: act-changes-only-what-the-law-has · An act changes only what the law has
+    An act can change an occurrence only while the law has it: up to the act that deleted it, as
+    Cellar records it. So an act that changed the occurrence around a deleted occurrence after the
+    deletion did not change it. A consolidated text can still print an occurrence that an act
+    deleted: the texts of 2015/1998 from 2020 to 2021 print points 6.5.5 and 6.5.6, which
+    2017/815 deleted.
 
-    @known-bug @ISS-270
     Example: A point that an act deleted takes no later amendment of the point around it
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 1 January 2026
       And the difference at the deleted point 6.5.5

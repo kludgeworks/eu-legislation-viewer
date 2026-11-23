@@ -36,7 +36,7 @@ class RulesAppliedTest {
                 Example: Three
                   Then it is told
 
-              Rule: act-changes-only-what-the-text-has · An act changes only what the text has
+              Rule: act-changes-only-what-the-law-has · An act changes only what the law has
                 @known-bug @ISS-270
                 Example: Four
                   Then it is told

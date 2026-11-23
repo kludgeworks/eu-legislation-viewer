@@ -78,6 +78,8 @@ public record Attributed(
    *     built texts tag first
    * @param amendments Cellar's amendments of the occurrence, by the acts between the two versions
    *     ({@link Attribution#amendmentsOf})
+   * @param removals Cellar's amendments that take the occurrence out of the text ({@link
+   *     Attribution#removalsOf})
    */
   public static Attributed of(
       Act act,
@@ -85,8 +87,9 @@ public record Attributed(
       Version from,
       Version to,
       Difference difference,
-      List<Amendment> amendments) {
-    var attribution = Attribution.of(act, included, from, to, difference, amendments);
+      List<Amendment> amendments,
+      List<Amendment> removals) {
+    var attribution = Attribution.of(act, included, from, to, difference, amendments, removals);
     var applies = new ArrayList<Applicability>();
     if (attribution.steps().isEmpty()) {
       for (var each : attribution.candidates()) {

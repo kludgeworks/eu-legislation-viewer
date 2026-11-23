@@ -143,7 +143,8 @@ public class OneActSteps {
                         from,
                         to,
                         difference,
-                        Attribution.amendmentsOf(amended, difference))))
+                        Attribution.amendmentsOf(amended, difference),
+                        Attribution.removalsOf(amended, difference))))
         .toList();
   }
 }

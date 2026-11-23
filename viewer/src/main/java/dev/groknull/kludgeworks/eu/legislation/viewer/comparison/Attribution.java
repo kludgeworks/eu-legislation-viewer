@@ -107,6 +107,47 @@ public record Attribution(
   }
 
   /**
+   * Returns Cellar's amendments that take the occurrence of {@code difference} out of the text: a
+   * deletion or a repeal at the occurrence, or at an occurrence around it. An amendment at an
+   * occurrence in it does not take it out. Empty for a difference that is not deleted.
+   */
+  public static List<Amendment> removalsOf(Amended amended, Difference difference) {
+    if (difference.kind() != Difference.Kind.DELETED) {
+      return List.of();
+    }
+    return amended.of(difference.eId(), false).stream()
+        .filter(each -> each.role().removes())
+        .toList();
+  }
+
+  /**
+   * Returns which acts can have changed the occurrence. An act changes an occurrence only while the
+   * law has it. If {@code removals}, Cellar's deletions and repeals, take the occurrence out of the
+   * law, the law has it up to the first version after {@code from} that includes one of them. A
+   * consolidated text can still print it after that. An act that a later version first includes
+   * changed the occurrence around it, or what took its place, not the occurrence. If nothing takes
+   * it out, each act can have changed it.
+   */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "act-changes-only-what-the-law-has")
+  private static Predicate<ActIdentifier> whileTheLawHasIt(
+      Inclusions included, Version from, Version to, List<Amendment> removals) {
+    var removed =
+        removals.stream()
+            .map(each -> Applicability.firstIncluding(included, from, to, each.act()))
+            .flatMap(Optional::stream)
+            .map(Version::date)
+            .min(Comparator.naturalOrder());
+    if (removed.isEmpty()) {
+      return act -> true;
+    }
+    var last = removed.get();
+    return act ->
+        Applicability.firstIncluding(included, from, to, act)
+            .map(version -> !version.date().isAfter(last))
+            .orElse(true);
+  }
+
+  /**
    * Returns the attribution of a difference for which nothing names an act. If two or more acts
    * that are not corrigenda are between the two versions, and one version first includes them all,
    * one of them made it: they are the candidates, in the order of that version. If not, no act is
@@ -148,6 +189,8 @@ public record Attribution(
    * @param included the acts that each version includes: Cellar's lists, and the acts that the
    *     built texts tag first
    * @param amendments Cellar's amendments of the occurrence, by the acts between the two versions
+   * @param removals Cellar's amendments that take the occurrence out of the text ({@link
+   *     #removalsOf}). No act after them changed it ({@link #whileTheLawHasIt}).
    */
   @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "only-acts-between-the-texts")
   @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "tags-else-cellar")
@@ -157,10 +200,15 @@ public record Attribution(
       Version from,
       Version to,
       Difference difference,
-      List<Amendment> amendments) {
+      List<Amendment> amendments,
+      List<Amendment> removals) {
     var between = included.between(from, to);
+    var stands = whileTheLawHasIt(included, from, to, removals);
     var parts = parts(act, included, from, to, difference, between);
-    var tagged = acts(difference.tags(), each -> between.contains(each) || parts.containsKey(each));
+    var tagged =
+        acts(
+            difference.tags(),
+            each -> (between.contains(each) || parts.containsKey(each)) && stands.test(each));
     var taggedVersions =
         tagged.keySet().stream()
             .map(
@@ -174,6 +222,7 @@ public record Attribution(
       var each = amendment.act();
       // Leave out the act if the tags name an act of the same version. The tags take priority.
       if (between.contains(each)
+          && stands.test(each)
           && !made.containsKey(each)
           && Applicability.firstIncluding(included, from, to, each)
               .filter(taggedVersions::contains)

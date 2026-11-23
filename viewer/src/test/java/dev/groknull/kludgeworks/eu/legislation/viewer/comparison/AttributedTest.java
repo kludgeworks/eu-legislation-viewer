@@ -59,7 +59,7 @@ class AttributedTest {
     var from = version("02015R1998-20260322");
     var to = version("02015R1998-20261001");
 
-    var listed = Attributed.of(AVSEC, LISTED, from, to, c, List.of());
+    var listed = Attributed.of(AVSEC, LISTED, from, to, c, List.of(), List.of());
     var included =
         Attributed.of(
             AVSEC,
@@ -67,6 +67,7 @@ class AttributedTest {
             from,
             to,
             c,
+            List.of(),
             List.of());
 
     assertThat(listed.attribution().acts()).doesNotContain(tagged);
@@ -104,12 +105,15 @@ class AttributedTest {
             List.of(new Tag("32019R0103", Modification.REPLACED, null)),
             List.of());
 
-    var named = Attributed.of(AVSEC, included, from, to, newTag, List.of());
+    var named = Attributed.of(AVSEC, included, from, to, newTag, List.of(), List.of());
 
     assertThat(steps(named)).containsExactly("replaced 2026/449");
     assertThat(named.applies().getFirst().toString()).contains("2026-10-01");
     // No part of 2019/103 applies in the step: its tag is old, not new.
-    assertThat(Attributed.of(AVSEC, included, from, to, noPart, List.of()).attribution().acts())
+    assertThat(
+            Attributed.of(AVSEC, included, from, to, noPart, List.of(), List.of())
+                .attribution()
+                .acts())
         .isEmpty();
   }
 
@@ -473,7 +477,8 @@ class AttributedTest {
 
   private static Attributed of(
       String from, String to, Difference difference, List<Amendment> amendments) {
-    return Attributed.of(AVSEC, LISTED, version(from), version(to), difference, amendments);
+    return Attributed.of(
+        AVSEC, LISTED, version(from), version(to), difference, amendments, List.of());
   }
 
   /** Returns the steps of {@code attributed} as words: the modification, then the acts. */

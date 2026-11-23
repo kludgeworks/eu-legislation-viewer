@@ -146,7 +146,7 @@ class RulesWikiTest {
                 Example: A point takes the amendment of the point around it
                   Then the steps are told
 
-              Rule: act-changes-only-what-the-text-has · An act changes only what the text has
+              Rule: act-changes-only-what-the-law-has · An act changes only what the law has
                 @known-bug @ISS-270
                 Example: A point that an act deleted
                   Then the steps are told

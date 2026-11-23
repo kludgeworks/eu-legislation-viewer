@@ -40,6 +40,7 @@ public class MadeBySteps {
   private @Nullable Set<LocalDate> built;
   private @Nullable Version appeared;
   private List<Amendment> amendments = List.of();
+  private List<Amendment> removals = List.of();
   private Attribution attribution = Attribution.NONE;
 
   public MadeBySteps(Comparing comparing) {
@@ -59,17 +60,17 @@ public class MadeBySteps {
             .orElseThrow(() -> new AssertionError("No difference at " + place.words()));
     assertThat(found.kind()).as(place.words()).isEqualTo(expected);
     difference = found;
-    amendments =
-        Attribution.amendmentsOf(
-            comparing
-                .act()
-                .amended(
-                    comparing.from(),
-                    comparing.to(),
-                    List.copyOf(earlier.byEId().keySet()),
-                    List.copyOf(later.byEId().keySet()),
-                    Language.ENG),
-            found);
+    var amended =
+        comparing
+            .act()
+            .amended(
+                comparing.from(),
+                comparing.to(),
+                List.copyOf(earlier.byEId().keySet()),
+                List.copyOf(later.byEId().keySet()),
+                Language.ENG);
+    amendments = Attribution.amendmentsOf(amended, found);
+    removals = Attribution.removalsOf(amended, found);
   }
 
   @When("the reader asks who made it")
@@ -81,7 +82,8 @@ public class MadeBySteps {
             comparing.from(),
             comparing.to(),
             Objects.requireNonNull(difference, "no difference given"),
-            amendments);
+            amendments,
+            removals);
   }
 
   @Then("the tags of the difference are")
