@@ -232,13 +232,13 @@ public record Attribution(
    */
   @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "chapter-the-annex-keeps-flat")
   public static List<Difference> madeIn(
-      List<Summary.Attributed> attributed, List<String> places, ActIdentifier act) {
+      List<Attributed> attributed, List<String> places, ActIdentifier act) {
     return attributed.stream()
         .filter(
             each ->
                 places.stream().anyMatch(place -> Location.holds(place, each.difference().eId())))
         .filter(each -> each.attribution().acts().contains(act))
-        .map(Summary.Attributed::difference)
+        .map(Attributed::difference)
         .toList();
   }
 

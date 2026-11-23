@@ -27,7 +27,7 @@ public record Alternatives(List<Difference> differences, List<ActIdentifier> oth
 
   /** Returns the differences of {@code attributed} that {@code act} or another act made. */
   @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "this-act-or-another")
-  public static Alternatives of(ActIdentifier act, List<Summary.Attributed> attributed) {
+  public static Alternatives of(ActIdentifier act, List<Attributed> attributed) {
     var differences = new ArrayList<Difference>();
     var others = new LinkedHashSet<ActIdentifier>();
     for (var each : attributed) {

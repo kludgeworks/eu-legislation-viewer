@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import io.cucumber.java.en.Given;
@@ -37,7 +38,7 @@ public class AttributionSteps {
   }
 
   @Given("the page shows these differences")
-  public void thePageShows(List<Summary.Attributed> shown) {
+  public void thePageShows(List<Attributed> shown) {
     summary = Summary.of(shown);
   }
 

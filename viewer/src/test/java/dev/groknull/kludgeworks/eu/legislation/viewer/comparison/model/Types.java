@@ -3,13 +3,13 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import io.cucumber.java.DataTableType;
@@ -125,8 +125,8 @@ public class Types {
    * deleted words, and the acts that made it.
    */
   @DataTableType
-  public Summary.Attributed shown(Map<String, String> row) {
-    return new Summary.Attributed(
+  public Attributed shown(Map<String, String> row) {
+    return new Attributed(
         difference(
             Kind.valueOf(cell(row, "kind").toUpperCase(Locale.ROOT)),
             Integer.parseInt(cell(row, "inserted words")),

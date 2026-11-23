@@ -12,6 +12,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/rules",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_jmolecules_jmolecules_events",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
@@ -21,7 +22,8 @@ java_library(
 )
 
 # application/
-# The comparison module's application ring: comparing two stored texts, and keeping the comparisons
+# The comparison module's application ring: comparing two stored texts, keeping the comparisons, and
+# finding who made each difference
 java_library(
     name = "application",
     srcs = glob(["application/*.java"]),
@@ -31,6 +33,7 @@ java_library(
         ":model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:io_micrometer_micrometer_observation",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",

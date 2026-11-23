@@ -8,11 +8,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -33,7 +33,7 @@ public class OneActSteps {
   private final Comparing comparing;
 
   private @Nullable Inclusion inclusion;
-  private List<Summary.Attributed> unnamed = List.of();
+  private List<Attributed> unnamed = List.of();
   private @Nullable Alternatives alternatives;
   private List<Difference> changes = List.of();
 
@@ -91,7 +91,7 @@ public class OneActSteps {
             .in(List.copyOf(later.byEId().keySet()))
             .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
     assertThat(at.eIds()).as(place.words()).hasSize(1);
-    var differences = attributed.stream().map(Summary.Attributed::difference).toList();
+    var differences = attributed.stream().map(Attributed::difference).toList();
     var comparison = new Comparison(new TextId(1), new TextId(2), differences, List.of(), null);
     assertThat(comparison.at(at.eIds()))
         .as("%s has no difference of its own", place.words())
@@ -119,7 +119,7 @@ public class OneActSteps {
   }
 
   /** Returns each difference between the texts of {@code from} and {@code to}, with who made it. */
-  private List<Summary.Attributed> attributed(Version from, Version to) {
+  private List<Attributed> attributed(Version from, Version to) {
     var earlier = Comparing.text(from);
     var later = Comparing.text(to);
     var amended =
@@ -135,7 +135,7 @@ public class OneActSteps {
     return Differ.differences(earlier, later).differences().stream()
         .map(
             difference ->
-                new Summary.Attributed(
+                new Attributed(
                     difference,
                     Attribution.of(
                         comparing.act(),

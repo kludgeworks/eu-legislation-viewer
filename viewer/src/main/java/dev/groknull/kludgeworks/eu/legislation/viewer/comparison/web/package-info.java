@@ -5,6 +5,9 @@
  * htmx fills from this module's addresses: the changes, in one of three views, and the acts between
  * the two versions, with how many differences each made. The fragments use the typed facade of
  * their templates in {@code src/main/jte/comparison}.
+ *
+ * <p>The controllers decide nothing about the law. The module's {@code Attributions} finds who made
+ * each difference, and the views put it into words.
  */
 @InfrastructureRing
 @NullMarked

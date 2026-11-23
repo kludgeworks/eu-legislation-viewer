@@ -7,7 +7,9 @@
  *   <li>{@link DifferencesView} holds the differences in order, numbered and noted. The occurrences
  *       that are the same in both texts are folded. The opening of the occurrence that they are in
  *       is the context.
- *   <li>{@link SidenoteView} holds the sidenote of each difference: the acts that made it.
+ *   <li>{@link SidenoteView} holds the sidenote of each difference: the acts that made it, in
+ *       words. It gets who made the difference from the domain, {@code Attributed}, and decides
+ *       nothing.
  *   <li>{@link OutlineView} holds the outline of the later text, with the differences counted on
  *       its branches.
  * </ul>

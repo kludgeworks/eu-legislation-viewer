@@ -31,15 +31,8 @@ public record Summary(
     boolean inserted, boolean deleted, boolean corrected, @Nullable ActIdentifier by) {
 
   /**
-   * A difference that the page shows, with who made it.
-   *
-   * @param difference the difference
-   * @param attribution who made it. {@link Attribution#NONE} where the page does not say.
-   */
-  public record Attributed(Difference difference, Attribution attribution) {}
-
-  /**
-   * Returns the summary of the differences {@code shown}, in the order that the page shows them.
+   * Returns the summary of the differences {@code shown}, with who made each ({@link Attributed}),
+   * in the order that the page shows them.
    */
   @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "act-that-made-every-difference")
   @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "legend-names-the-edits-shown")

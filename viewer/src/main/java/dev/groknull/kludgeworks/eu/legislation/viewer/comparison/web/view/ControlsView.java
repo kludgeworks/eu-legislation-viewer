@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import java.util.ArrayList;
@@ -39,12 +40,12 @@ public final class ControlsView {
    * page shows, and the one act that made every difference, if there is one.
    */
   public static Legend legend(DifferencesView differences, Map<Integer, SidenoteView> sidenotes) {
-    var shown = new ArrayList<Summary.Attributed>();
+    var shown = new ArrayList<Attributed>();
     for (var passage : differences.passages()) {
       if (passage instanceof DifferencesView.Shown each) {
         var sidenote = sidenotes.get(each.number());
         shown.add(
-            new Summary.Attributed(
+            new Attributed(
                 each.difference(), sidenote == null ? Attribution.NONE : sidenote.attribution()));
       }
     }

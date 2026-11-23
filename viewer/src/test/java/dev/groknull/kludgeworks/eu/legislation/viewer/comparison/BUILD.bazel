@@ -38,7 +38,9 @@ java_junit5_test(
     ],
 )
 
-# The comparison module's API: the folds of a difference's rows
+# The comparison module's API and domain: the folds of a difference's rows, and who made a
+# difference. Who made a difference is tested on the acts as Cellar's recorded answers make them
+# (catalogue:recorded-acts).
 java_test_suite(
     name = "comparison",
     size = "small",
@@ -50,8 +52,10 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:recorded-acts",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
@@ -59,11 +63,15 @@ java_test_suite(
 )
 
 # application/
-# The comparison module's service, on a fake content module and store
+# The comparison module's services: comparing, on a fake content module and store; who made each
+# difference, on the acts as Cellar's recorded answers make them, with the other modules mocked
 java_test_suite(
     name = "application",
     size = "small",
     srcs = glob(["application/*Test.java"]),
+    data = ["@maven//:org_mockito_mockito_core"],
+    # Mockito as an agent, as its documentation asks: the JDK will stop it attaching itself
+    jvm_flags = ["-javaagent:$(rootpath @maven//:org_mockito_mockito_core)"],
     runner = "junit5",
     runtime_deps = [
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
@@ -71,14 +79,17 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:recorded-acts",
         "@maven//:io_micrometer_micrometer_observation",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_mockito_mockito_core",
     ],
 )
 

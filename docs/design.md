@@ -114,6 +114,7 @@ its module.
 | run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
 | pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
+| attribution | Who made a difference: the acts that made it, in their steps, or the acts of which one made it. `Attributions` finds the attribution of each difference of a comparison, and from when the change of each act applies. The sidenote says it in words. |
 | sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (`modification-without-an-act`). |
 | neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
 | Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |

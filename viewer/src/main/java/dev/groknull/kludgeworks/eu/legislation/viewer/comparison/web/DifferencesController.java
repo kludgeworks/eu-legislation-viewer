@@ -1,10 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -14,11 +11,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
@@ -47,14 +44,11 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.IdentityHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,7 +80,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * Anything else is 404: the page redirects to the canonical address before it loads its fragments.
  *
  * <p>The comparison module compares the texts by their identities. Each difference has a sidenote.
- * The sidenote gets the acts that made the difference from the facts of the act.
+ * {@link Attributions} finds who made each difference. The sidenote puts it into words.
  */
 @Controller
 class DifferencesController {
@@ -98,6 +92,7 @@ class DifferencesController {
   private final Acts acts;
   private final Texts texts;
   private final Comparisons comparisons;
+  private final Attributions attributions;
   private final Content content;
 
   /**
@@ -116,6 +111,7 @@ class DifferencesController {
       Acts acts,
       Texts texts,
       Comparisons comparisons,
+      Attributions attributions,
       Content content,
       Templates templates,
       LegalRenderer html,
@@ -124,6 +120,7 @@ class DifferencesController {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
+    this.attributions = attributions;
     this.content = content;
     this.templates = templates;
     this.html = html;
@@ -137,8 +134,8 @@ class DifferencesController {
    *
    * <p>The comparison module supplies the comparison. If no one asked for it before, the module
    * computes it now. The outline of the later text shows beside the differences. Each difference
-   * has a sidenote. The sidenote comes from the tags and from the amendments that Cellar records
-   * for the occurrence, {@link Act#amended}.
+   * has a sidenote. {@link Attributions} finds who made each difference, from the tags and from the
+   * amendments that Cellar records for the occurrence. The sidenote puts it into words.
    *
    * <p>If the comparison is limited to the changes of one act, it compares the version that
    * integrates that act with the version before it. That is the wording just before the change
@@ -148,7 +145,7 @@ class DifferencesController {
    * <p>{@code fromDay} and {@code toDay} are the two days of the page, where they are not the first
    * days of the two versions. The links of the views keep them. A difference with a change that
    * does not apply on the later day yet, a prospective amendment, has an amber bar, and its
-   * sidenote says so ({@link Act#prospective}).
+   * sidenote says so. {@link Attributions} finds these changes too.
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the view does
    * not exist, or if the texts are not built yet.
@@ -180,14 +177,27 @@ class DifferencesController {
     var earlier = ends.from;
     var later = ends.to;
     var attributed =
-        attributed(ends, preparation, earlier, later, null, page.later(), new HashMap<>())
+        attributions
+            .of(
+                ends.act,
+                ends.language,
+                preparation,
+                ends.included,
+                ends.timeline,
+                earlier,
+                later,
+                page.later())
             .orElseThrow(Requests::notFound);
+    var today = Timeline.today(clock);
     var differences = DifferencesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
     var shown = new ArrayList<DifferencesView.Shown>();
     for (var passage : differences.passages()) {
       if (passage instanceof DifferencesView.Shown each) {
-        sidenotes.put(each.number(), attributed.sidenote(each.difference()));
+        sidenotes.put(
+            each.number(),
+            SidenoteView.of(
+                ends.act, attributed.of(each.difference()), null, today, ends.language));
         shown.add(each);
       }
     }
@@ -249,7 +259,9 @@ class DifferencesController {
                         histories.put(
                             eId,
                             SidenoteView.history(
-                                ends.act, ends.included, later, neighbour.tags(), ends.language));
+                                ends.act,
+                                LastChange.of(ends.act, ends.included, later, neighbour.tags()),
+                                ends.language));
                       });
             }
             yield templates
@@ -291,113 +303,6 @@ class DifferencesController {
    */
   private static ComparisonView view(String code) {
     return ComparisonView.of(code).orElseThrow(Requests::notFound);
-  }
-
-  /**
-   * Returns the comparison of {@code from} with {@code to}, with a sidenote for each difference.
-   * The sidenotes are limited to the changes of {@code only}, if it is given. With {@code day}, the
-   * later day of the comparison, a sidenote says where a change does not apply on that day yet.
-   * Each outline is read once and kept in {@code outlines}, by text. Returns none if either text is
-   * not built.
-   */
-  private Optional<Attributed> attributed(
-      Ends ends,
-      Preparation preparation,
-      Version from,
-      Version to,
-      @Nullable ActIdentifier only,
-      @Nullable LocalDate day,
-      Map<TextId, Outline> outlines) {
-    if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
-        || !(preparation.texts().get(to) instanceof Text.Ready later)) {
-      return Optional.empty();
-    }
-    var comparison = comparisons.between(earlier.text(), later.text());
-    if (comparison.isEmpty()) {
-      return Optional.empty();
-    }
-    var before = outline(earlier.text(), outlines);
-    var outline = outline(later.text(), outlines);
-    var amended = ends.act.amended(from, to, before.eIds(), outline.eIds(), ends.language);
-    var prospective =
-        day == null ? null : ends.act.prospective(to, day, ends.language, texts.tags(preparation));
-    var today = Timeline.today(clock);
-    var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
-    var made = new ArrayList<Map.Entry<Difference, SidenoteView>>();
-    for (var difference : comparison.get().differences()) {
-      made.add(
-          Map.entry(
-              difference,
-              SidenoteView.of(
-                  ends.act,
-                  ends.included,
-                  from,
-                  to,
-                  difference,
-                  Attribution.amendmentsOf(amended, difference),
-                  only,
-                  ends.language)));
-    }
-    var unattributed =
-        made.stream()
-            .filter(each -> each.getValue().attribution().unattributed())
-            .map(each -> each.getKey().eId())
-            .collect(Collectors.toSet());
-    var appeared =
-        comparisons.appeared(ends.timeline, ends.preparation.texts(), from, to, unattributed);
-    for (var entry : made) {
-      var difference = entry.getKey();
-      var version =
-          entry.getValue().attribution().unattributed() ? appeared.get(difference.eId()) : null;
-      var sidenote =
-          version == null
-              ? entry.getValue()
-              : SidenoteView.appeared(ends.act, ends.included, version, difference);
-      sidenotes.put(
-          difference,
-          prospective == null
-              ? sidenote
-              : prospective
-                  .at(difference.eId())
-                  .map(each -> sidenote.notApplying(ends.act, each, prospective.day(), today))
-                  .orElse(sidenote));
-    }
-    return Optional.of(
-        new Attributed(comparison.get(), later.text(), before, outline, amended, sidenotes));
-  }
-
-  private Outline outline(TextId text, Map<TextId, Outline> outlines) {
-    return outlines.computeIfAbsent(text, each -> content.outline(each).orElseGet(Outline::empty));
-  }
-
-  /**
-   * A comparison, each difference with its sidenote.
-   *
-   * @param comparison the comparison
-   * @param later the later text
-   * @param earlier the earlier text's outline
-   * @param outline the later text's outline
-   * @param amended Cellar's amendments between the two versions, at the occurrences of their texts
-   * @param sidenotes each difference's sidenote, by the difference
-   */
-  private record Attributed(
-      Comparison comparison,
-      TextId later,
-      Outline earlier,
-      Outline outline,
-      Amended amended,
-      Map<Difference, SidenoteView> sidenotes) {
-
-    SidenoteView sidenote(Difference difference) {
-      return Objects.requireNonNull(sidenotes.get(difference));
-    }
-
-    /** Returns each difference of the comparison with who made it, in the comparison's order. */
-    List<Summary.Attributed> each() {
-      return comparison.differences().stream()
-          .map(difference -> new Summary.Attributed(difference, sidenote(difference).attribution()))
-          .toList();
-    }
   }
 
   /**
@@ -551,7 +456,16 @@ class DifferencesController {
     if (found.isEmpty() && only != null) {
       // A chapter that the annex keeps flat has no difference of its own.
       var attributed =
-          attributed(ends, preparation, earlier, later, only, null, new HashMap<>())
+          attributions
+              .of(
+                  ends.act,
+                  ends.language,
+                  preparation,
+                  ends.included,
+                  ends.timeline,
+                  earlier,
+                  later,
+                  null)
               .orElseThrow(Requests::notFound);
       found = Attribution.madeIn(attributed.each(), eIds, only);
       lead =
@@ -607,14 +521,16 @@ class DifferencesController {
     var started = System.nanoTime();
     var inclusion = ends.inclusion(only).orElseThrow(Requests::notFound);
     var attributed =
-        attributed(
-                ends,
+        attributions
+            .of(
+                ends.act,
+                ends.language,
                 ends.preparation,
+                ends.included,
+                ends.timeline,
                 inclusion.before(),
                 inclusion.first(),
-                only,
-                null,
-                new HashMap<>())
+                null)
             .orElseThrow(Requests::notFound);
     var alternatives = Alternatives.of(only, attributed.each());
     var others = alternatives.others();
@@ -745,7 +661,9 @@ class DifferencesController {
                 Neighbours.sibling(neighbour.occurrence()),
                 neighbour.occurrence(),
                 SidenoteView.history(
-                    ends.act, ends.included, ends.to, neighbour.tags(), ends.language)));
+                    ends.act,
+                    LastChange.of(ends.act, ends.included, ends.to, neighbour.tags()),
+                    ends.language)));
       }
     }
     LOG.info(

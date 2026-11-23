@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
@@ -67,6 +68,7 @@ class DifferencesControllerTests {
   @MockitoBean Acts acts;
   @MockitoBean Texts texts;
   @MockitoBean Comparisons comparisons;
+  @MockitoBean Attributions attributions;
   @MockitoBean Content content;
   @MockitoBean LegalRenderer html;
 

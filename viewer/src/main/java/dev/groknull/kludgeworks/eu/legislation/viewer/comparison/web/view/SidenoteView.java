@@ -4,15 +4,12 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -21,19 +18,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The sidenote of a difference. It shows beside the difference and says who made the difference.
  *
- * <p>The rules are the domain's: {@link Attribution#of} finds the acts that made the difference and
- * puts them in steps, and {@link Applicability} says from when each act's change applies. This
- * class puts them into words. For example, "Inserted by 2019/103, then replaced by 2021/255", with
- * a date line for each act. Where no act is named, the sidenote does not guess: if the acts between
- * the two versions are all of one version, it says that one of them made the difference, but not
- * which. If not, it says that no act is named.
+ * <p>The rules are the domain's: {@link Attributed#of} finds the acts that made the difference, in
+ * their steps, and from when each act's change applies ({@link Applicability}). This class puts
+ * them into words. For example, "Inserted by 2019/103, then replaced by 2021/255", with a date line
+ * for each act. Where no act is named, the sidenote does not guess: if the acts between the two
+ * versions are all of one version, it says that one of them made the difference, but not which. If
+ * not, it says that no act is named.
  *
  * @param made who made the difference. For example:
  *     <ul>
@@ -68,67 +64,53 @@ public record SidenoteView(
   }
 
   /**
-   * Returns this sidenote for a difference that has a change of {@code amending} that does not
-   * apply on {@code day} yet, the later day of the comparison ({@code Act.prospective}). {@code
-   * today} gives the tense.
+   * Returns the sidenote of {@code attributed}, a difference with who made it ({@link
+   * Attributed#of}).
+   *
+   * @param only the act whose changes the comparison is limited to, if any
+   * @param today the day of the page. It gives the tense of a change that does not apply yet.
+   * @param language the language of the links
    */
-  public SidenoteView notApplying(Act act, ActIdentifier amending, LocalDate day, LocalDate today) {
+  public static SidenoteView of(
+      Act act,
+      Attributed attributed,
+      @Nullable ActIdentifier only,
+      LocalDate today,
+      Language language) {
+    var sidenote = said(act, attributed, only, language);
+    var notApplying = attributed.notApplying();
+    return notApplying == null ? sidenote : sidenote.notApplying(act, notApplying, today);
+  }
+
+  /**
+   * Returns this sidenote with the words for a change that does not apply on the later day of the
+   * comparison yet. {@code today} gives the tense.
+   */
+  private SidenoteView notApplying(Act act, Attributed.NotApplying notApplying, LocalDate today) {
+    var day = notApplying.day();
     return new SidenoteView(
         made,
         attribution,
         dates,
         published,
-        act.cited(amending)
+        act.cited(notApplying.act())
             + (day.isBefore(today) ? " did not apply yet on " : " does not apply yet on ")
             + Dates.inWords(day));
   }
 
-  /**
-   * Returns the sidenote of {@code difference}, for a comparison that is not limited to the changes
-   * of one act.
-   */
-  public static SidenoteView of(
-      Act act,
-      Inclusions included,
-      Version from,
-      Version to,
-      Difference difference,
-      List<Amendment> amendments,
-      Language language) {
-    return of(act, included, from, to, difference, amendments, null, language);
-  }
-
-  /**
-   * Returns the sidenote of {@code difference}, in the comparison of the version {@code from} of
-   * {@code act} with the version {@code to}.
-   *
-   * @param included the acts that each version includes ({@link Inclusions}): Cellar's lists, and
-   *     the acts that the built texts tag first
-   * @param amendments the amendments of the occurrence in Cellar, by the acts between the two
-   *     versions. {@code Amended.of} finds them.
-   * @param only the act whose changes the comparison is limited to, if any
-   * @param language the language of the links
-   */
-  public static SidenoteView of(
-      Act act,
-      Inclusions included,
-      Version from,
-      Version to,
-      Difference difference,
-      List<Amendment> amendments,
-      @Nullable ActIdentifier only,
-      Language language) {
-    var attribution = Attribution.of(act, included, from, to, difference, amendments);
-    if (attribution.steps().isEmpty()) {
-      return unknown(act, attribution, difference, language);
+  private static SidenoteView said(
+      Act act, Attributed attributed, @Nullable ActIdentifier only, Language language) {
+    var appeared = attributed.appeared();
+    if (appeared != null) {
+      return appeared(act, appeared, attributed.difference());
     }
-    var dates = new ArrayList<Applies>();
-    for (var step : attribution.steps()) {
-      for (var each : step.acts()) {
-        Applicability.of(act, included, from, to, each, amendments, step.inPart().contains(each))
+    var attribution = attributed.attribution();
+    var dates =
+        attributed.applies().stream()
             .map(applicability -> applies(act, applicability, language))
-            .ifPresent(dates::add);
-      }
+            .toList();
+    if (attribution.steps().isEmpty()) {
+      return unknown(act, attribution, dates, attributed.difference(), language);
     }
     var chain = new ArrayList<String>();
     var steps = attribution.steps();
@@ -159,18 +141,16 @@ public record SidenoteView(
    * made it. If not, it does not say who made it.
    */
   private static SidenoteView unknown(
-      Act act, Attribution attribution, Difference difference, Language language) {
+      Act act,
+      Attribution attribution,
+      List<Applies> dates,
+      Difference difference,
+      Language language) {
     var candidates = attribution.candidates();
     if (candidates.isEmpty()) {
       return new SidenoteView(unsaid(difference), Attribution.NONE, List.of(), null, null);
     }
     var names = candidates.stream().map(act::cited).toList();
-    var dates = new ArrayList<Applies>();
-    for (var each : candidates) {
-      Applicability.of(act, each, Set.of())
-          .map(applicability -> applies(act, applicability, language))
-          .ifPresent(dates::add);
-    }
     return new SidenoteView(
         unsaid(difference)
             + " It was "
@@ -186,20 +166,19 @@ public record SidenoteView(
 
   /**
    * Returns the sidenote of {@code difference}, which no tag and no amendment in Cellar attributes,
-   * in {@code version}, the version where the change first appears. It names the text of that
-   * version and what the version consolidates, and no act as the one that made the change. The page
-   * says "text", not "version". For example, "Deleted in the text of 22 March 2026, which
-   * consolidates 2026/449 and Corrigendum 1 to 2026/449". If the version consolidates no act, it
-   * names the text only.
+   * where {@code appeared} is the text where the change first appears. It names that text and what
+   * it consolidates, and no act as the one that made the change. The page says "text", not
+   * "version". For example, "Deleted in the text of 22 March 2026, which consolidates 2026/449 and
+   * Corrigendum 1 to 2026/449". If the text consolidates no act, it names the text only.
    */
-  public static SidenoteView appeared(
-      Act act, Inclusions included, Version version, Difference difference) {
+  private static SidenoteView appeared(
+      Act act, Attributed.Appeared appeared, Difference difference) {
     var did = verb(Modification.of(difference.kind()));
-    var consolidates = included.of(version);
+    var consolidates = appeared.consolidates();
     return new SidenoteView(
         did
             + " in the text of "
-            + Dates.inWords(version.date())
+            + Dates.inWords(appeared.version().date())
             + (consolidates.isEmpty() ? "" : ", which consolidates " + names(act, consolidates)),
         Attribution.NONE,
         List.of(),
@@ -364,11 +343,11 @@ public record SidenoteView(
 
   /**
    * Returns the history of a provision that is the same in both texts, as the Synopsis shows it
-   * beside the provision: what last made it as it is ({@link LastChange}), in words.
+   * beside the provision: what last made it as it is, {@code last} ({@link LastChange#of}), in
+   * words.
    */
-  public static History history(
-      Act act, Inclusions included, Version to, List<Tag> tags, Language language) {
-    return switch (LastChange.of(act, included, to, tags)) {
+  public static History history(Act act, LastChange last, Language language) {
+    return switch (last) {
       case LastChange.Original(var applicability) ->
           new History(
               "As in the original act",
