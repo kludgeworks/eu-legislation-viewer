@@ -91,3 +91,17 @@ publications-32018R1862.json.
 on 24 May 2016 and applies from 25 May 2018, by its Article 99. Cellar lists no amendment of it.
 Recorded 2026-11-23 with the queries above, celex 32016R0679: act-, versions-, languages-, dates-,
 titles-, amendments- and publications-32016R0679.json.
+
+The dates of every act above (dates-*.json, 8 files) were recorded again on 2026-11-23, when
+dates.rq started to give ?amending: the acts that a date's comment names and that amend the act of
+the date. The rows are the same as before. Only these dates have an amending act: 2019/103 and
+2019/1583 on 31 December 2021, by 2020/910 (dates-32015R1998.json), and 2019/878 on 26 June 2021,
+by 2021/338 (dates-32013L0036.json). The other acts that a comment names set a day that the clause
+left to them, for example Decision 2023/201 for 2018/1862 (dates-32018R1862.json).
+
+publications-of-32018R1862.json and publications-of-32008R0767.json: publications-of.rq, recorded
+2026-11-23, with the acts that set a day of the dates in dates-32018R1862.json and
+dates-32008R0767.json: the acts that a date's comment names and that do not amend the act of the
+date. For 2018/1862: 32023D0201, 32025D0875, 32026D1155, 32026D1156 and 32026D2284. For 767/2008:
+32025D0875, 32025D1544, 32026D1155 and 32026D1156. All are Commission Implementing Decisions. The
+other recorded acts have no such act, so no query.

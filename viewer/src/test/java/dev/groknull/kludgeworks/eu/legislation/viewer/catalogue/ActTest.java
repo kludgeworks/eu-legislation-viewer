@@ -112,6 +112,7 @@ class ActTest {
                       null,
                       List.of(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "113")),
                       List.of(),
+                      List.of(),
                       ""))),
           Map.of(),
           List.of(),
@@ -119,7 +120,7 @@ class ActTest {
 
   private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean forPart) {
     return new ActDate(
-        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), List.of(), ""));
   }
 
   private static Publication published(String title) {

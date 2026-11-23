@@ -428,7 +428,8 @@ class JooqActStore implements ActStore {
         clause.provisions().stream().map(Provision::toString).toArray(String[]::new),
         clause.amendedBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
         clause.text(),
-        date.forPart());
+        date.forPart(),
+        clause.setBy().stream().map(ActIdentifier::celex).toArray(String[]::new));
   }
 
   private static Act act(
@@ -471,6 +472,7 @@ class JooqActStore implements ActStore {
             date.getDaysAfter(),
             Arrays.stream(date.getProvisions()).map(Provision::parse).toList(),
             Arrays.stream(date.getAmendedBy()).map(ActIdentifier::new).toList(),
+            Arrays.stream(date.getSetBy()).map(ActIdentifier::new).toList(),
             date.getRemark()));
   }
 

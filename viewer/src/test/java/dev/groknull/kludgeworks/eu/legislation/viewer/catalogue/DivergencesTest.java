@@ -362,7 +362,7 @@ class DivergencesTest {
                 null,
                 Kind.APPLICATION,
                 false,
-                new ActDate.Clause(null, null, List.of(), List.of(), "")));
+                new ActDate.Clause(null, null, List.of(), List.of(), List.of(), "")));
   }
 
   private void entryIntoForce(String day) {
@@ -377,7 +377,7 @@ class DivergencesTest {
                 LocalDate.parse(day),
                 kind,
                 forPart,
-                new ActDate.Clause(null, null, List.of(), List.of(), "")));
+                new ActDate.Clause(null, null, List.of(), List.of(), List.of(), "")));
   }
 
   private void place(String day) {

@@ -276,7 +276,7 @@ class HistoryControllerTests {
 
   private static ActDate date(LocalDate day, ActDate.Kind kind, boolean forPart) {
     return new ActDate(
-        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, forPart, new ActDate.Clause(null, null, List.of(), List.of(), List.of(), ""));
   }
 
   private static Amendment change(String place, LocalDate from) {

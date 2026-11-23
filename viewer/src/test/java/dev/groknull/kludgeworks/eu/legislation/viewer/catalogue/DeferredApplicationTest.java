@@ -102,6 +102,6 @@ class DeferredApplicationTest {
 
   private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean partial) {
     return new ActDate(
-        day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), ""));
+        day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), List.of(), ""));
   }
 }

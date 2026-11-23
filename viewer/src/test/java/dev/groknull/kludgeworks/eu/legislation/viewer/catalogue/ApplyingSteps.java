@@ -11,8 +11,8 @@ import java.util.Objects;
 /**
  * The steps of the rules of when an act applies: the day from which a whole act applies ({@link
  * Act#appliesFrom}), the days from which a provision can apply ({@link Act#appliesFromDay}), and
- * the dates that a later act moved ({@link ActDate.Clause#amendedBy}). They read the dates of the
- * act of the scenario ({@link TheAct}).
+ * the dates that a later act amended ({@link ActDate.Clause#amendedBy}) or set ({@link
+ * ActDate.Clause#setBy}). They read the dates of the act of the scenario ({@link TheAct}).
  */
 public class ApplyingSteps {
   private final TheAct the;
@@ -92,12 +92,30 @@ public class ApplyingSteps {
     assertThat(the.act().entryIntoForce(act)).as(act.cited()).hasValue(day);
   }
 
-  @Then("the date of {act} of {day} names {act} as the act that moved it")
-  public void movedBy(ActIdentifier act, LocalDate day, ActIdentifier later) {
-    assertThat(the.act().datesOf(act))
-        .as(act.cited())
-        .filteredOn(date -> day.equals(date.date()))
-        .isNotEmpty()
-        .allSatisfy(date -> assertThat(date.clause().amendedBy()).containsExactly(later));
+  @Then("the date of {act} of {day} names {act} as the act that amended it")
+  public void amendedBy(ActIdentifier act, LocalDate day, ActIdentifier later) {
+    assertThat(datesOn(act, day))
+        .allSatisfy(
+            date -> {
+              assertThat(date.clause().amendedBy()).containsExactly(later);
+              assertThat(date.clause().setBy()).isEmpty();
+            });
+  }
+
+  @Then("the date of {act} of {day} names {act} as the act that set its day")
+  public void setBy(ActIdentifier act, LocalDate day, ActIdentifier later) {
+    assertThat(datesOn(act, day))
+        .allSatisfy(
+            date -> {
+              assertThat(date.clause().setBy()).containsExactly(later);
+              assertThat(date.clause().amendedBy()).isEmpty();
+            });
+  }
+
+  /** Returns the dates of {@code act} on {@code day}. There is at least one. */
+  private List<ActDate> datesOn(ActIdentifier act, LocalDate day) {
+    var dates = the.act().datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
+    assertThat(dates).as("the dates of %s on %s", act.cited(), day).isNotEmpty();
+    return dates;
   }
 }

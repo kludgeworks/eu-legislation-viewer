@@ -123,7 +123,9 @@ its module.
 
 The date line of a sidenote says from when the change of each act applies (the rules of "From when a
 change applies"). It names the act, its Official Journal reference, the date, and the clause that
-sets the date. The clause links to EUR-Lex. The forms:
+sets the date. The clause links to EUR-Lex. A later act that amended the date follows the clause
+with "as amended by". A later act that set a day that the clause left to it follows the clause with
+"on the day set by" (`a-later-act-amended-or-set-the-date`). The forms:
 
 | Case | Words |
 | --- | --- |
@@ -131,6 +133,7 @@ sets the date. The clause links to EUR-Lex. The forms:
 | Only its entry into force | "2019/1583 · OJ L 246, 26.9.2019 · applies from 31 December 2021, its entry into force · Article 2 of 2019/1583, as amended by 2020/910" |
 | From more than one day | "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from more than one day: from 22 March 2026, its entry into force; a part from 1 October 2026 · Article 2 of 2026/449 says which part from when" |
 | A clause sets the day | "2019/413 · OJ L 73, 15.3.2019 · applies from a date set in Article 3 of 2019/413" |
+| A later act set the day that the clause left to it | "… applies from 15 October 2026 · Article 2 of 2022/1190, on the day set by 2026/2284" |
 | A directive in force | "Dir. 2002/73/EC · OJ L 269, 5.10.2002 · in force from 5 October 2002 · Article 3 of Dir. 2002/73/EC" |
 | A correction | "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text of 31 December 2021" |
 | Nothing is known | no date line |

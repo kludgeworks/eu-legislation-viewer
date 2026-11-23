@@ -53,14 +53,16 @@ import org.springframework.stereotype.Component;
  *       CellarDates}.
  *   <li>its titles.
  *   <li>what other acts did to its provisions, with {@link CellarAmendments}.
- *   <li>how the act and the acts its versions integrate were published, with {@link
- *       CellarPublications}.
+ *   <li>how the act, the acts its versions integrate and the acts that set a day of its dates were
+ *       published, with {@link CellarPublications}.
  * </ul>
  *
- * <p>It uses nine queries, kept next to this class: {@code act.rq}, {@code act-by-eli.rq}, {@code
+ * <p>It uses ten queries, kept next to this class: {@code act.rq}, {@code act-by-eli.rq}, {@code
  * act-by-version.rq}, {@code versions.rq}, {@code languages.rq}, {@code dates.rq}, {@code
- * titles.rq}, {@code amendments.rq} and {@code publications.rq}. All of them except the two that
- * find an act by another identifier run at the same time for one act.
+ * titles.rq}, {@code amendments.rq}, {@code publications.rq} and {@code publications-of.rq}. All of
+ * them except the two that find an act by another identifier, and {@code publications-of.rq}, run
+ * at the same time for one act. {@code publications-of.rq} runs after {@code dates.rq}, and only if
+ * an act sets a day of a date ({@link CellarDates#settingActs}).
  */
 @Component
 class CellarActs implements ActSource {
@@ -68,6 +70,11 @@ class CellarActs implements ActSource {
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
   private static final String ACT_BY_VERSION =
       Sparql.template(CellarActs.class, "act-by-version.rq");
+  private static final String PUBLICATIONS_OF =
+      Sparql.template(CellarActs.class, "publications-of.rq");
+
+  /** An answer with no rows, for a query that need not run. */
+  private static final SparqlResult NONE = new SparqlResult(List.of(), List.of());
 
   /** The date Cellar uses when it does not know a date. It occurs as an entry into force. */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -96,6 +103,7 @@ class CellarActs implements ActSource {
     var titles = select(ActQuery.TITLES, values);
     var amendments = select(ActQuery.AMENDMENTS, values);
     var publications = select(ActQuery.PUBLICATIONS, values);
+    var setting = dates.thenCompose(this::publicationsOfSettingActs);
     var act =
         act(
             id,
@@ -105,7 +113,8 @@ class CellarActs implements ActSource {
             Sparql.join(dates),
             Sparql.join(titles),
             Sparql.join(amendments),
-            Sparql.join(publications));
+            Sparql.join(publications),
+            Sparql.join(setting));
     var took = Duration.ofNanos(System.nanoTime() - started).toMillis();
     act.ifPresentOrElse(
         a ->
@@ -136,6 +145,18 @@ class CellarActs implements ActSource {
 
     final String templateName = name().toLowerCase(Locale.ROOT);
     final String template = Sparql.template(CellarActs.class, templateName + ".rq");
+  }
+
+  /**
+   * Asks Cellar how the acts that set a day of a date in {@code dates} were published. It asks
+   * nothing if no act sets a day.
+   */
+  private CompletableFuture<SparqlResult> publicationsOfSettingActs(SparqlResult dates) {
+    var acts = CellarDates.settingActs(dates).stream().map(ActIdentifier::celex).toList();
+    return acts.isEmpty()
+        ? CompletableFuture.completedFuture(NONE)
+        : sparql.answer(
+            Sparql.fillStrings(PUBLICATIONS_OF, Map.of("celexes", acts)), "publications-of");
   }
 
   /** Fills the query template with {@code values} and sends it to Cellar. */
@@ -188,8 +209,8 @@ class CellarActs implements ActSource {
 
   /**
    * Reads the act from the answers to {@code act.rq}, {@code versions.rq}, {@code languages.rq},
-   * {@code dates.rq}, {@code titles.rq}, {@code amendments.rq} and {@code publications.rq}. It
-   * returns none if {@code act.rq} found no work.
+   * {@code dates.rq}, {@code titles.rq}, {@code amendments.rq} and {@code publications.rq}, where
+   * no act sets a day of a date. It returns none if {@code act.rq} found no work.
    *
    * @throws CellarException if the answers do not make an act. For example, a value is missing,
    *     repeated or of the wrong kind, or the timeline refuses the versions.
@@ -203,6 +224,27 @@ class CellarActs implements ActSource {
       SparqlResult titles,
       SparqlResult amendments,
       SparqlResult publications) {
+    return act(id, work, consolidations, languages, dates, titles, amendments, publications, NONE);
+  }
+
+  /**
+   * Reads the act from the answers to {@code act.rq}, {@code versions.rq}, {@code languages.rq},
+   * {@code dates.rq}, {@code titles.rq}, {@code amendments.rq}, {@code publications.rq} and {@code
+   * publications-of.rq} ({@code setting}). It returns none if {@code act.rq} found no work.
+   *
+   * @throws CellarException if the answers do not make an act. For example, a value is missing,
+   *     repeated or of the wrong kind, or the timeline refuses the versions.
+   */
+  static Optional<Act> act(
+      ActIdentifier id,
+      SparqlResult work,
+      SparqlResult consolidations,
+      SparqlResult languages,
+      SparqlResult dates,
+      SparqlResult titles,
+      SparqlResult amendments,
+      SparqlResult publications,
+      SparqlResult setting) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
@@ -216,10 +258,18 @@ class CellarActs implements ActSource {
               formexByVersion(languages),
               CellarDates.byAct(id, dates),
               CellarAmendments.of(id, amendments),
-              CellarPublications.byAct(publications)));
+              publications(publications, setting)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
+  }
+
+  /** Returns the publications in the answers to {@code publications.rq} and {@code setting}. */
+  private static Map<ActIdentifier, Publication> publications(
+      SparqlResult publications, SparqlResult setting) {
+    var all = new HashMap<>(CellarPublications.byAct(publications));
+    CellarPublications.byAct(setting).forEach(all::putIfAbsent);
+    return all;
   }
 
   /**
@@ -274,9 +324,15 @@ class CellarActs implements ActSource {
     var amendingDates = new HashMap<>(dates);
     amendingDates.keySet().retainAll(amending);
     var published = new HashMap<>(publications);
-    // Keep the publications of those acts. Also keep the publication of the act itself, for the
+    // Keep the publications of those acts, and of the acts that set a day of their dates or of the
+    // act's own dates, for their citations. Also keep the publication of the act itself, for the
     // act as published.
-    published.keySet().retainAll(amending);
+    var kept = new HashSet<>(amending);
+    amendingDates
+        .values()
+        .forEach(each -> each.forEach(date -> kept.addAll(date.clause().setBy())));
+    dates.getOrDefault(id, List.of()).forEach(date -> kept.addAll(date.clause().setBy()));
+    published.keySet().retainAll(kept);
     var own = publications.get(id);
     if (own != null) {
       published.put(id, own);

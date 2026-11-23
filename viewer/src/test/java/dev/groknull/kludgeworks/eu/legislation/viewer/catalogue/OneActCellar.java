@@ -93,7 +93,8 @@ public class OneActCellar {
                       null,
                       Kind.APPLICATION,
                       false,
-                      new Clause(null, null, List.of(article("3")), List.of(), "V ART 3")),
+                      new Clause(
+                          null, null, List.of(article("3")), List.of(), List.of(), "V ART 3")),
                   date(2019, 3, 16, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "2")),
               new ActIdentifier("32019R0103"),
               List.of(
@@ -107,6 +108,7 @@ public class OneActCellar {
                           null,
                           List.of(article("2")),
                           List.of(new ActIdentifier("32020R0910")),
+                          List.of(),
                           "MA/PART V ART 2 ET 32020R0910"))),
               new ActIdentifier("32026R0449"),
               List.of(
@@ -191,7 +193,7 @@ public class OneActCellar {
         LocalDate.of(year, month, day),
         kind,
         forPart,
-        new Clause(from, days, List.of(article(article)), List.of(), text));
+        new Clause(from, days, List.of(article(article)), List.of(), List.of(), text));
   }
 
   private static Provision article(String number) {

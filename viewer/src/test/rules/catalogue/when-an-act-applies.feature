@@ -78,11 +78,23 @@ Feature: When an act applies
       Then 2019/413 enters into force on 16 March 2019
       But a provision of 2019/413 cannot apply from 16 March 2019
 
-  Rule: a-later-act-moved-the-date · Dates that a later act moved are current
-    Cellar updates an act's dates when a later act moves them. The date names the act that moved
-    it.
+  @revision-2
+  Rule: a-later-act-amended-or-set-the-date · Dates that a later act amended or set are current
+    Cellar updates an act's dates when a later act amends them, and when a later act sets a day
+    that a clause of the act leaves to it. The date names that later act. Cellar names the two in
+    the same way. A later act that amends the act of the date amended the date. A later act that
+    does not amend it set the day.
 
-    Example: A date for a part that a later act moved
+    Example: A date for a part that a later act amended
       Given the act 2015/1998 as Cellar has it
       Then 2019/103 has a date for a part on 31 December 2021
-      And the date of 2019/103 of 31 December 2021 names 2020/910 as the act that moved it
+      And the date of 2019/103 of 31 December 2021 names 2020/910 as the act that amended it
+
+    Example: The day from which the whole act applies, which a decision set
+      Given the act 2018/1862 as Cellar has it
+      Then 2018/1862 applies from 7 March 2023
+      And the date of 2018/1862 of 7 March 2023 names Decision 2023/201 as the act that set its day
+
+    Example: The day from which the changes of an amending act apply, which a decision set
+      Given the act 2018/1862 as Cellar has it
+      Then the date of 2022/1190 of 15 October 2026 names Decision 2026/2284 as the act that set its day

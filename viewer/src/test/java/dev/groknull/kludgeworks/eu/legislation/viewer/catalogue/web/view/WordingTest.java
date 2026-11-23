@@ -32,7 +32,7 @@ class WordingTest {
           null,
           ActDate.Kind.APPLICATION,
           false,
-          new ActDate.Clause(null, null, List.of(), List.of(), ""));
+          new ActDate.Clause(null, null, List.of(), List.of(), List.of(), ""));
   private static final ActIdentifier AI = new ActIdentifier("32024R1689");
   private static final LocalDate IN_FORCE = LocalDate.of(2024, 8, 1);
   private static final LocalDate TODAY = LocalDate.of(2026, 11, 12);
@@ -41,6 +41,7 @@ class WordingTest {
           null,
           null,
           List.of(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "113")),
+          List.of(),
           List.of(),
           "");
 

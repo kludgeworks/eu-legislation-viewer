@@ -254,12 +254,17 @@ class CellarActsTest {
                 Kind.ENTRY_INTO_FORCE,
                 false,
                 new Clause(
-                    Anchor.PUBLICATION, 1, List.of(article("3")), List.of(), "DATPUB +1 V ART 3")),
+                    Anchor.PUBLICATION,
+                    1,
+                    List.of(article("3")),
+                    List.of(),
+                    List.of(),
+                    "DATPUB +1 V ART 3")),
             new ActDate(
                 LocalDate.of(2016, 2, 1),
                 Kind.APPLICATION,
                 false,
-                new Clause(null, null, List.of(article("2")), List.of(), "V ART 2")));
+                new Clause(null, null, List.of(article("2")), List.of(), List.of(), "V ART 2")));
   }
 
   @Test
@@ -299,13 +304,27 @@ class CellarActsTest {
   }
 
   @Test
-  void aDateALaterActMovedNamesThatAct() {
+  void aDateALaterActAmendedNamesThatAct() {
     var application = act(AVSEC).datesOf(new ActIdentifier("32019R0103")).getLast();
 
     assertThat(application.date()).isEqualTo(LocalDate.of(2021, 12, 31));
     assertThat(application.forPart()).isTrue();
     assertThat(application.clause().provisions()).containsExactly(article("2"));
     assertThat(application.clause().amendedBy()).containsExactly(new ActIdentifier("32020R0910"));
+    assertThat(application.clause().setBy()).isEmpty();
+  }
+
+  @Test
+  void citesAnActThatSetADayWithItsPublication() {
+    var sis = RecordedActs.act(new ActIdentifier("32018R1862"));
+    var decision = new ActIdentifier("32023D0201");
+
+    assertThat(sis.dates())
+        .anySatisfy(date -> assertThat(date.clause().setBy()).containsExactly(decision));
+    assertThat(sis.citation(decision, Language.ENG))
+        .startsWith("2023/201: Commission Implementing Decision (EU) 2023/201 of 30")
+        .contains("setting the date on which operations of the Schengen Information System")
+        .endsWith(" · OJ L 27, 31.1.2023");
   }
 
   @Test
@@ -402,6 +421,7 @@ class CellarActsTest {
                     null,
                     List.of(article("2")),
                     List.of(),
+                    List.of(),
                     "DATNOT V ART 2")));
     assertThat(
             dates
@@ -433,6 +453,7 @@ class CellarActsTest {
             1,
             List.of(new Provision(Provision.Type.ARTICLE, "4")),
             List.of(),
+            List.of(),
             "DATPUB +1 V ART 4");
     var date = new ActDate(LocalDate.of(2015, 11, 15), Kind.ENTRY_INTO_FORCE, false, clause);
     var publication =
@@ -456,6 +477,7 @@ class CellarActsTest {
             Anchor.PUBLICATION,
             1,
             List.of(new Provision(Provision.Type.ARTICLE, "5")),
+            List.of(),
             List.of(),
             "DATPUB +1 V ART 5");
     var wrongDate = new ActDate(LocalDate.of(2020, 7, 6), Kind.ENTRY_INTO_FORCE, false, clause);

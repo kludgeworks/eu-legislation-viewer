@@ -39,17 +39,20 @@ public sealed interface Applicability {
    * @param applying when it applies: from one day, from more than one day, from a day that a clause
    *     sets, or in force from a day
    * @param clause the provisions of the act that set its dates. Empty where Cellar does not say.
-   * @param amendedBy the acts that changed those provisions since: they moved the date
+   * @param amendedBy the later acts that amended those provisions: they amended the date
+   * @param setBy the later acts that set the day that those provisions left to them
    */
   record Applies(
       ActIdentifier act,
       Applying applying,
       List<ActDate.Provision> clause,
-      List<ActIdentifier> amendedBy)
+      List<ActIdentifier> amendedBy,
+      List<ActIdentifier> setBy)
       implements Applicability {
     public Applies {
       clause = List.copyOf(clause);
       amendedBy = List.copyOf(amendedBy);
+      setBy = List.copyOf(setBy);
     }
   }
 
@@ -109,15 +112,22 @@ public sealed interface Applicability {
             applying -> {
               var provisions = new LinkedHashSet<ActDate.Provision>();
               var amendedBy = new LinkedHashSet<ActIdentifier>();
+              var setBy = new LinkedHashSet<ActIdentifier>();
               for (var date : applying.dates()) {
                 provisions.addAll(date.clause().provisions());
                 amendedBy.addAll(date.clause().amendedBy());
+                setBy.addAll(date.clause().setBy());
               }
               if (applying instanceof Applying.SetBy && provisions.isEmpty()) {
                 return Optional.empty();
               }
               return Optional.of(
-                  new Applies(amending, applying, List.copyOf(provisions), List.copyOf(amendedBy)));
+                  new Applies(
+                      amending,
+                      applying,
+                      List.copyOf(provisions),
+                      List.copyOf(amendedBy),
+                      List.copyOf(setBy)));
             });
   }
 
