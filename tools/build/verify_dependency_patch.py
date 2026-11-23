@@ -105,7 +105,9 @@ def verify_patch(patch, changes):
             git("checkout-index", "--force", "--", name)
         else:
             Path(name).unlink()
+    return any(name.startswith(".github/workflows/") for name in changed)
 
 
 if __name__ == "__main__":
-    verify_patch(Path(sys.argv[1]), json.loads(sys.argv[2]))
+    workflows_changed = verify_patch(Path(sys.argv[1]), json.loads(sys.argv[2]))
+    print(f"workflows_changed={str(workflows_changed).lower()}")

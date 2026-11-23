@@ -72,4 +72,4 @@ jobs:
       body: ${{ matrix.body }}
       artifact: ${{ format('dependency-update-{0}', strategy.job-index) }}
     secrets:
-      branch_token: ${{ secrets.DEPENDENCY_UPGRADE_TOKEN }}
+      app_private_key: ${{ secrets.KLUDGEWORKS_SPARQL_PRIVATE_KEY }}

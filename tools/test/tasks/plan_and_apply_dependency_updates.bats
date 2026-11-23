@@ -189,15 +189,15 @@ for contents, extra, valid in [(new, False, True), (new + "  - run: echo extra\n
     git("reset", "--hard", "-q", "HEAD")
     with patch.object(publisher, "release_pin", return_value="b"*40 + " # v1.1.0"):
         try:
-            publisher.verify_patch(artifact, changes)
+            workflows_changed = publisher.verify_patch(artifact, changes)
         except ValueError:
             assert not valid
             assert path.read_text() == old
         else:
-            assert valid and path.read_text() == new
+            assert valid and workflows_changed and path.read_text() == new
     git("reset", "--hard", "-q", "HEAD")
 artifact.write_bytes(b"")
-publisher.verify_patch(artifact, [])
+assert not publisher.verify_patch(artifact, [])
 assert not git("diff","--cached")
 PY
 }
