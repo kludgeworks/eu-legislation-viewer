@@ -91,3 +91,23 @@ Feature: From when a change applies
       When the reader asks from when the change of Corrigendum 1 to 2024/1255 applies
       Then it corrects 2024/1255 from 26 May 2024
       And the first text between the two days that has it is of 26 May 2024
+
+  Rule: change-that-does-not-apply-yet · A change that does not apply yet on the day
+    A text can include the change of an act before the change applies. On a day before the change
+    applies, a difference at an occurrence that the change is at says so. It names the act and the
+    day. A difference says nothing of it where each change at its occurrence applies on the day:
+    a change of the same act that applies already, or a change by another act or a corrigendum.
+
+    Background:
+      Given the comparison of the texts of 767/2008 of 18 October 2013 and of 29 December 2017
+      When the reader reads the comparison on 1 January 2018
+
+    Example: A change that the later text includes before it applies
+      Then at the inserted Article 10(1)(da), the difference says that 2017/2226 does not apply yet on 1 January 2018
+      And 14 of the 35 differences say that 2017/2226 does not apply yet
+
+    Example: A change of the same act that applies already
+      Then at the inserted Article 17a, the difference says that each change applies
+
+    Example: A correction by a corrigendum
+      Then at the changed Article 5(1)(a), the difference says that each change applies

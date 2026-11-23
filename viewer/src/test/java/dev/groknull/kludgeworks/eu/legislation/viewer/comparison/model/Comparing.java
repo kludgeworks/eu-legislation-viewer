@@ -29,7 +29,8 @@ import org.jspecify.annotations.Nullable;
  * <p>The texts of the versions are the converter's sample texts, where it has them: 2015/1998 has
  * its original text and the texts of 29 February 2016, 16 February 2020, 2 July 2020, 15 March
  * 2021, 31 December 2021, and of 1 January, 22 March and 1 October 2026. Directive 2013/36 has the
- * texts of 17 January 2025 and of 11 January 2026.
+ * texts of 17 January 2025 and of 11 January 2026, and 767/2008 the texts of 18 October 2013 and of
+ * 29 December 2017.
  */
 public class Comparing {
   private @Nullable Act act;

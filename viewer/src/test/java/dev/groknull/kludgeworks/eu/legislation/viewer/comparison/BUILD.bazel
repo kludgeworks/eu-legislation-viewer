@@ -127,6 +127,7 @@ RULES_GLUE = [
     "model/LastChangeSteps.java",
     "model/MadeBySteps.java",
     "model/ModificationSteps.java",
+    "model/NotApplyingSteps.java",
     "model/OneActSteps.java",
     "model/PairingSteps.java",
     "model/TagsSteps.java",

@@ -79,13 +79,7 @@ class AttributionService implements Attributions {
       var eId = attributed.difference().eId();
       var version = attributed.attribution().unattributed() ? appeared.get(eId) : null;
       var placed = version == null ? attributed : attributed.appearedIn(version, included);
-      each.add(
-          prospective == null
-              ? placed
-              : prospective
-                  .at(eId)
-                  .map(amending -> placed.notApplyingYet(amending, prospective.day()))
-                  .orElse(placed));
+      each.add(prospective == null ? placed : placed.notApplying(prospective));
     }
     return Optional.of(
         new Compared(comparison.get(), later.text(), before, outline, amended, each));

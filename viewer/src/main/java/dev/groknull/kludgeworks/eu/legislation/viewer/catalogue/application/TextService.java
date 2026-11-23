@@ -18,7 +18,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionRepublished;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.VersionWithdrawn;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
@@ -34,12 +33,9 @@ import java.time.Clock;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -158,7 +154,7 @@ class TextService implements Texts {
             (version, text) -> {
               switch (text) {
                 case Text.Ready ready ->
-                    content.outline(ready.text()).ifPresent(o -> tags.put(version, tags(o)));
+                    content.outline(ready.text()).ifPresent(o -> tags.put(version, TextTags.of(o)));
                 case Text.Waiting _, Text.Converting _, Text.Failed _ -> {
                   // not built: it gives no tags
                 }
@@ -172,23 +168,6 @@ class TextService implements Texts {
         preparation.language().code(),
         (System.nanoTime() - start) / 1_000_000);
     return tags;
-  }
-
-  /** Returns the tags in {@code outline}, by act. A tag that is not a CELEX is left out. */
-  private static TextTags tags(Outline outline) {
-    var byAct = new HashMap<ActIdentifier, Set<String>>();
-    outline
-        .tags()
-        .forEach(
-            (occurrence, acts) ->
-                acts.stream()
-                    .filter(ActIdentifier::isCelex)
-                    .forEach(
-                        act ->
-                            byAct
-                                .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
-                                .add(occurrence)));
-    return new TextTags(outline.eIds(), byAct);
   }
 
   @Override

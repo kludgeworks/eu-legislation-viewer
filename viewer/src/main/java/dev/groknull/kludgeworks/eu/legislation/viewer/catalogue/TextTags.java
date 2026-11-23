@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -26,6 +29,26 @@ public record TextTags(List<String> eIds, Map<ActIdentifier, Set<String>> byAct)
             .collect(
                 Collectors.toUnmodifiableMap(
                     Map.Entry::getKey, each -> Set.copyOf(each.getValue())));
+  }
+
+  /**
+   * Returns the tags of the text whose outline is {@code outline}, by act. A tag that is not a
+   * CELEX number is left out.
+   */
+  public static TextTags of(Outline outline) {
+    var byAct = new HashMap<ActIdentifier, Set<String>>();
+    outline
+        .tags()
+        .forEach(
+            (occurrence, acts) ->
+                acts.stream()
+                    .filter(ActIdentifier::isCelex)
+                    .forEach(
+                        act ->
+                            byAct
+                                .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
+                                .add(occurrence)));
+    return new TextTags(outline.eIds(), byAct);
   }
 
   /** Returns the eIds of the occurrences that {@code act} tags. */
