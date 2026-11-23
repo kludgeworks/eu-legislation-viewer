@@ -110,8 +110,8 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
         with:
-          # Public client ID from github.com/apps/kludgeworks-sparql.
-          client-id: Iv23licfWzid6CJi1KPn
+          # Public client ID from github.com/apps/kludgebot.
+          client-id: Iv23liYVAElUC3TAzSSx
           private-key: ${{ secrets.app_private_key }}
           # Omit owner and repositories to scope the token to this repository.
           permission-contents: write
