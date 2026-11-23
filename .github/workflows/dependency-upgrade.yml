@@ -1,0 +1,74 @@
+# SPDX-License-Identifier: MIT
+name: Upgrade dependencies
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Serialize discovery and publication together so overlapping runs share the same PR cap.
+concurrency:
+  group: dependency-upgrades
+  cancel-in-progress: false
+
+jobs:
+  plan:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      matrix: ${{ steps.plan.outputs.matrix }}
+      base: ${{ steps.checkout.outputs.commit }}
+      mise_version: ${{ steps.mise-version.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        id: checkout
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Read the mise version from mise.toml
+        id: mise-version
+        run: |
+          version=$(yq -er '.min_version' mise.toml)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
+        with:
+          version: ${{ steps.mise-version.outputs.version }}
+          install: false
+          # The plan only caches the mise binary. Keep its cache separate from installed tools.
+          cache_key_prefix: mise-plan
+
+      - name: Select one combined update and up to three individual majors
+        id: plan
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: bash tools/build/plan-dependency-prs.bash
+
+  update:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    name: ${{ matrix.title }}
+    permissions:
+      contents: read
+    uses: ./.github/workflows/publish-dependency-update.yml
+    with:
+      base: ${{ needs.plan.outputs.base }}
+      mise_version: ${{ needs.plan.outputs.mise_version }}
+      changes: ${{ toJSON(matrix.changes) }}
+      branch: ${{ matrix.branch }}
+      title: ${{ matrix.title }}
+      body: ${{ matrix.body }}
+      artifact: ${{ format('dependency-update-{0}', strategy.job-index) }}
+    secrets:
+      app_private_key: ${{ secrets.KLUDGEBOT_PRIVATE_KEY }}
