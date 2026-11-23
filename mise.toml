@@ -36,7 +36,7 @@ node = "24.22.1"
 prettier = "3.9.10"
 # the page scripts' linter (hk ox_lint): its JSDoc, unicorn, import and Vitest rules are built in
 oxlint = "1.92.0"
-"npm:stylelint" = "16.15.0"
+"npm:stylelint" = "18.1.0"
 shfmt = "3.14.1"
 bats = "1.14.0"
 usage = "7.1.5"
