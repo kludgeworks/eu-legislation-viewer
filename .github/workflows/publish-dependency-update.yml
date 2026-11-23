@@ -126,6 +126,7 @@ jobs:
           branch: ${{ inputs.branch }}
           base: main
           delete-branch: true
+          sign-commits: true
           add-paths: |
             .github/workflows/
             .github/actions/
