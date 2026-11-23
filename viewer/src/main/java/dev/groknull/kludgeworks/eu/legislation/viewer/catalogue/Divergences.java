@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
@@ -198,6 +200,15 @@ final class Divergences {
    * Returns how the text and {@code place} of {@code amending} compare. Returns empty if the texts
    * do not tell.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "a-place-date-the-act-can-apply-from")
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "the-text-agrees-with-the-law")
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "a-provision-not-in-the-text-yet")
   private Optional<Answer> answer(ActIdentifier amending, Amendment place) {
     var tagged = firstTagging(amending, place);
     if (tagged.isEmpty()) {
@@ -254,6 +265,9 @@ final class Divergences {
    * empty if a version before the answer has no built text, or if no version tags the place while
    * some version includes the act.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "the-version-date-of-a-change")
   private Optional<Tagged> firstTagging(ActIdentifier amending, Amendment place) {
     Version first = null;
     Version around = null;
@@ -351,6 +365,9 @@ final class Divergences {
    * amendment from that day, once every text is built. If Cellar does not give that day either, it
    * is an undated pending amendment from the act's entry into force, at {@code places}.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "an-act-compared-as-a-whole")
   private List<Divergence> whole(ActIdentifier amending, List<Amendment> places) {
     var applies = act.appliesFrom(amending);
     if (applies.isEmpty()) {
@@ -374,6 +391,7 @@ final class Divergences {
    * lack it. Empty if a version includes it, if a text is not built, or if Cellar has no day for
    * its entry into force.
    */
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "undated-pending-amendment")
   private List<Divergence> undated(ActIdentifier amending, List<Amendment> places) {
     if (versions.stream().anyMatch(each -> includes(each, amending))
         || !texts.keySet().containsAll(versions)) {

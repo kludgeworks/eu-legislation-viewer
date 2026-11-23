@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.ParameterType;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,7 +12,8 @@ import java.util.Locale;
 
 /**
  * The words of the catalogue's rules, as the domain's types: the parameter types of the steps
- * ({@code {act}}, {@code {day}}, {@code {days}}, {@code {place}}, {@code {state}}).
+ * ({@code {act}}, {@code {acts}}, {@code {day}}, {@code {days}}, {@code {language}}, {@code
+ * {place}}, {@code {state}}).
  */
 public class CatalogueTypes {
   private static final DateTimeFormatter DAY =
@@ -21,6 +23,16 @@ public class CatalogueTypes {
   @ParameterType("\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Decision \\d{4}/\\d+")
   public ActIdentifier act(String cited) {
     return Cited.act(cited);
+  }
+
+  /**
+   * Acts, as the rules cite them, separated by commas. For example, "Corrigendum 2 to 2015/1998,
+   * 2015/2426".
+   */
+  @ParameterType(
+      "(?:Corrigendum \\d+ to )?\\d{1,4}/\\d{1,4}(?:, (?:Corrigendum \\d+ to )?\\d{1,4}/\\d{1,4})*")
+  public List<ActIdentifier> acts(String cited) {
+    return Arrays.stream(cited.split(", ")).map(Cited::act).toList();
   }
 
   /** A day, as the pages write it. For example, "1 October 2026". */
@@ -39,7 +51,7 @@ public class CatalogueTypes {
   }
 
   /** A place, as the pages name it. For example, "Article 79(7)". */
-  @ParameterType("(?:Article|Annex|Chapter|point) \\S+")
+  @ParameterType("(?:Article|Annex|Appendix|Chapter|point) \\S+")
   public Place place(String words) {
     return new Place(words);
   }
@@ -56,6 +68,17 @@ public class CatalogueTypes {
       case "applies" -> State.APPLIES;
       case "has a state that is not known" -> State.NOT_KNOWN;
       default -> throw new IllegalArgumentException("Not a state: " + words);
+    };
+  }
+
+  /** A language, by its name in English. For example, "German". */
+  @ParameterType("English|German|Swedish")
+  public Language language(String name) {
+    return switch (name) {
+      case "English" -> Language.ENG;
+      case "German" -> Language.DEU;
+      case "Swedish" -> Language.SWE;
+      default -> throw new IllegalArgumentException("Not a language of the rules: " + name);
     };
   }
 }

@@ -36,62 +36,6 @@ class DivergencesTest {
   private Set<Language> changedLanguages = Set.of();
 
   @Test
-  void aProvisionThatAppliesBeforeTheFirstVersionThatTagsItIsAPendingAmendment() {
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
-
-    assertThat(divergences())
-        .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d), d -> places(d))
-        .containsExactly(
-            tuple(
-                Divergence.Kind.PENDING,
-                LocalDate.parse("2017-06-01"),
-                LocalDate.parse("2017-06-07"),
-                List.of("AN PO 1.1")));
-  }
-
-  @Test
-  void aProvisionThatAppliesOnTheDayOfTheFirstVersionThatTagsItAgreesWithTheLaw() {
-    application("2017-06-07");
-    place("2017-06-07");
-    version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
-
-    assertThat(divergences()).isEmpty();
-  }
-
-  @Test
-  void aProvisionThatAVersionTagsBeforeItAppliesIsAProspectiveAmendment() {
-    entryIntoForce("2017-12-29");
-    partialApplication("2019-10-11");
-    place("2019-10-11");
-    version("2016-02-29", false);
-    version("2018-01-12", true, POINT);
-    version("2020-01-01", true, POINT);
-
-    assertThat(divergences())
-        .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d))
-        .containsExactly(
-            tuple(
-                Divergence.Kind.PROSPECTIVE,
-                LocalDate.parse("2019-10-11"),
-                LocalDate.parse("2018-01-12")));
-  }
-
-  @Test
-  void aPlaceDateThatIsOnlyTheEntryIntoForceIsRejectedWhenTheWholeActAppliesLater() {
-    entryIntoForce("2017-05-20");
-    application("2017-06-07");
-    place("2017-05-20");
-    version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
-
-    assertThat(divergences()).isEmpty();
-  }
-
-  @Test
   void aPlaceDateThatIsNotADateOfTheActIsRejected() {
     application("2017-06-07");
     place("2017-05-01");
@@ -170,20 +114,6 @@ class DivergencesTest {
   }
 
   @Test
-  void anAddedProvisionThatTheVersionBeforeDoesNotHaveIsAPendingAmendment() {
-    role = Role.ADDITION;
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    versionWithoutThePoint("2017-03-01");
-    version("2017-06-07", true, POINT);
-
-    assertThat(divergences())
-        .extracting(Divergence::kind, d -> included(d))
-        .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2017-06-07")));
-  }
-
-  @Test
   void anActThatNoVersionIncludesIsNoPendingAmendmentUntilEveryTextIsBuilt() {
     application("2026-11-12");
     place("2026-11-12");
@@ -212,41 +142,6 @@ class DivergencesTest {
                 LocalDate.parse("2017-06-01"),
                 LocalDate.parse("2017-06-07"),
                 List.of()));
-  }
-
-  @Test
-  void withoutTheTextsAnActIsComparedAsAWhole() {
-    application("2017-06-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
-
-    assertThat(act().divergences(Language.ENG, Map.of()))
-        .extracting(Divergence::kind, Divergence::appliesFrom, d -> places(d))
-        .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2017-06-01"), List.of()));
-  }
-
-  @Test
-  void anActThatNoVersionIncludesAndWhoseDayOfApplicationIsNotKnownIsNotConfirmed() {
-    entryIntoForce("2021-08-02");
-    applicationOnADayNotKnown();
-    version("2016-02-29", false);
-
-    assertThat(divergences())
-        .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d))
-        .containsExactly(tuple(Divergence.Kind.UNDATED, LocalDate.parse("2021-08-02"), null));
-    assertThat(divergences().getFirst().on(LocalDate.parse("2021-08-01"))).isFalse();
-    assertThat(divergences().getFirst().on(LocalDate.parse("2026-11-16"))).isTrue();
-  }
-
-  @Test
-  void anActThatAVersionIncludesAndWhoseDayOfApplicationIsNotKnownTakesTheVersionDate() {
-    entryIntoForce("2021-08-02");
-    applicationOnADayNotKnown();
-    version("2016-02-29", false);
-    version("2022-01-01", true, POINT);
-
-    assertThat(divergences()).isEmpty();
   }
 
   @Test

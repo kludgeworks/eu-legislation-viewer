@@ -509,6 +509,8 @@ java_library(
 CATALOGUE_RULES_GLUE = [
     "ApplyingSteps.java",
     "CatalogueTypes.java",
+    "DivergenceSteps.java",
+    "SampleTexts.java",
     "StateSteps.java",
     "TheAct.java",
 ]
@@ -538,7 +540,9 @@ java_junit5_test(
         ":recorded-acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:io_cucumber_cucumber_java",
         "@maven//:io_cucumber_cucumber_junit_platform_engine",
         "@maven//:org_assertj_assertj_core",
@@ -570,7 +574,9 @@ java_junit5_test(
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:io_cucumber_cucumber_java",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",

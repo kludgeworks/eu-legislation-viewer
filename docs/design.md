@@ -287,6 +287,7 @@ not apply yet".
 | --- | --- |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
 | divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. |
+| made by | The line of the reading card that names the acts that made the text of the version in the language of the page (`Act.changingIn`). If the Publications Office lists acts for the version, but no act changes the text in that language, the card says that the words are the same: "Same wording in English as the text of 4 April 2022". The card still says that a new text starts on that day. |
 | history | The list of the amending acts of an act, newest first. |
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 | sequence | On the page of an amending act: changes that follow each other in the text and have the same state (`AmendingView.Sequence`). The sequence says the state, the date and the clause one time. |

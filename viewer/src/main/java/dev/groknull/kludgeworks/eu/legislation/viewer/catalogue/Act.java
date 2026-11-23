@@ -265,6 +265,9 @@ public record Act(
    * across the act, but may lack {@code language}. When multiple versions share a day, it picks the
    * one in {@code language}, falling back to the other.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "the-text-of-a-day-is-a-version")
   public Optional<Version> versionOn(LocalDate date, Language language) {
     return timeline.applicableOn(date, language);
   }
@@ -845,6 +848,9 @@ public record Act(
    * For example, the version of 2015/1998 of 12 April 2022 lists 2022/463, which changes only the
    * German text: in English it lists none.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "the-acts-that-made-a-text-in-the-language")
   public List<ActIdentifier> changingIn(Version version, Language language) {
     return version.integrates().stream()
         .filter(
@@ -1039,6 +1045,9 @@ public record Act(
    * <p>Returns empty on a day without a text, on or after the day from which the act applies in
    * full, and where Cellar does not give that day.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "deferred-application-of-the-act")
   public Optional<DeferredApplication> deferredApplicationOn(LocalDate day, Language language) {
     var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
     return appliesFrom(id)

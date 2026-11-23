@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -132,6 +134,8 @@ public record Divergence(
    *       it to the day before the act applies.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "pending-amendment")
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "prospective-amendment")
   public boolean on(LocalDate day) {
     return switch (kind) {
       case PENDING ->
