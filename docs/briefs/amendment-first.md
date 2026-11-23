@@ -101,7 +101,7 @@ The primary task changes.
 
 ## 3. Visual direction
 
-| Element | Layer | Tokens |
+| Element | Layer | Colour variables |
 | --- | --- | --- |
 | Status lines, the history list, the list of corrigenda | Words of the viewer | `--ink…`, `--muted…`, `--line…` |
 | The state "In force, does not apply yet" | Words of the viewer | `--warn-…` |

@@ -6,22 +6,35 @@ import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.text.BreakIterator;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.regex.Pattern;
+import org.jspecify.annotations.Nullable;
 
 /**
  * What a block of a legal text says, as a comparison reads it.
  *
- * <p>The wording holds the text, numbers and quotation marks of the block. Line breaks become
- * spaces. Each run of spacing, a non-breaking space too, becomes a single space.
+ * <p>The comparison reads a block as tokens, in this order:
  *
- * <p>The wording leaves out a kept deletion: the words that an act deleted, which a consolidation
- * keeps marked as deleted. They are not words of the law. The tags of the amending acts and the
- * references to footnotes hold no words: their act and their marker are attributes.
+ * <ul>
+ *   <li>the words, spaces and punctuation of a {@code t}, from {@link #words}
+ *   <li>a whole {@code number}
+ *   <li>an {@code eol}, which is a space
+ *   <li>an image
+ *   <li>the quotation marks of a quote
+ *   <li>a whole formula
+ * </ul>
  *
- * <p>The text of a change, {@code changed}, which a tag names, stays.
+ * <p>The comparison leaves out a kept deletion: the words that an act deleted, which a
+ * consolidation keeps marked as deleted. They are not words of the law. The tags of the amending
+ * acts and the references to footnotes hold no words: their act and their marker are attributes.
+ * The text of a change, {@code changed}, which a tag names, stays.
+ *
+ * <p>A walk visits the tokens of a block in this order, and a {@link Sink} rebuilds the block from
+ * them. {@link #of} joins the tokens. {@link Edits} compares the tokens of two blocks. {@link Runs}
+ * writes the edits of a block with a walk.
  */
 public final class Wording {
   /** The elements whose words are not words of the law, for a comparison: a kept deletion. */
@@ -29,12 +42,24 @@ public final class Wording {
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 
+  /**
+   * A form blank: an ellipsis that stands alone as a word, where a form leaves room to fill in. For
+   * example, "Make (trade name of manufacturer): …" and "Mass in running order: … kg". The
+   * Publications Office chooses whether a consolidation prints it. An ellipsis joined to a word, as
+   * in "Annex…", is not a blank.
+   */
+  private static final Pattern BLANK = Pattern.compile("(?<![\\p{L}\\p{N}])…(?![\\p{L}\\p{N}])");
+
   private Wording() {}
 
-  /** Returns what {@code block} says. For example, "The following means … shall be applied:". */
+  /**
+   * Returns what {@code block} says: its tokens, joined. Each run of spacing, a non-breaking space
+   * too, becomes one space. An image has a space before it and after it. For example, "The
+   * following means … shall be applied:".
+   */
   public static String of(Element block) {
     var out = new StringBuilder();
-    append(block, out);
+    walk(block, new Join(out));
     return SPACE.matcher(out).replaceAll(" ").strip();
   }
 
@@ -51,14 +76,6 @@ public final class Wording {
   public static String key(Element block) {
     return SPACE.matcher(BLANK.matcher(plain(of(block))).replaceAll("")).replaceAll("");
   }
-
-  /**
-   * A form blank: an ellipsis that stands alone as a word, where a form leaves room to fill in. For
-   * example, "Make (trade name of manufacturer): …" and "Mass in running order: … kg". The
-   * Publications Office chooses whether a consolidation prints it. An ellipsis joined to a word, as
-   * in "Annex…", is not a blank.
-   */
-  private static final Pattern BLANK = Pattern.compile("(?<![\\p{L}\\p{N}])…(?![\\p{L}\\p{N}])");
 
   /**
    * Returns {@code text} with each apostrophe and single quotation mark as ', and each double
@@ -103,25 +120,215 @@ public final class Wording {
     return words;
   }
 
+  /** Returns the tokens of {@code element}, in order. */
+  static List<String> tokens(Element element) {
+    var tokens = new ArrayList<String>();
+    collect(element, tokens, new ArrayList<>());
+    return tokens;
+  }
+
+  /**
+   * Lists the tokens of {@code element} in {@code tokens}, in order, and the element of each token
+   * in {@code pieces}. The element of a token is what shows of it if it is deleted: a {@code t}
+   * with the word, or the element of the token, for example a formula.
+   */
+  static void collect(Element element, List<String> tokens, List<Element> pieces) {
+    walk(element, new Collect(tokens, pieces));
+  }
+
+  /**
+   * Returns what {@code tokens} say, as the comparison compares them: a run of spaces as one space,
+   * and a word with each apostrophe in its plain form ({@link #plain}). Thus "institution's" and
+   * "institution’s" are the same word. A quotation mark alone keeps its form: the plain form of an
+   * opening quotation mark and of a closing one is the same, and they would then match one with the
+   * other.
+   */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "spaces-are-no-change")
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "form-of-apostrophes-and-quotes")
+  static List<String> said(List<String> tokens) {
+    return tokens.stream()
+        .map(
+            token ->
+                SPACE.matcher(token).matches()
+                    ? " "
+                    : token.codePoints().anyMatch(Character::isLetterOrDigit)
+                        ? plain(token)
+                        : token)
+        .toList();
+  }
+
+  /**
+   * Returns {@code element} as {@code sink} rebuilds it. The walk visits its tokens in order. The
+   * result is what goes in the place of the element: one element, several elements or none. For
+   * example, a {@code t} that is split at its edits gives several elements.
+   */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "formula-is-one-piece")
   @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "kept-deletion-is-not-words")
-  private static void append(Element element, StringBuilder out) {
+  static List<Element> walk(Element element, Sink sink) {
+    var v = element.attributes().getOrDefault("v", "");
     switch (element.name()) {
-      case "t", "number" -> out.append(element.attributes().getOrDefault("v", ""));
-      case "eol" -> out.append(' ');
-      case "img" -> out.append(" [image ").append(element.attributes().get("src")).append("] ");
-      case "quote" -> {
-        out.append(element.attributes().getOrDefault("startQuote", ""));
-        element.children().forEach(child -> append(child, out));
-        out.append(element.attributes().getOrDefault("endQuote", ""));
+      case "t" -> {
+        return sink.words(element, words(v));
+      }
+      case "number" -> {
+        return sink.token(element, v, true);
+      }
+      case "eol" -> {
+        return sink.token(element, " ", false);
+      }
+      case "img" -> {
+        return sink.token(element, "[image " + element.attribute("src") + "]", true);
+      }
+      case "math" -> {
+        // A formula is one token. A changed formula shows whole as deleted, then whole as
+        // inserted: the elements of its MathML alone do not read.
+        return sink.token(element, formula(element), true);
       }
       default -> {
         if (SILENT.contains(element.name())) {
-          return;
+          return List.of(element);
         }
-        // The MathML tokens, for example mi and mo, hold text of their own.
-        out.append(element.text());
-        element.children().forEach(child -> append(child, out));
+        if (!element.text().isEmpty()) {
+          // The MathML elements, for example mi and mo, hold text of their own. They are counted,
+          // without edits.
+          return sink.token(element, element.text(), false);
+        }
+        if (element.name().equals("quote")) {
+          return quote(element, sink);
+        }
+        var children = new ArrayList<Element>();
+        for (var child : element.children()) {
+          children.addAll(walk(child, sink));
+        }
+        return List.of(Differ.copy(element, children));
       }
+    }
+  }
+
+  /** Returns what the formula {@code math} says: the text of its MathML elements, joined. */
+  private static String formula(Element math) {
+    var out = new StringBuilder();
+    mathText(math, out);
+    return SPACE.matcher(out).replaceAll(" ").strip();
+  }
+
+  private static void mathText(Element element, StringBuilder out) {
+    out.append(element.text());
+    element.children().forEach(child -> mathText(child, out));
+  }
+
+  /**
+   * Returns the quote {@code element} as {@code sink} rebuilds it. Its quotation marks are tokens,
+   * and legal-text has them as attributes. A quotation mark that is edited becomes text in the
+   * quote, in its edit element, and the attribute is emptied. Thus it shows where it stands, edited
+   * as any other text is.
+   */
+  private static List<Element> quote(Element element, Sink sink) {
+    var attributes = new HashMap<>(element.attributes());
+    var opening = sink.quotationMark(attributes.getOrDefault("startQuote", ""));
+    var children = new ArrayList<Element>();
+    if (opening.edited() != null) {
+      children.add(opening.edited());
+      attributes.put("startQuote", "");
+    }
+    for (var child : element.children()) {
+      children.addAll(walk(child, sink));
+    }
+    var closing = sink.quotationMark(attributes.getOrDefault("endQuote", ""));
+    children.addAll(closing.before());
+    if (closing.edited() != null) {
+      children.add(closing.edited());
+      attributes.put("endQuote", "");
+    }
+    // What was deleted before the opening quotation mark goes before the quote.
+    var out = new ArrayList<>(opening.before());
+    out.add(new Element(element.name(), attributes, children, element.text()));
+    return out;
+  }
+
+  /** What a walk does at each token. */
+  interface Sink {
+    /** Visits a {@code t} and its words. Returns what goes in its place. */
+    List<Element> words(Element t, List<String> words);
+
+    /**
+     * Visits an element that is one token, which says {@code said}. Returns what goes in its place.
+     */
+    List<Element> token(Element element, String said, boolean editable);
+
+    /** Visits a quotation mark of a quote, which has no element of its own. */
+    QuotationMark quotationMark(String mark);
+  }
+
+  /**
+   * What a walk makes of a quotation mark of a quote.
+   *
+   * @param before what goes before the quotation mark, for example the words deleted there
+   * @param edited the quotation mark as edited text. Null if it is without edits: it then stays as
+   *     it is.
+   */
+  record QuotationMark(List<Element> before, @Nullable Element edited) {
+    static final QuotationMark NONE = new QuotationMark(List.of(), null);
+  }
+
+  /**
+   * A walk that only lists the tokens. It changes nothing.
+   *
+   * @param tokens the tokens, in order
+   * @param pieces the element of each token, in order. It is what shows of the token if the token
+   *     is deleted: a {@code t} with the word, or the element of the token, for example a formula.
+   */
+  private record Collect(List<String> tokens, List<Element> pieces) implements Sink {
+    @Override
+    public List<Element> words(Element t, List<String> words) {
+      for (var word : words) {
+        tokens.add(word);
+        pieces.add(Runs.text(t, word));
+      }
+      return List.of(t);
+    }
+
+    @Override
+    public List<Element> token(Element element, String said, boolean editable) {
+      tokens.add(said);
+      pieces.add(element);
+      return List.of(element);
+    }
+
+    @Override
+    public QuotationMark quotationMark(String mark) {
+      if (!mark.isEmpty()) {
+        tokens.add(mark);
+        pieces.add(Runs.text(null, mark));
+      }
+      return QuotationMark.NONE;
+    }
+  }
+
+  /** A walk that joins the tokens into {@code out}. It changes nothing. */
+  private record Join(StringBuilder out) implements Sink {
+    @Override
+    public List<Element> words(Element t, List<String> words) {
+      words.forEach(out::append);
+      return List.of(t);
+    }
+
+    @Override
+    public List<Element> token(Element element, String said, boolean editable) {
+      if (element.name().equals("img")) {
+        out.append(' ').append(said).append(' ');
+      } else {
+        out.append(said);
+      }
+      return List.of(element);
+    }
+
+    @Override
+    public QuotationMark quotationMark(String mark) {
+      out.append(mark);
+      return QuotationMark.NONE;
     }
   }
 }

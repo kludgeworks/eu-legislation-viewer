@@ -4,14 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.JANUARY;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.MARCH;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.OCTOBER;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.block;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.descendants;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.formula;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.occurrence;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.only;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.row;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.said;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.table;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.BuiltTexts.text;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
@@ -32,9 +26,9 @@ import org.junit.jupiter.api.Test;
  * from 1 October.
  *
  * <p>Each stage has its own tests: {@code PairingTest}, {@code ComparerTest}, {@code
- * ComparedOccurrenceTest}, {@code OccurrenceEditsTest} and {@code OrderingTest}. The tests of
- * words, spaces, tables and formulas move to the tests of Edits and Pieces with step 3. The
- * business rules are in viewer/src/test/rules/comparison.
+ * ComparedOccurrenceTest}, {@code OccurrenceEditsTest} and {@code OrderingTest}. The edits have
+ * {@code EditsTest}, {@code RunsTest} and {@code WordingTest}. The business rules are in
+ * viewer/src/test/rules/comparison.
  */
 class DifferTest {
   @Test
@@ -77,119 +71,6 @@ class DifferTest {
     assertThat(said(only(c.shown(), "num"))).isEqualTo("(c)");
     assertThat(c.inserted()).isEqualTo(16);
     assertThat(c.deleted()).isZero();
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void keepsTheTextsStructureAroundItsEdits() {
-    var c = Differ.differences(MARCH, OCTOBER).differences().getFirst().shown();
-    assertThat(c.children()).extracting(Element::name).containsExactly("tag", "num", "p");
-    assertThat(descendants(c))
-        .filteredOn(element -> element.name().startsWith("diff:"))
-        .allSatisfy(
-            edit -> assertThat(edit.children()).extracting(Element::name).containsOnly("t"));
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void comparesATableRowByRowAndCellByCell() {
-    var differences =
-        Differ.differences(text("02018R2019-20250220"), text("02018R2019-20250623")).differences();
-    // A list inserted in the cell of Alnus renumbers the lists in the cells after it, list_2 to
-    // list_3 and so on. Their occurrences are not differences of their own.
-    assertThat(differences).extracting(Difference::eId).containsExactly("anx/level_1/pnt_1");
-    var alnus =
-        descendants(differences.getFirst().shown()).stream()
-            .filter(each -> each.name().equals("tr") && said(each).contains("Alnus"))
-            .findFirst()
-            .orElseThrow();
-    var cells = alnus.children().stream().filter(each -> each.name().equals("td")).toList();
-    assertThat(said(cells.get(0))).isEqualTo("ex0602");
-    assertThat(said(cells.get(1)))
-        .startsWith("Alnus Mill.[+, other than:][+up to 2-year-old graftwood of ]");
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void showsARowDeletedFromATableAsARowWhereItStood() {
-    var from = text(occurrence("art_1", table(row("A", "1"), row("B", "2"), row("C", "3"))));
-    var to = text(occurrence("art_1", table(row("A", "1"), row("C", "3"))));
-    var difference = Differ.differences(from, to).differences().getFirst();
-    var rows = only(difference.shown(), "table").children();
-    assertThat(rows).extracting(BuiltTexts::said).containsExactly("A1", "[-B][-2]", "C3");
-    assertThat(difference.deleted()).isEqualTo(2);
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void pairsAChangedRowWithTheRowItWasNotWithARowInsertedBeforeIt() {
-    var from =
-        text(
-            occurrence(
-                "art_1",
-                table(
-                    row("Acacia", "all third countries"),
-                    row("Alnus", "all third countries"),
-                    row("Betula", "all third countries"))));
-    var to =
-        text(
-            occurrence(
-                "art_1",
-                table(
-                    row("Acacia", "all third countries"),
-                    row("Albizia", "Israel"),
-                    row("Alnus", "all third countries other than the United Kingdom"),
-                    row("Betula", "all third countries"))));
-    var difference = Differ.differences(from, to).differences().getFirst();
-    var rows = only(difference.shown(), "table").children();
-    assertThat(rows)
-        .extracting(BuiltTexts::said)
-        .containsExactly(
-            "Acaciaall third countries",
-            "[+Albizia][+Israel]",
-            "Alnusall third countries[+ other than the United Kingdom]",
-            "Betulaall third countries");
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void comparesAChangedCellWithTheCellAboveIt() {
-    var from = text(occurrence("art_1", table(row("A", "1"), row("B", "2"))));
-    var to = text(occurrence("art_1", table(row("A", "1"), row("B", "20"))));
-    var difference = Differ.differences(from, to).differences().getFirst();
-    var rows = only(difference.shown(), "table").children();
-    assertThat(rows.get(1).children())
-        .extracting(BuiltTexts::said)
-        .containsExactly("B", "[-2][+20]");
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void readsAFormBlankInsideAFieldThatOnlyOneTextPrintsAsNoChange() {
-    // As point 2.17.1 of Appendix 3 to Annex I to 692/2008, of 1 January 2016.
-    var from = text(occurrence("pnt_2.17.1", block("p", "Mass in running order: … kg")));
-    var to = text(occurrence("pnt_2.17.1", block("p", "Mass in running order: kg")));
-    assertThat(Differ.differences(from, to).differences()).isEmpty();
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void readsAnEllipsisJoinedToAWordAsAChange() {
-    var from = text(occurrence("art_1", block("p", "as set out in Annex…")));
-    var to = text(occurrence("art_1", block("p", "as set out in Annex")));
-    assertThat(Differ.differences(from, to).differences()).hasSize(1);
-  }
-
-  // Moves with step 3 (Edits): a decision of Edits and Pieces.
-  @Test
-  void showsAChangedFormulaWholeAsDeletedThenInserted() {
-    var from = text(occurrence("art_1", formula("1")));
-    var to = text(occurrence("art_1", formula("2")));
-    var difference = Differ.differences(from, to).differences().getFirst();
-    var p = only(difference.shown(), "p");
-    assertThat(p.children()).extracting(Element::name).containsExactly("t", "diff:del", "diff:ins");
-    assertThat(p.children().get(1).children()).extracting(Element::name).containsExactly("math");
-    assertThat(p.children().get(2).children()).extracting(Element::name).containsExactly("math");
   }
 
   /**

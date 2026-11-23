@@ -17,7 +17,7 @@ voice, one word for one thing.
 
 - **Rules of the law.** The Business rules catalogue says what is true about the law: dates,
   versions, differences. This document says how a page shows it.
-- **Token values and commands.** The source files have them. This document links to the files.
+- **The values of the colour variables, and commands.** The source files have them. This document links to the files.
 - **Decisions for one feature.** A design brief for that feature has them.
 
 ## The reader
@@ -111,6 +111,7 @@ its module.
 | the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
 | difference | A subdivision that differs between the two texts of a comparison: inserted, deleted, or with changed wording of its own. It is a provision, a citation or a recital. |
 | edits | The inserted and deleted words of a difference. Blue shows an insertion and red a deletion. |
+| token | A word, a space, a punctuation mark, a number, an image, a quotation mark or a formula of a block, as the comparison reads it (`Wording`). The edits compare tokens. A formula is one token. A kept deletion has no tokens. |
 | run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
 | pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
@@ -279,11 +280,11 @@ are not in this rule: `versions` is the name of a resource of the API.
 
 ## Colour
 
-**Convention.** A colour has one meaning. Use the token, not a value. Each token has a light value
-and a dark value. The tokens are in
+**Convention.** A colour has one meaning. Use the colour variable, not a value. Each colour
+variable has a light value and a dark value. The colour variables are in
 [site.css](../viewer/src/main/resources/static/css/site.css).
 
-| Colour | Tokens | Meaning |
+| Colour | Colour variables | Meaning |
 | --- | --- | --- |
 | Green | `--accent…` | Navigation and selection: links, the selected version, the selected view. |
 | Blue | `--ins-…` | Inserted words, and the sidenote of an inserted provision. |
@@ -298,7 +299,7 @@ bar has words.
 **Open.**
 
 - Blue is also the colour of the "arriving" loading state. Red is also the colour of a failure.
-  Decide if these loading states get their own tokens.
+  Decide if these loading states get their own colour variables.
 - `--target`, `--cor-ink` and `--cor-line` have no use in the stylesheets. Delete them or use them.
 
 ## Layout and width
@@ -392,7 +393,7 @@ in the viewer while it runs.
 
 | Subject | File |
 | --- | --- |
-| Colour tokens, the site bar, the theme | [site.css](../viewer/src/main/resources/static/css/site.css) |
+| Colour variables, the site bar, the theme | [site.css](../viewer/src/main/resources/static/css/site.css) |
 | Home, Read, the cards | [catalogue.css](../viewer/src/main/resources/static/css/catalogue.css) |
 | Compare | [comparison.css](../viewer/src/main/resources/static/css/comparison.css) |
 | The legal text | [legaltext.css](../viewer/src/main/resources/static/css/legaltext.css) |

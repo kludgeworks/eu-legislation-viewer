@@ -3,14 +3,16 @@
  * The rules of a comparison. Each class makes one decision.
  *
  * <ul>
- *   <li>{@link Wording} tells what a block says, without its tags, and gives its words.
+ *   <li>{@link Wording} tells what a block says, without its tags, and reads it as tokens: its
+ *       words, spaces, punctuation, numbers, images, quotation marks and formulas.
  *   <li>{@link Occurrences} holds the occurrences of a text by their eIds, and the own blocks of
  *       each occurrence.
  *   <li>{@link Pairing} tells which occurrence of the later text is which occurrence of the earlier
  *       text.
  *   <li>{@link Pieces} tells which pieces of an occurrence or a table differ, and {@link Likeness}
  *       which of them are one piece, changed.
- *   <li>{@link Edits} shows the edits of the words that differ.
+ *   <li>{@link Edits} shows the edits of the words that differ, and {@link Runs} writes them as
+ *       runs of inserted and deleted words.
  *   <li>{@link Tags} tells which acts put an occurrence in its form.
  *   <li>{@link Differ} finds the differences, by occurrence, then by block, then by word, and sets
  *       them out in the order of the later text. Its stages:

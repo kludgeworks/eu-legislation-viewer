@@ -84,7 +84,7 @@ local linters = new Mapping<String, Step> {
   ["shellcheck"] = Builtins.shellcheck
   // the page scripts (.oxlintrc.json). tsc checks their types and Vitest tests them, under Bazel.
   ["ox_lint"] = (Builtins.ox_lint) { exclude = raw + vendored + generated }
-  // the stylesheets (.stylelintrc.json). Enforces design tokens, sliced onion boundaries, and flat specificity.
+  // the stylesheets (.stylelintrc.json). Enforces colour variables, sliced onion boundaries, and flat specificity.
   ["stylelint"] = (Builtins.stylelint) { exclude = raw + vendored + generated }
   ["prettier"] = (Builtins.prettier) {
     glob = List("**/*.css")
