@@ -116,6 +116,7 @@ its module.
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
 | attribution | Who made a difference: the acts that made it, in their steps, or the acts of which one made it. `Attributions` finds the attribution of each difference of a comparison, and from when the change of each act applies. The sidenote says it in words. |
 | sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (`modification-without-an-act`). |
+| stages | The parts of the work that finds the differences of a comparison, in order: `Occurrences` reads the occurrences of each text. `Pairing` pairs them. `Comparer` compares each pair (`ComparedOccurrence`, `OccurrenceEdits`). `Ordering` puts the differences in the order of the later text, and `ShownOccurrence` gives an occurrence as its difference shows it. |
 | neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
 | Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |
 

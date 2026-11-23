@@ -99,7 +99,7 @@ java_test_suite(
 java_test_suite(
     name = "model",
     size = "small",
-    srcs = glob(["model/*Test.java"]),
+    srcs = glob(["model/*Test.java"]) + ["model/BuiltTexts.java"],
     runner = "junit5",
     runtime_deps = [
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
