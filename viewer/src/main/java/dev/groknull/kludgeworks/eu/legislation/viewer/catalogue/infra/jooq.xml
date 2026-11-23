@@ -2,11 +2,13 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!-- Sets what jOOQ generates for the tables of the catalogue module. The jooq_tables target in
      BUILD.bazel sets the database and the target package. The generated code uses these types:
-     - Identifiers are the value objects of the module.
+     - Identifiers are the value objects of the module. Each column of the domain act_identifier is
+       an ActIdentifier.
      - The kind of a version is Version.Kind.
      - The kind and anchor of an act date are ActDate.Kind and ActDate.Anchor.
      - The location and role of an amendment are Location and Amendment.Role.
-     - The language and failure of an expression are Language and Failure.
+     - Each column of the domain language_code is a Language. The failure of an
+       expression or an entry is a Failure.
      - Times are Instants.
      - Every tsvector column is a TsVector of the library libs/jooq-extension. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
@@ -20,7 +22,7 @@
             <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new</from>
             <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex</to>
           </lambdaConverter>
-          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_entry\.act|catalogue_search_(stage_)?(work|expression)\.celex|catalogue_search_(stage_)?amendment\.(act|amends)</includeExpression>
+          <includeTypes>act_identifier</includeTypes>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -69,7 +71,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_entry\.language_code|catalogue_search_(stage_)?expression\.language_code</includeExpression>
+          <includeTypes>language_code</includeTypes>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>

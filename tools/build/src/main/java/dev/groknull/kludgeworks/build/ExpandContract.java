@@ -28,7 +28,9 @@ import org.jspecify.annotations.Nullable;
  * column that is gone, or whose type changed, must have been deprecated in the released schema: its
  * comment starts with {@code deprecated:}. jOOQ's code generation leaves deprecated objects out
  * ({@code JooqCodegen}), so a release that deprecates something stops using it, and the next
- * release may drop it. Renames are caught as the old name gone, whatever SQL made them.
+ * release may drop it. Renames are caught as the old name gone, whatever SQL made them. A domain
+ * without constraints is its base type: a column moved to one reads and writes as before, so it
+ * does not change type.
  *
  * <p>It also checks the writes of the previous release: a column it does not know of, or a
  * deprecated one the code no longer writes, must be nullable or have a default; and a column must
@@ -52,12 +54,20 @@ public final class ExpandContract {
 
   private static final String COLUMNS =
       """
-      select c.relname, a.attname, format_type(a.atttypid, a.atttypmod), a.attnotnull,
+      select c.relname, a.attname,
+        case
+          when t.typtype = 'd' and not t.typnotnull
+            and not exists (select from pg_constraint as k where k.contypid = t.oid)
+          then format_type(t.typbasetype, t.typtypmod)
+          else format_type(a.atttypid, a.atttypmod)
+        end,
+        a.attnotnull,
         a.atthasdef or a.attidentity <> '' or a.attgenerated <> '',
         obj_description(c.oid, 'pg_class'), col_description(c.oid, a.attnum)
       from pg_class as c
       join pg_namespace as n on n.oid = c.relnamespace
       join pg_attribute as a on a.attrelid = c.oid and a.attnum > 0 and not a.attisdropped
+      join pg_type as t on t.oid = a.atttypid
       where n.nspname = 'public' and c.relkind in ('r', 'p')
         and c.relname not like 'flyway\\_schema\\_history%'
       order by c.relname, a.attnum
