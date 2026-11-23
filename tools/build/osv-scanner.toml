@@ -38,6 +38,12 @@ reason = "Semgrep CLI dependency: OpenTelemetry Python tracestate DoS not reacha
 id = "GHSA-mf5v-w3w3-f6cg"
 reason = "Semgrep CLI dependency: OpenTelemetry Python traceparent ReDoS needs a traceparent from an untrusted carrier, which CLI static analysis never reads"
 
+# Fixed in wcmatch 11.2. Semgrep, up to 1.186.0, asks for wcmatch~=8.3: remove this when a Semgrep
+# release moves up.
+[[IgnoredVulns]]
+id = "GHSA-53pm-wgxf-c6qf"
+reason = "Semgrep CLI dependency: multi-star glob ReDoS needs an attacker's file name, and CLI static analysis matches only the names of this repository's own files"
+
 # --- Guava (transitive build/compiler dependency) ---
 [[IgnoredVulns]]
 id = "GHSA-xxph-c9ww-hj94"
