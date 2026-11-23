@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
@@ -214,6 +216,7 @@ final class CellarDates {
    * ET} followed by a number adds a provision. It skips {@code V} and {@code VOIR}, which mean
    * "see", and a repeat of the type.
    */
+  @BusinessRule(group = RuleGroup.WHEN_AN_ACT_APPLIES, name = "a-later-act-moved-the-date")
   static Clause clause(String text) {
     Anchor from = null;
     Integer days = null;

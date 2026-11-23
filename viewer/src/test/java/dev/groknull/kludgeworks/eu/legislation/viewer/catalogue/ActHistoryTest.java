@@ -216,16 +216,7 @@ class ActHistoryTest {
   }
 
   @Test
-  void anActIsNotInForceBeforeItsEntryIntoForce() {
-    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_PART.minusDays(1)))
-        .isEqualTo(State.NOT_IN_FORCE);
-  }
-
-  @Test
-  void aChangeWithADayAppliesFromThatDay() {
-    assertThat(ACT.stateOn(PHASED, Set.of(IN_PART), IN_PART)).isEqualTo(State.APPLIES);
-    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_PART)).isEqualTo(State.NOT_APPLYING);
-    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_FULL)).isEqualTo(State.APPLIES);
+  void aChangeAppliesFromTheDayThatCellarGivesForItsPlace() {
     assertThat(ACT.changeAppliesFrom(PHASED, Set.of(IN_FULL))).hasValue(IN_FULL);
   }
 
@@ -237,34 +228,8 @@ class ActHistoryTest {
   }
 
   @Test
-  void anActWithOnlyAnEntryIntoForceAppliesFromIt() {
-    assertThat(ACT.stateOn(SIMPLE, Set.of(), LocalDate.of(2019, 6, 11))).isEqualTo(State.APPLIES);
-    assertThat(ACT.stateOn(SIMPLE, Set.of(), LocalDate.of(2019, 6, 10)))
-        .isEqualTo(State.NOT_IN_FORCE);
-  }
-
-  @Test
-  void anActWithADaySetByAnEventOrWithoutDatesHasNoKnownState() {
-    assertThat(ACT.stateOn(EVENT, Set.of(), LocalDate.of(2022, 8, 1))).isEqualTo(State.NOT_KNOWN);
+  void anActWithoutDatesHasNoKnownState() {
     assertThat(ACT.stateOn(UNDATED, Set.of(), LocalDate.of(2022, 8, 1))).isEqualTo(State.NOT_KNOWN);
-  }
-
-  @Test
-  void anActStandsAsItsChangesStand() {
-    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART))
-        .isEqualTo(new Standing(false, 1, 2, 0))
-        .extracting(Standing::state)
-        .isEqualTo(State.IN_PART);
-    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_FULL).state()).isEqualTo(State.APPLIES);
-    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART.minusDays(1)).state())
-        .isEqualTo(State.NOT_IN_FORCE);
-    assertThat(ACT.standingOn(EVENT, Language.ENG, IN_PART).state()).isEqualTo(State.NOT_KNOWN);
-  }
-
-  @Test
-  void anActWithoutChangedPlacesStandsAsTheWholeAct() {
-    assertThat(ACT.standingOn(SIMPLE, Language.ENG, IN_PART))
-        .isEqualTo(new Standing(false, 1, 0, 0));
   }
 
   /** The tags of a text of the act, with the occurrences that the changes of the act are at. */

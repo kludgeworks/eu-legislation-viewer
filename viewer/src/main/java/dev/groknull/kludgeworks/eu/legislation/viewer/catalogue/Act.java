@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URI;
 import java.time.LocalDate;
@@ -387,6 +389,8 @@ public record Act(
    * directive. For example, they apply one point of 2019/2034 from 26 March 2020, and the rest from
    * 26 June 2021.
    */
+  @BusinessRule(group = RuleGroup.WHEN_AN_ACT_APPLIES, name = "whole-act-applies-from")
+  @BusinessRule(group = RuleGroup.WHEN_AN_ACT_APPLIES, name = "date-for-a-part")
   public Optional<ActDate> appliesFrom(ActIdentifier act) {
     var whole = datesOf(act).stream().filter(date -> !date.forPart()).toList();
     for (var kinds : WHOLE_ACT) {
@@ -412,6 +416,7 @@ public record Act(
    * whole act applies from another day or from a day that Cellar does not know. {@code act} is this
    * act, an act that its versions integrate or an act that amends it.
    */
+  @BusinessRule(group = RuleGroup.WHEN_AN_ACT_APPLIES, name = "a-day-the-act-can-apply-from")
   public boolean appliesFromDay(ActIdentifier act, LocalDate day) {
     var on = datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
     if (on.stream().anyMatch(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE)) {
@@ -917,6 +922,7 @@ public record Act(
    *       event, or Cellar has no dates of the act.
    * </ol>
    */
+  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "state-on-a-day")
   public State stateOn(ActIdentifier act, Set<LocalDate> placeDays, LocalDate day) {
     if (entryIntoForce(act).filter(day::isBefore).isPresent()) {
       return State.NOT_IN_FORCE;
@@ -948,6 +954,7 @@ public record Act(
    * {@code language} in each state, {@link #stateOn}. If Cellar lists no changed place for it, the
    * act counts as one change, with the state of the whole act.
    */
+  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "how-an-amending-act-stands")
   public Standing standingOn(ActIdentifier amending, Language language, LocalDate day) {
     var changes = changesBy(amending, language);
     var states =

@@ -1,13 +1,15 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Pattern;
 
-/** Reads acts as the rules cite them: a regulation by its number, a corrigendum with its act. */
-final class Cited {
+/**
+ * Reads acts as the rules cite them: a regulation by its number, a corrigendum with its act. The
+ * steps of the rules of each module read acts so.
+ */
+public final class Cited {
   /**
    * The number of a regulation, as the Official Journal cites it: the year first from 2015, for
    * example 2015/1998, and the number first before 2015, for example 917/2004.
@@ -27,7 +29,7 @@ final class Cited {
   private static final Pattern DECISION = Pattern.compile("Decision (\\d{4})/(\\d+)");
 
   /** The words for a difference that no known act made. */
-  static final String NO_KNOWN_ACT = "no known act";
+  public static final String NO_KNOWN_ACT = "no known act";
 
   private Cited() {}
 
@@ -35,7 +37,7 @@ final class Cited {
    * Returns the act cited as {@code cited}: "2015/1998", "917/2004", "Directive 2002/73", "Decision
    * 2022/2319" or "Corrigendum 1 to 2017/815".
    */
-  static ActIdentifier act(String cited) {
+  public static ActIdentifier act(String cited) {
     var decision = DECISION.matcher(cited);
     if (decision.matches()) {
       return new ActIdentifier(
@@ -67,7 +69,7 @@ final class Cited {
    * Returns the acts cited as {@code cited}, as the pages list them: "2019/103 and 2026/449",
    * "2017/815, 2019/103 and 2019/1583". Returns none for {@link #NO_KNOWN_ACT}.
    */
-  static List<ActIdentifier> acts(String cited) {
+  public static List<ActIdentifier> acts(String cited) {
     if (cited.equals(NO_KNOWN_ACT)) {
       return List.of();
     }

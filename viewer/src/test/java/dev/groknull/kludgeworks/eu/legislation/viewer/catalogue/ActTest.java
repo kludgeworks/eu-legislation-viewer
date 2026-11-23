@@ -140,26 +140,6 @@ class ActTest {
   }
 
   @Test
-  void anActAppliesFromItsDateOfApplicationForTheWholeAct() {
-    assertThat(ACT.appliesFrom(RECENT).map(ActDate::date)).hasValue(LocalDate.of(2016, 2, 1));
-  }
-
-  @Test
-  void aDirectiveAppliesFromTheDayTheMemberStatesApplyIt() {
-    assertThat(ACT.appliesFrom(ONE_DAY).map(ActDate::date)).hasValue(LocalDate.of(2025, 1, 17));
-  }
-
-  @Test
-  void aDirectiveThatTheMemberStatesApplyFromMoreThanOneDayHasNoDateForTheWholeAct() {
-    assertThat(ACT.appliesFrom(DIRECTIVE)).isEmpty();
-  }
-
-  @Test
-  void aDirectiveWithOnlyAnEntryIntoForceHasNoDateForTheWholeAct() {
-    assertThat(ACT.appliesFrom(PAYMENTS)).isEmpty();
-  }
-
-  @Test
   void anActAsPublishedThatAppliesFromMoreThanOneDaySaysWhenEachPartStarts() {
     var published = PHASED.timeline().first();
     var inPart = LocalDate.of(2025, 2, 2);
@@ -175,15 +155,6 @@ class ActTest {
   void anActAppliesInPartFromItsFirstDateForAPart() {
     assertThat(ACT.appliesInPartOn(SUPPLEMENT, LocalDate.of(2009, 5, 31))).isFalse();
     assertThat(ACT.appliesInPartOn(SUPPLEMENT, LocalDate.of(2009, 6, 1))).isTrue();
-  }
-
-  @Test
-  void aProvisionAppliesOnlyFromADayThatTheActCanApplyFrom() {
-    assertThat(ACT.appliesFromDay(SUPPLEMENT, LocalDate.of(2009, 6, 1))).isTrue();
-    assertThat(ACT.appliesFromDay(SUPPLEMENT, LocalDate.of(2009, 4, 22))).isTrue();
-    assertThat(ACT.appliesFromDay(RECENT, LocalDate.of(2015, 11, 15))).isFalse();
-    assertThat(ACT.appliesFromDay(PAYMENTS, LocalDate.of(2016, 1, 12))).isFalse();
-    assertThat(ACT.appliesFromDay(RECENT, LocalDate.of(2016, 3, 1))).isFalse();
   }
 
   @Test
@@ -234,13 +205,7 @@ class ActTest {
   }
 
   @Test
-  void anActWithADateForAPartOnlyAppliesFromItsEntryIntoForce() {
-    assertThat(ACT.appliesFrom(SUPPLEMENT).map(ActDate::date)).hasValue(LocalDate.of(2009, 4, 22));
-  }
-
-  @Test
-  void anActWithAnUnknownDateOfApplicationHasNoDateFromWhichItApplies() {
-    assertThat(ACT.appliesFrom(EURATOM)).isEmpty();
+  void anActWithoutDatesHasNoDateFromWhichItApplies() {
     assertThat(ACT.appliesFrom(UNTITLED)).isEmpty();
   }
 }

@@ -1,0 +1,3 @@
+
+{ "head": { "link": [], "vars": ["subject", "location", "role", "from", "until", "languages"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [ ] } }

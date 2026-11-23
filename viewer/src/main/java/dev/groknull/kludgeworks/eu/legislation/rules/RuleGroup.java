@@ -22,7 +22,11 @@ public enum RuleGroup {
   /** The neighbours of a difference. */
   NEIGHBOURS,
   /** The changes of one act. */
-  THE_CHANGES_OF_ONE_ACT;
+  THE_CHANGES_OF_ONE_ACT,
+  /** From when an act, or a provision of it, applies, as its dates in Cellar tell. */
+  WHEN_AN_ACT_APPLIES,
+  /** The state of an act, or of one change, on a day, and how an amending act stands. */
+  THE_STATE_ON_A_DAY;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

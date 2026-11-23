@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_library")
 
 # The business rules on the wiki: the plugin that saves a run of a rules suite as Cucumber's
-# messages, and the writer of the wiki's pages from the runs
+# messages, the run of a module's known bugs, and the writer of the wiki's pages from the runs
 java_library(
     name = "rules",
     srcs = glob(["*.java"]),
@@ -19,6 +19,8 @@ java_library(
         "@maven//:io_cucumber_messages_ndjson",
         "@maven//:io_github_java_diff_utils_java_diff_utils",
         "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_platform_junit_platform_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
     ],
 )
 

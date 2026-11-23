@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
@@ -21,6 +23,7 @@ public record Standing(boolean notInForce, int applies, int notApplying, int not
    * with one exception: an act with a change that applies and a change that does not apply yet
    * applies in part, whatever the other changes do.
    */
+  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "how-an-amending-act-stands")
   public State state() {
     if (notInForce) {
       return State.NOT_IN_FORCE;

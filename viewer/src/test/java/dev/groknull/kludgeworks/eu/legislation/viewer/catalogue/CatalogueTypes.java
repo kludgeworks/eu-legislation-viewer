@@ -1,0 +1,61 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
+import io.cucumber.java.ParameterType;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Locale;
+
+/**
+ * The words of the catalogue's rules, as the domain's types: the parameter types of the steps
+ * ({@code {act}}, {@code {day}}, {@code {days}}, {@code {place}}, {@code {state}}).
+ */
+public class CatalogueTypes {
+  private static final DateTimeFormatter DAY =
+      DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
+
+  /** An act, as the rules cite it: "2015/1998", "Directive 2022/2556" … ({@link Cited}). */
+  @ParameterType("\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Decision \\d{4}/\\d+")
+  public ActIdentifier act(String cited) {
+    return Cited.act(cited);
+  }
+
+  /** A day, as the pages write it. For example, "1 October 2026". */
+  @ParameterType("\\d{1,2} [A-Z][a-z]+ \\d{4}")
+  public LocalDate day(String day) {
+    return LocalDate.parse(day, DAY);
+  }
+
+  /**
+   * Days, as the pages write them. For example, "29 December 2020, 28 June 2021 and 1 January
+   * 2022".
+   */
+  @ParameterType("\\d{1,2} [A-Z][a-z]+ \\d{4}(?:(?:, | and )\\d{1,2} [A-Z][a-z]+ \\d{4})*")
+  public List<LocalDate> days(String days) {
+    return Arrays.stream(days.split(", | and ")).map(this::day).toList();
+  }
+
+  /** A place, as the pages name it. For example, "Article 79(7)". */
+  @ParameterType("(?:Article|Annex|Chapter|point) \\S+")
+  public Place place(String words) {
+    return new Place(words);
+  }
+
+  /** The state of an act, or of one change, on a day, in the words of the rules. */
+  @ParameterType(
+      "is not in force|is in force and does not apply yet|applies in part|applies|has a state that"
+          + " is not known")
+  public State state(String words) {
+    return switch (words) {
+      case "is not in force" -> State.NOT_IN_FORCE;
+      case "is in force and does not apply yet" -> State.NOT_APPLYING;
+      case "applies in part" -> State.IN_PART;
+      case "applies" -> State.APPLIES;
+      case "has a state that is not known" -> State.NOT_KNOWN;
+      default -> throw new IllegalArgumentException("Not a state: " + words);
+    };
+  }
+}
