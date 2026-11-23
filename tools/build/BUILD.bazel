@@ -15,6 +15,7 @@ exports_files([
     "pmd.xml",
     "spotbugs-exclude.xml",
     "upgrade_dependencies.py",
+    "verify_dependency_patch.py",
     "xslt-quality.conf.xml",
 ])
 

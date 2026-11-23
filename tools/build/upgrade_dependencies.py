@@ -7,6 +7,7 @@ The apply command updates the selected pins and refreshes their lockfiles in thi
 import argparse
 import hashlib
 import json
+import os
 import re
 import subprocess
 from functools import cache
@@ -22,7 +23,7 @@ MAJOR_PREFIX = "automation/dependencies-major/"
 # Match direct bazel_dep declarations and explicit Maven pins only.
 BAZEL_PINS = re.compile(
     r'^(?:bazel_dep\(name = "(?P<module>[\w.-]+)", version = "'
-    r'|[ \t]*"(?P<maven>[\w.-]+:[\w.-]+):)(?P<version>[\d.]+)(?=")',
+    r'|[ \t]*"(?P<maven>[\w.-]+:[\w.-]+):)(?P<version>[^"\s:]+)(?=")',
     re.MULTILINE,
 )
 
@@ -124,10 +125,39 @@ def releases(ecosystem, name):
     return [v for v in metadata["versions"] if v not in metadata.get("yanked_versions", {})]
 
 
+def version_scheme(version):
+    first = version.split(".")[0]
+    if len(first) == 8 and first.startswith(("19", "20")):
+        return "date"
+    if len(first) == 4 and first.startswith(("19", "20")):
+        return "year"
+    return "release"
+
+
+def report_skipped(skipped):
+    summary = os.environ.get("GITHUB_STEP_SUMMARY")
+    if summary and skipped:
+        with open(summary, "a") as output:
+            print("### Pins outside this update plan\n", file=output)
+            for pin, reason in sorted(skipped):
+                print(f"- `{pin}` — {reason}", file=output)
+
+
 def discover():
     module = Path("MODULE.bazel").read_text()
     pins = {("bazel", bazel_name(m), m["version"]) for m in BAZEL_PINS.finditer(module)}
-    pins.update(("mise", n, v) for n, v in mise_tools().items() if n not in COORDINATED_TOOLS)
+    tools = mise_tools()
+    skipped = [
+        (f"{n}@{v}", "coordinated toolchain pin")
+        for n, v in tools.items()
+        if n in COORDINATED_TOOLS
+    ]
+    bazel_version = Path(".bazelversion")
+    if bazel_version.is_file():
+        skipped.append(
+            (f"Bazel {bazel_version.read_text().strip()}", "Bazel runtime is maintained separately")
+        )
+    pins.update(("mise", n, v) for n, v in tools.items() if n not in COORDINATED_TOOLS)
     for path in action_files():
         pins.update(
             ("action", m["repo"], m["version"]) for m in ACTION_PIN.finditer(path.read_text())
@@ -136,10 +166,17 @@ def discover():
     majors = {}
     for ecosystem, name, current in sorted(pins):
         if not RELEASE.fullmatch(current):
+            skipped.append((f"{name}@{current}", "unsupported version format"))
             continue
         same, higher = [], []
         for v in releases(ecosystem, name):
-            if RELEASE.fullmatch(v) and numbers(v) > numbers(current):
+            if ecosystem == "mise":
+                v = v.removeprefix("v")
+            if not RELEASE.fullmatch(v) or numbers(v) <= numbers(current):
+                continue
+            if version_scheme(v) != version_scheme(current):
+                skipped.append((f"{name}@{v}", f"different version scheme from {current}"))
+            else:
                 (same if numbers(v)[0] == numbers(current)[0] else higher).append(v)
         if same:
             minor.append([ecosystem, name, current, max(same, key=numbers)])
@@ -149,6 +186,7 @@ def discover():
             majors.setdefault(
                 (ecosystem, name), [ecosystem, name, current, max(higher, key=numbers)]
             )
+    report_skipped(skipped)
     return minor, majors
 
 
@@ -203,10 +241,50 @@ def matrix(minor, majors, open_branches):
     return {"include": selected}
 
 
+def updated_module(source, targets):
+    if not targets.keys() <= {(bazel_name(m), m["version"]) for m in BAZEL_PINS.finditer(source)}:
+        raise ValueError("Stale Bazel pins")
+
+    def replace(match):
+        version = match["version"]
+        return match[0][: -len(version)] + targets.get((bazel_name(match), version), version)
+
+    return BAZEL_PINS.sub(replace, source)
+
+
+def updated_mise(source, targets):
+    # Retain comments and inline tool options when mise expands registry defaults in its output.
+    lines = source.splitlines(keepends=True)
+    in_tools = False
+    pending = targets.copy()
+    for index, line in enumerate(lines):
+        if line.startswith("["):
+            in_tools = line.strip() == "[tools]"
+        if in_tools and "=" in line:
+            key, value = line.split("=", 1)
+            name = key.strip().strip('"')
+            if name in pending:
+                old, new = pending.pop(name)
+                value, count = re.subn(
+                    rf'^(\s*(?:\{{\s*version\s*=\s*)?"){re.escape(old)}(")',
+                    rf"\g<1>{new}\2",
+                    value,
+                    count=1,
+                )
+                if not count:
+                    raise ValueError(f"Stale or unsupported mise declaration for {name}")
+                lines[index] = f"{key}={value}"
+    if pending:
+        raise ValueError(f"Missing mise tools: {sorted(pending)}")
+    return "".join(lines)
+
+
 def apply(changes):
     upgrade_actions(changes)
     mise = {name: (old, new) for kind, name, old, new in changes if kind == "mise"}
     if mise:
+        config = Path("mise.toml")
+        planned_config = updated_mise(config.read_text(), mise)
         before = mise_tools()
         expected = before.copy()
         for name, (old, new) in mise.items():
@@ -220,21 +298,14 @@ def apply(changes):
         )
         if mise_tools() != expected:
             raise ValueError("mise pins differ from the planned updates")
+        config.write_text(planned_config)
         subprocess.run(["mise", "install", "--locked"], check=True)
         subprocess.run(["taplo", "fmt", "mise.toml"], check=True)
 
     bazel = {(name, old): new for kind, name, old, new in changes if kind == "bazel"}
     if bazel:
         path = Path("MODULE.bazel")
-        source = path.read_text()
-        if not bazel.keys() <= {(bazel_name(m), m["version"]) for m in BAZEL_PINS.finditer(source)}:
-            raise ValueError("Stale Bazel pins")
-
-        def replace(match):
-            version = match["version"]
-            return match[0][: -len(version)] + bazel.get((bazel_name(match), version), version)
-
-        path.write_text(BAZEL_PINS.sub(replace, source))
+        path.write_text(updated_module(path.read_text(), bazel))
         subprocess.run(["mise", "run", "pin"], check=True)
         subprocess.run(["bazel", "mod", "deps", "--lockfile_mode=update"], check=True)
 

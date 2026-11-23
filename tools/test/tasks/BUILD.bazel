@@ -71,5 +71,6 @@ bats_test(
         "test_helper.bash",
         "//tools/build:plan-dependency-prs.bash",
         "//tools/build:upgrade_dependencies.py",
+        "//tools/build:verify_dependency_patch.py",
     ],
 )
