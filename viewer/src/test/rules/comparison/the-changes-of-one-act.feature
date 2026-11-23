@@ -72,7 +72,6 @@ Feature: The changes of one act
       When the reader asks for the differences at Article 45c(3)
       Then they are the difference at Article 45c
 
-    @known-bug @ISS-279
     Example: A provision in a chapter that an act inserted whole
       Given the comparison of the texts of 767/2008 of 29 December 2017 and of 12 October 2025
       When the reader asks for the differences at Article 22b(18)
