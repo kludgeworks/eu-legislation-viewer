@@ -53,8 +53,8 @@ public final class Links {
    * limited to the changes of {@code only}, if any. Its fragments are the comparison module's: the
    * compare page loads its differences ({@link ComparePage#differences}) into its text slot. The
    * address of each fragment is the contract between the two modules, which {@link ComparePage}
-   * writes: the comparison module answers them ({@code DifferencesController}), and no Java ties
-   * the two modules together.
+   * writes: the comparison module answers them ({@code ComparisonViewsController} and {@code
+   * DifferenceController}), and no Java ties the two modules together.
    */
   public static ComparePage page(
       Eli eli,

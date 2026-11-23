@@ -2,19 +2,16 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Versions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -41,14 +38,10 @@ class AttributionService implements Attributions {
 
   @Override
   public Optional<Compared> of(
-      Act act,
-      Language language,
-      Preparation preparation,
-      Inclusions included,
-      Timeline timeline,
-      Version from,
-      Version to,
-      @Nullable LocalDate day) {
+      Act act, Versions versions, Version from, Version to, @Nullable LocalDate day) {
+    var language = versions.language();
+    var preparation = versions.preparation();
+    var included = versions.included();
     if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
         || !(preparation.texts().get(to) instanceof Text.Ready later)) {
       return Optional.empty();
@@ -71,7 +64,8 @@ class AttributionService implements Attributions {
             .filter(each -> each.attribution().unattributed())
             .map(each -> each.difference().eId())
             .collect(Collectors.toSet());
-    var appeared = comparisons.appeared(timeline, preparation.texts(), from, to, unattributed);
+    var appeared =
+        comparisons.appeared(versions.timeline(), preparation.texts(), from, to, unattributed);
     var prospective =
         day == null ? null : act.prospective(to, day, language, texts.tags(preparation));
     var each = new ArrayList<Attributed>();

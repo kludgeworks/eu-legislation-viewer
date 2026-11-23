@@ -21,6 +21,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Versions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -67,10 +68,7 @@ class AttributionServiceTest {
     when(comparisons.appeared(any(), any(), any(), any(), any()))
         .thenReturn(Map.of(UNNAMED.eId(), TO));
 
-    var compared =
-        service
-            .of(AVSEC, Language.ENG, built(), LISTED, AVSEC.timeline(), FROM, TO, null)
-            .orElseThrow();
+    var compared = service.of(AVSEC, versions(built()), FROM, TO, null).orElseThrow();
 
     var named = compared.of(NAMED);
     assertThat(named.attribution().acts()).containsExactly(new ActIdentifier("32026R0449"));
@@ -89,17 +87,12 @@ class AttributionServiceTest {
     var waiting = new LinkedHashMap<>(built().texts());
     waiting.put(TO, new Text.Waiting(0));
 
-    assertThat(
-            service.of(
-                AVSEC,
-                Language.ENG,
-                preparation(waiting),
-                LISTED,
-                AVSEC.timeline(),
-                FROM,
-                TO,
-                null))
-        .isEmpty();
+    assertThat(service.of(AVSEC, versions(preparation(waiting)), FROM, TO, null)).isEmpty();
+  }
+
+  /** The versions of 2015/1998 in English, with the texts of {@code preparation}. */
+  private static Versions versions(Preparation preparation) {
+    return new Versions(Language.ENG, AVSEC.timeline(), preparation, LISTED);
   }
 
   /** The preparation of 2015/1998 with its texts built: From as text 1, To as text 2. */

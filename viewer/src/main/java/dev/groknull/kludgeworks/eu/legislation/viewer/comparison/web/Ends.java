@@ -8,7 +8,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Versions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.LocalDate;
@@ -63,6 +65,11 @@ final class Ends {
                 .filter(each -> each.celex().equals(only))
                 .findFirst()
                 .orElseThrow(Requests::notFound);
+  }
+
+  /** Returns the versions of the act in the language, as {@link Attributions} takes them. */
+  Versions versions() {
+    return new Versions(language, timeline, preparation, included);
   }
 
   /**

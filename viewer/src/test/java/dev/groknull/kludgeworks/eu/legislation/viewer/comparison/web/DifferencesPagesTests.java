@@ -27,7 +27,8 @@ import org.springframework.web.client.RestClient;
  * so that the act is prepared, then load the fragments from those addresses: the differences in
  * each view, with the act that made each difference, and the acts between the versions with their
  * counts. The data is the converter's fixtures: the consolidations of 2015/1998 of 22 March and 1
- * October 2026, in English. {@code DifferencesControllerTests} tests what the fragments refuse.
+ * October 2026, in English. {@code ComparisonViewsControllerTests} and {@code
+ * DifferenceControllerTests} test what the fragments refuse.
  */
 // Bind to 127.0.0.1, where the test client calls. On the wildcard address, the port that the
 // system picks can be one that another program, such as an IDE, holds on 127.0.0.1.

@@ -3,13 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
@@ -23,7 +19,8 @@ public interface Attributions {
 
   /**
    * Returns the comparison of the version {@code from} of {@code act} with the version {@code to},
-   * each difference with who made it ({@link Attributed#of}).
+   * each difference with who made it ({@link Attributed#of}). The two versions are of {@code
+   * versions}, the versions of {@code act} in a language.
    *
    * <ul>
    *   <li>Cellar's amendments of the occurrences of the two texts give the acts, with the tags of
@@ -35,22 +32,9 @@ public interface Attributions {
    * </ul>
    *
    * <p>Returns none if either text is not built.
-   *
-   * @param preparation the preparation of {@code act} in {@code language}: the texts of its
-   *     versions
-   * @param included the acts that each version includes: Cellar's lists, and the acts that the
-   *     built texts tag first
-   * @param timeline the versions of {@code act} in {@code language}
    */
   Optional<Compared> of(
-      Act act,
-      Language language,
-      Preparation preparation,
-      Inclusions included,
-      Timeline timeline,
-      Version from,
-      Version to,
-      @Nullable LocalDate day);
+      Act act, Versions versions, Version from, Version to, @Nullable LocalDate day);
 
   /**
    * A comparison, each difference with who made it.

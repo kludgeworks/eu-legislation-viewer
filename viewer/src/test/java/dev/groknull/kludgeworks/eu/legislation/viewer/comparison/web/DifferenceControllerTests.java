@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
+import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.FragmentFixtures.built;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.FragmentFixtures.queued;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
@@ -9,35 +11,22 @@ import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
-import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
-import gg.jte.generated.precompiled.StaticTemplates;
-import gg.jte.generated.precompiled.Templates;
 import java.io.UnsupportedEncodingException;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneOffset;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -46,21 +35,17 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * Tests the comparison's fragments of the compare page alone, with {@code @WebMvcTest} and the
- * modules mocked. The tests check what the fragments refuse, and that they link back to the page
- * that they are fragment of. The act is the act of {@link OneActCellar}, with none of its texts
- * built yet. {@code DifferencesPagesTests} tests the fragments as the whole app works them out.
+ * Tests one difference of a comparison, and the differences at a place, alone, with
+ * {@code @WebMvcTest} and the modules mocked: what they refuse, and their entity tag. The act is
+ * the act of {@link OneActCellar}. {@code DifferencesPagesTests} tests the fragments as the whole
+ * app works them out.
  */
-@WebMvcTest(DifferencesController.class)
-@Import(DifferencesControllerTests.Pages.class)
-class DifferencesControllerTests {
+@WebMvcTest(DifferenceController.class)
+@Import(FragmentFixtures.Pages.class)
+class DifferenceControllerTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
-  private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
-  private static final String DIFFERENCES =
-      ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01";
   private static final String DIFFERENCE =
       ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01&eId=art_1";
-
   private static final String PLACE =
       ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=art_1&eId=art_2";
 
@@ -76,31 +61,6 @@ class DifferencesControllerTests {
   void act() {
     when(acts.find(OneActCellar.ELI)).thenReturn(Optional.of(OneActCellar.ACT));
     when(texts.preparation(any(), any())).thenAnswer(asked -> queued(asked.getArgument(1)));
-  }
-
-  @Test
-  void showsNoViewThereIsnt() {
-    assertThat(mvc.get().uri(DIFFERENCES + "&view=sideways").accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
-  }
-
-  @Test
-  void answersOnlyTheCanonicalAddressOfAComparison() {
-    // Not the first day of a version
-    assertThat(
-            mvc.get()
-                .uri(ACT + "eng/compare/differences?from=2026-04-01&to=2026-10-01")
-                .accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
-    // From after To
-    assertThat(
-            mvc.get()
-                .uri(ACT + "eng/compare/differences?from=2026-10-01&to=2026-03-22")
-                .accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
-    // An act that is not between the two versions
-    assertThat(mvc.get().uri(DIFFERENCES + "&act=32019R0103").accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
   }
 
   @Test
@@ -146,72 +106,5 @@ class DifferencesControllerTests {
   @Test
   void findsNoPlaceWhileTheTextsAreNotBuilt() {
     assertThat(mvc.get().uri(PLACE).accept(MediaType.TEXT_HTML)).hasStatus(HttpStatus.NOT_FOUND);
-  }
-
-  /**
-   * The act of {@link OneActCellar} with its texts built, in {@code language}: the version from
-   * 2026-03-22 as text 1, from 2026-10-01 as text 2, the others as text 9.
-   */
-  private static Preparation built(Language language) {
-    var texts = new LinkedHashMap<Version, Text>();
-    OneActCellar.ACT
-        .timeline()
-        .versions()
-        .forEach(
-            version ->
-                texts.put(
-                    version,
-                    new Text.Ready(
-                        new TextId(
-                            switch (version.date().toString()) {
-                              case "2026-03-22" -> 1;
-                              case "2026-10-01" -> 2;
-                              default -> 9;
-                            }))));
-    return new Preparation(
-        OneActCellar.CELEX,
-        language,
-        Instant.parse("2026-11-06T08:00:00Z"),
-        null,
-        texts,
-        List.of(),
-        0);
-  }
-
-  /** The act of {@link OneActCellar} while none of its texts is built, in {@code language}. */
-  private static Preparation queued(Language language) {
-    var texts = new LinkedHashMap<Version, Text>();
-    OneActCellar.ACT
-        .timeline()
-        .versions()
-        .forEach(version -> texts.put(version, new Text.Waiting(0)));
-    return new Preparation(
-        OneActCellar.CELEX,
-        language,
-        Instant.parse("2026-11-06T08:00:00Z"),
-        null,
-        texts,
-        List.of(),
-        0);
-  }
-
-  /** The templates of the fragments, as the app has them. The test slice leaves them out. */
-  @TestConfiguration(proxyBeanMethods = false)
-  static class Pages {
-    @Bean
-    Templates templates() {
-      return new StaticTemplates();
-    }
-
-    @Bean
-    Release release() {
-      return new Release("2026.11.5");
-    }
-
-    @Bean
-    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
-    Clock sixthOfNovember2026() {
-      return Clock.fixed(Instant.parse("2026-11-06T08:00:00Z"), ZoneOffset.UTC);
-    }
   }
 }
