@@ -640,21 +640,19 @@ public record Act(
    * later} are the occurrences of the first text with the changes of the act, and {@code earlier}
    * are the occurrences of the text before it, each in document order.
    *
-   * <p>The occurrences are those of the later text, if it has the place itself. If only the earlier
-   * text has the place itself, the act deleted it, and the occurrences are those of the earlier
-   * text. If neither has the place itself, the occurrences are those that the place is in: for
-   * example, the article of a sentence. Returns empty if neither text has the place.
+   * <p>The occurrences are those of the later text: the place itself, or else the occurrences that
+   * the place is in, for example the article of a sentence. The converter keeps a deleted
+   * occurrence, so the later text has the place of a deletion too. Only if the later text does not
+   * have the place at all are the occurrences those of the earlier text. Returns empty if neither
+   * text has the place.
    */
   @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-occurrences-of-a-change")
   public static List<String> occurrences(
       Amendment change, List<String> later, List<String> earlier) {
-    var after = change.location().in(later);
-    var before = change.location().in(earlier);
-    return after
-        .filter(found -> !found.within())
-        .or(() -> before.filter(found -> !found.within()))
-        .or(() -> after)
-        .or(() -> before)
+    return change
+        .location()
+        .in(later)
+        .or(() -> change.location().in(earlier))
         .map(Location.Found::eIds)
         .orElseGet(List::of);
   }

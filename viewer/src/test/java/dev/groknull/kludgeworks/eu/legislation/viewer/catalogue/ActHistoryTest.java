@@ -120,13 +120,11 @@ class ActHistoryTest {
   }
 
   @Test
-  void theOccurrencesOfAChangeWhosePlaceOnlyTheTextBeforeTheActHasAreInThatText() {
-    // The converter keeps a deleted occurrence, so no real text has this case: the edge of
-    // the-occurrences-of-a-change.
+  void theOccurrencesOfAChangeThatTheLaterTextDoesNotHaveAreThoseOfTheTextBefore() {
+    // No real text has these cases: the edges of the-occurrences-of-a-change.
     var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
-    var without = List.of("art_20");
-    assertThat(Act.occurrences(change, without, with)).containsExactly("art_20/par_1");
+    assertThat(Act.occurrences(change, List.of("art_3"), with)).containsExactly("art_20/par_1");
     assertThat(Act.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
   }
 
