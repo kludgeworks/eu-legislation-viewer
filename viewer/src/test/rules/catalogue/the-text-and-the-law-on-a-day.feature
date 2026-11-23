@@ -189,3 +189,24 @@ Feature: The text and the law on a day
       Then in English, these acts made the text of 29 February 2016: 2015/2426
       And in Swedish, these acts made the text of 29 February 2016: Corrigendum 2 to 2015/1998, 2015/2426
       And in German, these acts made the text of 29 February 2016: Corrigendum 2 to 2015/1998, Corrigendum 4 to 2015/1998, 2015/2426
+
+  Rule: where-the-text-of-a-day-is-not-the-law · The acts for which the text of a day is not the law
+    They are the act itself, while it is in force and does not apply in full (its deferred
+    application), and the amending acts that make the text and the law differ on the day: a
+    prospective amendment, whose changes the text has before they apply, and a pending amendment,
+    dated or undated, whose changes the text does not show. No other rule decides this.
+
+    Example: The act itself, an undated pending amendment and a prospective amendment
+      Given the act 2018/1862 as Cellar has it
+      And its texts are built where the converter has a sample
+      Then on 1 August 2022, the text is not the law for 2018/1862, 2021/1133, 2022/1190
+
+    Example: A pending amendment
+      Given the act 2015/1998 as Cellar has it
+      And its texts are built where the converter has a sample
+      Then on 3 June 2017, the text is not the law for 2017/815
+      And on 7 June 2017, the text is the law
+
+    Example: The act itself only
+      Given the act 2016/679 as Cellar has it
+      Then on 1 January 2017, the text is not the law for 2016/679

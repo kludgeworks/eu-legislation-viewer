@@ -18,9 +18,7 @@ import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -137,26 +135,13 @@ class HistoryController {
                 today,
                 language,
                 applies,
-                latest(act, language, tags),
+                act.latestText(language, tags).orElse(null),
                 step(act, amending, language, tags)))
         .render();
   }
 
   private Act act(String type, int year, String number) {
     return acts.act(new Eli(type, year, number));
-  }
-
-  /**
-   * Returns the tags of the latest text of {@code act} in {@code language} that is built, or null
-   * if none is built. {@code tags} are the tags of the texts that are built.
-   */
-  private static @Nullable TextTags latest(
-      Act act, Language language, Map<Version, TextTags> tags) {
-    return act.timeline(language).map(Timeline::versions).orElseGet(List::of).reversed().stream()
-        .map(tags::get)
-        .filter(Objects::nonNull)
-        .findFirst()
-        .orElse(null);
   }
 
   /**
@@ -167,10 +152,7 @@ class HistoryController {
   private static AmendingView.@Nullable Step step(
       Act act, ActIdentifier amending, Language language, Map<Version, TextTags> tags) {
     var later = act.integrating(amending, language).orElse(null);
-    var earlier =
-        later == null
-            ? null
-            : act.timeline(language).flatMap(each -> each.predecessor(later)).orElse(null);
+    var earlier = act.beforeIntegrating(amending, language).orElse(null);
     if (later == null || earlier == null) {
       return null;
     }

@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.util.Comparator;
@@ -40,6 +42,7 @@ public record Comparison(
    * example, a chapter that an act inserted whole is one difference, and an article in the chapter
    * has no difference of its own. Returns empty if the occurrences are the same in both texts.
    */
+  @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "differences-at-a-place")
   public List<Difference> at(List<String> eIds) {
     var within =
         differences.stream()

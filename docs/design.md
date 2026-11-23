@@ -285,7 +285,7 @@ not apply yet".
 
 | Term | Meaning |
 | --- | --- |
-| status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
+| status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. The status lines, the divergence notes and the dots of the outline name the same acts (the rule where-the-text-of-a-day-is-not-the-law). |
 | divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. Where the text does not have the place of the change, the note is on the occurrence that holds it: only the heading of that occurrence gets the bar, and the note of a pending amendment goes at its end. For example, the note of an Article 18a that the text does not have is at the end of Article 18. |
 | made by | The line of the reading card that names the acts that made the text of the version in the language of the page (`Act.changingIn`). If the Publications Office lists acts for the version, but no act changes the text in that language, the card says that the words are the same: "Same wording in English as the text of 4 April 2022". The card still says that a new text starts on that day. |
 | history | The list of the amending acts of an act, newest first. |

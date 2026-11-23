@@ -99,6 +99,36 @@ public class OneActSteps {
     changes = Attribution.madeIn(attributed, at.eIds(), act);
   }
 
+  @When("the reader asks for the differences at {place}")
+  public void differencesAt(Place place) {
+    var differences = Differ.differences(comparing.earlier(), comparing.later()).differences();
+    var comparison = new Comparison(new TextId(1), new TextId(2), differences, List.of(), null);
+    changes = comparison.at(List.of(eId(place)));
+  }
+
+  @Then("they are the difference at {place}")
+  public void theDifferenceAt(Place place) {
+    assertThat(changes).extracting(Difference::eId).containsExactly(eId(place));
+  }
+
+  @Then("they are {int} differences in {place}")
+  public void differencesIn(int count, Place place) {
+    var holder = eId(place);
+    assertThat(changes).hasSize(count);
+    assertThat(changes).allSatisfy(each -> assertThat(each.eId()).startsWith(holder + "/"));
+  }
+
+  /** Returns the eId of the occurrence that {@code place} names in the later text. */
+  private String eId(Place place) {
+    var later = Occurrences.of(comparing.later());
+    var found =
+        Location.of(place)
+            .in(List.copyOf(later.byEId().keySet()))
+            .orElseThrow(() -> new AssertionError("The later text has no " + place.words()));
+    assertThat(found.eIds()).as(place.words()).hasSize(1);
+    return found.eIds().getFirst();
+  }
+
   @Then("its changes are {int} difference(s) in Attachment {word}")
   public void changesIn(int count, String attachment) {
     assertThat(changes).hasSize(count);

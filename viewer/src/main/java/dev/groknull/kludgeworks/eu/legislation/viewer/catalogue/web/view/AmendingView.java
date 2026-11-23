@@ -112,7 +112,7 @@ public record AmendingView(
     var past = day.isBefore(today);
     var kept = day.equals(today) ? null : day;
     var all = act.changesBy(amending, language);
-    var inOrder = text == null ? all : Act.inTextOrder(all, text.eIds());
+    var inOrder = act.changesInTextOrder(amending, language, text);
     var page = Links.amending(eli, amending, kept, language);
     var standing = act.standingOn(amending, language, day);
     var subject = HistoryView.Subject.of(act, amending, language);

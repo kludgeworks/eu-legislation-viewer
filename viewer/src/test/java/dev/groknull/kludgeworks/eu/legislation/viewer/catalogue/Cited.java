@@ -19,8 +19,12 @@ public final class Cited {
   /** The year from which a regulation's number starts with its year. */
   private static final int YEAR_FIRST = 2015;
 
-  /** A corrigendum, as the pages cite it. For example, "Corrigendum 1 to 2017/815". */
-  private static final Pattern CORRIGENDUM = Pattern.compile("Corrigendum (\\d+) to (\\d{4}/\\d+)");
+  /**
+   * A corrigendum, as the pages cite it. For example, "Corrigendum 1 to 2017/815" or "Corrigendum 5
+   * to 767/2008".
+   */
+  private static final Pattern CORRIGENDUM =
+      Pattern.compile("Corrigendum (\\d+) to (\\d{1,4}/\\d{1,4})");
 
   /** A directive, by its number. For example, "Directive 2019/878". */
   private static final Pattern DIRECTIVE = Pattern.compile("Directive (\\d{4})/(\\d+)");

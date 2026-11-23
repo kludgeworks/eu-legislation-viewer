@@ -76,12 +76,13 @@ public class CatalogueTypes {
   }
 
   /** A language, by its name in English. For example, "German". */
-  @ParameterType("English|German|Swedish")
+  @ParameterType("English|German|Swedish|Polish")
   public Language language(String name) {
     return switch (name) {
       case "English" -> Language.ENG;
       case "German" -> Language.DEU;
       case "Swedish" -> Language.SWE;
+      case "Polish" -> Language.POL;
       default -> throw new IllegalArgumentException("Not a language of the rules: " + name);
     };
   }

@@ -30,7 +30,9 @@ public enum RuleGroup {
   /** Where the text that a reader gets on a day is not the law on that day, and why. */
   THE_TEXT_AND_THE_LAW_ON_A_DAY,
   /** Which occurrences of a text the place of an amendment is. */
-  PLACES;
+  PLACES,
+  /** The acts in the history of an act, its corrigenda, its days of change and their changes. */
+  THE_HISTORY_OF_AN_ACT;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

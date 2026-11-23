@@ -97,10 +97,7 @@ public record CompareView(
     var changed =
         text == null || occurrence == null
             ? between
-            : act.historyOf(occurrence, text, language).acts().stream()
-                .filter(between::contains)
-                .toList()
-                .reversed();
+            : act.historyOf(occurrence, text, language).actsAmong(between).reversed();
     var kept = toDay.equals(today) ? null : toDay;
     var subject = occurrence == null ? act.id().cited() : name == null ? "this provision" : name;
     return new CompareView(

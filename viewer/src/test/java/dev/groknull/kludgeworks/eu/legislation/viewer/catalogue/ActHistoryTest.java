@@ -107,112 +107,27 @@ class ActHistoryTest {
   }
 
   @Test
-  void theAmendingActsAreNewestFirstWithoutCorrigendaAndWithoutActsForOtherLanguages() {
+  void anActWithoutADatedDateHasTheFirstDayOfTheFirstVersionThatIntegratesIt() {
+    // No real act has no dated date: the edge of the-order-of-the-amending-acts.
+    assertThat(ACT.firstDay(UNDATED, Language.ENG)).hasValue(LocalDate.of(2020, 5, 1));
     assertThat(ACT.amendingActs(Language.ENG)).containsExactly(PHASED, EVENT, UNDATED, SIMPLE);
-    assertThat(ACT.amendingActs(Language.POL))
-        .containsExactly(PHASED, POLISH, EVENT, UNDATED, SIMPLE);
   }
 
   @Test
-  void theAmendingActsBetweenTwoDaysAreTheOnesThatOnlyTheTextOfTheLaterDayIncludes() {
-    // No version includes EVENT. The text of 1 January 2020 includes SIMPLE.
-    assertThat(
-            ACT.amendingActsBetween(
-                LocalDate.of(2019, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
-        .hasValue(List.of(PHASED, UNDATED, SIMPLE));
-    assertThat(
-            ACT.amendingActsBetween(
-                LocalDate.of(2020, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
-        .hasValue(List.of(PHASED, UNDATED));
+  void anActWithoutDatesChangesTheActOnNoDay() {
+    // No real act has no dates: the edge of the-days-of-change.
+    assertThat(ACT.changeDays(Language.ENG).values()).noneMatch(acts -> acts.contains(UNDATED));
   }
 
   @Test
-  void aDayBeforeTheFirstVersionHasNoAmendingActsBetweenItAndALaterDay() {
-    assertThat(
-            ACT.amendingActsBetween(
-                LocalDate.of(2018, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
-        .isEmpty();
-  }
-
-  @Test
-  void theDaysOfChangeAreTheDaysFromWhichAnAmendingActOrAPartOfItApplies() {
-    // EVENT applies from a day that Cellar does not know, and UNDATED has no dates: no day.
-    // POLISH does not change the English text.
-    var days = ACT.changeDays(Language.ENG);
-    assertThat(days.keySet()).containsExactly(LocalDate.of(2019, 6, 11), IN_PART, IN_FULL);
-    assertThat(days.get(LocalDate.of(2019, 6, 11))).containsExactly(SIMPLE);
-    assertThat(days.get(IN_PART)).containsExactly(PHASED);
-    assertThat(days.get(IN_FULL)).containsExactly(PHASED);
-  }
-
-  @Test
-  void theChangesAreInTheOrderOfTheTextAndADeletedPlaceIsWhereItsOccurrenceIs() {
-    var occurrences = List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1", "art_79");
-    var changes = ACT.changesBy(PHASED, Language.ENG);
-    assertThat(Act.inTextOrder(changes, occurrences))
-        .extracting(change -> change.location().code())
-        .containsExactly("AR 3 PO 8", "AR 20 PA 1", "AR 79 PA 7");
-  }
-
-  @Test
-  void theFirstVersionThatIntegratesAnActIsTheFirstTextWithItsChanges() {
-    assertThat(ACT.integrating(PHASED, Language.ENG))
-        .map(Version::date)
-        .hasValue(LocalDate.of(2022, 8, 1));
-    assertThat(ACT.integrating(EVENT, Language.ENG)).isEmpty();
-  }
-
-  @Test
-  void theOtherActsOfTheVersionOfAnActAreWithoutCorrigendaAndWithoutTheActItself() {
-    var shared =
-        new Act(
-            BASE,
-            null,
-            new ResourceType("REG"),
-            Map.of(),
-            null,
-            true,
-            null,
-            new Timeline(
-                List.of(
-                    Version.original(
-                        LocalDate.of(2018, 12, 27), BASE, EnumSet.allOf(Language.class), Map.of()),
-                    version("2021-03-15", SIMPLE, EVENT, CORRIGENDUM))),
-            List.of(),
-            Map.of(),
-            List.of(),
-            Map.of());
-    assertThat(shared.integratedWith(SIMPLE, Language.ENG)).containsExactly(EVENT);
-    assertThat(shared.integratedWith(EVENT, Language.ENG)).containsExactly(SIMPLE);
-    // 2022/1190 is the only act of its version. No version integrates 2021/1133.
-    assertThat(ACT.integratedWith(PHASED, Language.ENG)).isEmpty();
-    assertThat(ACT.integratedWith(EVENT, Language.ENG)).isEmpty();
-  }
-
-  @Test
-  void theOccurrencesOfAChangeAreInTheTextWithTheActOrInTheTextBeforeItForADeletedPlace() {
+  void theOccurrencesOfAChangeWhosePlaceOnlyTheTextBeforeTheActHasAreInThatText() {
+    // The converter keeps a deleted occurrence, so no real text has this case: the edge of
+    // the-occurrences-of-a-change.
     var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
     var without = List.of("art_20");
-    assertThat(Act.occurrences(change, with, without)).containsExactly("art_20/par_1");
     assertThat(Act.occurrences(change, without, with)).containsExactly("art_20/par_1");
-    // Neither text has the paragraph itself: the change is in the article.
-    assertThat(Act.occurrences(change, without, without)).containsExactly("art_20");
     assertThat(Act.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
-  }
-
-  @Test
-  void theCorrigendaOfAnActAreTheOnesPublishedInTheLanguage() {
-    assertThat(ACT.corrigendaOf(BASE, Language.ENG)).containsExactly(CORRIGENDUM);
-    assertThat(ACT.corrigendaOf(BASE, Language.DEU)).containsExactly(GERMAN_CORRIGENDUM);
-    assertThat(ACT.corrigendaOf(PHASED, Language.ENG)).containsExactly(CORRIGENDUM_OF_PHASED);
-  }
-
-  @Test
-  void theChangesOfAnActAreItsChangesToTheTextInTheLanguage() {
-    assertThat(ACT.changesBy(PHASED, Language.ENG)).hasSize(3);
-    assertThat(ACT.changesBy(POLISH, Language.ENG)).isEmpty();
-    assertThat(ACT.changesBy(POLISH, Language.POL)).hasSize(1);
   }
 
   @Test
@@ -257,41 +172,5 @@ class ActHistoryTest {
   void theOccurrencesWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
     assertThat(ACT.changedOccurrences(TEXT.eIds(), Language.ENG).keySet())
         .containsExactly("art_3/pnt_8", "art_20/par_1");
-  }
-
-  @Test
-  void theHistoryOfAProvisionHasItsChangesAndTheOtherActsThatTheTextTagsItWith() {
-    var history = ACT.historyOf("art_20/par_1", TEXT, Language.ENG);
-
-    assertThat(history.changes())
-        .extracting(change -> change.location().code())
-        .containsExactly("AR 20 PA 1");
-    assertThat(history.tagging()).containsExactly(SIMPLE);
-    assertThat(history.acts()).containsExactly(PHASED, SIMPLE);
-  }
-
-  @Test
-  void aChangeOfTheOccurrenceThatHoldsAProvisionIsInItsHistoryAndAChangeInItIsNot() {
-    assertThat(ACT.historyOf("art_20/par_1/pnt_a", TEXT, Language.ENG).changes())
-        .extracting(change -> change.location().code())
-        .containsExactly("AR 20 PA 1");
-    assertThat(ACT.historyOf("art_20", TEXT, Language.ENG).acts()).isEmpty();
-  }
-
-  @Test
-  void anOccurrenceThatTheActAsPublishedDoesNotHaveAndThatTheDataNamesNoActForIsNotAttributed() {
-    var versions = ACT.timeline().versions();
-    var texts =
-        Map.of(
-            versions.getFirst(),
-            new TextTags(List.of("art_3", "art_20", "art_20/par_1"), Map.of()),
-            versions.getLast(),
-            TEXT);
-
-    // Article 3, point 8 has a change. Point (a) is in a paragraph that has one. Article 22 has a
-    // tag in it. Article 21(1) is in Article 21.
-    assertThat(ACT.unattributed(versions.getLast(), Language.ENG, texts)).containsExactly("art_21");
-    assertThat(ACT.firstWith("art_21", Language.ENG, texts)).hasValue(versions.getLast());
-    assertThat(ACT.unattributed(versions.getFirst(), Language.ENG, texts)).isEmpty();
   }
 }

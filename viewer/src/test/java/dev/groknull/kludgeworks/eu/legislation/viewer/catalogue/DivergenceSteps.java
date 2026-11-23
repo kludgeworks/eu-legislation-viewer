@@ -135,6 +135,27 @@ public class DivergenceSteps {
     assertThat(the.act().changingIn(version(day), language)).containsExactlyElementsOf(acts);
   }
 
+  @Then("on {day}, the text is not the law for {acts}")
+  public void notTheLaw(LocalDate day, List<ActIdentifier> acts) {
+    assertThat(notTheLaw(day)).containsExactlyElementsOf(acts);
+  }
+
+  @Then("on {day}, the text is the law")
+  public void theLaw(LocalDate day) {
+    assertThat(notTheLaw(day)).isEmpty();
+  }
+
+  /**
+   * Returns the acts for which the text of {@code day} is not the law: the act itself while its
+   * application is deferred, then the acts of the divergences of the day.
+   */
+  private List<ActIdentifier> notTheLaw(LocalDate day) {
+    var acts = new java.util.ArrayList<ActIdentifier>();
+    the.act().deferredApplicationOn(day, Language.ENG).ifPresent(_ -> acts.add(the.act().id()));
+    the.act().divergences(day, Language.ENG, the.texts()).forEach(each -> acts.add(each.act()));
+    return acts;
+  }
+
   private boolean on(LocalDate day, ActIdentifier act) {
     return the.act().divergences(day, Language.ENG, the.texts()).stream()
         .anyMatch(each -> each.act().equals(act));

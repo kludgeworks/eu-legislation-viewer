@@ -214,6 +214,7 @@ public record Act(
    *   <li>An amendment whose location is in neither text is counted as unplaced.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "cellars-amendments-that-count")
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
@@ -276,6 +277,9 @@ public record Act(
    * Returns where the text that a reader gets on {@code day} is not the law on that day, as {@link
    * #divergences(Language, Map)} finds it.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "where-the-text-of-a-day-is-not-the-law")
   public List<Divergence> divergences(
       LocalDate day, Language language, Map<Version, TextTags> texts) {
     return divergences(language, texts).stream().filter(each -> each.on(day)).toList();
@@ -510,6 +514,8 @@ public record Act(
    *       first day of the first version that integrates it. An act without either is last.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-amending-acts-of-an-act")
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-order-of-the-amending-acts")
   public List<ActIdentifier> amendingActs(Language language) {
     var found = new LinkedHashSet<ActIdentifier>();
     timeline(language).orElse(timeline).versions().forEach(each -> found.addAll(each.integrates()));
@@ -536,6 +542,9 @@ public record Act(
    * @param texts the tags of the texts in {@code language} that are built, as {@link #textOn} takes
    *     them
    */
+  @BusinessRule(
+      group = RuleGroup.THE_HISTORY_OF_AN_ACT,
+      name = "the-amending-acts-between-two-days")
   public Optional<List<ActIdentifier>> amendingActsBetween(
       LocalDate from, LocalDate to, Language language, Map<Version, TextTags> texts) {
     var earlier = textOn(from, language, texts);
@@ -562,6 +571,7 @@ public record Act(
    *       has none.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-days-of-change")
   public SortedMap<LocalDate, List<ActIdentifier>> changeDays(Language language) {
     var days = new TreeMap<LocalDate, List<ActIdentifier>>();
     for (var each : amendingActs(language).reversed()) {
@@ -593,10 +603,22 @@ public record Act(
    * this version is the first that has the changes of the act. The text of the version before it is
    * the text before the act. Returns empty if no version in the language integrates the act.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-two-texts-of-an-amending-act")
   public Optional<Version> integrating(ActIdentifier amending, Language language) {
     return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
         .filter(version -> version.integrates().contains(amending))
         .findFirst();
+  }
+
+  /**
+   * Returns the version in {@code language} before the first version that integrates {@code
+   * amending} ({@link #integrating}): its text is the text before the act. Returns empty if no
+   * version integrates the act, or if the first that does is the first version.
+   */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-two-texts-of-an-amending-act")
+  public Optional<Version> beforeIntegrating(ActIdentifier amending, Language language) {
+    return integrating(amending, language)
+        .flatMap(later -> timeline(language).flatMap(each -> each.predecessor(later)));
   }
 
   /**
@@ -606,6 +628,7 @@ public record Act(
    * Returns empty if no version integrates {@code amending}, or if it is the only act of its
    * version.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-other-acts-of-its-version")
   public List<ActIdentifier> integratedWith(ActIdentifier amending, Language language) {
     return integrating(amending, language).map(Version::integrates).orElseGet(List::of).stream()
         .filter(each -> !each.corrigendum() && !each.equals(amending))
@@ -622,6 +645,7 @@ public record Act(
    * text. If neither has the place itself, the occurrences are those that the place is in: for
    * example, the article of a sentence. Returns empty if neither text has the place.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-occurrences-of-a-change")
   public static List<String> occurrences(
       Amendment change, List<String> later, List<String> earlier) {
     var after = change.location().in(later);
@@ -682,6 +706,7 @@ public record Act(
    *
    * <p>The newest act is first: the act with the latest first day, {@link #firstDay}.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-history-of-a-provision")
   public ProvisionHistory historyOf(String occurrence, TextTags text, Language language) {
     Comparator<ActIdentifier> newest =
         Comparator.comparing(
@@ -728,6 +753,9 @@ public record Act(
    * such occurrences, only the outer occurrence is returned: an occurrence in it is not. Returns
    * none if the text of the act as published or the text of {@code reading} is not built.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_HISTORY_OF_AN_ACT,
+      name = "a-provision-the-data-names-no-act-for")
   public List<String> unattributed(
       Version reading, Language language, Map<Version, TextTags> texts) {
     var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
@@ -757,6 +785,9 @@ public record Act(
    * {@code texts} are the tags of the built texts. Returns empty if no built text has the
    * occurrence.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_HISTORY_OF_AN_ACT,
+      name = "a-provision-the-data-names-no-act-for")
   public Optional<Version> firstWith(
       String occurrence, Language language, Map<Version, TextTags> texts) {
     return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
@@ -784,6 +815,7 @@ public record Act(
    * into force. If Cellar has no dated date of it, it is the first day of the first version in
    * {@code language} that integrates it. Returns empty if there is neither.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-order-of-the-amending-acts")
   public Optional<LocalDate> firstDay(ActIdentifier amending, Language language) {
     return datesOf(amending).stream()
         .map(ActDate::date)
@@ -803,6 +835,7 @@ public record Act(
    * for example a deleted provision, has the position of the occurrence that holds it. A change
    * with no position is last.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-changes-of-an-amending-act")
   public static List<Amendment> inTextOrder(List<Amendment> changes, List<String> eIds) {
     var occurrences = Location.occurrences(eIds);
     return changes.stream()
@@ -824,6 +857,7 @@ public record Act(
    * it. A corrigendum is published only in the languages that it corrects. So a corrigendum whose
    * publication has no title in {@code language} is left out.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-corrigenda-of-an-act")
   public List<ActIdentifier> corrigendaOf(ActIdentifier corrected, Language language) {
     var found = new LinkedHashSet<ActIdentifier>();
     timeline(language).orElse(timeline).versions().forEach(each -> found.addAll(each.integrates()));
@@ -876,10 +910,36 @@ public record Act(
    * Returns the changes that {@code amending} makes to the text of this act in {@code language}, as
    * Cellar annotates them. Each change has one place.
    */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-changes-of-an-amending-act")
   public List<Amendment> changesBy(ActIdentifier amending, Language language) {
     return amendments.stream()
         .filter(each -> each.act().equals(amending) && each.changes(language))
         .toList();
+  }
+
+  /**
+   * Returns the changes of {@code amending} in {@code language} ({@link #changesBy}) in the order
+   * of {@code latest}, the latest built text ({@link #latestText}): {@link #inTextOrder}. While no
+   * text is built, {@code latest} is null, and the changes are in the order of the data.
+   */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-changes-of-an-amending-act")
+  public List<Amendment> changesInTextOrder(
+      ActIdentifier amending, Language language, @Nullable TextTags latest) {
+    var changes = changesBy(amending, language);
+    return latest == null ? changes : inTextOrder(changes, latest.eIds());
+  }
+
+  /**
+   * Returns the tags of the latest text in {@code language} that is built. Its order is the order
+   * of the changes of an amending act ({@link #changesInTextOrder}). {@code texts} are the tags of
+   * the texts in {@code language} that are built. Returns empty if none is built.
+   */
+  @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-changes-of-an-amending-act")
+  public Optional<TextTags> latestText(Language language, Map<Version, TextTags> texts) {
+    return timeline(language).map(Timeline::versions).orElseGet(List::of).reversed().stream()
+        .map(texts::get)
+        .filter(Objects::nonNull)
+        .findFirst();
   }
 
   /**
@@ -1048,6 +1108,9 @@ public record Act(
   @BusinessRule(
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
       name = "deferred-application-of-the-act")
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "where-the-text-of-a-day-is-not-the-law")
   public Optional<DeferredApplication> deferredApplicationOn(LocalDate day, Language language) {
     var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
     return appliesFrom(id)
