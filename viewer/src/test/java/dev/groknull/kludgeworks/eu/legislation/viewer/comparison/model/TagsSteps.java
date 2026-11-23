@@ -17,10 +17,10 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about the tags of an occurrence (R-WHO-02) and of a neighbour (R-SHOW-10),
- * on the consolidated versions of 2015/1998 as the content module reads them back. A step names a
- * place as the pages do, and an act by its number ({@link Types}). The steps reach the domain only:
- * they cannot call a view or a controller, so a rule that they test is applied in the domain.
+ * The steps of the rules about the tags of an occurrence and of a neighbour, on the consolidated
+ * versions of 2015/1998 as the content module reads them back. A step names a place as the pages
+ * do, and an act by its number ({@link Types}). The steps reach the domain only: they cannot call a
+ * view or a controller, so a rule that they test is applied in the domain.
  */
 public class TagsSteps {
   private @Nullable Element version;

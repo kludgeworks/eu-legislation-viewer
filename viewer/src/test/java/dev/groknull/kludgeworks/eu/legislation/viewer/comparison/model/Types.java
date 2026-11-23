@@ -36,6 +36,11 @@ public class Types {
    * A place, as the pages name it. For example, "point 8.1.2.3(c)". It does not start with "the",
    * so that "the neighbour point 1.2.2.3(a)" is not a place.
    */
+  /** An act, as the rules cite it. */
+  private static final String ACT =
+      "\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Decision \\d{4}/\\d+|Corrigendum \\d+ to"
+          + " \\d{1,4}/\\d{1,4}";
+
   @ParameterType("(?!the ).+")
   public Place place(String words) {
     return new Place(words);
@@ -57,14 +62,21 @@ public class Types {
    * An act, as the rules cite it: "2015/1998", "917/2004", "Directive 2002/73", "Decision
    * 2022/2319", or "Corrigendum 1 to 2017/815".
    */
-  @ParameterType(
-      "\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Decision \\d{4}/\\d+|Corrigendum \\d+ to"
-          + " \\d{1,4}/\\d{1,4}")
+  @ParameterType(ACT)
   public ActIdentifier act(String cited) {
     return Cited.act(cited);
   }
 
   /** What an act did to an occurrence in one step: "replaced", "inserted", "amended" … */
+  /**
+   * Acts, as the pages list them: "2019/413 and 2021/255", "2017/815, 2019/103 and 2019/1583", or
+   * one act alone.
+   */
+  @ParameterType("(?:" + ACT + ")(?:(?:, | and )(?:" + ACT + "))*")
+  public List<ActIdentifier> acts(String cited) {
+    return Cited.acts(cited);
+  }
+
   @ParameterType("inserted|deleted|replaced|renumbered|amended|corrected")
   public Modification modification(String word) {
     return Modification.of(word);

@@ -3,7 +3,7 @@ Feature: From when a change applies
   The sidenote of a difference says, for each act that made it, from when the change applies. The
   date comes from the act's dates in Cellar.
 
-  Rule: R-WHO-15 The date is the act's
+  Rule: date-from-the-act · The date is the act's
     The date of a change comes from the dates of the act that made it, never from the date of the
     text that first has the change.
 
@@ -13,7 +13,7 @@ Feature: From when a change applies
       Then it applies from 1 June 2017
       And no act moved the date
 
-  Rule: R-WHO-16 Cellar's day for the occurrence, else the parts
+  Rule: cellar-day-else-the-parts · Cellar's day for the occurrence, else the parts
     Cellar can give a day for the change at the occurrence. That day chooses the date if it is one
     of the act's dates and it is after From. A day that is not after From is stale: the earlier
     text does not have the change. If no day chooses the date, the act applies in parts, and the
@@ -43,7 +43,7 @@ Feature: From when a change applies
         | 1 February 2019  | its entry into force |
         | 31 December 2021 | a part               |
 
-  Rule: R-WHO-18 No day known
+  Rule: no-day-known · No day known
     If Cellar has no day for the act's application, a clause of the act sets the day, and the
     sidenote names the clause. If Cellar names no such clause, the sidenote says nothing of when the
     change applies.
@@ -58,7 +58,7 @@ Feature: From when a change applies
       When the reader asks from when the change of 1484/2004 applies
       Then the sidenote says nothing of when it applies
 
-  Rule: R-WHO-19 Only an entry into force
+  Rule: entry-into-force-only · Only an entry into force
     An act whose only date is its entry into force applies from that day. A directive that has only
     its entry into force is in force from that day, and the data does not say from when it applies:
     the Member States apply it through their own measures. The acts that changed the clause that
@@ -75,7 +75,7 @@ Feature: From when a change applies
       When the reader asks from when the change of Directive 2002/73 applies
       Then it is in force from 5 October 2002, and the data does not say from when it applies
 
-  Rule: R-WHO-20 A corrigendum corrects from the start
+  Rule: corrigendum-corrects-from-the-start · A corrigendum corrects from the start
     A corrigendum corrects its act from the start: from the earliest day from which the act
     applies, or from its entry into force if the act has no day of application. The sidenote also
     names the first text between the two days that has the corrigendum.

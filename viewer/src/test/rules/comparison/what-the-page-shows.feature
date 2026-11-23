@@ -3,7 +3,7 @@ Feature: What the summary and the legend of a comparison say
   The summary says how many provisions differ, and names the act that made them if one act made
   them all. The legend names the edits that the page shows.
 
-  Rule: R-SHOW-06 The act that made every difference
+  Rule: act-that-made-every-difference · The act that made every difference
     If one known act made every difference, the summary names it. If a difference has no known act,
     or more than one act made the differences, the summary names no act.
 
@@ -34,7 +34,7 @@ Feature: What the summary and the legend of a comparison say
         | deleted | 0              | 40            | no known act |
       Then the summary names no act
 
-  Rule: R-SHOW-07 The legend names only the edits that the page shows
+  Rule: legend-names-the-edits-shown · The legend names only the edits that the page shows
     The legend names inserted words, deleted words and the words of a correction, each only if the
     page shows some. An inserted occurrence shows all its words inserted, and a deleted occurrence
     shows all its words deleted. The inserted and deleted words of a correction count only as the
@@ -82,7 +82,7 @@ Feature: What the summary and the legend of a comparison say
         | inserted words | deleted words | a correction |
         | no             | yes           | yes          |
 
-  Rule: R-SHOW-01 Each occurrence of the later text once
+  Rule: each-occurrence-once · Each occurrence of the later text once
     The Differences view places each occurrence of the later text once, in the order of the text:
     as a difference, as the opening of an occurrence that holds differences, or among the
     occurrences that are the same in both texts, which a fold holds.

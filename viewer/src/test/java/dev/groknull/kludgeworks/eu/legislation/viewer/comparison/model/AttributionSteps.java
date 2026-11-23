@@ -13,10 +13,9 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about who made a difference (R-WHO-10) and what the page's summary and
- * legend say (R-SHOW-06, R-SHOW-07). An act is cited as the pages cite it: "2026/449", "Corrigendum
- * 1 to 2017/815". The rows of the tables are the domain's ({@link Types}). The steps reach the
- * domain only.
+ * The steps of the rules about who made a difference and what the page's summary and legend say. An
+ * act is cited as the pages cite it: "2026/449", "Corrigendum 1 to 2017/815". The rows of the
+ * tables are the domain's ({@link Types}). The steps reach the domain only.
  */
 public class AttributionSteps {
   private Attribution attribution = Attribution.NONE;

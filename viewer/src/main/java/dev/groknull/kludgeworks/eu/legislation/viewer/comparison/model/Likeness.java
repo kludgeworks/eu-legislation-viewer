@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.text.BreakIterator;
 import java.util.Arrays;
@@ -46,6 +48,7 @@ final class Likeness {
    * @return for each piece of {@code to}, the position in {@code from} of the piece that it pairs
    *     with, or -1 if it pairs with none
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "blocks-pair-with-what-they-were")
   static int[] pairs(List<Element> from, List<Element> to) {
     var sourceOf = new int[to.size()];
     Arrays.fill(sourceOf, -1);
@@ -60,6 +63,9 @@ final class Likeness {
    * Returns where the piece {@code source} of one text, paired with none, goes among the pieces of
    * the other: before the first piece that pairs with a piece after it.
    */
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "deleted-text-stands-where-it-was")
   static int before(int[] sourceOf, int source) {
     for (var i = 0; i < sourceOf.length; i++) {
       if (sourceOf[i] > source) {

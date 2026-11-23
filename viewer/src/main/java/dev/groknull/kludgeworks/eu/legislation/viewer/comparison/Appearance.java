@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import java.util.HashMap;
@@ -10,8 +12,8 @@ import java.util.Set;
 import java.util.function.Function;
 
 /**
- * Where a change that no act is known to have made first appears (R-WHO-07). The sidenote of such a
- * change names the text where it first appears, and what that text consolidates, but no act.
+ * Where a change that no act is known to have made first appears. The sidenote of such a change
+ * names the text where it first appears, and what that text consolidates, but no act.
  *
  * <p>The text is the later text of the first pair of neighbouring versions, after the earlier day
  * of the comparison and up to its later day, whose comparison has a difference at the occurrence. A
@@ -28,6 +30,7 @@ public final class Appearance {
    * @param differing for a version, the eIds of the differences between the text of the version
    *     before it and its own text, or empty if the two texts are not both built
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "no-act-named")
   public static Map<String, Version> of(
       Timeline timeline,
       Version from,

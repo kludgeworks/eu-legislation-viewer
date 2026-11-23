@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# The mark that ties a method of the domain to the business rule that it applies (a feature and a
+# rule name, such as tags-else-cellar). It is outside the viewer's base package, so it is not a
+# module of the application, and each module's domain can depend on it. The rules check reads it
+# in both directions (viewer/src/test/rules), and the wiki names the method beside its rule.
+java_library(
+    name = "rules",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
+    deps = ["@maven//:org_jspecify_jspecify"],
+)

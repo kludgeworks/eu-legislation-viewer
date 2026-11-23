@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 class RulesWikiTest {
   @Test
-  void refusesARuleWithoutAnIdentifierOrAnExampleAndAnExampleOutsideARule() {
+  void refusesARuleWithoutANameOrAnExampleAndAnExampleOutsideARule() {
     var errors =
         RulesWiki.check(
             List.of(
@@ -27,14 +27,21 @@ class RulesWikiTest {
                         Example: Mine
                           Given a text
 
-                      Rule: R-WHO-03 Who deleted an occurrence
+                      Rule: who-deleted-an-occurrence · Who deleted an occurrence
+
+                      Rule: R-OLD-01 A rule as it was before rules had names
+                        Example: Old
+                          Given a text
                     """)));
 
     assertThat(errors)
         .containsExactly(
             "tags.feature: the example \"Outside\" is in no rule",
-            "tags.feature: the rule \"The tags of an occurrence\" has no identifier (R-XXX-nn)",
-            "tags.feature: R-WHO-03 has no example");
+            "tags.feature: the rule \"The tags of an occurrence\" has no name (name · title, the"
+                + " name in kebab case)",
+            "tags.feature: who-deleted-an-occurrence has no example",
+            "tags.feature: the rule \"R-OLD-01 A rule as it was before rules had names\" has no"
+                + " name (name · title, the name in kebab case)");
   }
 
   @Test
@@ -45,15 +52,16 @@ class RulesWikiTest {
                 document(
                     """
                     Feature: Tags
-                      Rule: R-WHO-02 The tags of an occurrence
+                      Rule: tags-of-an-occurrence · The tags of an occurrence
                         Example: One
                           Given a text
-                      Rule: R-WHO-02 The tags of an occurrence, again
+                      Rule: tags-of-an-occurrence · The tags of an occurrence, again
                         Example: Two
                           Given a text
                     """)));
 
-    assertThat(errors).containsExactly("tags.feature: R-WHO-02 is also in tags.feature");
+    assertThat(errors)
+        .containsExactly("tags.feature: tags-of-an-occurrence is also in tags.feature");
   }
 
   @Test
@@ -64,7 +72,7 @@ class RulesWikiTest {
                 document(
                     """
                     Feature: Tags
-                      Rule: R-WHO-02 The tags of an occurrence
+                      Rule: tags-of-an-occurrence · The tags of an occurrence
                         An occurrence's tags are its own,
                         each once and in order.
 
@@ -77,16 +85,16 @@ class RulesWikiTest {
                 document(
                     """
                     Feature: Tags
-                      Rule: R-WHO-02 The tags of an occurrence
+                      Rule: tags-of-an-occurrence · The tags of an occurrence
                         An occurrence's tags are its own, each once and in order.
 
                         Example: One
                           Given a text
                     """)));
 
-    assertThat(after.get("R-WHO-02"))
+    assertThat(after.get("TAGS/tags-of-an-occurrence"))
         .extracting(RulesWiki.Text::lines)
-        .isEqualTo(Objects.requireNonNull(before.get("R-WHO-02")).lines());
+        .isEqualTo(Objects.requireNonNull(before.get("TAGS/tags-of-an-occurrence")).lines());
   }
 
   @Test
@@ -95,7 +103,7 @@ class RulesWikiTest {
         document(
             """
             Feature: Tags
-              Rule: R-WHO-02 The tags of an occurrence
+              Rule: tags-of-an-occurrence · The tags of an occurrence
                 An occurrence's tags are its own.
 
                 Background:
@@ -112,7 +120,8 @@ class RulesWikiTest {
             """);
 
     var page =
-        RulesWiki.page(document, new RulesWiki.Run(List.of(document), Map.of()), null, null, null);
+        RulesWiki.page(
+            document, new RulesWiki.Run(List.of(document), Map.of()), null, null, null, Map.of());
 
     assertThat(page.markdown())
         .contains(
@@ -128,6 +137,49 @@ class RulesWikiTest {
   }
 
   @Test
+  void namesTheMethodsThatApplyARuleLinkedToTheirSource() {
+    var document =
+        RulesWikiTest.document(
+            """
+            Feature: Who made a change
+              Rule: amendments-around-and-inside · Amendments of the occurrences around and inside
+                Example: A point takes the amendment of the point around it
+                  Then the steps are told
+
+              Rule: act-changes-only-what-the-text-has · An act changes only what the text has
+                @known-bug @ISS-270
+                Example: A point that an act deleted
+                  Then the steps are told
+            """,
+            "who-made-a-change.feature");
+    var applied =
+        new RulesApplied.Applied(
+            "WHO_MADE_A_CHANGE",
+            "amendments-around-and-inside",
+            1,
+            "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution",
+            "amendmentsOf");
+
+    var page =
+        RulesWiki.page(
+            document,
+            new RulesWiki.Run(List.of(document), Map.of()),
+            null,
+            null,
+            "2c55d943",
+            Map.of(applied.rule(), List.of(applied)));
+
+    assertThat(page.markdown())
+        .contains(
+            "## amendments-around-and-inside · Amendments of the occurrences around and inside")
+        .contains(
+            "_Applied by_ [`Attribution.amendmentsOf`](https://github.com/kludgeworks/"
+                + "eu-legislation-viewer/blob/2c55d943/viewer/src/main/java/dev/groknull/kludgeworks/"
+                + "eu/legislation/viewer/comparison/Attribution.java)")
+        .contains("_Applied by no method yet: its examples are known bugs._");
+  }
+
+  @Test
   void findsAChangeInADocStringOrATag() {
     var before =
         RulesWiki.rules(
@@ -135,7 +187,7 @@ class RulesWikiTest {
                 document(
                     """
                     Feature: Tags
-                      Rule: R-WHO-02 The tags of an occurrence
+                      Rule: tags-of-an-occurrence · The tags of an occurrence
                         Example: One
                           Then it deletes
                             \"\"\"
@@ -148,7 +200,7 @@ class RulesWikiTest {
                 document(
                     """
                     Feature: Tags
-                      Rule: R-WHO-02 The tags of an occurrence
+                      Rule: tags-of-an-occurrence · The tags of an occurrence
                         @known-bug
                         Example: One
                           Then it deletes
@@ -157,15 +209,19 @@ class RulesWikiTest {
                             \"\"\"
                     """)));
 
-    assertThat(Objects.requireNonNull(after.get("R-WHO-02")).lines())
+    assertThat(Objects.requireNonNull(after.get("TAGS/tags-of-an-occurrence")).lines())
         .contains("@known-bug", "    two")
-        .isNotEqualTo(Objects.requireNonNull(before.get("R-WHO-02")).lines());
+        .isNotEqualTo(Objects.requireNonNull(before.get("TAGS/tags-of-an-occurrence")).lines());
   }
 
   private static GherkinDocument document(String feature) {
+    return document(feature, "tags.feature");
+  }
+
+  private static GherkinDocument document(String feature, String file) {
     var parser = GherkinParser.builder().includeSource(false).includePickles(false).build();
     return parser
-        .parse("tags.feature", feature.getBytes(StandardCharsets.UTF_8))
+        .parse(file, feature.getBytes(StandardCharsets.UTF_8))
         .flatMap(envelope -> envelope.getGherkinDocument().stream())
         .findFirst()
         .orElseThrow();

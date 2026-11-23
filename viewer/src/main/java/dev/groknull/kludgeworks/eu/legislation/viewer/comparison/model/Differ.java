@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
@@ -95,6 +97,7 @@ public final class Differ {
    * publishes some consolidations without the preamble, although no act removed it. For example,
    * the consolidations of 2015/1998 from 2017.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "preamble-of-one-text")
   public static Compared differences(Element from, Element to) {
     var earlierPreamble = preamble(from);
     var laterPreamble = preamble(to);
@@ -172,6 +175,7 @@ public final class Differ {
      * differ. It does if it is changed, and the acts that changed it also made every difference in
      * it.
      */
+    @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "same-acts-one-difference")
     boolean showsWhole() {
       return difference != null
           && difference.kind() == Kind.CHANGED
@@ -233,6 +237,12 @@ public final class Differ {
      * is no such occurrence. An occurrence that moved out of {@code was} is not deleted: it shows
      * where the later text has it.
      */
+    @BusinessRule(
+        group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+        name = "one-difference-for-each-occurrence")
+    @BusinessRule(
+        group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+        name = "deleted-text-stands-where-it-was")
     List<Node> occurrences(@Nullable Occurrence was, @Nullable Occurrence is) {
       var later = in(after, is);
       // The deleted occurrences that stood first, then those that stood after each later
@@ -285,6 +295,9 @@ public final class Differ {
      * of the earlier text that it pairs with. The occurrence is changed if its own blocks or
      * footnotes differ.
      */
+    @BusinessRule(
+        group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+        name = "one-difference-for-each-occurrence")
     private Node paired(Occurrence was, Occurrence is) {
       var editing = Editing.of(was, is);
       var occurrences = occurrences(was, is);
@@ -375,6 +388,9 @@ public final class Differ {
      * Returns how {@code to} differs from {@code from}. Returns null if the two occurrences say the
      * same.
      */
+    @BusinessRule(
+        group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+        name = "footnotes-belong-to-their-occurrence")
     static @Nullable Editing of(Occurrence from, Occurrence to) {
       // What the two occurrences say is worked out from their own blocks and footnotes alone. Most
       // occurrences of
@@ -410,6 +426,9 @@ public final class Differ {
      * changed differs. If a num only gained or lost its full stop, the Publications Office typeset
      * it, and no act changed it. For example, "11.3" to "11.3.".
      */
+    @BusinessRule(
+        group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+        name = "full-stop-after-a-number-is-no-change")
     private static List<String> numbered(Occurrence occurrence) {
       var wording = new ArrayList<String>();
       for (var block : occurrence.blocks()) {
@@ -589,6 +608,7 @@ public final class Differ {
      * Places {@code nodes}, the occurrences in the occurrence {@code in} of the later text, in
      * order. {@code in} is null for the outermost occurrences.
      */
+    @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "each-occurrence-once")
     void occurrences(List<Node> nodes, @Nullable Occurrence in) {
       // The run of occurrences that are the same in both texts, which waits to be folded.
       var same = new ArrayList<Sibling>();

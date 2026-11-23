@@ -21,10 +21,10 @@ import java.util.Optional;
 import java.util.Set;
 
 /**
- * The steps of the rules about from when a change applies (R-WHO-15 to R-WHO-20), on 2015/1998 as
- * Cellar's recorded answers make it ({@link Comparing}). A step can give an amending act dates of
- * its own, for a case that the recorded acts do not have. The steps reach the domain only: {@link
- * Applicability} and the catalogue's acts.
+ * The steps of the rules about from when a change applies, on 2015/1998 as Cellar's recorded
+ * answers make it ({@link Comparing}). A step can give an amending act dates of its own, for a case
+ * that the recorded acts do not have. The steps reach the domain only: {@link Applicability} and
+ * the catalogue's acts.
  */
 public class ApplicabilitySteps {
   private final Comparing comparing;

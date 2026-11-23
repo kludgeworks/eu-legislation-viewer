@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
@@ -57,6 +59,7 @@ public final class Neighbours {
    * Returns the occurrences {@code eIds} of {@code later}, by eId. An occurrence that {@code later}
    * does not have is not in the result.
    */
+  @BusinessRule(group = RuleGroup.NEIGHBOURS, name = "neighbour-tags")
   public static Map<String, Neighbour> of(Element later, Set<String> eIds) {
     var occurrences = Occurrences.of(later);
     var found = new HashMap<String, Neighbour>();

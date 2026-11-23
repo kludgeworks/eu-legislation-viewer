@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
@@ -31,6 +33,7 @@ final class Tags {
    * none, returns the tags of the nearest enclosing occurrence that has some. Those tags name that
    * enclosing occurrence in {@code in}.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "tags-of-an-occurrence")
   static List<Tag> of(Occurrence occurrence, Occurrences occurrences) {
     var found = new LinkedHashSet<Tag>();
     collect(occurrence.element(), found);
@@ -64,6 +67,7 @@ final class Tags {
    *   <li>If neither applies, it returns an empty list.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "who-deleted-an-occurrence")
   static List<Tag> deleted(Occurrence occurrence, Occurrences after, @Nullable Occurrence in) {
     var kept = after.keptDeletions().get(occurrence.eId());
     if (kept != null) {

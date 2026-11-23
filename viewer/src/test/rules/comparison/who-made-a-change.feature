@@ -3,11 +3,11 @@ Feature: Who made a change, and from when
   What the sidenote of a difference says: which act made the change, in which order, and from
   when it applies.
 
-  Rule: R-WHO-01 Only acts between the two texts
+  Rule: only-acts-between-the-texts · Only acts between the two texts
     A sidenote names only the acts between the two texts: the acts that the texts after the earlier
     text, up to the later text, include. It reads the tags of the occurrence in the later text and
     Cellar's amendments of the occurrence. An act that the earlier text includes already is not
-    named, unless a part of it applies between the two texts (R-WHO-22).
+    named, unless a part of it applies between the two texts (act-named-for-a-part).
 
     Example: A tag names an act that the earlier text includes already
       Given the comparison of the texts of 2015/1998 of 31 December 2021 and of 1 January 2026
@@ -20,7 +20,7 @@ Feature: Who made a change, and from when
         | 21 May 2025   | amended      | 2025/920  |
       But 2019/413 is not named
 
-  Rule: R-WHO-02 The tags of an occurrence
+  Rule: tags-of-an-occurrence · The tags of an occurrence
     An occurrence's tags are its own, each once and in order. An occurrence without tags takes
     those of the nearest occurrence around it that has some.
 
@@ -46,7 +46,7 @@ Feature: Who made a change, and from when
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
 
-  Rule: R-WHO-03 Who deleted an occurrence
+  Rule: who-deleted-an-occurrence · Who deleted an occurrence
     The later text no longer has a deleted occurrence, so its own tags cannot say who deleted it. A
     consolidated text often keeps a deleted provision, marked as deleted under the tag of the act
     that deleted it: that act deleted it. If the text does not keep it, the act that replaced the
@@ -71,7 +71,7 @@ Feature: Who made a change, and from when
       And the difference at the deleted Article 23(1)(a)
       Then the difference has no tags
 
-  Rule: R-WHO-04 The tags, else Cellar, name the acts
+  Rule: tags-else-cellar · The tags, else Cellar, name the acts
     For each text, the tags decide which acts are named. Cellar names the acts only of a text whose
     acts no tag names.
 
@@ -101,7 +101,7 @@ Feature: Who made a change, and from when
         | 1 July 2022 | replaced     | 2022/1174 |
         | 26 May 2024 | deleted      | 2024/1255 |
 
-  Rule: R-WHO-05 Acts that changed an occurrence together
+  Rule: acts-changed-together · Acts that changed an occurrence together
     Acts whose tags say that they replaced the same occurrence changed it together. They are one
     step, in the first text that includes all of them.
 
@@ -114,7 +114,7 @@ Feature: Who made a change, and from when
         | 2 July 2020      | replaced     | 2020/910              |
         | 31 December 2021 | replaced     | 2019/103 and 2019/1583 |
 
-  Rule: R-WHO-07 Nothing names the act
+  Rule: no-act-named · Where nothing names the act
     Where no tag and no amendment in Cellar names an act for a difference, the sidenote does not
     guess. It names the text where the change first appears, and the acts that this text
     consolidates, but no act as the one that made the change. That text is the later text of the
@@ -127,7 +127,7 @@ Feature: Who made a change, and from when
     Example: Two acts that one text first includes, and nothing says which made the change
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
       When the reader asks who made the differences that no act is named for
-      Then 3 differences are made by one of "2019/413 and 2021/255", and the data does not say which
+      Then 3 differences are made by one of 2019/413 and 2021/255, and the data does not say which
 
     Example: The later text follows the earlier text
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
@@ -135,7 +135,7 @@ Feature: Who made a change, and from when
       When the reader asks who made it
       Then no act is named
       When the reader asks where the change first appears
-      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+      Then it first appears in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449
 
     Example: The first pair of neighbouring texts whose comparison has the difference
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 1 October 2026
@@ -143,7 +143,7 @@ Feature: Who made a change, and from when
       When the reader asks who made it
       Then no act is named
       When the reader asks where the change first appears
-      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+      Then it first appears in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449
 
     Example: A pair whose texts are not both built is passed over
       Given the comparison of the texts of 2015/1998 of 31 December 2021 and of 22 March 2026
@@ -152,9 +152,9 @@ Feature: Who made a change, and from when
       When the reader asks who made it
       Then no act is named
       When the reader asks where the change first appears
-      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+      Then it first appears in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449
 
-  Rule: R-WHO-09 Amendments of the occurrences around and inside
+  Rule: amendments-around-and-inside · Amendments of the occurrences around and inside
     The amendments of an occurrence in Cellar include those of an occurrence around it. For an
     occurrence that was inserted or deleted whole, they also include those of the occurrences in
     it. A changed occurrence does not take those of the occurrences in it, because they differ on
@@ -196,7 +196,7 @@ Feature: Who made a change, and from when
         | 16 February 2020 | replaced     | 2020/111 |
       But 2019/103 is not named
 
-  Rule: R-WHO-10 A corrigendum corrects
+  Rule: corrigendum-corrects · A corrigendum corrects
     A difference that only corrigenda made is a correction, not an amendment. A difference that an
     amending act made, alone or together with a corrigendum, is not a correction. Nor is a
     difference that no known act made.
@@ -213,7 +213,7 @@ Feature: Who made a change, and from when
         | An amending act made it                      | 2019/103                                                | is not |
         | No known act made it                         | no known act                                            | is not |
 
-  Rule: R-WHO-11 One step for each text
+  Rule: one-step-for-each-text · One step for each text
     The acts are in steps, one step for each text that first includes them, oldest first.
 
     Example: A point that one act inserted and another act replaced
@@ -225,7 +225,7 @@ Feature: Who made a change, and from when
         | 1 February 2019 | inserted     | 2019/103 |
         | 1 April 2023    | replaced     | 2023/566 |
 
-  Rule: R-WHO-12 The act that the tags name was last
+  Rule: tagged-act-was-last · The act that the tags name was last
     The act that the tags name was the last act to change the occurrence. So it comes after the
     acts that only Cellar names, even if an earlier text includes it.
 
@@ -238,7 +238,7 @@ Feature: Who made a change, and from when
         | 15 March 2021    | replaced     | 2019/413 |
         | 31 December 2021 | replaced     | 2019/103 |
 
-  Rule: R-WHO-13 The modification of each step
+  Rule: modification-of-each-step · The modification of each step
     A sidenote names each act with what it did to the occurrence in its step: its modification.
     The first step of an inserted occurrence inserted it, and the last step of a deleted
     occurrence deleted it. A corrigendum corrected it. Any other step replaced or renumbered the
@@ -264,7 +264,7 @@ Feature: Who made a change, and from when
         | A corrigendum corrected the occurrence                | changed  | a corrigendum | replaced   | only     | corrected    |
         | A corrigendum, even in the first step of an insertion | inserted | a corrigendum | inserted   | first    | corrected    |
 
-  Rule: R-WHO-14 The modification where no act is known
+  Rule: modification-without-an-act · The modification where no act is known
     Where no act is known to have made a difference, its modification is what happened to the
     occurrence: an inserted occurrence was inserted, a deleted occurrence was deleted, and an
     occurrence in both texts whose wording changed was amended. The sidenote that names the
@@ -281,7 +281,7 @@ Feature: Who made a change, and from when
         | deleted  | deleted      |
         | changed  | amended      |
 
-  Rule: R-WHO-22 A tag of an act that applies in parts
+  Rule: act-named-for-a-part · An act that an earlier text includes, named for a part
     An act that an earlier text includes already can change the text again, when a later part of
     it applies. It is named for a change if its tag is on the occurrence and one of its dates falls
     after the earlier day, up to the later day. The change applies from that day.
@@ -295,7 +295,7 @@ Feature: Who made a change, and from when
         | 11 January 2026 | inserted     | Directive 2024/1619 |
       And Directive 2024/1619 is named for its part that applies from 11 January 2026
 
-  Rule: R-WHO-23 The modification that Cellar gives
+  Rule: modification-from-cellar · The modification that Cellar gives
     Where the text has no tag for an act, the role that Cellar gives the act's amendment of the
     occurrence says what the act did: a replacement replaced it, an addition inserted it, a
     deletion or a repeal deleted it, and an amendment amended it.
@@ -316,7 +316,7 @@ Feature: Who made a change, and from when
         | AP     | partial repeal   | deleted      |
         | M      | amendment        | amended      |
 
-  Rule: R-WHO-26 An act changes only what the text has
+  Rule: act-changes-only-what-the-text-has · An act changes only what the text has
     An act can change an occurrence only while the text has it. So an amendment counts for an
     occurrence only if the occurrence is in the text when the amendment applies: an act that
     changed the occurrence around a deleted occurrence after the deletion did not change it.

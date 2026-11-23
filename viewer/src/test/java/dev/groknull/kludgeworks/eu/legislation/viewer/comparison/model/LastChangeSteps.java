@@ -18,10 +18,10 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rule about what last made a provision that is the same in both texts as it is
- * (R-WHO-21), as the Synopsis shows it beside a neighbour. The neighbour is an occurrence of the
- * converter's sample text of the later day ({@link Comparing}), with its tags ({@link Neighbours}).
- * The steps reach the domain only: {@link LastChange} and the catalogue's acts.
+ * The steps of the rule about what last made a provision that is the same in both texts as it is,
+ * as the Synopsis shows it beside a neighbour. The neighbour is an occurrence of the converter's
+ * sample text of the later day ({@link Comparing}), with its tags ({@link Neighbours}). The steps
+ * reach the domain only: {@link LastChange} and the catalogue's acts.
  */
 public class LastChangeSteps {
   private final Comparing comparing;

@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.text.BreakIterator;
 import java.util.ArrayList;
@@ -42,6 +44,10 @@ public final class Wording {
    * #plain}). A change of these alone is not a change. For example, "DOB: 30 March 1977" and
    * "DOB:30 March 1977" match.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "spaces-are-no-change")
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "form-of-apostrophes-and-quotes")
   public static String key(Element block) {
     return SPACE.matcher(BLANK.matcher(plain(of(block))).replaceAll("")).replaceAll("");
   }
@@ -60,6 +66,9 @@ public final class Wording {
    * changes them, so a change of these forms alone is not a change. For example, "institution's"
    * and "institution’s" match, as do "“group”" and "\"group\"".
    */
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "form-of-apostrophes-and-quotes")
   public static String plain(String text) {
     var out = new StringBuilder(text.length());
     for (var i = 0; i < text.length(); i++) {
@@ -94,6 +103,7 @@ public final class Wording {
     return words;
   }
 
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "kept-deletion-is-not-words")
   private static void append(Element element, StringBuilder out) {
     switch (element.name()) {
       case "t", "number" -> out.append(element.attributes().getOrDefault("v", ""));

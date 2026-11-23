@@ -3,9 +3,9 @@ Feature: The neighbours of a difference
   The Synopsis shows the occurrences near a difference that are the same in both texts: the
   neighbours. Each neighbour says which act last made it as it is.
 
-  Rule: R-SHOW-10 A neighbour has its tags as an occurrence does
-    A neighbour's tags are found as for any occurrence (R-WHO-02): its own tags, or else those of
-    the nearest occurrence around it that has some.
+  Rule: neighbour-tags · A neighbour has its tags as an occurrence does
+    A neighbour's tags are found as for any occurrence (tags-of-an-occurrence): its own tags, or
+    else those of the nearest occurrence around it that has some.
 
     Example: A neighbour without tags takes the tag of the point that an act replaced whole
       Given the consolidated version of 2015/1998 of 22 March 2026
@@ -14,11 +14,12 @@ Feature: The neighbours of a difference
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
 
-  Rule: R-WHO-21 What last made a neighbour as it is
+  Rule: last-change-of-a-neighbour · What last made a neighbour as it is
     Beside a neighbour, the Synopsis says what last made it as it is: the act that its tags name
-    and that was last (R-WHO-12), up to the later text. A corrigendum corrects and does not change
-    the act (R-WHO-10), so it is left out. If no such act is included, the neighbour is as in the
-    original act. It is dated from that act's dates, or from the original act's.
+    and that was last (tagged-act-was-last), up to the later text. A corrigendum corrects and does
+    not change the act (corrigendum-corrects), so it is left out. If no such act is included, the
+    neighbour is as in the original act. It is dated from that act's dates, or from the original
+    act's.
 
     Example: The act that the texts include last, among the acts of the tags
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021

@@ -364,7 +364,7 @@ public record SidenoteView(
 
   /**
    * Returns the history of a provision that is the same in both texts, as the Synopsis shows it
-   * beside the provision: what last made it as it is ({@link LastChange}, R-WHO-21), in words.
+   * beside the provision: what last made it as it is ({@link LastChange}), in words.
    */
   public static History history(
       Act act, Inclusions included, Version to, List<Tag> tags, Language language) {

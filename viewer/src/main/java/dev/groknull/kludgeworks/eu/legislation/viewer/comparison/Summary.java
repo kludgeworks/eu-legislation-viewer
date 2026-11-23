@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import java.util.LinkedHashSet;
@@ -13,11 +15,10 @@ import org.jspecify.annotations.Nullable;
  *
  * <ul>
  *   <li>The legend names only the edits that the page shows: inserted words, deleted words, and the
- *       words of a correction (R-SHOW-07).
- *   <li>The words of a correction count only as a correction, not as inserted or deleted words
- *       (R-SHOW-07).
- *   <li>If one known act made every difference, the summary names it (R-SHOW-06). If a difference
- *       has no known act, or two acts made the differences, it names none.
+ *       words of a correction.
+ *   <li>The words of a correction count only as a correction, not as inserted or deleted words.
+ *   <li>If one known act made every difference, the summary names it. If a difference has no known
+ *       act, or two acts made the differences, it names none.
  * </ul>
  *
  * @param inserted whether the page shows inserted words
@@ -40,6 +41,8 @@ public record Summary(
   /**
    * Returns the summary of the differences {@code shown}, in the order that the page shows them.
    */
+  @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "act-that-made-every-difference")
+  @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "legend-names-the-edits-shown")
   public static Summary of(List<Attributed> shown) {
     var inserted = false;
     var deleted = false;

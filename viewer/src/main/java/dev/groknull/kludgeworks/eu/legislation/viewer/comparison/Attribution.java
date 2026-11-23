@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
@@ -28,10 +30,9 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * Who made a difference: the acts that made it, in their steps, or the acts of which one made it
  * where it is not known which. The sidenote of the difference says it in words.
  *
- * <p>{@link #of} finds the acts (R-WHO-01, R-WHO-04, R-WHO-22) and puts them in steps (R-WHO-05,
- * R-WHO-11, R-WHO-12). The acts come from two sources: the tags on the occurrence in the later
- * text, and Cellar's amendments of the occurrence. Only acts between the two texts count, and an
- * act of which a part applies between them.
+ * <p>{@link #of} finds the acts and puts them in steps. The acts come from two sources: the tags on
+ * the occurrence in the later text, and Cellar's amendments of the occurrence. Only acts between
+ * the two texts count, and an act of which a part applies between them.
  *
  * @param acts the acts that made the difference, in the order that the texts include them. The
  *     difference counts in the changes of each of these acts. Empty where no act is known.
@@ -60,9 +61,9 @@ public record Attribution(
    * @param version the version whose text first includes the acts of the step
    * @param acts the acts, in the order that the version lists them. Two or more acts in one step
    *     changed the occurrence together, with one wording.
-   * @param modification what the acts of the step did to the occurrence (R-WHO-13)
+   * @param modification what the acts of the step did to the occurrence
    * @param inPart the acts of the step that an earlier text included already. A part of each
-   *     applies in the step (R-WHO-22).
+   *     applies in the step.
    */
   @ValueObject
   public record Step(
@@ -95,21 +96,23 @@ public record Attribution(
   }
 
   /**
-   * Returns Cellar's amendments of the occurrence of {@code difference} (R-WHO-09): those at the
-   * occurrence, and those at an occurrence around it. For an occurrence that was inserted or
-   * deleted whole, also those at the occurrences in it. A point numbered under a point, which the
-   * text keeps beside it, counts as in it ({@link Amended#of}).
+   * Returns Cellar's amendments of the occurrence of {@code difference}: those at the occurrence,
+   * and those at an occurrence around it. For an occurrence that was inserted or deleted whole,
+   * also those at the occurrences in it. A point numbered under a point, which the text keeps
+   * beside it, counts as in it ({@link Amended#of}).
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "amendments-around-and-inside")
   public static List<Amendment> amendmentsOf(Amended amended, Difference difference) {
     return amended.of(difference.eId(), difference.kind() != Difference.Kind.CHANGED);
   }
 
   /**
-   * Returns the attribution of a difference for which nothing names an act (R-WHO-07). If two or
-   * more acts that are not corrigenda are between the two versions, and one version first includes
-   * them all, one of them made it: they are the candidates, in the order of that version. If not,
-   * no act is named.
+   * Returns the attribution of a difference for which nothing names an act. If two or more acts
+   * that are not corrigenda are between the two versions, and one version first includes them all,
+   * one of them made it: they are the candidates, in the order of that version. If not, no act is
+   * named.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "no-act-named")
   public static Attribution unnamed(Inclusions included, Version from, Version to) {
     var candidates =
         included.between(from, to).stream().filter(each -> !each.corrigendum()).toList();
@@ -129,25 +132,25 @@ public record Attribution(
    * Returns who made {@code difference}, in the comparison of the version {@code from} of {@code
    * act} with the version {@code to}. Where neither the tags nor Cellar name an act between the two
    * texts, it does not guess: it returns the acts of which one made it, if there are such acts
-   * ({@link #unnamed}, R-WHO-07), or else {@link #NONE}.
+   * ({@link #unnamed}), or else {@link #NONE}.
    *
    * <ul>
-   *   <li>The acts are those between the two texts (R-WHO-01). An act that the tags name counts. So
-   *       does an act that only Cellar names, where the text has no tag of it (R-WHO-04). Where the
-   *       tags name an act of a version, Cellar's other acts of that version are left out
-   *       (R-WHO-04).
-   *   <li>An act that an earlier text included already counts if its tag on the occurrence is new
-   *       in the step, and a part of it applies after {@code from}, up to {@code to} (R-WHO-22).
-   *   <li>There is one step for each version, in the order that the texts include the acts
-   *       (R-WHO-11). The act that the tags name comes after the acts that only Cellar names. Acts
-   *       that replaced the occurrence together are in the first version that has them all
-   *       (R-WHO-12, R-WHO-05).
+   *   <li>The acts are those between the two texts. An act that the tags name counts. So does an
+   *       act that only Cellar names, where the text has no tag of it. Where the tags name an act
+   *       of a version, Cellar's other acts of that version are left out.
+   *   <li>An act that an earlier text included already counts if its tag is on the occurrence, and
+   *       a part of it applies after {@code from}, up to {@code to}.
+   *   <li>There is one step for each version, in the order that the texts include the acts. The act
+   *       that the tags name comes after the acts that only Cellar names. Acts that replaced the
+   *       occurrence together are in the first version that has them all.
    * </ul>
    *
    * @param included the acts that each version includes: Cellar's lists, and the acts that the
    *     built texts tag first
    * @param amendments Cellar's amendments of the occurrence, by the acts between the two versions
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "only-acts-between-the-texts")
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "tags-else-cellar")
   public static Attribution of(
       Act act,
       Inclusions included,
@@ -211,21 +214,23 @@ public record Attribution(
   }
 
   /**
-   * Returns whether the difference is a correction (R-WHO-10): only corrigenda made it. A
-   * difference that an amending act made together with a corrigendum is not a correction. Nor is a
-   * difference that no known act made.
+   * Returns whether the difference is a correction: only corrigenda made it. A difference that an
+   * amending act made together with a corrigendum is not a correction. Nor is a difference that no
+   * known act made.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "corrigendum-corrects")
   public boolean corrected() {
     return !acts.isEmpty() && acts.stream().allMatch(ActIdentifier::corrigendum);
   }
 
   /**
    * Returns the differences of {@code attributed} in the places {@code places} that {@code act}
-   * made, for a place that has no difference of its own (R-WHO-25). Cellar can name as the place of
-   * a change a chapter of an annex that the text keeps flat: its points and its attachments stand
-   * beside it, not in it ({@link Location#holds}). The changes of the act are then the differences
-   * in the points and the attachments that the chapter holds, where the act made them.
+   * made, for a place that has no difference of its own. Cellar can name as the place of a change a
+   * chapter of an annex that the text keeps flat: its points and its attachments stand beside it,
+   * not in it ({@link Location#holds}). The changes of the act are then the differences in the
+   * points and the attachments that the chapter holds, where the act made them.
    */
+  @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "chapter-the-annex-keeps-flat")
   public static List<Difference> madeIn(
       List<Summary.Attributed> attributed, List<String> places, ActIdentifier act) {
     return attributed.stream()
@@ -244,14 +249,14 @@ public record Attribution(
 
   /**
    * Returns the acts that changed the occurrence of {@code difference} in a part that applies
-   * between the two versions, by the version that takes the part in (R-WHO-22). Such an act is not
-   * between the two versions: an earlier version included it already. One of its dates falls after
-   * {@code from}, up to {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11
-   * January 2026: the act is included from July 2024, and a part of it applies from 11 January
-   * 2026.
+   * between the two versions, by the version that takes the part in. Such an act is not between the
+   * two versions: an earlier version included it already. One of its dates falls after {@code
+   * from}, up to {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January
+   * 2026: the act is included from July 2024, and a part of it applies from 11 January 2026.
    *
    * <p>A tag can also be new only because the earlier text has no tags. The date tells these apart.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "act-named-for-a-part")
   private static Map<ActIdentifier, Version> parts(
       Act act,
       Inclusions included,
@@ -299,6 +304,8 @@ public record Attribution(
    * first integrates them, in the order of the versions. Each version holds its acts in the order
    * that it lists them.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "one-step-for-each-text")
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "tagged-act-was-last")
   private static List<Map.Entry<Version, List<ActIdentifier>>> place(
       Inclusions included,
       Version from,
@@ -368,11 +375,12 @@ public record Attribution(
   }
 
   /**
-   * Returns the acts between the two versions that replaced the occurrence together, by its tags
-   * (R-WHO-05). Two acts that replaced the same occurrence as a whole did so at the same time. The
-   * occurrence can be the occurrence itself or the occurrence it is in. If one act replaced the
-   * occurrence after the other, only its own tag would be there. Each set has two or more acts.
+   * Returns the acts between the two versions that replaced the occurrence together, by its tags.
+   * Two acts that replaced the same occurrence as a whole did so at the same time. The occurrence
+   * can be the occurrence itself or the occurrence it is in. If one act replaced the occurrence
+   * after the other, only its own tag would be there. Each set has two or more acts.
    */
+  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "acts-changed-together")
   private static List<Set<ActIdentifier>> together(
       Difference difference, Collection<ActIdentifier> between) {
     var byOccurrence = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();

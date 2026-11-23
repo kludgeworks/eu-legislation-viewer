@@ -24,10 +24,10 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about the changes of one act (R-SCOPE-10, R-WHO-24, R-WHO-25), and about
- * the differences that one of several acts made (R-WHO-07). The differences are those that the
- * Differ finds between the converter's sample texts of the comparison ({@link Comparing}), each
- * with who made it ({@link Attribution#of}). The steps reach the domain only.
+ * The steps of the rules about the changes of one act, and about the differences that one of
+ * several acts made. The differences are those that the Differ finds between the converter's sample
+ * texts of the comparison ({@link Comparing}), each with who made it ({@link Attribution#of}). The
+ * steps reach the domain only.
  */
 public class OneActSteps {
   private final Comparing comparing;
@@ -60,14 +60,12 @@ public class OneActSteps {
             .toList();
   }
 
-  @Then("{int} differences are made by one of {string}, and the data does not say which")
-  public void madeByOneOf(int count, String acts) {
+  @Then("{int} differences are made by one of {acts}, and the data does not say which")
+  public void madeByOneOf(int count, List<ActIdentifier> acts) {
     assertThat(unnamed).hasSize(count);
     assertThat(unnamed)
         .allSatisfy(
-            each ->
-                assertThat(each.attribution().candidates())
-                    .containsExactlyElementsOf(Cited.acts(acts)));
+            each -> assertThat(each.attribution().candidates()).containsExactlyElementsOf(acts));
   }
 
   @When("the reader opens the page of {act}")
@@ -76,11 +74,11 @@ public class OneActSteps {
     alternatives = Alternatives.of(act, attributed(found.before(), found.first()));
   }
 
-  @Then("{int} differences are listed apart, by this act or by {string}")
-  public void listedApart(int count, String others) {
+  @Then("{int} differences are listed apart, by this act or by {acts}")
+  public void listedApart(int count, List<ActIdentifier> others) {
     var found = Objects.requireNonNull(alternatives, "no page opened");
     assertThat(found.differences()).hasSize(count);
-    assertThat(found.others()).containsExactlyElementsOf(Cited.acts(others));
+    assertThat(found.others()).containsExactlyElementsOf(others);
   }
 
   @When("the reader asks for the changes of {act} at {place}")

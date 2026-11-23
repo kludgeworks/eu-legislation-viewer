@@ -114,13 +114,13 @@ its module.
 | run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
 | pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
-| sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (R-WHO-14). |
+| sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (`modification-without-an-act`). |
 | neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
 | Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |
 
-The date line of a sidenote says from when the change of each act applies (R-WHO-15 to
-R-WHO-20). It names the act, its Official Journal reference, the date, and the clause that sets
-the date. The clause links to EUR-Lex. The forms:
+The date line of a sidenote says from when the change of each act applies (the rules of "From when a
+change applies"). It names the act, its Official Journal reference, the date, and the clause that
+sets the date. The clause links to EUR-Lex. The forms:
 
 | Case | Words |
 | --- | --- |
@@ -132,10 +132,10 @@ the date. The clause links to EUR-Lex. The forms:
 | A correction | "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text of 31 December 2021" |
 | Nothing is known | no date line |
 
-The first line of a sidenote names the acts that made the difference, one step for each text,
-oldest first (R-WHO-01 to R-WHO-12, R-WHO-22). Each step says its modification and its acts. The
-first word has a capital letter. The steps after it start with "then" and a lower-case word. The
-forms:
+The first line of a sidenote names the acts that made the difference, one step for each text, oldest
+first (the rules of "Who made a change, and from when"). Each step says its modification and its
+acts. The first word has a capital letter. The steps after it start with "then" and a lower-case
+word. The forms:
 
 | Case | Words |
 | --- | --- |
@@ -145,7 +145,7 @@ forms:
 | Acts of one step, with the comparison limited to one of them | "Replaced by 2019/1583, together with 2019/103" |
 | Three or more acts | "2017/815, 2019/103 and 2019/1583" |
 
-Where nothing names an act (R-WHO-07), the first line names the text where the change first
+Where nothing names an act (`no-act-named`), the first line names the text where the change first
 appears, and the acts that this text consolidates. It does not name an act as the one that made
 the change. The page says "text", not "version". If the text consolidates no act, the words
 ", which consolidates …" are left out. The forms:
@@ -153,14 +153,14 @@ the change. The page says "text", not "version". If the text consolidates no act
 | Case | Words |
 | --- | --- |
 | The text where the change first appears | "Deleted in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449" |
-| Nothing shows where it appears | "The data does not say which act amended this." The verb is the modification of the difference: inserted, deleted or amended (R-WHO-14). |
-| One of two acts or more made it (R-WHO-07) | "The data does not say which act deleted this. It was 2019/413 or 2021/255." |
+| Nothing shows where it appears | "The data does not say which act amended this." The verb is the modification of the difference: inserted, deleted or amended (`modification-without-an-act`). |
+| One of two acts or more made it (`no-act-named`) | "The data does not say which act deleted this. It was 2019/413 or 2021/255." |
 
-On the page of an amending act, the differences that it or another act made, where the data does
-not say which (R-WHO-24), are in a list apart, under "By this act or by 2019/413". Where Cellar names
-a chapter of an annex that the text keeps flat (R-WHO-25), the change shows as the differences in
-the points and the attachments of the chapter, under the words "The text tags these changes in
-this part of the annex with 2019/413."
+On the page of an amending act, the differences that it or another act made, where the data does not
+say which (`this-act-or-another`), are in a list apart, under "By this act or by 2019/413". Where
+Cellar names a chapter of an annex that the text keeps flat (`chapter-the-annex-keeps-flat`), the
+change shows as the differences in the points and the attachments of the chapter, under the words
+"The text tags these changes in this part of the annex with 2019/413."
 
 Where a change does not apply on the later day of a comparison yet, a prospective amendment, the
 difference has the amber bar, and its sidenote also says "2026/449 does not apply yet on 1 October
@@ -168,31 +168,30 @@ difference has the amber bar, and its sidenote also says "2026/449 does not appl
 catalogue's rule (Act.prospective).
 
 The Differences view shows each difference, and the opening of each provision that holds
-differences. A fold holds the provisions between them that are the same in both texts (R-SHOW-01).
-The name of a fold says which provisions it holds (R-SHOW-03): "Articles 2 to 5", "Points (a) and
-(b)", "First and second subparagraphs", or, where it crosses provisions, "Points 11.1.3 to
-11.2.7(b) (21 provisions)". A point is named with the point that it is in. In a changed table, a
-run of rows that did not change is folded (R-SHOW-04). The changed rows and the header rows stay,
-with one row on each side of a change. Rows that a cell spans stay together. A fold of rows has
-at least three rows. An annex inserted whole shows as one box, "Inserted whole · 56 provisions"
-(R-SHOW-05). The box loads the outline of the annex, or the annex itself, only when the reader
-asks. Whole text shows every provision of the later text as it reads, with the edits of each
-difference in place (R-SHOW-08).
+differences. A fold holds the provisions between them that are the same in both texts
+(`each-occurrence-once`). The name of a fold says which provisions it holds: "Articles 2 to 5",
+"Points (a) and (b)", "First and second subparagraphs", or, where it crosses provisions, "Points
+11.1.3 to 11.2.7(b) (21 provisions)". A point is named with the point that it is in. In a changed
+table, a run of rows that did not change is folded. The changed rows and the header rows stay, with
+one row on each side of a change. Rows that a cell spans stay together. A fold of rows has at least
+three rows. An annex inserted whole shows as one box, "Inserted whole · 56 provisions". The box
+loads the outline of the annex, or the annex itself, only when the reader asks. Whole text shows
+every provision of the later text as it reads, with the edits of each difference in place.
 
 Beside the differences, the outline of the later text shows each branch that leads to
-differences (R-SHOW-15). Each branch has its count of differences, its share of them as a bar,
+differences. Each branch has its count of differences, its share of them as a bar,
 and a link to its first difference, down to the section of the difference. A difference that is
 in no section, such as a recital, is in no branch. Under a provision, the outline lists the
 differences in its points by their own number, "(c)", or else by their position, "Art. 9, 2nd
-subpara." (R-SHOW-16). A provision with more than 12 such differences lists none: its count is
+subpara.". A provision with more than 12 such differences lists none: its count is
 enough.
 
 A difference that is a point of a list shows in its list, without the other items. Thus its
-number hangs as it does on Read (R-DIFF-19). If only one text has a preamble, the views say
-nothing of it: the preamble is not compared (R-DIFF-07).
+number hangs as it does on Read. If only one text has a preamble, the views say
+nothing of it: the preamble is not compared (`preamble-of-one-text`).
 
 Whole text shows the later text, so a deleted provision is not in it. The deleted provision stands
-where it stood in the earlier text (R-SHOW-09). It stands after the nearest provision before it
+where it stood in the earlier text. It stands after the nearest provision before it
 that the later text still has. If that provision is in a sibling, it stands after that sibling. If
 it was the first provision in its parent, it stands before the next provision that the later text
 has. For example, in Directive 2013/36 from 17 January 2025 to 11 January 2026, the deleted point
@@ -200,11 +199,11 @@ has. For example, in Directive 2013/36 from 17 January 2025 to 11 January 2026, 
 before Article 23(2). If the later text has no provision before it or after it, it stands at the
 end.
 
-Synopsis shows the two texts side by side, provision by provision (R-SHOW-10). Near each
+Synopsis shows the two texts side by side, provision by provision (`neighbour-tags`). Near each
 difference it shows its neighbours. Where more than three neighbours are in a row, it shows the
 first and the last, and a fold holds the others. With three or fewer, it shows all of them. Beside
-each neighbour, a line says what last made it as it is (R-WHO-21), with the date of that act. A
-corrigendum is not named there. The forms:
+each neighbour, a line says what last made it as it is (`last-change-of-a-neighbour`), with the date
+of that act. A corrigendum is not named there. The forms:
 
 | Case | Words |
 | --- | --- |
@@ -216,7 +215,7 @@ corrigendum is not named there. The forms:
 
 | Term | Meaning |
 | --- | --- |
-| summary | The line above the differences of a comparison: "No provisions differ", "1 provision differs" or "6 provisions differ". If one act made every difference, it adds the act: "by 2026/449" (R-SHOW-06). |
+| summary | The line above the differences of a comparison: "No provisions differ", "1 provision differs" or "6 provisions differ". If one act made every difference, it adds the act: "by 2026/449" (`act-that-made-every-difference`). |
 | fold | A group that the page hides until the reader opens it: provisions, the rows of a table, or a list of dates. |
 | outline | The list of the parts of the text, beside the text. |
 
@@ -287,7 +286,7 @@ and a dark value. The tokens are in
 | Green | `--accent…` | Navigation and selection: links, the selected version, the selected view. |
 | Blue | `--ins-…` | Inserted words, and the sidenote of an inserted provision. |
 | Red | `--del-…` | Deleted words, and the sidenote of a deleted provision. |
-| Purple | `--corr-…` | A correction by a corrigendum: a difference that only corrigenda made (R-WHO-10). Its inserted words have a dotted underline and its deleted words are struck through, both purple, not blue and red. |
+| Purple | `--corr-…` | A correction by a corrigendum: a difference that only corrigenda made (`corrigendum-corrects`). Its inserted words have a dotted underline and its deleted words are struck through, both purple, not blue and red. |
 | Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
 | Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the divergence note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
 
@@ -330,10 +329,10 @@ narrower or wider. Do not design a different layout for a phone.
 | Failed | What failed, and a link to EUR-Lex. |
 | Empty | No differences, or no results. The page says so in words. |
 
-**Convention.** A page that waits for the Publications Office shows a second line after 15 s:
-"The Publications Office is slow to answer." The line needs no script. If the wait stops, the
-page shows the Failed loading state. Example: the home page, when it looks up an act that the catalogue
-does not have yet (`catalogue/home.jte`).
+**Convention.** A page that waits for the Publications Office shows a second line after 15 s: "The
+Publications Office is slow to answer." The line needs no script. If the wait stops, the page shows
+the Failed loading state. Example: the home page, when it looks up an act that the catalogue does
+not have yet (`catalogue/home.jte`).
 
 **Convention.** An act's page whose act the catalogue does not have yet keeps its address. It
 says "Looking up reg/2005/396 at the Publications Office…" at once, and the viewer looks the act

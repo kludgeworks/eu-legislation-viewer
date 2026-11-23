@@ -549,7 +549,7 @@ class DifferencesController {
         comparisons.between(pair.before(), pair.after()).orElseThrow(Requests::notFound).at(eIds);
     String lead = null;
     if (found.isEmpty() && only != null) {
-      // A chapter that the annex keeps flat has no difference of its own (R-WHO-25).
+      // A chapter that the annex keeps flat has no difference of its own.
       var attributed =
           attributed(ends, preparation, earlier, later, only, null, new HashMap<>())
               .orElseThrow(Requests::notFound);

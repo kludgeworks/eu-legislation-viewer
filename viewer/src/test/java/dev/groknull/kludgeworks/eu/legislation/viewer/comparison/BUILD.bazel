@@ -354,7 +354,8 @@ java_junit5_test(
     ],
 )
 
-# Where the Whole text puts a deleted provision (R-SHOW-09), on the converter's samples
+# Where the Whole text puts a deleted provision: where it stood in the earlier text, after the
+# nearest provision before it that the later text still has. On the converter's samples
 java_junit5_test(
     name = "WholeTextTest",
     size = "small",

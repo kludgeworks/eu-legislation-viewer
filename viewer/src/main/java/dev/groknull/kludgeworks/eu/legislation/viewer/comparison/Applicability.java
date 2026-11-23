@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -22,7 +24,7 @@ import org.jspecify.annotations.Nullable;
 /**
  * From when a change that an act made to a difference applies, as the sidenote of the difference
  * dates it. ELI calls this the date of applicability. The date comes from the dates of the act that
- * made the change, never from the date of a version (R-WHO-15).
+ * made the change, never from the date of a version.
  */
 @ValueObject
 public sealed interface Applicability {
@@ -37,7 +39,7 @@ public sealed interface Applicability {
    * @param applying when it applies: from one day, in parts, from a day that a clause sets, or in
    *     force from a day
    * @param clause the provisions of the act that set its dates. Empty where Cellar does not say.
-   * @param amendedBy the acts that changed those provisions since: they moved the date (R-WHO-19)
+   * @param amendedBy the acts that changed those provisions since: they moved the date
    */
   record Applies(
       ActIdentifier act,
@@ -52,7 +54,7 @@ public sealed interface Applicability {
   }
 
   /**
-   * A corrigendum corrects its act from the start (R-WHO-20).
+   * A corrigendum corrects its act from the start.
    *
    * @param act the corrigendum
    * @param corrected the act that it corrects
@@ -70,10 +72,10 @@ public sealed interface Applicability {
 
   /**
    * Returns when the change that {@code each} made to a difference applies, in the comparison of
-   * {@code from} with {@code to}. A corrigendum corrects from the start (R-WHO-20). For an amending
-   * act, the days that may choose its date are those of {@link #daysBetween} if a part of it
-   * applies in the step ({@code part}), else those of {@link #cellarDays}. Returns empty where
-   * nothing can be said (R-WHO-18).
+   * {@code from} with {@code to}. A corrigendum corrects from the start. For an amending act, the
+   * days that may choose its date are those of {@link #daysBetween} if a part of it applies in the
+   * step ({@code part}), else those of {@link #cellarDays}. Returns empty where nothing can be
+   * said.
    *
    * @param amendments Cellar's amendments of the occurrence of the difference
    */
@@ -94,10 +96,13 @@ public sealed interface Applicability {
 
   /**
    * Returns when {@code amending} applies, from its dates in {@code act} ({@link Act#applying}).
-   * {@code days} are the days that may choose the date among the act's dates (R-WHO-16). If none
-   * chooses one, the act applies in parts (R-WHO-16). Returns empty where Cellar has no dates of
-   * the act, or where the act applies from a day that no clause that Cellar names sets (R-WHO-18).
+   * {@code days} are the days that may choose the date among the act's dates. If none chooses one,
+   * the act applies in parts. Returns empty where Cellar has no dates of the act, or where the act
+   * applies from a day that no clause that Cellar names sets.
    */
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "date-from-the-act")
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "no-day-known")
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "entry-into-force-only")
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {
     return act.applying(amending, days)
         .flatMap(
@@ -118,9 +123,10 @@ public sealed interface Applicability {
 
   /**
    * Returns the days that Cellar's amendments of the occurrence by {@code amending} have, after
-   * {@code from} (R-WHO-16). A day that is not after the earlier text is stale: the earlier text
-   * does not have the change, so the change does not apply from that day.
+   * {@code from}. A day that is not after the earlier text is stale: the earlier text does not have
+   * the change, so the change does not apply from that day.
    */
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "cellar-day-else-the-parts")
   static Set<LocalDate> cellarDays(
       List<Amendment> amendments, ActIdentifier amending, Version from) {
     return amendments.stream()
@@ -141,10 +147,13 @@ public sealed interface Applicability {
   }
 
   /**
-   * Returns how {@code corrigendum} corrects its act (R-WHO-20): from the earliest day from which
-   * the act applies, else from its entry into force, and first in the first text after {@code
-   * from}, up to {@code to}, that has it.
+   * Returns how {@code corrigendum} corrects its act: from the earliest day from which the act
+   * applies, else from its entry into force, and first in the first text after {@code from}, up to
+   * {@code to}, that has it.
    */
+  @BusinessRule(
+      group = RuleGroup.WHEN_A_CHANGE_APPLIES,
+      name = "corrigendum-corrects-from-the-start")
   static Corrects corrects(
       Act act, Inclusions included, Version from, Version to, ActIdentifier corrigendum) {
     var corrected = corrigendum.corrected().orElseThrow();

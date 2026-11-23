@@ -4,7 +4,7 @@ Feature: How the occurrences of two texts pair
   text: the pairing. Then it compares each pair. An occurrence of the later text that pairs with
   none is inserted, and an occurrence of the earlier text that pairs with none is deleted.
 
-  Rule: R-DIFF-09 Occurrences pair by their place in the occurrence around them
+  Rule: place-among-siblings · Occurrences pair by their place in the occurrence around them
     Two occurrences pair with their siblings: the occurrences in two occurrences that pair. Among
     siblings, an occurrence pairs by its place in the occurrence around it, not by where that
     occurrence is. So the occurrences in an occurrence that was renumbered or that moved still
@@ -14,7 +14,7 @@ Feature: How the occurrences of two texts pair
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.3.6(a) of the later text pairs with point 6.8.3.6(a) of the earlier text
 
-  Rule: R-DIFF-10 A renumbered occurrence pairs by its words
+  Rule: renumbered-occurrence · A renumbered occurrence pairs by its words
     An occurrence that a tag of a renumbering newly names pairs with the earlier occurrence of
     another number that says the same, without its number and its heading. The pairs keep their
     order. So a point inserted before renumbered points pairs with none, and the points after it
@@ -27,7 +27,7 @@ Feature: How the occurrences of two texts pair
       And point 14 of the later text pairs with point 13 of the earlier text
       And point 15 of the later text pairs with point 14 of the earlier text
 
-  Rule: R-DIFF-11 An occurrence that moved
+  Rule: moved-occurrence · An occurrence that moved
     An occurrence that moved into the occurrence before it, or out of it, pairs with what it was.
     The two need the same number. If neither has a number, they need words that are alike. An
     occurrence that moved further pairs with the one occurrence of the other text that pairs with
@@ -63,7 +63,7 @@ Feature: How the occurrences of two texts pair
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.3.7 of the later text has no pair in the earlier text
 
-  Rule: R-DIFF-12 A point replaced where it stands
+  Rule: replaced-where-it-stands · An occurrence replaced where it stands
     An occurrence that an act replaced where it stands pairs with what it was. It shows as
     changed, under its own number, not as deleted and inserted.
 
@@ -73,7 +73,7 @@ Feature: How the occurrences of two texts pair
       Then the point has the same place in both texts
       And its tags name 2026/449, which replaced it
 
-  Rule: R-DIFF-13 Blocks pair with what they were
+  Rule: blocks-pair-with-what-they-were · Blocks pair with what they were
     In a changed occurrence, the blocks that say the same pair first. Then the blocks that are
     alike pair. So a changed block pairs with the block that it was, not with a block inserted
     before it.
@@ -83,7 +83,7 @@ Feature: How the occurrences of two texts pair
       When the reader looks at the difference at the changed point 9.1.3.1
       Then its blocks show, in order: "the same, inserted, inserted, changed"
 
-  Rule: R-DIFF-14 A table compares row by row
+  Rule: table-row-by-row · A table compares row by row
     A table is not one run of words. It compares row by row, so a row inserted or deleted whole
     shows as a row.
 

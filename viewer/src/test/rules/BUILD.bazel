@@ -5,8 +5,11 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library")
 # module whose domain applies them. Each module's rules suite (a Cucumber suite) runs its own, and
 # the wiki is written from the run (//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules)
 # How a feature is written:
-# - A Rule holds its identifier and its text (Rule: R-WHO-02 The tags of an occurrence), and has an
-#   example for each of its clauses, on real texts. Steps name places and acts as the pages do.
+# - A Rule holds its name, in kebab case, and its title (Rule: tags-of-an-occurrence · The tags of
+#   an occurrence), and its text. The name is unique in its feature, and @BusinessRule names it.
+#   The tag @revision-<n> on the Rule gives its revision when it changes meaning (none is 1). It
+#   has an example for each of its clauses, on real texts. Steps name places and acts as the pages
+#   do.
 # - A Background in a Rule gives the step that all the Rule's examples start from. "But" starts a
 #   negative step after a positive one. A quote longer than a line is a doc string (""").
 # - The tag @known-bug marks an example that states what the domain should do, which a filed bug
@@ -29,7 +32,10 @@ filegroup(
     visibility = ["//visibility:public"],
 )
 
-# Each rule has an identifier and an example, on each build, not only when the wiki is written
+# Each rule has a name and an example, on each build, not only when the wiki is written. And
+# each rule has a method of the viewer that applies it (@BusinessRule), unless its examples are all
+# known bugs, and each such mark names a rule of a feature. The viewer's classes are on the test's
+# classpath for that.
 java_junit5_test(
     name = "RulesCheckTest",
     size = "small",
@@ -37,6 +43,7 @@ java_junit5_test(
     data = [":features"],
     test_class = "rules.RulesCheckTest",
     runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",

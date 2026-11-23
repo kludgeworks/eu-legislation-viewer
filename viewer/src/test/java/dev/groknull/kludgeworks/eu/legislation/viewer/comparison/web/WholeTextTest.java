@@ -18,7 +18,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 /**
- * Where the Whole text puts a deleted provision (R-SHOW-09), on the texts of Directive 2013/36 of
+ * Where the Whole text puts a deleted provision: where it stood in the earlier text, after the
+ * nearest provision before it that the later text still has. On the texts of Directive 2013/36 of
  * 17 January 2025 and of 11 January 2026, which the converter's samples have.
  */
 class WholeTextTest {

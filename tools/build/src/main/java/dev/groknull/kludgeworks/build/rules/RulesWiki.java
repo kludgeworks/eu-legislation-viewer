@@ -44,19 +44,27 @@ import org.jspecify.annotations.Nullable;
  * and a changed rule shows the difference. A page that has no change says that it is as released.
  *
  * <p>It writes no page if a rule has no example, if an example is not in a rule, if a rule has no
- * identifier (such as R-WHO-02), or if two rules have the same identifier.
+ * name (such as tags-of-an-occurrence), or if two rules of a feature have the same name.
  *
  * <p>A page shows a rule's background, its examples' doc strings, and the tags of the rule and of
  * each example. The tag {@code @known-bug} marks an example that shows a filed bug. With the tag of
  * the issue's number, such as {@code @ISS-270}, the page links to the issue: Notion opens a page by
  * its prefixed unique id at {@code https://www.notion.so/ISS-270}.
  *
+ * <p>Under each rule, a page names the methods that apply it ({@code @BusinessRule}, saved beside
+ * each run in {@value RulesApplied#FILE}), each linked to its source on GitHub at the commit, or on
+ * main. A rule whose examples are all known bugs has no such method yet.
+ *
  * <pre>{@code
  * RulesWiki --out DIR [--released DIR --version v2026.11.17] [--commit SHA] RUN.ndjson...
  * }</pre>
  */
 public final class RulesWiki {
-  private static final Pattern IDENTIFIER = Pattern.compile("^(R-[A-Z]+-\\d+)\\s+(.+)$");
+  /**
+   * The title of a rule: its name, in kebab case, then its title, for example {@code
+   * tags-else-cellar · The tags, else Cellar, name the acts}. A name is unique in its feature.
+   */
+  private static final Pattern NAMED = Pattern.compile("^([a-z0-9]+(?:-[a-z0-9]+)*) · (.+)$");
 
   /** The tag of an example that shows a filed bug. */
   static final String KNOWN_BUG = "@known-bug";
@@ -67,10 +75,26 @@ public final class RulesWiki {
   /** Where Notion opens a page by its prefixed unique id. */
   private static final String NOTION = "https://www.notion.so/";
 
+  /** The repository's files on GitHub, followed by a commit or a branch. */
+  static final String GITHUB = "https://github.com/kludgeworks/eu-legislation-viewer/blob/";
+
+  /** The root of the viewer's sources in the repository. */
+  static final String SOURCES = "viewer/src/main/java/";
+
   private RulesWiki() {}
 
-  /** A rule as the run or the release has it: its identifier, its title and its text. */
-  record Text(String id, String title, String feature, Rule rule, List<String> lines) {}
+  /**
+   * A rule as the run or the release has it: its name, its title, its feature and group, and its
+   * text.
+   */
+  record Text(
+      String id, String title, String feature, String group, Rule rule, List<String> lines) {}
+
+  /** Returns the name and the title of a rule, or empty if its title is not in that form. */
+  private static Optional<java.util.regex.MatchResult> title(Rule rule) {
+    var named = NAMED.matcher(rule.getName());
+    return named.matches() ? Optional.of(named.toMatchResult()) : Optional.empty();
+  }
 
   public static void main(String[] args) throws IOException {
     Path out = null;
@@ -95,6 +119,14 @@ public final class RulesWiki {
       return;
     }
     var run = Run.read(runs);
+    var applied = new ArrayList<RulesApplied.Applied>();
+    for (var each : runs) {
+      var folder = each.toAbsolutePath().getParent();
+      if (folder != null) {
+        applied.addAll(RulesApplied.read(folder.resolve(RulesApplied.FILE)));
+      }
+    }
+    var byRule = RulesApplied.byRule(applied);
     var errors = check(run.documents());
     if (!errors.isEmpty()) {
       errors.forEach(error -> System.err.println("error: " + error));
@@ -106,7 +138,7 @@ public final class RulesWiki {
     var sidebar = new StringBuilder("**Business rules**\n\n");
     for (var document : run.documents()) {
       var feature = feature(document);
-      var page = page(document, run, before, version, commit);
+      var page = page(document, run, before, version, commit, byRule);
       var name = slug(feature.getName());
       Files.writeString(out.resolve(name + ".md"), page.markdown());
       sidebar
@@ -121,7 +153,12 @@ public final class RulesWiki {
     Files.writeString(out.resolve("_Sidebar.md"), sidebar.toString());
   }
 
-  /** The documents of the runs, and the result of each example: the worst result of its steps. */
+  /**
+   * The documents of the runs, and the result of each example: the worst result of its steps. An
+   * example is known by its feature and its line ({@link #key}), not by Cucumber's id, because each
+   * run gives a feature new ids: two runs of one feature, such as the rules and the known bugs,
+   * then agree.
+   */
   record Run(List<GherkinDocument> documents, Map<String, TestStepResultStatus> results) {
     static Run read(List<Path> files) throws IOException {
       var json = Json.instance().orElseThrow(() -> new IllegalStateException("No JSON provider"));
@@ -132,6 +169,7 @@ public final class RulesWiki {
       var started = new HashMap<String, TestCaseStarted>();
       var results = new HashMap<String, TestStepResultStatus>();
       for (var file : files) {
+        var keys = new HashMap<String, String>();
         try (var lines = Files.lines(file)) {
           for (var line : (Iterable<String>) lines::iterator) {
             if (line.isBlank()) {
@@ -140,7 +178,11 @@ public final class RulesWiki {
             var envelope = deserializer.readValue(line);
             envelope
                 .getGherkinDocument()
-                .ifPresent(doc -> documents.put(doc.getUri().orElse(""), doc));
+                .ifPresent(
+                    doc -> {
+                      documents.put(doc.getUri().orElse(""), doc);
+                      keys.putAll(keys(doc));
+                    });
             envelope.getPickle().ifPresent(pickle -> pickles.put(pickle.getId(), pickle));
             envelope.getTestCase().ifPresent(test -> cases.put(test.getId(), test));
             envelope.getTestCaseStarted().ifPresent(start -> started.put(start.getId(), start));
@@ -151,11 +193,12 @@ public final class RulesWiki {
                       var start = started.get(step.getTestCaseStartedId());
                       var test = start == null ? null : cases.get(start.getTestCaseId());
                       var pickle = test == null ? null : pickles.get(test.getPickleId());
-                      if (pickle != null && !pickle.getAstNodeIds().isEmpty()) {
-                        results.merge(
-                            pickle.getAstNodeIds().getFirst(),
-                            step.getTestStepResult().getStatus(),
-                            Run::worse);
+                      var key =
+                          pickle == null || pickle.getAstNodeIds().isEmpty()
+                              ? null
+                              : keys.get(pickle.getAstNodeIds().getFirst());
+                      if (key != null) {
+                        results.merge(key, step.getTestStepResult().getStatus(), Run::worse);
                       }
                     });
           }
@@ -164,12 +207,36 @@ public final class RulesWiki {
       return new Run(List.copyOf(documents.values()), results);
     }
 
+    /** Returns the key of each example of {@code document}, by Cucumber's id of the example. */
+    private static Map<String, String> keys(GherkinDocument document) {
+      var keys = new HashMap<String, String>();
+      var uri = document.getUri().orElse("");
+      document
+          .getFeature()
+          .ifPresent(
+              feature ->
+                  feature.getChildren().stream()
+                      .flatMap(child -> child.getRule().stream())
+                      .flatMap(rule -> rule.getChildren().stream())
+                      .flatMap(child -> child.getScenario().stream())
+                      .forEach(scenario -> keys.put(scenario.getId(), key(uri, scenario))));
+      return keys;
+    }
+
+    /** Returns how an example is known across runs: its feature and its line. */
+    static String key(String uri, Scenario scenario) {
+      return uri + ":" + scenario.getLocation().getLine();
+    }
+
     private static TestStepResultStatus worse(TestStepResultStatus a, TestStepResultStatus b) {
       return a == TestStepResultStatus.PASSED ? b : a;
     }
   }
 
-  /** Each rule has an identifier and an example, and each example is in a rule. */
+  /**
+   * Each rule has a name and an example, each example is in a rule, and no two rules of a feature
+   * have the same name.
+   */
   public static List<String> check(List<GherkinDocument> documents) {
     var errors = new ArrayList<String>();
     var seen = new HashMap<String, String>();
@@ -190,14 +257,18 @@ public final class RulesWiki {
             .getRule()
             .ifPresent(
                 rule -> {
-                  var matcher = IDENTIFIER.matcher(rule.getName());
-                  if (!matcher.matches()) {
+                  var title = title(rule);
+                  if (title.isEmpty()) {
                     errors.add(
-                        uri + ": the rule \"" + rule.getName() + "\" has no identifier (R-XXX-nn)");
+                        uri
+                            + ": the rule \""
+                            + rule.getName()
+                            + "\" has no name (name · title, the name in kebab case)");
                     return;
                   }
-                  var id = matcher.group(1);
-                  var before = seen.putIfAbsent(id, uri);
+                  var id = title.get().group(1);
+                  var before =
+                      seen.putIfAbsent(RulesApplied.key(RulesApplied.group(document), id), uri);
                   if (before != null) {
                     errors.add(uri + ": " + id + " is also in " + before);
                   }
@@ -234,7 +305,10 @@ public final class RulesWiki {
     return documents;
   }
 
-  /** The rules of the documents by their identifiers, in the order in which they stand. */
+  /**
+   * The rules of the documents by their group and name ({@link RulesApplied#key}), in the order in
+   * which they stand.
+   */
   static Map<String, Text> rules(List<GherkinDocument> documents) {
     var rules = new LinkedHashMap<String, Text>();
     for (var document : documents) {
@@ -246,19 +320,19 @@ public final class RulesWiki {
         child
             .getRule()
             .ifPresent(
-                rule -> {
-                  var matcher = IDENTIFIER.matcher(rule.getName());
-                  if (matcher.matches()) {
-                    rules.put(
-                        matcher.group(1),
-                        new Text(
-                            matcher.group(1),
-                            matcher.group(2),
-                            feature.getName(),
-                            rule,
-                            lines(rule)));
-                  }
-                });
+                rule ->
+                    title(rule)
+                        .ifPresent(
+                            title ->
+                                rules.put(
+                                    RulesApplied.key(RulesApplied.group(document), title.group(1)),
+                                    new Text(
+                                        title.group(1),
+                                        title.group(2),
+                                        feature.getName(),
+                                        RulesApplied.group(document),
+                                        rule,
+                                        lines(rule)))));
       }
     }
     return rules;
@@ -335,7 +409,8 @@ public final class RulesWiki {
       Run run,
       @Nullable Map<String, Text> before,
       @Nullable String version,
-      @Nullable String commit) {
+      @Nullable String commit,
+      Map<String, List<RulesApplied.Applied>> applied) {
     var feature = feature(document);
     var now = rules(List.of(document));
     var md = new StringBuilder(4096);
@@ -344,7 +419,7 @@ public final class RulesWiki {
     var added = 0;
     var changed = 0;
     for (var text : now.values()) {
-      var old = before == null ? null : before.get(text.id());
+      var old = before == null ? null : before.get(RulesApplied.key(text.group(), text.id()));
       String state;
       if (before == null) {
         state = "";
@@ -361,6 +436,11 @@ public final class RulesWiki {
       body.append("\n\n");
       tags(body, text.rule().getTags());
       body.append(paragraph(text.rule().getDescription())).append("\n\n");
+      appliedBy(
+          body,
+          applied.getOrDefault(RulesApplied.key(text.group(), text.id()), List.of()),
+          text.rule(),
+          commit);
       for (var child : text.rule().getChildren()) {
         child
             .getBackground()
@@ -370,7 +450,9 @@ public final class RulesWiki {
                   steps(body, background.getSteps());
                   body.append('\n');
                 });
-        child.getScenario().ifPresent(scenario -> example(body, scenario, run));
+        child
+            .getScenario()
+            .ifPresent(scenario -> example(body, scenario, run, document.getUri().orElse("")));
       }
       if (old != null && !old.lines().equals(text.lines())) {
         body.append("**What changed since ").append(version).append("**\n\n```diff\n");
@@ -386,7 +468,7 @@ public final class RulesWiki {
             ? List.<Text>of()
             : before.values().stream()
                 .filter(old -> old.feature().equals(feature.getName()))
-                .filter(old -> !now.containsKey(old.id()))
+                .filter(old -> !now.containsKey(RulesApplied.key(old.group(), old.id())))
                 .sorted(Comparator.comparing(Text::id))
                 .toList();
     if (!removed.isEmpty()) {
@@ -422,8 +504,41 @@ public final class RulesWiki {
     return new Page(md.toString(), changes);
   }
 
-  private static void example(StringBuilder md, Scenario scenario, Run run) {
-    var result = run.results().get(scenario.getId());
+  /**
+   * Writes the methods that apply a rule, each linked to its source. A rule whose examples are all
+   * known bugs says that no method applies it yet.
+   */
+  private static void appliedBy(
+      StringBuilder md, List<RulesApplied.Applied> applied, Rule rule, @Nullable String commit) {
+    if (applied.isEmpty()) {
+      if (RulesApplied.onlyKnownBugs(rule)) {
+        md.append("_Applied by no method yet: its examples are known bugs._\n\n");
+      }
+      return;
+    }
+    var ref = commit == null ? "main" : commit;
+    md.append("_Applied by_ ")
+        .append(
+            String.join(
+                ", ",
+                applied.stream()
+                    .map(
+                        each ->
+                            "[`"
+                                + each.method()
+                                + "`]("
+                                + GITHUB
+                                + ref
+                                + "/"
+                                + SOURCES
+                                + each.source()
+                                + ")")
+                    .toList()))
+        .append("\n\n");
+  }
+
+  private static void example(StringBuilder md, Scenario scenario, Run run, String uri) {
+    var result = run.results().get(Run.key(uri, scenario));
     md.append("**")
         .append(scenario.getKeyword())
         .append(": ")

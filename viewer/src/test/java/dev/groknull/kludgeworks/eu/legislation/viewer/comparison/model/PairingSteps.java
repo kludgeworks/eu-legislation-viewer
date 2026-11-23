@@ -22,10 +22,10 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules about how the occurrences of two texts pair, and how a difference shows
- * the rows of a table (R-DIFF-09 to R-DIFF-14). The texts are the converter's sample texts of the
- * comparison ({@link Comparing}), or of the Council Resolution on a Model Agreement for setting up
- * a Joint Investigation Team, which has no number. The steps reach the comparison's domain only:
- * {@link Pairing}, {@link Differ} and {@link Occurrences}.
+ * the rows of a table. The texts are the converter's sample texts of the comparison ({@link
+ * Comparing}), or of the Council Resolution on a Model Agreement for setting up a Joint
+ * Investigation Team, which has no number. The steps reach the comparison's domain only: {@link
+ * Pairing}, {@link Differ} and {@link Occurrences}.
  */
 public class PairingSteps {
   /** The CELEX of the Council Resolution on a Model Agreement for a Joint Investigation Team. */

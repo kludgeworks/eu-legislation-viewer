@@ -66,8 +66,8 @@ final class Ends {
   }
 
   /**
-   * Returns the two texts of the changes of {@code amending} (R-SCOPE-10): the first text after
-   * From, up to To, that includes it, and the text just before that.
+   * Returns the two texts of the changes of {@code amending}: the first text after From, up to To,
+   * that includes it, and the text just before that.
    */
   Optional<Inclusion> inclusion(ActIdentifier amending) {
     return Inclusion.of(timeline, included, from, to, amending);

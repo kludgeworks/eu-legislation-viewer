@@ -64,13 +64,13 @@ final class Cited {
   }
 
   /**
-   * Returns the acts cited as {@code cited}, joined by "and": "2019/103 and 2026/449". Returns none
-   * for {@link #NO_KNOWN_ACT}.
+   * Returns the acts cited as {@code cited}, as the pages list them: "2019/103 and 2026/449",
+   * "2017/815, 2019/103 and 2019/1583". Returns none for {@link #NO_KNOWN_ACT}.
    */
   static List<ActIdentifier> acts(String cited) {
     if (cited.equals(NO_KNOWN_ACT)) {
       return List.of();
     }
-    return Arrays.stream(cited.split(" and ")).map(Cited::act).toList();
+    return Arrays.stream(cited.split(", | and ")).map(Cited::act).toList();
   }
 }

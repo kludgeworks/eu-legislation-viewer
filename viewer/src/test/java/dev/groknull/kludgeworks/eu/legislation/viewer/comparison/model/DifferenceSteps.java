@@ -20,10 +20,10 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about what counts as a difference, and how its edits show (R-DIFF-03 to
- * R-DIFF-08, R-DIFF-15 to R-DIFF-18 and R-DIFF-20). The texts are the converter's sample texts of
- * the comparison ({@link Comparing}), or of an act that Cellar's recorded answers do not hold. The
- * steps reach the comparison's domain only: {@link Differ} and {@link Occurrences}.
+ * The steps of the rules about what counts as a difference, and how its edits show. The texts are
+ * the converter's sample texts of the comparison ({@link Comparing}), or of an act that Cellar's
+ * recorded answers do not hold. The steps reach the comparison's domain only: {@link Differ} and
+ * {@link Occurrences}.
  */
 public class DifferenceSteps {
   private final Comparing comparing;
@@ -241,7 +241,7 @@ public class DifferenceSteps {
 
   @Then("no indent of a footnote is a difference of its own")
   public void noFootnoteIndentDiffers() {
-    // A footnote compares with the occurrence that refers to it (R-DIFF-06), so nothing in a
+    // A footnote compares with the occurrence that refers to it, so nothing in a
     // footnote is a difference of its own. A footnote's eId is its place, note_N.
     assertThat(compared().differences())
         .extracting(Difference::eId)

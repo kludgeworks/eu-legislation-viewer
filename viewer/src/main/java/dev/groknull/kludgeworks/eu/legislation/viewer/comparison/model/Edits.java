@@ -5,6 +5,8 @@ import com.github.difflib.DiffUtils;
 import com.github.difflib.algorithm.myers.MyersDiffWithLinearSpace;
 import com.github.difflib.text.DiffRowGenerator;
 import com.github.difflib.text.deltamerge.InlineDeltaMergeInfo;
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -74,6 +76,7 @@ final class Edits {
    *
    * <p>A table is compared by its pieces. See {@link #PIECES}.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-the-edits-show")
   static Edited between(Element from, Element to) {
     return from.name().equals(to.name()) && PIECES.contains(to.name())
         ? pieces(from, to)
@@ -109,6 +112,7 @@ final class Edits {
    *   <li>A piece that is only in {@code from} is shown deleted whole, where it stood.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "table-row-by-row")
   private static Edited pieces(Element from, Element to) {
     var before = from.children();
     var after = to.children();
@@ -141,6 +145,7 @@ final class Edits {
   }
 
   /** Returns {@code to}, edited against {@code from} word by word. */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "replaced-phrase")
   private static Edited words(Element from, Element to) {
     var before = new ArrayList<String>();
     var pieces = new ArrayList<Element>();
@@ -184,6 +189,7 @@ final class Edits {
    * Returns {@code element} with every word in it edited {@code edit}, which is {@link #INSERTED}
    * or {@link #DELETED}.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-the-edits-show")
   static Edited all(Element element, String edit) {
     var tokens = tokens(element);
     var edited = new boolean[tokens.size()];
@@ -279,6 +285,10 @@ final class Edits {
    * an opening quotation mark and of a closing one is the same, and they would then match one with
    * the other.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "spaces-are-no-change")
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "form-of-apostrophes-and-quotes")
   private static List<String> said(List<String> tokens) {
     return tokens.stream()
         .map(
@@ -299,6 +309,7 @@ final class Edits {
    * Returns how many of {@code tokens} are words. A word has a letter or a digit. Spaces and
    * punctuation alone are not words.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-a-word-is")
   private static int words(List<String> tokens) {
     return (int) tokens.stream().filter(token -> WORD.matcher(token).find()).count();
   }
@@ -308,6 +319,8 @@ final class Edits {
    * {@link Wording}. The result is what goes in the place of the element: one element, several
    * elements or none. For example, a {@code t} that is split at its edits gives several elements.
    */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "formula-is-one-piece")
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "kept-deletion-is-not-words")
   private static List<Element> walk(Element element, Sink sink) {
     var v = element.attributes().getOrDefault("v", "");
     switch (element.name()) {

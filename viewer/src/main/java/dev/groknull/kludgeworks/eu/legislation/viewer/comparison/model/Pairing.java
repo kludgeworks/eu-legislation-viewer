@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
@@ -89,6 +91,7 @@ final class Pairing {
    * Pairs the occurrences that pair with none and moved further than into the occurrence before
    * them or out of it. See the rule above.
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "moved-occurrence")
   private void movedFurther() {
     var earlier = alone(before, true);
     var later = alone(after, false);
@@ -269,6 +272,7 @@ final class Pairing {
    * Pairs the occurrences of {@code earlier} and {@code later} that are one occurrence, moved.
    * Occurrences that pair already are left out.
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "moved-occurrence")
   private void moved(List<Occurrence> earlier, List<Occurrence> later) {
     var from = earlier.stream().filter(occurrence -> is(occurrence) == null).toList();
     var to = later.stream().filter(occurrence -> was(occurrence) == null).toList();
@@ -346,6 +350,8 @@ final class Pairing {
    * @return for each occurrence of {@code later}, the position in {@code earlier} of the occurrence
    *     that it pairs with, or -1 if it pairs with none
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "place-among-siblings")
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "replaced-where-it-stands")
   private static int[] siblings(
       List<Occurrence> earlier,
       List<Occurrence> later,
@@ -385,6 +391,7 @@ final class Pairing {
    * that they were. Two occurrences can pair if their eIds differ and they say the same, or are
    * alike from {@link Likeness#MINIMUM}.
    */
+  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "renumbered-occurrence")
   private static int[] renumbered(
       List<Occurrence> earlier,
       List<Occurrence> later,

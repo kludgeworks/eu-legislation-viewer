@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
@@ -13,8 +15,8 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * What last made a provision that is the same in both texts as it is (R-WHO-21). The Synopsis shows
- * it beside a neighbour.
+ * What last made a provision that is the same in both texts as it is. The Synopsis shows it beside
+ * a neighbour.
  *
  * <p>It is the act that the texts include last, up to the later text, among the acts that the tags
  * of the provision name. The tags are those of the provision, or those of the occurrence that an
@@ -45,6 +47,7 @@ public sealed interface LastChange {
    * Returns what last made the provision whose tags are {@code tags} as it is, in the texts of
    * {@code act} up to {@code to}.
    */
+  @BusinessRule(group = RuleGroup.NEIGHBOURS, name = "last-change-of-a-neighbour")
   static LastChange of(Act act, Inclusions included, Version to, List<Tag> tags) {
     @Nullable Tag last = null;
     @Nullable LocalDate integrated = null;

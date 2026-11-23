@@ -9,6 +9,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "//tools/build:record_builder",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/rules",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "@maven//:org_jmolecules_jmolecules_ddd",
@@ -79,6 +80,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/rules",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "@maven//:io_github_java_diff_utils_java_diff_utils",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",

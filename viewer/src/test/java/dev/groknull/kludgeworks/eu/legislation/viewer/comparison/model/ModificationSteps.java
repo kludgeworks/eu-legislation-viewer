@@ -14,8 +14,8 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about the modification of a step (R-WHO-13, R-WHO-14, R-WHO-23). They
- * reach the domain only: {@link Modification} applies the rules.
+ * The steps of the rules about the modification of a step. They reach the domain only: {@link
+ * Modification} applies the rules.
  */
 public class ModificationSteps {
   /** An amending act. */
