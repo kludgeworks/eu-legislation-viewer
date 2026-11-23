@@ -24,7 +24,7 @@ buildifier = "10.1.0"
 java = "temurin-25.0.5+8.0.LTS"                                      # for the IDE and jshell; Bazel uses its own remotejdk_25
 hk = "2.9.0"                                                         # the version in hk.pkl's amends URL
 pkl = "0.32.2"                                                       # pkl_format: hk evaluates hk.pkl itself
-google-java-format = "1.37.0"
+google-java-format = "2.0.0"
 "github:google/addlicense" = "1.2.0"
 # REUSE: every file's copyright and licence (REUSE.toml)
 "pipx:reuse" = { version = "6.3.0", extras = "charset-normalizer" }
