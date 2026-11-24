@@ -5,8 +5,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * A text was deleted, because its version was withdrawn ({@link VersionWithdrawn}). No text
- * replaces it. A module that keeps something by the text's identity deletes it.
+ * A text was removed, because its version was withdrawn ({@link VersionWithdrawn}). No text
+ * replaces it. A module that keeps something by the text's identity removes it.
  *
  * @param text the identity of the text, which is no longer stored
  * @param celex the version of the text

@@ -54,11 +54,12 @@
   <dd>An image, by the name of its file.</dd>
   <dt>quotation</dt>
   <dd>Text that an amending act quotes. It is not law of the act that quotes it.</dd>
-  <dt>deleted</dt>
-  <dd>Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.</dd>
+  <dt>keptDeletion</dt>
+  <dd>A kept deletion: blocks that an act deleted, which the consolidated version still shows under the tag of that act.
+    They are not in force.</dd>
 </dl>
-<p>A block that a consolidation changed has <span class="mono">amendedBy</span>: the amending act, by its CELEX number,
-  and what it did.</p>
+<p>A block that a consolidation changed has <span class="mono">tags</span>: for each tag, the amending act, by its CELEX
+  number, and what it did.</p>
 <h4>Running text</h4>
 <p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of footnotes or
   the words that an amendment deleted. <span class="mono">html</span> is HTML with only these elements:</p>

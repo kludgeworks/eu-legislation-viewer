@@ -75,7 +75,7 @@
       "description": "A thing that stands on its own lines. Its type tells which. A validator checks only the schema of that type: a block can hold blocks, so checking each block against every schema would take time that grows with the depth of the text.",
       "required": ["type"],
       "properties": {
-        "type": { "enum": ["text", "occurrence", "table", "figure", "quotation", "deleted"] }
+        "type": { "enum": ["text", "occurrence", "table", "figure", "quotation", "keptDeletion"] }
       },
       "allOf": [
         { "if": { "properties": { "type": { "const": "text" } } }, "then": { "$ref": "#/$defs/paragraph" } },
@@ -83,16 +83,16 @@
         { "if": { "properties": { "type": { "const": "table" } } }, "then": { "$ref": "#/$defs/table" } },
         { "if": { "properties": { "type": { "const": "figure" } } }, "then": { "$ref": "#/$defs/figure" } },
         { "if": { "properties": { "type": { "const": "quotation" } } }, "then": { "$ref": "#/$defs/quotation" } },
-        { "if": { "properties": { "type": { "const": "deleted" } } }, "then": { "$ref": "#/$defs/deleted" } }
+        { "if": { "properties": { "type": { "const": "keptDeletion" } } }, "then": { "$ref": "#/$defs/keptDeletion" } }
       ]
     },
-    "amendedBy": {
-      "description": "The amendments of a consolidated version that gave the block its wording, the outermost first.",
+    "tags": {
+      "description": "The tags of a consolidated version that name the acts that gave the block its wording, the outermost first.",
       "type": "array",
-      "items": { "$ref": "#/$defs/amendment" }
+      "items": { "$ref": "#/$defs/tag" }
     },
-    "amendment": {
-      "description": "Which act changed the text, and how.",
+    "tag": {
+      "description": "A tag of a consolidated version: the act that gave the text its wording, and what it did.",
       "type": "object",
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
@@ -107,7 +107,7 @@
         "type": { "const": "text" },
         "text": { "$ref": "#/$defs/text" },
         "html": { "$ref": "#/$defs/html" },
-        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+        "tags": { "$ref": "#/$defs/tags" }
       },
       "required": ["type", "text", "html"]
     },
@@ -121,7 +121,7 @@
         "num": { "type": "string", "description": "Its label as printed. For example, Article 3 or (a)." },
         "heading": { "$ref": "#/$defs/inline" },
         "subheading": { "$ref": "#/$defs/inline" },
-        "amendedBy": { "$ref": "#/$defs/amendedBy" },
+        "tags": { "$ref": "#/$defs/tags" },
         "content": { "$ref": "#/$defs/blocks" }
       },
       "required": ["type", "eId", "kind"]
@@ -134,7 +134,7 @@
         "caption": { "$ref": "#/$defs/blocks" },
         "rows": { "type": "array", "items": { "$ref": "#/$defs/row" } },
         "footnotes": { "$ref": "#/$defs/footnotes", "description": "The footnotes of the table, numbered in it." },
-        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+        "tags": { "$ref": "#/$defs/tags" }
       },
       "required": ["type"]
     },
@@ -165,7 +165,7 @@
         "shows": { "enum": ["character", "form", "formula", "signature", "techDesign", "other"] },
         "caption": { "$ref": "#/$defs/blocks" },
         "description": { "$ref": "#/$defs/blocks", "description": "The text in the image, written out." },
-        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+        "tags": { "$ref": "#/$defs/tags" }
       },
       "required": ["type", "file"]
     },
@@ -179,15 +179,15 @@
       },
       "required": ["type", "eId", "content"]
     },
-    "deleted": {
-      "description": "Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.",
+    "keptDeletion": {
+      "description": "A kept deletion: blocks that an act deleted, which the consolidated version still shows under the tag of that act. They are not in force.",
       "type": "object",
       "properties": {
-        "type": { "const": "deleted" },
-        "amendedBy": { "$ref": "#/$defs/amendedBy" },
+        "type": { "const": "keptDeletion" },
+        "tags": { "$ref": "#/$defs/tags" },
         "content": { "$ref": "#/$defs/blocks" }
       },
-      "required": ["type", "amendedBy", "content"]
+      "required": ["type", "tags", "content"]
     },
     "footnotes": {
       "type": "array",

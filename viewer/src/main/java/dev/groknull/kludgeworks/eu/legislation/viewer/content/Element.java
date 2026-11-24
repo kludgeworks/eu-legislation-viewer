@@ -43,40 +43,39 @@ public record Element(
 
   /**
    * Returns its occurrences from the occurrence {@code first} to the occurrence {@code last}, in
-   * order. This is a run as a comparison folds it.
+   * order, as a fold of a comparison holds them.
    *
    * <ul>
    *   <li>Each occurrence is whole, with the occurrences in it. The occurrences in it do not appear
    *       again on their own.
-   *   <li>The run may start inside an occurrence and end outside it.
-   *   <li>The run leaves out the occurrences of a consolidation's kept deletions, in {@code
-   *       deleted}.
+   *   <li>They may start inside an occurrence and end outside it.
+   *   <li>They leave out the occurrences of a consolidation's kept deletions, in {@code deleted}.
    * </ul>
    *
    * <p>Returns none if it does not have {@code first}.
    */
   public List<Element> occurrences(String first, String last) {
-    var run = new ArrayList<Element>();
-    collect(this, first, last, Run.BEFORE, run);
-    return run;
+    var found = new ArrayList<Element>();
+    collect(this, first, last, Position.BEFORE, found);
+    return found;
   }
 
-  /** The position of a walk in a run of occurrences. */
-  private enum Run {
+  /** Where a walk is: before {@code first}, between {@code first} and {@code last}, or after. */
+  private enum Position {
     BEFORE,
     IN,
     AFTER
   }
 
   /**
-   * Adds the occurrences of {@code element} that are in the run to {@code run}, from position
-   * {@code at}. Returns the position after {@code element}.
+   * Adds the occurrences of {@code element} that are between {@code first} and {@code last} to
+   * {@code found}, from position {@code at}. Returns the position after {@code element}.
    */
-  private static Run collect(
-      Element element, String first, String last, Run at, List<Element> run) {
+  private static Position collect(
+      Element element, String first, String last, Position at, List<Element> found) {
     var now = at;
     for (var child : element.children()) {
-      if (now == Run.AFTER) {
+      if (now == Position.AFTER) {
         return now;
       }
       // A consolidation keeps its kept deletions here. They are not part of the text.
@@ -85,15 +84,15 @@ public record Element(
       }
       var eId = child.name().equals("occurrence") ? child.attribute("eId") : null;
       if (eId != null && eId.equals(first)) {
-        now = Run.IN;
+        now = Position.IN;
       }
-      if (eId != null && now == Run.IN) {
-        run.add(child);
+      if (eId != null && now == Position.IN) {
+        found.add(child);
         if (eId.equals(last) || contains(child, last)) {
-          now = Run.AFTER;
+          now = Position.AFTER;
         }
       } else {
-        now = collect(child, first, last, now, run);
+        now = collect(child, first, last, now, found);
       }
     }
     return now;

@@ -98,10 +98,10 @@ its module.
 | Term | Meaning |
 | --- | --- |
 | occurrence | A subdivision as the text of one version has it, known by its eId. A provision has an occurrence in each text that has it. |
-| tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
+| tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. The public model gives each tag as the act and its modification (`PublicText.Tag`). |
 | modification | What an act did to an occurrence in one step: inserted, deleted, replaced, renumbered, amended or corrected. A tag names the act and its modification. Akoma Ntoso calls it a textual modification. |
 | footnote | A note of the text that a reference in the text points to. The notes are at the end of the text, or in a table. The word "note" alone is not a term: say footnote, sidenote or divergence note. |
-| kept deletion | A provision that an act deleted, which the consolidated text keeps, marked as deleted under the ▼ tag of that act. It is not in force. The deleted words of an edit are a different thing: they are struck through. |
+| kept deletion | Words or occurrences that an act deleted, which the consolidated text keeps, marked as deleted under the ▼ tag of that act. It is not in force (`PublicText.KeptDeletion`). The deleted words of an edit are a different thing: they are struck through. |
 
 ### Comparison (module `comparison`)
 
@@ -305,6 +305,23 @@ The pages do not use these words in text that the reader sees: "late", "early", 
 Say what the reader sees. Examples: "the text", "does not apply yet", "applies from more than one
 day", "a part from 1 October 2026", "the data does not say which act amended this". The pages of
 the API are not in this rule: `versions` is the name of a resource of the API.
+
+### Content (module `content`)
+
+Content keeps the texts and gives them to the other modules and to the API. It uses the shared
+terms and the terms of the legal text. A tag of the public model is the tag of the legal text,
+and a kept deletion of the public model is the kept deletion of the legal text.
+
+| Term | Meaning |
+| --- | --- |
+| text identity | The identity of a stored text (`TextId`). A text that is stored again with other content gets a new identity, so what another module keeps by an identity never goes stale. |
+| legal-text | The converter's schema: the form in which a text is stored (`Element`). It changes as the converter learns more of Formex. |
+| public model | The form in which the API gives a text to other programs (`PublicText`). It is small, and it changes only when the meaning of a text changes. |
+| block | A part of the public model that stands on its own lines: running text, an occurrence, a table, a figure, a quotation or a kept deletion (`PublicText.Block`). |
+| quotation | Text that an amending act quotes: the occurrences that it inserts or replaces in another act. It is not law of the act that quotes it (`PublicText.Quotation`). |
+| subdivision of a place | One of the subdivisions that name a place, from the outermost in: the place itself, or a subdivision that holds it. For example, "Article 89" and "paragraph 1" for "Article 89(1)" (`Place.Subdivision`). |
+| occurrence with footnotes | One occurrence and the footnotes that it refers to: what the API gives for one occurrence (`PublicText.OccurrenceWithFootnotes`). The footnotes are at the end of the text, not in the occurrence. |
+| removed | A stored text that no longer exists: a new text replaced it, or Cellar withdrew its version (`TextRemoved`). The word "deleted" is for the law only: a modification, or a kept deletion. |
 
 ## Principles
 

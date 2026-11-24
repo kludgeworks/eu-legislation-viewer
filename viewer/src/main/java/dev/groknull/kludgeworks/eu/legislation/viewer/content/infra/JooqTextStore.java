@@ -105,12 +105,12 @@ class JooqTextStore implements TextStore {
   }
 
   @Override
-  public void delete(TextId text) {
+  public void remove(TextId text) {
     db.deleteFrom(TEXT).where(TEXT.ID.eq(text)).execute();
   }
 
   @Override
-  public Map<Language, TextId> delete(String celex) {
+  public Map<Language, TextId> remove(String celex) {
     return db.deleteFrom(TEXT)
         .where(TEXT.CELEX.eq(celex))
         .returningResult(TEXT.LANGUAGE_CODE, TEXT.ID)

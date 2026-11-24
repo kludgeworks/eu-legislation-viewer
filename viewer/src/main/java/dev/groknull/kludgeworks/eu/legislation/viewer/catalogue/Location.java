@@ -156,7 +156,7 @@ public record Location(String code) {
    */
   public Place place() {
     var tokens = tokens();
-    var levels = new ArrayList<Place.Level>();
+    var subdivisions = new ArrayList<Place.Subdivision>();
     for (var i = 0; i < tokens.size(); i++) {
       var token = tokens.get(i);
       var next = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
@@ -166,32 +166,32 @@ public record Location(String code) {
         continue;
       }
       if (!numbered || next == null) {
-        levels.add(new Place.Level(NOUNS.get(token), ""));
+        subdivisions.add(new Place.Subdivision(NOUNS.get(token), ""));
         continue;
       }
       i++;
-      levels.add(new Place.Level(NOUNS.get(token), next.replace("\"", "")));
+      subdivisions.add(new Place.Subdivision(NOUNS.get(token), next.replace("\"", "")));
     }
-    return Place.of(levels).orElseGet(() -> new Place(code));
+    return Place.of(subdivisions).orElseGet(() -> new Place(code));
   }
 
   /**
    * Returns the location of {@code place}, as Cellar would code it. For example, "point 8.1.2.3(c)"
    * is {@code PO 8.1.2.3 PTA (c)}. {@link #in} then finds it among the occurrences of a text.
    *
-   * @throws IllegalArgumentException if a level of the place has no code
+   * @throws IllegalArgumentException if a subdivision of the place has no code
    */
   public static Location of(Place place) {
     var codes = new ArrayList<String>();
-    for (var level : place.levels()) {
+    for (var subdivision : place.subdivisions()) {
       var code =
-          level.noun().equals("point")
-              ? (level.number().startsWith("(") ? "PTA" : "PO")
-              : CODES.get(level.noun());
+          subdivision.noun().equals("point")
+              ? (subdivision.number().startsWith("(") ? "PTA" : "PO")
+              : CODES.get(subdivision.noun());
       if (code == null) {
-        throw new IllegalArgumentException("No code for " + level.noun() + " in " + place);
+        throw new IllegalArgumentException("No code for " + subdivision.noun() + " in " + place);
       }
-      codes.add(level.number().isEmpty() ? code : code + " " + level.number());
+      codes.add(subdivision.number().isEmpty() ? code : code + " " + subdivision.number());
     }
     return new Location(String.join(" ", codes));
   }

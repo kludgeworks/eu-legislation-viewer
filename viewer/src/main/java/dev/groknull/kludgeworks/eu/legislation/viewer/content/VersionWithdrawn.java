@@ -5,7 +5,7 @@ import org.jmolecules.event.annotation.DomainEvent;
 
 /**
  * A version no longer exists: Cellar withdrew it, and the module that keeps the versions, the
- * catalogue, deleted it. The content module deletes the texts of the version, in every language,
+ * catalogue, removed it. The content module removes the texts of the version, in every language,
  * and publishes {@link TextRemoved} for each.
  *
  * <p>The event is in this module, though the catalogue publishes it, because the catalogue depends

@@ -74,7 +74,7 @@ class ComparisonServiceTest {
     }
 
     @Override
-    public Optional<PublicText.Extract> publicOccurrence(TextId text, String eId) {
+    public Optional<PublicText.OccurrenceWithFootnotes> publicOccurrence(TextId text, String eId) {
       throw new UnsupportedOperationException();
     }
 

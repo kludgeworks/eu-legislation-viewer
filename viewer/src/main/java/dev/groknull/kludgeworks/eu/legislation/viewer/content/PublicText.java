@@ -20,8 +20,8 @@ import org.jspecify.annotations.Nullable;
  * <ul>
  *   <li>The text is in parts, as the Official Journal prints it: the title, the preamble, the
  *       enacting terms (the body), the conclusions, the annexes and the footnotes.
- *   <li>A part holds blocks: running text, occurrences, tables, figures, quotations and deleted
- *       text.
+ *   <li>A part holds blocks: running text, occurrences, tables, figures, quotations and kept
+ *       deletions.
  *   <li>Running text has two forms: plain {@code text}, and {@code html} in a closed list of
  *       elements.
  * </ul>
@@ -69,16 +69,16 @@ public record PublicText(
     @JsonSubTypes.Type(value = Table.class, name = "table"),
     @JsonSubTypes.Type(value = Figure.class, name = "figure"),
     @JsonSubTypes.Type(value = Quotation.class, name = "quotation"),
-    @JsonSubTypes.Type(value = Deleted.class, name = "deleted")
+    @JsonSubTypes.Type(value = KeptDeletion.class, name = "keptDeletion")
   })
-  public sealed interface Block permits Text, Occurrence, Table, Figure, Quotation, Deleted {}
+  public sealed interface Block permits Text, Occurrence, Table, Figure, Quotation, KeptDeletion {}
 
   /**
    * A paragraph of running text.
    *
    * @param text the plain text
    * @param html the text as HTML
-   * @param amendedBy the amendments that gave the paragraph its wording, if they are not its
+   * @param tags the tags of the acts that gave the paragraph its wording, if they are not its
    *     occurrence's
    */
   @ValueObject
@@ -86,10 +86,10 @@ public record PublicText(
   public record Text(
       @JsonInclude(JsonInclude.Include.ALWAYS) String text,
       @JsonInclude(JsonInclude.Include.ALWAYS) String html,
-      List<Amendment> amendedBy)
+      List<Tag> tags)
       implements Block {
     public Text {
-      amendedBy = List.copyOf(amendedBy);
+      tags = List.copyOf(tags);
     }
   }
 
@@ -102,7 +102,7 @@ public record PublicText(
    *     has none.
    * @param heading its heading. Absent if it has none.
    * @param subheading a second heading, under the first. Absent if it has none.
-   * @param amendedBy the amendments that gave the occurrence its wording, the outermost first
+   * @param tags the tags of the acts that gave the occurrence its wording, the outermost first
    * @param content what it holds, in order
    */
   @ValueObject
@@ -113,11 +113,11 @@ public record PublicText(
       @Nullable String num,
       @Nullable Inline heading,
       @Nullable Inline subheading,
-      List<Amendment> amendedBy,
+      List<Tag> tags,
       List<Block> content)
       implements Block {
     public Occurrence {
-      amendedBy = List.copyOf(amendedBy);
+      tags = List.copyOf(tags);
       content = List.copyOf(content);
     }
   }
@@ -128,19 +128,18 @@ public record PublicText(
    * @param caption its title
    * @param rows its rows, in order. A group of rows starts with its heading row.
    * @param footnotes the footnotes of the table, numbered in it
-   * @param amendedBy the amendments that gave the table its wording, if they are not its
+   * @param tags the tags of the acts that gave the table its wording, if they are not its
    *     occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
-  public record Table(
-      List<Block> caption, List<Row> rows, List<Footnote> footnotes, List<Amendment> amendedBy)
+  public record Table(List<Block> caption, List<Row> rows, List<Footnote> footnotes, List<Tag> tags)
       implements Block {
     public Table {
       caption = List.copyOf(caption);
       rows = List.copyOf(rows);
       footnotes = List.copyOf(footnotes);
-      amendedBy = List.copyOf(amendedBy);
+      tags = List.copyOf(tags);
     }
   }
 
@@ -185,7 +184,7 @@ public record PublicText(
    *     signature}, {@code techDesign} or {@code other}. Absent if the source does not say.
    * @param caption the text printed with the image
    * @param description the text in the image, written out
-   * @param amendedBy the amendments that gave the image its form, if they are not its occurrence's
+   * @param tags the tags of the acts that gave the image its form, if they are not its occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -194,12 +193,12 @@ public record PublicText(
       @Nullable String shows,
       List<Block> caption,
       List<Block> description,
-      List<Amendment> amendedBy)
+      List<Tag> tags)
       implements Block {
     public Figure {
       caption = List.copyOf(caption);
       description = List.copyOf(description);
-      amendedBy = List.copyOf(amendedBy);
+      tags = List.copyOf(tags);
     }
   }
 
@@ -218,16 +217,16 @@ public record PublicText(
   }
 
   /**
-   * Blocks that an amendment deleted, which the consolidated version still shows. They are not in
-   * force.
+   * A kept deletion: blocks that an act deleted, which the consolidated version still shows under
+   * the tag of that act. They are not in force.
    *
-   * @param amendedBy the amendments that deleted them
+   * @param tags the tags of the acts that deleted them
    * @param content the deleted blocks
    */
   @ValueObject
-  public record Deleted(List<Amendment> amendedBy, List<Block> content) implements Block {
-    public Deleted {
-      amendedBy = List.copyOf(amendedBy);
+  public record KeptDeletion(List<Tag> tags, List<Block> content) implements Block {
+    public KeptDeletion {
+      tags = List.copyOf(tags);
       content = List.copyOf(content);
     }
   }
@@ -248,14 +247,14 @@ public record PublicText(
   }
 
   /**
-   * An amendment of a consolidated version: which act changed the text, and how.
+   * A tag of a consolidated version: the act that gave the text its wording, and what it did.
    *
    * @param act the CELEX number of the amending act
    * @param modification what it did: {@code replaced}, {@code inserted}, {@code deleted} or {@code
    *     renumbered}
    */
   @ValueObject
-  public record Amendment(String act, String modification) {}
+  public record Tag(String act, String modification) {}
 
   /**
    * The wording of an occurrence with the edits of a comparison: the plain text before and after
@@ -298,14 +297,16 @@ public record PublicText(
   }
 
   /**
-   * An occurrence and the footnotes that it refers to: what the API gives for one occurrence.
+   * An occurrence and the footnotes that it refers to: what the API gives for one occurrence. The
+   * footnotes are at the end of the text, so they are not in the occurrence.
    *
    * @param occurrence the occurrence
    * @param footnotes the footnotes that the occurrence refers to, in the order of the text
    */
   @ValueObject
-  public record Extract(Occurrence occurrence, List<Footnote> footnotes) {
-    public Extract {
+  public record OccurrenceWithFootnotes(
+      Occurrence occurrence, @JsonInclude(JsonInclude.Include.NON_EMPTY) List<Footnote> footnotes) {
+    public OccurrenceWithFootnotes {
       footnotes = List.copyOf(footnotes);
     }
   }

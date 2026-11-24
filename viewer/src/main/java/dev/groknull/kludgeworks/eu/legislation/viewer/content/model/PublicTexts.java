@@ -3,21 +3,21 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Cell;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Edited;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Extract;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Footnote;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.KeptDeletion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.OccurrenceWithFootnotes;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Row;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -113,7 +113,8 @@ public final class PublicTexts {
    *
    * @param legalText the element of a text, {@code legalText}
    */
-  public static Optional<Extract> extract(Element legalText, String eId) {
+  public static Optional<OccurrenceWithFootnotes> occurrenceWithFootnotes(
+      Element legalText, String eId) {
     return legalText.occurrences(eId, eId).stream()
         .findFirst()
         .map(occurrence -> {
@@ -121,7 +122,7 @@ public final class PublicTexts {
           references(occurrence, referred);
           var all = new LinkedHashMap<String, Footnote>();
           new PublicTexts().allFootnotes(legalText, all);
-          return new Extract(
+          return new OccurrenceWithFootnotes(
               occurrence(occurrence),
               referred.stream().map(all::get).filter(footnote -> footnote != null).toList());
         });
@@ -211,14 +212,13 @@ public final class PublicTexts {
     var blocks = new ArrayList<Block>();
     for (var element : elements) {
       switch (element.name()) {
-        case "p" -> blocks.add(text(element.children(), amendments(element)));
+        case "p" -> blocks.add(text(element.children(), tags(element)));
         case "occurrence" -> blocks.add(toOccurrence(element));
         case "table" -> blocks.add(table(element));
         case "figure" -> blocks.add(figure(element));
         case "quotedStructure" ->
             blocks.add(new Quotation(attribute(element, "eId"), blocks(element.children())));
-        case "deleted" ->
-            blocks.add(new Deleted(amendments(element), blocks(withoutTags(element))));
+        case "deleted" -> blocks.add(new KeptDeletion(tags(element), blocks(withoutTags(element))));
         case "math" -> blocks.add(math(element));
         case "annotation" -> {
           child(element, "heading")
@@ -251,7 +251,7 @@ public final class PublicTexts {
         child(occurrence, "num").map(num -> text(num.children())).orElse(null),
         child(occurrence, "heading").map(PublicTexts::lines).orElse(null),
         child(occurrence, "subheading").map(PublicTexts::lines).orElse(null),
-        amendments(occurrence),
+        tags(occurrence),
         blocks(content(occurrence)));
   }
 
@@ -262,7 +262,7 @@ public final class PublicTexts {
         blocksOf(table, "caption"),
         rows,
         child(table, "footnotes").map(this::footnotes).orElseGet(List::of),
-        amendments(table));
+        tags(table));
   }
 
   /** Adds the rows, and the rows of each group after its heading row. */
@@ -335,7 +335,7 @@ public final class PublicTexts {
         figure.attribute("content"),
         blocksOf(figure, "caption"),
         blocksOf(figure, "description"),
-        amendments(figure));
+        tags(figure));
   }
 
   private static Text math(Element math) {
@@ -347,16 +347,16 @@ public final class PublicTexts {
         mathml(child, html, true);
       }
     }
-    return new Text(text.toString(), html.toString(), amendments(math));
+    return new Text(text.toString(), html.toString(), tags(math));
   }
 
   // ------------------------------------------------------------------------------ running text
 
-  private static Text text(List<Element> inline, List<Amendment> amendedBy) {
+  private static Text text(List<Element> inline, List<Tag> tags) {
     var text = text(inline);
     var html = new StringBuilder();
     html(inline, html);
-    return new Text(text, html.toString(), amendedBy);
+    return new Text(text, html.toString(), tags);
   }
 
   /**
@@ -558,8 +558,8 @@ public final class PublicTexts {
             element.children().stream()
                 .filter(child -> child.name().equals("m:math"))
                 .forEach(child -> mathml(child, html, false));
-        case "changed" -> wrap(element, html, "span", amendment(element));
-        case "deleted" -> wrap(element, html, "s", amendment(element));
+        case "changed" -> wrap(element, html, "span", tagAttributes(element));
+        case "deleted" -> wrap(element, html, "s", tagAttributes(element));
         case "diff:ins" -> wrap(element, html, "ins", "");
         case "diff:del" -> wrap(element, html, "del", "");
         case "tag" -> {
@@ -576,7 +576,10 @@ public final class PublicTexts {
     html.append("</").append(name).append('>');
   }
 
-  private static String amendment(Element element) {
+  /**
+   * Returns the attributes that name the act and the modification of the tag of {@code element}.
+   */
+  private static String tagAttributes(Element element) {
     return " data-act=\""
         + escape(attribute(element, "amendingAct"))
         + "\" data-modification=\""
@@ -615,10 +618,10 @@ public final class PublicTexts {
 
   // ---------------------------------------------------------------------------------- helpers
 
-  private static List<Amendment> amendments(Element element) {
+  private static List<Tag> tags(Element element) {
     return element.children().stream()
         .filter(child -> child.name().equals("tag"))
-        .map(tag -> new Amendment(attribute(tag, "amendingAct"), attribute(tag, "modification")))
+        .map(tag -> new Tag(attribute(tag, "amendingAct"), attribute(tag, "modification")))
         .toList();
   }
 

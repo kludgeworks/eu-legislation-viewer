@@ -79,7 +79,7 @@ class ApiTextControllerTests {
                     null, List.of(), List.of(), List.of(), List.of(OCCURRENCE), List.of())));
     when(content.publicOccurrence(any(), any())).thenReturn(Optional.empty());
     when(content.publicOccurrence(STORED, "anx/pnt_1.2"))
-        .thenReturn(Optional.of(new PublicText.Extract(OCCURRENCE, List.of())));
+        .thenReturn(Optional.of(new PublicText.OccurrenceWithFootnotes(OCCURRENCE, List.of())));
     when(content.outline(STORED))
         .thenReturn(
             Optional.of(

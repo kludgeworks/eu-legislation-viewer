@@ -20,15 +20,16 @@ import org.jmolecules.ddd.annotation.ValueObject;
  *   <li>the annex, for the one annex of an act
  * </ul>
  *
- * <p>A place is named from its levels, from the outermost in ({@link #of(List)}):
+ * <p>A place is named from its subdivisions, from the outermost in ({@link #of(List)}):
  *
  * <ul>
  *   <li>A paragraph of an article, and a point with a number in brackets of an article or a point,
  *       is cited after it: Article 1(4)(c)(v), point 8.1.2.3(c).
  *   <li>An article is numbered across the act, so what holds it is left out.
- *   <li>A level whose number starts the number of the next level is left out: point 6.8.1.6 is in
- *       chapter 6, and Appendix 5-A is in chapter 5. The one annex of an act is left out too.
- *   <li>A subparagraph is not cited, and a level without a number is passed.
+ *   <li>A subdivision whose number starts the number of the next subdivision is left out: point
+ *       6.8.1.6 is in chapter 6, and Appendix 5-A is in chapter 5. The one annex of an act is left
+ *       out too.
+ *   <li>A subparagraph is not cited, and a subdivision without a number is passed.
  * </ul>
  *
  * @param words the name of the place. For example, "Article 89(1)".
@@ -37,50 +38,51 @@ import org.jmolecules.ddd.annotation.ValueObject;
 public record Place(String words) {
 
   /**
-   * One level of a place.
+   * One of the subdivisions that name a place: the place itself, or a subdivision that holds it.
    *
-   * @param noun what the level is, as a page names it. For example, "Article", "point" or "Annex".
+   * @param noun what the subdivision is, as a page names it. For example, "Article", "point" or
+   *     "Annex".
    * @param number its number as the act writes it, with brackets where it has them. For example,
    *     "89", "8.1.2.3" or "(c)". Empty if it has no number.
    */
   @ValueObject
-  public record Level(String noun, String number) {}
+  public record Subdivision(String noun, String number) {}
 
   /** The noun of a part of a name. For example, "Article" or "point". */
   private static final Pattern NOUN = Pattern.compile("[A-Za-z]+");
 
   /**
-   * Returns the place that {@code levels} name, from the outermost in. Returns empty if no level
-   * names an occurrence.
+   * Returns the place that {@code subdivisions} name, from the outermost in. Returns empty if no
+   * subdivision names an occurrence.
    */
-  public static Optional<Place> of(List<Level> levels) {
+  public static Optional<Place> of(List<Subdivision> subdivisions) {
     var named = new ArrayList<String>();
     String noun = null;
     var cited = "";
-    for (var level : levels) {
-      if (level.number().isEmpty()) {
-        if (level.noun().equals("Annex")) {
+    for (var subdivision : subdivisions) {
+      if (subdivision.number().isEmpty()) {
+        if (subdivision.noun().equals("Annex")) {
           noun = "the annex";
           cited = "";
         }
         continue;
       }
-      var number = level.number();
-      if (level.noun().equals("subparagraph") && noun != null) {
+      var number = subdivision.number();
+      if (subdivision.noun().equals("subparagraph") && noun != null) {
         continue;
       } else if (number.startsWith("(")
           && ("Article".equals(noun) || "point".equals(noun))
           && !cited.isEmpty()) {
         cited += number;
-      } else if (level.noun().equals("paragraph") && "Article".equals(noun)) {
+      } else if (subdivision.noun().equals("paragraph") && "Article".equals(noun)) {
         cited += "(" + number + ")";
       } else {
-        if (level.noun().equals("Article")) {
+        if (subdivision.noun().equals("Article")) {
           named.clear();
         } else if (noun != null && holds(noun, cited, number)) {
           named.add(cited.isEmpty() ? noun : noun + " " + cited);
         }
-        noun = level.noun();
+        noun = subdivision.noun();
         cited = number;
       }
     }
@@ -92,18 +94,18 @@ public record Place(String words) {
   }
 
   /**
-   * Returns the levels that the name says, from the outermost in. A number in brackets right after
-   * an article's number is its paragraph if it starts with a digit, and a point if not. Any other
-   * number in brackets is a point. For example, "Article 1(4)(c)" is Article 1, paragraph 4 and
-   * point (c).
+   * Returns the subdivisions that the name says, from the outermost in. A number in brackets right
+   * after an article's number is its paragraph if it starts with a digit, and a point if not. Any
+   * other number in brackets is a point. For example, "Article 1(4)(c)" is Article 1, paragraph 4
+   * and point (c).
    *
    * @throws IllegalArgumentException if a part of the name is not a noun and a number
    */
-  public List<Level> levels() {
-    var levels = new ArrayList<Level>();
+  public List<Subdivision> subdivisions() {
+    var subdivisions = new ArrayList<Subdivision>();
     for (var part : words.split(", ")) {
       if (part.equals("the annex")) {
-        levels.add(new Level("Annex", ""));
+        subdivisions.add(new Subdivision("Annex", ""));
         continue;
       }
       var space = part.indexOf(' ');
@@ -120,20 +122,20 @@ public record Place(String words) {
         if (brackets.isEmpty()) {
           throw new IllegalArgumentException("Not a place: " + words);
         }
-        levels.add(new Level(noun, brackets.getFirst()));
+        subdivisions.add(new Subdivision(noun, brackets.getFirst()));
         taken = 1;
       } else {
-        levels.add(new Level(noun, number));
+        subdivisions.add(new Subdivision(noun, number));
         if (noun.equals("Article") && !brackets.isEmpty()) {
-          levels.add(paragraphOrPoint(brackets.getFirst()));
+          subdivisions.add(paragraphOrPoint(brackets.getFirst()));
           taken = 1;
         }
       }
       for (var bracket : brackets.subList(taken, brackets.size())) {
-        levels.add(new Level("point", bracket));
+        subdivisions.add(new Subdivision("point", bracket));
       }
     }
-    return List.copyOf(levels);
+    return List.copyOf(subdivisions);
   }
 
   /**
@@ -157,19 +159,21 @@ public record Place(String words) {
   }
 
   /**
-   * Returns the level of the first number in brackets after an article's number: a paragraph if it
-   * starts with a digit, else a point. For example, "(4)" is paragraph 4 and "(c)" is point (c).
+   * Returns the subdivision of the first number in brackets after an article's number: a paragraph
+   * if it starts with a digit, else a point. For example, "(4)" is paragraph 4 and "(c)" is point
+   * (c).
    */
-  private static Level paragraphOrPoint(String bracket) {
+  private static Subdivision paragraphOrPoint(String bracket) {
     return Character.isDigit(bracket.charAt(1))
-        ? new Level("paragraph", bracket.substring(1, bracket.length() - 1))
-        : new Level("point", bracket);
+        ? new Subdivision("paragraph", bracket.substring(1, bracket.length() - 1))
+        : new Subdivision("point", bracket);
   }
 
   /**
-   * Returns whether the name of a place keeps the level {@code noun} {@code cited} that holds it,
-   * where the next level is numbered {@code number}. It does not keep the one annex of an act, or a
-   * level whose number starts the number of the next: point 6.8.1.6 is in chapter 6.
+   * Returns whether the name of a place keeps the subdivision {@code noun} {@code cited} that holds
+   * it, where the next subdivision is numbered {@code number}. It does not keep the one annex of an
+   * act, or a subdivision whose number starts the number of the next: point 6.8.1.6 is in chapter
+   * 6.
    */
   private static boolean holds(String noun, String cited, String number) {
     return !cited.isEmpty() && !number.startsWith(cited + ".") && !number.startsWith(cited + "-")

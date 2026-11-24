@@ -18,7 +18,7 @@ public interface Content {
    *
    * <ul>
    *   <li>If the same text is stored for the version and language already, nothing is written.
-   *   <li>If another text is stored, it is deleted, and the new text replaces it. This publishes
+   *   <li>If another text is stored, it is removed, and the new text replaces it. This publishes
    *       {@link TextReplaced}.
    *   <li>If no text is stored, this publishes {@link TextStored}.
    * </ul>
@@ -44,7 +44,7 @@ public interface Content {
    * refers to. Returns none if no such text is stored, or if the text has no occurrence {@code eId}
    * outside the kept deletions of a consolidation.
    */
-  Optional<PublicText.Extract> publicOccurrence(TextId text, String eId);
+  Optional<PublicText.OccurrenceWithFootnotes> publicOccurrence(TextId text, String eId);
 
   /**
    * Returns an occurrence in the public model. For example, an occurrence of a comparison, in which

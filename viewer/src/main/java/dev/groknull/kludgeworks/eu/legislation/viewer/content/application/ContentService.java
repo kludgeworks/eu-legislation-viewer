@@ -35,7 +35,7 @@ import org.springframework.transaction.annotation.Transactional;
  * <ul>
  *   <li>To store a text, the model writes it as JSON. If the SHA-256 of the JSON is the digest of
  *       the text kept for the version and language, nothing more is done. If not, the service
- *       outlines the text, deletes the text before it and keeps the new one.
+ *       outlines the text, removes the text before it and keeps the new one.
  *   <li>To read a text, the service reads its JSON and decodes it.
  *   <li>To outline a text, the service reads the outline that it kept when it stored the text. It
  *       keeps the outlines read last in the process. The decoded texts are not kept. A text whose
@@ -85,7 +85,7 @@ class ContentService implements Content {
       return kept.get().id();
     }
     var outline = Outlines.of(Decoder.element(json));
-    kept.ifPresent(old -> store.delete(old.id()));
+    kept.ifPresent(old -> store.remove(old.id()));
     var added =
         store.add(celex, language, converter, digest, outline, OutlinesVersion.value(), json);
     events.publishEvent(
@@ -142,9 +142,10 @@ class ContentService implements Content {
 
   @Override
   @Transactional(readOnly = true)
-  public Optional<PublicText.Extract> publicOccurrence(TextId text, String eId) {
+  public Optional<PublicText.OccurrenceWithFootnotes> publicOccurrence(TextId text, String eId) {
     var start = System.nanoTime();
-    var occurrence = read(text).flatMap(element -> PublicTexts.extract(element, eId));
+    var occurrence =
+        read(text).flatMap(element -> PublicTexts.occurrenceWithFootnotes(element, eId));
     LOG.debug(
         "Occurrence {} of text {} in the public model: {} in {} ms",
         eId,

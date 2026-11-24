@@ -8,7 +8,7 @@ import org.springframework.modulith.events.Externalized;
 /**
  * A version's text in a language was stored again with another content, for example because the
  * Publications Office republished its Formex, or by a new release of the converter. The old text is
- * deleted in the same transaction. A module that keeps something by the old text's identity deletes
+ * removed in the same transaction. A module that keeps something by the old text's identity removes
  * it.
  *
  * <p>It is broadcast to every instance on the {@code text} stream, so that the pages open on the

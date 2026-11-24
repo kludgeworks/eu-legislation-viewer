@@ -9,8 +9,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ApiSchemas;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.KeptDeletion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run;
@@ -149,11 +149,11 @@ class PublicTextsTest {
                 """
                     .formatted(NS)));
 
-    var extract = PublicTexts.extract(stored, "art_1").orElseThrow();
+    var extract = PublicTexts.occurrenceWithFootnotes(stored, "art_1").orElseThrow();
 
     assertThat(extract.occurrence().num()).isEqualTo("Article 1");
     assertThat(extract.footnotes()).extracting(PublicText.Footnote::eId).containsExactly("note_2");
-    assertThat(PublicTexts.extract(stored, "art_9")).isEmpty();
+    assertThat(PublicTexts.occurrenceWithFootnotes(stored, "art_9")).isEmpty();
   }
 
   @Test
@@ -240,7 +240,7 @@ class PublicTextsTest {
           occurrences(figure.description(), eIds);
         }
         case Quotation quotation -> occurrences(quotation.content(), eIds);
-        case Deleted deleted -> occurrences(deleted.content(), eIds);
+        case KeptDeletion deleted -> occurrences(deleted.content(), eIds);
         case Text _ -> {
           // Running text holds no occurrences
         }

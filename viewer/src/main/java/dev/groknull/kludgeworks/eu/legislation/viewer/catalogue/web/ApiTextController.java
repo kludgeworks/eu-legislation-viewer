@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
@@ -175,9 +174,8 @@ class ApiTextController {
         id ->
             content
                 .publicOccurrence(id, eId)
-                .map(extract ->
-                    HalModelBuilder.halModelOf(
-                            new OccurrenceModel(extract.occurrence(), extract.footnotes()))
+                .map(occurrence ->
+                    HalModelBuilder.halModelOf(occurrence)
                         .link(Link.of(occurrenceHref(text, eId)))
                         .link(text)
                         .link(schema("occurrence"))
@@ -281,16 +279,6 @@ class ApiTextController {
    * @param text the text, in the public model
    */
   record TextModel(String version, String celex, String language, PublicText text) {}
-
-  /**
-   * An occurrence of a text, as the API shows it.
-   *
-   * @param occurrence the occurrence, in the public model
-   * @param footnotes the footnotes that the occurrence refers to, in the order of the text
-   */
-  record OccurrenceModel(
-      PublicText.Occurrence occurrence,
-      @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Footnote> footnotes) {}
 
   /**
    * The outline of a text, as the API shows it.

@@ -38,15 +38,15 @@ public interface TextStore {
       String rules,
       byte[] json);
 
-  /** Deletes the text. */
-  void delete(TextId text);
+  /** Removes the text. */
+  void remove(TextId text);
 
   /**
-   * Deletes the texts of the version, in every language.
+   * Removes the texts of the version, in every language.
    *
-   * @return the texts deleted, by language
+   * @return the texts removed, by language
    */
-  Map<Language, TextId> delete(String celex);
+  Map<Language, TextId> remove(String celex);
 
   /** Returns the JSON of the text, if it is kept. */
   Optional<byte[]> json(TextId text);
