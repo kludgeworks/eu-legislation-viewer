@@ -23,12 +23,12 @@ public class TheAct {
     act = RecordedActs.act(id);
   }
 
-  @Given("its texts are built where the converter has a sample")
+  @Given("the viewer builds its texts where the converter has a sample")
   public void built() {
     texts = SampleTexts.of(act(), null);
   }
 
-  @Given("its texts are built where the converter has a sample, except the text of {day}")
+  @Given("the viewer builds its texts where the converter has a sample, except the text of {day}")
   public void builtExcept(LocalDate day) {
     texts = SampleTexts.of(act(), day);
   }

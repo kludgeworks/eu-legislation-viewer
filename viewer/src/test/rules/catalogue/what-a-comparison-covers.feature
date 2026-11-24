@@ -85,7 +85,7 @@ Feature: What a comparison covers
 
     Example: An act that the text tags before Cellar lists it
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar lists Corrigendum 5 to 767/2008 for the version of 29 December 2017
       And the acts between the versions of 18 October 2013 and of 29 December 2017 include 2017/2226
       And the acts between the versions of 18 October 2013 and of 29 December 2017 include Corrigendum 5 to 767/2008

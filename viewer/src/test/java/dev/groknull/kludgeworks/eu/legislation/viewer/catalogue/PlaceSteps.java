@@ -63,8 +63,8 @@ public class PlaceSteps {
         .containsOnly(Optional.empty());
   }
 
-  @Then("in the text of {day}, the change of {act} at {place} is held by {place}")
-  public void heldBy(LocalDate day, ActIdentifier act, Place place, Place holder) {
+  @Then("in the text of {day}, {place} holds the change of {act} at {place}")
+  public void heldBy(LocalDate day, Place holder, ActIdentifier act, Place place) {
     var text = text(day);
     assertThat(each(act, place, location -> location.in(text)))
         .as("%s at %s is not in the text of %s", act.cited(), place.words(), day)
@@ -74,7 +74,7 @@ public class PlaceSteps {
         .containsOnly(Optional.of(new Found(List.of(eId(text, holder)), true)));
   }
 
-  @Then("in the text of {day}, the change of {act} at {place} is held by no occurrence")
+  @Then("in the text of {day}, no occurrence holds the change of {act} at {place}")
   public void heldByNone(LocalDate day, ActIdentifier act, Place place) {
     var text = text(day);
     assertThat(each(act, place, location -> location.around(text)))
@@ -82,8 +82,9 @@ public class PlaceSteps {
         .containsOnly(Optional.empty());
   }
 
-  @Then("the change of {act} at Cellar's place {location} is named {}")
-  public void named(ActIdentifier act, Location location, String name) {
+  @Then("a page names the change of {act} at Cellar's place {string} as {string}")
+  public void named(ActIdentifier act, String code, String name) {
+    var location = new Location(code);
     var names =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
             .filter(each -> each.location().equals(location))

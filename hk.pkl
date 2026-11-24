@@ -148,7 +148,11 @@ local linters = new Mapping<String, Step> {
   // not fail on. A feature joins when it is written in it; when all have, the vale step takes their
   // warnings and this step goes
   ["vale_written"] = new Step {
-    glob = List("viewer/src/test/rules/comparison/who-made-a-change.feature")
+    glob =
+      List(
+        "viewer/src/test/rules/catalogue/places.feature",
+        "viewer/src/test/rules/comparison/who-made-a-change.feature",
+      )
     batch = true
     check =
       "alerts=$(vale --output=line {{files}}) || exit; [ -z \"$alerts\" ] || { echo \"$alerts\"; exit 1; }"

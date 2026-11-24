@@ -41,7 +41,7 @@ public record Place(String words) {
    * @param labels the English words of each code of the location, by the URI of its concept, as
    *     Cellar gives them. For example, "point" for {@code …/fd_370/PTA}.
    */
-  @BusinessRule(group = RuleGroup.PLACES, name = "a-place-is-named-as-eur-lex-names-it")
+  @BusinessRule(group = RuleGroup.PLACES, name = "a-page-names-a-place-as-eur-lex-does")
   public static Place named(String location, Map<String, String> labels) {
     var words =
         CODE.matcher(location)

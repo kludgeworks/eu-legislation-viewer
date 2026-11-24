@@ -47,7 +47,7 @@ Feature: The history of an act
 
     Example: The changes in the order of the text
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then the latest text that is built is the text of 1 October 2026
       And 2017/815 has 62 changes, and the first three, in the order of the text, are at:
         | annex point 1.0.3              |
@@ -56,7 +56,7 @@ Feature: The history of an act
 
     Example: Places that the latest text does not have stand where the occurrence that holds them is
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then in the order of the text, these changes of 2017/815 follow one another:
         | annex point 6.4.1.6 paragraph 2 |
         | annex point 6.5.4                |
@@ -123,12 +123,12 @@ Feature: The history of an act
 
     Example: The later text has the place
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then the occurrences of the change of 2022/1190 at article 79 paragraph 7 are article 79 paragraph 7 of the later text
 
     Example: Neither text has the place itself
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then the changes of 810/2009 show between the texts of 2 September 2008 and of 5 April 2010
       And the occurrences of the change of 810/2009 at article 9.4 are article 9 point 4 of the later text
 
@@ -160,7 +160,7 @@ Feature: The history of an act
 
     Background:
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
 
     Example: The changes of a provision and of the occurrence that holds it
       Then in the text of 12 October 2025, the acts that changed article 6 paragraph 2 are, newest first, 2024/1356, 2021/1152, 2021/1134, 2019/817
@@ -186,13 +186,13 @@ Feature: The history of an act
 
     Example: Two articles that the data names no act for
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then in the text of 1 August 2022, the data names no act for article 37a and article 37b
       And the first text with article 37a is the text of 1 August 2022
 
     Example: Without the text of the act as published
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample, except the text of 27 December 2018
+      And the viewer builds its texts where the converter has a sample, except the text of 27 December 2018
       Then in the text of 1 August 2022, the data names an act for each occurrence
 
   Rule: the-amending-acts-between-two-days · The amending acts between two days
@@ -215,7 +215,7 @@ Feature: The history of an act
 
     Example: The acts between two days that changed one provision
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then of the amending acts between 29 December 2017 and 12 June 2026, those that changed article 6 paragraph 2 in the text of 12 October 2025 are 2024/1356, 2021/1152, 2021/1134, 2019/817
 
   Rule: the-days-of-change · The days on which an amending act changes the act

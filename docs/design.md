@@ -89,7 +89,7 @@ its module.
 | corrigendum | A correction of an act. It is not an amending act. |
 | version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
 | provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
-| place | A subdivision of an act, named in words as EUR-Lex names it in "Subdivision concerned": each code of Cellar's location in the words of Cellar's table of subdivisions (fd_370), and each other word as Cellar writes it (`Place`, the rule a-place-is-named-as-eur-lex-names-it). For example: "article 114 paragraph 1 unnumbered paragraph 1", "annex point 1.3.1.1 point (g)". Cellar codes a place as a location, and the text knows it by an eId. |
+| place | A subdivision of an act, named in words as EUR-Lex names it in "Subdivision concerned": each code of Cellar's location in the words of Cellar's table of subdivisions (fd_370), and each other word as Cellar writes it (`Place`, the rule a-page-names-a-place-as-eur-lex-does). For example: "article 114 paragraph 1 unnumbered paragraph 1", "annex point 1.3.1.1 point (g)". Cellar codes a place as a location, and the text knows it by an eId. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
 | the law on a day | What applies on that day. It is not always the text of a version (`LawOnADay`). |
 

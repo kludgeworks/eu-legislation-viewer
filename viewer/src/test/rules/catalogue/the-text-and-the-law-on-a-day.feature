@@ -27,14 +27,14 @@ Feature: The text and the law on a day
 
     Example: A place that the text tags before Cellar's day
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 12 October 2025 for the change of 2017/2226 at article 10 paragraph 1 point (da)
       And 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
       And its divergence is at article 10 paragraph 1 point (da)
 
     Example: A provision that an act deletes, which the text keeps until the deletion applies, and tags only around it
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 15 October 2026 for the change of 2022/1190 at article 48 paragraph 9
       And 2022/1190 is a prospective amendment from the version of 1 August 2022, until it applies on 15 October 2026
       And its divergence is at article 48 paragraph 9
@@ -46,7 +46,7 @@ Feature: The text and the law on a day
 
     Example: A place date that is only the entry into force
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 11 January 2016 for the change of 2015/2426 at annex chapter 4 APP 4-B
       And a provision of 2015/2426 cannot apply from 11 January 2016
       And 2015/2426 applies from 29 February 2016
@@ -63,13 +63,13 @@ Feature: The text and the law on a day
 
     Example: A place date that is the version date
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 5 April 2010 for the change of 810/2009 at article 12.2
       And 810/2009 makes no divergence
 
     Example: Two places of an act that apply from the day of the version that tags them
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 29 December 2017 for the change of 2017/2226 at chapter III article 17a
       And 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
       But its divergence is not at chapter III article 17a
@@ -82,7 +82,7 @@ Feature: The text and the law on a day
 
     Example: An act that applies before the first version that includes it
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 1 June 2017 for the change of 2017/815 at annex point 4.1.3.1
       And 2017/815 is a pending amendment from 1 June 2017, until the version of 7 June 2017 includes it
       And its divergence is at annex point 4.1.3.1
@@ -98,7 +98,7 @@ Feature: The text and the law on a day
 
     Example: A point that an act inserts
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then Cellar gives 1 June 2017 for the change of 2017/815 at annex point 4.1.3.4
       And the text of 29 February 2016 does not have the place of the change of 2017/815 at annex point 4.1.3.4
       And 2017/815 is a pending amendment from 1 June 2017, until the version of 7 June 2017 includes it
@@ -110,7 +110,7 @@ Feature: The text and the law on a day
 
     Example: A version that includes 14 places of an act years before they apply
       Given the act 767/2008 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
       And its divergence is at 14 places
       And on 28 December 2017, 2017/2226 does not make the text and the law differ
@@ -136,7 +136,7 @@ Feature: The text and the law on a day
 
     Example: An act whose provisions give no answer, because a text is not built
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then 2021/255 applies from 11 March 2021
       And 2021/255 is a pending amendment from 11 March 2021, until the version of 15 March 2021 includes it
       And its divergence is at no place
@@ -154,7 +154,7 @@ Feature: The text and the law on a day
 
     Example: An act whose day of application a clause sets
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then the date of application of 2021/1133 is a placeholder
       And 2021/1133 is an undated pending amendment from 2 August 2021
       And its divergence is at article 50a
@@ -164,12 +164,12 @@ Feature: The text and the law on a day
 
     Example: A text that is not built
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample, except the text of 1 August 2022
+      And the viewer builds its texts where the converter has a sample, except the text of 1 August 2022
       Then 2021/1133 makes no divergence
 
     Example: An act that a version includes
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then the date of application of 2019/413 is a placeholder
       And 2019/413 makes no divergence
 
@@ -198,12 +198,12 @@ Feature: The text and the law on a day
 
     Example: The act itself, an undated pending amendment and a prospective amendment
       Given the act 2018/1862 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then on 1 August 2022, the text is not the law for 2018/1862, 2021/1133, 2022/1190
 
     Example: A pending amendment
       Given the act 2015/1998 as Cellar has it
-      And its texts are built where the converter has a sample
+      And the viewer builds its texts where the converter has a sample
       Then on 3 June 2017, the text is not the law for 2017/815
       And on 7 June 2017, the text is the law
 

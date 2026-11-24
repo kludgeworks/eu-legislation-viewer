@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
-# ste.SentenceLength (ASD-STE100 rule 6.3, 25 words in a description), with each number, act and
-# provision one word, as a reader reads it: 2021/255, 6.8.5.5, 3(1)(9a), Cellar's
+# ste.SentenceLength (ASD-STE100 rule 6.3, 25 words in a description), with each date, number, act
+# and provision one word, as a reader reads it: 29 February 2016, 2021/255, 6.8.5.5, 3(1)(9a)
 extends: occurrence
 message: "Sentence has more than 25 words; split it (STE 6.3)."
 level: warning
 scope: sentence
 max: 25
-token: \w[\w./()'’-]*
+token: '[0-3]?[0-9] (?:January|February|March|April|May|June|July|August|September|October|November|December) [0-9]{4}|\w[\w./()''’-]*'
