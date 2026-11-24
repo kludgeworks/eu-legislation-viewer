@@ -213,6 +213,7 @@ p.norm {
  * comes after any tag. For example, "1.  For the purposes …". Two spaces follow the
  * number in a consolidated version, and three in an act as published. What follows starts from the
  * margin. A number that a list or a table follows keeps a line of its own. */
+/* stylelint-disable-next-line selector-max-compound-selectors */
 .occurrence-paragraph:has(
   > .num + p,
   > .num + .occurrence-subparagraph > :is(p:first-child, .tag:first-child + p)
@@ -221,6 +222,7 @@ p.norm {
   text-align: justify;
 }
 
+/* stylelint-disable-next-line selector-max-compound-selectors */
 .occurrence-paragraph
   > .num:has(
     + p,
@@ -237,6 +239,7 @@ p.norm {
   display: inline;
 }
 
+/* stylelint-disable-next-line selector-max-compound-selectors */
 .occurrence-paragraph
   > .num:has(
     + p,
@@ -245,6 +248,7 @@ p.norm {
   margin-inline-end: 0.5em;
 }
 
+/* stylelint-disable-next-line selector-max-compound-selectors */
 .legal-text:not(.legal-text-consolidated)
   .occurrence-paragraph
   > .num:has(
