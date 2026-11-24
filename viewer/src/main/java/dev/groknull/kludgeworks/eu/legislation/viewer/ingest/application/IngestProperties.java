@@ -14,9 +14,11 @@ import org.springframework.validation.annotation.Validated;
  * @param workers how many jobs an instance runs at once, on the executor of {@link JobRunner}. The
  *     other jobs wait their turn.
  * @param takeover how long a job may run before another worker may start it again. After this time,
- *     the first worker is taken to have stopped. It must be longer than the slowest conversion.
+ *     the first worker is taken to have stopped. It must be longer than the slowest conversion. The
+ *     slowest of the corpus took 43 minutes.
  * @param maxAttempts how many times a job is tried before it fails
- * @param maxConversions how many conversions run at once, in {@code FormexConversion}
+ * @param maxConversions how many conversions run at once, in {@code FormexConversion}. The largest
+ *     takes about 1 GB of heap: the 87 MB file of 2016/2070.
  */
 @ConfigurationProperties("viewer.ingest")
 @Validated

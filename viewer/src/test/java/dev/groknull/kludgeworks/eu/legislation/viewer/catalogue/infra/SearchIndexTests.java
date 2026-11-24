@@ -252,7 +252,7 @@ class SearchIndexTests {
     database.update(
         """
         insert into catalogue_search_expression
-        select celex,'ENG','Aviation','Aviation','{}',to_tsvector('simple','185/2010')
+        select celex,'ENG','Aviation','Aviation','{}',setweight(to_tsvector('simple','185/2010'),'A')
         from catalogue_search_work where celex in ('32010R0185','32010D0185','32015R1998')
         """);
     assertThat(search.identified("185/2010")).isEmpty();

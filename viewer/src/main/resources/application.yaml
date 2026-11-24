@@ -1,45 +1,28 @@
 # SPDX-License-Identifier: MIT
 server:
-  # links at the host and path a proxy forwards (X-Forwarded-*, Forwarded), read by Spring itself
   forward-headers-strategy: framework
-  # gzip for the pages, fragments, stylesheets and scripts. A comparison's Changes of thousands of
-  # differences is tens of MB of HTML, and under 1 MB gzipped: its sidenotes and tables repeat. The
-  # default types leave out text/event-stream, so the SSE pushes are not held in a gzip buffer.
   compression:
     enabled: true
 
 spring:
   application:
-    # the service in logs, traces and metrics
     name: viewer
   profiles:
-    # one profile per concern (application-<profile>.yaml), grouped by where the app runs; without a
-    # profile (tests, running locally) logs are plain text
     group:
-      # a deployment: SPRING_PROFILES_ACTIVE=prod
       prod:
         - json-logs
-  # requests and conversions on virtual threads: they mostly wait on Cellar
   threads:
     virtual:
       enabled: true
   task:
     execution:
-      # Boot's executor (applicationTaskExecutor: the listeners', Cellar's reads) alongside ingest's
-      # workers, which would otherwise stand in for it
       mode: force
   data:
     redis:
-      # Valkey: a cache that does not answer is skipped (CachingConfiguration), but only when its
-      # command ends. Lettuce's default is 60 s, which can hold a text's request for a minute. The
-      # timeout is longer than the poll of the broadcast's streams (BroadcastConfiguration.POLL),
-      # which blocks for its whole time
       connect-timeout: 2s
       timeout: 5s
   http:
     clients:
-      # every RestClient Boot builds, so Cellar's: to open a connection, and for a response, since
-      # large SPARQL results take minutes; redirects followed (Cellar's 303s)
       connect-timeout: 10s
       read-timeout: 5m
   web:
@@ -47,56 +30,36 @@ spring:
       chain:
         strategy:
           content:
-            # each asset's URL with a hash of its content in it (/css/viewer-<hash>.css, the pages'
-            # links: Frame.Assets), so a page never runs a copy a browser kept from before it changed
             enabled: true
             paths: /**
       cache:
         cachecontrol:
-          # and so kept as long as a browser likes: a change is a new URL
           max-age: 365d
           cache-public: true
   mvc:
-    # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:
       enabled: true
-    # the version of the API: a major number, in the media type that a client accepts
-    # (Accept: application/hal+json;version=1). A request without one gets the default. A breaking
-    # change makes a new version, and a controller method serves it with @GetMapping(version = "2")
     apiversion:
       use:
         media-type-parameter:
           "[application/hal+json]": version
       supported: 1
       default: 1
-  # the store: Postgres at spring.datasource.* (locally a container: TestcontainersConfiguration)
   jooq:
     sql-dialect: postgres
   flyway:
-    # a migration named as Flyway can't run it stops the app: one the release didn't name
-    # (NEXT_001__description.sql), which only development and the tests run (PendingMigrations)
     validate-migration-naming: true
   modulith:
     runtime:
-      # each module's migrations in db/migration/<module>, with its own history table; what the whole
-      # app shares (the event publication registry) in db/migration/__root
       flyway-enabled: true
     events:
-      # a completed publication is deleted, not kept: nothing reads them, so nothing has to purge them
       completion-mode: delete
-      # an outstanding publication is not handed out again on starting: with several instances, one
-      # may still be running it; a publication its instance stopped before finishing is failed once
-      # stale, and handed out again like any failed one (EventsConfiguration)
       republish-outstanding-events-on-restart: false
       staleness:
-        # waiting its turn (an ingest job, behind the instance's others), or being worked on: longer
-        # than the slowest conversion, and longer than viewer.ingest.takeover, so that a job run
-        # again is one its worker stopped
         published: 2h
         processing: 1h
         resubmitted: 1h
       jdbc:
-        # its table is a migration (db/migration/__root), not created by Modulith on startup
         schema-initialization:
           enabled: false
 
@@ -104,67 +67,47 @@ management:
   endpoints:
     web:
       exposure:
-        # the modules and their dependencies (Spring Modulith's insight) beside health
         include: health,info,modulith
   tracing:
     sampling:
-      # every request traced: little traffic, and a first read spans request, job and root swap
       probability: 1.0
 
 gg:
   jte:
-    # the templates as jte_library precompiled them (//viewer/src/main/jte): no jte compiler at run time
     use-precompiled-templates: true
 
 viewer:
   catalogue:
-    # the search index, built from Cellar once a day after 02:00 UTC (SearchRebuild): every instance
-    # checks each hour, from an hour after it starts, and one builds while the others skip
     search:
       start-delay: 1h
       check-every: 1h
-    # how the held acts are kept as Cellar has them: one instance asks Cellar what changed (one SPARQL
-    # query), and each held act that changed is read again once it is quiet
+      tuning:
+        typo-threshold: 0.60
+        weights:
+          number-or-name: 1.0
+          subject: 0.6
+          title-and-topics: 0.15
+        not-in-force: 0.5
     changes:
       every: 5m
-      # read again before the latest change read: a change shows up to 18 minutes after its date
       overlap: 30m
-      # a held act is read again no sooner than this after its latest change: Cellar shows a change
-      # 4 to 18 minutes after its date
       lag: 20m
-      # a new consolidation reaches its languages 7 to 10 minutes apart
       quiet: 10m
       at-most: 60m
-      # a work that Cellar deletes and ingests again comes back within minutes
       withdrawn-after: 30m
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
-    # where Cellar's resource URIs start (…/resource/celex/32015R1998)
     resources: http://publications.europa.eu/resource/
-    # sent with every request: who we are and where to reach us
     user-agent: kludgeworks-viewer/0.0 (+https://kludgeworks.groknull.dev)
-    # a SPARQL result with this many rows may have been cut off by the endpoint
     max-rows: 1000000
   ingest:
-    # how many conversions run at once, the others waiting their turn: the largest takes about 1 GB
-    # of heap (2016/2070's 87 MB file)
     max-conversions: 2
-    # how many jobs an instance runs at once: each mostly converting, so no more than conversions
     workers: 2
-    # how long a job may run before another worker may start it again, its own taken to have stopped:
-    # longer than the slowest conversion (the corpus's took 43 minutes)
     takeover: 50m
-    # how often a job is tried before it fails: refusals (no Formex, not a legal act) fail at once
     max-attempts: 3
   content:
     outline-cache:
-      # how many outlines an instance keeps in its heap, the texts read last: an outline is about
-      # 100 KB of JSON (at most 500 KB), so a few hundred take tens of MB
       size: 200
   legaltext:
     html-cache:
-      # how long Valkey keeps the HTML of a text, or of a run of its occurrences (a fold), after it is
-      # rendered. Its key names the release and the text, so nothing in it is ever wrong: the TTL
-      # only frees what is no longer read. Valkey's maxmemory and maxmemory-policy (allkeys-lru) are its own
-      # configuration, not the app's: without them, Valkey only drops what has expired
       ttl: 7d

@@ -33,7 +33,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Routi
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.CatalogueSearchAmendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import dev.groknull.kludgeworks.jooq.postgres.RankWeights;
 import dev.groknull.kludgeworks.jooq.postgres.TsQuery;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
@@ -66,14 +65,11 @@ import org.springframework.transaction.support.TransactionOperations;
 class PostgresSearch implements Search {
   private static final Logger LOG = LoggerFactory.getLogger(PostgresSearch.class);
 
-  /** How like a run of words of a title the typed words must be to match it with typos. */
-  private static final BigDecimal TYPO_THRESHOLD = new BigDecimal("0.60");
-
-  /** The text search configuration that the index of acts is built with. */
+  /**
+   * The text search configuration that the index of acts is built with. It must be the one of the
+   * migration that builds {@code search_tsv}, so it is not a property of {@link SearchTuning}.
+   */
   private static final String ENGLISH = "english";
-
-  /** The weight of each class of word in a rank: D, C, B and A. */
-  private static final RankWeights WEIGHTS = new RankWeights(0.05f, 0.15f, 0.6f, 1.0f);
 
   // The columns of the matches, as the subqueries of the search name them.
   private static final Field<ActIdentifier> CELEX =
@@ -95,12 +91,15 @@ class PostgresSearch implements Search {
   private final TransactionOperations transactions;
 
   private final ObservationRegistry observations;
+  private final SearchTuning tuning;
 
   PostgresSearch(
       DSLContext catalogue,
       Sparql sparql,
       TransactionOperations transactions,
-      ObservationRegistry observations) {
+      ObservationRegistry observations,
+      SearchTuning tuning) {
+    this.tuning = tuning;
     this.observations = observations;
     this.catalogue = catalogue;
     this.transactions = transactions;
@@ -184,7 +183,8 @@ class PostgresSearch implements Search {
         transactions.execute(status -> {
           catalogue
               .setLocal(
-                  unquotedName("pg_trgm", "word_similarity_threshold"), inline(TYPO_THRESHOLD))
+                  unquotedName("pg_trgm", "word_similarity_threshold"),
+                  inline(tuning.typoThreshold()))
               .execute();
           return read(local(query), query.size(), observation);
         }));
@@ -277,8 +277,7 @@ class PostgresSearch implements Search {
    * Returns the acts of the kind of {@code query} that match {@code words}, with their score: by
    * their words, or, for {@code typo}, by the likeness of {@code typed} to their title.
    */
-  private static SelectConditionStep<
-          Record6<ActIdentifier, Boolean, Boolean, Boolean, Boolean, Float>>
+  private SelectConditionStep<Record6<ActIdentifier, Boolean, Boolean, Boolean, Boolean, Float>>
       scored(Query query, String typed, boolean typo, Field<TsQuery> words) {
     var work = CATALOGUE_SEARCH_WORK;
     var expression = CATALOGUE_SEARCH_EXPRESSION;
@@ -288,10 +287,10 @@ class PostgresSearch implements Search {
     var score =
         typo
             ? Routines.wordSimilarity(val(typed), expression.SUBSTANTIVE_TITLE).times(cited)
-            : rankCd(WEIGHTS, expression.SEARCH_TSV, words, 32)
+            : rankCd(tuning.weights().rank(), expression.SEARCH_TSV, words, 32)
                 .times(cited)
                 .times(
-                    when(work.IN_FORCE.isFalse(), inline(new BigDecimal("0.5")))
+                    when(work.IN_FORCE.isFalse(), inline(tuning.notInForce()))
                         .otherwise(inline(BigDecimal.ONE)));
     var number =
         concat(work.ACT_YEAR.cast(VARCHAR), inline("/"), work.NATURAL_NUMBER.cast(VARCHAR));

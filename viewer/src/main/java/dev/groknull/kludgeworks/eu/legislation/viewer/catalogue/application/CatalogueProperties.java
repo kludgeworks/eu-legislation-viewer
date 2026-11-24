@@ -26,11 +26,13 @@ record CatalogueProperties(@NotNull @Valid Changes changes) {
    *     it.
    * @param lag how long after its date Cellar shows a change, at most. A held act is read again no
    *     sooner than this after its latest change, so that the read has every change it was told of.
-   * @param quiet how long after its latest change a held act is read again
+   * @param quiet how long after its latest change a held act is read again. A new consolidation
+   *     reaches its languages 7 to 10 minutes apart.
    * @param atMost how long after its first change a held act is read again, at most, if it keeps
    *     changing
    * @param withdrawnAfter how long apart two reads that do not have a version are, at least, before
-   *     the version is withdrawn
+   *     the version is withdrawn. A work that Cellar deletes and ingests again comes back within
+   *     minutes.
    */
   record Changes(
       @NotNull Duration every,
