@@ -902,10 +902,10 @@ uv = { path = ".mise/locks/pipx-reuse/6.3.0~068c1fb0", digest = "sha256:0c27f748
 extras = "charset-normalizer"
 
 [[tools."pipx:semgrep"]]
-version = "1.182.1"
+version = "1.186.0"
 backend = "pipx:semgrep"
-specifiers = ["1.182.1"]
-uv = { path = ".mise/locks/pipx-semgrep/1.182.1", digest = "sha256:ee0b7825d8888e901dd30eb006f2afa37baea9a3887e6d9e4e14e811c76919ad" }
+specifiers = ["1.186.0"]
+uv = { path = ".mise/locks/pipx-semgrep/1.186.0", digest = "sha256:cce4f36832fe3ee7ebd74ebeeae6f4cc38ec09209f25e23d9ff378d658b3a87f" }
 
 [[tools."pipx:sqlfluff"]]
 version = "4.5.0"
