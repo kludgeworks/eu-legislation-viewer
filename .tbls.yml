@@ -42,7 +42,6 @@ viewpoints:
       - catalogue_search_stage_work
       - catalogue_search_work
       - change_scan
-      - expression
       - preparation
       - preparation_entry
       - text_progress
