@@ -4,10 +4,15 @@ Feature: What counts as a difference, and how its edits show
   that an act inserted and the words that it deleted: the edits.
 
   Rule: one-difference-for-each-occurrence · One difference for each occurrence
-    A difference is an occurrence that is inserted, deleted, or whose own words changed: its
-    number, its heading, its blocks that are not in an occurrence of their own, and the footnotes
-    that it refers to. An occurrence in it is a difference of its own. An inserted or deleted
-    occurrence is one difference, with the occurrences in it.
+    A difference is an occurrence that the comparison shows as inserted or deleted, or whose own
+    words changed. The own words of an occurrence are these:
+    - its number
+    - its heading
+    - its blocks that are not in an occurrence of their own
+    - the footnotes that it refers to
+
+    An occurrence in it is a difference of its own. An inserted or deleted occurrence is one
+    difference, with the occurrences in it.
 
     Example: A point does not differ where only a point in it changed
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
@@ -83,8 +88,9 @@ Feature: What counts as a difference, and how its edits show
       Then annex I point 1.13.3 does not differ
 
   Rule: kept-deletion-is-not-words · A kept deletion is not words of the law
-    The words that a consolidated text keeps of a deletion, marked as deleted, are not words of the
-    law. So a word that an act deleted is deleted, though the text still keeps it.
+    A consolidated text can keep the words of a deletion, with the mark of a deletion. These words
+    are not words of the law. So the comparison shows a word that an act deleted as deleted, though
+    the text still keeps it.
 
     Example: A word deleted, which the later text keeps as a kept deletion
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
@@ -92,11 +98,11 @@ Feature: What counts as a difference, and how its edits show
       Then it deletes "or"
 
   Rule: footnotes-belong-to-their-occurrence · Footnotes belong to their occurrence
-    A footnote is compared with the occurrence that refers to it, through the reference and not
-    by its number. So an occurrence whose footnote has another number, with the same words, does
+    The comparison compares a footnote with the occurrence that refers to it, through the
+    reference and not by its number. So an occurrence whose footnote has another number, with the same words, does
     not differ. A footnote that differs shows under its occurrence, with its edits.
 
-    Example: An occurrence that refers to a footnote that was inserted
+    Example: An occurrence that refers to an inserted footnote
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       When the reader reads the difference at the changed point 6.3.1.5
       Then it shows the footnotes that it refers to, under it, with their edits
@@ -141,12 +147,12 @@ Feature: What counts as a difference, and how its edits show
     Example: An inserted paragraph
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
       When the reader reads the difference at the inserted article 100 paragraph 3
-      Then all its words are inserted
+      Then it inserts all its words
 
     Example: A deleted point
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
       When the reader reads the difference at the deleted point 12.9.3.14
-      Then all its words are deleted
+      Then it deletes all its words
 
   Rule: replaced-phrase · A replaced phrase
     A replaced phrase reads as one deletion and one insertion, not as a deletion and an insertion
@@ -165,8 +171,8 @@ Feature: What counts as a difference, and how its edits show
       Then it inserts "Republic of Serbia, in regard to Belgrade Nikola Tesla Airport"
 
   Rule: formula-is-one-piece · A formula is one piece
-    A formula is compared whole, not symbol by symbol: its symbols alone do not read. An inserted
-    formula shows inserted whole.
+    The comparison compares a formula whole, not symbol by symbol: its symbols alone do not read.
+    An inserted formula shows inserted whole.
 
     Example: A formula inserted in an article
       Given the texts of Decision 2005/7 as adopted and of 15 October 2013
@@ -174,8 +180,8 @@ Feature: What counts as a difference, and how its edits show
       Then it inserts a formula whole
 
   Rule: deleted-text-stands-where-it-was · Deleted text stands where it was
-    A deleted block or occurrence shows where it stood in the earlier text, before what was
-    inserted in its place.
+    A deleted block or occurrence shows where it stood in the earlier text, before the insertion
+    in its place.
 
     Example: A deleted paragraph before the points inserted in its place
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
@@ -190,4 +196,4 @@ Feature: What counts as a difference, and how its edits show
     Example: A deleted point before the occurrence inserted in its place
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
       When the reader reads the difference at the deleted article 23 paragraph 1 point (e)
-      Then the next difference is inserted, in article 23 paragraph 1
+      Then the next difference is an inserted occurrence in article 23 paragraph 1

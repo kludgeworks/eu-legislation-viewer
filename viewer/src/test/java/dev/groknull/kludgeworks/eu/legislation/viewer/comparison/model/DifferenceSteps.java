@@ -122,9 +122,9 @@ public class DifferenceSteps {
         .isTrue();
   }
 
-  @Then("all its words are {word}")
+  @Then("it {word} all its words")
   public void allWords(String how) {
-    var mark = how.equals("inserted") ? INSERTED : DELETED;
+    var mark = how.equals("inserts") ? INSERTED : DELETED;
     var runs = runs(difference().shown());
     assertThat(
             runs.stream()
@@ -265,7 +265,7 @@ public class DifferenceSteps {
     assertThat(wholeFormulas(difference().shown())).as("the formulas inserted whole").isPositive();
   }
 
-  @Then("the next difference is inserted, in {place}")
+  @Then("the next difference is an inserted occurrence in {place}")
   public void next(Place place) {
     var differences = compared().differences();
     var at = differences.indexOf(difference());
