@@ -182,7 +182,7 @@ Feature: What counts as a difference, and how its edits show
 
   Rule: deleted-text-stands-where-it-was · Deleted text stands where it was
     A deleted block or occurrence shows where it stood in the earlier text, before the insertion
-    in its place.
+    in its place. Each view of the comparison shows it there.
 
     Example: A deleted paragraph before the points inserted in its place
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
@@ -198,3 +198,13 @@ Feature: What counts as a difference, and how its edits show
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
       When the reader reads the difference at the deleted article 23 paragraph 1 point (e)
       Then the next difference is an inserted occurrence in article 23 paragraph 1
+
+    Example: A deleted point that stood first in its paragraph
+      Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
+      When the reader reads the difference at the deleted article 23 paragraph 1 point (a)
+      Then it stands first in article 23 paragraph 1
+
+    Example: A deleted point after the point before it
+      Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
+      When the reader reads the difference at the deleted article 2 paragraph 5 point (24)
+      Then it stands after article 2 paragraph 5 point (23)

@@ -546,6 +546,7 @@ class AttributedTest {
         List.of(),
         tags,
         earlier,
+        null,
         null);
   }
 

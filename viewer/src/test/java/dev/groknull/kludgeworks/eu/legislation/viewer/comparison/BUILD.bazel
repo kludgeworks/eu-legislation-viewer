@@ -401,27 +401,3 @@ java_junit5_test(
         "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
-
-# Where the Whole text puts a deleted provision: where it stood in the earlier text, after the
-# nearest provision before it that the later text still has. On the converter's samples
-java_junit5_test(
-    name = "WholeTextTest",
-    size = "small",
-    srcs = ["web/WholeTextTest.java"],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.WholeTextTest",
-    runtime_deps = [
-        "@maven//:org_junit_jupiter_junit_jupiter_engine",
-        "@maven//:org_junit_platform_junit_platform_launcher",
-        "@maven//:org_junit_platform_junit_platform_reporting",
-    ],
-    deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:web",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
-        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
-        "@maven//:org_assertj_assertj_core",
-        "@maven//:org_junit_jupiter_junit_jupiter_api",
-    ],
-)

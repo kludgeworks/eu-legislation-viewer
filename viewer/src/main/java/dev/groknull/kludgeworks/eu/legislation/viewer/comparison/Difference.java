@@ -72,6 +72,10 @@ import org.jspecify.annotations.Nullable;
  * @param whole the size of an annex inserted whole, if the store keeps the annex apart from the
  *     comparison. Then {@code shown} is only its opening, and {@link Comparisons#difference} gives
  *     it whole. Null if {@code shown} is the whole occurrence.
+ * @param stands where a deleted occurrence stands in the later text, which does not have it: where
+ *     it stood in the earlier text (the rule deleted-text-stands-where-it-was). Null for an
+ *     inserted or changed occurrence, and for a deleted occurrence that stands at the end of the
+ *     text.
  */
 @ValueObject
 @RecordBuilder
@@ -89,7 +93,8 @@ public record Difference(
     List<Context> context,
     List<Tag> tags,
     List<Tag> earlierTags,
-    @Nullable Whole whole) {
+    @Nullable Whole whole,
+    @Nullable Standing stands) {
 
   /** The children of an annex that are its opening, as {@link #kept} keeps them. */
   private static final Set<String> OPENING = Set.of("tag", "num", "heading", "subheading");
@@ -192,6 +197,15 @@ public record Difference(
       return own + element.children().stream().mapToLong(Whole::words).sum();
     }
   }
+
+  /**
+   * Where a deleted occurrence stands among the occurrences of the later text: beside one of them.
+   *
+   * @param eId the eId of the occurrence of the later text that it stands beside
+   * @param after whether it stands after that occurrence, with the occurrences in it, or before it
+   */
+  @ValueObject
+  public record Standing(String eId, boolean after) {}
 
   /** How a provision differs. */
   public enum Kind {

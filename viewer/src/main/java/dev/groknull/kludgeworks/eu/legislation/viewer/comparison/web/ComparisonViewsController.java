@@ -185,7 +185,6 @@ class ComparisonViewsController {
                       outline,
                       WholeText.of(
                           content.read(attributed.later()).orElseThrow(Requests::notFound),
-                          attributed.earlier().eIds(),
                           shown,
                           this.html,
                           each -> RowFoldLinks.of(each.difference().shown(), each.fragment(page)),

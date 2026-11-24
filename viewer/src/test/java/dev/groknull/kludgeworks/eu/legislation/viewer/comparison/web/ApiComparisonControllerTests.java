@@ -228,6 +228,7 @@ class ApiComparisonControllerTests {
         List.of(),
         List.of(new Tag("32019R0103", Modification.REPLACED, null)),
         List.of(),
+        null,
         null);
   }
 

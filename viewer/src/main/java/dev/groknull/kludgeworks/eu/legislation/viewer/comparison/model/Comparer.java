@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
 import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Standing;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import java.util.ArrayList;
@@ -48,7 +49,7 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
     for (var occurrence : in(before, was)) {
       var now = pairs.is(occurrence);
       if (now == null) {
-        deleted.get(place).add(deleted(occurrence, is));
+        deleted.get(place).add(deleted(occurrence, is, standing(later, place, is)));
       } else if (later.contains(now)) {
         place = later.indexOf(now) + 1;
       }
@@ -65,14 +66,37 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
 
   /**
    * Returns the occurrence {@code occurrence} of only the earlier text. It was in the later
-   * occurrence {@code in}.
+   * occurrence {@code in}, and it {@code stands} there.
    */
-  private ComparedOccurrence deleted(Occurrence occurrence, @Nullable Occurrence in) {
+  private ComparedOccurrence deleted(
+      Occurrence occurrence, @Nullable Occurrence in, @Nullable Standing stands) {
     var difference =
         whole(occurrence, before, Kind.DELETED, in == null ? null : in.eId())
             .earlierTags(Tags.of(occurrence, before))
-            .tags(Tags.deleted(occurrence, after, in));
+            .tags(Tags.deleted(occurrence, after, in))
+            .stands(stands);
     return ComparedOccurrence.of(occurrence, true, difference, null, List.of());
+  }
+
+  /**
+   * Returns where a deleted occurrence stands among {@code later}, the occurrences of the later
+   * occurrence {@code in}, if it comes at {@code place} among them: after the occurrence before
+   * that place. If it comes first, before the first occurrence. If {@code in} has none, after
+   * {@code in}. Null if it comes first among the outermost occurrences and the later text has none:
+   * at the end of the text.
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "deleted-text-stands-where-it-was")
+  private static @Nullable Standing standing(
+      List<Occurrence> later, int place, @Nullable Occurrence in) {
+    if (place > 0) {
+      return new Standing(later.get(place - 1).eId(), true);
+    }
+    if (!later.isEmpty()) {
+      return new Standing(later.getFirst().eId(), false);
+    }
+    return in == null ? null : new Standing(in.eId(), true);
   }
 
   /** Returns the occurrence {@code occurrence} of only the later text. */

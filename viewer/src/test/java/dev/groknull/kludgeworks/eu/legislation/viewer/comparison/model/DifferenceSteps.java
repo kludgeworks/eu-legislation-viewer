@@ -267,6 +267,24 @@ public class DifferenceSteps {
     assertThat(wholeFormulas(difference().shown())).as("the formulas inserted whole").isPositive();
   }
 
+  @Then("it stands first in {place}")
+  public void standsFirstIn(Place place) {
+    var stands = Objects.requireNonNull(difference().stands(), "it stands at the end of the text");
+    var later = Occurrences.of(comparing.later());
+    assertThat(stands.after()).as("before the first occurrence in it").isFalse();
+    assertThat(Objects.requireNonNull(later.byEId().get(stands.eId())).parent())
+        .as(stands.eId())
+        .isEqualTo(Comparing.eId(place, later));
+  }
+
+  @Then("it stands after {place}")
+  public void standsAfter(Place place) {
+    var stands = Objects.requireNonNull(difference().stands(), "it stands at the end of the text");
+    assertThat(stands)
+        .isEqualTo(
+            new Difference.Standing(Comparing.eId(place, Occurrences.of(comparing.later())), true));
+  }
+
   @Then("the next difference is an inserted occurrence in {place}")
   public void next(Place place) {
     var differences = compared().differences();

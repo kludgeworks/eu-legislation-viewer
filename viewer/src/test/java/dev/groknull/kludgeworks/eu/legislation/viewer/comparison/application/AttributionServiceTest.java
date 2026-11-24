@@ -127,6 +127,7 @@ class AttributionServiceTest {
         List.of(),
         List.of(tag),
         List.of(),
+        null,
         null);
   }
 
