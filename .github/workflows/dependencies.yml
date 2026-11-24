@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-name: Upgrade dependencies
+name: Dependencies
 
 on:
   schedule:
