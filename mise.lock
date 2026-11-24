@@ -746,10 +746,13 @@ checksum = "sha256:d2046d28c2c3dcd211ac5145c0bf30e2047ef9dfb306693c8c6e2eccd8b95
 url = "https://nodejs.org/dist/v24.22.1/node-v24.22.1-win-x64.zip"
 
 [[tools."npm:stylelint"]]
-version = "16.15.0"
-aube = { path = ".mise/locks/npm-stylelint/16.15.0", digest = "sha256:058582ebec0de7425fa1ee25beff978d6bc976684ab6b788daefde782660a1d8" }
+version = "16.26.1"
+aube = { path = ".mise/locks/npm-stylelint/16.26.1", digest = "sha256:1644fb6d0de8c2178208d99ddf8424aad483849254ce49222f878683f95a980e" }
 backend = "npm:stylelint"
-specifiers = ["16.15.0"]
+specifiers = ["16.26.1"]
+
+[tools."npm:stylelint".provenance]
+repository = "github.com/stylelint/stylelint"
 
 [[tools.osv-scanner]]
 version = "2.7.0"
