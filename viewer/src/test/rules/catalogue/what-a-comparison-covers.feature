@@ -6,8 +6,9 @@ Feature: What a comparison covers
   days, is in docs/design.md.
 
   Rule: the-days-when-the-reader-gives-none · The two days when the reader gives none
-    To is the first day of the version that applies on the day the reader asks, or of the latest
-    version if none applies on that day. From is the first day of the version before it. If the
+    To is the first day of the version that applies on the day that the reader asks. If no version
+    applies on that day, To is the first day of the latest version. From is the first day of the
+    version before it. If the
     version of To is the first version, From is its first day, and To is the first day of the
     version after it.
 
@@ -26,7 +27,7 @@ Feature: What a comparison covers
       When the reader gives no days on 1 December 2018
       Then the comparison is from 3 August 2021 to 1 August 2022
 
-  Rule: the-days-as-the-reader-gives-them · The days are kept as the reader gives them
+  Rule: the-days-as-the-reader-gives-them · The comparison keeps the days as the reader gives them
     A day that the reader gives stays as given: it need not be the first day of a version. If From
     is after To, the two days change places. Without From, From is the first day of the version
     before the version that applies on To. Without To, To is as when the reader gives no days.
@@ -47,12 +48,12 @@ Feature: What a comparison covers
       Then the comparison is from 29 February 2016 to 1 October 2026
 
   Rule: a-comparison-is-of-two-versions · A comparison is of two versions
-    The law on any two days is compared at the first days of the versions that apply on them. A
-    comparison is between the first days of two versions, the earlier first.
+    The viewer compares the law on any two days at the first days of the versions that apply on
+    them. A comparison is between the first days of two versions, the earlier first.
 
     Example: Two days compared at their versions
       Given the act 2015/1998 as Cellar has it
-      Then the law on 3 June 2017 and the law on 1 January 2022 are compared at the versions of 29 February 2016 and of 31 December 2021
+      Then the viewer compares the law on 3 June 2017 and on 1 January 2022 at the versions of 29 February 2016 and of 31 December 2021
 
     Example: The first days of two versions
       Given the act 2015/1998 as Cellar has it
@@ -77,11 +78,14 @@ Feature: What a comparison covers
       And in English, the version of 17 July 2013 is the consolidation
 
   Rule: the-acts-between-two-versions · The acts between two versions
-    The acts between two versions are the acts that the versions after From, up to and with To,
-    include, in the order of the versions. Corrigenda are among them. A version includes the acts
-    that Cellar lists for it, and the acts that its own text tags first: no earlier version
-    includes them, by Cellar's list or by the tags of an earlier text that is built. Where a text
-    is not built, only Cellar's list counts for it.
+    The acts between two versions are the acts that the versions after From include, up to and
+    with To, in the order of the versions. Corrigenda are among them. A version includes these
+    acts:
+    - the acts that Cellar lists for it
+    - the acts that its own text tags first: no earlier version includes them, by Cellar's list or
+      by the tags of an earlier text that the viewer builds
+
+    If the viewer does not build a text, only Cellar's list counts for it.
 
     Example: An act that the text tags before Cellar lists it
       Given the act 767/2008 as Cellar has it
@@ -90,7 +94,7 @@ Feature: What a comparison covers
       And the acts between the versions of 18 October 2013 and of 29 December 2017 include 2017/2226
       And the acts between the versions of 18 October 2013 and of 29 December 2017 include Corrigendum 5 to 767/2008
 
-    Example: A text that is not built
+    Example: A text that the viewer does not build
       Given the act 767/2008 as Cellar has it
       Then the acts between the versions of 18 October 2013 and of 29 December 2017 do not include 2017/2226
 
