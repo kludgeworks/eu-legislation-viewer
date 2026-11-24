@@ -15,11 +15,11 @@ Feature: The neighbours of a difference
         | 2026/449 | replaced     | point 1.2.2.3 |
 
   Rule: last-change-of-a-neighbour · What last made a neighbour as it is
-    Beside a neighbour, the Synopsis says what last made it as it is: the act that its tags name
-    and that was last (tagged-act-was-last), up to the later text. A corrigendum corrects and does
-    not change the act (corrigendum-corrects), so it is left out. If no such act is included, the
-    neighbour is as in the original act. It is dated from that act's dates, or from the original
-    act's.
+    Beside a neighbour, the Synopsis says what last made it as it is. That is the act that its tags
+    name and that was last (tagged-act-was-last), up to the later text. A corrigendum corrects and
+    does not change the act (corrigendum-corrects), so it does not count. If no text up to the
+    later text includes such an act, the neighbour is as in the original act. Its date comes from
+    the dates of that act, or of the original act.
 
     Example: The act that the texts include last, among the acts of the tags
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021

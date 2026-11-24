@@ -1,17 +1,24 @@
 # SPDX-License-Identifier: MIT
 Feature: The state on a day
-  The legal state of an act, or of one change that an amending act makes, on a day: not in force,
-  in force and does not apply yet, applies, applies in part, or not known. A change is an
-  amendment that changes the words of the English text. These rules use only the catalogue: the
-  dates of the acts and their amendments. They do not use the texts of the versions.
+  The legal state of an act, or of one change that an amending act makes, on a day. It is one of
+  these states:
+  - not in force
+  - in force and does not apply yet
+  - applies
+  - applies in part
+  - not known
+
+  A change is an amendment that changes the words of the English text. These rules use only the
+  catalogue: the dates of the acts and their amendments. They do not use the texts of the
+  versions.
 
   Rule: state-on-a-day · The state of an act, or of one change, on a day
     Before the entry into force of the act, it is not in force. If it applies from one day, it
     applies from that day. Before that day, it is in force and does not apply yet. For one change,
     the day is the day that Cellar gives for the changed place, if the act can apply from it.
 
-    If the act applies from more than one day, and Cellar gives no such day for the changed place,
-    the change does not apply yet before the first of these days. It applies from the last of them,
+    Some acts apply from more than one day. If Cellar gives no such day for the changed place, the
+    change does not apply yet before the first of these days. It applies from the last of them,
     unless a clause sets one more day that Cellar does not give. Between them, the state is not
     known.
 

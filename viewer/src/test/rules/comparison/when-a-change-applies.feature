@@ -4,8 +4,8 @@ Feature: From when a change applies
   date comes from the act's dates in Cellar.
 
   Rule: date-from-the-act · The date is the act's
-    The date of a change comes from the dates of the act that made it, never from the date of the
-    text that first has the change.
+    The date of a change comes from the dates of the act that made it. It never comes from the
+    date of the text that first has the change.
 
     Example: A change applies from its act's date, before the text that has it
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 7 June 2017
@@ -59,9 +59,9 @@ Feature: From when a change applies
       Then the sidenote says nothing of when it applies
 
   Rule: entry-into-force-only · Only an entry into force
-    An act whose only date is its entry into force applies from that day. A directive that has only
-    its entry into force is in force from that day, and the data does not say from when it applies:
-    the Member States apply it through their own measures. The acts that changed the clause that
+    An act whose only date is its entry into force applies from that day. A directive can have
+    only its entry into force. It is in force from that day. The data does not say from when it
+    applies: the Member States apply it through their own measures. The acts that changed the clause that
     sets the date moved the date, and the sidenote names them.
 
     Example: An act applies from its entry into force, which another act moved
@@ -76,8 +76,8 @@ Feature: From when a change applies
       Then it is in force from 5 October 2002, and the data does not say from when it applies
 
   Rule: corrigendum-corrects-from-the-start · A corrigendum corrects from the start
-    A corrigendum corrects its act from the start: from the earliest day from which the act
-    applies, or from its entry into force if the act has no day of application. The sidenote also
+    A corrigendum corrects its act from the start. The start is the earliest day from which the
+    act applies, or the entry into force if the act has no day of application. The sidenote also
     names the first text between the two days that has the corrigendum.
 
     Example: A corrigendum of an act with a day of application
@@ -94,9 +94,13 @@ Feature: From when a change applies
 
   Rule: change-that-does-not-apply-yet · A change that does not apply yet on the day
     A text can include the change of an act before the change applies. On a day before the change
-    applies, a difference at an occurrence that the change is at says so. It names the act and the
-    day. A difference says nothing of it where each change at its occurrence applies on the day:
-    a change of the same act that applies already, or a change by another act or a corrigendum.
+    applies, a difference says so if its occurrence has such a change
+    (changes-that-do-not-apply-yet). The difference names the act and the day.
+
+    A difference says nothing of it if its occurrence has no such change. For example, these
+    changes apply on the day:
+    - a change of the same act that applies already
+    - a change by another act or by a corrigendum
 
     Background:
       Given the comparison of the texts of 767/2008 of 18 October 2013 and of 29 December 2017

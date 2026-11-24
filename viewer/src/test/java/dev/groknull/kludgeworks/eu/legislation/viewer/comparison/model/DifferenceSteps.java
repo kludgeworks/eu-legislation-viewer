@@ -194,7 +194,9 @@ public class DifferenceSteps {
         .anyMatch(each -> each.startsWith(eId + "/"));
   }
 
-  @Then("each occurrence of the later text is placed once, in the order of the text")
+  @Then(
+      "the Differences view places each occurrence of the later text once, in the order of the"
+          + " text")
   public void placedOnce() {
     var occurrences = Occurrences.of(comparing.later());
     var placed = new ArrayList<String>();

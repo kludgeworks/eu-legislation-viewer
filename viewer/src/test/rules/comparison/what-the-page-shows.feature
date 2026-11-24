@@ -83,14 +83,16 @@ Feature: What the summary and the legend of a comparison say
         | no             | yes           | yes          |
 
   Rule: each-occurrence-once · Each occurrence of the later text once
-    The Differences view places each occurrence of the later text once, in the order of the text:
-    as a difference, as the opening of an occurrence that holds differences, or among the
-    occurrences that are the same in both texts, which a fold holds.
+    The Differences view places each occurrence of the later text once, in the order of the text.
+    It places the occurrence in one of these ways:
+    - as a difference
+    - as the opening of an occurrence that holds differences
+    - among the occurrences that are the same in both texts, which a fold holds
 
     Example: The text of 22 March 2026 against the text of 1 January 2026
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
-      Then each occurrence of the later text is placed once, in the order of the text
+      Then the Differences view places each occurrence of the later text once, in the order of the text
 
     Example: The text of 1 October 2026 against the text of 22 March 2026
       Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
-      Then each occurrence of the later text is placed once, in the order of the text
+      Then the Differences view places each occurrence of the later text once, in the order of the text

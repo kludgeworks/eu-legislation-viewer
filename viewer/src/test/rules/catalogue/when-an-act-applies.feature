@@ -2,9 +2,12 @@
 Feature: When an act applies
   When an act, or a provision of it, applies. These rules read the dates that Cellar types for
   each act: the dates of the act itself, of the acts that its versions include, and of the acts
-  that amend it. A date has its kind (the entry into force, the application, the day from which
-  the Member States apply a directive) and the clause that sets it. A date can be for a part of the
-  act only.
+  that amend it. Each date has these properties:
+  - its kind: the entry into force, the application, or the day from which the Member States apply
+    a directive
+  - the clause that sets it
+
+  A date can be for a part of the act only.
 
   Rule: whole-act-applies-from · The day from which a whole act applies
     An act applies from its date of application, or of taking effect, that is not for a part. If it
@@ -57,9 +60,9 @@ Feature: When an act applies
       And 2018/1862 applies from 7 March 2023
 
   Rule: a-day-the-act-can-apply-from · A provision applies only from a day that the act can apply from
-    A day is one that the act can apply from if it is one of the act's dates. It is not, if it is
-    only the entry into force and the whole act applies from another day, or from a day that Cellar
-    does not give.
+    The act can apply from a day if the day is one of the dates of the act. The entry into force
+    alone does not count if the whole act applies from another day, or from a day that Cellar does
+    not give.
 
     Example: One of the act's dates
       Given the act 2015/1998 as Cellar has it
@@ -80,8 +83,11 @@ Feature: When an act applies
 
   @revision-2
   Rule: a-later-act-amended-or-set-the-date · Dates that a later act amended or set are current
-    Cellar updates an act's dates when a later act amends them, and when a later act sets a day
-    that a clause of the act leaves to it. The date names that later act. Cellar names the two in
+    Cellar updates the dates of an act in two cases:
+    - A later act amends them.
+    - A later act sets a day that a clause of the act leaves to it.
+
+    The date names that later act. Cellar names the two in
     the same way. A later act that amends the act of the date amended the date. A later act that
     does not amend it set the day.
 
