@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
@@ -21,9 +22,9 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The history of an act on a day, or between two days: its own state, its amending acts with the
- * state of each, and its corrigenda. The rules are the act's: {@link Act#amendingActs}, {@link
- * Act#amendingActsBetween}, {@link Act#standingOn} and {@link Act#corrigendaOf}. This view puts
- * them into words.
+ * state of each, and its corrigenda. The rules are the act's: {@link ActHistory#amendingActs},
+ * {@link ActHistory#amendingActsBetween}, {@link ActHistory#standingOn} and {@link
+ * ActHistory#corrigendaOf}. This view puts them into words.
  *
  * <p>With one day, the rows are all the amending acts. With two days, the rows are the amending
  * acts between the days, and the state of each is its state on the second day. The comparison of
@@ -80,7 +81,7 @@ public record HistoryView(
   /**
    * Returns the history of {@code act} on {@code day}, in {@code language}. If {@code first} is
    * given, the history is of the two days {@code first} and {@code day}: the rows are the amending
-   * acts between them, as {@link Act#amendingActsBetween} gives them.
+   * acts between them, as {@link ActHistory#amendingActsBetween} gives them.
    *
    * @param first the first of two days, before {@code day}. Null for one day.
    * @param tags the tags of the texts of the act in {@code language} that are built. They tell
@@ -96,9 +97,10 @@ public record HistoryView(
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
     var kept = day.equals(today) ? null : day;
-    var amending = act.amendingActs(language);
+    var amending = ActHistory.of(act).amendingActs(language);
     var cited = act.cited(act.id());
-    var found = first == null ? null : act.amendingActsBetween(first, day, language, tags);
+    var found =
+        first == null ? null : ActHistory.of(act).amendingActsBetween(first, day, language, tags);
     var shown = found == null ? amending : found.orElseGet(List::of);
     return new HistoryView(
         cited
@@ -133,7 +135,7 @@ public record HistoryView(
         shown.stream().map(each -> row(act, eli, each, day, kept, past, language)).toList(),
         amending.size(),
         first == null ? null : Links.history(eli, kept, language),
-        act.corrigendaOf(act.id(), language).stream()
+        ActHistory.of(act).corrigendaOf(act.id(), language).stream()
             .map(each -> Corrigendum.of(act, each, language))
             .toList());
   }
@@ -154,10 +156,10 @@ public record HistoryView(
       @Nullable LocalDate kept,
       boolean past,
       Language language) {
-    var standing = act.standingOn(each, language, day);
+    var standing = ActHistory.of(act).standingOn(each, language, day);
     var state = standing.state();
     var counts = StateWording.counts(standing, past);
-    var changes = act.changesBy(each, language).size();
+    var changes = ActHistory.of(act).changesBy(each, language).size();
     var subject = Subject.of(act, each, language);
     return new Row(
         act.cited(each),
@@ -165,9 +167,9 @@ public record HistoryView(
         subject.language(),
         act.eurLex(each, language).toString(),
         journal(act, each),
-        StateWording.label(state, !act.datesOf(each).isEmpty(), past),
+        StateWording.label(state, !act.dates().datesOf(each).isEmpty(), past),
         StateWording.tone(state),
-        Wording.dates(each, act.applying(each, Set.of()).orElse(null)),
+        Wording.dates(each, act.dates().applying(each, Set.of()).orElse(null)),
         counts.isEmpty() ? null : counts,
         changes == 0 ? "Its changes" : changes == 1 ? "1 provision" : changes + " provisions",
         Links.amending(eli, each, kept, language));
@@ -191,7 +193,7 @@ public record HistoryView(
   static String own(Act act, LocalDate day, boolean past) {
     var id = act.id();
     var cited = act.cited(id);
-    var applying = act.applying(id, Set.of());
+    var applying = act.dates().applying(id, Set.of());
     var from =
         applying
             .map(
@@ -210,11 +212,12 @@ public record HistoryView(
                       case Applying.SetBy _, Applying.InForce _ -> "";
                     })
             .orElse("");
-    return switch (act.stateOn(id, Set.of(), day)) {
+    return switch (act.dates().stateOn(id, Set.of(), day)) {
       case NOT_IN_FORCE ->
           cited
               + (past ? " was not in force yet." : " is not in force yet.")
-              + act.entryIntoForce(id)
+              + act.dates()
+                  .entryIntoForce(id)
                   .map(first -> " Its entry into force is " + Dates.inWords(first) + ".")
                   .orElse("");
       case APPLIES -> cited + (past ? " applied." : " applies.") + from;
@@ -236,12 +239,12 @@ public record HistoryView(
    */
   private static String notKnown(Act act, LocalDate day, boolean past) {
     var id = act.id();
-    if (!act.appliesInPartOn(id, day)) {
+    if (!act.dates().appliesInPartOn(id, day)) {
       return (past ? " was in force." : " is in force.")
           + " The data does not give the day from which it applies.";
     }
     var inPart = past ? " applied in part." : " applies in part.";
-    var full = act.inFullAfter(day);
+    var full = act.dates().inFullAfter(day);
     if (full.isPresent()) {
       return inPart
           + " It applies in full from "
@@ -249,7 +252,7 @@ public record HistoryView(
           + Wording.clauseOn(act, id, full.get())
           + ".";
     }
-    var unknown = act.unknownDays();
+    var unknown = act.dates().unknownDays();
     return unknown.isEmpty()
         ? inPart
         : inPart
@@ -306,7 +309,7 @@ public record HistoryView(
 
     static Corrigendum of(Act act, ActIdentifier each, Language language) {
       var places =
-          act.changesBy(each, language).stream()
+          ActHistory.of(act).changesBy(each, language).stream()
               .map(change -> change.location().place().words())
               .filter(name -> !name.isEmpty())
               .distinct()

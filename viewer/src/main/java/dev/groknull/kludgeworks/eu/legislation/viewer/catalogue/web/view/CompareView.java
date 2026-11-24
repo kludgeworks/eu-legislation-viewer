@@ -2,8 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -31,9 +34,9 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>The acts are the amending acts that the text of the To day includes and the text of the From
- * day does not, {@link Act#integratedBetween} and {@link Act#amendingActs}. For one provision, they
- * are those of them that changed the provision, {@link Act#historyOf}. The line leaves out the
- * corrigenda, and the acts that change only the text in other languages.
+ * day does not, {@link Act#integratedBetween} and {@link ActHistory#amendingActs}. For one
+ * provision, they are those of them that changed the provision, {@link ProvisionHistory#of}. The
+ * line leaves out the corrigenda, and the acts that change only the text in other languages.
  *
  * <p>For one provision, the page also lists the steps between the two days, oldest first: one line
  * for each change, as the history of the provision on Read has it ({@link ProvisionView}). A link
@@ -68,7 +71,7 @@ public record CompareView(
   /**
    * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
    * for {@code act}, on {@code today}. {@code from} and {@code to} are the versions whose texts
-   * show the law on the two days, {@link Act#textOn}.
+   * show the law on the two days, {@link LawOnADay#textOn}.
    *
    * @param occurrence the eId of the provision that the page is limited to, or null
    * @param tags the tags of the built texts in {@code language}, by version
@@ -84,7 +87,7 @@ public record CompareView(
       LocalDate today,
       Map<Version, TextTags> tags) {
     var eli = eli(act);
-    var amending = act.amendingActs(language);
+    var amending = ActHistory.of(act).amendingActs(language);
     var between =
         act.inclusions(language, tags).between(from, to).stream()
             .filter(amending::contains)
@@ -97,7 +100,7 @@ public record CompareView(
     var changed =
         text == null || occurrence == null
             ? between
-            : act.historyOf(occurrence, text, language).actsAmong(between).reversed();
+            : ProvisionHistory.of(act, occurrence, text, language).actsAmong(between).reversed();
     var kept = toDay.equals(today) ? null : toDay;
     var subject = occurrence == null ? act.id().cited() : name == null ? "this provision" : name;
     return new CompareView(

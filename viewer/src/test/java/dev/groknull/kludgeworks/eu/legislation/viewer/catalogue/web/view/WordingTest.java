@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
@@ -56,8 +57,7 @@ class WordingTest {
         true,
         null,
         new Timeline(List.of(original)),
-        dates,
-        Map.of(),
+        new ActDates(AI, dates, Map.of()),
         List.of(),
         Map.of());
   }

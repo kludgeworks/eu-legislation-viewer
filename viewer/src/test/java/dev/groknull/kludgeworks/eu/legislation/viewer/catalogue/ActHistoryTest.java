@@ -14,8 +14,8 @@ import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the history of an act: the acts that amend it, and the state of each change on a day. The
- * act is made up. Its amending acts have the kinds of dates that real acts have.
+ * Tests the history of an act and of its provisions where no real act has the case. The act is made
+ * up. Its amending acts have the kinds of dates that real acts have.
  */
 class ActHistoryTest {
   private static final ActIdentifier BASE = new ActIdentifier("32018R1862");
@@ -58,21 +58,23 @@ class ActHistoryTest {
                   version("2019-06-11", SIMPLE, CORRIGENDUM, GERMAN_CORRIGENDUM),
                   version("2020-05-01", UNDATED),
                   version("2022-08-01", PHASED, CORRIGENDUM_OF_PHASED))),
-          List.of(),
-          Map.of(
-              PHASED,
-              List.of(
-                  date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
-                  date(IN_PART, ActDate.Kind.APPLICATION, true),
-                  date(IN_FULL, ActDate.Kind.APPLICATION, false)),
-              EVENT,
-              List.of(
-                  date(LocalDate.of(2021, 8, 2), ActDate.Kind.ENTRY_INTO_FORCE, false),
-                  date(null, ActDate.Kind.APPLICATION, false)),
-              SIMPLE,
-              List.of(date(LocalDate.of(2019, 6, 11), ActDate.Kind.ENTRY_INTO_FORCE, false)),
-              POLISH,
-              List.of(date(LocalDate.of(2021, 8, 3), ActDate.Kind.ENTRY_INTO_FORCE, false))),
+          new ActDates(
+              BASE,
+              List.of(),
+              Map.of(
+                  PHASED,
+                  List.of(
+                      date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
+                      date(IN_PART, ActDate.Kind.APPLICATION, true),
+                      date(IN_FULL, ActDate.Kind.APPLICATION, false)),
+                  EVENT,
+                  List.of(
+                      date(LocalDate.of(2021, 8, 2), ActDate.Kind.ENTRY_INTO_FORCE, false),
+                      date(null, ActDate.Kind.APPLICATION, false)),
+                  SIMPLE,
+                  List.of(date(LocalDate.of(2019, 6, 11), ActDate.Kind.ENTRY_INTO_FORCE, false)),
+                  POLISH,
+                  List.of(date(LocalDate.of(2021, 8, 3), ActDate.Kind.ENTRY_INTO_FORCE, false)))),
           List.of(
               change(PHASED, "AR 79 PA 7", IN_PART, Set.of()),
               change(PHASED, "AR 3 PO 8", IN_FULL, Set.of()),
@@ -109,14 +111,17 @@ class ActHistoryTest {
   @Test
   void anActWithoutADatedDateHasTheFirstDayOfTheFirstVersionThatIntegratesIt() {
     // No real act has no dated date: the edge of the-order-of-the-amending-acts.
-    assertThat(ACT.firstDay(UNDATED, Language.ENG)).hasValue(LocalDate.of(2020, 5, 1));
-    assertThat(ACT.amendingActs(Language.ENG)).containsExactly(PHASED, EVENT, UNDATED, SIMPLE);
+    assertThat(ActHistory.of(ACT).firstDay(UNDATED, Language.ENG))
+        .hasValue(LocalDate.of(2020, 5, 1));
+    assertThat(ActHistory.of(ACT).amendingActs(Language.ENG))
+        .containsExactly(PHASED, EVENT, UNDATED, SIMPLE);
   }
 
   @Test
   void anActWithoutDatesChangesTheActOnNoDay() {
     // No real act has no dates: the edge of the-days-of-change.
-    assertThat(ACT.changeDays(Language.ENG).values()).noneMatch(acts -> acts.contains(UNDATED));
+    assertThat(ActHistory.of(ACT).changeDays(Language.ENG).values())
+        .noneMatch(acts -> acts.contains(UNDATED));
   }
 
   @Test
@@ -124,25 +129,9 @@ class ActHistoryTest {
     // No real text has these cases: the edges of the-occurrences-of-a-change.
     var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
-    assertThat(Act.occurrences(change, List.of("art_3"), with)).containsExactly("art_20/par_1");
-    assertThat(Act.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
-  }
-
-  @Test
-  void aChangeAppliesFromTheDayThatCellarGivesForItsPlace() {
-    assertThat(ACT.changeAppliesFrom(PHASED, Set.of(IN_FULL))).hasValue(IN_FULL);
-  }
-
-  @Test
-  void aChangeWithoutADayOfAnActFromMoreThanOneDayHasNoKnownStateBetweenTheParts() {
-    assertThat(ACT.changeAppliesFrom(PHASED, Set.of())).isEmpty();
-    assertThat(ACT.stateOn(PHASED, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
-    assertThat(ACT.stateOn(PHASED, Set.of(), IN_FULL)).isEqualTo(State.APPLIES);
-  }
-
-  @Test
-  void anActWithoutDatesHasNoKnownState() {
-    assertThat(ACT.stateOn(UNDATED, Set.of(), LocalDate.of(2022, 8, 1))).isEqualTo(State.NOT_KNOWN);
+    assertThat(ActHistory.occurrences(change, List.of("art_3"), with))
+        .containsExactly("art_20/par_1");
+    assertThat(ActHistory.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
   }
 
   /** The tags of a text of the act, with the occurrences that the changes of the act are at. */
@@ -168,7 +157,7 @@ class ActHistoryTest {
 
   @Test
   void theOccurrencesWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
-    assertThat(ACT.changedOccurrences(TEXT.eIds(), Language.ENG).keySet())
+    assertThat(ProvisionHistory.changedOccurrences(ACT, TEXT.eIds(), Language.ENG).keySet())
         .containsExactly("art_3/pnt_8", "art_20/par_1");
   }
 }

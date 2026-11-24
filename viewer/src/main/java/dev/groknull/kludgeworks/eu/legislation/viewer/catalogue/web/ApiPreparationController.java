@@ -50,7 +50,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 class ApiPreparationController {
   private static final Logger LOG = LoggerFactory.getLogger(ApiPreparationController.class);
 
-  private static final String PREPARATION = ApiActController.ACT + "/preparations/{language}";
+  private static final String PREPARATION = ApiActResources.ACT + "/preparations/{language}";
 
   private final PreparationStreams streams = new PreparationStreams(this::send);
   private final Acts acts;
@@ -128,14 +128,14 @@ class ApiPreparationController {
   static Link to(ActIdentifier celex, Language language) {
     return linkTo(
             methodOn(ApiPreparationController.class)
-                .preparation(celex, ApiActController.code(language.code())))
+                .preparation(celex, ApiActResources.code(language.code())))
         .withRel(Relation.PREPARATION.rel());
   }
 
   /** Returns the preparation as the API shows it. */
   static RepresentationModel<?> model(Act act, Preparation preparation) {
     var celex = act.id();
-    var language = ApiActController.code(preparation.language().code());
+    var language = ApiActResources.code(preparation.language().code());
     var model =
         HalModelBuilder.halModelOf(PreparationModel.of(preparation))
             .embed(
@@ -146,7 +146,7 @@ class ApiPreparationController {
                     .toList(),
                 IanaLinkRelations.ITEM)
             .link(to(celex, preparation.language()).withSelfRel())
-            .link(ApiActController.up(celex))
+            .link(ApiActResources.up(celex))
             .link(
                 linkTo(methodOn(ApiPreparationController.class).events(celex, language))
                     .withRel(Relation.EVENTS.rel()));
@@ -233,7 +233,7 @@ class ApiPreparationController {
 
     static PreparationModel of(Preparation preparation) {
       return new PreparationModel(
-          ApiActController.code(preparation.language().code()),
+          ApiActResources.code(preparation.language().code()),
           preparation.started(),
           preparation.settledAt(),
           preparation.ready(),
@@ -263,7 +263,7 @@ class ApiPreparationController {
       @Nullable Boolean retryable) {
 
     static Progress of(Version version, Text text) {
-      var key = ApiActController.key(version);
+      var key = ApiActResources.key(version);
       return switch (text) {
         case Text.Waiting(var attempt) ->
             new Progress(key, version.celex(), "waiting", attempt, null, null);

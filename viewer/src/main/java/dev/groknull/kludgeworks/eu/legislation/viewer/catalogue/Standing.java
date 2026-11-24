@@ -7,8 +7,8 @@ import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
  * How an amending act stands on a day: the counts of the states of its changes, one count for each
- * {@link State}. {@link Act#standingOn} gives it. An act for which Cellar lists no changed place
- * counts as one change.
+ * {@link State}. {@link ActHistory#standingOn} gives it. An act for which Cellar lists no changed
+ * place counts as one change.
  *
  * @param notInForce whether the act is not in force yet on the day. Then no change applies.
  * @param applies how many of its changes apply on the day

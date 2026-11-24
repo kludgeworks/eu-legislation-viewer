@@ -15,7 +15,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the state on a day: the state of an act, or of one of its changes
- * ({@link Act#stateOn}), and how an amending act stands ({@link Act#standingOn}, {@link
+ * ({@link ActDates#stateOn}), and how an amending act stands ({@link ActHistory#standingOn}, {@link
  * Standing#state}). The changes are those to the English text. They read the act of the scenario
  * ({@link TheAct}).
  */
@@ -29,32 +29,32 @@ public class StateSteps {
 
   @Then("on {day}, {act} {state}")
   public void state(LocalDate day, ActIdentifier act, State state) {
-    assertThat(the.act().stateOn(act, Set.of(), day))
+    assertThat(the.act().dates().stateOn(act, Set.of(), day))
         .as("%s on %s", act.cited(), day)
         .isEqualTo(state);
   }
 
   @Then("on {day}, the change of {act} at {place} {state}")
   public void stateOfChange(LocalDate day, ActIdentifier act, Place place, State state) {
-    var days = Act.days(change(act, place));
-    assertThat(the.act().stateOn(act, days, day))
+    var days = ActDates.days(change(act, place));
+    assertThat(the.act().dates().stateOn(act, days, day))
         .as("%s at %s on %s", act.cited(), place.words(), day)
         .isEqualTo(state);
   }
 
   @Then("Cellar gives {day} for the change of {act} at {place}")
   public void dayOfPlace(LocalDate day, ActIdentifier act, Place place) {
-    assertThat(Act.days(change(act, place))).as(place.words()).containsExactly(day);
+    assertThat(ActDates.days(change(act, place))).as(place.words()).containsExactly(day);
   }
 
   @Then("Cellar gives no day for the change of {act} at {place}")
   public void noDayOfPlace(ActIdentifier act, Place place) {
-    assertThat(Act.days(change(act, place))).as(place.words()).isEmpty();
+    assertThat(ActDates.days(change(act, place))).as(place.words()).isEmpty();
   }
 
   @Then("{act} applies from more than one day: {days}")
   public void parts(ActIdentifier act, List<LocalDate> days) {
-    assertThat(the.act().applying(act, Set.of()))
+    assertThat(the.act().dates().applying(act, Set.of()))
         .get()
         .isInstanceOfSatisfying(
             Applying.FromMoreThanOneDay.class,
@@ -65,7 +65,7 @@ public class StateSteps {
 
   @Then("a clause of {act} sets one more day that Cellar does not give")
   public void openDay(ActIdentifier act) {
-    assertThat(the.act().datesOf(act))
+    assertThat(the.act().dates().datesOf(act))
         .as(act.cited())
         .anySatisfy(
             date -> {
@@ -76,12 +76,12 @@ public class StateSteps {
 
   @Then("Cellar lists no changed place for {act}")
   public void noChangedPlace(ActIdentifier act) {
-    assertThat(the.act().changesBy(act, Language.ENG)).as(act.cited()).isEmpty();
+    assertThat(ActHistory.of(the.act()).changesBy(act, Language.ENG)).as(act.cited()).isEmpty();
   }
 
   @When("the reader asks how {act} stands on {day}")
   public void stands(ActIdentifier act, LocalDate day) {
-    standing = the.act().standingOn(act, Language.ENG, day);
+    standing = ActHistory.of(the.act()).standingOn(act, Language.ENG, day);
   }
 
   @Then(
@@ -104,7 +104,7 @@ public class StateSteps {
   /** Returns the one change of {@code act} to the English text at {@code place}. */
   private Amendment change(ActIdentifier act, Place place) {
     var found =
-        the.act().changesBy(act, Language.ENG).stream()
+        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
             .filter(each -> each.location().place().words().equals(place.words()))
             .toList();
     assertThat(found).as("%s at %s", act.cited(), place.words()).hasSize(1);

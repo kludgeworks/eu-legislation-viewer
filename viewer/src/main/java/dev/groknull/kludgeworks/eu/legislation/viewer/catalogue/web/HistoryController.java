@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
@@ -118,7 +119,7 @@ class HistoryController {
       throw Requests.notFound();
     }
     var amending = new ActIdentifier(celex);
-    if (!act.amendingActs(language).contains(amending)) {
+    if (!ActHistory.of(act).amendingActs(language).contains(amending)) {
       throw Requests.notFound();
     }
     var today = Timeline.today(clock);
@@ -135,7 +136,7 @@ class HistoryController {
                 today,
                 language,
                 applies,
-                act.latestText(language, tags).orElse(null),
+                ActHistory.of(act).latestText(language, tags).orElse(null),
                 step(act, amending, language, tags)))
         .render();
   }
@@ -151,8 +152,8 @@ class HistoryController {
    */
   private static AmendingView.@Nullable Step step(
       Act act, ActIdentifier amending, Language language, Map<Version, TextTags> tags) {
-    var later = act.integrating(amending, language).orElse(null);
-    var earlier = act.beforeIntegrating(amending, language).orElse(null);
+    var later = ActHistory.of(act).integrating(amending, language).orElse(null);
+    var earlier = ActHistory.of(act).beforeIntegrating(amending, language).orElse(null);
     if (later == null || earlier == null) {
       return null;
     }

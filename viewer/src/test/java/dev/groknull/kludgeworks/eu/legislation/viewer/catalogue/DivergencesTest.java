@@ -91,7 +91,7 @@ class DivergencesTest {
     var texts = new LinkedHashMap<>(texts(act));
     texts.remove(act.timeline().versions().getLast());
 
-    assertThat(act.divergences(Language.ENG, texts)).isEmpty();
+    assertThat(LawOnADay.of(act).divergences(Language.ENG, texts)).isEmpty();
   }
 
   @Test
@@ -148,7 +148,7 @@ class DivergencesTest {
     version("2016-02-29", false);
     var act = act();
 
-    assertThat(act.textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
+    assertThat(LawOnADay.of(act).textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
         .contains(act.timeline().versions().get(1));
   }
 
@@ -200,7 +200,7 @@ class DivergencesTest {
 
   private List<Divergence> divergences() {
     var act = act();
-    return act.divergences(Language.ENG, texts(act));
+    return LawOnADay.of(act).divergences(Language.ENG, texts(act));
   }
 
   private Map<Version, TextTags> texts(Act act) {
@@ -241,8 +241,7 @@ class DivergencesTest {
         true,
         null,
         new Timeline(versions),
-        List.of(),
-        dates,
+        new ActDates(BASE, List.of(), dates),
         List.of(
             new Amendment(
                 AMENDING,

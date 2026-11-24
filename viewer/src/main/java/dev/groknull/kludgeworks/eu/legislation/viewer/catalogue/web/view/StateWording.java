@@ -2,6 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Standing;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
@@ -14,8 +16,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * The wording of the state of an act, or of one of its changes, on a day: its label, its phrase,
  * its tone, and the statement of one change. The history of an act and the page of an amending act
- * use it. The state is the act's, {@link Act#stateOn} and {@link Act#standingOn}. This class only
- * puts it into words.
+ * use it. The state is the act's, {@link ActDates#stateOn} and {@link ActHistory#standingOn}. This
+ * class only puts it into words.
  *
  * <p>The tense obeys the day. For today or a later day, "does not apply yet". For a day in the
  * past, "did not apply yet".
@@ -100,8 +102,8 @@ final class StateWording {
    */
   static @Nullable String statement(
       Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
-    var from = act.changeAppliesFrom(amending, placeDays);
-    return switch (act.stateOn(amending, placeDays, day)) {
+    var from = act.dates().changeAppliesFrom(amending, placeDays);
+    return switch (act.dates().stateOn(amending, placeDays, day)) {
       case APPLIES ->
           from.map(
                   each ->
@@ -120,7 +122,8 @@ final class StateWording {
                               + ".")
                   .orElse("");
       case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
-      case NOT_KNOWN -> Wording.unknown(amending, act.applying(amending, Set.of()).orElse(null));
+      case NOT_KNOWN ->
+          Wording.unknown(amending, act.dates().applying(amending, Set.of()).orElse(null));
       case IN_PART -> throw new IllegalStateException("The state of one change is never in part");
     };
   }

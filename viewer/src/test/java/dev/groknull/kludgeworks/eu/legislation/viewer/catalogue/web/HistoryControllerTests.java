@@ -7,6 +7,7 @@ import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
@@ -260,13 +261,15 @@ class HistoryControllerTests {
         true,
         null,
         new Timeline(List.of(ORIGINAL, WITH_PHASED)),
-        List.of(),
-        Map.of(
-            PHASED,
-            List.of(
-                date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
-                date(IN_PART, ActDate.Kind.APPLICATION, true),
-                date(IN_FULL, ActDate.Kind.APPLICATION, false))),
+        new ActDates(
+            PHASED_BASE,
+            List.of(),
+            Map.of(
+                PHASED,
+                List.of(
+                    date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
+                    date(IN_PART, ActDate.Kind.APPLICATION, true),
+                    date(IN_FULL, ActDate.Kind.APPLICATION, false)))),
         List.of(
             change("AR 79 PA 7", IN_PART),
             change("AR 3 PO 8", IN_FULL),

@@ -226,7 +226,6 @@ class RefreshTest {
             STORED.endOfValidity(),
             STORED.timeline(),
             STORED.dates(),
-            STORED.amendingDates(),
             List.of(
                 new Amendment(
                     new ActIdentifier("32026R1972"),

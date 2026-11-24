@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
@@ -46,7 +47,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&amp;to=2017-06-03}.
  * Each end can be any day. The page shows the two days as the reader gave them. The text for a day
- * is the act's rule, {@link Act#textOn}.
+ * is the act's rule, {@link LawOnADay#textOn}.
  *
  * <p>With {@code occurrence}, the page is limited to one provision: the wording of the provision on
  * each of the two days, and the steps between them. The history of a provision on Read links there.
@@ -273,9 +274,9 @@ class CompareController {
       return occurrence == null ? page.href() : page.href(occurrence);
     }
 
-    /** Returns the version whose text shows the law on {@code day}, {@link Act#textOn}. */
+    /** Returns the version whose text shows the law on {@code day}, {@link LawOnADay#textOn}. */
     Version text(LocalDate day, Map<Version, TextTags> tags) {
-      return act.textOn(day, language, tags).orElseThrow(Requests::notFound);
+      return LawOnADay.of(act).textOn(day, language, tags).orElseThrow(Requests::notFound);
     }
 
     /**

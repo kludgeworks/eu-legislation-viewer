@@ -91,7 +91,7 @@ its module.
 | provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
 | place | A subdivision of an act, named in words as the Joint Practical Guide names it (15.4). For example: "Article 3(1)(a)", "point 8.1.2.3(c)". A subparagraph is not named, and the annex is not named if the act has one annex. Cellar codes a place as a location, and the text knows it by an eId. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
-| the law on a day | What applies on that day. It is not always the text of a version. |
+| the law on a day | What applies on that day. It is not always the text of a version (`LawOnADay`). |
 
 ### Legal text (module `legaltext`, and the converter)
 
@@ -171,7 +171,7 @@ change shows as the differences in the points and the attachments of the chapter
 Where a change does not apply on the later day of a comparison yet, a prospective amendment, the
 difference has the amber bar, and its sidenote also says "2026/449 does not apply yet on 1 October
 2026". For a day in the past, it says "did not apply yet". Which changes these are is the
-catalogue's rule (Act.prospective).
+catalogue's rule (LawOnADay.prospective).
 
 The Differences view shows each difference, and the opening of each provision that holds
 differences. A fold holds the provisions between them that are the same in both texts
@@ -236,7 +236,7 @@ ELI where these have a term.
 
 | Term | Meaning |
 | --- | --- |
-| date | A date of the data, with its kind and the clause that sets it (`ActDate`): the entry into force, the application, the taking of effect, or the day from which the Member States apply a directive. A date can be for a part of the act only (`ActDate.forPart`, Cellar's MA/PART). The first day of a version is also a date of the data. |
+| date | A date of the data, with its kind and the clause that sets it (`ActDate`): the entry into force, the application, the taking of effect, or the day from which the Member States apply a directive. A date can be for a part of the act only (`ActDate.forPart`, Cellar's MA/PART). The first day of a version is also a date of the data. The dates of an act are one value of the act (`ActDates`): its own dates and those of the acts that amend it. It tells from when each applies and its state on a day. |
 | day | A day of the calendar that a rule or a page reasons about: "the day" of a page, the day from which an act applies, the day asked of the API (`/law`). |
 | in force | An act is in force from its entry into force (JPG 20). It can be in force before it applies. |
 | apply | An act applies from its date of application (JPG 20). Before that day, it is in force but does not apply yet. An act applies from more than one day where its parts apply from different days. |
@@ -259,7 +259,7 @@ not apply yet".
 | Term | Meaning |
 | --- | --- |
 | amendment | Cellar's record of what an amending act does at one place: its role, its place (a location) and its dates (`Amendment`). |
-| change | An amendment that changes the words of the text in the language (`Act.changesBy`). An amending act stands as its changes stand (`Standing`: the counts of the states of its changes). |
+| change | An amendment that changes the words of the text in the language (`ActHistory.changesBy`). An amending act stands as its changes stand (`Standing`: the counts of the states of its changes). |
 | integrate | Cellar's list of the amending acts and corrigenda of a version (`Version.integrates`, the API's `integrates`). It is EUR-Lex's verb: a consolidation integrates the amendments. Cellar's list is not always complete. |
 | include | A version includes the acts that Cellar lists for it, and the acts that its text tags first (`Inclusions`). For example, the version of 767/2008 of 29 December 2017 includes 2017/2226: its text tags 16 occurrences with it, but Cellar lists it only from 11 June 2019. The pages say "consolidates" for "includes". |
 | divergence | Where the text of the day is not the law on the day: a pending amendment, an undated pending amendment or a prospective amendment (`Divergence`). |
@@ -287,9 +287,9 @@ not apply yet".
 | --- | --- |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. The status lines, the divergence notes and the dots of the outline name the same acts (the rule where-the-text-of-a-day-is-not-the-law). |
 | divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. Where the text does not have the place of the change, the note is on the occurrence that holds it: only the heading of that occurrence gets the bar, and the note of a pending amendment goes at its end. For example, the note of an Article 18a that the text does not have is at the end of Article 18. |
-| made by | The line of the reading card that names the acts that made the text of the version in the language of the page (`Act.changingIn`). If the Publications Office lists acts for the version, but no act changes the text in that language, the card says that the words are the same: "Same wording in English as the text of 4 April 2022". The card still says that a new text starts on that day. |
-| history | The list of the amending acts of an act, newest first. |
-| history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
+| made by | The line of the reading card that names the acts that made the text of the version in the language of the page (`LawOnADay.changingIn`). If the Publications Office lists acts for the version, but no act changes the text in that language, the card says that the words are the same: "Same wording in English as the text of 4 April 2022". The card still says that a new text starts on that day. |
+| history | The list of the amending acts of an act, newest first (`ActHistory`). |
+| history of a provision | The list of the acts that changed one provision, newest first (`ProvisionHistory`). Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 | sequence | On the page of an amending act: changes that follow each other in the text and have the same state (`AmendingView.Sequence`). The sequence says the state, the date and the clause one time. |
 | group | On the page of an amending act: the changes that apply from one day (`AmendingView.Group`). The reader chooses a group to see only its changes. |
 | a day before the act | On Compare, where From is a day before the first version of the act: the panel says that the act did not exist yet on that day, or was not in force yet if it was adopted by then, and when it was adopted and came into force. Its first button, "Compare from 15 November 2015", compares from the first version with To, or with the first day of the second version if To is before the first version also (`Timeline.endFromTheFirst`). |

@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -139,7 +140,7 @@ class ApiComparisonController {
     }
     var act = found(celex);
     var in = Requests.language(language);
-    var versions = act.versionsOn(from, to, in).orElseThrow(Requests::notFound);
+    var versions = LawOnADay.of(act).versionsOn(from, to, in).orElseThrow(Requests::notFound);
     var earlier = versions.from();
     var later = versions.to();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)

@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -178,7 +179,11 @@ class CellarActsTest {
     assertThat(act.endOfValidity()).isEqualTo(LocalDate.of(2015, 11, 14));
     assertThat(act.timeline().versions()).hasSize(17);
     assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2010, 3, 25));
-    assertThat(act.versionOn(LocalDate.of(2020, 1, 1), Language.ENG).orElseThrow().celex())
+    assertThat(
+            LawOnADay.of(act)
+                .versionOn(LocalDate.of(2020, 1, 1), Language.ENG)
+                .orElseThrow()
+                .celex())
         .isEqualTo("02010R0185-20160201");
   }
 
@@ -247,7 +252,7 @@ class CellarActsTest {
 
   @Test
   void readsTheActsOwnDatesWithTheClausesThatSetThem() {
-    assertThat(act(AVSEC).dates())
+    assertThat(act(AVSEC).dates().own())
         .containsExactly(
             new ActDate(
                 LocalDate.of(2015, 11, 15),
@@ -270,14 +275,14 @@ class CellarActsTest {
   @Test
   void readsTheDatesOfEachActItsVersionsIntegrateOrThatAmendsIt() {
     var act = act(AVSEC);
-    var dates = act.amendingDates();
+    var dates = act.dates().amending();
     var inNoVersion = new ActIdentifier("32026R2338");
 
     // The 18 acts that the versions integrate, and 2026/2338, which is in no version.
     assertThat(dates).hasSize(19).doesNotContainKey(AVSEC);
     assertThat(act.timeline().versions())
         .noneMatch(each -> each.integrates().contains(inNoVersion));
-    assertThat(act.appliesFrom(inNoVersion).map(ActDate::date))
+    assertThat(act.dates().appliesFrom(inNoVersion).map(ActDate::date))
         .hasValue(LocalDate.of(2026, 11, 12));
     assertThat(dates.getOrDefault(new ActIdentifier("32018R0055"), List.of()))
         .extracting(ActDate::date, ActDate::kind)
@@ -295,7 +300,7 @@ class CellarActsTest {
   @Test
   void correctsADateCountedFromPublicationAgainstThePublicationDate() {
     var act = act(AVSEC);
-    var date = act.datesOf(new ActIdentifier("32020R0910")).getFirst();
+    var date = act.dates().datesOf(new ActIdentifier("32020R0910")).getFirst();
 
     // Published 1 July 2020, DATPUB +1: clause sets 2 July 2020; Cellar recorded 6 July 2020.
     assertThat(date.date()).isEqualTo(LocalDate.of(2020, 7, 2));
@@ -305,7 +310,7 @@ class CellarActsTest {
 
   @Test
   void aDateALaterActAmendedNamesThatAct() {
-    var application = act(AVSEC).datesOf(new ActIdentifier("32019R0103")).getLast();
+    var application = act(AVSEC).dates().datesOf(new ActIdentifier("32019R0103")).getLast();
 
     assertThat(application.date()).isEqualTo(LocalDate.of(2021, 12, 31));
     assertThat(application.forPart()).isTrue();
@@ -319,7 +324,7 @@ class CellarActsTest {
     var sis = RecordedActs.act(new ActIdentifier("32018R1862"));
     var decision = new ActIdentifier("32023D0201");
 
-    assertThat(sis.dates())
+    assertThat(sis.dates().own())
         .anySatisfy(date -> assertThat(date.clause().setBy()).containsExactly(decision));
     assertThat(sis.citation(decision, Language.ENG))
         .startsWith("2023/201: Commission Implementing Decision (EU) 2023/201 of 30")
@@ -329,7 +334,7 @@ class CellarActsTest {
 
   @Test
   void aPlaceholderDateIsNoDateButKeepsItsClause() {
-    var application = act(AVSEC).datesOf(new ActIdentifier("32019R0413")).getFirst();
+    var application = act(AVSEC).dates().datesOf(new ActIdentifier("32019R0413")).getFirst();
 
     assertThat(application.kind()).isEqualTo(Kind.APPLICATION);
     assertThat(application.date()).isNull();
@@ -338,7 +343,7 @@ class CellarActsTest {
 
   @Test
   void theTextHasAPendingAmendmentWhileItLacksAnActThatApplies() {
-    assertThat(act(AVSEC).divergences(Language.ENG, Map.of()))
+    assertThat(LawOnADay.of(act(AVSEC)).divergences(Language.ENG, Map.of()))
         .extracting(
             Divergence::kind,
             each -> each.act().celex(),
@@ -362,18 +367,23 @@ class CellarActsTest {
   void theTextDiffersFromTheLawOnlyOnTheDaysOfADivergence() {
     var act = act(AVSEC);
 
-    assertThat(act.divergences(LocalDate.of(2017, 5, 31), Language.ENG, Map.of())).isEmpty();
-    assertThat(act.divergences(LocalDate.of(2017, 6, 1), Language.ENG, Map.of()))
+    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 5, 31), Language.ENG, Map.of()))
+        .isEmpty();
+    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 1), Language.ENG, Map.of()))
         .extracting(each -> each.act().celex())
         .containsExactly("32017R0815");
-    assertThat(act.divergences(LocalDate.of(2017, 6, 6), Language.ENG, Map.of())).hasSize(1);
-    assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of())).isEmpty();
+    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 6), Language.ENG, Map.of()))
+        .hasSize(1);
+    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of()))
+        .isEmpty();
     // Before 2015/1998 applies, its application is deferred: a state of the act, not a divergence.
-    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of())).isEmpty();
-    assertThat(act.deferredApplicationOn(LocalDate.of(2016, 1, 31), Language.ENG))
+    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of()))
+        .isEmpty();
+    assertThat(LawOnADay.of(act).deferredApplicationOn(LocalDate.of(2016, 1, 31), Language.ENG))
         .hasValueSatisfying(
             deferred -> assertThat(deferred.day()).isEqualTo(LocalDate.of(2016, 2, 1)));
-    assertThat(act.deferredApplicationOn(LocalDate.of(2016, 2, 1), Language.ENG)).isEmpty();
+    assertThat(LawOnADay.of(act).deferredApplicationOn(LocalDate.of(2016, 2, 1), Language.ENG))
+        .isEmpty();
   }
 
   @Test

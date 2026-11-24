@@ -11,9 +11,9 @@ import java.util.Objects;
 
 /**
  * The steps of the rules of the text that a comparison shows: the version whose text a comparison
- * shows for a day ({@link Act#textOn}), and the occurrences of a text with a change that does not
- * apply on a day yet ({@link Act#prospective}, {@link Prospective#at}). They read the act of the
- * scenario and the texts of its versions that are built ({@link TheAct}), in English.
+ * shows for a day ({@link LawOnADay#textOn}), and the occurrences of a text with a change that does
+ * not apply on a day yet ({@link LawOnADay#prospective}, {@link Prospective#at}). They read the act
+ * of the scenario and the texts of its versions that are built ({@link TheAct}), in English.
  */
 public class ComparedTextSteps {
   private final TheAct the;
@@ -24,14 +24,14 @@ public class ComparedTextSteps {
 
   @Then("for {day}, a comparison shows the text of {day}")
   public void shows(LocalDate day, LocalDate version) {
-    assertThat(the.act().textOn(day, Language.ENG, the.texts()).map(Version::date))
+    assertThat(LawOnADay.of(the.act()).textOn(day, Language.ENG, the.texts()).map(Version::date))
         .as("the text that a comparison shows for %s", day)
         .contains(version);
   }
 
   @Then("for {day}, a comparison shows no text")
   public void showsNone(LocalDate day) {
-    assertThat(the.act().textOn(day, Language.ENG, the.texts()))
+    assertThat(LawOnADay.of(the.act()).textOn(day, Language.ENG, the.texts()))
         .as("the text that a comparison shows for %s", day)
         .isEmpty();
   }
@@ -61,7 +61,7 @@ public class ComparedTextSteps {
   }
 
   private Prospective prospective(LocalDate day, LocalDate version) {
-    return the.act().prospective(version(version), day, Language.ENG, the.texts());
+    return LawOnADay.of(the.act()).prospective(version(version), day, Language.ENG, the.texts());
   }
 
   /** Returns the eId of the occurrence that {@code place} names in the text of {@code version}. */

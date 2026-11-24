@@ -11,7 +11,7 @@ import org.jmolecules.ddd.annotation.ValueObject;
 /**
  * The occurrences of a text that have a prospective amendment on a day: a change that the text
  * includes, and that does not apply on the day yet. Its act applies there from a later day. {@link
- * Act#prospective} finds them.
+ * LawOnADay#prospective} finds them.
  *
  * <p>For example, the text of 2018/1862 of 1 August 2022 includes the changes of 2022/1190, which
  * apply from 15 October 2026. On 1 August 2022, Article 3, point 8 is such an occurrence.

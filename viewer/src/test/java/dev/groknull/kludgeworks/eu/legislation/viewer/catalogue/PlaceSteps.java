@@ -87,7 +87,7 @@ public class PlaceSteps {
   private List<Optional<Found>> each(
       ActIdentifier act, Place place, Function<Location, Optional<Found>> find) {
     var changes =
-        the.act().changesBy(act, Language.ENG).stream()
+        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
             .filter(each -> each.location().place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("the changes of %s at %s", act.cited(), place.words()).isNotEmpty();

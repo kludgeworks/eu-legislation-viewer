@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -73,7 +74,9 @@ class AttributionService implements Attributions {
     var appeared =
         comparisons.appeared(versions.timeline(), preparation.texts(), from, to, unattributed);
     var prospective =
-        day == null ? null : act.prospective(to, day, language, texts.tags(preparation));
+        day == null
+            ? null
+            : LawOnADay.of(act).prospective(to, day, language, texts.tags(preparation));
     var each = new ArrayList<Attributed>();
     for (var attributed : found) {
       var eId = attributed.difference().eId();

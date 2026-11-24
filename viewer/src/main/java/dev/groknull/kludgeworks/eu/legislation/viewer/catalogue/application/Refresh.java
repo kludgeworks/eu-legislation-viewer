@@ -111,7 +111,7 @@ record Refresh(
       }
     }
     if (!Set.copyOf(stored.amendments()).equals(Set.copyOf(read.amendments()))
-        || !stored.amendingDates().equals(read.amendingDates())) {
+        || !stored.dates().amending().equals(read.dates().amending())) {
       events.add(new AmendmentsUpdated(read.id()));
     }
     return new Refresh(events, stillMissing, withdrawn, recheckAt);

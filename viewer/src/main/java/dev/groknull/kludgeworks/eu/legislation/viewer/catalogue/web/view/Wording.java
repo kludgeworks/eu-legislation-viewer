@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
@@ -106,7 +107,7 @@ public final class Wording {
    *   <li>If the Publications Office lists no act, it names the acts that the text of the version
    *       names, from {@code named}.
    *   <li>It names only the acts and corrigenda that change the text in {@code language} ({@link
-   *       Act#changingIn}).
+   *       LawOnADay#changingIn}).
    *   <li>If the Publications Office lists acts, but none of them changes the text in {@code
    *       language}, it says that the wording is the same as the text before: "Same wording in
    *       English as the text of 31 December 2021".
@@ -124,7 +125,7 @@ public final class Wording {
     if (version.integrates().isEmpty() && !named.isEmpty()) {
       return "made by " + names(named, act::cited);
     }
-    var changing = act.changingIn(version, language);
+    var changing = LawOnADay.of(act).changingIn(version, language);
     if (changing.isEmpty() && !version.integrates().isEmpty()) {
       var before = act.timeline(language).flatMap(timeline -> timeline.predecessor(version));
       if (before.isPresent()) {
@@ -144,7 +145,7 @@ public final class Wording {
    * <ul>
    *   <li>For the act as published, returns the act.
    *   <li>Else returns the acts that the version integrates and that change the text in {@code
-   *       language} ({@link Act#changingIn}).
+   *       language} ({@link LawOnADay#changingIn}).
    *   <li>If there are none, returns the acts that its text names.
    * </ul>
    */
@@ -153,7 +154,7 @@ public final class Wording {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return List.of(act.id());
     }
-    return version.integrates().isEmpty() ? named : act.changingIn(version, language);
+    return version.integrates().isEmpty() ? named : LawOnADay.of(act).changingIn(version, language);
   }
 
   /**
@@ -249,7 +250,8 @@ public final class Wording {
    * it. For example, " · Article 99 of 2016/679". Returns an empty text if Cellar names none.
    */
   static String clauseOn(Act base, ActIdentifier act, LocalDate day) {
-    List<ActDate> on = base.datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
+    List<ActDate> on =
+        base.dates().datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
     var clause = clause(on, act);
     return clause.isEmpty() ? "" : " · " + clause;
   }
@@ -288,7 +290,7 @@ public final class Wording {
    */
   public static String until(Act act, Version version, LocalDate today, Language language) {
     var next = act.timeline().in(language).flatMap(t -> t.successor(version));
-    if (act.appliesLater(version).isPresent()) {
+    if (act.dates().appliesLater(version).isPresent()) {
       var period = period(act, version, today, language);
       return Character.toLowerCase(period.charAt(0)) + period.substring(1);
     }
@@ -321,11 +323,11 @@ public final class Wording {
   public static String period(Act act, Version version, LocalDate today, Language language) {
     var timeline = act.timeline().in(language);
     var next = timeline.flatMap(t -> t.successor(version));
-    var applies = act.appliesLater(version);
+    var applies = act.dates().appliesLater(version);
     if (applies.isPresent()) {
       // The act as published was in force before it applied.
       var from = applies.get();
-      var partial = act.inPartFrom(from);
+      var partial = act.dates().inPartFrom(from);
       var period =
           "In force from "
               + Dates.inWords(version.date())
@@ -337,7 +339,7 @@ public final class Wording {
                         if (!partial) {
                           return verb + " " + Dates.inWords(from) + " to " + Dates.inWords(last);
                         }
-                        var full = act.inFullAfter(from).filter(day -> !day.isAfter(last));
+                        var full = act.dates().inFullAfter(from).filter(day -> !day.isAfter(last));
                         return full.map(
                                 day ->
                                     verb
@@ -381,11 +383,11 @@ public final class Wording {
    * date for the whole act. Returns empty if Cellar says neither.
    */
   private static String rest(Act act, LocalDate from) {
-    var full = act.inFullAfter(from);
+    var full = act.dates().inFullAfter(from);
     if (full.isPresent()) {
       return ", in full from " + Dates.inWords(full.get());
     }
-    var provisions = act.unknownDays().stream().map(ActDate.Provision::cited).toList();
+    var provisions = act.dates().unknownDays().stream().map(ActDate.Provision::cited).toList();
     return provisions.isEmpty()
         ? ""
         : "; other parts from dates set in " + String.join(", ", provisions);

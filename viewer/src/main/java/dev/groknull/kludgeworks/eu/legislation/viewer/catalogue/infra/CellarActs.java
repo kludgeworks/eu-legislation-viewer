@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
@@ -125,8 +126,8 @@ class CellarActs implements ActSource {
                 id,
                 a.timeline().versions().size(),
                 a.titles().size(),
-                a.dates().size(),
-                a.amendingDates().size(),
+                a.dates().own().size(),
+                a.dates().amending().size(),
                 a.amendments().size(),
                 a.publications().size(),
                 took),
@@ -346,8 +347,7 @@ class CellarActs implements ActSource {
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
         timeline,
-        dates.getOrDefault(id, List.of()),
-        amendingDates,
+        new ActDates(id, dates.getOrDefault(id, List.of()), amendingDates),
         amendments,
         published);
   }

@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
@@ -45,7 +46,7 @@ public class AmendedSteps {
   @Then("Cellar's amendment of {act} at {place} does not count: it applies from {day}")
   public void after(ActIdentifier act, Place place, LocalDate day) {
     var at =
-        comparing.act().changesBy(act, Language.ENG).stream()
+        ActHistory.of(comparing.act()).changesBy(act, Language.ENG).stream()
             .filter(each -> each.location().place().words().equals(place.words()))
             .toList();
     assertThat(at).as("%s at %s", act.cited(), place.words()).isNotEmpty();

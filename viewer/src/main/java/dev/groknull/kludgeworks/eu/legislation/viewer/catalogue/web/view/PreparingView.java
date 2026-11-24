@@ -71,7 +71,7 @@ public record PreparingView(
     if (act.dateOfDocument() != null) {
       known.add(new Fact("Adopted", Dates.inWords(act.dateOfDocument())));
     }
-    var own = act.datesOf(act.id());
+    var own = act.dates().datesOf(act.id());
     for (var kind : ActDate.Kind.values()) {
       var dates =
           own.stream()
