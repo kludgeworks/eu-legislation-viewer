@@ -1,26 +1,27 @@
 # SPDX-License-Identifier: MIT
 Feature: How the occurrences of two texts pair
   A comparison first finds which occurrence of the later text is which occurrence of the earlier
-  text: the pairing. Then it compares each pair. An occurrence of the later text that pairs with
-  none is inserted, and an occurrence of the earlier text that pairs with none is deleted.
+  text: the pairing. Then it compares each pair. It shows an occurrence of the later text that
+  pairs with none as inserted. It shows an occurrence of the earlier text that pairs with none as
+  deleted.
 
   Rule: place-among-siblings · Occurrences pair by their place in the occurrence around them
     Two occurrences pair with their siblings: the occurrences in two occurrences that pair. Among
     siblings, an occurrence pairs by its place in the occurrence around it, not by where that
-    occurrence is. So the occurrences in an occurrence that was renumbered or that moved still
-    pair.
+    occurrence is. So the occurrences in a renumbered occurrence, or in an occurrence that moved,
+    still pair.
 
     Example: The points of a point that moved
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.3.6 point (a) of the later text pairs with point 6.8.3.6 point (a) of the earlier text
 
   Rule: renumbered-occurrence · A renumbered occurrence pairs by its words
-    An occurrence that a tag of a renumbering newly names pairs with the earlier occurrence of
-    another number that says the same, without its number and its heading. The pairs keep their
-    order. So a point inserted before renumbered points pairs with none, and the points after it
+    A tag of a renumbering can give an occurrence a new number. That occurrence pairs with the
+    earlier occurrence of another number that says the same, without its number and its heading.
+    The pairs keep their order. So a point inserted before renumbered points pairs with none, and the points after it
     pair with what they were.
 
-    Example: A point inserted before points that were renumbered
+    Example: A point inserted before renumbered points
       Given the texts of the Council Resolution on a Model Agreement for a Joint Investigation Team of 28 January 2022 and of 29 April 2026
       Then point 12 of the later text has no pair in the earlier text
       And point 13 of the later text pairs with point 12 of the earlier text
@@ -29,11 +30,16 @@ Feature: How the occurrences of two texts pair
 
   Rule: moved-occurrence · An occurrence that moved
     An occurrence that moved into the occurrence before it, or out of it, pairs with what it was.
-    The two need the same number. If neither has a number, they need words that are alike. An
-    occurrence that moved further pairs with the one occurrence of the other text that pairs with
-    nothing else and has the same number and the same or alike words. If more than one occurrence
-    meets these conditions, it pairs with none. An occurrence in an inserted or deleted occurrence
-    shows whole with it, so it does not pair.
+    The two need the same number. If neither has a number, they need words that are alike.
+
+    An occurrence that moved further pairs with the one occurrence of the other text that meets
+    these conditions:
+    - It pairs with nothing else.
+    - It has the same number.
+    - It has the same or alike words.
+
+    If more than one occurrence meets these conditions, the occurrence that moved pairs with none.
+    An occurrence in an inserted or deleted occurrence shows whole with it, so it does not pair.
 
     Example: A point that moved into the point before it
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
