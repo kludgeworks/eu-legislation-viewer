@@ -535,7 +535,7 @@ CATALOGUE_RULES_GLUE = [
 # exception as the comparison's rules, decided 2026-11-22).
 java_junit5_test(
     name = "rules",
-    size = "small",
+    size = "medium",
     srcs = CATALOGUE_RULES_GLUE + ["CatalogueRules.java"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CatalogueRules",
     runtime_deps = [
