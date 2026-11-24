@@ -151,7 +151,8 @@ jobs:
           PLATFORM: ${{ matrix.platform }}
         run: mise run release:image "$VERSION" --tag "$TAG" --platform "$PLATFORM" --publish
 
-  # The multi-architecture image under the version's tag, and its provenance.
+  # The multi-architecture image under the version's tag, and its provenance. The attestation also
+  # records where the image is stored (artifact-metadata), for the organisation's Linked Artifacts.
   manifest:
     needs: [prepare, image]
     runs-on: ubuntu-26.04
@@ -161,6 +162,7 @@ jobs:
       packages: write
       attestations: write
       id-token: write
+      artifact-metadata: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
