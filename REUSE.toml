@@ -116,3 +116,10 @@ SPDX-FileCopyrightText = [
   "European Union, https://eur-lex.europa.eu",
 ]
 SPDX-License-Identifier = "MIT AND LicenseRef-EUR-Lex-reuse"
+
+# vale-ste's ASD-STE100 style for Vale (github.com/amoslives/vale-ste, v0.1.1), as it is
+[[annotations]]
+path = "tools/vale/styles/ste/**"
+precedence = "override"
+SPDX-FileCopyrightText = "2026 amoslives"
+SPDX-License-Identifier = "MIT"

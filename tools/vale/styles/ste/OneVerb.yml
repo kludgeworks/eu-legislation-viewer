@@ -1,0 +1,11 @@
+# ASD-STE100 rules 1.11 and 9.4, and the dictionary ruling on check, verify,
+# confirm, and ensure: the approved form is "make sure that".
+extends: substitution
+message: "Write '%s' instead of '%s' (STE dictionary: one verb for this action)."
+level: error
+ignorecase: true
+swap:
+  "verif(?:y|ies|ied|ying)": make sure that
+  "confirm(?:s|ed|ing)?": make sure that
+  "ensur(?:e|es|ed|ing)": make sure that
+  "validat(?:e|es|ed|ing)": make sure that

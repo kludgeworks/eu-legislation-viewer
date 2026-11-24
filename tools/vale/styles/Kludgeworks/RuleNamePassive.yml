@@ -1,0 +1,30 @@
+# SPDX-License-Identifier: MIT
+# ste.Passive (ASD-STE100 rule 3.6) on a rule's name, whose words hyphens join: is-named
+extends: existence
+message: "'%s' may be passive voice (STE 3.6). Use the active voice unless the actor is unknown."
+level: warning
+ignorecase: true
+scope: rulename
+raw:
+  - \b(am|are|were|being|is|been|was|be)\b-
+tokens:
+  - '[\w]+ed'
+  - built
+  - chosen
+  - done
+  - drawn
+  - driven
+  - given
+  - held
+  - hidden
+  - kept
+  - known
+  - made
+  - read
+  - seen
+  - sent
+  - set
+  - shown
+  - taken
+  - told
+  - written

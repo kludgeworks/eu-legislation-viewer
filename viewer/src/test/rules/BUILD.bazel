@@ -10,6 +10,10 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library")
 #   The tag @revision-<n> on the Rule gives its revision when it changes meaning (none is 1). It
 #   has an example for each of its clauses, on real texts. Steps name places and acts as the pages
 #   do.
+# - Its words are ASD-STE100 Simplified Technical English: hk's vale step checks the rule names,
+#   titles, descriptions and steps (.vale.ini). A rule's conditions, or the steps of a procedure,
+#   are a list, its items started by "-": "*" is a step keyword. A step's words change with its
+#   Cucumber expression, in the same change.
 # - A Background in a Rule gives the step that all the Rule's examples start from. "But" starts a
 #   negative step after a positive one. A quote longer than a line is a doc string (""").
 # - The tag @known-bug marks an example that states what the domain should do, which a filed bug

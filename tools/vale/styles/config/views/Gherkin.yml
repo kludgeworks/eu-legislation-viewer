@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: MIT
+# A feature's words, for Vale, which has no Gherkin format: each rule name, title and step on its
+# own, so that a step's sentence ends at its line, and each description as Markdown paragraphs. Not
+# its tables, doc strings, tags or comments: they are data, the law's words, or not for the reader.
+engine: textfsm
+template: |
+  Value Name ([a-z0-9-]+)
+  Value Title (\S.*)
+  Value Step (\S.*)
+  Value List Description (\S.*)
+
+  Start
+    ^\s*""" -> DocString
+    ^\s*(\||#|@) -> Next
+    ^\s*Rule: ${Name} · ${Title} -> Record
+    ^\s*(Feature|Rule|Background|Example|Scenario|Scenario Outline|Examples): ${Title} -> Record
+    ^\s*(Given|When|Then|And|But|\*) ${Step} -> Record
+    ^\s*${Description}
+
+  DocString
+    ^\s*""" -> Start
+    ^.* -> Next
+scopes:
+  - name: rulename
+    expr: Name
+  - name: title
+    expr: Title
+    type: md
+  - name: step
+    expr: Step
+    type: md
+  - name: description
+    expr: Description
+    type: md

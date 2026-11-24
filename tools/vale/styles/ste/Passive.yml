@@ -1,0 +1,29 @@
+# ASD-STE100 rule 3.6: active voice. Passive is legal in a description only when
+# the actor is unknown.
+extends: existence
+message: "'%s' may be passive voice (STE 3.6). Use the active voice unless the actor is unknown."
+level: warning
+ignorecase: true
+raw:
+  - \b(am|are|were|being|is|been|was|be)\b\s*
+tokens:
+  - '[\w]+ed'
+  - built
+  - chosen
+  - done
+  - drawn
+  - driven
+  - given
+  - held
+  - hidden
+  - kept
+  - known
+  - made
+  - read
+  - seen
+  - sent
+  - set
+  - shown
+  - taken
+  - told
+  - written

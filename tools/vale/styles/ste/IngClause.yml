@@ -1,0 +1,9 @@
+# ASD-STE100 rule 3.5: an -ing form is not a verb. A trailing -ing clause hides a
+# second statement; write it as its own sentence with a subject.
+extends: existence
+message: "'%s' starts an -ing clause (STE 3.5). Write a new sentence with a subject."
+level: warning
+ignorecase: true
+nonword: true
+tokens:
+  - ",\\s+(?:making|allowing|enabling|ensuring|causing|resulting|leading|meaning|giving|leaving|using|providing|keeping|letting|adding|removing|reducing|preventing|avoiding|passing|sending|reading|writing|running|setting)\\b"

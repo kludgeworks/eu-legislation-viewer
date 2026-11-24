@@ -1,0 +1,9 @@
+# ASD-STE100 rule 3.4: no perfect tenses; use the simple past or present.
+extends: existence
+message: "'%s' is a perfect tense (STE 3.4). Use the simple past or the simple present."
+level: warning
+ignorecase: true
+tokens:
+  - "(?:has|have|had) been"
+  - "(?:has|have|had) (?:not )?\\w+ed\\b"
+  - "(?:has|have|had) (?:not )?(?:built|chosen|done|given|gone|held|kept|known|made|read|run|seen|sent|set|shown|taken|told|written)\\b"

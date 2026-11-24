@@ -1,0 +1,13 @@
+# ASD-STE100 rule 4.2: no contractions.
+extends: existence
+message: "'%s' is a contraction (STE 4.2). Write the full words."
+level: error
+ignorecase: true
+nonword: true
+tokens:
+  - "\\w+'ll\\b"
+  - "\\w+'re\\b"
+  - "\\w+'ve\\b"
+  - "\\w+n't\\b"
+  - "\\b(it|that|there|here|what|let|who|he|she)'s\\b"
+  - "\\b(I|you|we|they|he|she|it)'d\\b"

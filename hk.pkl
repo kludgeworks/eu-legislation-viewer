@@ -16,13 +16,14 @@ local raw =
     "**/xslt/subdivision.rdf",
   )
 // vendored W3C schemas, under the W3C licence; patches, whose context lines must match exactly; the
-// licence texts, as SPDX publishes them
+// licence texts, as SPDX publishes them; vale-ste's style for Vale
 local vendored =
   List(
     "libs/formex-converter/src/test/resources/mathml3/**",
     "libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd",
     "**/*.patch",
     "LICENSES/**",
+    "tools/vale/styles/ste/**",
   )
 // written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
 // converter's expected output (mise run expected), the pipx tools' dependency locks (mise lock)
@@ -136,6 +137,13 @@ local linters = new Mapping<String, Step> {
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update
+  // the business rules' words, in ASD-STE100 English (.vale.ini): its errors, until each feature is
+  // written in it
+  ["vale"] = new Step {
+    glob = List("**/*.feature")
+    batch = true
+    check = "vale --minAlertLevel=error {{files}}"
+  }
   ["typos"] = (Builtins.typos) { exclude = raw + vendored + generated }
   ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored + generated }
   ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated + legalTemplates }

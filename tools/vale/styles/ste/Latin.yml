@@ -1,0 +1,11 @@
+# ASD-STE100 GR-6: no Latin abbreviations.
+extends: substitution
+message: "Use '%s' instead of '%s' (STE GR-6)."
+level: error
+ignorecase: true
+nonword: true
+swap:
+  "e\\.g\\.": for example
+  "i\\.e\\.": that is
+  "etc\\.": name the items
+  "vs\\.": versus

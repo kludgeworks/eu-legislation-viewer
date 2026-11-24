@@ -1,0 +1,40 @@
+# Words that carry no fact, or that hide one. From the slop-to-simple table of the
+# simple-english skill. Where the replacement is "(delete)", remove the word or give
+# the measurable property.
+extends: substitution
+message: "Write '%s' instead of '%s'."
+level: error
+ignorecase: true
+swap:
+  "leverag(?:e|es|ed|ing)": use
+  "utiliz(?:e|es|ed|ing)": use
+  "in order to": to
+  "prior to": before
+  "simply": (delete)
+  "easily": (delete)
+  "seamless(?:ly)?": (delete)
+  "effortless(?:ly)?": (delete)
+  "robust(?:ly|ness)?": (delete, or give the measurable property)
+  "powerful": (delete, or give the measurable property)
+  "comprehensive(?:ly)?": (delete, or give the measurable property)
+  "performant": (delete, or give the number)
+  "functionality": function
+  "enables? you to": you can
+  "allows? you to": you can
+  "is designed to": (delete, say what it does)
+  "aims? to": (delete, say what it does)
+  "facilitat(?:e|es|ed|ing)": help
+  "delv(?:e|es|ed|ing)": read
+  "when it comes to": for
+  "in the event that": if
+  "due to the fact that": because
+  "out of the box": by default
+  "under the hood": internally
+  "streamlin(?:e|es|ed|ing)": make simpler
+  "plethora": many
+  "myriad": many
+  "and/or": X, or Y, or both
+  "worth (?:reading|noting|mentioning|knowing|a look)": (delete)
+  "it is important to": (delete)
+  "note that": (delete)
+  "please": (delete)

@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: MIT
+# One word for one thing: the sidenote, as the pages and docs/design.md name it
+extends: substitution
+message: "Write '%s' for this term."
+level: error
+ignorecase: true
+swap:
+  'side[ -]notes': sidenotes
+  'side[ -]note': sidenote

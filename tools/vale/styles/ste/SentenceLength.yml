@@ -1,0 +1,9 @@
+# ASD-STE100 rules 5.1 and 6.3: 20 words in a procedure, 25 in a description.
+# Vale counts each word inside inline code; STE counts quoted text as one word
+# (rule 8.6), so the limit here is the descriptive one and the level is warning.
+extends: occurrence
+message: "Sentence has more than 25 words; split it (STE 6.3)."
+level: warning
+scope: sentence
+max: 25
+token: \b(\w+)\b

@@ -31,9 +31,9 @@ Feature: How the occurrences of two texts pair
     An occurrence that moved into the occurrence before it, or out of it, pairs with what it was.
     The two need the same number. If neither has a number, they need words that are alike. An
     occurrence that moved further pairs with the one occurrence of the other text that pairs with
-    nothing else and has the same number and the same or alike words. If two occurrences could be
-    that one, it pairs with none. An occurrence in an inserted or deleted occurrence shows whole
-    with it, so it does not pair.
+    nothing else and has the same number and the same or alike words. If more than one occurrence
+    meets these conditions, it pairs with none. An occurrence in an inserted or deleted occurrence
+    shows whole with it, so it does not pair.
 
     Example: A point that moved into the point before it
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
@@ -55,7 +55,7 @@ Feature: How the occurrences of two texts pair
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 22 March 2026
       Then point 12.9.3.14 of the later text has no pair in the earlier text
 
-    Example: Two points could be the one that a point moved to
+    Example: Two points meet the conditions for a point that moved further
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
       Then point 6.8.5.1 point (a) of the later text has no pair in the earlier text
 

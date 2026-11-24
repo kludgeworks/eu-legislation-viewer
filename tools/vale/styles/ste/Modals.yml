@@ -1,0 +1,11 @@
+# ASD-STE100 rule 3.2: the approved modals are can, will, and must.
+extends: existence
+message: "'%s' is not an approved modal (STE 3.2). Write can, will, or must, or restate as a condition."
+level: error
+ignorecase: true
+tokens:
+  - should
+  - would
+  - might
+  - could
+  - may

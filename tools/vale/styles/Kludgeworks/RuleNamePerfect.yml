@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: MIT
+# ste.Perfect (ASD-STE100 rule 3.4) on a rule's name, whose words hyphens join: has-been
+extends: existence
+message: "'%s' is a perfect tense (STE 3.4). Use the simple past or the simple present."
+level: warning
+ignorecase: true
+scope: rulename
+tokens:
+  - "(?:has|have|had)-been"
+  - "(?:has|have|had)-(?:not-)?\\w+ed\\b"
+  - "(?:has|have|had)-(?:not-)?(?:built|chosen|done|given|gone|held|kept|known|made|read|run|seen|sent|set|shown|taken|told|written)\\b"
