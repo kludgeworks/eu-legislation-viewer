@@ -30,3 +30,8 @@ mise.local.toml
 
 # pnpm's packages, if someone runs pnpm install outside Bazel
 /node_modules/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class

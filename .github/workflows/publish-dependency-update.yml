@@ -28,6 +28,9 @@ on:
       app_private_key:
         required: true
 
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+
 permissions:
   contents: read
 
@@ -37,6 +40,7 @@ jobs:
     timeout-minutes: 45
     permissions:
       contents: read
+      issues: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -59,7 +63,7 @@ jobs:
         env:
           CHANGES: ${{ inputs.changes }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 tools/build/upgrade_dependencies.py apply "$CHANGES"
+        run: python3 -B tools/build/upgrade_dependencies.py apply "$CHANGES"
 
       - name: Auto-format modified files with upgraded tools
         if: fromJSON(inputs.changes)[0] != null
@@ -67,10 +71,70 @@ jobs:
 
       - name: Smoke-test the build with updated dependencies
         if: fromJSON(inputs.changes)[0] != null
-        run: bazel build //...
+        env:
+          TITLE: ${{ inputs.title }}
+          BRANCH: ${{ inputs.branch }}
+          BODY: ${{ inputs.body }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! bazel build //... > "$RUNNER_TEMP/smoke-test.log" 2>&1; then
+            echo "Smoke test failed for $TITLE" >&2
+            tail -n 50 "$RUNNER_TEMP/smoke-test.log" >&2
+
+            {
+              echo "### ❌ Smoke test failed: $TITLE"
+              echo "The build smoke test (\`bazel build //...\`) failed after applying proposed dependency updates."
+              echo "PR publication was skipped to prevent opening a broken pull request."
+              echo ""
+              echo "#### Planned updates"
+              echo "$BODY"
+              echo ""
+              echo "<details><summary>Build failure output (tail)</summary>"
+              echo ""
+              echo '```'
+              tail -n 40 "$RUNNER_TEMP/smoke-test.log"
+              echo '```'
+              echo "</details>"
+            } >> "$GITHUB_STEP_SUMMARY"
+
+            issue_title="[Dependencies] Smoke test failed: $TITLE"
+            existing_issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$issue_title in:title" --json number --jq '.[0].number' 2>/dev/null || true)
+            error_tail=$(tail -n 25 "$RUNNER_TEMP/smoke-test.log")
+
+            {
+              echo "Automated dependency update **$TITLE** failed the build smoke test (\`bazel build //...\`)."
+              echo ""
+              echo "- **Target branch:** \`$BRANCH\`"
+              echo "- **Workflow run:** [$GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)"
+              echo ""
+              echo "### Proposed Updates"
+              echo "$BODY"
+              echo ""
+              echo "### Build Failure Output"
+              echo '```'
+              echo "$error_tail"
+              echo '```'
+            } > "$RUNNER_TEMP/issue_body.md"
+
+            if [ -n "$existing_issue" ]; then
+              comment_body=$(printf "Smoke test failed again in run [%s](%s/%s/actions/runs/%s):\n\n\`\`\`\n%s\n\`\`\`" "$GITHUB_RUN_ID" "$GITHUB_SERVER_URL" "$GITHUB_REPOSITORY" "$GITHUB_RUN_ID" "$error_tail")
+              gh issue comment "$existing_issue" --repo "$GITHUB_REPOSITORY" --body "$comment_body" || true
+            else
+              gh issue create --repo "$GITHUB_REPOSITORY" \
+                --title "$issue_title" \
+                --body-file "$RUNNER_TEMP/issue_body.md" \
+                --label "bug" 2>/dev/null || \
+              gh issue create --repo "$GITHUB_REPOSITORY" \
+                --title "$issue_title" \
+                --body-file "$RUNNER_TEMP/issue_body.md" || true
+            fi
+
+            exit 1
+          fi
 
       - name: Package the changes, including new and removed lockfiles
         run: |
+          find . \( -name "*.pyc" -o -name "__pycache__" \) -exec rm -rf {} + 2>/dev/null || true
           git add -A
           git diff --cached --binary HEAD > "$RUNNER_TEMP/dependencies.patch"
 
@@ -88,6 +152,7 @@ jobs:
     timeout-minutes: 10
     permissions:
       contents: read
+      issues: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         id: checkout
@@ -112,7 +177,10 @@ jobs:
         env:
           CHANGES: ${{ inputs.changes }}
           GITHUB_TOKEN: ${{ github.token }}
-        run: python3 tools/build/verify_dependency_patch.py "$RUNNER_TEMP/dependency-update/dependencies.patch" "$CHANGES" >> "$GITHUB_OUTPUT"
+        run: python3 -B tools/build/verify_dependency_patch.py "$RUNNER_TEMP/dependency-update/dependencies.patch" "$CHANGES" >> "$GITHUB_OUTPUT"
+
+      - name: Clean up temporary files
+        run: find . \( -name "*.pyc" -o -name "__pycache__" \) -exec rm -rf {} + 2>/dev/null || true
 
       - name: Mint Kludgebot token for branch and PR publication
         if: steps.checkout.outputs.commit == inputs.base
@@ -165,3 +233,15 @@ jobs:
           commit-message: 'chore: ${{ inputs.title }}'
           title: 'chore: ${{ inputs.title }}'
           body: ${{ inputs.body }}
+
+      - name: Close resolved smoke test failure issues
+        if: steps.checkout.outputs.commit == inputs.base && fromJSON(inputs.changes)[0] != null
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TITLE: ${{ inputs.title }}
+        run: |
+          issue_title="[Dependencies] Smoke test failed: $TITLE"
+          existing_issue=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "$issue_title in:title" --json number --jq '.[0].number' 2>/dev/null || true)
+          if [ -n "$existing_issue" ]; then
+            gh issue close "$existing_issue" --repo "$GITHUB_REPOSITORY" --comment "Resolved: Smoke test passed in run [$GITHUB_RUN_ID]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID) and the update PR was published." || true
+          fi
