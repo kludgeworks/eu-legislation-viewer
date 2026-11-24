@@ -2,6 +2,21 @@
 name: Dependencies
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/dependencies.yml'
+      - '.github/workflows/publish-dependency-update.yml'
+      - '.mise/locks/**'
+      - 'maven_install.json'
+      - 'mise.lock'
+      - 'mise.toml'
+      - 'MODULE.bazel'
+      - 'MODULE.bazel.lock'
+      - 'tools/build/plan-dependency-prs.bash'
+      - 'tools/build/upgrade_dependencies.py'
+      - 'tools/build/verify_dependency_patch.py'
   schedule:
     - cron: '17 4 * * *'
   workflow_dispatch:
