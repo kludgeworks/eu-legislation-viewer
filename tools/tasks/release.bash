@@ -51,6 +51,12 @@ dispatched_runs() {
 		--limit 20 --json databaseId --jq '.[].databaseId'
 }
 
+# The newest of the workflow's runs that has not ended: queued, waiting or in progress
+running_run() {
+	gh run list --repo "$1" --workflow "$workflow" --limit 20 --json databaseId,status \
+		--jq '[.[] | select(.status != "completed")][0].databaseId // empty'
+}
+
 # The run that the dispatch started: the newest one that was not there before it. GitHub lists a
 # run a few seconds after the dispatch.
 new_run() {
@@ -78,6 +84,15 @@ main() {
 	fi
 	warn_unpushed
 	repo=$(github_repo)
+	run=$(running_run "$repo")
+	if [[ -n "$run" ]]; then
+		info "A release is running already, so none is started" run "https://github.com/$repo/actions/runs/$run"
+		if [[ ${usage_watch:-true} = false ]] || ! confirm "Follow it?"; then
+			return 0
+		fi
+		gh run watch "$run" --repo "$repo" --exit-status
+		return
+	fi
 	before=$(dispatched_runs "$repo")
 	gh workflow run "$workflow" --repo "$repo" --ref main
 	run=$(new_run "$repo" "$before") ||

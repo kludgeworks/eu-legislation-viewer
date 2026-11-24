@@ -19,7 +19,9 @@ setup() {
 }
 
 # gh as GitHub answers it: the dispatched runs on main are those in $BATS_TEST_TMPDIR/runs, one id
-# per line, and a dispatch adds run 200. $run_fails makes the watched run fail. It keeps each call.
+# per line, and a dispatch adds run 200. A run that has not ended is the one in
+# $BATS_TEST_TMPDIR/running, if there is one. $run_fails makes the watched run fail. It keeps each
+# call.
 github() {
 	printf '100\n' >"$BATS_TEST_TMPDIR/runs"
 	mkdir -p "$BATS_TEST_TMPDIR/bin"
@@ -27,7 +29,8 @@ github() {
 #!/usr/bin/env bash
 printf '%s\n' "\$*" >>"$BATS_TEST_TMPDIR/gh.calls"
 case "\$1 \$2" in
-"run list") tac "$BATS_TEST_TMPDIR/runs" 2>/dev/null || tail -r "$BATS_TEST_TMPDIR/runs" ;;
+"run list") [[ "\$*" = *databaseId,status* ]] && { cat "$BATS_TEST_TMPDIR/running" 2>/dev/null; exit 0; }
+	tac "$BATS_TEST_TMPDIR/runs" 2>/dev/null || tail -r "$BATS_TEST_TMPDIR/runs" ;;
 "workflow run") printf '200\n' >>"$BATS_TEST_TMPDIR/runs" ;;
 "run watch") [[ -z "\${run_fails:-}" ]] ;;
 *) echo "unexpected: gh \$*" >&2; exit 1 ;;
@@ -125,4 +128,49 @@ stub_dispatch_without_run() {
 	run github_repo
 	[ "$status" -ne 0 ]
 	[[ "$output" = *"origin is not on GitHub: /srv/git/viewer.git"* ]] || false
+}
+
+@test "starts no release while one is running, and follows that one when asked to" {
+	printf '150\n' >"$BATS_TEST_TMPDIR/running"
+	ui_tty="$BATS_TEST_TMPDIR/answer"
+	printf 'y\n' >"$ui_tty"
+
+	run main
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"A release is running already, so none is started run=https://github.com/kludgeworks/viewer/actions/runs/150"* ]] || false
+	run ! grep -q "workflow run" "$BATS_TEST_TMPDIR/gh.calls"
+	grep -qx "run watch 150 --repo kludgeworks/viewer --exit-status" "$BATS_TEST_TMPDIR/gh.calls"
+}
+
+@test "fails when the running release that it follows fails" {
+	printf '150\n' >"$BATS_TEST_TMPDIR/running"
+	ui_tty="$BATS_TEST_TMPDIR/answer"
+	printf 'y\n' >"$ui_tty"
+
+	run_fails=true run main
+
+	[ "$status" -ne 0 ]
+}
+
+@test "does not follow the running release when told no" {
+	printf '150\n' >"$BATS_TEST_TMPDIR/running"
+	ui_tty="$BATS_TEST_TMPDIR/answer"
+	printf '\n' >"$ui_tty"
+
+	run main
+
+	[ "$status" -eq 0 ]
+	run ! grep -q "workflow run\|run watch" "$BATS_TEST_TMPDIR/gh.calls"
+}
+
+@test "does not ask about the running release with --no-watch, or without a terminal" {
+	printf '150\n' >"$BATS_TEST_TMPDIR/running"
+
+	ui_tty="$BATS_TEST_TMPDIR/no-terminal" run main
+	[ "$status" -eq 0 ]
+	usage_watch=false ui_tty="$BATS_TEST_TMPDIR/answer" run main
+	[ "$status" -eq 0 ]
+
+	run ! grep -q "workflow run\|run watch" "$BATS_TEST_TMPDIR/gh.calls"
 }

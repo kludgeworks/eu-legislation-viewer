@@ -16,6 +16,8 @@ long_about """
     Nothing is committed or tagged until the JAR and the image are built. A run that fails leaves main and the tags as they were, and the next run makes the same version.
 
     If nothing changed since the latest release, the workflow makes no release.
+
+    If a release is running already, it starts none: it gives the link to the run, and asks whether to follow it.
     """
 
 after_long_help "The workflow releases origin's main, whatever is checked out here: commits that are not pushed are not in it, and it warns of them. A release's version is in its migrations' names, which databases record, and in what the workflow published, so a tag is never moved: a bad release is fixed by the next one."
