@@ -57,16 +57,15 @@ final class TextConservation {
         values(formexValues, formex).stream()
             .collect(Collectors.groupingBy(Value::text, LinkedHashMap::new, Collectors.toList()));
     var missing = new ArrayList<Missing>();
-    wanted.forEach(
-        (text, occurrences) -> {
-          var once = occurrences.stream().anyMatch(v -> "once".equals(v.kind()));
-          var shortfall = (once ? 1 : occurrences.size()) - have.getOrDefault(text, 0L);
-          if (shortfall > 0) {
-            var first = occurrences.getFirst();
-            missing.add(
-                new Missing(text, shortfall, first.file() + " " + first.path().replace("Q{}", "")));
-          }
-        });
+    wanted.forEach((text, occurrences) -> {
+      var once = occurrences.stream().anyMatch(v -> "once".equals(v.kind()));
+      var shortfall = (once ? 1 : occurrences.size()) - have.getOrDefault(text, 0L);
+      if (shortfall > 0) {
+        var first = occurrences.getFirst();
+        missing.add(
+            new Missing(text, shortfall, first.file() + " " + first.path().replace("Q{}", "")));
+      }
+    });
     return missing;
   }
 

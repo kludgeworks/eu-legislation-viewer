@@ -22,12 +22,11 @@ public final class ModuleMigrations {
     try (var directories = Files.list(migrations)) {
       return directories
           .filter(Files::isDirectory)
-          .sorted(
-              (a, b) -> {
-                var aRoot = a.getFileName().toString().equals(ROOT);
-                var bRoot = b.getFileName().toString().equals(ROOT);
-                return aRoot == bRoot ? a.compareTo(b) : aRoot ? -1 : 1;
-              })
+          .sorted((a, b) -> {
+            var aRoot = a.getFileName().toString().equals(ROOT);
+            var bRoot = b.getFileName().toString().equals(ROOT);
+            return aRoot == bRoot ? a.compareTo(b) : aRoot ? -1 : 1;
+          })
           .toList();
     }
   }

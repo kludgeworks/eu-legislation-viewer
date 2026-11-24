@@ -26,14 +26,13 @@ public class SparqlTermsTests {
     assertTrue(terms.declaredTerms() > 0, "no terms in the ontologies");
     assertFalse(SparqlTerms.queries().isEmpty(), "no queries");
     return SparqlTerms.queries().stream()
-        .map(
-            query ->
-                DynamicTest.dynamicTest(
-                    query.getFileName().toString(),
-                    () ->
-                        assertEquals(
-                            List.of(),
-                            terms.problems(Files.readString(query, StandardCharsets.UTF_8)),
-                            query + ": terms the ontologies don't declare, or deprecate")));
+        .map(query ->
+            DynamicTest.dynamicTest(
+                query.getFileName().toString(),
+                () ->
+                    assertEquals(
+                        List.of(),
+                        terms.problems(Files.readString(query, StandardCharsets.UTF_8)),
+                        query + ": terms the ontologies don't declare, or deprecate")));
   }
 }

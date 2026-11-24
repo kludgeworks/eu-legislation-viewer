@@ -40,18 +40,17 @@ class RenderedTexts {
     var start = System.nanoTime();
     return content
         .read(text)
-        .map(
-            read -> {
-              var out = new StringOutput();
-              html.element(read).writeTo(out);
-              var rendered = out.toString();
-              LOG.debug(
-                  "Rendered the whole text {}, not cached: {} KB of HTML, in {} ms",
-                  text.value(),
-                  rendered.length() / 1024,
-                  (System.nanoTime() - start) / 1_000_000);
-              return rendered;
-            });
+        .map(read -> {
+          var out = new StringOutput();
+          html.element(read).writeTo(out);
+          var rendered = out.toString();
+          LOG.debug(
+              "Rendered the whole text {}, not cached: {} KB of HTML, in {} ms",
+              text.value(),
+              rendered.length() / 1024,
+              (System.nanoTime() - start) / 1_000_000);
+          return rendered;
+        });
   }
 
   /**

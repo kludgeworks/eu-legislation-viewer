@@ -23,21 +23,20 @@ public class XsltQualityTests {
     var quality = XsltQuality.load(new Processor(false));
     return Arrays.stream(System.getProperty("xslt-quality.files").trim().split("\\s+"))
         .map(Path::of)
-        .map(
-            stylesheet ->
-                DynamicTest.dynamicTest(
-                    stylesheet.getFileName().toString(),
-                    stylesheet.toUri(),
-                    () -> {
-                      var findings = quality.check(stylesheet);
-                      if (!findings.isEmpty()) {
-                        fail(
-                            findings.stream()
-                                .map(Object::toString)
-                                .collect(
-                                    Collectors.joining(
-                                        "\n  ", findings.size() + " findings:\n  ", "")));
-                      }
-                    }));
+        .map(stylesheet ->
+            DynamicTest.dynamicTest(
+                stylesheet.getFileName().toString(),
+                stylesheet.toUri(),
+                () -> {
+                  var findings = quality.check(stylesheet);
+                  if (!findings.isEmpty()) {
+                    fail(
+                        findings.stream()
+                            .map(Object::toString)
+                            .collect(
+                                Collectors.joining(
+                                    "\n  ", findings.size() + " findings:\n  ", "")));
+                  }
+                }));
   }
 }

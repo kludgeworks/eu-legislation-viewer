@@ -61,22 +61,21 @@ public record TagsView(List<Tag> tags) {
   static @Nullable String applies(Act act, ActIdentifier amending) {
     return act.dates()
         .applying(amending, Set.of())
-        .map(
-            applying -> {
-              var clause = Wording.clause(applying.dates(), amending);
-              var cited = clause.isEmpty() ? "" : " · " + clause;
-              return switch (applying) {
-                case Applying.From from -> "applies from " + Dates.inWords(from.day()) + cited;
-                case Applying.FromMoreThanOneDay parts ->
-                    "applies from more than one day, first from "
-                        + Dates.inWords(parts.first())
-                        + cited;
-                case Applying.InForce inForce ->
-                    "in force from " + Dates.inWords(inForce.day()) + cited;
-                case Applying.SetBy set ->
-                    clause.isEmpty() ? null : "applies from a date set in " + clause;
-              };
-            })
+        .map(applying -> {
+          var clause = Wording.clause(applying.dates(), amending);
+          var cited = clause.isEmpty() ? "" : " · " + clause;
+          return switch (applying) {
+            case Applying.From from -> "applies from " + Dates.inWords(from.day()) + cited;
+            case Applying.FromMoreThanOneDay parts ->
+                "applies from more than one day, first from "
+                    + Dates.inWords(parts.first())
+                    + cited;
+            case Applying.InForce inForce ->
+                "in force from " + Dates.inWords(inForce.day()) + cited;
+            case Applying.SetBy set ->
+                clause.isEmpty() ? null : "applies from a date set in " + clause;
+          };
+        })
         .orElse(null);
   }
 

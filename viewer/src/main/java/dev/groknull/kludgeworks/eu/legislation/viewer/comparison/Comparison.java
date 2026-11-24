@@ -48,11 +48,9 @@ public record Comparison(
   public List<Difference> at(List<String> eIds) {
     var within =
         differences.stream()
-            .filter(
-                each ->
-                    eIds.stream()
-                        .anyMatch(
-                            eId -> each.eId().equals(eId) || each.eId().startsWith(eId + "/")))
+            .filter(each ->
+                eIds.stream()
+                    .anyMatch(eId -> each.eId().equals(eId) || each.eId().startsWith(eId + "/")))
             .toList();
     if (!within.isEmpty()) {
       return within;

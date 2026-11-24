@@ -137,14 +137,13 @@ public record Act(
   public String citation(ActIdentifier each, Language language) {
     var name = cited(each);
     return publication(each)
-        .map(
-            publication -> {
-              var title = publication.title(language).or(() -> publication.title(Language.ENG));
-              var journal = publication.journal();
-              return name
-                  + title.map(t -> ": " + t).orElse("")
-                  + (journal == null ? "" : " · " + journal.reference());
-            })
+        .map(publication -> {
+          var title = publication.title(language).or(() -> publication.title(Language.ENG));
+          var journal = publication.journal();
+          return name
+              + title.map(t -> ": " + t).orElse("")
+              + (journal == null ? "" : " · " + journal.reference());
+        })
         .orElse(name);
   }
 

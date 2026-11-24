@@ -53,15 +53,12 @@ class CellarActsTest {
     assertThat(act.publications()).hasSize(act.integratedBetween(first(act), last(act)).size() + 2);
     assertThat(reference(act, "32026R2338")).isPresent();
     assertThat(act.publication(new ActIdentifier("32026R0449")))
-        .hasValueSatisfying(
-            published -> {
-              assertThat(published.eli()).isEqualTo(new Eli("reg_impl", 2026, "449"));
-              assertThat(published.title(Language.ENG))
-                  .hasValueSatisfying(
-                      title ->
-                          assertThat(title)
-                              .startsWith("Commission Implementing Regulation (EU) 2026/449"));
-            });
+        .hasValueSatisfying(published -> {
+          assertThat(published.eli()).isEqualTo(new Eli("reg_impl", 2026, "449"));
+          assertThat(published.title(Language.ENG))
+              .hasValueSatisfying(title ->
+                  assertThat(title).startsWith("Commission Implementing Regulation (EU) 2026/449"));
+        });
     assertThat(reference(act, "32026R0449")).hasValue("OJ L, 2026/449, 2.3.2026");
     assertThat(reference(act, "32018R0055")).hasValue("OJ L 10, 13.1.2018");
     assertThat(reference(act, "32019R0103")).hasValue("OJ L 21, 24.1.2019");
@@ -501,11 +498,10 @@ class CellarActsTest {
 
     assertThat(checked.get(actId))
         .singleElement()
-        .satisfies(
-            d -> {
-              assertThat(d.date()).isEqualTo(LocalDate.of(2020, 7, 2));
-              assertThat(d.clause()).isEqualTo(clause);
-            });
+        .satisfies(d -> {
+          assertThat(d.date()).isEqualTo(LocalDate.of(2020, 7, 2));
+          assertThat(d.clause()).isEqualTo(clause);
+        });
   }
 
   @Test
@@ -533,17 +529,16 @@ class CellarActsTest {
                 new SparqlResult.Row(Map.of("code", "ENG", "title", "Two"))));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(
-            () ->
-                CellarActs.act(
-                    AVSEC,
-                    work(Map.of()),
-                    result(),
-                    noLanguages(),
-                    noDates(),
-                    twice,
-                    noAmendments(),
-                    noPublications()))
+        .isThrownBy(() ->
+            CellarActs.act(
+                AVSEC,
+                work(Map.of()),
+                result(),
+                noLanguages(),
+                noDates(),
+                twice,
+                noAmendments(),
+                noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several titles in ENG");
   }
 
@@ -655,17 +650,16 @@ class CellarActsTest {
             consolidation("02015R1998-20260322-BIS", "2026-03-22"));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(
-            () ->
-                CellarActs.act(
-                    AVSEC,
-                    work(Map.of()),
-                    twoOnOneDay,
-                    noLanguages(),
-                    noDates(),
-                    noTitles(),
-                    noAmendments(),
-                    noPublications()))
+        .isThrownBy(() ->
+            CellarActs.act(
+                AVSEC,
+                work(Map.of()),
+                twoOnOneDay,
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -716,17 +710,16 @@ class CellarActsTest {
                 workRow("http://data.europa.eu/eli/reg_impl/2015/1999/oj")));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(
-            () ->
-                CellarActs.act(
-                    AVSEC,
-                    twoElis,
-                    result(),
-                    noLanguages(),
-                    noDates(),
-                    noTitles(),
-                    noAmendments(),
-                    noPublications()))
+        .isThrownBy(() ->
+            CellarActs.act(
+                AVSEC,
+                twoElis,
+                result(),
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 

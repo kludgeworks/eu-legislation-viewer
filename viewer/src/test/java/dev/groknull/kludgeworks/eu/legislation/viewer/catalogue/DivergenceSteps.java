@@ -123,11 +123,10 @@ public class DivergenceSteps {
   public void deferred(LocalDate day, LocalDate until) {
     assertThat(LawOnADay.of(the.act()).deferredApplicationOn(day, Language.ENG))
         .as(day.toString())
-        .hasValueSatisfying(
-            deferred -> {
-              assertThat(deferred.inFull().date()).isEqualTo(until);
-              assertThat(deferred.partial()).isFalse();
-            });
+        .hasValueSatisfying(deferred -> {
+          assertThat(deferred.inFull().date()).isEqualTo(until);
+          assertThat(deferred.partial()).isFalse();
+        });
   }
 
   @Then("in {language}, no act made the text of {day}")

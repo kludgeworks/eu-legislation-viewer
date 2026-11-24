@@ -34,17 +34,16 @@ final class FragmentFixtures {
     OneActCellar.ACT
         .timeline()
         .versions()
-        .forEach(
-            version ->
-                texts.put(
-                    version,
-                    new Text.Ready(
-                        new TextId(
-                            switch (version.date().toString()) {
-                              case "2026-03-22" -> 1;
-                              case "2026-10-01" -> 2;
-                              default -> 9;
-                            }))));
+        .forEach(version ->
+            texts.put(
+                version,
+                new Text.Ready(
+                    new TextId(
+                        switch (version.date().toString()) {
+                          case "2026-03-22" -> 1;
+                          case "2026-10-01" -> 2;
+                          default -> 9;
+                        }))));
     return new Preparation(
         OneActCellar.CELEX,
         language,

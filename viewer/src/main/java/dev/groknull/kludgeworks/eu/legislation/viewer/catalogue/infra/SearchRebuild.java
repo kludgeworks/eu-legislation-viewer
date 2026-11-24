@@ -389,20 +389,19 @@ class SearchRebuild {
     var copy = connection.unwrap(PGConnection.class).getCopyAPI();
     Observation.createNotStarted("catalogue.search.extract", observations)
         .lowCardinalityKeyValue("family", extract.name().toLowerCase(Locale.ROOT))
-        .observe(
-            () ->
-                cellar.copyCsv(
-                    query,
-                    input -> {
-                      try {
-                        long rows = copy.copyIn(extract.copy, input);
-                        LOG.debug("Copied {} rows from Cellar search extract {}", rows, extract);
-                        return rows;
-                      } catch (SQLException failure) {
-                        throw new IllegalStateException(
-                            "Cannot load search extract " + extract, failure);
-                      }
-                    }));
+        .observe(() ->
+            cellar.copyCsv(
+                query,
+                input -> {
+                  try {
+                    long rows = copy.copyIn(extract.copy, input);
+                    LOG.debug("Copied {} rows from Cellar search extract {}", rows, extract);
+                    return rows;
+                  } catch (SQLException failure) {
+                    throw new IllegalStateException(
+                        "Cannot load search extract " + extract, failure);
+                  }
+                }));
   }
 
   /**

@@ -160,18 +160,17 @@ public class OneActSteps {
                 from, to, Outlines.of(earlier).eIds(), Outlines.of(later).eIds(), Language.ENG);
     var included = Inclusions.listed(comparing.act().timeline());
     return Differ.differences(earlier, later).differences().stream()
-        .map(
-            difference ->
-                new Attributed(
+        .map(difference ->
+            new Attributed(
+                difference,
+                Attribution.of(
+                    comparing.act(),
+                    included,
+                    from,
+                    to,
                     difference,
-                    Attribution.of(
-                        comparing.act(),
-                        included,
-                        from,
-                        to,
-                        difference,
-                        Attribution.amendmentsOf(amended, difference),
-                        Attribution.removalsOf(amended, difference))))
+                    Attribution.amendmentsOf(amended, difference),
+                    Attribution.removalsOf(amended, difference))))
         .toList();
   }
 }

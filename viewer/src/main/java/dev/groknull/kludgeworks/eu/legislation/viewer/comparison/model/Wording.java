@@ -149,13 +149,10 @@ public final class Wording {
       name = "form-of-apostrophes-and-quotes")
   static List<String> said(List<String> tokens) {
     return tokens.stream()
-        .map(
-            token ->
-                SPACE.matcher(token).matches()
-                    ? " "
-                    : token.codePoints().anyMatch(Character::isLetterOrDigit)
-                        ? plain(token)
-                        : token)
+        .map(token ->
+            SPACE.matcher(token).matches()
+                ? " "
+                : token.codePoints().anyMatch(Character::isLetterOrDigit) ? plain(token) : token)
         .toList();
   }
 

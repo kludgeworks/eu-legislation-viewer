@@ -19,10 +19,8 @@ class ResourceTypeTest {
   @Test
   void refusesAnotherTablesUriOrACodeOfAnotherForm() {
     assertThatIllegalArgumentException()
-        .isThrownBy(
-            () ->
-                ResourceType.ofUri(
-                    "http://publications.europa.eu/resource/authority/language/ENG"));
+        .isThrownBy(() ->
+            ResourceType.ofUri("http://publications.europa.eu/resource/authority/language/ENG"));
     assertThatIllegalArgumentException().isThrownBy(() -> new ResourceType("reg_impl"));
   }
 }

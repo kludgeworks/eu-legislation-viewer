@@ -143,13 +143,9 @@ class JooqIngestJobs implements IngestJobs {
         .returning()
         .fetchOptional()
         .map(JooqIngestJobs::job)
-        .orElseThrow(
-            () ->
-                new OptimisticLockingFailureException(
-                    "Ingest job "
-                        + job.id()
-                        + " was started again since version "
-                        + job.version()));
+        .orElseThrow(() ->
+            new OptimisticLockingFailureException(
+                "Ingest job " + job.id() + " was started again since version " + job.version()));
   }
 
   private static IngestJob job(IngestJobRecord row) {

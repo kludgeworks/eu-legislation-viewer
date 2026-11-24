@@ -55,11 +55,9 @@ class JooqComparisonStore implements ComparisonStore {
             TEXT_COMPARISON.TO_TEXT.eq(to),
             TEXT_COMPARISON.DIFFER_VERSION.eq(version))
         .fetchOptional()
-        .map(
-            row ->
-                json.readValue(row.value1(), Kept.class)
-                    .comparison(
-                        from, to, row.value2() == null ? null : Side.valueOf(row.value2())));
+        .map(row ->
+            json.readValue(row.value1(), Kept.class)
+                .comparison(from, to, row.value2() == null ? null : Side.valueOf(row.value2())));
   }
 
   @Override
@@ -163,17 +161,16 @@ class JooqComparisonStore implements ComparisonStore {
       var openings = new Openings();
       var differences =
           comparison.differences().stream()
-              .map(
-                  each -> {
-                    var lead = openings.name(each.parent(), each.lead());
-                    return new KeptDifference(
-                        DifferenceBuilder.builder(each)
-                            .lead(lead == null ? each.lead() : null)
-                            .context(List.of())
-                            .build(),
-                        lead,
-                        each.context().stream().map(openings::kept).toList());
-                  })
+              .map(each -> {
+                var lead = openings.name(each.parent(), each.lead());
+                return new KeptDifference(
+                    DifferenceBuilder.builder(each)
+                        .lead(lead == null ? each.lead() : null)
+                        .context(List.of())
+                        .build(),
+                    lead,
+                    each.context().stream().map(openings::kept).toList());
+              })
               .toList();
       var closing = comparison.closing().stream().map(openings::kept).toList();
       return new Kept(openings.byOccurrence, differences, closing);
@@ -182,14 +179,13 @@ class JooqComparisonStore implements ComparisonStore {
     Comparison comparison(TextId from, TextId to, @Nullable Side withoutPreamble) {
       var differences =
           this.differences.stream()
-              .map(
-                  each -> {
-                    var difference = each.difference();
-                    return DifferenceBuilder.builder(difference)
-                        .lead(each.lead() == null ? difference.lead() : openings.get(each.lead()))
-                        .context(each.context().stream().map(this::context).toList())
-                        .build();
-                  })
+              .map(each -> {
+                var difference = each.difference();
+                return DifferenceBuilder.builder(difference)
+                    .lead(each.lead() == null ? difference.lead() : openings.get(each.lead()))
+                    .context(each.context().stream().map(this::context).toList())
+                    .build();
+              })
               .toList();
       return new Comparison(
           from, to, differences, closing.stream().map(this::context).toList(), withoutPreamble);

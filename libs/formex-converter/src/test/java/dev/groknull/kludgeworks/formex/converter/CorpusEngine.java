@@ -40,13 +40,12 @@ public final class CorpusEngine extends HierarchicalTestEngine<CorpusEngine.Cont
       var corpus = CorpusTests.corpus();
       try {
         CorpusTests.manifest(corpus)
-            .forEach(
-                (id, celex) ->
-                    engine.addChild(
-                        new ManifestationTest(
-                            uniqueId.append("manifestation", id),
-                            new Manifestation(id, corpus.resolve("files").resolve(id)),
-                            celex)));
+            .forEach((id, celex) ->
+                engine.addChild(
+                    new ManifestationTest(
+                        uniqueId.append("manifestation", id),
+                        new Manifestation(id, corpus.resolve("files").resolve(id)),
+                        celex)));
       } catch (IOException e) {
         throw new UncheckedIOException(e);
       }

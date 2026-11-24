@@ -88,14 +88,13 @@ public class FormexFiles {
     }
     var files =
         items.stream()
-            .map(
-                r ->
-                    new FormexManifestation.File(
-                        r.find("file")
-                            .orElseThrow(
-                                () -> new CellarException("No file name for " + r.get("item"))),
-                        URI.create(r.get("item")),
-                        r.get("mime")))
+            .map(r ->
+                new FormexManifestation.File(
+                    r.find("file")
+                        .orElseThrow(
+                            () -> new CellarException("No file name for " + r.get("item"))),
+                    URI.create(r.get("item")),
+                    r.get("mime")))
             .toList();
     LOG.debug("Formex of {} in {}: {} items of {}", celex, language, files.size(), uri);
     return Optional.of(new FormexManifestation(URI.create(uri), files));

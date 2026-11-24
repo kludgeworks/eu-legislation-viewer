@@ -66,13 +66,12 @@ public record DayView(
         range,
         occurrence,
         ActHistory.of(act).changeDays(language).entrySet().stream()
-            .map(
-                each ->
-                    each.getKey()
-                        + "="
-                        + each.getValue().stream()
-                            .map(amending -> does(act, amending))
-                            .collect(Collectors.joining("|")))
+            .map(each ->
+                each.getKey()
+                    + "="
+                    + each.getValue().stream()
+                        .map(amending -> does(act, amending))
+                        .collect(Collectors.joining("|")))
             .collect(Collectors.joining(";")));
   }
 
@@ -81,14 +80,12 @@ public record DayView(
     var cited = act.cited(amending);
     return act.dates()
         .applying(amending, Set.of())
-        .map(
-            applying ->
-                switch (applying) {
-                  case Applying.FromMoreThanOneDay _ ->
-                      "A part of " + cited + " applies from this day";
-                  case Applying.InForce _ -> cited + " is in force from this day";
-                  case Applying.From _, Applying.SetBy _ -> cited + " applies from this day";
-                })
+        .map(applying ->
+            switch (applying) {
+              case Applying.FromMoreThanOneDay _ -> "A part of " + cited + " applies from this day";
+              case Applying.InForce _ -> cited + " is in force from this day";
+              case Applying.From _, Applying.SetBy _ -> cited + " applies from this day";
+            })
         .orElse(cited);
   }
 }

@@ -47,11 +47,8 @@ final class Manifestations {
     var base = ROOT.resolve(kind);
     try (var paths = Files.walk(base, depth)) {
       return paths
-          .filter(
-              p ->
-                  !p.equals(base)
-                      && base.relativize(p).getNameCount() == depth
-                      && Files.isDirectory(p))
+          .filter(p ->
+              !p.equals(base) && base.relativize(p).getNameCount() == depth && Files.isDirectory(p))
           .sorted()
           .map(p -> new Manifestation(ROOT.relativize(p).toString(), p))
           .toList()

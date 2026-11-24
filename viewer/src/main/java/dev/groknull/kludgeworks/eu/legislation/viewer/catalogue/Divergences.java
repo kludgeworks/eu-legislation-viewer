@@ -148,14 +148,13 @@ final class Divergences {
       return whole(amending, places);
     }
     return groups.entrySet().stream()
-        .map(
-            each ->
-                new Divergence(
-                    Objects.requireNonNull(each.getKey().kind()),
-                    amending,
-                    Objects.requireNonNull(each.getKey().applies()),
-                    each.getKey().included(),
-                    inTextOrder(each.getValue(), each.getKey().included())))
+        .map(each ->
+            new Divergence(
+                Objects.requireNonNull(each.getKey().kind()),
+                amending,
+                Objects.requireNonNull(each.getKey().applies()),
+                each.getKey().included(),
+                inTextOrder(each.getValue(), each.getKey().included())))
         .toList();
   }
 
@@ -230,11 +229,8 @@ final class Divergences {
     var tagging = versionDate.get().tagging();
     if (from.equals(version.date())
         || versions.stream()
-            .anyMatch(
-                each ->
-                    each.date().equals(from)
-                        && includes(each, amending)
-                        && !tagging.contains(each))) {
+            .anyMatch(each ->
+                each.date().equals(from) && includes(each, amending) && !tagging.contains(each))) {
       return Optional.of(Answer.AGREES);
     }
     if (from.isAfter(version.date())) {
@@ -284,10 +280,8 @@ final class Divergences {
     return act.dates().datesOf(amending).stream()
         .filter(each -> each.kind() == ActDate.Kind.ENTRY_INTO_FORCE && each.date() != null)
         .min(Comparator.comparing(Divergences::day))
-        .map(
-            force ->
-                List.of(
-                    new Divergence(Kind.UNDATED, amending, force, null, inTextOrder(places, null))))
+        .map(force ->
+            List.of(new Divergence(Kind.UNDATED, amending, force, null, inTextOrder(places, null))))
         .orElseGet(List::of);
   }
 

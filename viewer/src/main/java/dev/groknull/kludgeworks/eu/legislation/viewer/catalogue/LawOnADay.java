@@ -54,9 +54,8 @@ public final class LawOnADay {
   public Optional<Timeline.TwoVersions> versionsOn(
       LocalDate from, LocalDate to, Language language) {
     return versionOn(from, language)
-        .flatMap(
-            earlier ->
-                versionOn(to, language).map(later -> new Timeline.TwoVersions(earlier, later)));
+        .flatMap(earlier ->
+            versionOn(to, language).map(later -> new Timeline.TwoVersions(earlier, later)));
   }
 
   /**
@@ -173,11 +172,10 @@ public final class LawOnADay {
       name = "the-acts-that-made-a-text-in-the-language")
   public List<ActIdentifier> changingIn(Version version, Language language) {
     return version.integrates().stream()
-        .filter(
-            each ->
-                each.corrigendum()
-                    ? act.publication(each).flatMap(p -> p.title(language)).isPresent()
-                    : ActHistory.of(act).inLanguage(each, language))
+        .filter(each ->
+            each.corrigendum()
+                ? act.publication(each).flatMap(p -> p.title(language)).isPresent()
+                : ActHistory.of(act).inLanguage(each, language))
         .toList();
   }
 
@@ -203,12 +201,11 @@ public final class LawOnADay {
     return act.dates()
         .appliesFrom(act.id())
         .filter(inFull -> inFull.date() != null)
-        .filter(
-            inFull ->
-                first.isPresent()
-                    && Objects.requireNonNull(inFull.date()).isAfter(first.get().date())
-                    && !day.isBefore(first.get().date())
-                    && day.isBefore(inFull.date()))
+        .filter(inFull ->
+            first.isPresent()
+                && Objects.requireNonNull(inFull.date()).isAfter(first.get().date())
+                && !day.isBefore(first.get().date())
+                && day.isBefore(inFull.date()))
         .map(inFull -> new DeferredApplication(inFull, act.dates().appliesInPartOn(act.id(), day)));
   }
 }

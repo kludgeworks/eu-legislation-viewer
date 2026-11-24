@@ -211,10 +211,9 @@ public record Attribution(
             each -> (between.contains(each) || parts.containsKey(each)) && stands.test(each));
     var taggedVersions =
         tagged.keySet().stream()
-            .map(
-                each ->
-                    Optional.ofNullable(parts.get(each))
-                        .or(() -> Applicability.firstIncluding(included, from, to, each)))
+            .map(each ->
+                Optional.ofNullable(parts.get(each))
+                    .or(() -> Applicability.firstIncluding(included, from, to, each)))
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
     var made = new LinkedHashMap<>(tagged);
@@ -283,10 +282,9 @@ public record Attribution(
   public static List<Difference> madeIn(
       List<Attributed> attributed, List<String> places, ActIdentifier act) {
     return attributed.stream()
-        .filter(
-            each ->
-                places.stream()
-                    .anyMatch(place -> TextOccurrences.holds(place, each.difference().eId())))
+        .filter(each ->
+            places.stream()
+                .anyMatch(place -> TextOccurrences.holds(place, each.difference().eId())))
         .filter(each -> each.attribution().acts().contains(act))
         .map(Attributed::difference)
         .toList();
@@ -322,12 +320,11 @@ public record Attribution(
       }
       Applicability.daysBetween(act, each, from, to).stream()
           .min(Comparator.naturalOrder())
-          .flatMap(
-              day ->
-                  included.timeline().versions().stream()
-                      .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-                      .filter(v -> !v.date().isBefore(day))
-                      .findFirst())
+          .flatMap(day ->
+              included.timeline().versions().stream()
+                  .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
+                  .filter(v -> !v.date().isBefore(day))
+                  .findFirst())
           .ifPresent(version -> parts.put(each, version));
     }
     return parts;
@@ -411,11 +408,10 @@ public record Attribution(
           .filter(each -> acts.contains(each) && version.equals(at.get(each)))
           .forEach(step::add);
       parts.entrySet().stream()
-          .filter(
-              part ->
-                  acts.contains(part.getKey())
-                      && version.equals(part.getValue())
-                      && !step.contains(part.getKey()))
+          .filter(part ->
+              acts.contains(part.getKey())
+                  && version.equals(part.getValue())
+                  && !step.contains(part.getKey()))
           .map(Map.Entry::getKey)
           .forEach(step::add);
       if (!step.isEmpty()) {

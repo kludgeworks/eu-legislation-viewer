@@ -230,12 +230,11 @@ class DifferSamplesTest {
     var said = new TreeMap<String, StringBuilder>();
     read(shown, without, "", said);
     var read = new TreeMap<String, String>();
-    said.forEach(
-        (eId, words) -> {
-          if (!words.isEmpty()) {
-            read.put(eId, words.toString());
-          }
-        });
+    said.forEach((eId, words) -> {
+      if (!words.isEmpty()) {
+        read.put(eId, words.toString());
+      }
+    });
     return read;
   }
 
@@ -317,23 +316,21 @@ class DifferSamplesTest {
       }
       case List<?> list -> {
         out.append('[');
-        list.forEach(
-            each -> {
-              write(each, out);
-              out.append(',');
-            });
+        list.forEach(each -> {
+          write(each, out);
+          out.append(',');
+        });
         out.append(']');
       }
       case Map<?, ?> map -> {
         out.append('{');
         var sorted = new TreeMap<String, Object>();
         map.forEach((key, each) -> sorted.put(String.valueOf(key), each));
-        sorted.forEach(
-            (key, each) -> {
-              out.append(key).append('=');
-              write(each, out);
-              out.append(',');
-            });
+        sorted.forEach((key, each) -> {
+          out.append(key).append('=');
+          write(each, out);
+          out.append(',');
+        });
         out.append('}');
       }
       default -> out.append(value);

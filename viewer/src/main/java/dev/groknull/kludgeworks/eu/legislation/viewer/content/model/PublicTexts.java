@@ -116,16 +116,15 @@ public final class PublicTexts {
   public static Optional<Extract> extract(Element legalText, String eId) {
     return legalText.occurrences(eId, eId).stream()
         .findFirst()
-        .map(
-            occurrence -> {
-              var referred = new LinkedHashSet<String>();
-              references(occurrence, referred);
-              var all = new LinkedHashMap<String, Footnote>();
-              new PublicTexts().allFootnotes(legalText, all);
-              return new Extract(
-                  occurrence(occurrence),
-                  referred.stream().map(all::get).filter(footnote -> footnote != null).toList());
-            });
+        .map(occurrence -> {
+          var referred = new LinkedHashSet<String>();
+          references(occurrence, referred);
+          var all = new LinkedHashMap<String, Footnote>();
+          new PublicTexts().allFootnotes(legalText, all);
+          return new Extract(
+              occurrence(occurrence),
+              referred.stream().map(all::get).filter(footnote -> footnote != null).toList());
+        });
   }
 
   /**
@@ -406,12 +405,11 @@ public final class PublicTexts {
         case "math" ->
             element.children().stream()
                 .filter(child -> child.name().equals("m:math"))
-                .forEach(
-                    child -> {
-                      var text = new StringBuilder();
-                      mathText(child, text);
-                      words.add(op, text.toString());
-                    });
+                .forEach(child -> {
+                  var text = new StringBuilder();
+                  mathText(child, text);
+                  words.add(op, text.toString());
+                });
         case "diff:ins" -> words(element.children(), Op.INSERT, words);
         case "diff:del" -> words(element.children(), Op.DELETE, words);
         case "footnoteRef", "deleted", "img", "tag" -> {
@@ -435,18 +433,16 @@ public final class PublicTexts {
         }
         case "occurrence" -> {
           child(element, "num")
-              .ifPresent(
-                  num -> {
-                    words(num.children(), Op.EQUAL, words);
-                    words.add(Op.EQUAL, " ");
-                  });
+              .ifPresent(num -> {
+                words(num.children(), Op.EQUAL, words);
+                words.add(Op.EQUAL, " ");
+              });
           for (var title : List.of("heading", "subheading")) {
             child(element, title)
-                .ifPresent(
-                    heading -> {
-                      words(heading.children(), Op.EQUAL, words);
-                      words.add(Op.EQUAL, "\n");
-                    });
+                .ifPresent(heading -> {
+                  words(heading.children(), Op.EQUAL, words);
+                  words.add(Op.EQUAL, "\n");
+                });
           }
           lines(content(element), words);
         }
@@ -606,13 +602,12 @@ public final class PublicTexts {
     }
     element.attributes().entrySet().stream()
         .sorted(Map.Entry.comparingByKey())
-        .forEach(
-            attribute ->
-                html.append(' ')
-                    .append(attribute.getKey())
-                    .append("=\"")
-                    .append(escape(attribute.getValue()))
-                    .append('"'));
+        .forEach(attribute ->
+            html.append(' ')
+                .append(attribute.getKey())
+                .append("=\"")
+                .append(escape(attribute.getValue()))
+                .append('"'));
     html.append('>').append(escape(element.text()));
     element.children().forEach(child -> mathml(child, html, block));
     html.append("</").append(name).append('>');
@@ -634,11 +629,10 @@ public final class PublicTexts {
   /** Returns the blocks of an element, without its tag, heading and caption. */
   private static List<Element> withoutParts(Element element) {
     return element.children().stream()
-        .filter(
-            child ->
-                !child.name().equals("tag")
-                    && !child.name().equals("heading")
-                    && !child.name().equals("caption"))
+        .filter(child ->
+            !child.name().equals("tag")
+                && !child.name().equals("heading")
+                && !child.name().equals("caption"))
         .toList();
   }
 

@@ -29,9 +29,8 @@ class WithdrawnTexts {
   @ApplicationModuleListener
   void on(VersionWithdrawn withdrawn) {
     var removed = store.delete(withdrawn.celex());
-    removed.forEach(
-        (language, text) ->
-            events.publishEvent(new TextRemoved(text, withdrawn.celex(), language)));
+    removed.forEach((language, text) ->
+        events.publishEvent(new TextRemoved(text, withdrawn.celex(), language)));
     LOG.info(
         "Removed the texts of withdrawn version {}: {} in {} languages",
         withdrawn.celex(),

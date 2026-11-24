@@ -103,15 +103,13 @@ class ChangeStoreTests {
     var taken = new CountDownLatch(1);
     var release = new CountDownLatch(1);
     var first =
-        CompletableFuture.supplyAsync(
-            () ->
-                transactions.execute(
-                    status -> {
-                      var due = store.due(WATERMARK.plus(HOUR));
-                      taken.countDown();
-                      awaitQuietly(release);
-                      return due;
-                    }));
+        CompletableFuture.supplyAsync(() ->
+            transactions.execute(status -> {
+              var due = store.due(WATERMARK.plus(HOUR));
+              taken.countDown();
+              awaitQuietly(release);
+              return due;
+            }));
     taken.await();
 
     var second = transactions.execute(status -> store.due(WATERMARK.plus(HOUR)));

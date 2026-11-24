@@ -149,81 +149,76 @@ public final class ExpandContract {
 
   static List<String> problems(Map<String, Table> released, Map<String, Table> next) {
     var problems = new ArrayList<String>();
-    released.forEach(
-        (name, was) -> {
-          var now = next.get(name);
-          if (now == null) {
-            if (!deprecated(was.comment())) {
+    released.forEach((name, was) -> {
+      var now = next.get(name);
+      if (now == null) {
+        if (!deprecated(was.comment())) {
+          problems.add(
+              "table "
+                  + name
+                  + " is dropped or renamed, but the released schema does not deprecate it");
+        }
+        return;
+      }
+      was.columns()
+          .forEach((column, before) -> {
+            var after = now.columns().get(column);
+            var qualified = name + "." + column;
+            var gone = deprecated(before.comment()) || deprecated(was.comment());
+            if (after == null) {
+              if (!gone) {
+                problems.add(
+                    "column "
+                        + qualified
+                        + " is dropped or renamed, but the released schema does not"
+                        + " deprecate it");
+              }
+            } else if (!after.type().equals(before.type())) {
+              if (!gone) {
+                problems.add(
+                    "column "
+                        + qualified
+                        + " changes type from "
+                        + before.type()
+                        + " to "
+                        + after.type()
+                        + ", which the released code still reads");
+              }
+            } else if (after.required() && !before.required()) {
               problems.add(
-                  "table "
-                      + name
-                      + " is dropped or renamed, but the released schema does not deprecate it");
+                  "column "
+                      + qualified
+                      + " becomes not null without a default, which the released code"
+                      + " may not write");
             }
-            return;
-          }
-          was.columns()
-              .forEach(
-                  (column, before) -> {
-                    var after = now.columns().get(column);
-                    var qualified = name + "." + column;
-                    var gone = deprecated(before.comment()) || deprecated(was.comment());
-                    if (after == null) {
-                      if (!gone) {
-                        problems.add(
-                            "column "
-                                + qualified
-                                + " is dropped or renamed, but the released schema does not"
-                                + " deprecate it");
-                      }
-                    } else if (!after.type().equals(before.type())) {
-                      if (!gone) {
-                        problems.add(
-                            "column "
-                                + qualified
-                                + " changes type from "
-                                + before.type()
-                                + " to "
-                                + after.type()
-                                + ", which the released code still reads");
-                      }
-                    } else if (after.required() && !before.required()) {
-                      problems.add(
-                          "column "
-                              + qualified
-                              + " becomes not null without a default, which the released code"
-                              + " may not write");
-                    }
-                  });
-          now.columns()
-              .forEach(
-                  (column, after) -> {
-                    if (!was.columns().containsKey(column) && after.required()) {
-                      problems.add(
-                          "column "
-                              + name
-                              + "."
-                              + column
-                              + " is new and not null without a default, which the released code"
-                              + " does not write");
-                    }
-                  });
-        });
-    next.forEach(
-        (name, table) ->
-            table
-                .columns()
-                .forEach(
-                    (column, after) -> {
-                      if (deprecated(after.comment()) && after.required()) {
-                        problems.add(
-                            "column "
-                                + name
-                                + "."
-                                + column
-                                + " is deprecated but not null without a default, which the code"
-                                + " no longer writes");
-                      }
-                    }));
+          });
+      now.columns()
+          .forEach((column, after) -> {
+            if (!was.columns().containsKey(column) && after.required()) {
+              problems.add(
+                  "column "
+                      + name
+                      + "."
+                      + column
+                      + " is new and not null without a default, which the released code"
+                      + " does not write");
+            }
+          });
+    });
+    next.forEach((name, table) ->
+        table
+            .columns()
+            .forEach((column, after) -> {
+              if (deprecated(after.comment()) && after.required()) {
+                problems.add(
+                    "column "
+                        + name
+                        + "."
+                        + column
+                        + " is deprecated but not null without a default, which the code"
+                        + " no longer writes");
+              }
+            }));
     return problems;
   }
 

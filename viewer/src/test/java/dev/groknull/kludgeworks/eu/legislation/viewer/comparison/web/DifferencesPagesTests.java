@@ -286,12 +286,11 @@ class DifferencesPagesTests {
                 () ->
                     http.get()
                         .uri(DIFFERENCES)
-                        .exchange(
-                            (request, response) ->
-                                response.getStatusCode().is2xxSuccessful()
-                                    ? new String(
-                                        response.getBody().readAllBytes(), StandardCharsets.UTF_8)
-                                    : ""),
+                        .exchange((request, response) ->
+                            response.getStatusCode().is2xxSuccessful()
+                                ? new String(
+                                    response.getBody().readAllBytes(), StandardCharsets.UTF_8)
+                                : ""),
                 found -> !found.isEmpty());
     return Jsoup.parse(body);
   }

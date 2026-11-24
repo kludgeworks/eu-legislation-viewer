@@ -178,29 +178,27 @@ public final class RulesWiki {
             var envelope = deserializer.readValue(line);
             envelope
                 .getGherkinDocument()
-                .ifPresent(
-                    doc -> {
-                      documents.put(doc.getUri().orElse(""), doc);
-                      keys.putAll(keys(doc));
-                    });
+                .ifPresent(doc -> {
+                  documents.put(doc.getUri().orElse(""), doc);
+                  keys.putAll(keys(doc));
+                });
             envelope.getPickle().ifPresent(pickle -> pickles.put(pickle.getId(), pickle));
             envelope.getTestCase().ifPresent(test -> cases.put(test.getId(), test));
             envelope.getTestCaseStarted().ifPresent(start -> started.put(start.getId(), start));
             envelope
                 .getTestStepFinished()
-                .ifPresent(
-                    step -> {
-                      var start = started.get(step.getTestCaseStartedId());
-                      var test = start == null ? null : cases.get(start.getTestCaseId());
-                      var pickle = test == null ? null : pickles.get(test.getPickleId());
-                      var key =
-                          pickle == null || pickle.getAstNodeIds().isEmpty()
-                              ? null
-                              : keys.get(pickle.getAstNodeIds().getFirst());
-                      if (key != null) {
-                        results.merge(key, step.getTestStepResult().getStatus(), Run::worse);
-                      }
-                    });
+                .ifPresent(step -> {
+                  var start = started.get(step.getTestCaseStartedId());
+                  var test = start == null ? null : cases.get(start.getTestCaseId());
+                  var pickle = test == null ? null : pickles.get(test.getPickleId());
+                  var key =
+                      pickle == null || pickle.getAstNodeIds().isEmpty()
+                          ? null
+                          : keys.get(pickle.getAstNodeIds().getFirst());
+                  if (key != null) {
+                    results.merge(key, step.getTestStepResult().getStatus(), Run::worse);
+                  }
+                });
           }
         }
       }
@@ -213,13 +211,12 @@ public final class RulesWiki {
       var uri = document.getUri().orElse("");
       document
           .getFeature()
-          .ifPresent(
-              feature ->
-                  feature.getChildren().stream()
-                      .flatMap(child -> child.getRule().stream())
-                      .flatMap(rule -> rule.getChildren().stream())
-                      .flatMap(child -> child.getScenario().stream())
-                      .forEach(scenario -> keys.put(scenario.getId(), key(uri, scenario))));
+          .ifPresent(feature ->
+              feature.getChildren().stream()
+                  .flatMap(child -> child.getRule().stream())
+                  .flatMap(rule -> rule.getChildren().stream())
+                  .flatMap(child -> child.getScenario().stream())
+                  .forEach(scenario -> keys.put(scenario.getId(), key(uri, scenario))));
       return keys;
     }
 
@@ -250,33 +247,30 @@ public final class RulesWiki {
       for (var child : feature.getChildren()) {
         child
             .getScenario()
-            .ifPresent(
-                scenario ->
-                    errors.add(uri + ": the example \"" + scenario.getName() + "\" is in no rule"));
+            .ifPresent(scenario ->
+                errors.add(uri + ": the example \"" + scenario.getName() + "\" is in no rule"));
         child
             .getRule()
-            .ifPresent(
-                rule -> {
-                  var title = title(rule);
-                  if (title.isEmpty()) {
-                    errors.add(
-                        uri
-                            + ": the rule \""
-                            + rule.getName()
-                            + "\" has no name (name · title, the name in kebab case)");
-                    return;
-                  }
-                  var id = title.get().group(1);
-                  var before =
-                      seen.putIfAbsent(RulesApplied.key(RulesApplied.group(document), id), uri);
-                  if (before != null) {
-                    errors.add(uri + ": " + id + " is also in " + before);
-                  }
-                  if (rule.getChildren().stream()
-                      .noneMatch(each -> each.getScenario().isPresent())) {
-                    errors.add(uri + ": " + id + " has no example");
-                  }
-                });
+            .ifPresent(rule -> {
+              var title = title(rule);
+              if (title.isEmpty()) {
+                errors.add(
+                    uri
+                        + ": the rule \""
+                        + rule.getName()
+                        + "\" has no name (name · title, the name in kebab case)");
+                return;
+              }
+              var id = title.get().group(1);
+              var before =
+                  seen.putIfAbsent(RulesApplied.key(RulesApplied.group(document), id), uri);
+              if (before != null) {
+                errors.add(uri + ": " + id + " is also in " + before);
+              }
+              if (rule.getChildren().stream().noneMatch(each -> each.getScenario().isPresent())) {
+                errors.add(uri + ": " + id + " has no example");
+              }
+            });
       }
     }
     return errors;
@@ -294,10 +288,9 @@ public final class RulesWiki {
             envelope.getGherkinDocument().ifPresent(documents::add);
             envelope
                 .getParseError()
-                .ifPresent(
-                    error -> {
-                      throw new IllegalStateException(file + ": " + error.getMessage());
-                    });
+                .ifPresent(error -> {
+                  throw new IllegalStateException(file + ": " + error.getMessage());
+                });
           }
         }
       }
@@ -319,20 +312,18 @@ public final class RulesWiki {
       for (var child : feature.getChildren()) {
         child
             .getRule()
-            .ifPresent(
-                rule ->
-                    title(rule)
-                        .ifPresent(
-                            title ->
-                                rules.put(
-                                    RulesApplied.key(RulesApplied.group(document), title.group(1)),
-                                    new Text(
-                                        title.group(1),
-                                        title.group(2),
-                                        feature.getName(),
-                                        RulesApplied.group(document),
-                                        rule,
-                                        lines(rule)))));
+            .ifPresent(rule ->
+                title(rule)
+                    .ifPresent(title ->
+                        rules.put(
+                            RulesApplied.key(RulesApplied.group(document), title.group(1)),
+                            new Text(
+                                title.group(1),
+                                title.group(2),
+                                feature.getName(),
+                                RulesApplied.group(document),
+                                rule,
+                                lines(rule)))));
       }
     }
     return rules;
@@ -351,21 +342,19 @@ public final class RulesWiki {
     for (var child : rule.getChildren()) {
       child
           .getBackground()
-          .ifPresent(
-              background -> {
-                lines.add("");
-                lines.add(background.getKeyword() + ":");
-                steps(background.getSteps(), lines);
-              });
+          .ifPresent(background -> {
+            lines.add("");
+            lines.add(background.getKeyword() + ":");
+            steps(background.getSteps(), lines);
+          });
       child
           .getScenario()
-          .ifPresent(
-              scenario -> {
-                lines.add("");
-                tagLine(scenario.getTags()).ifPresent(lines::add);
-                lines.add(scenario.getKeyword() + ": " + scenario.getName());
-                steps(scenario.getSteps(), lines);
-              });
+          .ifPresent(scenario -> {
+            lines.add("");
+            tagLine(scenario.getTags()).ifPresent(lines::add);
+            lines.add(scenario.getKeyword() + ": " + scenario.getName());
+            steps(scenario.getSteps(), lines);
+          });
     }
     return lines;
   }
@@ -375,12 +364,11 @@ public final class RulesWiki {
       lines.add("  " + step.getKeyword().strip() + " " + step.getText());
       step.getDataTable().ifPresent(table -> rows(table).forEach(lines::add));
       step.getDocString()
-          .ifPresent(
-              doc -> {
-                lines.add("    \"\"\"");
-                doc.getContent().lines().map(line -> "    " + line).forEach(lines::add);
-                lines.add("    \"\"\"");
-              });
+          .ifPresent(doc -> {
+            lines.add("    \"\"\"");
+            doc.getContent().lines().map(line -> "    " + line).forEach(lines::add);
+            lines.add("    \"\"\"");
+          });
     }
   }
 
@@ -392,13 +380,12 @@ public final class RulesWiki {
 
   private static Stream<String> rows(DataTable table) {
     return table.getRows().stream()
-        .map(
-            row ->
-                "    | "
-                    + row.getCells().stream()
-                        .map(cell -> cell.getValue())
-                        .collect(Collectors.joining(" | "))
-                    + " |");
+        .map(row ->
+            "    | "
+                + row.getCells().stream()
+                    .map(cell -> cell.getValue())
+                    .collect(Collectors.joining(" | "))
+                + " |");
   }
 
   /** A page and the number of its rules that changed since the release. */
@@ -444,12 +431,11 @@ public final class RulesWiki {
       for (var child : text.rule().getChildren()) {
         child
             .getBackground()
-            .ifPresent(
-                background -> {
-                  body.append("**").append(background.getKeyword()).append("**\n\n");
-                  steps(body, background.getSteps());
-                  body.append('\n');
-                });
+            .ifPresent(background -> {
+              body.append("**").append(background.getKeyword()).append("**\n\n");
+              steps(body, background.getSteps());
+              body.append('\n');
+            });
         child
             .getScenario()
             .ifPresent(scenario -> example(body, scenario, run, document.getUri().orElse("")));
@@ -522,17 +508,16 @@ public final class RulesWiki {
             String.join(
                 ", ",
                 applied.stream()
-                    .map(
-                        each ->
-                            "[`"
-                                + each.method()
-                                + "`]("
-                                + GITHUB
-                                + ref
-                                + "/"
-                                + SOURCES
-                                + each.source()
-                                + ")")
+                    .map(each ->
+                        "[`"
+                            + each.method()
+                            + "`]("
+                            + GITHUB
+                            + ref
+                            + "/"
+                            + SOURCES
+                            + each.source()
+                            + ")")
                     .toList()))
         .append("\n\n");
   }
@@ -562,14 +547,11 @@ public final class RulesWiki {
       md.append('\n');
       step.getDataTable().ifPresent(table -> table(md, table.getRows()));
       step.getDocString()
-          .ifPresent(
-              doc -> {
-                md.append('\n');
-                doc.getContent()
-                    .lines()
-                    .forEach(line -> md.append("  > ").append(line).append('\n'));
-                md.append('\n');
-              });
+          .ifPresent(doc -> {
+            md.append('\n');
+            doc.getContent().lines().forEach(line -> md.append("  > ").append(line).append('\n'));
+            md.append('\n');
+          });
     }
   }
 

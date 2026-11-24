@@ -73,15 +73,13 @@ public record ProvisionHistory(
       amendment
           .location()
           .in(occurrences)
-          .ifPresent(
-              found ->
-                  found
-                      .eIds()
-                      .forEach(
-                          eId ->
-                              byOccurrence
-                                  .computeIfAbsent(eId, occurrence -> new ArrayList<>())
-                                  .add(amendment)));
+          .ifPresent(found ->
+              found
+                  .eIds()
+                  .forEach(eId ->
+                      byOccurrence
+                          .computeIfAbsent(eId, occurrence -> new ArrayList<>())
+                          .add(amendment)));
     }
     return byOccurrence;
   }
@@ -115,18 +113,16 @@ public record ProvisionHistory(
     var changes =
         act.amendments().stream()
             .filter(amendment -> amendment.changes(language))
-            .filter(
-                amendment ->
-                    amendment
-                        .location()
-                        .in(occurrences)
-                        .filter(
-                            found ->
-                                found.eIds().contains(occurrence)
-                                    || (!found.within()
-                                        && found.eIds().stream()
-                                            .anyMatch(holder -> Amended.in(occurrence, holder))))
-                        .isPresent())
+            .filter(amendment ->
+                amendment
+                    .location()
+                    .in(occurrences)
+                    .filter(found ->
+                        found.eIds().contains(occurrence)
+                            || (!found.within()
+                                && found.eIds().stream()
+                                    .anyMatch(holder -> Amended.in(occurrence, holder))))
+                    .isPresent())
             .sorted(Comparator.comparing(Amendment::act, newest))
             .toList();
     var named = changes.stream().map(Amendment::act).collect(Collectors.toSet());
@@ -189,10 +185,9 @@ public record ProvisionHistory(
   public static Optional<Version> firstWith(
       Act act, String occurrence, Language language, Map<Version, TextTags> texts) {
     return act.timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
-        .filter(
-            version ->
-                Optional.ofNullable(texts.get(version)).stream()
-                    .anyMatch(tags -> tags.eIds().contains(occurrence)))
+        .filter(version ->
+            Optional.ofNullable(texts.get(version)).stream()
+                .anyMatch(tags -> tags.eIds().contains(occurrence)))
         .findFirst();
   }
 

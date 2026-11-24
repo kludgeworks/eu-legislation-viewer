@@ -313,11 +313,9 @@ final class BuiltTexts {
   static Element only(Element occurrence, String name) {
     return occurrence.children().stream()
         .filter(child -> child.name().equals(name))
-        .reduce(
-            (one, other) -> {
-              throw new AssertionError(
-                  "More than one " + name + " in " + occurrence.attribute("eId"));
-            })
+        .reduce((one, other) -> {
+          throw new AssertionError("More than one " + name + " in " + occurrence.attribute("eId"));
+        })
         .orElseThrow();
   }
 

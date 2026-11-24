@@ -96,11 +96,8 @@ final class CellarDates {
       var amending = amending(row.find("amending").orElse(""));
       if (row.get("property").endsWith(TRANSPOSITION)) {
         transposition(row.get("date"), comment, amending)
-            .ifPresent(
-                d ->
-                    dates
-                        .computeIfAbsent(new ActIdentifier(subject), a -> new ArrayList<>())
-                        .add(d));
+            .ifPresent(d ->
+                dates.computeIfAbsent(new ActIdentifier(subject), a -> new ArrayList<>()).add(d));
         continue;
       }
       var type = row.find("type").map(CellarDates::code).orElse("");

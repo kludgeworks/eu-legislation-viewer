@@ -104,36 +104,32 @@ class ApiTextController {
         text ->
             content
                 .publicText(text)
-                .map(
-                    publicText -> {
-                      var self =
-                          to(celex, asked.version(), asked.language(), IanaLinkRelations.SELF);
-                      var model =
-                          HalModelBuilder.halModelOf(
-                                  new TextModel(
-                                      ApiActResources.key(asked.version()),
-                                      asked.version().celex(),
-                                      ApiActResources.code(asked.language().code()),
-                                      publicText))
-                              .link(self)
-                              .link(
-                                  ApiActResources.to(celex, asked.version(), IanaLinkRelations.UP))
-                              .link(
-                                  linkTo(
-                                          methodOn(ApiTextController.class)
-                                              .outline(celex, key, language))
-                                      .withRel(Relation.OUTLINE.rel()))
-                              .link(occurrenceTemplate(self))
-                              .link(schema("text"))
-                              .link(ApiPreparationController.to(celex, asked.language()));
-                      for (var other : asked.version().languages()) {
-                        if (other != asked.language()) {
-                          model.link(
-                              to(celex, asked.version(), other, IanaLinkRelations.ALTERNATE));
-                        }
-                      }
-                      return model.build();
-                    }));
+                .map(publicText -> {
+                  var self = to(celex, asked.version(), asked.language(), IanaLinkRelations.SELF);
+                  var model =
+                      HalModelBuilder.halModelOf(
+                              new TextModel(
+                                  ApiActResources.key(asked.version()),
+                                  asked.version().celex(),
+                                  ApiActResources.code(asked.language().code()),
+                                  publicText))
+                          .link(self)
+                          .link(ApiActResources.to(celex, asked.version(), IanaLinkRelations.UP))
+                          .link(
+                              linkTo(
+                                      methodOn(ApiTextController.class)
+                                          .outline(celex, key, language))
+                                  .withRel(Relation.OUTLINE.rel()))
+                          .link(occurrenceTemplate(self))
+                          .link(schema("text"))
+                          .link(ApiPreparationController.to(celex, asked.language()));
+                  for (var other : asked.version().languages()) {
+                    if (other != asked.language()) {
+                      model.link(to(celex, asked.version(), other, IanaLinkRelations.ALTERNATE));
+                    }
+                  }
+                  return model.build();
+                }));
   }
 
   /**
@@ -150,17 +146,14 @@ class ApiTextController {
         id ->
             content
                 .outline(id)
-                .map(
-                    outline ->
-                        HalModelBuilder.halModelOf(OutlineModel.of(outline))
-                            .link(
-                                linkTo(
-                                        methodOn(ApiTextController.class)
-                                            .outline(celex, key, language))
-                                    .withSelfRel())
-                            .link(text)
-                            .link(occurrenceTemplate(text))
-                            .build()));
+                .map(outline ->
+                    HalModelBuilder.halModelOf(OutlineModel.of(outline))
+                        .link(
+                            linkTo(methodOn(ApiTextController.class).outline(celex, key, language))
+                                .withSelfRel())
+                        .link(text)
+                        .link(occurrenceTemplate(text))
+                        .build()));
   }
 
   /**
@@ -182,14 +175,13 @@ class ApiTextController {
         id ->
             content
                 .publicOccurrence(id, eId)
-                .map(
-                    extract ->
-                        HalModelBuilder.halModelOf(
-                                new OccurrenceModel(extract.occurrence(), extract.footnotes()))
-                            .link(Link.of(occurrenceHref(text, eId)))
-                            .link(text)
-                            .link(schema("occurrence"))
-                            .build()));
+                .map(extract ->
+                    HalModelBuilder.halModelOf(
+                            new OccurrenceModel(extract.occurrence(), extract.footnotes()))
+                        .link(Link.of(occurrenceHref(text, eId)))
+                        .link(text)
+                        .link(schema("occurrence"))
+                        .build()));
   }
 
   /** Returns a link to the text of the version in the language. */

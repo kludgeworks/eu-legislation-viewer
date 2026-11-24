@@ -181,14 +181,13 @@ class PostgresSearch implements Search {
     }
     observation.lowCardinalityKeyValue("backend", "postgres");
     return Objects.requireNonNull(
-        transactions.execute(
-            status -> {
-              catalogue
-                  .setLocal(
-                      unquotedName("pg_trgm", "word_similarity_threshold"), inline(TYPO_THRESHOLD))
-                  .execute();
-              return read(local(query), query.size(), observation);
-            }));
+        transactions.execute(status -> {
+          catalogue
+              .setLocal(
+                  unquotedName("pg_trgm", "word_similarity_threshold"), inline(TYPO_THRESHOLD))
+              .execute();
+          return read(local(query), query.size(), observation);
+        }));
   }
 
   /**

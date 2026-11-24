@@ -114,21 +114,18 @@ public final class ActHistory {
       var own =
           act.dates()
               .applying(each, Set.of())
-              .map(
-                  applying ->
-                      switch (applying) {
-                        case Applying.From from -> List.of(from.day());
-                        case Applying.FromMoreThanOneDay parts ->
-                            parts.starts().stream()
-                                .filter(
-                                    start ->
-                                        !start.entryIntoForce()
-                                            || start.day().equals(parts.first()))
-                                .map(Applying.Start::day)
-                                .toList();
-                        case Applying.InForce inForce -> List.of(inForce.day());
-                        case Applying.SetBy _ -> List.<LocalDate>of();
-                      })
+              .map(applying ->
+                  switch (applying) {
+                    case Applying.From from -> List.of(from.day());
+                    case Applying.FromMoreThanOneDay parts ->
+                        parts.starts().stream()
+                            .filter(start ->
+                                !start.entryIntoForce() || start.day().equals(parts.first()))
+                            .map(Applying.Start::day)
+                            .toList();
+                    case Applying.InForce inForce -> List.of(inForce.day());
+                    case Applying.SetBy _ -> List.<LocalDate>of();
+                  })
               .orElseGet(List::of);
       own.forEach(day -> days.computeIfAbsent(day, _ -> new ArrayList<>()).add(each));
     }
@@ -205,12 +202,11 @@ public final class ActHistory {
         .map(ActDate::date)
         .filter(Objects::nonNull)
         .min(Comparator.naturalOrder())
-        .or(
-            () ->
-                act.timeline(language).orElseGet(act::timeline).versions().stream()
-                    .filter(version -> version.integrates().contains(amending))
-                    .map(Version::date)
-                    .findFirst());
+        .or(() ->
+            act.timeline(language).orElseGet(act::timeline).versions().stream()
+                .filter(version -> version.integrates().contains(amending))
+                .map(Version::date)
+                .findFirst());
   }
 
   /**
@@ -224,14 +220,13 @@ public final class ActHistory {
     var occurrences = TextOccurrences.of(eIds);
     return changes.stream()
         .sorted(
-            Comparator.comparing(
-                change ->
-                    change
-                        .location()
-                        .in(occurrences)
-                        .or(() -> change.location().around(occurrences))
-                        .map(found -> eIds.indexOf(found.eIds().getFirst()))
-                        .orElse(Integer.MAX_VALUE)))
+            Comparator.comparing(change ->
+                change
+                    .location()
+                    .in(occurrences)
+                    .or(() -> change.location().around(occurrences))
+                    .map(found -> eIds.indexOf(found.eIds().getFirst()))
+                    .orElse(Integer.MAX_VALUE)))
         .toList();
   }
 
@@ -252,11 +247,10 @@ public final class ActHistory {
     return found.stream()
         .filter(each -> each.corrected().filter(corrected::equals).isPresent())
         .filter(each -> inLanguage(each, language))
-        .filter(
-            each ->
-                act.publication(each)
-                    .map(publication -> publication.title(language).isPresent())
-                    .orElse(true))
+        .filter(each ->
+            act.publication(each)
+                .map(publication -> publication.title(language).isPresent())
+                .orElse(true))
         .sorted(Comparator.comparing(ActIdentifier::celex))
         .toList();
   }

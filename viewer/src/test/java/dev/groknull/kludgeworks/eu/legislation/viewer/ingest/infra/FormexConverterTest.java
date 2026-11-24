@@ -62,10 +62,9 @@ class FormexConverterTest {
   @Test
   void reportsFormexItDoesNotHandle() {
     assertThatExceptionOfType(UnsupportedFormexException.class)
-        .isThrownBy(
-            () ->
-                CONVERTER.convert(
-                    formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")), "32026R0449"))
+        .isThrownBy(() ->
+            CONVERTER.convert(
+                formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")), "32026R0449"))
         .withMessageContaining("NOT.FORMEX");
   }
 
@@ -91,22 +90,19 @@ class FormexConverterTest {
   @Test
   void failsWhereTheDocumentRefersToAFileThePackageHasNot() {
     assertThatExceptionOfType(ConversionException.class)
-        .isThrownBy(
-            () ->
-                CONVERTER.convert(
-                    List.of(file("package.doc.xml", descriptor("act.xml"))), "32026R0449"))
+        .isThrownBy(() ->
+            CONVERTER.convert(
+                List.of(file("package.doc.xml", descriptor("act.xml"))), "32026R0449"))
         .withMessageContaining("The package has no file act.xml");
   }
 
   @Test
   void failsWhereAFileTheDocumentRefersToIsNotXml() {
     assertThatExceptionOfType(ConversionException.class)
-        .isThrownBy(
-            () ->
-                CONVERTER.convert(
-                    List.of(
-                        file("package.doc.xml", descriptor("act.xml")), file("act.xml", "<ACT>")),
-                    "32026R0449"))
+        .isThrownBy(() ->
+            CONVERTER.convert(
+                List.of(file("package.doc.xml", descriptor("act.xml")), file("act.xml", "<ACT>")),
+                "32026R0449"))
         .withMessageContaining("act.xml isn't XML");
   }
 

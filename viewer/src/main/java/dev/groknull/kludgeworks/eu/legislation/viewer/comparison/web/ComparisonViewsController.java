@@ -211,16 +211,15 @@ class ComparisonViewsController {
             if (!same.isEmpty()) {
               var text = content.read(attributed.later()).orElseThrow(Requests::notFound);
               Neighbours.of(text, same)
-                  .forEach(
-                      (eId, neighbour) -> {
-                        occurrences.put(eId, neighbour.occurrence());
-                        histories.put(
-                            eId,
-                            SidenoteView.history(
-                                ends.act,
-                                LastChange.of(ends.act, ends.included, later, neighbour.tags()),
-                                ends.language));
-                      });
+                  .forEach((eId, neighbour) -> {
+                    occurrences.put(eId, neighbour.occurrence());
+                    histories.put(
+                        eId,
+                        SidenoteView.history(
+                            ends.act,
+                            LastChange.of(ends.act, ends.included, later, neighbour.tags()),
+                            ends.language));
+                  });
             }
             yield templates
                 .comparisonSynopsis(

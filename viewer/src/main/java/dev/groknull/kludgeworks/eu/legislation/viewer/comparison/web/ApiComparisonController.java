@@ -202,11 +202,9 @@ class ApiComparisonController {
         HalModelBuilder.halModelOf(ComparisonModel.of(asked, comparison))
             .embed(
                 comparison.differences().stream()
-                    .map(
-                        difference ->
-                            EntityModel.of(
-                                    DifferenceSummary.of(asked.ends.act, difference, amended))
-                                .add(Link.of(differenceHref(self, difference.eId()))))
+                    .map(difference ->
+                        EntityModel.of(DifferenceSummary.of(asked.ends.act, difference, amended))
+                            .add(Link.of(differenceHref(self, difference.eId()))))
                     .toList(),
                 IanaLinkRelations.ITEM)
             .link(self)

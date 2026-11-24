@@ -96,24 +96,23 @@ class JooqActStore implements ActStore {
     return db.selectFrom(ACT)
         .where(which)
         .fetchOptional()
-        .map(
-            act ->
-                act(
-                    act,
-                    db.select(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE)
-                        .from(ACT_TITLE)
-                        .where(ACT_TITLE.ACT.eq(act.getCelex()))
-                        .fetchMap(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE),
-                    versions(act.getCelex()),
-                    db.selectFrom(ACT_DATE)
-                        .where(ACT_DATE.ACT.eq(act.getCelex()))
-                        .orderBy(ACT_DATE.SUBJECT, ACT_DATE.ORDINAL)
-                        .fetch(),
-                    db.selectFrom(ACT_AMENDMENT)
-                        .where(ACT_AMENDMENT.ACT.eq(act.getCelex()))
-                        .orderBy(ACT_AMENDMENT.ORDINAL)
-                        .fetch(JooqActStore::amendment),
-                    publications(act.getCelex())));
+        .map(act ->
+            act(
+                act,
+                db.select(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE)
+                    .from(ACT_TITLE)
+                    .where(ACT_TITLE.ACT.eq(act.getCelex()))
+                    .fetchMap(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE),
+                versions(act.getCelex()),
+                db.selectFrom(ACT_DATE)
+                    .where(ACT_DATE.ACT.eq(act.getCelex()))
+                    .orderBy(ACT_DATE.SUBJECT, ACT_DATE.ORDINAL)
+                    .fetch(),
+                db.selectFrom(ACT_AMENDMENT)
+                    .where(ACT_AMENDMENT.ACT.eq(act.getCelex()))
+                    .orderBy(ACT_AMENDMENT.ORDINAL)
+                    .fetch(JooqActStore::amendment),
+                publications(act.getCelex())));
   }
 
   /** Reads the versions of {@code act}, each with its Formex in each language. */
@@ -230,12 +229,11 @@ class JooqActStore implements ActStore {
                 act.timeline().versions().stream().map(Version::celex).toList()))
         .execute();
     formex(act);
-    missing.forEach(
-        (celex, since) ->
-            db.update(VERSION)
-                .set(VERSION.MISSING_SINCE, since)
-                .where(VERSION.ACT.eq(act.id()), VERSION.CELEX.eq(celex))
-                .execute());
+    missing.forEach((celex, since) ->
+        db.update(VERSION)
+            .set(VERSION.MISSING_SINCE, since)
+            .where(VERSION.ACT.eq(act.id()), VERSION.CELEX.eq(celex))
+            .execute());
   }
 
   @Override
@@ -253,15 +251,10 @@ class JooqActStore implements ActStore {
     for (var version : act.timeline().versions()) {
       version
           .formex()
-          .forEach(
-              (language, formex) ->
-                  rows.add(
-                      new VersionFormexRecord(
-                          act.id(),
-                          version.celex(),
-                          language,
-                          formex.fixity(),
-                          formex.modified())));
+          .forEach((language, formex) ->
+              rows.add(
+                  new VersionFormexRecord(
+                      act.id(), version.celex(), language, formex.fixity(), formex.modified())));
     }
     if (!rows.isEmpty()) {
       db.batchInsert(rows).execute();
@@ -303,12 +296,11 @@ class JooqActStore implements ActStore {
     dates.put(act.id(), act.dates().own());
     var rows =
         dates.entrySet().stream()
-            .flatMap(
-                subject -> {
-                  var each = subject.getValue();
-                  return IntStream.range(0, each.size())
-                      .mapToObj(i -> date(act.id(), subject.getKey(), i, each.get(i)));
-                })
+            .flatMap(subject -> {
+              var each = subject.getValue();
+              return IntStream.range(0, each.size())
+                  .mapToObj(i -> date(act.id(), subject.getKey(), i, each.get(i)));
+            })
             .toList();
     if (!rows.isEmpty()) {
       db.batchInsert(rows).execute();
@@ -333,19 +325,18 @@ class JooqActStore implements ActStore {
     }
     var rows = new ArrayList<ActPublicationRecord>();
     act.publications()
-        .forEach(
-            (subject, publication) -> {
-              var journal = publication.journal();
-              rows.add(
-                  new ActPublicationRecord(
-                      act.id(),
-                      subject,
-                      publication.eli(),
-                      journal == null ? null : journal.series(),
-                      journal == null ? null : journal.number(),
-                      journal == null ? null : journal.issue(),
-                      journal == null ? null : journal.published()));
-            });
+        .forEach((subject, publication) -> {
+          var journal = publication.journal();
+          rows.add(
+              new ActPublicationRecord(
+                  act.id(),
+                  subject,
+                  publication.eli(),
+                  journal == null ? null : journal.series(),
+                  journal == null ? null : journal.number(),
+                  journal == null ? null : journal.issue(),
+                  journal == null ? null : journal.published()));
+        });
     db.batchInsert(rows).execute();
     var titles =
         db.insertInto(
@@ -371,11 +362,10 @@ class JooqActStore implements ActStore {
     var titles = new HashMap<ActIdentifier, Map<Language, String>>();
     db.selectFrom(ACT_PUBLICATION_TITLE)
         .where(ACT_PUBLICATION_TITLE.ACT.eq(act))
-        .forEach(
-            title ->
-                titles
-                    .computeIfAbsent(title.getSubject(), each -> new EnumMap<>(Language.class))
-                    .put(title.getLanguageCode(), title.getTitle()));
+        .forEach(title ->
+            titles
+                .computeIfAbsent(title.getSubject(), each -> new EnumMap<>(Language.class))
+                .put(title.getLanguageCode(), title.getTitle()));
     var publications = new LinkedHashMap<ActIdentifier, Publication>();
     for (var row : db.selectFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act)).fetch()) {
       var series = row.getSeries();

@@ -143,11 +143,10 @@ class ViewerJarTests {
     }
     var pending =
         files.stream()
-            .anyMatch(
-                file -> {
-                  var name = file.getFileName().toString();
-                  return !PendingMigrations.runsAs(name).equals(name);
-                });
+            .anyMatch(file -> {
+              var name = file.getFileName().toString();
+              return !PendingMigrations.runsAs(name).equals(name);
+            });
     if (pending) {
       for (var file : files) {
         var module =
@@ -164,11 +163,10 @@ class ViewerJarTests {
   private static void assertStarts(Process app) throws Exception {
     try {
       var started =
-          CompletableFuture.supplyAsync(
-              () ->
-                  app.inputReader()
-                      .lines()
-                      .anyMatch(line -> line.contains("Started ViewerApplication")));
+          CompletableFuture.supplyAsync(() ->
+              app.inputReader()
+                  .lines()
+                  .anyMatch(line -> line.contains("Started ViewerApplication")));
 
       assertThat(started.get(STARTUP.toSeconds(), TimeUnit.SECONDS))
           .as("the app's log says it started")

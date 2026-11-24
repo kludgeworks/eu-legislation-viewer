@@ -83,15 +83,13 @@ class ContentTests {
     var stored = new CountDownLatch(1);
     var release = new CountDownLatch(1);
     var first =
-        CompletableFuture.supplyAsync(
-            () ->
-                transactions.execute(
-                    status -> {
-                      var id = content.store(celex, Language.ENG, "test", text);
-                      stored.countDown();
-                      await().until(() -> release.getCount() == 0);
-                      return id;
-                    }));
+        CompletableFuture.supplyAsync(() ->
+            transactions.execute(status -> {
+              var id = content.store(celex, Language.ENG, "test", text);
+              stored.countDown();
+              await().until(() -> release.getCount() == 0);
+              return id;
+            }));
     stored.await();
     var second =
         CompletableFuture.supplyAsync(() -> content.store(celex, Language.ENG, "test", text));

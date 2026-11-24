@@ -215,15 +215,14 @@ public final class RulesApplied {
   public static void write(Path file, List<Applied> applied) throws IOException {
     var lines =
         applied.stream()
-            .map(
-                each ->
-                    String.join(
-                        "\t",
-                        each.group(),
-                        each.name(),
-                        String.valueOf(each.revision()),
-                        each.type(),
-                        each.member()))
+            .map(each ->
+                String.join(
+                    "\t",
+                    each.group(),
+                    each.name(),
+                    String.valueOf(each.revision()),
+                    each.type(),
+                    each.member()))
             .toList();
     Files.write(file, lines);
   }

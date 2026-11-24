@@ -93,14 +93,13 @@ public class MadeBySteps {
     assertThat(Objects.requireNonNull(difference, "no difference given").tags())
         .containsExactlyElementsOf(
             rows.stream()
-                .map(
-                    row ->
-                        new Difference.Tag(
-                            row.act().celex(),
-                            row.modification(),
-                            row.takenFrom() == null
-                                ? null
-                                : Comparing.eId(Objects.requireNonNull(row.takenFrom()), later)))
+                .map(row ->
+                    new Difference.Tag(
+                        row.act().celex(),
+                        row.modification(),
+                        row.takenFrom() == null
+                            ? null
+                            : Comparing.eId(Objects.requireNonNull(row.takenFrom()), later)))
                 .toList());
   }
 
@@ -113,9 +112,8 @@ public class MadeBySteps {
   public void theStepsAre(List<Types.StepRow> rows) {
     assertThat(
             attribution.steps().stream()
-                .map(
-                    step ->
-                        new Types.StepRow(step.version().date(), step.modification(), step.acts()))
+                .map(step ->
+                    new Types.StepRow(step.version().date(), step.modification(), step.acts()))
                 .toList())
         .containsExactlyElementsOf(rows);
   }
@@ -170,13 +168,12 @@ public class MadeBySteps {
         .predecessor(version)
         .filter(this::isBuilt)
         .filter(before -> isBuilt(version))
-        .map(
-            before ->
-                Differ.differences(Comparing.text(before), Comparing.text(version))
-                    .differences()
-                    .stream()
-                    .map(Difference::eId)
-                    .collect(Collectors.toSet()));
+        .map(before ->
+            Differ.differences(Comparing.text(before), Comparing.text(version))
+                .differences()
+                .stream()
+                .map(Difference::eId)
+                .collect(Collectors.toSet()));
   }
 
   private boolean isBuilt(Version version) {

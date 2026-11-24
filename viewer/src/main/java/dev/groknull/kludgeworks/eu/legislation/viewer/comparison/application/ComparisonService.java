@@ -98,40 +98,29 @@ class ComparisonService implements Comparisons {
         version ->
             timeline
                 .predecessor(version)
-                .flatMap(
-                    before ->
-                        texts.get(before) instanceof Text.Ready earlier
-                                && texts.get(version) instanceof Text.Ready later
-                            ? between(earlier.text(), later.text())
-                            : Optional.empty())
-                .map(
-                    comparison ->
-                        comparison.differences().stream()
-                            .map(Difference::eId)
-                            .collect(Collectors.toSet())));
+                .flatMap(before ->
+                    texts.get(before) instanceof Text.Ready earlier
+                            && texts.get(version) instanceof Text.Ready later
+                        ? between(earlier.text(), later.text())
+                        : Optional.empty())
+                .map(comparison ->
+                    comparison.differences().stream()
+                        .map(Difference::eId)
+                        .collect(Collectors.toSet())));
   }
 
   @Override
   public Optional<Difference> difference(TextId from, TextId to, String eId) {
     return between(from, to)
-        .flatMap(
-            comparison ->
-                comparison.differences().stream()
-                    .filter(each -> each.eId().equals(eId))
-                    .findFirst())
-        .flatMap(
-            difference ->
-                comparisons
-                    .whole(from, to, eId)
-                    .map(
-                        whole ->
-                            DifferenceBuilder.builder(difference).shown(whole).whole(null).build())
-                    // Not cut down, or an annex whose whole occurrence is lost
-                    .or(
-                        () ->
-                            difference.whole() == null
-                                ? Optional.of(difference)
-                                : Optional.empty()));
+        .flatMap(comparison ->
+            comparison.differences().stream().filter(each -> each.eId().equals(eId)).findFirst())
+        .flatMap(difference ->
+            comparisons
+                .whole(from, to, eId)
+                .map(
+                    whole -> DifferenceBuilder.builder(difference).shown(whole).whole(null).build())
+                // Not cut down, or an annex whose whole occurrence is lost
+                .or(() -> difference.whole() == null ? Optional.of(difference) : Optional.empty()));
   }
 
   /**
@@ -159,10 +148,9 @@ class ComparisonService implements Comparisons {
           () ->
               comparisons
                   .find(from, to, DifferVersion.value())
-                  .or(
-                      () ->
-                          Observation.createNotStarted("comparison.compare", observations)
-                              .observe(() -> compare(from, to))),
+                  .or(() ->
+                      Observation.createNotStarted("comparison.compare", observations)
+                          .observe(() -> compare(from, to))),
           executor);
     } catch (RuntimeException e) {
       // The executor refused the work.
@@ -183,16 +171,11 @@ class ComparisonService implements Comparisons {
     var read = System.nanoTime();
     var comparison =
         Observation.createNotStarted("comparison.diff", observations)
-            .observe(
-                () -> {
-                  var compared = Differ.differences(earlier.get(), later.get());
-                  return new Comparison(
-                      from,
-                      to,
-                      compared.differences(),
-                      compared.closing(),
-                      compared.withoutPreamble());
-                });
+            .observe(() -> {
+              var compared = Differ.differences(earlier.get(), later.get());
+              return new Comparison(
+                  from, to, compared.differences(), compared.closing(), compared.withoutPreamble());
+            });
     var diffed = System.nanoTime();
     var stored = comparisons.add(comparison, DifferVersion.value());
     var kept = System.nanoTime();

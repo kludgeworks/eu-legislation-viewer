@@ -132,13 +132,12 @@ class ContentService implements Content {
   @Transactional(readOnly = true)
   public Optional<PublicText> publicText(TextId text) {
     return read(text)
-        .map(
-            element -> {
-              var start = System.nanoTime();
-              var model = PublicTexts.of(element);
-              LOG.debug("Text {} in the public model in {} ms", text, millis(start));
-              return model;
-            });
+        .map(element -> {
+          var start = System.nanoTime();
+          var model = PublicTexts.of(element);
+          LOG.debug("Text {} in the public model in {} ms", text, millis(start));
+          return model;
+        });
   }
 
   @Override
@@ -196,19 +195,18 @@ class ContentService implements Content {
   private Optional<Outline> outlineAgain(TextId text, long start) {
     return store
         .json(text)
-        .map(
-            json -> {
-              var outline = Outlines.of(Decoder.element(json));
-              store.outline(text, outline, OutlinesVersion.value());
-              LOG.info(
-                  "Outlined text {} again, by the outline rules {}: {} occurrences tagged, in {}"
-                      + " ms",
-                  text,
-                  OutlinesVersion.value(),
-                  outline.tags().size(),
-                  millis(start));
-              return outline;
-            });
+        .map(json -> {
+          var outline = Outlines.of(Decoder.element(json));
+          store.outline(text, outline, OutlinesVersion.value());
+          LOG.info(
+              "Outlined text {} again, by the outline rules {}: {} occurrences tagged, in {}"
+                  + " ms",
+              text,
+              OutlinesVersion.value(),
+              outline.tags().size(),
+              millis(start));
+          return outline;
+        });
   }
 
   @Override

@@ -93,13 +93,12 @@ public record ProvisionView(
 
   private static @Nullable String name(ProvisionHistory history, String occurrence, TextTags text) {
     return history.changes().stream()
-        .filter(
-            change ->
-                change
-                    .location()
-                    .in(text.eIds())
-                    .filter(found -> !found.within() && found.eIds().equals(List.of(occurrence)))
-                    .isPresent())
+        .filter(change ->
+            change
+                .location()
+                .in(text.eIds())
+                .filter(found -> !found.within() && found.eIds().equals(List.of(occurrence)))
+                .isPresent())
         .map(change -> change.location().place().words())
         .filter(each -> !each.isEmpty())
         .findFirst()
@@ -210,15 +209,14 @@ public record ProvisionView(
       Act act, String occurrence, Language language, Map<Version, TextTags> texts) {
     return ProvisionHistory.firstWith(act, occurrence, language, texts)
         .filter(first -> first.kind() != Version.Kind.ORIGINAL)
-        .map(
-            first ->
-                new Unknown(
-                    "The data does not say which act inserted this provision. It first appears in"
-                        + " the text of "
-                        + Dates.inWords(first.date())
-                        + ".",
-                    "The text of " + Dates.inWords(first.date()),
-                    first.eurLex(language).toString()))
+        .map(first ->
+            new Unknown(
+                "The data does not say which act inserted this provision. It first appears in"
+                    + " the text of "
+                    + Dates.inWords(first.date())
+                    + ".",
+                "The text of " + Dates.inWords(first.date()),
+                first.eurLex(language).toString()))
         .orElseGet(
             () -> new Unknown("The data names no act that changed this provision.", null, null));
   }
@@ -245,10 +243,9 @@ public record ProvisionView(
     var last = integrating.getLast();
     var to = last.date().isAfter(reading.date()) ? last : reading;
     return from.filter(each -> each.date().isBefore(to.date()))
-        .map(
-            each ->
-                new ComparePage(Links.compare(eli, language), each.date(), to.date(), null, null)
-                    .href(occurrence))
+        .map(each ->
+            new ComparePage(Links.compare(eli, language), each.date(), to.date(), null, null)
+                .href(occurrence))
         .orElse(null);
   }
 
