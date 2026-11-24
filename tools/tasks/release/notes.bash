@@ -16,13 +16,22 @@ tag=${usage_tag:?}
 repo=${usage_repo:-kludgeworks/eu-legislation-viewer}
 output=${usage_output:-}
 
-# A tag that isn't made yet is the release of HEAD: mise run release shows its notes before it tags.
+# The release tags, oldest version first
+release_tags() {
+	git tag --list --sort=version:refname | grep -E '^v20[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+$' || true
+}
+
+# The previous release is the one with the version before, not the latest tag that the commit
+# contains: a release's tag may be on a commit that main does not contain (v2026.11.19's is).
+# A tag that isn't made yet is the release of HEAD: the Release workflow writes its notes before
+# it tags it.
 if git rev-parse --quiet --verify "refs/tags/$tag" >/dev/null; then
 	ref=$tag
-	prev_tag=$(git describe --tags --abbrev=0 "$tag^" 2>/dev/null || true)
+	prev_tag=$(release_tags | grep -B1 -Fx "$tag" | head -n 1)
+	[[ "$prev_tag" != "$tag" ]] || prev_tag=""
 else
 	ref=HEAD
-	prev_tag=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || true)
+	prev_tag=$(release_tags | tail -n 1)
 fi
 if [[ -n "$prev_tag" ]]; then
 	commit_range="$prev_tag..$ref"

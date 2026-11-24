@@ -122,3 +122,22 @@ git_commit() {
 	[[ "$output" != *"initial commit"* ]] || false
 	[[ "$output" = *"compare/v2026.11.0...v2026.11.1"* ]] || false
 }
+
+@test "starts at the previous release's version, even when its tag is on a commit not on main" {
+	git_commit "chore: initial commit"
+	git -C "$repo" tag v2026.11.0
+	git_commit "feat: released in v2026.11.1"
+	# v2026.11.1 tagged a commit that main then replaced, as v2026.11.19's release was
+	git -C "$repo" checkout --quiet --detach
+	git_commit "chore(release): prepare v2026.11.1"
+	git -C "$repo" tag v2026.11.1
+	git -C "$repo" checkout --quiet main
+	git_commit "fix: after v2026.11.1"
+
+	notes usage_tag=v2026.11.2
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"compare/v2026.11.1...v2026.11.2"* ]] || false
+	[[ "$output" = *"* fix: after v2026.11.1"* ]] || false
+	[[ "$output" != *"released in v2026.11.1"* ]] || false
+}
