@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 import javax.xml.XMLConstants;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.XdmNode;
@@ -17,6 +20,7 @@ import net.sf.saxon.s9api.XdmNodeKind;
  *       local, or prefixed, for example {@code m:math} or {@code xml:lang}.
  *   <li>That text is never mixed with elements. Text is only in an element of its own, {@code t}.
  *       Thus whitespace between elements is only the indentation of the writer of the file.
+ *   <li>What an occurrence holds before its content, and the attributes that an element must have.
  * </ul>
  */
 final class LegalText {
@@ -34,6 +38,34 @@ final class LegalText {
           "xsi", XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 
   private LegalText() {}
+
+  /** What an occurrence holds before its content. */
+  private static final Set<String> OCCURRENCE_PARTS = Set.of("tag", "num", "heading", "subheading");
+
+  /** Returns what an occurrence holds after its number, headings and tag. */
+  static List<Element> content(Element occurrence) {
+    return occurrence.children().stream()
+        .filter(child -> !OCCURRENCE_PARTS.contains(child.name()))
+        .toList();
+  }
+
+  /** Returns the first child {@code name} of {@code element}, or none if it has none. */
+  static Optional<Element> child(Element element, String name) {
+    return element.children().stream().filter(child -> child.name().equals(name)).findFirst();
+  }
+
+  /**
+   * Returns the attribute {@code name} of {@code element}, which the schema requires.
+   *
+   * @throws IllegalArgumentException if it has none
+   */
+  static String attribute(Element element, String name) {
+    var value = element.attribute(name);
+    if (value == null) {
+      throw new IllegalArgumentException(element.name() + " has no " + name);
+    }
+    return value;
+  }
 
   static boolean isRoot(XdmNode el) {
     return new QName(NAMESPACE, "legalText").equals(el.getNodeName());

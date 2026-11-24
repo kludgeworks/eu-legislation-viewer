@@ -119,12 +119,15 @@
   </Match>
 
   <!--
-    CC (Cyclomatic Complexity): PublicTexts maps each element of the stored text in one case of a
-    switch on the element's name. javac compiles a switch on strings to a hash and an equals check
-    for each case, so the count is high, but each case is one line of mapping.
+    CC (Cyclomatic Complexity): PublicTexts and RunningText map each element of the stored text in
+    one case of a switch on the element's name. javac compiles a switch on strings to a hash and an
+    equals check for each case, so the count is high, but each case is one line of mapping.
   -->
   <Match>
-    <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.content.model.PublicTexts" />
+    <Or>
+      <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.content.model.PublicTexts" />
+      <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.content.model.RunningText" />
+    </Or>
     <Bug code="CC" />
   </Match>
 
