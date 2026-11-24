@@ -28,8 +28,9 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.modulith.events.ApplicationModuleListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
  * Compares the texts that the content module stores.
@@ -193,7 +194,15 @@ class ComparisonService implements Comparisons {
     return Optional.of(stored);
   }
 
-  @ApplicationModuleListener
+  /**
+   * Works out the comparison of two consecutive texts before a reader asks for it. It runs outside
+   * any transaction: it waits for the work on the executor, which needs a connection of its own. A
+   * transaction, even an empty one, keeps a connection for the listener while it waits. When the
+   * texts of an act are all converted already, every pair of consecutive texts arrives at once, and
+   * the listeners would hold every connection of the pool while their work waits for one.
+   */
+  @Async
+  @TransactionalEventListener
   void on(ConsecutiveTextsBuilt built) {
     between(built.earlier(), built.later());
   }
