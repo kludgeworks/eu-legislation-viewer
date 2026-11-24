@@ -19,40 +19,40 @@ LICENSE_HOLDER = "The Project Contributors"
 [tools]
 # bazelisk as bazel, the name the tasks and hk call; it runs the version in .bazelversion
 "github:bazelbuild/bazelisk" = { version = "1.30.0", bin = "bazel" }
-buildifier = "10.1.0"
-"aqua:bazelbuild/buildtools/buildozer" = "10.1.0"
+buildifier = "10.2.0"
+"aqua:bazelbuild/buildtools/buildozer" = "10.2.0"
 java = "temurin-25.0.5+8.0.LTS"                                      # for the IDE and jshell; Bazel uses its own remotejdk_25
 hk = "2.9.0"                                                         # the version in hk.pkl's amends URL
-pkl = "0.32.2"                                                       # pkl_format: hk evaluates hk.pkl itself
+pkl = "0.33.1"                                                       # pkl_format: hk evaluates hk.pkl itself
 google-java-format = "2.0.0"
 "github:google/addlicense" = "1.2.0"
 # REUSE: every file's copyright and licence (REUSE.toml)
 "pipx:reuse" = { version = "6.3.0", extras = "charset-normalizer" }
 taplo = "0.10.0"
-typos = "1.51.1"
+typos = "1.52.2"
 shellcheck = "0.11.0"
 # node: matches MODULE.bazel's node.toolchain(node_version = "24.22.1")
 node = "24.22.1"
-prettier = "3.9.10"
+prettier = "3.10.1"
 # the page scripts' linter (hk ox_lint): its JSDoc, unicorn, import and Vitest rules are built in
 oxlint = "1.92.0"
 "npm:stylelint" = "16.15.0"
 shfmt = "3.14.1"
 bats = "1.14.0"
-usage = "7.1.5"
-jactionlint = "2.4.0"
+usage = "7.4.0"
+jactionlint = "2.6.0"
 jq = "1.8.2"
 "github:suzuki-shunsuke/pinact" = "5.0.2"
-ruff = "0.17.1"
-uv = "0.13.4"
-pack = "0.40.10"
+ruff = "0.17.6"
+uv = "0.13.9"
+pack = "0.40.11"
 kubeconform = "0.8.0"
 kube-linter = "0.8.3"
 gum = "0.17.0"                            # the task scripts' styled messages and questions (tools/lib/ui.bash)
 jbang = "0.143.0"
 gitleaks = "8.30.1"
 "pipx:semgrep" = "1.182.1"
-osv-scanner = "2.7.0"
+osv-scanner = "2.7.1"
 "pipx:sqlfluff" = "4.5.0"                 # SQL lint and format, Postgres dialect (.sqlfluff), for the unreleased migrations
 
 [hooks]
