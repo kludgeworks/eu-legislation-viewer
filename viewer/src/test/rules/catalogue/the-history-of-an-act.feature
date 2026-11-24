@@ -1,18 +1,39 @@
 # SPDX-License-Identifier: MIT
 Feature: The history of an act
-  Which acts are in the history of an act, in which order, its corrigenda, the days on which an
-  act changes it, and the changes of each amending act. These rules read the versions and the
-  amendments that Cellar gives, and the tags of the texts that are built.
+  The history of an act:
+  - which acts are in it, and in which order
+  - its corrigenda
+  - the days on which an act changes it
+  - the changes of each amending act
+
+  These rules read the versions and the amendments that Cellar gives, and the tags of the texts
+  that the viewer builds.
 
   Rule: the-amending-acts-of-an-act · The amending acts of an act
     They are the acts that its versions in the language integrate, and the acts whose amendments
-    Cellar annotates. An act can be in no version yet. The act itself and the corrigenda are left
-    out: a corrigendum is not an amending act. An act that corrects only other languages is left
-    out.
+    Cellar annotates. An act can be in no version yet. The act itself and the corrigenda do not
+    count: a corrigendum is not an amending act. An act that corrects only other languages does
+    not count.
 
     Example: The amending acts of an act in English
       Given the act 2015/1998 as Cellar has it
-      Then the amending acts of the act in English are, newest first, 2026/449, 2025/920, 2024/2108, 2024/1255, 2023/566, 2022/1174, 2022/421, 2019/1583, 2021/255, 2020/910, 2020/111, 2019/413, 2019/103, 2018/55, 2017/815, 2015/2426
+      Then the amending acts of the act in English are, newest first:
+        | 2026/449  |
+        | 2025/920  |
+        | 2024/2108 |
+        | 2024/1255 |
+        | 2023/566  |
+        | 2022/1174 |
+        | 2022/421  |
+        | 2019/1583 |
+        | 2021/255  |
+        | 2020/910  |
+        | 2020/111  |
+        | 2019/413  |
+        | 2019/103  |
+        | 2018/55   |
+        | 2017/815  |
+        | 2015/2426 |
 
     Example: An act that corrects only other languages
       Given the act 2015/1998 as Cellar has it
@@ -41,14 +62,14 @@ Feature: The history of an act
 
   Rule: the-changes-of-an-amending-act · The changes of an amending act, in the order of the text
     The changes of an amending act are its amendments that change the words in the language. They
-    are in the order of the latest text that is built: a change has the position of its place in
-    that text. A place that the text does not have has the position of the occurrence that holds
-    it. While no text is built, the changes are in the order of the data.
+    are in the order of the latest text that the viewer builds: a change has the position of its
+    place in that text. A place that the text does not have has the position of the occurrence
+    that holds it. While the viewer builds no text, the changes are in the order of the data.
 
     Example: The changes in the order of the text
       Given the act 2015/1998 as Cellar has it
       And the viewer builds its texts where the converter has a sample
-      Then the latest text that is built is the text of 1 October 2026
+      Then the latest text that the viewer builds is the text of 1 October 2026
       And 2017/815 has 62 changes, and the first three, in the order of the text, are at:
         | annex point 1.0.3              |
         | annex point 1.1.3.1            |
@@ -70,7 +91,7 @@ Feature: The history of an act
       Then 2017/837 has no changes in English
       But 2017/837 has changes in Polish
 
-    Example: While no text is built
+    Example: While the viewer builds no text
       Given the act 2015/1998 as Cellar has it
       Then 2017/815 has 62 changes, and the first three, in the order of the data, are at:
         | annex point 6.8.3.6 |
@@ -79,8 +100,8 @@ Feature: The history of an act
 
   Rule: the-corrigenda-of-an-act · The corrigenda of an act
     A corrigendum belongs to the act that it corrects: the act itself, or an amending act. A
-    corrigendum is published only in the languages that it corrects, so a corrigendum whose
-    publication has no title in the language is left out.
+    corrigendum is in only the languages that it corrects. So a corrigendum whose publication has
+    no title in the language does not count.
 
     Example: A corrigendum of the act itself
       Given the act 767/2008 as Cellar has it
@@ -179,10 +200,14 @@ Feature: The history of an act
       And the text tags it with 2017/2226, which Cellar names no change of there
 
   Rule: a-provision-the-data-names-no-act-for · A provision that the data names no act for
-    It is an occurrence that the act as published does not have, where the text tags no act and
-    Cellar annotates no change at the occurrence, at an occurrence that holds it, or at an
-    occurrence in it. Only the outer occurrence counts. The first version whose text has it is
-    given. If the text of the act as published is not built, no occurrence counts.
+    It is an occurrence that the act as published does not have, and that the data says nothing
+    of. The data says nothing of an occurrence if both conditions are true:
+    - The text tags no act at the occurrence, at an occurrence that holds it, or at an occurrence
+      in it.
+    - Cellar annotates no change at these occurrences.
+
+    Only the outer occurrence counts. The viewer gives the first version whose text has it. If the
+    viewer did not build the text of the act as published, no occurrence counts.
 
     Example: Two articles that the data names no act for
       Given the act 2018/1862 as Cellar has it
@@ -219,16 +244,19 @@ Feature: The history of an act
       Then of the amending acts between 29 December 2017 and 12 June 2026, those that changed article 6 paragraph 2 in the text of 12 October 2025 are 2024/1356, 2021/1152, 2021/1134, 2019/817
 
   Rule: the-days-of-change · The days on which an amending act changes the act
-    An act that applies from one day changes the act on that day. An act that applies from more
-    than one day changes it on each day from which a part applies: its entry into force is such a
-    day only if it is the first day from which a part applies. An act that is in force, where
-    Cellar does not tell from when it applies, changes it on the day of its entry into force. An
-    act that applies from a day that Cellar does not know changes it on no day.
+    The days on which an amending act changes the act:
+    - An act that applies from one day changes the act on that day.
+    - An act that applies from more than one day changes the act on each day from which a part of
+      it applies. Its entry into force is such a day only if it is the first day from which a part
+      applies.
+    - An act in force changes the act on the day of its entry into force if Cellar does not tell
+      from when it applies.
+    - An act that applies from a day that Cellar does not know changes the act on no day.
 
     Example: The days of change of an act
       Given the act 2015/1998 as Cellar has it
       Then the act changes on 22 days
-      And on 31 December 2021, the act is changed by 2019/103, 2019/1583
+      And on 31 December 2021, these acts change the act: 2019/103, 2019/1583
       And 2017/815 changes the act on 1 June 2017
       And 2019/413 changes the act on no day
 

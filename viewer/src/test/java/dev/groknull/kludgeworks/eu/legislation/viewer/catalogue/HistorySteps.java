@@ -30,8 +30,9 @@ public class HistorySteps {
     this.the = the;
   }
 
-  @Then("the amending acts of the act in {language} are, newest first, {acts}")
-  public void amendingActs(Language language, List<ActIdentifier> acts) {
+  @Then("the amending acts of the act in {language} are, newest first:")
+  public void amendingActs(Language language, List<String> cited) {
+    var acts = cited.stream().map(Cited::act).toList();
     assertThat(ActHistory.of(the.act()).amendingActs(language)).containsExactlyElementsOf(acts);
   }
 
@@ -63,7 +64,7 @@ public class HistorySteps {
     assertThat(acts.indexOf(newer)).isLessThan(acts.indexOf(older));
   }
 
-  @Then("the latest text that is built is the text of {day}")
+  @Then("the latest text that the viewer builds is the text of {day}")
   public void latest(LocalDate day) {
     assertThat(ActHistory.of(the.act()).latestText(Language.ENG, the.texts())).contains(text(day));
   }
@@ -270,7 +271,7 @@ public class HistorySteps {
     assertThat(ActHistory.of(the.act()).changeDays(Language.ENG)).hasSize(count);
   }
 
-  @Then("on {day}, the act is changed by {acts}")
+  @Then("on {day}, these acts change the act: {acts}")
   public void changedOn(LocalDate day, List<ActIdentifier> acts) {
     assertThat(ActHistory.of(the.act()).changeDays(Language.ENG).get(day))
         .containsExactlyElementsOf(acts);
