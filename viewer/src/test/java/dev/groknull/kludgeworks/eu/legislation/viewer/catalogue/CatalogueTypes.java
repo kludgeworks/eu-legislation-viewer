@@ -60,6 +60,15 @@ public class CatalogueTypes {
     return new Place(words);
   }
 
+  /**
+   * A place in Cellar's codes, as Cellar writes it without the URIs of its codes. For example, "AN
+   * PO 1.3.1.1 PTA (g)" or "AR 114 PA 1 ALN 1".
+   */
+  @ParameterType("[A-Z]{1,8}(?: (?:[A-Z]{1,8}|[0-9(][^ ]*))*")
+  public Location location(String code) {
+    return new Location(code);
+  }
+
   /** The state of an act, or of one change, on a day, in the words of the rules. */
   @ParameterType(
       "is not in force|is in force and does not apply yet|applies in part|applies|has a state that"

@@ -17,7 +17,8 @@ import java.util.function.Function;
  * The steps of the rules of places: which occurrences of a text the place of a change is ({@link
  * Location#in}), or the occurrence that holds it ({@link Location#around}). A change is named by
  * its act and its place as the pages name it. Each change of the act at that place must give the
- * same answer. An expected occurrence is named as a page names it too, and found in the text.
+ * same answer. An expected occurrence is named as a page names it too, and found in the text. A
+ * change can also be named by its act and its place in Cellar's codes, to say how a page names it.
  */
 public class PlaceSteps {
   private final TheAct the;
@@ -80,6 +81,17 @@ public class PlaceSteps {
     assertThat(each(act, place, location -> location.around(text)))
         .as("%s at %s in the text of %s", act.cited(), place.words(), day)
         .containsOnly(Optional.empty());
+  }
+
+  @Then("the change of {act} at Cellar's place {location} is named {}")
+  public void named(ActIdentifier act, Location location, String name) {
+    var names =
+        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
+            .filter(each -> each.location().equals(location))
+            .map(each -> each.location().place().words())
+            .toList();
+    assertThat(names).as("the changes of %s at %s", act.cited(), location).isNotEmpty();
+    assertThat(names).as("the names of %s at %s", act.cited(), location).containsOnly(name);
   }
 
   /** Returns what {@code find} answers for each change of {@code act} at {@code place}. */
