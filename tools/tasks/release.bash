@@ -75,6 +75,26 @@ new_run() {
 	return 1
 }
 
+# Follows the run until it ends, and fails if the run fails. gh run watch also fails when one of
+# its own calls to GitHub fails, a 401 for a check run's annotations for example, while the run
+# goes on: then the run's own state decides. A run that ended reports how it ended. A run that
+# has not ended is followed again, a few times.
+follow() {
+	local repo=$1 run=$2 url state attempts=0
+	url="https://github.com/$repo/actions/runs/$run"
+	until gh run watch "$run" --repo "$repo" --exit-status; do
+		state=$(gh run view "$run" --repo "$repo" --json status,conclusion --jq '"\(.status) \(.conclusion)"') ||
+			die "could not read the release's run" run "$url"
+		case $state in
+		"completed success") return 0 ;;
+		completed*) die "the release failed" conclusion "${state#completed }" run "$url" ;;
+		esac
+		attempts=$((attempts + 1))
+		((attempts < 5)) || die "lost the release's run while following it" run "$url"
+		warn "lost the release's run while following it: following it again" run "$url"
+	done
+}
+
 main() {
 	local repo before run
 	git fetch --quiet --tags origin
@@ -90,7 +110,7 @@ main() {
 		if [[ ${usage_watch:-true} = false ]] || ! confirm "Follow it?"; then
 			return 0
 		fi
-		gh run watch "$run" --repo "$repo" --exit-status
+		follow "$repo" "$run"
 		return
 	fi
 	before=$(dispatched_runs "$repo")
@@ -101,7 +121,7 @@ main() {
 	if [[ ${usage_watch:-true} = false ]]; then
 		return 0
 	fi
-	gh run watch "$run" --repo "$repo" --exit-status
+	follow "$repo" "$run"
 }
 
 if [[ ${BASH_SOURCE[0]} = "$0" ]]; then

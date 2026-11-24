@@ -20,8 +20,9 @@ setup() {
 
 # gh as GitHub answers it: the dispatched runs on main are those in $BATS_TEST_TMPDIR/runs, one id
 # per line, and a dispatch adds run 200. A run that has not ended is the one in
-# $BATS_TEST_TMPDIR/running, if there is one. $run_fails makes the watched run fail. It keeps each
-# call.
+# $BATS_TEST_TMPDIR/running, if there is one. $run_fails makes the watched run fail. $watch_breaks
+# makes gh run watch fail as if a call of its own to GitHub failed, that many times, while the run
+# is $run_state ("completed success" when it is not set). It keeps each call.
 github() {
 	printf '100\n' >"$BATS_TEST_TMPDIR/runs"
 	mkdir -p "$BATS_TEST_TMPDIR/bin"
@@ -32,7 +33,14 @@ case "\$1 \$2" in
 "run list") [[ "\$*" = *databaseId,status* ]] && { cat "$BATS_TEST_TMPDIR/running" 2>/dev/null; exit 0; }
 	tac "$BATS_TEST_TMPDIR/runs" 2>/dev/null || tail -r "$BATS_TEST_TMPDIR/runs" ;;
 "workflow run") printf '200\n' >>"$BATS_TEST_TMPDIR/runs" ;;
-"run watch") [[ -z "\${run_fails:-}" ]] ;;
+"run watch") broken=\$(cat "$BATS_TEST_TMPDIR/broken" 2>/dev/null || echo 0)
+	if ((broken < \${watch_breaks:-0})); then
+		echo \$((broken + 1)) >"$BATS_TEST_TMPDIR/broken"
+		echo "failed to get annotations: HTTP 401: Bad credentials" >&2
+		exit 1
+	fi
+	[[ -z "\${run_fails:-}" ]] ;;
+"run view") if [[ -n "\${run_fails:-}" ]]; then echo "completed failure"; else echo "\${run_state:-completed success}"; fi ;;
 *) echo "unexpected: gh \$*" >&2; exit 1 ;;
 esac
 GH
@@ -53,6 +61,30 @@ GH
 	run_fails=true run main
 
 	[ "$status" -ne 0 ]
+	[[ "$output" = *"the release failed conclusion=failure"* ]] || false
+}
+
+@test "reports the run's own result when following it breaks, as a 401 from GitHub can" {
+	watch_breaks=1 run main
+
+	[ "$status" -eq 0 ]
+	grep -q "^run view 200 --repo kludgeworks/viewer --json status,conclusion" "$BATS_TEST_TMPDIR/gh.calls"
+}
+
+@test "follows a run that has not ended again when following it breaks" {
+	watch_breaks=1 run_state="in_progress " run main
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"lost the release's run while following it: following it again"* ]] || false
+	[ "$(grep -c "^run watch 200 " "$BATS_TEST_TMPDIR/gh.calls")" -eq 2 ]
+}
+
+@test "gives up on a run that it keeps losing" {
+	watch_breaks=9 run_state="in_progress " run main
+
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"lost the release's run while following it run="* ]] || false
+	[ "$(grep -c "^run watch 200 " "$BATS_TEST_TMPDIR/gh.calls")" -eq 5 ]
 }
 
 @test "does not follow the run with --no-watch" {
