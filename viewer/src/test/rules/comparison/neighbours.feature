@@ -4,8 +4,8 @@ Feature: The neighbours of a difference
   neighbours. Each neighbour says which act last made it as it is.
 
   Rule: neighbour-tags · A neighbour has its tags as an occurrence does
-    A neighbour's tags are found as for any occurrence (tags-of-an-occurrence): its own tags, or
-    else those of the nearest occurrence around it that has some.
+    The viewer finds the tags of a neighbour as for any occurrence (tags-of-an-occurrence). They
+    are its own tags, or else those of the nearest occurrence around it that has some.
 
     Example: A neighbour without tags takes the tag of the point that an act replaced whole
       Given the consolidated version of 2015/1998 of 22 March 2026
@@ -31,7 +31,7 @@ Feature: The neighbours of a difference
       When the reader asks what last changed the neighbour article 1
       Then it is as in the original act, dated from 1 February 2016
 
-    Example: A corrigendum is left out
+    Example: A corrigendum does not count
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
       When the reader asks what last changed the neighbour article 162 paragraph 3
       Then it is as in the original act, dated from 17 July 2013

@@ -140,7 +140,7 @@ Feature: The text and the law on a day
     includes the act. A provision gives no answer if a version before the answer has no built
     text. Without the texts, no provision gives an answer.
 
-    Example: An act whose provisions give no answer, because a text is not built
+    Example: An act whose provisions give no answer, because the viewer did not build a text
       Given the act 2015/1998 as Cellar has it
       And the viewer builds its texts where the converter has a sample
       Then 2021/255 applies from 11 March 2021
@@ -172,7 +172,7 @@ Feature: The text and the law on a day
       And its divergence is at article 44 paragraph 1 point (g)
       And its divergence is at 3 places
 
-    Example: A text that is not built
+    Example: A text that the viewer does not build
       Given the act 2018/1862 as Cellar has it
       And the viewer builds its texts where the converter has a sample, except the text of 1 August 2022
       Then 2021/1133 makes no divergence

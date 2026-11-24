@@ -117,9 +117,10 @@ Feature: What counts as a difference, and how its edits show
       Given the texts of 692/2008 of 19 March 2013 and of 1 July 2013
       Then no indent of a footnote is a difference of its own
 
-  Rule: preamble-of-one-text · A preamble that only one text has is not compared
+  Rule: preamble-of-one-text · The comparison does not compare a preamble that only one text has
     The Publications Office publishes some consolidated texts without the preamble, though no act
-    deleted it. So if only one text has a preamble, its citations and recitals are not compared.
+    deleted it. So if only one text has a preamble, the comparison does not compare its citations
+    and recitals.
 
     Example: A consolidated text without the preamble
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 16 February 2020

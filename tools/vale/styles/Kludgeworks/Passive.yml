@@ -1,0 +1,20 @@
+# SPDX-License-Identifier: MIT
+# ste.Passive (ASD-STE100 rule 3.6) where it does not look: a negated passive (is not built), and
+# participles that it does not list (left out, found). "not known" is a state of an act, a term
+extends: existence
+message: "'%s' may be passive voice (STE 3.6). Use the active voice unless the actor is unknown."
+level: warning
+ignorecase: true
+raw:
+  - \b(am|are|were|being|is|been|was|be)\b\s+(not\s+)?
+tokens:
+  - '(?<=not\s)[\w]+ed'
+  - '(?<=not\s)(?:built|chosen|done|drawn|driven|given|held|hidden|kept|made|read|seen|sent|set|shown|taken|told|written)'
+  - left
+  - found
+  - lost
+  - meant
+  - put
+exceptions:
+  - is not known
+  - are not known
