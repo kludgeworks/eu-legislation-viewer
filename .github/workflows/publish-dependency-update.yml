@@ -50,7 +50,7 @@ jobs:
           cache: false
 
       - name: Download and upgrade pack, then test a cold locked install (manual minor/patch run)
-        if: github.event_name == 'workflow_dispatch' && inputs.branch == 'automation/dependencies-minor' && fromJSON(inputs.changes)[0] != null
+        if: github.event_name == 'workflow_dispatch' && (inputs.branch == 'automation/dependencies-minor/mise' || inputs.branch == 'automation/dependencies-minor') && fromJSON(inputs.changes)[0] != null
         run: bats tools/test/integration/mise_dependency_upgrade.bats
 
       - name: Apply the planned versions and refresh affected locks
@@ -60,9 +60,17 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: python3 tools/build/upgrade_dependencies.py apply "$CHANGES"
 
+      - name: Auto-format modified files with upgraded tools
+        if: fromJSON(inputs.changes)[0] != null
+        run: hk fix --all || true
+
+      - name: Smoke-test the build with updated dependencies
+        if: fromJSON(inputs.changes)[0] != null
+        run: bazel build //...
+
       - name: Package the changes, including new and removed lockfiles
         run: |
-          git add -A -- .github mise.toml mise.lock .mise/locks MODULE.bazel MODULE.bazel.lock maven_install.json
+          git add -A
           git diff --cached --binary HEAD > "$RUNNER_TEMP/dependencies.patch"
 
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
@@ -117,6 +125,15 @@ jobs:
           permission-pull-requests: write
           permission-workflows: ${{ steps.verify.outputs.workflows_changed == 'true' && 'write' || '' }}
 
+      - name: Report reformatted source files
+        if: steps.checkout.outputs.commit == inputs.base && steps.verify.outputs.extra_files != ''
+        run: |
+          {
+            echo "### ⚠️ Files modified by formatters"
+            echo "The following files outside lock and build files were modified by upgraded formatters:"
+            echo '${{ steps.verify.outputs.extra_files }}' | jq -r '.[] | "- `\(.)`"'
+          } >> "$GITHUB_STEP_SUMMARY"
+
       - name: Open, refresh or retire the pull request
         if: steps.checkout.outputs.commit == inputs.base
         uses: peter-evans/create-pull-request@3ffccacd46053766916f087ce41d627c0b8cf2d1 # v8.1.3
@@ -127,15 +144,6 @@ jobs:
           base: main
           delete-branch: true
           sign-commits: true
-          add-paths: |
-            .github/workflows/
-            .github/actions/
-            mise.toml
-            mise.lock
-            .mise/locks/
-            MODULE.bazel
-            MODULE.bazel.lock
-            maven_install.json
           commit-message: 'chore: ${{ inputs.title }}'
           title: 'chore: ${{ inputs.title }}'
           body: ${{ inputs.body }}

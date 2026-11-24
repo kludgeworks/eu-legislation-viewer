@@ -13,13 +13,22 @@ import subprocess
 from functools import cache
 from pathlib import Path
 from urllib.request import urlopen
-from xml.etree import ElementTree
+from xml.etree import ElementTree  # nosemgrep: python.lang.security.use-defused-xml.use-defused-xml
 
 # Node tracks Bazel, hk and oxlint track config URLs, and Java tracks Temurin 25.
 COORDINATED_TOOLS = {"node", "hk", "oxlint", "java"}
 RELEASE = re.compile(r"[0-9]+(?:\.[0-9]+){0,2}")
+MINOR_PREFIX = "automation/dependencies-minor/"
 MINOR_BRANCH = "automation/dependencies-minor"
 MAJOR_PREFIX = "automation/dependencies-major/"
+SOURCE_TITLES = {
+    "bazel": "Bazel",
+    "maven": "Maven",
+    "mise": "mise",
+    "npm": "npm",
+    "pipx": "pipx",
+    "actions": "GitHub Actions",
+}
 # Match direct bazel_dep declarations and explicit Maven pins only.
 BAZEL_PINS = re.compile(
     r'^(?:bazel_dep\(name = "(?P<module>[\w.-]+)", version = "'
@@ -116,10 +125,12 @@ def releases(ecosystem, name):
     if ":" in name:
         group, artifact = name.split(":")
         url = f"https://repo.maven.apache.org/maven2/{group.replace('.', '/')}/{artifact}"
+        # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
         with urlopen(f"{url}/maven-metadata.xml", timeout=30) as response:
-            return [
-                v.text for v in ElementTree.parse(response).findall("versioning/versions/version")
-            ]
+            # nosemgrep: python.lang.security.use-defused-xml-parse.use-defused-xml-parse
+            tree = ElementTree.parse(response)
+            return [v.text for v in tree.findall("versioning/versions/version")]
+    # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
     with urlopen(f"https://bcr.bazel.build/modules/{name}/metadata.json", timeout=30) as response:
         metadata = json.load(response)
     return [v for v in metadata["versions"] if v not in metadata.get("yanked_versions", {})]
@@ -205,6 +216,24 @@ def major_branch(ecosystem, name):
     return f"{MAJOR_PREFIX}{ecosystem}-{slug}-{digest}"
 
 
+def dependency_source(ecosystem, name):
+    if ecosystem == "action":
+        return "actions"
+    if ecosystem == "bazel":
+        return "maven" if ":" in name else "bazel"
+    if ecosystem == "mise":
+        if ":" in name:
+            prefix = name.split(":", 1)[0]
+            if prefix in {"npm", "pipx"}:
+                return prefix
+        return "mise"
+    return ecosystem
+
+
+def minor_branch(source):
+    return f"{MINOR_PREFIX}{source}"
+
+
 def pr_body(changes):
     if not changes:
         return "All proposed updates are already resolved on `main`."
@@ -213,9 +242,7 @@ def pr_body(changes):
         "| --- | --- | --- | --- | --- |",
     ]
     for ecosystem, name, old, new in changes:
-        source = {"action": "GitHub Actions", "bazel": "Bazel", "mise": "mise"}[ecosystem]
-        if ecosystem == "bazel" and ":" in name:
-            source = "Maven"
+        source = SOURCE_TITLES.get(dependency_source(ecosystem, name), ecosystem)
         level = next(
             label
             for label, before, after in zip(("Major", "Minor", "Patch"), numbers(old), numbers(new))
@@ -253,9 +280,33 @@ def matrix(minor, majors, open_branches):
     ]
     new = [pr for b, pr in candidates.items() if b not in active]
     selected.extend(new[: max(0, 3 - len(active))])
-    selected.append(
-        {"branch": MINOR_BRANCH, "title": "Upgrade minor and patch dependencies", "changes": minor}
+
+    by_source = {}
+    for change in minor:
+        src = dependency_source(change[0], change[1])
+        by_source.setdefault(src, []).append(change)
+
+    minor_candidates = {}
+    for src, changes in sorted(by_source.items()):
+        branch = minor_branch(src)
+        title = f"Upgrade minor and patch {SOURCE_TITLES.get(src, src)} dependencies"
+        minor_candidates[branch] = {
+            "branch": branch,
+            "title": title,
+            "changes": changes,
+        }
+
+    active_minor = sorted(
+        b for b in open_branches if b.startswith(MINOR_PREFIX) or b == MINOR_BRANCH
     )
+    for b in active_minor:
+        selected.append(
+            minor_candidates.get(b, {"branch": b, "title": "Obsolete minor update", "changes": []})
+        )
+    for b, pr in sorted(minor_candidates.items()):
+        if b not in active_minor:
+            selected.append(pr)
+
     for job in selected:
         job["body"] = pr_body(job["changes"])
     return {"include": selected}

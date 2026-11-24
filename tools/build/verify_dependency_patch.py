@@ -81,7 +81,7 @@ def verify_maven_lock(before, after):
             raise ValueError(f"Immutable Maven artifact changed: {coordinate}:{old['version']}")
 
 
-def verify_patch(patch, changes):
+def verify_patch(patch, changes, warnings=None):
     mise = {n: (o, v) for kind, n, o, v in changes if kind == "mise"}
     bazel = {(n, o): v for kind, n, o, v in changes if kind == "bazel"}
     actions = {(n, o): v for kind, n, o, v in changes if kind == "action"}
@@ -133,14 +133,19 @@ def verify_patch(patch, changes):
                 for tool, versions in mise.items()
             )
         )
+        baseline = git("ls-tree", "HEAD", "--", name).split()
         if name not in expected and name not in lockfiles and not nested_lock:
-            raise ValueError(f"Unplanned path: {name}")
+            # Check if this is an existing tracked file (e.g. reformatted by tools)
+            if not baseline:
+                raise ValueError(f"Unplanned path: {name}")
+            if warnings is not None:
+                warnings.append(name)
+            print(f"::warning::File outside lock/build files was modified: {name}", file=sys.stderr)
         entry = git("ls-files", "--stage", "--", name)
         # A deleted per-tool lock has no entry in the proposed index.
         if not entry and nested_lock:
             continue
         # The committed Maven lock is 100755. Preserve existing modes and only add 100644 files.
-        baseline = git("ls-tree", "HEAD", "--", name).split()
         mode = baseline[0] if baseline else b"100644"
         if mode not in {b"100644", b"100755"} or not entry.startswith(mode + b" "):
             raise ValueError(f"Missing file or unexpected mode: {name}")
@@ -177,5 +182,8 @@ def verify_patch(patch, changes):
 
 
 if __name__ == "__main__":
-    workflows_changed = verify_patch(Path(sys.argv[1]), json.loads(sys.argv[2]))
+    warnings = []
+    workflows_changed = verify_patch(Path(sys.argv[1]), json.loads(sys.argv[2]), warnings=warnings)
     print(f"workflows_changed={str(workflows_changed).lower()}")
+    if warnings:
+        print(f"extra_files={json.dumps(warnings)}")

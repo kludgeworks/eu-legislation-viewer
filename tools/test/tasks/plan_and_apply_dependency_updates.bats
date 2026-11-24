@@ -38,7 +38,7 @@ JSON'
 	[ ! -s "$GITHUB_OUTPUT" ]
 }
 
-@test "each major PR has one upgrade and one PR collects minors and patches across ecosystems" {
+@test "each major PR has one upgrade and minor and patch PRs are separated by source" {
 	PLANNER="$project/tools/build/upgrade_dependencies.py" python3 -B - <<'PY'
 import os
 import runpy
@@ -56,12 +56,12 @@ with patch.dict(planner["discover"].__globals__, {
     minor, majors = planner["discover"]()
 existing = planner["major_branch"]("mise", "d")
 jobs = planner["matrix"](minor, majors, {existing})["include"]
-major_jobs = [job for job in jobs if job["branch"] != planner["MINOR_BRANCH"]]
+major_jobs = [job for job in jobs if not job["branch"].startswith(planner["MINOR_PREFIX"])]
 assert len(major_jobs) == 3
 obsolete = planner["major_branch"]("mise", "retired")
 active = {existing, obsolete}
 refreshed = planner["matrix"](minor, majors, active)["include"]
-assert len(refreshed) == 4
+assert len(refreshed) == 5
 assert next(j for j in refreshed if j["branch"] == obsolete)["changes"] == []
 assert any(j["branch"] == existing for j in refreshed)
 # Once the major merges, its old same-major patch is no longer in the refreshed minor PR.
@@ -78,13 +78,15 @@ for job in major_jobs:
     assert len(job["body"].split("\n\n")[0].splitlines()) == 3
     assert f"| `{change[1]}` | `{change[2]}` | `{change[3]}` | Major |" in job["body"]
 assert len({job["changes"][0][1] for job in major_jobs}) == 3
-minor_job, = [job for job in jobs if job["branch"] == planner["MINOR_BRANCH"]]
-assert len(minor_job["changes"]) == 6
-assert len(minor_job["body"].split("\n\n")[0].splitlines()) == 8
-assert "| Maven | `org:lib` | `2.0.0` | `2.1` | Minor |" in minor_job["body"]
-assert "| mise | `a` | `1.0` | `1.0.1` | Patch |" in minor_job["body"]
-assert {c[0] for c in minor_job["changes"]} == {"bazel", "mise"}
-assert {tuple(c[2:]) for c in minor_job["changes"]} == {("1.0", "1.0.1"), ("1.0.0", "1.0.1"), ("2.0.0", "2.1")}
+
+minor_jobs = [job for job in jobs if job["branch"].startswith(planner["MINOR_PREFIX"])]
+assert len(minor_jobs) == 2
+maven_job, = [j for j in minor_jobs if j["branch"] == planner["minor_branch"]("maven")]
+assert len(maven_job["changes"]) == 2
+assert "| Maven | `org:lib` | `2.0.0` | `2.1` | Minor |" in maven_job["body"]
+mise_job, = [j for j in minor_jobs if j["branch"] == planner["minor_branch"]("mise")]
+assert len(mise_job["changes"]) == 4
+assert "| mise | `a` | `1.0` | `1.0.1` | Patch |" in mise_job["body"]
 PY
 }
 
