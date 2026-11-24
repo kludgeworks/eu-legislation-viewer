@@ -90,21 +90,18 @@ class ApiLawController {
         .flatMap(version -> version.languages().stream())
         .distinct()
         .sorted()
-        .forEach(
-            language ->
-                LawOnADay.of(act)
-                    .deferredApplicationOn(date, language)
-                    .ifPresent(
-                        each ->
-                            languages
-                                .computeIfAbsent(each, key -> new ArrayList<>())
-                                .add(code(language.code()))));
+        .forEach(language ->
+            LawOnADay.of(act)
+                .deferredApplicationOn(date, language)
+                .ifPresent(each ->
+                    languages
+                        .computeIfAbsent(each, key -> new ArrayList<>())
+                        .add(code(language.code()))));
     return languages.entrySet().stream()
         .findFirst()
-        .map(
-            each ->
-                new DeferredApplicationModel(
-                    DateModel.of(each.getKey().inFull()), each.getKey().partial(), each.getValue()))
+        .map(each ->
+            new DeferredApplicationModel(
+                DateModel.of(each.getKey().inFull()), each.getKey().partial(), each.getValue()))
         .orElse(null);
   }
 
@@ -120,35 +117,30 @@ class ApiLawController {
         .flatMap(version -> version.languages().stream())
         .distinct()
         .sorted()
-        .forEach(
-            language ->
-                LawOnADay.of(act)
-                    .divergences(date, language, texts.tags(texts.preparation(act, language)))
-                    .forEach(
-                        each ->
-                            languages
-                                .computeIfAbsent(each, key -> new ArrayList<>())
-                                .add(code(language.code()))));
+        .forEach(language ->
+            LawOnADay.of(act)
+                .divergences(date, language, texts.tags(texts.preparation(act, language)))
+                .forEach(each ->
+                    languages
+                        .computeIfAbsent(each, key -> new ArrayList<>())
+                        .add(code(language.code()))));
     return languages.entrySet().stream()
-        .map(
-            each -> {
-              var divergence = each.getKey();
-              var included = divergence.included();
-              return new DivergenceModel(
-                  code(divergence.kind().name()),
-                  divergence.act().celex(),
-                  act.cited(divergence.act()),
-                  divergence.kind() == Divergence.Kind.UNDATED ? null : divergence.appliesFrom(),
-                  included == null ? null : ApiActResources.key(included),
-                  divergence.places().stream()
-                      .map(
-                          place ->
-                              new PlaceModel(
-                                  place.location().code(), place.location().place().words()))
-                      .distinct()
-                      .toList(),
-                  each.getValue());
-            })
+        .map(each -> {
+          var divergence = each.getKey();
+          var included = divergence.included();
+          return new DivergenceModel(
+              code(divergence.kind().name()),
+              divergence.act().celex(),
+              act.cited(divergence.act()),
+              divergence.kind() == Divergence.Kind.UNDATED ? null : divergence.appliesFrom(),
+              included == null ? null : ApiActResources.key(included),
+              divergence.places().stream()
+                  .map(place ->
+                      new PlaceModel(place.location().code(), place.location().place().words()))
+                  .distinct()
+                  .toList(),
+              each.getValue());
+        })
         .toList();
   }
 

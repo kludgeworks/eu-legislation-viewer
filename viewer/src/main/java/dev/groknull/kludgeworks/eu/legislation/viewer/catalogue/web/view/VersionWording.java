@@ -205,28 +205,25 @@ public final class VersionWording {
                           return verb + " " + Dates.inWords(from) + " to " + Dates.inWords(last);
                         }
                         var full = act.dates().inFullAfter(from).filter(day -> !day.isAfter(last));
-                        return full.map(
-                                day ->
-                                    verb
-                                        + " in part from "
-                                        + Dates.inWords(from)
-                                        + ", in full from "
-                                        + Dates.inWords(day)
-                                        + " to "
-                                        + Dates.inWords(last))
-                            .orElseGet(
-                                () ->
-                                    verb
-                                        + " in part "
-                                        + Dates.inWords(from)
-                                        + " to "
-                                        + Dates.inWords(last));
+                        return full.map(day ->
+                                verb
+                                    + " in part from "
+                                    + Dates.inWords(from)
+                                    + ", in full from "
+                                    + Dates.inWords(day)
+                                    + " to "
+                                    + Dates.inWords(last))
+                            .orElseGet(() ->
+                                verb
+                                    + " in part "
+                                    + Dates.inWords(from)
+                                    + " to "
+                                    + Dates.inWords(last));
                       })
-                  .orElseGet(
-                      () ->
-                          partial
-                              ? "applies in part from " + Dates.inWords(from) + rest(act, from)
-                              : "applies from " + Dates.inWords(from));
+                  .orElseGet(() ->
+                      partial
+                          ? "applies in part from " + Dates.inWords(from) + rest(act, from)
+                          : "applies from " + Dates.inWords(from));
       return label(act, version, today, language, period);
     }
     var period =

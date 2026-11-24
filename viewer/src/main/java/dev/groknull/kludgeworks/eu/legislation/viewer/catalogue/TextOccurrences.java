@@ -280,12 +280,9 @@ public final class TextOccurrences {
               named(segment).stream()
                   .filter(occurrence -> occurrence.startsWith(prefix))
                   .filter(occurrence -> !children || occurrence.indexOf('/', prefix.length()) < 0)
-                  .filter(
-                      occurrence ->
-                          !exact
-                              || occurrence
-                                  .substring(occurrence.lastIndexOf('/') + 1)
-                                  .equals(segment))
+                  .filter(occurrence ->
+                      !exact
+                          || occurrence.substring(occurrence.lastIndexOf('/') + 1).equals(segment))
                   .toList();
           if (!found.isEmpty()) {
             return found;

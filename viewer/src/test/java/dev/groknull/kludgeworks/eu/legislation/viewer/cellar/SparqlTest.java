@@ -93,15 +93,14 @@ class SparqlTest {
     var answer = new CountDownLatch(1);
     mock.server()
         .expect(once(), requestTo(Recorded.SPARQL))
-        .andRespond(
-            request -> {
-              try {
-                answer.await(5, TimeUnit.SECONDS);
-              } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-              }
-              return withSuccess(RECORDED, RESULTS).createResponse(request);
-            });
+        .andRespond(request -> {
+          try {
+            answer.await(5, TimeUnit.SECONDS);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
+          return withSuccess(RECORDED, RESULTS).createResponse(request);
+        });
     var sparql = mock.sparql();
 
     // Cellar holds its answer to the first query until both queries are asked. The mock expects

@@ -92,20 +92,19 @@ class ActRefresher {
     var now = clock.instant();
     var refresh =
         Refresh.of(stored.get(), store.missing(changed.act()), read.get(), now, withdrawnAfter);
-    transactions.executeWithoutResult(
-        status -> {
-          store.update(read.get(), refresh.missing());
-          refresh.withdrawn().forEach(celex -> store.withdraw(changed.act(), celex));
-          var recheckAt = refresh.recheckAt();
-          if (recheckAt != null) {
-            var waiting =
-                changes
-                    .waiting(List.of(changed.act()))
-                    .getOrDefault(changed.act(), WaitingRefresh.none(changed.act()));
-            changes.save(List.of(waiting.recheck(recheckAt, now)));
-          }
-          refresh.events().forEach(events::publishEvent);
-        });
+    transactions.executeWithoutResult(status -> {
+      store.update(read.get(), refresh.missing());
+      refresh.withdrawn().forEach(celex -> store.withdraw(changed.act(), celex));
+      var recheckAt = refresh.recheckAt();
+      if (recheckAt != null) {
+        var waiting =
+            changes
+                .waiting(List.of(changed.act()))
+                .getOrDefault(changed.act(), WaitingRefresh.none(changed.act()));
+        changes.save(List.of(waiting.recheck(recheckAt, now)));
+      }
+      refresh.events().forEach(events::publishEvent);
+    });
     LOG.info(
         "Read {} from Cellar again: {} version(s), {} missing, events {}, in {} ms",
         changed.act(),

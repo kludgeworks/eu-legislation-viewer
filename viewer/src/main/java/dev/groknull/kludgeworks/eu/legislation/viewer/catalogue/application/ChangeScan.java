@@ -106,28 +106,25 @@ class ChangeScan {
     var now = clock.instant();
     var read =
         Objects.requireNonNull(
-            transactions.execute(
-                status -> {
-                  var waiting = store.waiting(touched.keySet());
-                  store.save(
-                      touched.entrySet().stream()
-                          .map(
-                              each ->
-                                  waiting
-                                      .getOrDefault(
-                                          each.getKey(), WaitingRefresh.none(each.getKey()))
-                                      .seen(each.getValue(), now, properties.debounce()))
-                          .toList());
-                  if (!store.advance(claim.get(), watermark)) {
-                    LOG.warn("Another instance took over the scan of Cellar: this scan is undone");
-                    status.setRollbackOnly();
-                    return List.<ActIdentifier>of();
-                  }
-                  var due = store.due(now);
-                  store.save(due.stream().map(each -> each.read(now)).toList());
-                  due.forEach(each -> events.publishEvent(new ActChanged(each.act())));
-                  return due.stream().map(WaitingRefresh::act).toList();
-                }));
+            transactions.execute(status -> {
+              var waiting = store.waiting(touched.keySet());
+              store.save(
+                  touched.entrySet().stream()
+                      .map(each ->
+                          waiting
+                              .getOrDefault(each.getKey(), WaitingRefresh.none(each.getKey()))
+                              .seen(each.getValue(), now, properties.debounce()))
+                      .toList());
+              if (!store.advance(claim.get(), watermark)) {
+                LOG.warn("Another instance took over the scan of Cellar: this scan is undone");
+                status.setRollbackOnly();
+                return List.<ActIdentifier>of();
+              }
+              var due = store.due(now);
+              store.save(due.stream().map(each -> each.read(now)).toList());
+              due.forEach(each -> events.publishEvent(new ActChanged(each.act())));
+              return due.stream().map(WaitingRefresh::act).toList();
+            }));
     LOG.info(
         "Scanned Cellar since {}: {} changes, {} held acts, {} read again {}, in {} ms",
         since,

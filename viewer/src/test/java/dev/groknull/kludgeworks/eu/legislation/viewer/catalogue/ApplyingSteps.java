@@ -36,11 +36,10 @@ public class ApplyingSteps {
   public void forPart(ActIdentifier act, LocalDate day) {
     assertThat(the.act().dates().datesOf(act))
         .as(act.cited())
-        .anySatisfy(
-            date -> {
-              assertThat(date.date()).isEqualTo(day);
-              assertThat(date.forPart()).isTrue();
-            });
+        .anySatisfy(date -> {
+          assertThat(date.date()).isEqualTo(day);
+          assertThat(date.forPart()).isTrue();
+        });
   }
 
   @Then("the Member States apply {act} from {days}")
@@ -60,22 +59,20 @@ public class ApplyingSteps {
     assertThat(the.act().dates().datesOf(act))
         .as(act.cited())
         .singleElement()
-        .satisfies(
-            date -> {
-              assertThat(date.kind()).isEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
-              assertThat(date.date()).isEqualTo(day);
-            });
+        .satisfies(date -> {
+          assertThat(date.kind()).isEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
+          assertThat(date.date()).isEqualTo(day);
+        });
   }
 
   @Then("the date of application of {act} is a placeholder")
   public void placeholder(ActIdentifier act) {
     assertThat(the.act().dates().datesOf(act))
         .as(act.cited())
-        .anySatisfy(
-            date -> {
-              assertThat(date.kind()).isNotEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
-              assertThat(date.date()).isNull();
-            });
+        .anySatisfy(date -> {
+          assertThat(date.kind()).isNotEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
+          assertThat(date.date()).isNull();
+        });
   }
 
   @Then("a provision of {act} can apply from {day}")
@@ -100,21 +97,19 @@ public class ApplyingSteps {
   @Then("the date of {act} of {day} names {act} as the act that amended it")
   public void amendedBy(ActIdentifier act, LocalDate day, ActIdentifier later) {
     assertThat(datesOn(act, day))
-        .allSatisfy(
-            date -> {
-              assertThat(date.clause().amendedBy()).containsExactly(later);
-              assertThat(date.clause().setBy()).isEmpty();
-            });
+        .allSatisfy(date -> {
+          assertThat(date.clause().amendedBy()).containsExactly(later);
+          assertThat(date.clause().setBy()).isEmpty();
+        });
   }
 
   @Then("the date of {act} of {day} names {act} as the act that set its day")
   public void setBy(ActIdentifier act, LocalDate day, ActIdentifier later) {
     assertThat(datesOn(act, day))
-        .allSatisfy(
-            date -> {
-              assertThat(date.clause().setBy()).containsExactly(later);
-              assertThat(date.clause().amendedBy()).isEmpty();
-            });
+        .allSatisfy(date -> {
+          assertThat(date.clause().setBy()).containsExactly(later);
+          assertThat(date.clause().amendedBy()).isEmpty();
+        });
   }
 
   /** Returns the dates of {@code act} on {@code day}. There is at least one. */

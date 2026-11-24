@@ -163,16 +163,15 @@ public record MastheadView(
         act.id().eurLex(language).toString(),
         language.endonym(),
         Language.inProtocolOrder().stream()
-            .map(
-                each -> {
-                  var why = missing.apply(each);
-                  return new Choice(
-                      each.endonym(),
-                      each.iso(),
-                      why == null ? page.apply(each) : null,
-                      each == language,
-                      why);
-                })
+            .map(each -> {
+              var why = missing.apply(each);
+              return new Choice(
+                  each.endonym(),
+                  each.iso(),
+                  why == null ? page.apply(each) : null,
+                  each == language,
+                  why);
+            })
             .toList(),
         history,
         historyLabel(act, language),

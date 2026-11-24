@@ -63,19 +63,18 @@ class RefreshTest {
   @Test
   void aVersionInANewLanguageHasThatLanguageAdded() {
     var read =
-        change(
-            version -> {
-              var formex = new EnumMap<>(version.formex());
-              formex.put(Language.DEU, formex.get(Language.ENG));
-              return new Version(
-                  version.kind(),
-                  version.date(),
-                  version.celex(),
-                  version.interim(),
-                  version.integrates(),
-                  formex.keySet(),
-                  formex);
-            });
+        change(version -> {
+          var formex = new EnumMap<>(version.formex());
+          formex.put(Language.DEU, formex.get(Language.ENG));
+          return new Version(
+              version.kind(),
+              version.date(),
+              version.celex(),
+              version.interim(),
+              version.integrates(),
+              formex.keySet(),
+              formex);
+        });
 
     assertThat(Refresh.of(STORED, Map.of(), read, NOW, WITHDRAWN_AFTER).events())
         .containsExactly(new LanguageAdded(ACT, MARCH_2026, Language.DEU));
@@ -85,12 +84,11 @@ class RefreshTest {
   void aVersionWhoseFormexChangedInALanguageIsRepublishedInIt() {
     var republished = Instant.parse("2026-11-04T08:54:27Z");
     var read =
-        change(
-            version -> {
-              var formex = new EnumMap<>(version.formex());
-              formex.put(Language.ENG, new Version.Formex("a new fixity", republished));
-              return withFormex(version, formex);
-            });
+        change(version -> {
+          var formex = new EnumMap<>(version.formex());
+          formex.put(Language.ENG, new Version.Formex("a new fixity", republished));
+          return withFormex(version, formex);
+        });
 
     assertThat(Refresh.of(STORED, Map.of(), read, NOW, WITHDRAWN_AFTER).events())
         .containsExactly(new VersionRepublished(ACT, MARCH_2026, Language.ENG, republished));
@@ -100,16 +98,14 @@ class RefreshTest {
   void aChangeOfMetadataAloneIsNoRepublication() {
     // Cellar modified the manifestation, but its files are the same.
     var read =
-        change(
-            version -> {
-              var formex = new EnumMap<Language, Version.Formex>(Language.class);
-              version
-                  .formex()
-                  .forEach(
-                      (language, each) ->
-                          formex.put(language, new Version.Formex(each.fixity(), NOW)));
-              return withFormex(version, formex);
-            });
+        change(version -> {
+          var formex = new EnumMap<Language, Version.Formex>(Language.class);
+          version
+              .formex()
+              .forEach(
+                  (language, each) -> formex.put(language, new Version.Formex(each.fixity(), NOW)));
+          return withFormex(version, formex);
+        });
 
     assertThat(Refresh.of(STORED, Map.of(), read, NOW, WITHDRAWN_AFTER).events()).isEmpty();
   }
@@ -127,16 +123,11 @@ class RefreshTest {
         .containsExactlyElementsOf(
             STORED.timeline().versions().stream()
                 .filter(each -> each.celex().equals(MARCH_2026))
-                .flatMap(
-                    each ->
-                        each.formex().entrySet().stream()
-                            .map(
-                                formex ->
-                                    new VersionRepublished(
-                                        ACT,
-                                        MARCH_2026,
-                                        formex.getKey(),
-                                        formex.getValue().modified())))
+                .flatMap(each ->
+                    each.formex().entrySet().stream()
+                        .map(formex ->
+                            new VersionRepublished(
+                                ACT, MARCH_2026, formex.getKey(), formex.getValue().modified())))
                 .toList());
   }
 

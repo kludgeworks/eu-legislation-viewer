@@ -186,28 +186,26 @@ public record AmendingView(
             Comparator.comparing(
                 (Optional<LocalDate> each) -> each.orElse(LocalDate.MAX),
                 Comparator.naturalOrder()));
-    all.forEach(
-        change ->
-            counts.merge(
-                act.dates().changeAppliesFrom(amending, ActDates.days(change)), 1, Integer::sum));
+    all.forEach(change ->
+        counts.merge(
+            act.dates().changeAppliesFrom(amending, ActDates.days(change)), 1, Integer::sum));
     if (counts.size() < 2) {
       return List.of();
     }
     var separator = page.contains("?") ? "&" : "?";
     var groups = new ArrayList<Group>();
     groups.add(new Group("All changes", all.size(), page, on == null, null));
-    counts.forEach(
-        (from, count) -> {
-          var key = from.map(LocalDate::toString).orElse(NOT_KNOWN);
-          var state = from.map(each -> act.dates().stateOn(amending, Set.of(each), day));
-          groups.add(
-              new Group(
-                  from.map(each -> label(state.orElseThrow(), each, past)).orElse("Day not known"),
-                  count,
-                  page + separator + "applies=" + key,
-                  key.equals(on),
-                  state.isPresent() ? StateWording.tone(state.get()) : StateWording.UNKNOWN));
-        });
+    counts.forEach((from, count) -> {
+      var key = from.map(LocalDate::toString).orElse(NOT_KNOWN);
+      var state = from.map(each -> act.dates().stateOn(amending, Set.of(each), day));
+      groups.add(
+          new Group(
+              from.map(each -> label(state.orElseThrow(), each, past)).orElse("Day not known"),
+              count,
+              page + separator + "applies=" + key,
+              key.equals(on),
+              state.isPresent() ? StateWording.tone(state.get()) : StateWording.UNKNOWN));
+    });
     return groups;
   }
 
@@ -219,23 +217,21 @@ public record AmendingView(
   private static @Nullable Clause clause(Act act, ActIdentifier amending, Language language) {
     return act.dates()
         .applying(amending, Set.of())
-        .flatMap(
-            applying ->
-                switch (applying) {
-                  case Applying.SetBy set ->
-                      set.dates().stream()
-                          .flatMap(date -> date.clause().provisions().stream())
-                          .filter(each -> each.type() == ActDate.Provision.Type.ARTICLE)
-                          .filter(each -> !article(each).isEmpty())
-                          .findFirst()
-                          .map(
-                              each ->
-                                  new Clause(
-                                      "Read " + each.cited(),
-                                      act.eurLex(amending, language) + "#art_" + article(each)));
-                  case Applying.From _, Applying.FromMoreThanOneDay _, Applying.InForce _ ->
-                      Optional.<Clause>empty();
-                })
+        .flatMap(applying ->
+            switch (applying) {
+              case Applying.SetBy set ->
+                  set.dates().stream()
+                      .flatMap(date -> date.clause().provisions().stream())
+                      .filter(each -> each.type() == ActDate.Provision.Type.ARTICLE)
+                      .filter(each -> !article(each).isEmpty())
+                      .findFirst()
+                      .map(each ->
+                          new Clause(
+                              "Read " + each.cited(),
+                              act.eurLex(amending, language) + "#art_" + article(each)));
+              case Applying.From _, Applying.FromMoreThanOneDay _, Applying.InForce _ ->
+                  Optional.<Clause>empty();
+            })
         .orElse(null);
   }
 

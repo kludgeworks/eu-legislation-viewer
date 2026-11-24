@@ -131,10 +131,8 @@ public class ApiConfiguration implements WebMvcConfigurer {
   @Bean
   WebServerFactoryCustomizer<TomcatServletWebServerFactory> encodedSlashes() {
     return factory ->
-        factory.addConnectorCustomizers(
-            connector ->
-                connector.setEncodedSolidusHandling(
-                    EncodedSolidusHandling.PASS_THROUGH.getValue()));
+        factory.addConnectorCustomizers(connector ->
+            connector.setEncodedSolidusHandling(EncodedSolidusHandling.PASS_THROUGH.getValue()));
   }
 
   /**

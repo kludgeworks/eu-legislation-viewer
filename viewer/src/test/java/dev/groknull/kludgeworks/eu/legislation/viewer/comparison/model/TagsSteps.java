@@ -56,14 +56,13 @@ public class TagsSteps {
     assertThat(tags)
         .containsExactlyElementsOf(
             expected.stream()
-                .map(
-                    row ->
-                        new Tag(
-                            row.act().celex(),
-                            row.modification(),
-                            row.takenFrom() == null
-                                ? null
-                                : Comparing.eId(Objects.requireNonNull(row.takenFrom()), text)))
+                .map(row ->
+                    new Tag(
+                        row.act().celex(),
+                        row.modification(),
+                        row.takenFrom() == null
+                            ? null
+                            : Comparing.eId(Objects.requireNonNull(row.takenFrom()), text)))
                 .toList());
   }
 

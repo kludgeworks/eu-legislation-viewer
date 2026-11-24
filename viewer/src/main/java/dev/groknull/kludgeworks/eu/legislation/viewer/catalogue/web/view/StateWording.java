@@ -105,21 +105,19 @@ final class StateWording {
     var from = act.dates().changeAppliesFrom(amending, placeDays);
     return switch (act.dates().stateOn(amending, placeDays, day)) {
       case APPLIES ->
-          from.map(
-                  each ->
-                      (past ? "Applied from " : "Applies from ")
-                          + Dates.inWords(each)
-                          + Wording.clauseOn(act, amending, each)
-                          + ".")
+          from.map(each ->
+                  (past ? "Applied from " : "Applies from ")
+                      + Dates.inWords(each)
+                      + Wording.clauseOn(act, amending, each)
+                      + ".")
               .orElse(null);
       case NOT_APPLYING ->
           (past ? "Did not apply yet." : "Does not apply yet.")
-              + from.map(
-                      each ->
-                          " Applies from "
-                              + Dates.inWords(each)
-                              + Wording.clauseOn(act, amending, each)
-                              + ".")
+              + from.map(each ->
+                      " Applies from "
+                          + Dates.inWords(each)
+                          + Wording.clauseOn(act, amending, each)
+                          + ".")
                   .orElse("");
       case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
       case NOT_KNOWN ->

@@ -482,12 +482,11 @@ class CellarActs implements ActSource {
       Arrays.stream(Language.values())
           .filter(language -> language.code().equals(code))
           .findFirst()
-          .ifPresent(
-              language -> {
-                if (titles.put(language, row.get("title")) != null) {
-                  throw new IllegalArgumentException("several titles in " + code);
-                }
-              });
+          .ifPresent(language -> {
+            if (titles.put(language, row.get("title")) != null) {
+              throw new IllegalArgumentException("several titles in " + code);
+            }
+          });
     }
     return titles;
   }

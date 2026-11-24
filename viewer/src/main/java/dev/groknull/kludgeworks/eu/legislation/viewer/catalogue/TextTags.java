@@ -39,15 +39,13 @@ public record TextTags(List<String> eIds, Map<ActIdentifier, Set<String>> byAct)
     var byAct = new HashMap<ActIdentifier, Set<String>>();
     outline
         .tags()
-        .forEach(
-            (occurrence, acts) ->
-                acts.stream()
-                    .filter(ActIdentifier::isCelex)
-                    .forEach(
-                        act ->
-                            byAct
-                                .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
-                                .add(occurrence)));
+        .forEach((occurrence, acts) ->
+            acts.stream()
+                .filter(ActIdentifier::isCelex)
+                .forEach(act ->
+                    byAct
+                        .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
+                        .add(occurrence)));
     return new TextTags(outline.eIds(), byAct);
   }
 

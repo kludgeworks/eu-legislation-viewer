@@ -170,12 +170,11 @@ public record ActDates(
     var whole = appliesFrom(act).map(ActDate::date);
     var parts =
         days(dated).stream()
-            .map(
-                day -> {
-                  var on = on(dated, day);
-                  return new Applying.Start(
-                      day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::forPart));
-                })
+            .map(day -> {
+              var on = on(dated, day);
+              return new Applying.Start(
+                  day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::forPart));
+            })
             .toList();
     var first =
         parts.stream()
@@ -206,13 +205,12 @@ public record ActDates(
    */
   public Optional<LocalDate> changeAppliesFrom(ActIdentifier amending, Set<LocalDate> placeDays) {
     return applying(amending, placeDays)
-        .flatMap(
-            applying ->
-                switch (applying) {
-                  case Applying.From from -> Optional.of(from.day());
-                  case Applying.FromMoreThanOneDay _, Applying.SetBy _, Applying.InForce _ ->
-                      Optional.empty();
-                });
+        .flatMap(applying ->
+            switch (applying) {
+              case Applying.From from -> Optional.of(from.day());
+              case Applying.FromMoreThanOneDay _, Applying.SetBy _, Applying.InForce _ ->
+                  Optional.empty();
+            });
   }
 
   /**
@@ -241,21 +239,20 @@ public record ActDates(
         datesOf(act).stream()
             .anyMatch(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && date.date() == null);
     return applying(act, placeDays)
-        .map(
-            applying ->
-                switch (applying) {
-                  case Applying.From from ->
-                      day.isBefore(from.day()) ? State.NOT_APPLYING : State.APPLIES;
-                  case Applying.FromMoreThanOneDay parts -> {
-                    if (day.isBefore(parts.first())) {
-                      yield State.NOT_APPLYING;
-                    }
-                    yield !openDay && !day.isBefore(parts.starts().getLast().day())
-                        ? State.APPLIES
-                        : State.NOT_KNOWN;
-                  }
-                  case Applying.SetBy _, Applying.InForce _ -> State.NOT_KNOWN;
-                })
+        .map(applying ->
+            switch (applying) {
+              case Applying.From from ->
+                  day.isBefore(from.day()) ? State.NOT_APPLYING : State.APPLIES;
+              case Applying.FromMoreThanOneDay parts -> {
+                if (day.isBefore(parts.first())) {
+                  yield State.NOT_APPLYING;
+                }
+                yield !openDay && !day.isBefore(parts.starts().getLast().day())
+                    ? State.APPLIES
+                    : State.NOT_KNOWN;
+              }
+              case Applying.SetBy _, Applying.InForce _ -> State.NOT_KNOWN;
+            })
         .orElse(State.NOT_KNOWN);
   }
 

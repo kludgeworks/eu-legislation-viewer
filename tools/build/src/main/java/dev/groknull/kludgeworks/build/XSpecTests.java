@@ -45,10 +45,9 @@ public class XSpecTests {
                         .toExternalForm()));
     return Arrays.stream(System.getProperty("xspec.files").trim().split("\\s+"))
         .map(Path::of)
-        .map(
-            suite ->
-                DynamicContainer.dynamicContainer(
-                    suite.getFileName().toString(), suite.toUri(), scenarios(compiler, suite)));
+        .map(suite ->
+            DynamicContainer.dynamicContainer(
+                suite.getFileName().toString(), suite.toUri(), scenarios(compiler, suite)));
   }
 
   /**
@@ -67,11 +66,10 @@ public class XSpecTests {
               }));
     }
     return nodes("//x:scenario[x:test]", report)
-        .map(
-            scenario ->
-                DynamicContainer.dynamicContainer(
-                    string("string-join(ancestor-or-self::x:scenario/x:label, ' › ')", scenario),
-                    nodes("x:test", scenario).map(this::expectation)));
+        .map(scenario ->
+            DynamicContainer.dynamicContainer(
+                string("string-join(ancestor-or-self::x:scenario/x:label, ' › ')", scenario),
+                nodes("x:test", scenario).map(this::expectation)));
   }
 
   /** Compiles the suite and calls its x:main: the report. */

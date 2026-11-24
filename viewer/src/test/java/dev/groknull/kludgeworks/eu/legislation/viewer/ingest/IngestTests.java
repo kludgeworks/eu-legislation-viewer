@@ -190,11 +190,10 @@ class IngestTests {
     // An observation, as a web request is: its trace goes with the request to ingest's thread.
     var trace =
         Observation.createNotStarted("asking", observations)
-            .observe(
-                () -> {
-                  request(CONSOLIDATION, Language.DAN, Reason.NEEDED);
-                  return Objects.requireNonNull(tracer.currentSpan()).context().traceId();
-                });
+            .observe(() -> {
+              request(CONSOLIDATION, Language.DAN, Reason.NEEDED);
+              return Objects.requireNonNull(tracer.currentSpan()).context().traceId();
+            });
 
     finished(CONSOLIDATION, Language.DAN);
 

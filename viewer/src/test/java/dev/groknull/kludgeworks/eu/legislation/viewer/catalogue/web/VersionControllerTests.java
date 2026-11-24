@@ -158,11 +158,10 @@ class VersionControllerTests {
             .toList();
     assertThat(assets)
         .hasSize(15)
-        .allSatisfy(
-            asset -> {
-              assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
-              assertThat(mvc.get().uri(asset)).hasStatusOk();
-            });
+        .allSatisfy(asset -> {
+          assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
+          assertThat(mvc.get().uri(asset)).hasStatusOk();
+        });
   }
 
   private static Document page(MockMvcTester.MockMvcRequestBuilder request) {

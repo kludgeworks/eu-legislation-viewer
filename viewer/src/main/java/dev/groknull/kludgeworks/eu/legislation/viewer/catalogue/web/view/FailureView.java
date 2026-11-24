@@ -229,20 +229,18 @@ public record FailureView(
     // language.
     timeline
         .flatMap(t -> t.lastBefore(version.date()))
-        .ifPresent(
-            before ->
-                actions.add(
-                    Action.button(
-                        "Read the text before (from " + Dates.inWords(before.date()) + ")",
-                        Links.read(eli, before, language))));
+        .ifPresent(before ->
+            actions.add(
+                Action.button(
+                    "Read the text before (from " + Dates.inWords(before.date()) + ")",
+                    Links.read(eli, before, language))));
     timeline
         .flatMap(t -> t.firstAfter(version.date()))
-        .ifPresent(
-            after ->
-                actions.add(
-                    Action.button(
-                        "Read the text after (from " + Dates.inWords(after.date()) + ")",
-                        Links.read(eli, after, language))));
+        .ifPresent(after ->
+            actions.add(
+                Action.button(
+                    "Read the text after (from " + Dates.inWords(after.date()) + ")",
+                    Links.read(eli, after, language))));
     actions.add(Action.link("Read this text on EUR-Lex", version.eurLex(language).toString()));
     var reference = trace;
     return switch (failure) {

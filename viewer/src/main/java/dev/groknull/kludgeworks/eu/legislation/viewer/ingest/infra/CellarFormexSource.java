@@ -33,14 +33,11 @@ class CellarFormexSource implements FormexSource {
     try {
       return files
           .manifestation(celex, language.code())
-          .map(
-              manifestation ->
-                  manifestation.files().stream()
-                      .filter(file -> file.name().endsWith(".xml"))
-                      .map(
-                          file ->
-                              contentStreams.read(file.uri(), in -> read.apply(file.name(), in)))
-                      .toList());
+          .map(manifestation ->
+              manifestation.files().stream()
+                  .filter(file -> file.name().endsWith(".xml"))
+                  .map(file -> contentStreams.read(file.uri(), in -> read.apply(file.name(), in)))
+                  .toList());
     } catch (RuntimeException e) {
       if (CellarFailures.unavailable(e)) {
         throw new SourceUnavailableException(

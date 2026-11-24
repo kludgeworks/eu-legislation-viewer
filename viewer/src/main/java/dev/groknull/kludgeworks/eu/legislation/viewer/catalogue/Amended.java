@@ -47,14 +47,13 @@ public record Amended(Map<String, List<Amendment>> byOccurrence, int unplaced) {
    */
   public List<Amendment> of(String eId, boolean withItsOccurrences) {
     var found = new LinkedHashSet<Amendment>();
-    byOccurrence.forEach(
-        (occurrence, amendments) -> {
-          if (occurrence.equals(eId)
-              || in(eId, occurrence)
-              || (withItsOccurrences && in(occurrence, eId))) {
-            found.addAll(amendments);
-          }
-        });
+    byOccurrence.forEach((occurrence, amendments) -> {
+      if (occurrence.equals(eId)
+          || in(eId, occurrence)
+          || (withItsOccurrences && in(occurrence, eId))) {
+        found.addAll(amendments);
+      }
+    });
     return List.copyOf(found);
   }
 

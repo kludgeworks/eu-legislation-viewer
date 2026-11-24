@@ -66,23 +66,21 @@ class ActLookupController {
     var emitter = new SseEmitter(LASTS.toMillis());
     lookups
         .lookUp(eli)
-        .whenComplete(
-            (act, failure) -> {
-              try {
-                if (failure == null && act.isPresent()) {
-                  emitter.send(SseEmitter.event().name("done").data(""));
-                } else {
-                  emitter.send(
-                      SseEmitter.event()
-                          .data(
-                              templates.catalogueActlookupEnded(lookup, failure == null).render()));
-                }
-                emitter.complete();
-              } catch (IOException | IllegalStateException e) {
-                // The page went away, so its stream is no longer necessary.
-                LOG.debug("A lookup's stream closed: {}", e.toString());
-              }
-            });
+        .whenComplete((act, failure) -> {
+          try {
+            if (failure == null && act.isPresent()) {
+              emitter.send(SseEmitter.event().name("done").data(""));
+            } else {
+              emitter.send(
+                  SseEmitter.event()
+                      .data(templates.catalogueActlookupEnded(lookup, failure == null).render()));
+            }
+            emitter.complete();
+          } catch (IOException | IllegalStateException e) {
+            // The page went away, so its stream is no longer necessary.
+            LOG.debug("A lookup's stream closed: {}", e.toString());
+          }
+        });
     return emitter;
   }
 }

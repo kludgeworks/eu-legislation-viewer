@@ -69,10 +69,9 @@ class EncoderTest {
   @Test
   void refusesTextBesideElements() {
     assertThatIllegalArgumentException()
-        .isThrownBy(
-            () ->
-                Encoder.encode(
-                    LegalTexts.parse("<legalText %s>loose<body/></legalText>".formatted(NS))))
+        .isThrownBy(() ->
+            Encoder.encode(
+                LegalTexts.parse("<legalText %s>loose<body/></legalText>".formatted(NS))))
         .withMessageContaining("Text beside elements");
   }
 

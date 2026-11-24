@@ -487,11 +487,10 @@ class AttributedTest {
   /** Returns the steps of {@code attributed} as words: the modification, then the acts. */
   private static List<String> steps(Attributed attributed) {
     return attributed.attribution().steps().stream()
-        .map(
-            step ->
-                step.modification().word()
-                    + " "
-                    + step.acts().stream().map(AVSEC::cited).collect(Collectors.joining(" and ")))
+        .map(step ->
+            step.modification().word()
+                + " "
+                + step.acts().stream().map(AVSEC::cited).collect(Collectors.joining(" and ")))
         .toList();
   }
 

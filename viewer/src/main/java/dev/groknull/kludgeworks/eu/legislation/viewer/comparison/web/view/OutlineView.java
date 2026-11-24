@@ -166,16 +166,15 @@ public record OutlineView(List<Branch> entries) {
       }
     }
     return subdivisions.stream()
-        .map(
-            subdivision ->
-                new RailEntry(
-                    shortened(subdivision.label()),
-                    subdivision.label()
-                        + " · "
-                        + subdivision.count()
-                        + (subdivision.count() == 1 ? " difference" : " differences"),
-                    subdivision.count(),
-                    subdivision.first()))
+        .map(subdivision ->
+            new RailEntry(
+                shortened(subdivision.label()),
+                subdivision.label()
+                    + " · "
+                    + subdivision.count()
+                    + (subdivision.count() == 1 ? " difference" : " differences"),
+                subdivision.count(),
+                subdivision.first()))
         .toList();
   }
 

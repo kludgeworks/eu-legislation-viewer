@@ -32,13 +32,11 @@ final class SampleTexts {
       LegalTexts.samples()
           .filter(sample -> sample.endsWith(file))
           .findFirst()
-          .ifPresent(
-              sample ->
-                  texts.put(
-                      version,
-                      TextTags.of(
-                          Outlines.of(
-                              Decoder.element(Encoder.encode(LegalTexts.sample(sample)))))));
+          .ifPresent(sample ->
+              texts.put(
+                  version,
+                  TextTags.of(
+                      Outlines.of(Decoder.element(Encoder.encode(LegalTexts.sample(sample)))))));
     }
     return texts;
   }

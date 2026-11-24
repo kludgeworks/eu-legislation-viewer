@@ -125,11 +125,10 @@ class PublicTextsTest {
     assertThat(table.rows().getFirst().header()).isTrue();
     assertThat(table.rows().getFirst().cells())
         .singleElement()
-        .satisfies(
-            cell -> {
-              assertThat(cell.colspan()).isEqualTo(2);
-              assertThat(cell.content()).containsExactly(new Text("A. Fees", "A. Fees", List.of()));
-            });
+        .satisfies(cell -> {
+          assertThat(cell.colspan()).isEqualTo(2);
+          assertThat(cell.content()).containsExactly(new Text("A. Fees", "A. Fees", List.of()));
+        });
     assertThat(table.rows().get(1).cells()).allSatisfy(cell -> assertThat(cell.colspan()).isNull());
   }
 

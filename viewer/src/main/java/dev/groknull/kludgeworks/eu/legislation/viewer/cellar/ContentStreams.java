@@ -50,34 +50,33 @@ public class ContentStreams {
     return client
         .get()
         .uri(uri)
-        .exchange(
-            (request, response) -> {
-              var status = response.getStatusCode();
-              if (status.is5xxServerError()) {
-                throw HttpServerErrorException.create(
-                    status, response.getStatusText(), response.getHeaders(), new byte[0], null);
-              }
-              if (status.isError()) {
-                throw HttpClientErrorException.create(
-                    status, response.getStatusText(), response.getHeaders(), new byte[0], null);
-              }
-              var body = new Watched(response.getBody());
-              T read;
-              try {
-                read = reader.apply(unzipped(body));
-              } catch (RuntimeException e) {
-                throw body.failure == null ? e : failed(uri, body.failure);
-              }
-              if (body.failure != null) {
-                throw failed(uri, body.failure);
-              }
-              LOG.debug(
-                  "Read {}: {} KB in {} ms",
-                  uri,
-                  body.count / 1024,
-                  Duration.ofNanos(System.nanoTime() - started).toMillis());
-              return read;
-            });
+        .exchange((request, response) -> {
+          var status = response.getStatusCode();
+          if (status.is5xxServerError()) {
+            throw HttpServerErrorException.create(
+                status, response.getStatusText(), response.getHeaders(), new byte[0], null);
+          }
+          if (status.isError()) {
+            throw HttpClientErrorException.create(
+                status, response.getStatusText(), response.getHeaders(), new byte[0], null);
+          }
+          var body = new Watched(response.getBody());
+          T read;
+          try {
+            read = reader.apply(unzipped(body));
+          } catch (RuntimeException e) {
+            throw body.failure == null ? e : failed(uri, body.failure);
+          }
+          if (body.failure != null) {
+            throw failed(uri, body.failure);
+          }
+          LOG.debug(
+              "Read {}: {} KB in {} ms",
+              uri,
+              body.count / 1024,
+              Duration.ofNanos(System.nanoTime() - started).toMillis());
+          return read;
+        });
   }
 
   /** Returns {@code body}, unzipped if it starts with the gzip bytes 0x1f 0x8b. */

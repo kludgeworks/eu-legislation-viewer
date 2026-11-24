@@ -129,12 +129,10 @@ class ApiDocs {
    */
   private static List<ApiTermView> terms(Resource[] found, Map<String, String> examples) {
     return Arrays.stream(found)
-        .map(
-            resource ->
-                new ApiTermView(
-                    StringUtils.stripFilenameExtension(
-                        Objects.requireNonNull(resource.getFilename())),
-                    EXAMPLES.replacePlaceholders(content(resource).strip(), examples::get)))
+        .map(resource ->
+            new ApiTermView(
+                StringUtils.stripFilenameExtension(Objects.requireNonNull(resource.getFilename())),
+                EXAMPLES.replacePlaceholders(content(resource).strip(), examples::get)))
         .sorted(Comparator.comparing(ApiTermView::name))
         .toList();
   }

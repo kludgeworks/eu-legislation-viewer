@@ -158,9 +158,8 @@ public class HistorySteps {
     var expected =
         Location.of(occurrence)
             .in(TextOccurrences.of(later))
-            .orElseThrow(
-                () ->
-                    new AssertionError("No " + occurrence.words() + " in the later text: " + found))
+            .orElseThrow(() ->
+                new AssertionError("No " + occurrence.words() + " in the later text: " + found))
             .eIds();
     assertThat(found).isEqualTo(expected);
   }
@@ -202,9 +201,8 @@ public class HistorySteps {
   @Then("{act} changed it at {place}")
   public void changedAt(ActIdentifier act, Place place) {
     assertThat(history.changes())
-        .anyMatch(
-            each ->
-                each.act().equals(act) && each.location().place().words().equals(place.words()));
+        .anyMatch(each ->
+            each.act().equals(act) && each.location().place().words().equals(place.words()));
   }
 
   @Then("the text tags it with {act}, which Cellar names no change of there")

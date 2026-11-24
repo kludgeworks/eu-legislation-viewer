@@ -47,11 +47,10 @@ class StylesheetTest {
   @Test
   void reportsFormexItDoesNotHandle() {
     assertThatExceptionOfType(Stylesheet.Failure.class)
-        .isThrownBy(
-            () ->
-                STYLESHEET.transform(
-                    formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")),
-                    Optional.of("32026R0449")))
+        .isThrownBy(() ->
+            STYLESHEET.transform(
+                formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")),
+                Optional.of("32026R0449")))
         .withMessageContaining("NOT.FORMEX")
         .satisfies(e -> assertThat(e.code()).isEqualTo(Stylesheet.UNKNOWN));
   }
@@ -74,10 +73,9 @@ class StylesheetTest {
   @Test
   void refusesAConsolidationsCelexForAnOjAct() {
     assertThatExceptionOfType(Stylesheet.Failure.class)
-        .isThrownBy(
-            () ->
-                STYLESHEET.transform(
-                    formex(act("<ENACTING.TERMS/>")), Optional.of("02026R0449-20260101")))
+        .isThrownBy(() ->
+            STYLESHEET.transform(
+                formex(act("<ENACTING.TERMS/>")), Optional.of("02026R0449-20260101")))
         .withMessageContaining("02026R0449-20260101")
         .satisfies(e -> assertThat(e.code()).isEqualTo(Stylesheet.MISFILED));
   }

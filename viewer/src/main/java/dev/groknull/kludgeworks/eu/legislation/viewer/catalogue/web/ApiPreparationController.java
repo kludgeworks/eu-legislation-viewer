@@ -140,9 +140,8 @@ class ApiPreparationController {
         HalModelBuilder.halModelOf(PreparationModel.of(preparation))
             .embed(
                 preparation.texts().entrySet().stream()
-                    .map(
-                        each ->
-                            progress(celex, preparation.language(), each.getKey(), each.getValue()))
+                    .map(each ->
+                        progress(celex, preparation.language(), each.getKey(), each.getValue()))
                     .toList(),
                 IanaLinkRelations.ITEM)
             .link(to(celex, preparation.language()).withSelfRel())
@@ -173,12 +172,11 @@ class ApiPreparationController {
 
   private static boolean retryable(Preparation preparation) {
     return preparation.texts().values().stream()
-        .anyMatch(
-            text ->
-                switch (text) {
-                  case Text.Failed failed -> failed.failure().retryable();
-                  case Text.Waiting _, Text.Converting _, Text.Ready _ -> false;
-                });
+        .anyMatch(text ->
+            switch (text) {
+              case Text.Failed failed -> failed.failure().retryable();
+              case Text.Waiting _, Text.Converting _, Text.Ready _ -> false;
+            });
   }
 
   private Act found(ActIdentifier celex) {

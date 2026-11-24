@@ -268,11 +268,10 @@ class SearchIndexTests {
    */
   private void rolledBack(Runnable test) {
     new TransactionTemplate(transactionManager)
-        .executeWithoutResult(
-            status -> {
-              status.setRollbackOnly();
-              test.run();
-            });
+        .executeWithoutResult(status -> {
+          status.setRollbackOnly();
+          test.run();
+        });
   }
 
   private static String answer(String query) {

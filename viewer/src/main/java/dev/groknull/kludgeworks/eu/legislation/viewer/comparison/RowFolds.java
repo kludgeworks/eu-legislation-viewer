@@ -239,9 +239,8 @@ public final class RowFolds {
   /** Returns whether {@code table} has folds, in it or in its row groups. */
   private static boolean hasFolds(Element table) {
     return table.children().stream()
-        .anyMatch(
-            child ->
-                child.name().equals(FOLD) || (child.name().equals("rowGroup") && hasFolds(child)));
+        .anyMatch(child ->
+            child.name().equals(FOLD) || (child.name().equals("rowGroup") && hasFolds(child)));
   }
 
   /**

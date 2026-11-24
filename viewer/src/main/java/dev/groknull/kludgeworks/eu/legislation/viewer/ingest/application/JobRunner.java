@@ -117,10 +117,8 @@ class JobRunner {
 
   private Optional<IngestJob> start(ConversionQueued requested) {
     var job = jobs.start(requested.celex(), requested.language(), properties.takeover());
-    job.ifPresent(
-        each ->
-            events.publishEvent(
-                new ConversionStarted(each.celex(), each.language(), each.attempts())));
+    job.ifPresent(each ->
+        events.publishEvent(new ConversionStarted(each.celex(), each.language(), each.attempts())));
     return job;
   }
 
@@ -165,13 +163,12 @@ class JobRunner {
       var converter = conversions.converterVersion();
       var stored =
           Objects.requireNonNull(
-              transactions.execute(
-                  status -> {
-                    var id = content.store(job.celex(), job.language(), converter, text.get());
-                    jobs.save(job.built());
-                    events.publishEvent(new TextConverted(job.celex(), job.language()));
-                    return id;
-                  }));
+              transactions.execute(status -> {
+                var id = content.store(job.celex(), job.language(), converter, text.get());
+                jobs.save(job.built());
+                events.publishEvent(new TextConverted(job.celex(), job.language()));
+                return id;
+              }));
       LOG.info(
           "Built {} in {} as text {} in {} ms, attempt {}",
           job.celex(),
@@ -221,12 +218,11 @@ class JobRunner {
   }
 
   private void fail(IngestJob job, Failure failure, String detail) {
-    transactions.executeWithoutResult(
-        status -> {
-          jobs.save(job.failed(failure, detail));
-          events.publishEvent(
-              new ConversionFailed(job.celex(), job.language(), failure, detail, traceId()));
-        });
+    transactions.executeWithoutResult(status -> {
+      jobs.save(job.failed(failure, detail));
+      events.publishEvent(
+          new ConversionFailed(job.celex(), job.language(), failure, detail, traceId()));
+    });
     LOG.info(
         "Couldn't build {} in {}: {}, {}", job.celex(), job.language().code(), failure, detail);
   }
@@ -241,12 +237,11 @@ class JobRunner {
   }
 
   private void defer(IngestJob job, String detail) {
-    transactions.executeWithoutResult(
-        status -> {
-          jobs.save(job.retry());
-          events.publishEvent(
-              new ConversionPostponed(job.celex(), job.language(), job.attempts(), detail));
-        });
+    transactions.executeWithoutResult(status -> {
+      jobs.save(job.retry());
+      events.publishEvent(
+          new ConversionPostponed(job.celex(), job.language(), job.attempts(), detail));
+    });
   }
 
   private static String detail(RuntimeException e) {

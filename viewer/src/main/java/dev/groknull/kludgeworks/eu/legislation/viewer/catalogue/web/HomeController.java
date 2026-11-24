@@ -187,11 +187,10 @@ class HomeController {
   ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
     var words = q.strip();
     return straight(words, Frame.of(request), System.nanoTime(), request, Search.Kind.ALL)
-        .orElseGet(
-            () ->
-                ResponseEntity.status(HttpStatus.SEE_OTHER)
-                    .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
-                    .build());
+        .orElseGet(() ->
+            ResponseEntity.status(HttpStatus.SEE_OTHER)
+                .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
+                .build());
   }
 
   /**
@@ -215,24 +214,23 @@ class HomeController {
     var unanswered = unanswered(words, name);
     var emitter = new SseEmitter(STREAM.toMillis());
     name.lookUp(lookups)
-        .whenComplete(
-            (act, failure) -> {
-              try {
-                if (failure == null && act.isPresent()) {
-                  emitter.send(SseEmitter.event().name("done").data(""));
-                } else {
-                  var ended =
-                      failure == null
-                          ? templates.catalogueLookupEnded(unanswered, noAct(words))
-                          : templates.catalogueLookupEnded(unanswered, null);
-                  emitter.send(SseEmitter.event().data(ended.render()));
-                }
-                emitter.complete();
-              } catch (IOException | IllegalStateException e) {
-                // The page went away, so its stream is no longer necessary.
-                LOG.debug("A lookup's stream closed: {}", e.toString());
-              }
-            });
+        .whenComplete((act, failure) -> {
+          try {
+            if (failure == null && act.isPresent()) {
+              emitter.send(SseEmitter.event().name("done").data(""));
+            } else {
+              var ended =
+                  failure == null
+                      ? templates.catalogueLookupEnded(unanswered, noAct(words))
+                      : templates.catalogueLookupEnded(unanswered, null);
+              emitter.send(SseEmitter.event().data(ended.render()));
+            }
+            emitter.complete();
+          } catch (IOException | IllegalStateException e) {
+            // The page went away, so its stream is no longer necessary.
+            LOG.debug("A lookup's stream closed: {}", e.toString());
+          }
+        });
     return emitter;
   }
 

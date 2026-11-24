@@ -43,10 +43,9 @@ final class CellarPublications {
       actByAct(row).or(() -> inIssue(row)).ifPresent(journal -> journals.putIfAbsent(act, journal));
     }
     var publications = new LinkedHashMap<ActIdentifier, Publication>();
-    elis.forEach(
-        (act, eli) ->
-            publications.put(
-                act, new Publication(eli, titles.getOrDefault(act, Map.of()), journals.get(act))));
+    elis.forEach((act, eli) ->
+        publications.put(
+            act, new Publication(eli, titles.getOrDefault(act, Map.of()), journals.get(act))));
     return publications;
   }
 

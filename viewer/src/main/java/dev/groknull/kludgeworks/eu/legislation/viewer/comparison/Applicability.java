@@ -109,27 +109,26 @@ public sealed interface Applicability {
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {
     return act.dates()
         .applying(amending, days)
-        .flatMap(
-            applying -> {
-              var provisions = new LinkedHashSet<ActDate.Provision>();
-              var amendedBy = new LinkedHashSet<ActIdentifier>();
-              var setBy = new LinkedHashSet<ActIdentifier>();
-              for (var date : applying.dates()) {
-                provisions.addAll(date.clause().provisions());
-                amendedBy.addAll(date.clause().amendedBy());
-                setBy.addAll(date.clause().setBy());
-              }
-              if (applying instanceof Applying.SetBy && provisions.isEmpty()) {
-                return Optional.empty();
-              }
-              return Optional.of(
-                  new Applies(
-                      amending,
-                      applying,
-                      List.copyOf(provisions),
-                      List.copyOf(amendedBy),
-                      List.copyOf(setBy)));
-            });
+        .flatMap(applying -> {
+          var provisions = new LinkedHashSet<ActDate.Provision>();
+          var amendedBy = new LinkedHashSet<ActIdentifier>();
+          var setBy = new LinkedHashSet<ActIdentifier>();
+          for (var date : applying.dates()) {
+            provisions.addAll(date.clause().provisions());
+            amendedBy.addAll(date.clause().amendedBy());
+            setBy.addAll(date.clause().setBy());
+          }
+          if (applying instanceof Applying.SetBy && provisions.isEmpty()) {
+            return Optional.empty();
+          }
+          return Optional.of(
+              new Applies(
+                  amending,
+                  applying,
+                  List.copyOf(provisions),
+                  List.copyOf(amendedBy),
+                  List.copyOf(setBy)));
+        });
   }
 
   /**

@@ -150,16 +150,15 @@ class TextService implements Texts {
     var tags = new LinkedHashMap<Version, TextTags>();
     preparation
         .texts()
-        .forEach(
-            (version, text) -> {
-              switch (text) {
-                case Text.Ready ready ->
-                    content.outline(ready.text()).ifPresent(o -> tags.put(version, TextTags.of(o)));
-                case Text.Waiting _, Text.Converting _, Text.Failed _ -> {
-                  // not built: it gives no tags
-                }
-              }
-            });
+        .forEach((version, text) -> {
+          switch (text) {
+            case Text.Ready ready ->
+                content.outline(ready.text()).ifPresent(o -> tags.put(version, TextTags.of(o)));
+            case Text.Waiting _, Text.Converting _, Text.Failed _ -> {
+              // not built: it gives no tags
+            }
+          }
+        });
     LOG.debug(
         "Tags of {} of {} texts of {} in {}, in {} ms",
         tags.size(),

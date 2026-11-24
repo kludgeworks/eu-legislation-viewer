@@ -51,11 +51,10 @@ class LookupServiceTest {
   @Test
   void joinsTwoLookupsOfOneAct() throws Exception {
     var release = new CountDownLatch(1);
-    catalogue.answers.add(
-        () -> {
-          waitFor(release);
-          return Optional.of(OneActCellar.ACT);
-        });
+    catalogue.answers.add(() -> {
+      waitFor(release);
+      return Optional.of(OneActCellar.ACT);
+    });
 
     var first = lookups.lookUp(OneActCellar.ELI);
     var second = lookups.lookUp(OneActCellar.ELI);
@@ -79,10 +78,9 @@ class LookupServiceTest {
 
   @Test
   void asksAgainAfterThePublicationsOfficeDidNotAnswer() {
-    catalogue.answers.add(
-        () -> {
-          throw new IllegalStateException("Read timed out");
-        });
+    catalogue.answers.add(() -> {
+      throw new IllegalStateException("Read timed out");
+    });
     catalogue.answers.add(() -> Optional.of(OneActCellar.ACT));
 
     var failed = lookups.lookUp(OneActCellar.CELEX);

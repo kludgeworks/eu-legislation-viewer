@@ -75,20 +75,19 @@ class JooqChangeStore implements ChangeStore {
     }
     db.batch(
             changes.stream()
-                .map(
-                    change ->
-                        db.insertInto(ACT_CHANGE)
-                            .set(ACT_CHANGE.ACT, change.act())
-                            .set(ACT_CHANGE.MODIFIED, change.modified())
-                            .set(ACT_CHANGE.FIRST_SEEN, change.firstSeen())
-                            .set(ACT_CHANGE.DUE_AT, change.due())
-                            .set(ACT_CHANGE.READ_AT, change.readAt())
-                            .onConflict(ACT_CHANGE.ACT)
-                            .doUpdate()
-                            .set(ACT_CHANGE.MODIFIED, change.modified())
-                            .set(ACT_CHANGE.FIRST_SEEN, change.firstSeen())
-                            .set(ACT_CHANGE.DUE_AT, change.due())
-                            .set(ACT_CHANGE.READ_AT, change.readAt()))
+                .map(change ->
+                    db.insertInto(ACT_CHANGE)
+                        .set(ACT_CHANGE.ACT, change.act())
+                        .set(ACT_CHANGE.MODIFIED, change.modified())
+                        .set(ACT_CHANGE.FIRST_SEEN, change.firstSeen())
+                        .set(ACT_CHANGE.DUE_AT, change.due())
+                        .set(ACT_CHANGE.READ_AT, change.readAt())
+                        .onConflict(ACT_CHANGE.ACT)
+                        .doUpdate()
+                        .set(ACT_CHANGE.MODIFIED, change.modified())
+                        .set(ACT_CHANGE.FIRST_SEEN, change.firstSeen())
+                        .set(ACT_CHANGE.DUE_AT, change.due())
+                        .set(ACT_CHANGE.READ_AT, change.readAt()))
                 .toList())
         .execute();
   }

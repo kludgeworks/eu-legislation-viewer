@@ -120,10 +120,9 @@ class CellarSearch implements Search {
         row.find("type").map(ResourceType::ofUri).ifPresent(type -> folding.type = type);
         row.find("inForce").ifPresent(value -> folding.inForce |= isTrue(value));
         row.find("amends")
-            .ifPresent(
-                celex ->
-                    folding.amends.putIfAbsent(
-                        celex, row.find("amendsEli").flatMap(Eli::parse).orElse(null)));
+            .ifPresent(celex ->
+                folding.amends.putIfAbsent(
+                    celex, row.find("amendsEli").flatMap(Eli::parse).orElse(null)));
       }
       var ranked = acts.values().stream().map(Folding::ranked).sorted(RANK).toList();
       return new Found(

@@ -39,12 +39,11 @@ class ViewerJarContentsTest {
               .toList();
       assertThat(new HashSet<>(libraries)).hasSameSizeAs(libraries);
       assertThat(libraries)
-          .noneMatch(
-              name ->
-                  name.contains("junit")
-                      || name.contains("mockito")
-                      || name.contains("assertj")
-                      || name.contains("testcontainers"));
+          .noneMatch(name ->
+              name.contains("junit")
+                  || name.contains("mockito")
+                  || name.contains("assertj")
+                  || name.contains("testcontainers"));
 
       try (var resources =
           new ZipInputStream(

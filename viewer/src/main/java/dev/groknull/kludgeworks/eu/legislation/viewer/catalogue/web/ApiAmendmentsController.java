@@ -46,9 +46,8 @@ class ApiAmendmentsController {
     var dates = new TreeMap<String, List<DateModel>>();
     act.dates()
         .amending()
-        .forEach(
-            (amending, own) ->
-                dates.put(amending.celex(), own.stream().map(DateModel::of).toList()));
+        .forEach((amending, own) ->
+            dates.put(amending.celex(), own.stream().map(DateModel::of).toList()));
     return HalModelBuilder.halModelOf(
             new AmendmentsModel(
                 act.amendments().stream().map(each -> AmendmentModel.of(act, each)).toList(),

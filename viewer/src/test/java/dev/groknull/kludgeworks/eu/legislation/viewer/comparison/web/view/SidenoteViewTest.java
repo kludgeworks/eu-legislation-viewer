@@ -104,14 +104,13 @@ class SidenoteViewTest {
     assertThat(sidenote.made()).isEqualTo("Replaced by 2017/815");
     assertThat(sidenote.dates())
         .singleElement()
-        .satisfies(
-            line -> {
-              assertThat(line.when())
-                  .isEqualTo("2017/815 · OJ L 122, 13.5.2017 · applies from 1 June 2017");
-              assertThat(line.between()).isEqualTo(" · ");
-              assertThat(line.clause()).extracting(Link::label).isEqualTo("Article 2 of 2017/815");
-              assertThat(line.after()).isEmpty();
-            });
+        .satisfies(line -> {
+          assertThat(line.when())
+              .isEqualTo("2017/815 · OJ L 122, 13.5.2017 · applies from 1 June 2017");
+          assertThat(line.between()).isEqualTo(" · ");
+          assertThat(line.clause()).extracting(Link::label).isEqualTo("Article 2 of 2017/815");
+          assertThat(line.after()).isEmpty();
+        });
   }
 
   @Test

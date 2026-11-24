@@ -68,18 +68,17 @@ class ContentStreamsTest {
         .andRespond(withSuccess(new InputStreamResource(new Broken()), FORMEX));
 
     assertThatExceptionOfType(ResourceAccessException.class)
-        .isThrownBy(
-            () ->
-                mock.contentStreams()
-                    .read(
-                        ITEM,
-                        in -> {
-                          try {
-                            return in.readAllBytes();
-                          } catch (IOException e) {
-                            return new byte[0];
-                          }
-                        }))
+        .isThrownBy(() ->
+            mock.contentStreams()
+                .read(
+                    ITEM,
+                    in -> {
+                      try {
+                        return in.readAllBytes();
+                      } catch (IOException e) {
+                        return new byte[0];
+                      }
+                    }))
         .withMessageContaining("connection reset");
   }
 

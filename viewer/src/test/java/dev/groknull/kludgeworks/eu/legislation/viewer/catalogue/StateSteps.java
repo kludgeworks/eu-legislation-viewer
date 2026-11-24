@@ -67,11 +67,10 @@ public class StateSteps {
   public void openDay(ActIdentifier act) {
     assertThat(the.act().dates().datesOf(act))
         .as(act.cited())
-        .anySatisfy(
-            date -> {
-              assertThat(date.kind()).isNotEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
-              assertThat(date.date()).isNull();
-            });
+        .anySatisfy(date -> {
+          assertThat(date.kind()).isNotEqualTo(ActDate.Kind.ENTRY_INTO_FORCE);
+          assertThat(date.date()).isNull();
+        });
   }
 
   @Then("Cellar lists no changed place for {act}")

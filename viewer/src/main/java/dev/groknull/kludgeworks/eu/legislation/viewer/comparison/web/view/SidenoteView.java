@@ -313,12 +313,11 @@ public record SidenoteView(
    */
   private static List<Link> links(Act act, List<ActIdentifier> acts, Language language) {
     return acts.stream()
-        .map(
-            each ->
-                new Link(
-                    act.cited(each),
-                    act.eurLex(each, language).toString(),
-                    act.citation(each, language)))
+        .map(each ->
+            new Link(
+                act.cited(each),
+                act.eurLex(each, language).toString(),
+                act.citation(each, language)))
         .toList();
   }
 

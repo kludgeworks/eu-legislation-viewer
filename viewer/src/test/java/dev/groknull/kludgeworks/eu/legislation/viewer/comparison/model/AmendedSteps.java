@@ -57,9 +57,8 @@ public class AmendedSteps {
   @Then("Cellar's amendment of {act} at {place} counts")
   public void counts(ActIdentifier act, Place place) {
     assertThat(counting())
-        .anyMatch(
-            each ->
-                each.act().equals(act) && each.location().place().words().equals(place.words()));
+        .anyMatch(each ->
+            each.act().equals(act) && each.location().place().words().equals(place.words()));
   }
 
   @Then("Cellar's repeals of {act} at {place} and {place} are found on the earlier text")
@@ -101,14 +100,12 @@ public class AmendedSteps {
   /** Returns the occurrences at which the removals of {@code act} at {@code place} are found. */
   private List<String> placed(ActIdentifier act, Place place) {
     return amended().byOccurrence().entrySet().stream()
-        .filter(
-            each ->
-                each.getValue().stream()
-                    .anyMatch(
-                        amendment ->
-                            amendment.act().equals(act)
-                                && amendment.role().removes()
-                                && amendment.location().place().words().equals(place.words())))
+        .filter(each ->
+            each.getValue().stream()
+                .anyMatch(amendment ->
+                    amendment.act().equals(act)
+                        && amendment.role().removes()
+                        && amendment.location().place().words().equals(place.words())))
         .map(java.util.Map.Entry::getKey)
         .toList();
   }

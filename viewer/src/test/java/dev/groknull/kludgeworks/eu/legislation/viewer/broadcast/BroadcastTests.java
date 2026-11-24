@@ -40,11 +40,10 @@ class BroadcastTests {
   @Test
   void sendsAnExternalizedEventToEveryInstanceOnceCommitted() {
     var ping = new Pinged(UUID.randomUUID().toString());
-    transaction.executeWithoutResult(
-        status -> {
-          events.publishEvent(ping);
-          assertThat(heard.pings()).doesNotContain(ping);
-        });
+    transaction.executeWithoutResult(status -> {
+      events.publishEvent(ping);
+      assertThat(heard.pings()).doesNotContain(ping);
+    });
 
     await().atMost(Duration.ofSeconds(30)).until(() -> heard.pings().contains(ping));
     assertThat(heard.pings()).containsOnlyOnce(ping);

@@ -127,13 +127,12 @@ public final class ApiSnippets implements BeforeEachCallback, AfterEachCallback 
     try (var written = Files.walk(OUTPUT)) {
       written
           .filter(Files::isRegularFile)
-          .forEach(
-              file -> {
-                var name = OUTPUT.relativize(file).toString();
-                if (!read(file).equals(golden(name))) {
-                  differences.add(name);
-                }
-              });
+          .forEach(file -> {
+            var name = OUTPUT.relativize(file).toString();
+            if (!read(file).equals(golden(name))) {
+              differences.add(name);
+            }
+          });
     }
     assertThat(differences)
         .as(

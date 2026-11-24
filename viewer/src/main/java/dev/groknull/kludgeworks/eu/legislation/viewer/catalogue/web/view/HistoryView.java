@@ -196,21 +196,20 @@ public record HistoryView(
     var applying = act.dates().applying(id, Set.of());
     var from =
         applying
-            .map(
-                each ->
-                    switch (each) {
-                      case Applying.From one ->
-                          " It applies from "
-                              + Dates.inWords(one.day())
-                              + Wording.clauseOn(act, id, one.day())
-                              + ".";
-                      case Applying.FromMoreThanOneDay parts ->
-                          " Its first part applies from "
-                              + Dates.inWords(parts.first())
-                              + Wording.clauseOn(act, id, parts.first())
-                              + ".";
-                      case Applying.SetBy _, Applying.InForce _ -> "";
-                    })
+            .map(each ->
+                switch (each) {
+                  case Applying.From one ->
+                      " It applies from "
+                          + Dates.inWords(one.day())
+                          + Wording.clauseOn(act, id, one.day())
+                          + ".";
+                  case Applying.FromMoreThanOneDay parts ->
+                      " Its first part applies from "
+                          + Dates.inWords(parts.first())
+                          + Wording.clauseOn(act, id, parts.first())
+                          + ".";
+                  case Applying.SetBy _, Applying.InForce _ -> "";
+                })
             .orElse("");
     return switch (act.dates().stateOn(id, Set.of(), day)) {
       case NOT_IN_FORCE ->

@@ -24,13 +24,9 @@ public final class ControlsView {
    */
   public static List<ViewLink> views(ComparePage page, ComparisonView shown) {
     return Arrays.stream(ComparisonView.values())
-        .map(
-            view ->
-                new ViewLink(
-                    view.label(),
-                    view.code(),
-                    page.href(page.act(), view.parameter()),
-                    view == shown))
+        .map(view ->
+            new ViewLink(
+                view.label(), view.code(), page.href(page.act(), view.parameter()), view == shown))
         .toList();
   }
 

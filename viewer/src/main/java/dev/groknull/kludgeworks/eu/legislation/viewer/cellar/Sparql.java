@@ -114,22 +114,21 @@ public class Sparql {
         .contentType(MediaType.APPLICATION_FORM_URLENCODED)
         .accept(MediaType.parseMediaType("text/csv"))
         .body("query=" + URLEncoder.encode(query, StandardCharsets.UTF_8))
-        .exchange(
-            (request, response) -> {
-              var headers = response.getHeaders();
-              if (response.getStatusCode().value() != 200
-                  || headers.containsHeader("X-SQL-State")
-                  || headers.containsHeader("X-SPARQL-MaxRows")
-                  || headers.containsHeader("X-SQL-Message")) {
-                throw new CellarException(
-                    "Incomplete bulk answer from Cellar: " + response.getStatusCode());
-              }
-              long count = sink.copy(response.getBody());
-              if (count >= properties.maxRows()) {
-                throw new CellarException("Bulk answer reached Cellar's row limit");
-              }
-              return count;
-            });
+        .exchange((request, response) -> {
+          var headers = response.getHeaders();
+          if (response.getStatusCode().value() != 200
+              || headers.containsHeader("X-SQL-State")
+              || headers.containsHeader("X-SPARQL-MaxRows")
+              || headers.containsHeader("X-SQL-Message")) {
+            throw new CellarException(
+                "Incomplete bulk answer from Cellar: " + response.getStatusCode());
+          }
+          long count = sink.copy(response.getBody());
+          if (count >= properties.maxRows()) {
+            throw new CellarException("Bulk answer reached Cellar's row limit");
+          }
+          return count;
+        });
   }
 
   @FunctionalInterface
