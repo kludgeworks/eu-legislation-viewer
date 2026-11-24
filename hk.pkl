@@ -154,6 +154,7 @@ local linters = new Mapping<String, Step> {
         "viewer/src/test/rules/catalogue/the-history-of-an-act.feature",
         "viewer/src/test/rules/catalogue/the-text-a-comparison-shows.feature",
         "viewer/src/test/rules/catalogue/the-text-and-the-law-on-a-day.feature",
+        "viewer/src/test/rules/comparison/the-changes-of-one-act.feature",
         "viewer/src/test/rules/comparison/what-counts-as-a-difference.feature",
         "viewer/src/test/rules/comparison/who-made-a-change.feature",
       )

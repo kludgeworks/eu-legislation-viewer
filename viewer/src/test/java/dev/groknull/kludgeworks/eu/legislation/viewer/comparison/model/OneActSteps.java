@@ -42,7 +42,7 @@ public class OneActSteps {
     this.comparing = comparing;
   }
 
-  @When("the comparison is limited to {act}")
+  @When("the reader limits the comparison to {act}")
   public void limitedTo(ActIdentifier act) {
     inclusion = inclusion(act);
   }
@@ -82,7 +82,7 @@ public class OneActSteps {
     alternatives = Alternatives.of(act, attributed(found.before(), found.first()));
   }
 
-  @Then("{int} differences are listed apart, by this act or by {acts}")
+  @Then("the page lists {int} differences apart, by this act or by {acts}")
   public void listedApart(int count, List<ActIdentifier> others) {
     var found = Objects.requireNonNull(alternatives, "no page opened");
     assertThat(found.differences()).hasSize(count);
