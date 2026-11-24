@@ -47,7 +47,7 @@ spec:
       containers:
         - name: viewer
           # the release's image: the Release workflow pins the tag to the version it releases (release:prepare)
-          image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.20
+          image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.21
           ports:
             - name: http
               containerPort: 8080
