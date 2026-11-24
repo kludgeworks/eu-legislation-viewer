@@ -6,15 +6,15 @@ module(
 
 bazel_dep(name = "rules_java", version = "9.9.0")
 bazel_dep(name = "rules_jvm_external", version = "7.2")
-bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
+bazel_dep(name = "contrib_rules_jvm", version = "0.35.0")
 bazel_dep(name = "bazel_skylib", version = "1.9.2")
 bazel_dep(name = "apple_rules_lint", version = "0.4.0")
-bazel_dep(name = "rules_shell", version = "0.6.1")
+bazel_dep(name = "rules_shell", version = "0.10.0")
 
 # JavaScript: the viewer's scripts. Vitest tests them in happy-dom, and tsc checks their JSDoc
 # types. The npm packages come from package.json and pnpm-lock.yaml at the root.
 bazel_dep(name = "rules_nodejs", version = "6.7.7")
-bazel_dep(name = "aspect_rules_js", version = "3.6.0")
+bazel_dep(name = "aspect_rules_js", version = "3.6.1")
 
 node = use_extension("@rules_nodejs//nodejs:extensions.bzl", "node")
 node.toolchain(node_version = "24.22.1")
@@ -31,7 +31,7 @@ use_repo(npm, "npm")
 
 # bats_test: the task scripts' tests (tools/test/tasks), with its own bats; already in the graph
 # through rules_jvm_external and contrib_rules_jvm
-bazel_dep(name = "bazel_lib", version = "3.7.0")
+bazel_dep(name = "bazel_lib", version = "3.8.0")
 
 # A C toolchain for Linux, as Bazel brings its own JDK: nothing here is C, but every java_test needs
 # one to analyse (the Windows launcher maker), so a Linux machine with no compiler would fail. macOS
