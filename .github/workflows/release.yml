@@ -64,9 +64,12 @@ jobs:
           tailscale-client-id: ${{ vars.TS_OIDC_CLIENT_ID }}
           tailscale-audience: ${{ vars.TS_OIDC_AUDIENCE }}
 
+      # every check on the prepared tree, but not hk's check of the pending migrations: they are
+      # named released now, by a version not tagged yet. The next step checks them as released.
       - if: steps.prepare.outputs.tag != ''
         env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
+          HK_SKIP_STEPS: flyway_migrations
         run: mise run check
       - if: steps.prepare.outputs.tag != ''
         run: tools/tasks/release/db-migrations.bash --final
