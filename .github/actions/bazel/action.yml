@@ -36,13 +36,19 @@ runs:
         repository-cache: true
         cache-save: ${{ inputs.cache-save }}
 
-    # Only runs with an OIDC token reach the tailnet: pushes, and pull requests from this
-    # repository that Dependabot did not open. The ping fails the step if bazel-cache can't be
-    # reached, and then the run builds without it.
+    # setup-bazel writes ~/.bazelrc without a final newline: the lines appended below would join
+    # its last line (common --repository_cache=...), and then apply to every command
+    - shell: bash
+      run: echo >>~/.bazelrc
+
+    # Only runs with an OIDC token reach the tailnet: pushes, releases (a workflow dispatch, which
+    # only those who may write the repository can start), and pull requests from this repository
+    # that Dependabot did not open. The ping fails the step if bazel-cache can't be reached, and
+    # then the run builds without it.
     - id: tailscale
       if: >-
         inputs.remote-cache != '' && inputs.tailscale-client-id != '' &&
-        (github.event_name == 'push' ||
+        (github.event_name == 'push' || github.event_name == 'workflow_dispatch' ||
          (github.event.pull_request.head.repo.full_name == github.repository &&
           github.actor != 'dependabot[bot]'))
       continue-on-error: true
