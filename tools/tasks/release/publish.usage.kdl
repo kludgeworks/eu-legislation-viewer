@@ -1,0 +1,23 @@
+// SPDX-License-Identifier: MIT
+// publish.bash's arguments and help (mise run release:publish --help). mise rewraps the help to
+// the terminal but keeps its line breaks: a paragraph, or a list's item, is one line.
+
+long_about """
+    Commit a prepared release to main, and tag it. The Release workflow runs it last, with the token of the GitHub App (kludgebot), once the release is tested and its JAR and image are built.
+
+    It:
+
+    1. checks that the staged tree (release:prepare) is the one the workflow tested
+    2. commits it to main as "chore(release): prepare vYYYY.MM.MICRO", through GitHub's API: GitHub signs a commit that an App makes, so it is Verified. The commit is made only if main is still at the base, the commit the workflow prepared from
+    3. checks that the commit on main has the tested tree
+    4. tags the commit with the version, as an annotated tag
+    """
+
+after_long_help "GH_TOKEN must be a token that may write the repository's contents: the App's, so that the App is the author of the commit and the tag."
+
+arg "<tag>" env="TAG" help="The release's tag: v2026.11.0"
+flag "--repo <repo>" env="GH_REPO" required=#true help="The GitHub repository: kludgeworks/eu-legislation-viewer"
+flag "--base <sha>" env="RELEASE_BASE" required=#true help="The commit of main that the release was prepared from"
+flag "--tree <sha>" env="RELEASE_TREE" required=#true help="The tree that the workflow tested (release:prepare's tree=)"
+
+example "mise run release:publish v2026.11.0 --repo kludgeworks/eu-legislation-viewer --base \"$BASE\" --tree \"$TREE\"" header="Publish a prepared release" help="As the Release workflow does"

@@ -8,6 +8,8 @@ exports_files(
         "release/db-migrations.bash",
         "release/image.bash",
         "release/notes.bash",
+        "release/prepare.bash",
+        "release/publish.bash",
     ],
     visibility = ["//tools/test/tasks:__pkg__"],
 )

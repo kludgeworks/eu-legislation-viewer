@@ -78,3 +78,13 @@ load_release() {
 	# shellcheck source=/dev/null # the task itself, checked on its own
 	REPO_ROOT="$repo" source "$project/tools/tasks/release.bash"
 }
+
+load_prepare() {
+	# shellcheck source=/dev/null # the task itself, checked on its own
+	REPO_ROOT="$repo" source "$project/tools/tasks/release/prepare.bash"
+}
+
+load_publish() {
+	# shellcheck source=/dev/null # the task itself, checked on its own
+	REPO_ROOT="$repo" source "$project/tools/tasks/release/publish.bash"
+}

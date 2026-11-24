@@ -4,8 +4,8 @@ load("@bazel_lib//lib:bats.bzl", "bats_test")
 # The task scripts' tests: each runs its script in a throwaway git repository in its own
 # BATS_TEST_TMPDIR, with the tools the script calls (bazel, pack) replaced by stubs, so the only
 # tools they need from the machine are the ones in /usr/bin on Linux and macOS: git, awk, find,
-# grep, sed, perl, shasum, install. Here, not beside the scripts: mise takes any executable file
-# below tools/tasks for a task.
+# grep, sed, perl, shasum, install, base64, jq. Here, not beside the scripts: mise takes any
+# executable file below tools/tasks for a task.
 
 bats_test(
     name = "release",
@@ -16,6 +16,30 @@ bats_test(
         "//tools/lib:ui.bash",
         "//tools/tasks:release.bash",
         "//tools/tasks:release/notes.bash",
+        "//tools/tasks:release/prepare.bash",
+    ],
+)
+
+bats_test(
+    name = "release_prepare",
+    size = "small",
+    srcs = ["release_prepare.bats"],
+    data = [
+        "test_helper.bash",
+        "//tools/lib:ui.bash",
+        "//tools/tasks:release/notes.bash",
+        "//tools/tasks:release/prepare.bash",
+    ],
+)
+
+bats_test(
+    name = "release_publish",
+    size = "small",
+    srcs = ["release_publish.bats"],
+    data = [
+        "test_helper.bash",
+        "//tools/lib:ui.bash",
+        "//tools/tasks:release/publish.bash",
     ],
 )
 

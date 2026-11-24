@@ -6,306 +6,118 @@ bats_require_minimum_version 1.5.0
 
 setup() {
 	make_repo
-	write "viewer/src/main/resources/db/migration/catalogue/V2026_10_0_001__catalogue.sql" "create table act ();\n"
-	write "viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql" "alter table act add column title text;\n"
-	write "viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" "create table ingest_job ();\n"
-	write "deploy/k8s/base/viewer.yaml" $'containers:\n  - name: viewer\n    image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.10.0\n'
+	write "deploy/k8s/base/viewer.yaml" $'image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.10.0\n'
 	commit
+	make_origin
 	load_release
+	# origin is a local repository here, as GitHub's kludgeworks/viewer
+	github_repo() {
+		echo kludgeworks/viewer
+	}
+	RELEASE_POLL=0
+	github
 }
 
-@test "calculates the first release of a month" {
-	RELEASE_MONTH=2026.11
-	[ "$(next_tag)" = v2026.11.0 ]
+# gh as GitHub answers it: the dispatched runs on main are those in $BATS_TEST_TMPDIR/runs, one id
+# per line, and a dispatch adds run 200. $run_fails makes the watched run fail. It keeps each call.
+github() {
+	printf '100\n' >"$BATS_TEST_TMPDIR/runs"
+	mkdir -p "$BATS_TEST_TMPDIR/bin"
+	cat >"$BATS_TEST_TMPDIR/bin/gh" <<GH
+#!/usr/bin/env bash
+printf '%s\n' "\$*" >>"$BATS_TEST_TMPDIR/gh.calls"
+case "\$1 \$2" in
+"run list") tac "$BATS_TEST_TMPDIR/runs" 2>/dev/null || tail -r "$BATS_TEST_TMPDIR/runs" ;;
+"workflow run") printf '200\n' >>"$BATS_TEST_TMPDIR/runs" ;;
+"run watch") [[ -z "\${run_fails:-}" ]] ;;
+*) echo "unexpected: gh \$*" >&2; exit 1 ;;
+esac
+GH
+	chmod +x "$BATS_TEST_TMPDIR/bin/gh"
+	PATH="$BATS_TEST_TMPDIR/bin:$PATH"
 }
 
-@test "increments the release within a month" {
-	git -C "$repo" tag v2026.11.0
-	git -C "$repo" tag v2026.11.1
-	RELEASE_MONTH=2026.11
-	[ "$(next_tag)" = v2026.11.2 ]
-}
-
-@test "resets the counter in a later month" {
-	git -C "$repo" tag v2026.10.7
-	RELEASE_MONTH=2026.11
-	[ "$(next_tag)" = v2026.11.0 ]
-}
-
-@test "does not permit a release version to move backwards" {
-	run ! is_later_than v2026.11.1 v2026.11.1
-	run ! is_later_than v2026.11.0 v2026.11.1
-	is_later_than v2026.12.0 v2026.11.9
-}
-
-@test "finds the pending migrations" {
-	[ "$(pending_migrations)" = "viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql
-viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
-}
-
-@test "names pending migrations with the release's version, keeping their numbers" {
-	rename_migrations 2026.11.0
-
-	[ -f "$repo/viewer/src/main/resources/db/migration/catalogue/V2026_10_0_001__catalogue.sql" ]
-	[ -f "$repo/viewer/src/main/resources/db/migration/catalogue/V2026_11_0_001__catalogue_title.sql" ]
-	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/V2026_11_0_001__ingest_job.sql" ]
-	[ -z "$(pending_migrations)" ]
-	[ "$(git -C "$repo" diff --cached --name-status -M | awk '{print $1}' | sort -u)" = R100 ]
-}
-
-@test "shows the renames without making them in a dry run" {
-	usage_dry_run=true run rename_migrations 2026.11.0
-
-	[ "$status" -eq 0 ]
-	[[ "$output" = *"Would rename from=viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql to=V2026_11_0_001__catalogue_title.sql"* ]] || false
-	[ -f "$repo/viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql" ]
-}
-
-@test "pins the deployment's image to the release's version, staged" {
-	pin_image 2026.11.0
-
-	[ "$(cat "$repo/deploy/k8s/base/viewer.yaml")" = 'containers:
-  - name: viewer
-    image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.0' ]
-	[ "$(git -C "$repo" diff --cached --name-only)" = deploy/k8s/base/viewer.yaml ]
-}
-
-@test "shows the image's pin without making it in a dry run" {
-	usage_dry_run=true run pin_image 2026.11.0
-
-	[ "$status" -eq 0 ]
-	[[ "$output" = *"Would pin the image version=2026.11.0 in=deploy/k8s/base/viewer.yaml"* ]] || false
-	grep -q 'viewer:2026.10.0$' "$repo/deploy/k8s/base/viewer.yaml"
-}
-
-@test "does not release without one image of the viewer to pin" {
-	write "deploy/k8s/base/viewer.yaml" $'containers:\n  - name: viewer\n    image: ghcr.io/kludgeworks/other:1\n'
-
-	run pin_image 2026.11.0
-
-	[ "$status" -ne 0 ]
-	[[ "$output" = *"has no image ghcr.io/kludgeworks/eu-legislation-viewer to pin, or more than one"* ]] || false
-}
-
-@test "pushes with --push and not with --no-push, without asking" {
-	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
-	usage_push=true wants_push v2026.11.0
-	usage_push=false run ! wants_push v2026.11.0
-}
-
-@test "asks whether to push when neither --push nor --no-push is given" {
-	ui_tty="$BATS_TEST_TMPDIR/answer"
-	printf 'y\n' >"$ui_tty"
-	wants_push v2026.11.0
-	printf '\n' >"$ui_tty"
-	run ! wants_push v2026.11.0
-}
-
-@test "does not push when there is no terminal to ask on" {
-	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
-	run ! wants_push v2026.11.0
-}
-
-@test "sees nothing changed since a release until main changes" {
-	git -C "$repo" tag v2026.11.0
-	unchanged_since v2026.11.0
-	write README.md "changed\n"
-	commit
-	run ! unchanged_since v2026.11.0
-}
-
-@test "knows a release is on origin only when the tag and main are both pushed" {
-	make_origin
-	git -C "$repo" tag v2026.11.0
-	run ! on_origin v2026.11.0
-
-	git -C "$repo" push --quiet origin v2026.11.0
-	on_origin v2026.11.0
-
-	write README.md "changed\n"
-	commit
-	git -C "$repo" tag -f v2026.11.0 >/dev/null
-	git -C "$repo" push --quiet --force origin v2026.11.0
-	run ! on_origin v2026.11.0
-}
-
-@test "makes no release when nothing changed since one on origin" {
-	make_origin
-	git -C "$repo" tag v2026.11.0
-	git -C "$repo" push --quiet origin v2026.11.0
-
+@test "starts the Release workflow on main and follows its run" {
 	run main
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"Nothing to release: nothing changed since the latest release, which is published version=v2026.11.0"* ]] || false
-	[ -z "$(git -C "$repo" tag --list 'v2026.11.1')" ]
+	grep -qx "workflow run release.yml --repo kludgeworks/viewer --ref main" "$BATS_TEST_TMPDIR/gh.calls"
+	[[ "$output" = *"Started the Release workflow run=https://github.com/kludgeworks/viewer/actions/runs/200"* ]] || false
+	grep -qx "run watch 200 --repo kludgeworks/viewer --exit-status" "$BATS_TEST_TMPDIR/gh.calls"
 }
 
-@test "pushes the release a run before left local, with --push" {
-	make_origin
-	write README.md "prepared\n"
-	commit
-	git -C "$repo" tag v2026.11.0
+@test "fails when the release's run fails" {
+	run_fails=true run main
 
-	usage_push=true run main
-
-	[ "$status" -eq 0 ]
-	[ "$(git -C "$origin" rev-parse main)" = "$(git -C "$repo" rev-parse main)" ]
-	[ "$(git -C "$origin" rev-parse v2026.11.0)" = "$(git -C "$repo" rev-parse v2026.11.0)" ]
+	[ "$status" -ne 0 ]
 }
 
-@test "leaves the release a run before left local, with --no-push" {
-	make_origin
-	write README.md "prepared\n"
-	commit
-	git -C "$repo" tag v2026.11.0
-
-	usage_push=false run main
+@test "does not follow the run with --no-watch" {
+	usage_watch=false run main
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"Kept local, not published version=v2026.11.0 publish=mise run release --push"* ]] || false
-	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
+	run ! grep -q "run watch" "$BATS_TEST_TMPDIR/gh.calls"
 }
 
-@test "only reports an unpushed release in a dry run" {
-	make_origin
-	git -C "$repo" tag v2026.11.0
+@test "says so when it cannot find the run it started" {
+	stub_dispatch_without_run
 
-	usage_dry_run=true usage_push=true run main
+	run main
+
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"started the Release workflow, but could not find its run"* ]] || false
+}
+
+stub_dispatch_without_run() {
+	sed -i.bak 's/^"workflow run").*/"workflow run") ;;/' "$BATS_TEST_TMPDIR/bin/gh"
+}
+
+@test "shows the next release in a dry run, without starting the workflow" {
+	run env REPO_ROOT="$repo" RELEASE_MONTH=2026.11 usage_dry_run=true PATH="$PATH" \
+		bash -c "source '$project/tools/tasks/release.bash'; main"
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"Nothing changed since the latest release, but it isn't published: origin doesn't have it version=v2026.11.0"* ]] || false
-	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
+	[[ "$output" = *"Next release version=v2026.11.0"* ]] || false
+	run ! grep -q "workflow run" "$BATS_TEST_TMPDIR/gh.calls"
 }
 
 @test "does not release a main that differs from origin's" {
-	make_origin
-	git -C "$repo" tag v2026.11.0
-	git -C "$repo" push --quiet origin v2026.11.0
 	write README.md "changed\n"
 	commit
 
 	run main
 
-	[ "$status" -eq 1 ]
+	[ "$status" -ne 0 ]
 	[[ "$output" = *"main differs from origin/main: pull or push it first"* ]] || false
+	[ ! -f "$BATS_TEST_TMPDIR/gh.calls" ]
 }
 
-# A release of the fixture's pending migrations, with the check and tests stubbed.
-prepare_release() {
-	make_origin
-	fake_signing
-	stub mise
-	checker=true
-	RELEASE_MONTH=2026.11
-}
-
-@test "tags a release and leaves it local, with --no-push" {
-	prepare_release
-
-	usage_push=false run main
-
-	[ "$status" -eq 0 ]
-	[ "$(git -C "$repo" log -1 --format=%s v2026.11.0)" = "chore(release): prepare v2026.11.0" ]
-	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/V2026_11_0_001__ingest_job.sql" ]
-	git -C "$repo" show v2026.11.0:deploy/k8s/base/viewer.yaml | grep -q 'viewer:2026.11.0$'
-	[[ "$output" = *"Kept local, not published version=v2026.11.0 publish=mise run release --push"* ]] || false
-	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
-}
-
-@test "commits the release in hk's release profile, whose hooks check the released names" {
-	prepare_release
-	cat >"$repo/.git/hooks/pre-commit" <<HOOK
-#!/usr/bin/env bash
-echo "\${HK_PROFILE-}" >"$BATS_TEST_TMPDIR/profile"
-HOOK
-	chmod +x "$repo/.git/hooks/pre-commit"
-
-	usage_push=false run main
-
-	[ "$status" -eq 0 ]
-	[ "$(cat "$BATS_TEST_TMPDIR/profile")" = release ]
-}
-
-@test "tags a release and pushes it, with --push" {
-	prepare_release
-
-	usage_push=true run main
-
-	[ "$status" -eq 0 ]
-	[ "$(git -C "$origin" rev-parse v2026.11.0)" = "$(git -C "$repo" rev-parse v2026.11.0)" ]
-	[ "$(git -C "$origin" rev-parse main)" = "$(git -C "$repo" rev-parse main)" ]
-}
-
-@test "shows the next release's notes, in a dry run too" {
-	prepare_release
-	git -C "$repo" remote set-url origin "$origin"
-
-	usage_dry_run=true run main
-
-	[ "$status" -eq 0 ]
-	[[ "$output" = *"## What's Changed"* ]] || false
-	[[ "$output" = *"* fixture"* ]] || false
-	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
-}
-
-@test "shows the notes below the checks' and tests' output, just before it asks to publish" {
-	prepare_release
-	stub mise 'echo "build output: mise $*"'
-
-	usage_push=false run main
-
-	[ "$status" -eq 0 ]
-	[[ "$output" = *"build output: mise run test"*"## What's Changed"*"Kept local"* ]] || false
-}
-
-@test "pushes a release when asked to" {
-	prepare_release
-	ui_tty="$BATS_TEST_TMPDIR/answer"
-	printf 'y\n' >"$ui_tty"
+@test "does not release with changes in the working tree" {
+	write README.md "not committed\n"
 
 	run main
 
-	[ "$status" -eq 0 ]
-	[ "$(git -C "$origin" rev-parse v2026.11.0)" = "$(git -C "$repo" rev-parse v2026.11.0)" ]
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"the working tree has changes"* ]] || false
 }
 
-@test "writes plain messages, with their values as key=value, where there is no terminal" {
-	run info "Next release" version v2026.11.0 migrations 2
-
-	[ "$output" = "release: Next release version=v2026.11.0 migrations=2" ]
-}
-
-@test "prints Markdown as it is where there is no terminal" {
-	run markdown <<<"## What's Changed"
-
-	[ "$output" = "## What's Changed" ]
-}
-
-@test "links to the Release workflow's runs of a GitHub origin" {
-	git -C "$repo" remote add origin git@github.com:kludgeworks/eu-legislation-viewer.git
-	[ "$(workflow_runs)" = https://github.com/kludgeworks/eu-legislation-viewer/actions/workflows/release.yml ]
-
+@test "finds origin's GitHub repository, and refuses an origin that is not on GitHub" {
+	load_release
+	git -C "$repo" remote set-url origin git@github.com:kludgeworks/eu-legislation-viewer.git
+	[ "$(github_repo)" = kludgeworks/eu-legislation-viewer ]
 	git -C "$repo" remote set-url origin https://github.com/kludgeworks/eu-legislation-viewer
-	[ "$(workflow_runs)" = https://github.com/kludgeworks/eu-legislation-viewer/actions/workflows/release.yml ]
-
+	[ "$(github_repo)" = kludgeworks/eu-legislation-viewer ]
 	git -C "$repo" remote set-url origin /srv/git/viewer.git
-	[ -z "$(workflow_runs)" ]
+	run github_repo
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"origin is not on GitHub: /srv/git/viewer.git"* ]] || false
 }
 
-@test "undoes the release's renames and commit when a step after them fails" {
-	prepare_release
-	start=$(git -C "$repo" rev-parse HEAD)
-	stub mise '[ "$1 $2" != "run test" ]'
+@test "does not release from a branch other than main" {
+	git -C "$repo" checkout --quiet -b other
 
-	run env REPO_ROOT="$repo" RELEASE_MONTH=2026.11 usage_push=false PATH="$PATH" bash -c \
-		"source '$project/tools/tasks/release.bash'; checker=true; main"
+	run main
 
 	[ "$status" -ne 0 ]
-	[[ "$output" = *"Failed, so the release is undone"* ]] || false
-	[ "$(git -C "$repo" rev-parse HEAD)" = "$start" ]
-	[ -z "$(git -C "$repo" status --porcelain)" ]
-	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
-	grep -q 'viewer:2026.10.0$' "$repo/deploy/k8s/base/viewer.yaml"
-	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
+	[[ "$output" = *"release from main, not other"* ]] || false
 }

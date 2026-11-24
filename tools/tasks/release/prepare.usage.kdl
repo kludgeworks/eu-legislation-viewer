@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: MIT
+// prepare.bash's arguments and help (mise run release:prepare --help). mise rewraps the help to
+// the terminal but keeps its line breaks: a paragraph, or a list's item, is one line.
+
+long_about """
+    Prepare the next CalVer release (vYYYY.MM.MICRO) in the working tree. The Release workflow runs it, then tests what it prepared.
+
+    The version is the month's (Europe/Amsterdam) with the next MICRO: v2026.11.0 is November's first, v2026.11.1 its second, and December starts again at v2026.12.0. The calendar and the tags decide it.
+
+    From a clean checkout, it:
+
+    1. checks the migrations (release:db-migrations, a dependency)
+    2. names the pending migrations with the version, keeping their numbers: NEXT_007__catalogue_x.sql becomes V2026_11_0_007__catalogue_x.sql
+    3. pins the deployment's image to the version
+    4. stages both, and writes the tag, the version and the staged tree to --output
+
+    If nothing changed since the latest release, it changes nothing and writes an empty tag.
+    """
+
+flag "-n --dry-run" env="RELEASE_DRY_RUN" help="Show the version, the renames, the pin and the notes, changing nothing"
+flag "--output <path>" env="RELEASE_OUTPUT" help="Append tag=, version= and tree= to this file: the workflow's GITHUB_OUTPUT"
+
+example "mise run release:prepare --dry-run" header="See what the next release would be" help="The version, the renames, the pin and the notes"
+example "mise run release:prepare --output \"$GITHUB_OUTPUT\"" header="Prepare the release" help="As the Release workflow does"

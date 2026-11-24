@@ -92,20 +92,14 @@ local linters = new Mapping<String, Step> {
   }
   ["shfmt"] = (Builtins.shfmt) { batch = true }
   // the pending migrations a change touches named NEXT_<NNN>__<description>.sql, their modules
-  // numbered whole; not in the release's commit (the release profile), which names them released
+  // numbered whole. The Release workflow names them released (release:prepare), and checks them
+  // there (release:db-migrations --final)
   ["flyway_migrations"] = new Step {
-    profiles = List("!release")
     glob = migrations
     check = "mise run release:db-migrations {{files}}"
     fix = "tools/tasks/release/db-migrations.bash --fix {{files}}"
     // a rename's new name, which is none of the files hk handed it
     stage = migrations
-  }
-  // in the release's commit (mise run release), every migration named as released, each version once
-  ["flyway_migrations_released"] = new Step {
-    profiles = List("release")
-    glob = migrations
-    check = "tools/tasks/release/db-migrations.bash --final"
   }
   // SQL in Postgres's dialect (.sqlfluff), but not the released migrations (V…): they have run in
   // production, and Flyway's checksums forbid changing them

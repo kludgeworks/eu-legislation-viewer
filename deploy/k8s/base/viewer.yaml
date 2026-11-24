@@ -46,7 +46,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: viewer
-          # the release's image: mise run release pins the tag to the version it releases
+          # the release's image: the Release workflow pins the tag to the version it releases (release:prepare)
           image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.19
           ports:
             - name: http

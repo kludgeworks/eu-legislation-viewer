@@ -1,14 +1,17 @@
 # SPDX-License-Identifier: MIT
 name: Release
 
+# Started by hand (mise run release, or the Actions tab) on main. Nothing is committed or tagged
+# until the release is tested and its JAR and image are built: a run that fails leaves main and
+# the tags as they were, and the next run makes the same version.
 on:
-  push:
-    tags: ["v*"]
+  workflow_dispatch:
 
 permissions: {}
 
+# One release at a time: each takes the next version from the tags
 concurrency:
-  group: release-${{ github.ref }}
+  group: release
   cancel-in-progress: false
 
 env:
@@ -18,8 +21,10 @@ env:
   MISE_VERSION: 2026.11.6
 
 jobs:
-  # The checks, the tests and the CalVer-stamped JAR, which the image is built from.
-  artifact:
+  # The release prepared on main as it was when the run started (release:prepare): its checks, its
+  # tests and its CalVer-stamped JAR, which the image is built from.
+  prepare:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-26.04
     timeout-minutes: 180
     permissions:
@@ -27,53 +32,63 @@ jobs:
       attestations: write
       id-token: write
     outputs:
-      version: ${{ steps.version.outputs.value }}
+      base: ${{ steps.checkout.outputs.commit }}
+      tag: ${{ steps.prepare.outputs.tag }}
+      version: ${{ steps.prepare.outputs.version }}
+      tree: ${{ steps.prepare.outputs.tree }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        id: checkout
         with:
           fetch-depth: 0
           persist-credentials: false
-
-      - id: version
-        env:
-          TAG: ${{ github.ref_name }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          if [[ ! "$TAG" =~ ^v20[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+$ ]]; then
-            echo "Expected vYYYY.MM.MICRO CalVer tag; got $TAG" >&2
-            exit 1
-          fi
-          echo "value=${TAG#v}" >> "$GITHUB_OUTPUT"
 
       - uses: jdx/mise-action@924e7c586e33d7d4bae9c14e26c5d22e2beb6e78 # v5.3.0
         with:
           version: ${{ env.MISE_VERSION }}
           cache: false
 
+      - id: prepare
+        run: mise run release:prepare --output "$GITHUB_OUTPUT"
+
+      - if: steps.prepare.outputs.tag == ''
+        run: |
+          echo "Nothing to release: nothing changed since the latest release." >> "$GITHUB_STEP_SUMMARY"
+
       # main's disk cache, which CI saves, and the remote cache to read: a release only reads it
-      - uses: ./.github/actions/bazel
+      - if: steps.prepare.outputs.tag != ''
+        uses: ./.github/actions/bazel
         with:
           cache-save: false
           remote-cache: ${{ vars.BAZEL_REMOTE_CACHE }}
           tailscale-client-id: ${{ vars.TS_OIDC_CLIENT_ID }}
           tailscale-audience: ${{ vars.TS_OIDC_AUDIENCE }}
 
-      - env:
+      - if: steps.prepare.outputs.tag != ''
+        env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
-      - run: tools/tasks/release/db-migrations.bash --final
-      - run: bazel test //...
+      - if: steps.prepare.outputs.tag != ''
+        run: tools/tasks/release/db-migrations.bash --final
+      - if: steps.prepare.outputs.tag != ''
+        run: bazel test //...
 
-      - env:
-          VERSION: ${{ steps.version.outputs.value }}
-        run: mise run release:artifact "$VERSION"
+      - if: steps.prepare.outputs.tag != ''
+        env:
+          VERSION: ${{ steps.prepare.outputs.version }}
+          TAG: ${{ steps.prepare.outputs.tag }}
+          REPO: ${{ github.repository }}
+        run: |
+          mise run release:artifact "$VERSION"
+          mise run release:notes "$TAG" --repo "$REPO" --output dist/release-notes.md
 
-      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+      - if: steps.prepare.outputs.tag != ''
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
-          subject-path: dist/kludgeworks-viewer-${{ steps.version.outputs.value }}.jar
+          subject-path: dist/kludgeworks-viewer-${{ steps.prepare.outputs.version }}.jar
 
-      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+      - if: steps.prepare.outputs.tag != ''
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: dist
           path: dist/
@@ -81,10 +96,13 @@ jobs:
           if-no-files-found: error
 
   # Each architecture's image is built on its own runner, with Paketo's buildpacks, from the
-  # same JAR, and published under a per-architecture tag; manifest joins them.
+  # same JAR, and published under a per-architecture tag; manifest joins them. They are published
+  # before the release is tagged: a run that fails after them leaves them without a release, and
+  # the next run, of the same version, replaces them.
   # Ran on 24.04: Docker 29's containerd store on 26.04 breaks pack (buildpacks/pack#2527).
   image:
-    needs: artifact
+    needs: prepare
+    if: needs.prepare.outputs.tag != ''
     strategy:
       fail-fast: true
       matrix:
@@ -125,14 +143,14 @@ jobs:
       # only pack is installed here: the task needs nothing else
       - env:
           MISE_TASK_RUN_AUTO_INSTALL: "false"
-          VERSION: ${{ needs.artifact.outputs.version }}
-          TAG: ${{ needs.artifact.outputs.version }}-${{ matrix.tag }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+          TAG: ${{ needs.prepare.outputs.version }}-${{ matrix.tag }}
           PLATFORM: ${{ matrix.platform }}
         run: mise run release:image "$VERSION" --tag "$TAG" --platform "$PLATFORM" --publish
 
   # The multi-architecture image under the version's tag, and its provenance.
   manifest:
-    needs: [artifact, image]
+    needs: [prepare, image]
     runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
@@ -140,8 +158,6 @@ jobs:
       packages: write
       attestations: write
       id-token: write
-    outputs:
-      digest: ${{ steps.manifest.outputs.digest }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -162,7 +178,7 @@ jobs:
       # pack manifest is experimental, hidden until experimental features are on
       - id: manifest
         env:
-          VERSION: ${{ needs.artifact.outputs.version }}
+          VERSION: ${{ needs.prepare.outputs.version }}
         shell: bash
         run: |
           set -euo pipefail
@@ -180,16 +196,18 @@ jobs:
           subject-digest: ${{ steps.manifest.outputs.digest }}
           push-to-registry: true
 
-  # The GitHub release, once the JAR and the image are both there.
-  release:
-    needs: [artifact, manifest]
+  # Once the JAR and the image are both there: the release committed to main and tagged by the
+  # GitHub App (kludgebot), the commit signed by GitHub, and the GitHub release with the JAR.
+  publish:
+    needs: [prepare, manifest]
     runs-on: ubuntu-26.04
     timeout-minutes: 15
     permissions:
-      contents: write
+      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ needs.prepare.outputs.base }}
           fetch-depth: 0
           persist-credentials: false
 
@@ -198,25 +216,45 @@ jobs:
           version: ${{ env.MISE_VERSION }}
           cache: false
 
+      # the same release again, from the same commit: release:publish checks it is the tested tree
+      - run: mise run release:prepare
+
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: dist
-          path: dist
+          path: ${{ runner.temp }}/dist
+
+      - name: Mint Kludgebot token for the release's commit, tag and GitHub release
+        id: app-token
+        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        with:
+          # Public client ID from github.com/apps/kludgebot.
+          client-id: Iv23liYVAElUC3TAzSSx
+          private-key: ${{ secrets.KLUDGEBOT_PRIVATE_KEY }}
+          # Omit owner and repositories to scope the token to this repository.
+          permission-contents: write
 
       - env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
           GH_REPO: ${{ github.repository }}
-          TAG: ${{ github.ref_name }}
-          VERSION: ${{ needs.artifact.outputs.version }}
-          DIGEST: ${{ needs.manifest.outputs.digest }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          RELEASE_BASE: ${{ needs.prepare.outputs.base }}
+          RELEASE_TREE: ${{ needs.prepare.outputs.tree }}
+        run: mise run release:publish "$TAG"
+
+      - env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ needs.prepare.outputs.tag }}
+          VERSION: ${{ needs.prepare.outputs.version }}
+          DIST: ${{ runner.temp }}/dist
         shell: bash
         run: |
           set -euo pipefail
-          artifact="dist/kludgeworks-viewer-$VERSION.jar"
-          mise run release:notes "$TAG" --repo "${{ github.repository }}" --output release-notes.md
+          artifact="$DIST/kludgeworks-viewer-$VERSION.jar"
           gh release create "$TAG" \
             --verify-tag \
             --title "$TAG" \
-            --notes-file release-notes.md \
+            --notes-file "$DIST/release-notes.md" \
             "$artifact#Application JAR" \
             "$artifact.sha256#SHA-256 Checksum"
