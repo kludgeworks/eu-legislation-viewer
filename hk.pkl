@@ -137,29 +137,10 @@ local linters = new Mapping<String, Step> {
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update
-  // the business rules' words, in ASD-STE100 English (.vale.ini): its errors, until each feature is
-  // written in it
+  // the business rules' words, in ASD-STE100 English (.vale.ini): any alert fails, a warning too,
+  // which vale alone does not fail on
   ["vale"] = new Step {
     glob = List("**/*.feature")
-    batch = true
-    check = "vale --minAlertLevel=error {{files}}"
-  }
-  // the features written in ASD-STE100 English already: their warnings too, which vale alone does
-  // not fail on. A feature joins when it is written in it; when all have, the vale step takes their
-  // warnings and this step goes
-  ["vale_written"] = new Step {
-    glob =
-      List(
-        "viewer/src/test/rules/catalogue/places.feature",
-        "viewer/src/test/rules/catalogue/the-history-of-an-act.feature",
-        "viewer/src/test/rules/catalogue/the-text-a-comparison-shows.feature",
-        "viewer/src/test/rules/catalogue/the-text-and-the-law-on-a-day.feature",
-        "viewer/src/test/rules/catalogue/what-a-comparison-covers.feature",
-        "viewer/src/test/rules/comparison/how-two-texts-pair.feature",
-        "viewer/src/test/rules/comparison/the-changes-of-one-act.feature",
-        "viewer/src/test/rules/comparison/what-counts-as-a-difference.feature",
-        "viewer/src/test/rules/comparison/who-made-a-change.feature",
-      )
     batch = true
     check =
       "alerts=$(vale --output=line {{files}}) || exit; [ -z \"$alerts\" ] || { echo \"$alerts\"; exit 1; }"
