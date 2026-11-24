@@ -5,10 +5,12 @@ Feature: The text a comparison shows
   and those that the converter has a sample of: a version without a sample has no built text.
 
   Rule: the-text-for-a-day · The text that a comparison shows for a day
-    It is the text of the version that applies on the day. If an amending act applies on the day
-    and that version does not include it, it is the text of the first version that includes the
-    act. An act that no version includes does not move the text. A day before the first version
-    has no text.
+    The comparison shows the text of the version that applies on the day. There is one exception:
+    an amending act applies on the day, and that version does not include it. Then the comparison
+    shows the text of the first version that includes the act.
+
+    An act that no version includes does not change which text the comparison shows. A day before
+    the first version has no text.
 
     Example: An act that applies before the first version that includes it
       Given the act 2015/1998 as Cellar has it
@@ -33,12 +35,16 @@ Feature: The text a comparison shows
       Given the act 2015/1998 as Cellar has it
       Then for 1 January 2015, a comparison shows no text
 
-  Rule: changes-that-do-not-apply-yet · The changes of a text that do not apply on the day yet
-    The text that a comparison shows can include a change that does not apply on the day yet: the
-    change of a prospective amendment of the day. The occurrences with such a change are the
-    occurrences of each prospective amendment of the day. An occurrence in such an occurrence, and
-    an occurrence that holds one, as their eIds tell, have it too. An occurrence where each change
-    applies on the day has none.
+  Rule: changes-that-do-not-apply-yet · Changes in a text that do not apply on the day
+    A comparison can show a text with a change that does not apply on the day yet. That change
+    comes from a prospective amendment of the day. An occurrence has such a change if a
+    prospective amendment of the day changes one of these occurrences:
+    - the occurrence itself
+    - an occurrence that contains it
+    - an occurrence in it
+
+    The eIds tell which occurrence is in which. If no condition is true, the occurrence has no such
+    change. A change at another occurrence beside it does not count.
 
     Example: A text that includes the changes of an act years before they apply
       Given the act 2018/1862 as Cellar has it
@@ -47,7 +53,7 @@ Feature: The text a comparison shows
       And on 1 August 2022, the text of 1 August 2022 has a change that does not apply yet at 18 occurrences
       And on 1 August 2022, in the text of 1 August 2022, article 3 point 8 has a change of 2022/1190 that does not apply yet
 
-    Example: An occurrence in such an occurrence, and an occurrence that holds one
+    Example: An occurrence in a changed occurrence, and an occurrence that contains one
       Given the act 2018/1862 as Cellar has it
       And the viewer builds its texts where the converter has a sample
       Then on 1 August 2022, in the text of 1 August 2022, article 48 paragraph 8 point (a) has a change of 2022/1190 that does not apply yet
@@ -58,6 +64,12 @@ Feature: The text a comparison shows
       And the viewer builds its texts where the converter has a sample
       Then on 1 August 2022, the change of 2022/1190 at article 79 paragraph 7 applies
       And on 1 August 2022, in the text of 1 August 2022, article 79 paragraph 7 has no change that does not apply yet
+
+    Example: A point beside a point with such a change
+      Given the act 2018/1862 as Cellar has it
+      And the viewer builds its texts where the converter has a sample
+      Then on 1 August 2022, in the text of 1 August 2022, article 3 has a change of 2022/1190 that does not apply yet
+      And on 1 August 2022, in the text of 1 August 2022, article 3 point 1 has no change that does not apply yet
 
     Example: The day from which the changes apply
       Given the act 767/2008 as Cellar has it
