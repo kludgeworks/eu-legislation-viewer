@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest;
 
-/** The reason why an expression could not be built. */
+/** The reason why a text could not be built. */
 public enum Failure {
   /** Cellar has no Formex of it in the language. */
   NO_FORMEX,

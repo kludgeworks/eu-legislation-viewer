@@ -9,7 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested.Reason;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestProgress.Progress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionQueued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -32,8 +32,8 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Tests that expressions are built in the background, through the module's API, and stored in
- * Postgres in a container. The Formex comes from the converter's fixtures, {@code FormexFixtures}:
+ * Tests that texts are built in the background, through the module's API, and stored in Postgres in
+ * a container. The Formex comes from the converter's fixtures, {@code FormexFixtures}:
  *
  * <ul>
  *   <li>English: the consolidation of 2015/1998 of 22 March 2026, and 2024/2867.
@@ -73,13 +73,13 @@ class IngestTests {
   @Autowired ObservationRegistry observations;
 
   @Test
-  void buildsAnExpressionsTextAndSaysSo() {
+  void buildsATextAndSaysSo() {
     assertThat(acts.find(OneActCellar.CELEX)).isPresent();
     request(CONSOLIDATION, Language.ENG, Reason.NEEDED);
 
-    var status = finished(CONSOLIDATION, Language.ENG);
-    assertThat(status.state()).isEqualTo(State.BUILT);
-    assertThat(status.attempts()).isEqualTo(1);
+    var progress = finished(CONSOLIDATION, Language.ENG);
+    assertThat(progress.progress()).isEqualTo(Progress.BUILT);
+    assertThat(progress.attempts()).isEqualTo(1);
     var text = content.texts(List.of(CONSOLIDATION), Language.ENG).get(CONSOLIDATION);
     assertThat(text).isNotNull();
     assertThat(content.read(text)).isPresent();
@@ -130,10 +130,10 @@ class IngestTests {
     await().until(() -> failures("32024R2867", Language.FRA), failures -> failures == 2);
     assertThat(starts("32024R2867", Language.SWE)).isEqualTo(2);
     assertThat(starts("32024R2867", Language.FRA)).isEqualTo(1);
-    var status = finished("32024R2867", Language.SWE);
-    assertThat(status.failure()).isEqualTo(Failure.UNAVAILABLE);
+    var progress = finished("32024R2867", Language.SWE);
+    assertThat(progress.failure()).isEqualTo(Failure.UNAVAILABLE);
     // The retry starts again from the first attempt.
-    assertThat(status.attempts()).isEqualTo(1);
+    assertThat(progress.attempts()).isEqualTo(1);
   }
 
   @Test
@@ -148,7 +148,7 @@ class IngestTests {
   }
 
   @Test
-  void queuesAnExpressionOnce() {
+  void queuesATextOnce() {
     request(CONSOLIDATION, Language.SPA, Reason.NEEDED);
     request(CONSOLIDATION, Language.SPA, Reason.NEEDED);
     finished(CONSOLIDATION, Language.SPA);
@@ -171,7 +171,7 @@ class IngestTests {
     jdbc.sql(
             """
             insert into ingest_job
-              (celex, language_code, state, attempts, started_at, created_at, revision)
+              (celex, language_code, progress, attempts, started_at, created_at, revision)
             values ('32024R2867', 'ENG', 'RUNNING', 1, now() - interval '1 hour',
               now() - interval '1 hour', 1)
             """)
@@ -179,10 +179,10 @@ class IngestTests {
     transactions.executeWithoutResult(
         status -> publisher.publishEvent(new ConversionQueued("32024R2867", Language.ENG, null)));
 
-    var status = finished("32024R2867", Language.ENG);
+    var progress = finished("32024R2867", Language.ENG);
 
-    assertThat(status.state()).isEqualTo(State.BUILT);
-    assertThat(status.attempts()).isEqualTo(2);
+    assertThat(progress.progress()).isEqualTo(Progress.BUILT);
+    assertThat(progress.attempts()).isEqualTo(2);
   }
 
   @Test
@@ -207,32 +207,33 @@ class IngestTests {
 
   @Test
   void hasNoStatusForWhatWasNeverAskedFor() {
-    assertThat(ingest.status(CONSOLIDATION, Language.SLK)).isEmpty();
+    assertThat(ingest.progress(CONSOLIDATION, Language.SLK)).isEmpty();
   }
 
   private void assertFails(String celex, Language language, Failure failure) {
     request(celex, language, Reason.NEEDED);
 
-    var status = finished(celex, language);
+    var progress = finished(celex, language);
 
-    assertThat(status.state()).isEqualTo(State.FAILED);
-    assertThat(status.failure()).isEqualTo(failure);
-    assertThat(status.attempts()).isEqualTo(1);
+    assertThat(progress.progress()).isEqualTo(Progress.FAILED);
+    assertThat(progress.failure()).isEqualTo(failure);
+    assertThat(progress.attempts()).isEqualTo(1);
     assertThat(events.failed)
         .filteredOn(failed -> failed.celex().equals(celex) && failed.language() == language)
         .singleElement()
         .satisfies(failed -> assertThat(failed.failure()).isEqualTo(failure));
   }
 
-  private IngestStatus finished(String celex, Language language) {
+  private IngestProgress finished(String celex, Language language) {
     return await()
         .atMost(Duration.ofMinutes(1))
         .until(
             () ->
                 ingest
-                    .status(celex, language)
-                    .filter(
-                        status -> status.state() == State.BUILT || status.state() == State.FAILED),
+                    .progress(celex, language)
+                    .filter(progress ->
+                        progress.progress() == Progress.BUILT
+                            || progress.progress() == Progress.FAILED),
             Optional::isPresent)
         .orElseThrow();
   }

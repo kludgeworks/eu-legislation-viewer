@@ -73,7 +73,7 @@ import org.springframework.transaction.annotation.Transactional;
 class TextService implements Texts {
   private static final Logger LOG = LoggerFactory.getLogger(TextService.class);
 
-  private final ExpressionStore expressions;
+  private final TextProgressStore progress;
   private final Content content;
   private final PreparationStore preparations;
   private final ActStore acts;
@@ -82,14 +82,14 @@ class TextService implements Texts {
   private final Clock clock;
 
   TextService(
-      ExpressionStore expressions,
+      TextProgressStore progress,
       Content content,
       PreparationStore preparations,
       ActStore acts,
       Ingest ingest,
       ApplicationEventPublisher events,
       Clock clock) {
-    this.expressions = expressions;
+    this.progress = progress;
     this.content = content;
     this.preparations = preparations;
     this.acts = acts;
@@ -101,7 +101,7 @@ class TextService implements Texts {
   @Override
   @Transactional
   public Preparation prepare(Act act, Language language) {
-    for (var celex : expressions.queue(celexes(act, language), language)) {
+    for (var celex : progress.queue(celexes(act, language), language)) {
       events.publishEvent(new ConversionRequested(celex, language, Reason.NEEDED));
     }
     // Start the preparation after the texts, because a change of a text locks the text first and
@@ -123,7 +123,7 @@ class TextService implements Texts {
   public void retry(Act act, Language language) {
     var retried = 0;
     for (var text : texts(celexes(act, language), language).entrySet()) {
-      if (text.getValue().retryable() && expressions.requeue(text.getKey(), language)) {
+      if (text.getValue().retryable() && progress.requeue(text.getKey(), language)) {
         events.publishEvent(new ConversionRequested(text.getKey(), language, Reason.RETRIED));
         retried++;
       }
@@ -228,8 +228,7 @@ class TextService implements Texts {
   @ApplicationModuleListener
   void on(ConversionStarted started) {
     var act = acts.findByVersion(started.celex());
-    if (act.isPresent()
-        && expressions.start(started.celex(), started.language(), started.attempt())) {
+    if (act.isPresent() && progress.start(started.celex(), started.language(), started.attempt())) {
       LOG.debug(
           "{} in {} is being converted, attempt {}",
           started.celex(),
@@ -249,7 +248,7 @@ class TextService implements Texts {
   void on(ConversionPostponed deferred) {
     var act = acts.findByVersion(deferred.celex());
     if (act.isPresent()
-        && expressions.defer(deferred.celex(), deferred.language(), deferred.attempt())) {
+        && progress.defer(deferred.celex(), deferred.language(), deferred.attempt())) {
       LOG.debug(
           "{} in {} waits again after attempt {}",
           deferred.celex(),
@@ -269,7 +268,7 @@ class TextService implements Texts {
   void on(ConversionFailed failed) {
     var act = acts.findByVersion(failed.celex());
     if (act.isPresent()
-        && expressions.fail(failed.celex(), failed.language(), failed.failure(), failed.trace())) {
+        && progress.fail(failed.celex(), failed.language(), failed.failure(), failed.trace())) {
       LOG.debug(
           "{} in {} couldn't be converted: {}",
           failed.celex(),
@@ -305,8 +304,8 @@ class TextService implements Texts {
    * handed out twice asks for the text once, or converts it again to the same text.
    */
   private void prepareText(ActIdentifier act, String celex, Language language, boolean again) {
-    var queued = !expressions.queue(List.of(celex), language).isEmpty();
-    var changed = again && expressions.requeue(celex, language);
+    var queued = !progress.queue(List.of(celex), language).isEmpty();
+    var changed = again && progress.requeue(celex, language);
     if (again) {
       events.publishEvent(new ConversionRequested(celex, language, Reason.REPUBLISHED));
     } else if (queued) {
@@ -334,7 +333,7 @@ class TextService implements Texts {
       events.publishEvent(new VersionWithdrawn(built.celex()));
       return;
     }
-    if (expressions.keep(built.celex(), built.language())) {
+    if (progress.keep(built.celex(), built.language())) {
       LOG.info("{} in {} is ready", built.celex(), built.language().code());
       changed(act.get(), built.celex(), built.language(), Entry.Kind.BUILT, null, null);
     }
@@ -385,7 +384,7 @@ class TextService implements Texts {
    * that the content module has for them.
    */
   private Map<String, Text> texts(Collection<String> celexes, Language language) {
-    return expressions.texts(celexes, language, content.texts(celexes, language));
+    return progress.texts(celexes, language, content.texts(celexes, language));
   }
 
   /** Tells that {@code earlier} and {@code later}, texts of consecutive versions, are built. */

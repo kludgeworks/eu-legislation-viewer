@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ExpressionStore;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.TextProgressStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
@@ -43,7 +43,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 class TextsTests {
   @Autowired Acts acts;
   @Autowired Texts texts;
-  @Autowired ExpressionStore expressions;
+  @Autowired TextProgressStore progress;
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
   @Autowired ApplicationEventPublisher events;
@@ -149,7 +149,7 @@ class TextsTests {
         .param(celex)
         .update();
     jdbc.sql(
-            "update expression set failure = 'UNAVAILABLE' where celex = ? and language_code ="
+            "update text_progress set failure = 'UNAVAILABLE' where celex = ? and language_code ="
                 + " 'FRA'")
         .param(celex)
         .update();
@@ -186,34 +186,34 @@ class TextsTests {
     var celex = timeline().versions().get(1).celex();
     // No other test prepares this language.
     var language = Language.DEU;
-    expressions.queue(List.of(celex), language);
+    progress.queue(List.of(celex), language);
 
-    assertThat(expressions.start(celex, language, 1)).isTrue();
-    assertThat(expressions.defer(celex, language, 1)).isTrue();
+    assertThat(progress.start(celex, language, 1)).isTrue();
+    assertThat(progress.defer(celex, language, 1)).isTrue();
     // The start of the first attempt arrives again, late.
-    assertThat(expressions.start(celex, language, 1)).isFalse();
+    assertThat(progress.start(celex, language, 1)).isFalse();
     assertThat(text(celex, language)).isEqualTo(new Text.Waiting(1));
     // The deferral of the second attempt arrives before its start.
-    assertThat(expressions.defer(celex, language, 2)).isTrue();
-    assertThat(expressions.start(celex, language, 2)).isFalse();
-    assertThat(expressions.start(celex, language, 3)).isTrue();
+    assertThat(progress.defer(celex, language, 2)).isTrue();
+    assertThat(progress.start(celex, language, 2)).isFalse();
+    assertThat(progress.start(celex, language, 3)).isTrue();
     assertThat(text(celex, language)).isEqualTo(new Text.Converting(3));
 
     var stored =
         content.store(
             celex, language, "test", LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
-    assertThat(expressions.keep(celex, language)).isTrue();
-    assertThat(expressions.keep(celex, language)).isFalse();
-    assertThat(expressions.defer(celex, language, 3)).isFalse();
-    assertThat(expressions.start(celex, language, 4)).isFalse();
-    assertThat(expressions.fail(celex, language, Failure.ERROR, null)).isFalse();
+    assertThat(progress.keep(celex, language)).isTrue();
+    assertThat(progress.keep(celex, language)).isFalse();
+    assertThat(progress.defer(celex, language, 3)).isFalse();
+    assertThat(progress.start(celex, language, 4)).isFalse();
+    assertThat(progress.fail(celex, language, Failure.ERROR, null)).isFalse();
     assertThat(text(celex, language)).isEqualTo(new Text.Ready(stored));
   }
 
   private Text text(String celex, Language language) {
     var celexes = List.of(celex);
     return Objects.requireNonNull(
-        expressions.texts(celexes, language, content.texts(celexes, language)).get(celex));
+        progress.texts(celexes, language, content.texts(celexes, language)).get(celex));
   }
 
   private Act act() {

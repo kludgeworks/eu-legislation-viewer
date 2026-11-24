@@ -11,10 +11,11 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
- * Renders texts, whole or a run of their occurrences, for example the fold of a comparison, and
- * keeps the HTML in Valkey ({@link HtmlCacheConfiguration}). The text is read and decoded whole
- * either way, which takes tenths of a second for the largest texts, and rendering the largest whole
- * takes as long again, so the HTML is kept and the text is read once. The decoded text is not kept.
+ * Renders texts, whole or their occurrences from one eId to another, for example a fold of a
+ * comparison, and keeps the HTML in Valkey ({@link HtmlCacheConfiguration}). The text is read and
+ * decoded whole either way, which takes tenths of a second for the largest texts, and rendering the
+ * largest whole takes as long again, so the HTML is kept and the text is read once. The decoded
+ * text is not kept.
  */
 @Component
 class RenderedTexts {
@@ -74,8 +75,8 @@ class RenderedTexts {
     occurrences.forEach(occurrence -> html.element(occurrence).writeTo(out));
     var rendered = out.toString();
     LOG.debug(
-        "Rendered a run of occurrences of text {}, not cached: {} occurrences, {} KB of HTML, in {}"
-            + " ms",
+        "Rendered occurrences of text {} from one eId to another, not cached: {} occurrences, {} KB"
+            + " of HTML, in {} ms",
         text.value(),
         occurrences.size(),
         rendered.length() / 1024,

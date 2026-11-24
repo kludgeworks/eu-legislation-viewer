@@ -11,8 +11,8 @@ import java.util.Optional;
  */
 public interface Ingest {
 
-  /** Returns the status of the job of the text. Returns none if the text was never asked for. */
-  Optional<IngestStatus> status(String celex, Language language);
+  /** Returns the progress of the job of the text. Returns none if the text was never asked for. */
+  Optional<IngestProgress> progress(String celex, Language language);
 
   /**
    * Returns about how many conversions are waiting or running ahead of the waiting conversions of

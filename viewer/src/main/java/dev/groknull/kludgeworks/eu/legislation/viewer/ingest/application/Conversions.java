@@ -6,13 +6,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Optional;
 import net.sf.saxon.s9api.XdmNode;
 
-/** The conversion of the Formex of expressions into legal texts. The infrastructure provides it. */
+/** The conversion of the Formex of texts into legal texts. The infrastructure provides it. */
 public interface Conversions {
 
   /**
-   * Returns the legal-text XML of an expression.
+   * Returns the legal-text XML of a text.
    *
-   * @return none if Cellar has no Formex of the expression in the language
+   * @return none if Cellar has no Formex of the text
    * @throws ConversionException if its Formex cannot be converted. Its subclasses include {@code
    *     OutOfScopeException} and {@code UnsupportedFormexException}.
    */

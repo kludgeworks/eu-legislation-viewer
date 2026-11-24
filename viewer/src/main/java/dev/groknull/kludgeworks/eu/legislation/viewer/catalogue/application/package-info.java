@@ -9,7 +9,7 @@
  *       that changed again. It publishes one event for each difference.
  *   <li>{@link TextService} prepares the texts of the versions.
  *   <li>The infrastructure provides the stores and the sources: {@link ActStore}, {@link
- *       ActSource}, {@link ChangeStore}, {@link ChangeSource}, {@link ExpressionStore} and {@link
+ *       ActSource}, {@link ChangeStore}, {@link ChangeSource}, {@link TextProgressStore} and {@link
  *       PreparationStore}.
  * </ul>
  */

@@ -40,6 +40,7 @@ begin
       'expression',
       'preparation',
       'preparation_entry',
+      'text_progress',
       'version',
       'version_formex'
   ]) as name

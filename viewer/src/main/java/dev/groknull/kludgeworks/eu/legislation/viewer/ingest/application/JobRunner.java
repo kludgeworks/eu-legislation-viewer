@@ -41,7 +41,7 @@ import org.springframework.transaction.support.TransactionTemplate;
  * <ol>
  *   <li>The runner starts the job and publishes {@link ConversionStarted}. If the job is running or
  *       done already, the runner does nothing.
- *   <li>The runner converts the Formex of the expression.
+ *   <li>The runner converts the Formex of the text.
  *   <li>In one transaction, it stores the text, marks the job built and publishes {@link
  *       TextConverted}.
  * </ol>

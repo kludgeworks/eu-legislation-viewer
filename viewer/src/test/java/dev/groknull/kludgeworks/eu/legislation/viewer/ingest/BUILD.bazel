@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library", "java_test_suite")
 
-# Expressions built in the background, through the module's API: from the converter's fixtures,
+# Texts built in the background, through the module's API: from the converter's fixtures,
 # stored in Postgres in a container; needs Docker
 java_junit5_test(
     name = "IngestTests",

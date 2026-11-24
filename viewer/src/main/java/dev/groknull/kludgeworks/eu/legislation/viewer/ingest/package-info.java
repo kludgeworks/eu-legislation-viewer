@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 /**
- * Ingest makes the legal text of an expression from the Formex of Cellar, in the background.
+ * Ingest makes a text, the legal text of a version in one language, from the Formex of Cellar, in
+ * the background.
  *
  * <p>Another module asks for a text with {@link ConversionRequested}. Ingest queues a job. A worker
  * claims the job, converts the Formex and stores the text in the content module. The worker tells
- * the outcome with an event, {@link TextConverted} or {@link ConversionFailed}, and in the status
+ * the outcome with an event, {@link TextConverted} or {@link ConversionFailed}, and in the progress
  * of the job, which {@link Ingest} gives.
  *
  * <p>The module is a sliced onion:

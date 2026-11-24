@@ -7,8 +7,8 @@
      - The kind of a version is Version.Kind.
      - The kind and anchor of an act date are ActDate.Kind and ActDate.Anchor.
      - The location, place and role of an amendment are Location, Place and Amendment.Role.
-     - Each column of the domain language_code is a Language. The failure of an
-       expression or an entry is a Failure.
+     - Each column of the domain language_code is a Language. The failure of a
+       text or an entry is a Failure.
      - Times are Instants.
      - Every tsvector column is a TsVector of the library libs/jooq-extension. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
@@ -84,7 +84,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.failure|preparation_entry\.failure</includeExpression>
+          <includeExpression>text_progress\.failure|preparation_entry\.failure</includeExpression>
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>

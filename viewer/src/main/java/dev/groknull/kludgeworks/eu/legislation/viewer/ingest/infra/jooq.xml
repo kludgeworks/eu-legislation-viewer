@@ -8,9 +8,9 @@
     <database>
       <forcedTypes>
         <forcedType>
-          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State</userType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestProgress.Progress</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>ingest_job\.state</includeExpression>
+          <includeExpression>ingest_job\.progress</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>

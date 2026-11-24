@@ -7,8 +7,8 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.EXPRESSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_ENTRY;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.TEXT_PROGRESS;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION_FORMEX;
 import static org.jooq.impl.DSL.any;
@@ -240,7 +240,7 @@ class JooqActStore implements ActStore {
   @Transactional
   public void withdraw(ActIdentifier id, String celex) {
     db.deleteFrom(PREPARATION_ENTRY).where(PREPARATION_ENTRY.CELEX.eq(celex)).execute();
-    db.deleteFrom(EXPRESSION).where(EXPRESSION.CELEX.eq(celex)).execute();
+    db.deleteFrom(TEXT_PROGRESS).where(TEXT_PROGRESS.CELEX.eq(celex)).execute();
     // Its Formex goes with it (on delete cascade)
     db.deleteFrom(VERSION).where(VERSION.ACT.eq(id), VERSION.CELEX.eq(celex)).execute();
   }

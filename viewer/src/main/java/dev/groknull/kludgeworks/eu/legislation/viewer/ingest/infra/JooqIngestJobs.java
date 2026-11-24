@@ -8,7 +8,7 @@ import static org.jooq.impl.DSL.not;
 import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestProgress.Progress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
@@ -38,7 +38,7 @@ class JooqIngestJobs implements IngestJobs {
     return db.insertInto(INGEST_JOB)
             .set(INGEST_JOB.CELEX, celex)
             .set(INGEST_JOB.LANGUAGE_CODE, language)
-            .set(INGEST_JOB.STATE, State.QUEUED)
+            .set(INGEST_JOB.PROGRESS, Progress.QUEUED)
             .set(INGEST_JOB.ATTEMPTS, 0)
             .set(INGEST_JOB.TRACEPARENT, traceparent)
             .set(INGEST_JOB.CREATED_AT, currentInstant())
@@ -64,19 +64,20 @@ class JooqIngestJobs implements IngestJobs {
         celex,
         language,
         traceparent,
-        INGEST_JOB.STATE.eq(State.FAILED).and(INGEST_JOB.FAILURE.in(retryable)));
+        INGEST_JOB.PROGRESS.eq(Progress.FAILED).and(INGEST_JOB.FAILURE.in(retryable)));
   }
 
   @Override
   public boolean resetFinished(String celex, Language language, @Nullable String traceparent) {
-    return reset(celex, language, traceparent, INGEST_JOB.STATE.in(State.BUILT, State.FAILED));
+    return reset(
+        celex, language, traceparent, INGEST_JOB.PROGRESS.in(Progress.BUILT, Progress.FAILED));
   }
 
-  /** Resets the job of the expression, to a job just added, if it is as {@code when}. */
+  /** Resets the job of the text, to a job just added, if it is as {@code when}. */
   private boolean reset(
       String celex, Language language, @Nullable String traceparent, Condition when) {
     return db.update(INGEST_JOB)
-            .set(INGEST_JOB.STATE, State.QUEUED)
+            .set(INGEST_JOB.PROGRESS, Progress.QUEUED)
             .set(INGEST_JOB.ATTEMPTS, 0)
             .set(INGEST_JOB.TRACEPARENT, traceparent)
             .set(INGEST_JOB.FAILURE, val(null, INGEST_JOB.FAILURE))
@@ -96,10 +97,10 @@ class JooqIngestJobs implements IngestJobs {
             .where(
                 INGEST_JOB.CELEX.in(celexes),
                 INGEST_JOB.LANGUAGE_CODE.eq(language),
-                INGEST_JOB.STATE.eq(State.QUEUED));
+                INGEST_JOB.PROGRESS.eq(Progress.QUEUED));
     return db.fetchCount(
         INGEST_JOB,
-        INGEST_JOB.STATE.in(State.QUEUED, State.RUNNING),
+        INGEST_JOB.PROGRESS.in(Progress.QUEUED, Progress.RUNNING),
         INGEST_JOB.CREATED_AT.lt(first),
         not(INGEST_JOB.CELEX.in(celexes).and(INGEST_JOB.LANGUAGE_CODE.eq(language))));
   }
@@ -107,7 +108,7 @@ class JooqIngestJobs implements IngestJobs {
   @Override
   public Optional<IngestJob> start(String celex, Language language, Duration takeover) {
     return db.update(INGEST_JOB)
-        .set(INGEST_JOB.STATE, State.RUNNING)
+        .set(INGEST_JOB.PROGRESS, Progress.RUNNING)
         .set(INGEST_JOB.STARTED_AT, currentInstant())
         .set(INGEST_JOB.ATTEMPTS, INGEST_JOB.ATTEMPTS.plus(1))
         .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
@@ -115,12 +116,12 @@ class JooqIngestJobs implements IngestJobs {
             INGEST_JOB.CELEX.eq(celex),
             INGEST_JOB.LANGUAGE_CODE.eq(language),
             INGEST_JOB
-                .STATE
-                .eq(State.QUEUED)
+                .PROGRESS
+                .eq(Progress.QUEUED)
                 .or(
                     INGEST_JOB
-                        .STATE
-                        .eq(State.RUNNING)
+                        .PROGRESS
+                        .eq(Progress.RUNNING)
                         .and(
                             INGEST_JOB.STARTED_AT.lt(
                                 currentInstant().minus(DayToSecond.valueOf(takeover))))))
@@ -131,9 +132,9 @@ class JooqIngestJobs implements IngestJobs {
 
   @Override
   public IngestJob save(IngestJob job) {
-    var finished = job.state() == State.BUILT || job.state() == State.FAILED;
+    var finished = job.progress() == Progress.BUILT || job.progress() == Progress.FAILED;
     return db.update(INGEST_JOB)
-        .set(INGEST_JOB.STATE, job.state())
+        .set(INGEST_JOB.PROGRESS, job.progress())
         .set(INGEST_JOB.FAILURE, job.failure())
         .set(INGEST_JOB.DETAIL, job.detail())
         .set(
@@ -153,7 +154,7 @@ class JooqIngestJobs implements IngestJobs {
         row.getId(),
         row.getCelex(),
         row.getLanguageCode(),
-        row.getState(),
+        row.getProgress(),
         row.getAttempts(),
         row.getTraceparent(),
         row.getFailure(),

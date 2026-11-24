@@ -4,14 +4,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The status of the job of an expression. A reader who waits for its text sees this status.
+ * The progress of the job of a text. A reader who waits for the text sees this progress.
  *
  * @param attempts how often it was started
  * @param failure once failed, why
  */
-public record IngestStatus(State state, int attempts, @Nullable Failure failure) {
+public record IngestProgress(Progress progress, int attempts, @Nullable Failure failure) {
 
-  public enum State {
+  /** How far the job is: queued, running, built, or failed. */
+  public enum Progress {
     QUEUED,
     RUNNING,
     BUILT,

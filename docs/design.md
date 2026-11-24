@@ -280,7 +280,7 @@ not apply yet".
 | --- | --- |
 | text | The text of a version in one language (`Text`). The shared term "version" says what a text is of. |
 | preparation | The building of the texts of every version of an act in one language (`Preparation`). It has a log: one entry for each start, build, postponement or failure of a text (`Preparation.Entry`). The preparing page shows it in three phases: convert the versions, match the provisions, read the dates. |
-| progress | How far a text is: waiting, converting, ready or failed. How far a preparation is: preparing, prepared or failed. The API calls it `progress`, and so do the tables. |
+| progress | How far a text is: waiting, converting, ready or failed (table `text_progress`). How far a preparation is: preparing, prepared or failed. How far an ingest job is: queued, running, built or failed (`IngestProgress`). The API calls it `progress`, and so do the tables. |
 | lookup | Asking the Publications Office for an act that the catalogue does not have yet (`Lookups`). |
 
 #### Pages of the catalogue
@@ -305,6 +305,17 @@ The pages do not use these words in text that the reader sees: "late", "early", 
 Say what the reader sees. Examples: "the text", "does not apply yet", "applies from more than one
 day", "a part from 1 October 2026", "the data does not say which act amended this". The pages of
 the API are not in this rule: `versions` is the name of a resource of the API.
+
+### Ingest (module `ingest`)
+
+Ingest makes texts in the background. It uses the shared terms, the term "text" of the catalogue,
+and "progress". It does not say "expression": that is Cellar's word.
+
+| Term | Meaning |
+| --- | --- |
+| ingest job | The work to build one text: queued, started by a worker, then built or failed (`IngestJob`). A job that failed in a way that another attempt can help is queued again. |
+| attempt | One start of an ingest job. |
+| conversion | Making the legal-text XML of a text from its Formex, with the stylesheets of the converter (`Conversions`). |
 
 ### Content (module `content`)
 

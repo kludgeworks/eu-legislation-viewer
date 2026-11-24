@@ -21,9 +21,9 @@ import org.springframework.validation.annotation.Validated;
  *
  * <ul>
  *   <li>A key is {@code html:{release}:{text}} for a whole text, and {@code
- *       html:{release}:{text}:{first}:{last}} for a run of its occurrences. A text identity is
- *       never used again, and a release changes the templates, so no entry is ever wrong and none
- *       is invalidated.
+ *       html:{release}:{text}:{first}:{last}} for its occurrences from one eId to another. A text
+ *       identity is never used again, and a release changes the templates, so no entry is ever
+ *       wrong and none is invalidated.
  *   <li>An entry lives for {@code viewer.legaltext.html-cache.ttl}. Valkey evicts the least
  *       recently used entries first when its memory is full, if its {@code maxmemory-policy} is
  *       {@code allkeys-lru}. That is server configuration, not set here.

@@ -17,7 +17,7 @@ import org.jspecify.annotations.Nullable;
  * text only moves forward. It moves from an attempt to a later attempt, and it does not move once
  * it is built or failed. Each change returns whether it changed the text.
  */
-public interface ExpressionStore {
+public interface TextProgressStore {
 
   /**
    * Returns the texts that are stored, as they stand, by CELEX. A text that is built is ready with

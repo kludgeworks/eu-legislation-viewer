@@ -45,6 +45,7 @@ viewpoints:
       - expression
       - preparation
       - preparation_entry
+      - text_progress
       - version
       - version_formex
   - id: comparison

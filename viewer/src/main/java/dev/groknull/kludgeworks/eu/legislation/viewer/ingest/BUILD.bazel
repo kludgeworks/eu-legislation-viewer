@@ -3,7 +3,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "jooq_tables")
 
 # The ingest module's API: the request for a text (ConversionRequested), where its job stands
-# (Ingest, with its status), and the events that say how it went
+# (Ingest, with its progress), and the events that say how it went
 java_library(
     name = "ingest",
     srcs = glob(["*.java"]),

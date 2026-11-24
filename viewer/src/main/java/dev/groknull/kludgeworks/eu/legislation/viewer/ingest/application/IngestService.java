@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestProgress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.TextConverted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionQueued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 /**
  * Queues the conversions that are asked for, and tells where they stand.
  *
- * <p>A text has one job, which is its status. The work itself is an event. When {@link
+ * <p>A text has one job, which is its progress. The work itself is an event. When {@link
  * ConversionRequested} arrives, the service adds a job, or resets one to run again, and publishes
  * {@link ConversionQueued} in the same transaction, with the trace of the request that asked. When
  * the transaction commits, a worker in {@link JobRunner} gets it. For a job that it leaves as it
@@ -75,7 +75,7 @@ class IngestService implements Ingest {
     var language = job.language();
     // A queued job has nothing to tell: it waits its turn, as whoever asked takes it to.
     @Nullable Object told =
-        switch (job.state()) {
+        switch (job.progress()) {
           case QUEUED -> null;
           case RUNNING -> new ConversionStarted(celex, language, job.attempts());
           case BUILT -> new TextConverted(celex, language);
@@ -88,14 +88,14 @@ class IngestService implements Ingest {
                   null);
         };
     if (told != null) {
-      LOG.debug("{} in {} is {} already: telling so again", celex, language.code(), job.state());
+      LOG.debug("{} in {} is {} already: telling so again", celex, language.code(), job.progress());
       events.publishEvent(told);
     }
   }
 
   @Override
-  public Optional<IngestStatus> status(String celex, Language language) {
-    return jobs.find(celex, language).map(IngestJob::status);
+  public Optional<IngestProgress> progress(String celex, Language language) {
+    return jobs.find(celex, language).map(IngestJob::ingestProgress);
   }
 
   @Override
