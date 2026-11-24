@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
@@ -10,14 +12,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -34,9 +34,9 @@ import org.jspecify.annotations.Nullable;
  * <p>The rule is in the Notion page "Which date applies to a changed place":
  *
  * <ol>
- *   <li>A place date is accepted if the provision can apply from it, {@link Act#appliesFromDay}: if
- *       it is one of the dates of the amending act. It is rejected if it is only its entry into
- *       force, and the whole act applies from another day.
+ *   <li>A place date is accepted if the provision can apply from it, {@link
+ *       ActDates#appliesFromDay}: if it is one of the dates of the amending act. It is rejected if
+ *       it is only its entry into force, and the whole act applies from another day.
  *   <li>An accepted place date that is the version date is the date of the provision.
  *   <li>If they differ, the version date is the date of the provision if the place date was
  *       rejected, or if a version that starts on the place date includes the act but does not tag
@@ -55,9 +55,9 @@ import org.jspecify.annotations.Nullable;
  *
  * <p>A provision gives no answer if no version tags it while some version includes the act, or if a
  * version before the answer has no built text. An amending act whose provisions give no answer at
- * all is compared as a whole: the day from which the whole act applies, {@link Act#appliesFrom},
- * against the first version that includes it. If no version includes it, and Cellar does not give
- * that day, the act is an undated pending amendment from its entry into force.
+ * all is compared as a whole: the day from which the whole act applies, {@link
+ * ActDates#appliesFrom}, against the first version that includes it. If no version includes it, and
+ * Cellar does not give that day, the act is an undated pending amendment from its entry into force.
  */
 final class Divergences {
 
@@ -85,7 +85,7 @@ final class Divergences {
   private final Map<Version, TextTags> texts;
 
   /** The occurrences of each built text, made ready to find the places of the amendments. */
-  private final Map<Version, Location.Occurrences> occurrences = new HashMap<>();
+  private final Map<Version, TextOccurrences> occurrences = new HashMap<>();
 
   private Divergences(Act act, Language language, Map<Version, TextTags> texts) {
     this.act = act;
@@ -97,7 +97,7 @@ final class Divergences {
   /**
    * Returns each period in which the text of the versions of {@code act} in {@code language} is not
    * the law, in the order of the day on which they start. The act itself is not among them: its
-   * deferred application is a state of the act, {@link Act#deferredApplicationOn}.
+   * deferred application is a state of the act, {@link LawOnADay#deferredApplicationOn}.
    *
    * @param texts the tags of the texts in {@code language} that are built, by version
    */
@@ -180,16 +180,15 @@ final class Divergences {
   }
 
   /** Returns the occurrences of {@code text}, the text of {@code version}, made ready one time. */
-  private Location.Occurrences occurrencesOf(Version version, TextTags text) {
-    return occurrences.computeIfAbsent(version, each -> Location.occurrences(text.eIds()));
+  private TextOccurrences occurrencesOf(Version version, TextTags text) {
+    return occurrences.computeIfAbsent(version, each -> TextOccurrences.of(text.eIds()));
   }
 
   /**
    * Returns where {@code place} is among {@code eIds}, or {@link Integer#MAX_VALUE} if they do not
    * have it.
    */
-  private static int position(
-      Amendment place, List<String> eIds, Location.Occurrences occurrences) {
+  private static int position(Amendment place, List<String> eIds, TextOccurrences occurrences) {
     var found = place.location().in(occurrences);
     return found.isPresent() ? eIds.indexOf(found.get().eIds().getFirst()) : Integer.MAX_VALUE;
   }
@@ -198,21 +197,37 @@ final class Divergences {
    * Returns how the text and {@code place} of {@code amending} compare. Returns empty if the texts
    * do not tell.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "a-place-date-the-act-can-apply-from")
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "the-text-agrees-with-the-law")
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "a-provision-not-in-the-text-yet")
   private Optional<Answer> answer(ActIdentifier amending, Amendment place) {
-    var tagged = firstTagging(amending, place);
-    if (tagged.isEmpty()) {
+    var versionDate =
+        VersionDate.of(
+            amending,
+            place,
+            versions,
+            texts,
+            each -> occurrencesOf(each, Objects.requireNonNull(texts.get(each))),
+            each -> includes(each, amending));
+    if (versionDate.isEmpty()) {
       return Optional.empty();
     }
-    var version = tagged.get().version();
+    var version = versionDate.get().version();
     var from = place.from();
-    if (from == null || !act.appliesFromDay(amending, from)) {
+    if (from == null || !act.dates().appliesFromDay(amending, from)) {
       // The version date stands. Without a version, the date is not known.
       return version == null ? Optional.empty() : Optional.of(Answer.AGREES);
     }
     if (version == null) {
       return Optional.of(Answer.differs(Kind.PENDING, date(amending, from), null));
     }
-    var tagging = tagged.get().tagging();
+    var tagging = versionDate.get().tagging();
     if (from.equals(version.date())
         || versions.stream()
             .anyMatch(
@@ -225,124 +240,7 @@ final class Divergences {
     if (from.isAfter(version.date())) {
       return Optional.of(Answer.differs(Kind.PROSPECTIVE, date(amending, from), version));
     }
-    if (place.role().changesExisting()) {
-      var before = versions.indexOf(version) - 1;
-      var text = before < 0 ? null : texts.get(versions.get(before));
-      if (text == null) {
-        return Optional.empty();
-      }
-      if (place.location().in(occurrencesOf(versions.get(before), text)).isEmpty()) {
-        // The provision is not in the text yet: an act that applies later puts it in.
-        return Optional.of(Answer.AGREES);
-      }
-    }
     return Optional.of(Answer.differs(Kind.PENDING, date(amending, from), version));
-  }
-
-  /**
-   * Returns the first version whose text newly tags {@code place} with {@code amending}. An
-   * occurrence tags the place if it is an occurrence of the place, or an occurrence in it. If no
-   * version tags it, it is the first version that tags an occurrence around the place. It is the
-   * version that starts on the place date instead, if that version also newly tags the place.
-   *
-   * <p>A deletion or a repeal leaves no occurrence where the provision stood. The consolidation
-   * keeps its tag there, in the occurrence around it, with a line of dashes: point (d) of Article
-   * 1(2) of 2014/65, deleted by 2019/2177. So in a text that no longer has the occurrence of such a
-   * place, the occurrence around where it stood tags the place, by a tag on that occurrence itself.
-   *
-   * <p>Returns a {@link Tagged} without a version if no version includes {@code amending}. Returns
-   * empty if a version before the answer has no built text, or if no version tags the place while
-   * some version includes the act.
-   */
-  private Optional<Tagged> firstTagging(ActIdentifier amending, Amendment place) {
-    Version first = null;
-    Version around = null;
-    var newly = new ArrayList<Version>();
-    var tagging = new HashSet<Version>();
-    Set<String> before = Set.of();
-    for (var version : versions) {
-      var text = texts.get(version);
-      if (text == null) {
-        if (first == null) {
-          return Optional.empty();
-        }
-        continue;
-      }
-      var occurrences =
-          place
-              .location()
-              .in(occurrencesOf(version, text))
-              .map(Location.Found::eIds)
-              .orElseGet(List::of);
-      var gone = occurrences.isEmpty() && place.role().removes();
-      if (gone) {
-        occurrences =
-            place
-                .location()
-                .around(occurrencesOf(version, text))
-                .map(Location.Found::eIds)
-                .orElseGet(List::of);
-      }
-      if (occurrences.isEmpty()) {
-        continue;
-      }
-      var found = Set.copyOf(occurrences);
-      var holders = holders(occurrences);
-      var now = new HashSet<String>();
-      for (var tag : text.tagged(amending)) {
-        if (gone ? found.contains(tag) : inOneOf(tag, found)) {
-          now.add(tag);
-        } else if (around == null && holders.contains(tag)) {
-          around = version;
-        }
-      }
-      if (!now.isEmpty()) {
-        tagging.add(version);
-      }
-      if (!before.containsAll(now)) {
-        newly.add(version);
-        if (first == null) {
-          first = version;
-        }
-      }
-      before = now;
-    }
-    var from = place.from();
-    var onTheDay = newly.stream().filter(each -> each.date().equals(from)).findFirst();
-    if (onTheDay.isPresent()) {
-      return Optional.of(new Tagged(onTheDay.get(), tagging));
-    }
-    if (first != null || around != null) {
-      return Optional.of(new Tagged(first != null ? first : around, tagging));
-    }
-    var included = versions.stream().anyMatch(each -> includes(each, amending));
-    return included ? Optional.empty() : Optional.of(new Tagged(null, tagging));
-  }
-
-  /** Returns whether {@code eId} is one of {@code occurrences}, or an occurrence in one of them. */
-  private static boolean inOneOf(String eId, Set<String> occurrences) {
-    if (occurrences.contains(eId)) {
-      return true;
-    }
-    for (var slash = eId.lastIndexOf('/'); slash > 0; slash = eId.lastIndexOf('/', slash - 1)) {
-      if (occurrences.contains(eId.substring(0, slash))) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  /** Returns the eIds of the occurrences that hold one of {@code occurrences}. */
-  private static Set<String> holders(List<String> occurrences) {
-    var holders = new HashSet<String>();
-    for (var occurrence : occurrences) {
-      for (var slash = occurrence.indexOf('/');
-          slash > 0;
-          slash = occurrence.indexOf('/', slash + 1)) {
-        holders.add(occurrence.substring(0, slash));
-      }
-    }
-    return holders;
   }
 
   /**
@@ -351,8 +249,11 @@ final class Divergences {
    * amendment from that day, once every text is built. If Cellar does not give that day either, it
    * is an undated pending amendment from the act's entry into force, at {@code places}.
    */
+  @BusinessRule(
+      group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
+      name = "an-act-compared-as-a-whole")
   private List<Divergence> whole(ActIdentifier amending, List<Amendment> places) {
-    var applies = act.appliesFrom(amending);
+    var applies = act.dates().appliesFrom(amending);
     if (applies.isEmpty()) {
       return undated(amending, places);
     }
@@ -374,12 +275,13 @@ final class Divergences {
    * lack it. Empty if a version includes it, if a text is not built, or if Cellar has no day for
    * its entry into force.
    */
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "undated-pending-amendment")
   private List<Divergence> undated(ActIdentifier amending, List<Amendment> places) {
     if (versions.stream().anyMatch(each -> includes(each, amending))
         || !texts.keySet().containsAll(versions)) {
       return List.of();
     }
-    return act.datesOf(amending).stream()
+    return act.dates().datesOf(amending).stream()
         .filter(each -> each.kind() == ActDate.Kind.ENTRY_INTO_FORCE && each.date() != null)
         .min(Comparator.comparing(Divergences::day))
         .map(
@@ -394,7 +296,7 @@ final class Divergences {
    * before an entry into force on the same day. {@code day} must be accepted.
    */
   private ActDate date(ActIdentifier amending, LocalDate day) {
-    return act.datesOf(amending).stream()
+    return act.dates().datesOf(amending).stream()
         .filter(each -> day.equals(each.date()))
         .min(Comparator.comparing(each -> each.kind() == ActDate.Kind.ENTRY_INTO_FORCE))
         .orElseThrow();
@@ -434,14 +336,6 @@ final class Divergences {
           act, language, texts, texts.values().stream().mapToInt(text -> text.eIds().size()).sum());
     }
   }
-
-  /**
-   * The first version that tags a provision.
-   *
-   * @param version the version, or null if no version includes the amending act
-   * @param tagging every version whose text tags the provision
-   */
-  private record Tagged(@Nullable Version version, Set<Version> tagging) {}
 
   /**
    * How the text and a provision compare.

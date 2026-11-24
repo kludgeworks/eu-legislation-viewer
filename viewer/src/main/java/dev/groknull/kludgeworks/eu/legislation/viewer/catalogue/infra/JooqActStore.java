@@ -20,6 +20,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
@@ -298,8 +299,8 @@ class JooqActStore implements ActStore {
   }
 
   private void dates(Act act) {
-    var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>(act.amendingDates());
-    dates.put(act.id(), act.dates());
+    var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>(act.dates().amending());
+    dates.put(act.id(), act.dates().own());
     var rows =
         dates.entrySet().stream()
             .flatMap(
@@ -428,7 +429,8 @@ class JooqActStore implements ActStore {
         clause.provisions().stream().map(Provision::toString).toArray(String[]::new),
         clause.amendedBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
         clause.text(),
-        date.forPart());
+        date.forPart(),
+        clause.setBy().stream().map(ActIdentifier::celex).toArray(String[]::new));
   }
 
   private static Act act(
@@ -455,8 +457,7 @@ class JooqActStore implements ActStore {
         act.getInForce(),
         act.getEndOfValidity(),
         new Timeline(versions),
-        own == null ? List.of() : own,
-        bySubject,
+        new ActDates(act.getCelex(), own == null ? List.of() : own, bySubject),
         amendments,
         publications);
   }
@@ -471,6 +472,7 @@ class JooqActStore implements ActStore {
             date.getDaysAfter(),
             Arrays.stream(date.getProvisions()).map(Provision::parse).toList(),
             Arrays.stream(date.getAmendedBy()).map(ActIdentifier::new).toList(),
+            Arrays.stream(date.getSetBy()).map(ActIdentifier::new).toList(),
             date.getRemark()));
   }
 

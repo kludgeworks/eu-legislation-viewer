@@ -415,6 +415,7 @@ java_library(
     name = "controller-testing",
     testonly = True,
     srcs = [
+        "web/ApiActTesting.java",
         "web/CataloguedTesting.java",
         "web/ControllerTesting.java",
     ],
@@ -424,9 +425,12 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:web",  # its package's @NullMarked
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
+        "@maven//:org_assertj_assertj_core",  # MvcTestResult is an AssertProvider
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_test",
+        "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
 
@@ -492,5 +496,98 @@ java_junit5_test(
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_test",
         "@maven//:org_springframework_spring_web",
+    ],
+)
+
+# How the rules of each module cite acts: "2015/1998", "Directive 2019/878", "Corrigendum 1 to
+# 2017/815"
+java_library(
+    name = "cited",
+    testonly = True,
+    srcs = ["Cited.java"],
+    visibility = ["//viewer:__subpackages__"],
+    deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue"],
+)
+
+# The glue of the rules: the steps, and the domain's types for them
+CATALOGUE_RULES_GLUE = [
+    "ApplyingSteps.java",
+    "CatalogueTypes.java",
+    "CoverSteps.java",
+    "ComparedTextSteps.java",
+    "DivergenceSteps.java",
+    "HistorySteps.java",
+    "PlaceSteps.java",
+    "SampleTexts.java",
+    "StateSteps.java",
+    "TheAct.java",
+]
+
+# The business rules that the catalogue's domain applies (viewer/src/test/rules/catalogue), run by
+# Cucumber. The steps depend on the domain of the catalogue only, and on the acts as Cellar's
+# recorded answers make them (recorded-acts, which reaches catalogue:infra to parse them: the same
+# exception as the comparison's rules, decided 2026-11-22).
+java_junit5_test(
+    name = "rules",
+    size = "small",
+    srcs = CATALOGUE_RULES_GLUE + ["CatalogueRules.java"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CatalogueRules",
+    runtime_deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
+        "//viewer/src/test/rules",
+        "@maven//:io_cucumber_cucumber_junit_platform_engine",
+        "@maven//:io_cucumber_cucumber_picocontainer",  # one instance of each step class a scenario; TheAct shared by constructor
+        "@maven//:org_junit_jupiter_junit_jupiter_api",  # the runner checks for Jupiter
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+        "@maven//:org_junit_platform_junit_platform_suite_engine",
+    ],
+    deps = [
+        ":cited",
+        ":recorded-acts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
+        "@maven//:io_cucumber_cucumber_java",
+        "@maven//:io_cucumber_cucumber_junit_platform_engine",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_platform_junit_platform_suite_api",
+    ],
+)
+
+# The examples tagged @known-bug: what the domain should do, which a filed bug (@ISS-<n>) makes
+# fail today. The rules run leaves them out; this run checks that each still fails, and fails when
+# one passes: its bug is fixed, so the tag goes and the issue closes. Same glue, same domain-only deps
+java_junit5_test(
+    name = "known-bugs",
+    size = "small",
+    srcs = CATALOGUE_RULES_GLUE + ["CatalogueKnownBugs.java"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CatalogueKnownBugs",
+    runtime_deps = [
+        "//viewer/src/test/rules",
+        "@maven//:io_cucumber_cucumber_junit_platform_engine",
+        "@maven//:io_cucumber_cucumber_picocontainer",  # one instance of each step class a scenario; TheAct shared by constructor
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+        "@maven//:org_junit_platform_junit_platform_suite_engine",
+    ],
+    deps = [
+        ":cited",
+        ":recorded-acts",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
+        "@maven//:io_cucumber_cucumber_java",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
 )

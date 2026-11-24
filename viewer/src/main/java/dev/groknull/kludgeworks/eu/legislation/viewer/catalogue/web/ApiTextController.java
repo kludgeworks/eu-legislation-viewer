@@ -61,7 +61,7 @@ import org.springframework.web.util.UriUtils;
 @RestController
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiTextController {
-  private static final String TEXT = ApiActController.VERSION + "/texts/{language}";
+  private static final String TEXT = ApiActResources.VERSION + "/texts/{language}";
 
   /**
    * The IANA relation of a link to the schema of an answer, as the registry spells it. Spring
@@ -111,13 +111,13 @@ class ApiTextController {
                       var model =
                           HalModelBuilder.halModelOf(
                                   new TextModel(
-                                      ApiActController.key(asked.version()),
+                                      ApiActResources.key(asked.version()),
                                       asked.version().celex(),
-                                      ApiActController.code(asked.language().code()),
+                                      ApiActResources.code(asked.language().code()),
                                       publicText))
                               .link(self)
                               .link(
-                                  ApiActController.to(celex, asked.version(), IanaLinkRelations.UP))
+                                  ApiActResources.to(celex, asked.version(), IanaLinkRelations.UP))
                               .link(
                                   linkTo(
                                           methodOn(ApiTextController.class)
@@ -196,7 +196,7 @@ class ApiTextController {
   static Link to(ActIdentifier celex, Version version, Language language, LinkRelation relation) {
     return linkTo(
             methodOn(ApiTextController.class)
-                .text(celex, ApiActController.key(version), ApiActController.code(language.code())))
+                .text(celex, ApiActResources.key(version), ApiActResources.code(language.code())))
         .withRel(relation)
         .withHreflang(language.iso());
   }
@@ -226,7 +226,7 @@ class ApiTextController {
   /** Returns what the path asks for, or throws not found. */
   private Asked asked(ActIdentifier celex, String key, String code) {
     var act = acts.api(celex);
-    var version = ApiActController.at(act.timeline().versions(), key);
+    var version = ApiActResources.at(act.timeline().versions(), key);
     var language = Requests.language(code);
     if (!version.languages().contains(language)) {
       throw Requests.notFound();

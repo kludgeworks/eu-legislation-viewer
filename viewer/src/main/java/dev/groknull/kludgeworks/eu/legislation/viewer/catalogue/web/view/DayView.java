@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -15,8 +16,8 @@ import org.jspecify.annotations.Nullable;
  * {@code catalogue/day.jte} writes it as a form with date boxes, and the element {@code
  * <day-picker>} makes one field and a calendar of it.
  *
- * <p>The calendar marks the days on which an amending act changes the act, {@link Act#changeDays}.
- * This view says, for each such day, what each act does on it:
+ * <p>The calendar marks the days on which an amending act changes the act, {@link
+ * ActHistory#changeDays}. This view says, for each such day, what each act does on it:
  *
  * <ul>
  *   <li>"2021/255 applies from this day"
@@ -64,7 +65,7 @@ public record DayView(
         single,
         range,
         occurrence,
-        act.changeDays(language).entrySet().stream()
+        ActHistory.of(act).changeDays(language).entrySet().stream()
             .map(
                 each ->
                     each.getKey()
@@ -78,7 +79,8 @@ public record DayView(
   /** Returns what {@code amending} does on one of its days of change, in words. */
   private static String does(Act act, ActIdentifier amending) {
     var cited = act.cited(amending);
-    return act.applying(amending, Set.of())
+    return act.dates()
+        .applying(amending, Set.of())
         .map(
             applying ->
                 switch (applying) {

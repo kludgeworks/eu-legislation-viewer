@@ -7,6 +7,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -79,8 +80,7 @@ class VersionControllerTests {
                     published.inForce(),
                     published.endOfValidity(),
                     published.timeline(),
-                    published.dates(),
-                    Map.of(),
+                    new ActDates(published.id(), published.dates().own(), Map.of()),
                     List.of(),
                     Map.of())));
     assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng"))

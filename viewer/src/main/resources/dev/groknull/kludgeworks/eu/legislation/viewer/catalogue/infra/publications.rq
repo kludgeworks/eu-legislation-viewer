@@ -10,7 +10,7 @@
 # - the day of publication for each place. An act that has both places has two days.
 # It uses consolidations with or without a CELEX number, as dates.rq does. CellarActs retains
 # only publications of acts that a version in the act's timeline integrates, of acts that amend
-# the act, and of the act itself.
+# the act, of the act itself, and of the acts that set a day of their dates (publications-of.rq).
 # It gives one row per act and title. The details of the Journal are optional. They are often
 # missing for a corrigendum.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.

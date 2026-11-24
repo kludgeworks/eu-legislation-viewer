@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.util.Comparator;
@@ -36,10 +38,13 @@ public record Comparison(
   /**
    * Returns the differences at the occurrences {@code eIds}, in the order of the comparison. These
    * are the differences of the occurrences themselves and of the occurrences in them. If there are
-   * none, it is the one difference of the nearest occurrence that holds one of the occurrences. For
-   * example, a chapter that an act inserted whole is one difference, and an article in the chapter
-   * has no difference of its own. Returns empty if the occurrences are the same in both texts.
+   * none, it is the one difference of the nearest occurrence that holds one of the occurrences in
+   * the text ({@link Difference#holds}). For example, a chapter that an act inserted whole is one
+   * difference, and an article in the chapter has no difference of its own, although its eId does
+   * not start with the chapter's (art_22b in cpt_IIIa of 767/2008). Returns empty if the
+   * occurrences are the same in both texts.
    */
+  @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "differences-at-a-place")
   public List<Difference> at(List<String> eIds) {
     var within =
         differences.stream()
@@ -53,7 +58,7 @@ public record Comparison(
       return within;
     }
     return differences.stream()
-        .filter(each -> eIds.stream().anyMatch(eId -> eId.startsWith(each.eId() + "/")))
+        .filter(each -> eIds.stream().anyMatch(each::holds))
         .max(Comparator.comparingInt(each -> each.eId().length()))
         .map(List::of)
         .orElseGet(List::of);

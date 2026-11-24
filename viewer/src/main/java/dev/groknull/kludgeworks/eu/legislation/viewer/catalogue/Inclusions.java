@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -8,6 +10,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.SequencedSet;
 import org.jmolecules.ddd.annotation.ValueObject;
 
@@ -38,6 +41,7 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ta
    * Returns what the versions of {@code timeline} include, with {@code texts}, the tags of the
    * texts that are built, by version.
    */
+  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "the-acts-between-two-versions")
   public static Inclusions of(Timeline timeline, Map<Version, TextTags> texts) {
     var included = new HashSet<ActIdentifier>();
     var tagged = new HashMap<Version, List<ActIdentifier>>();
@@ -89,6 +93,7 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ta
    * Returns the acts that the versions after {@code from}, up to and including {@code to}, include,
    * in the order of the versions. The acts include their corrigenda.
    */
+  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "the-acts-between-two-versions")
   public SequencedSet<ActIdentifier> between(Version from, Version to) {
     var between = new LinkedHashSet<ActIdentifier>();
     for (var version : timeline.versions()) {
@@ -97,5 +102,15 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ta
       }
     }
     return between;
+  }
+
+  /**
+   * Returns the act {@code celex} if it is between {@code from} and {@code to} ({@link #between}),
+   * or empty if it is not. A comparison can show the changes of one act only if the act is between
+   * its two versions.
+   */
+  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "one-act-between-the-versions")
+  public Optional<ActIdentifier> oneBetween(Version from, Version to, String celex) {
+    return between(from, to).stream().filter(each -> each.celex().equals(celex)).findFirst();
   }
 }

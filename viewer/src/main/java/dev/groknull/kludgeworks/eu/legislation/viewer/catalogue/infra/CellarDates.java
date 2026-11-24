@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
@@ -12,10 +14,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
@@ -31,7 +36,9 @@ import org.slf4j.LoggerFactory;
  *   <li>A code from the authority table {@code fd_335} gives the type.
  *   <li>{@code DATPUB}, {@code DATNOT} and {@code DATDOC} give the day that the date counts from.
  *   <li>{@code V ART 2} means "see Article 2".
- *   <li>{@code ET} and a CELEX number give an act that changed the date.
+ *   <li>{@code ET} and a CELEX number give a later act: one that amended the date, if it amends the
+ *       act of the date, else one that set a day that the clause left to it. The answer gives the
+ *       acts that amend the act of the date ({@code ?amending}).
  *   <li>For a date of transposition, a code from the authority table {@code fd_361} tells what the
  *       Member States do: {@code APPLICATION} or {@code ADOPTION}.
  * </ul>
@@ -86,8 +93,9 @@ final class CellarDates {
         continue;
       }
       var comment = row.find("comment").orElse("");
+      var amending = amending(row.find("amending").orElse(""));
       if (row.get("property").endsWith(TRANSPOSITION)) {
-        transposition(row.get("date"), comment)
+        transposition(row.get("date"), comment, amending)
             .ifPresent(
                 d ->
                     dates
@@ -96,7 +104,7 @@ final class CellarDates {
         continue;
       }
       var type = row.find("type").map(CellarDates::code).orElse("");
-      var date = date(row.get("date"), type, comment);
+      var date = date(row.get("date"), type, comment, amending);
       date.ifPresentOrElse(
           d -> dates.computeIfAbsent(new ActIdentifier(subject), a -> new ArrayList<>()).add(d),
           () -> unknown.add(subject + " " + row.get("date") + " " + type));
@@ -109,6 +117,24 @@ final class CellarDates {
           unknown);
     }
     return dates;
+  }
+
+  /**
+   * Returns the acts that set a day that a clause of an act in the answer left to them ({@link
+   * Clause#setBy}), by their CELEX numbers, in order. For example, Decision 2023/201 sets the day
+   * from which 2018/1862 applies. Only the comment on the date names them, so {@code
+   * publications.rq} does not find them, and {@code publications-of.rq} gets their publications.
+   */
+  static Set<ActIdentifier> settingActs(SparqlResult answer) {
+    var acts = new TreeSet<ActIdentifier>(Comparator.comparing(ActIdentifier::celex));
+    for (var row : answer.rows()) {
+      if (!ActIdentifier.isCelex(row.get("subject"))) {
+        continue;
+      }
+      var text = CODE.matcher(row.find("comment").orElse("")).replaceAll("$1").strip();
+      acts.addAll(clause(text, amending(row.find("amending").orElse(""))).setBy());
+    }
+    return acts;
   }
 
   /**
@@ -154,9 +180,11 @@ final class CellarDates {
 
   /**
    * Reads one date. The known types are {@code EV}, {@code MA} and {@code PE}, each also with
-   * {@code /PART}. For any other type, it returns none.
+   * {@code /PART}. For any other type, it returns none. {@code amending} are the acts that amend
+   * the act of the date ({@link #clause}).
    */
-  static Optional<ActDate> date(String value, String type, String comment) {
+  static Optional<ActDate> date(
+      String value, String type, String comment, Set<ActIdentifier> amending) {
     var split = type.split("/", 2);
     var kind =
         switch (split[0]) {
@@ -171,20 +199,22 @@ final class CellarDates {
     var text = CODE.matcher(comment).replaceAll("$1").strip();
     var forPart =
         split.length > 1 || text.startsWith(split[0] + "/PART") || text.startsWith("/PART");
-    return Optional.of(new ActDate(day(value), kind, forPart, clause(text)));
+    return Optional.of(new ActDate(day(value), kind, forPart, clause(text, amending)));
   }
 
   /**
    * Reads one date of transposition. It returns the date if the Member States apply their measures
    * from it: its comment starts with {@code APPLICATION}. For any other date of transposition, it
-   * returns none. The date is for the whole directive.
+   * returns none. The date is for the whole directive. {@code amending} are the acts that amend the
+   * directive ({@link #clause}).
    */
-  static Optional<ActDate> transposition(String value, String comment) {
+  static Optional<ActDate> transposition(
+      String value, String comment, Set<ActIdentifier> amending) {
     var text = CODE.matcher(comment).replaceAll("$1").strip();
     if (!text.equals(APPLY_FROM) && !text.startsWith(APPLY_FROM + " ")) {
       return Optional.empty();
     }
-    return Optional.of(new ActDate(day(value), Kind.TRANSPOSITION, false, clause(text)));
+    return Optional.of(new ActDate(day(value), Kind.TRANSPOSITION, false, clause(text, amending)));
   }
 
   /**
@@ -210,15 +240,24 @@ final class CellarDates {
    *   <li>{@code V ART 2.2(f) ET 2.2(g)}
    * </ul>
    *
-   * <p>{@code ET} followed by a CELEX number adds an act to the acts that changed the date. {@code
-   * ET} followed by a number adds a provision. It skips {@code V} and {@code VOIR}, which mean
-   * "see", and a repeat of the type.
+   * <p>{@code ET} followed by a CELEX number names a later act. Cellar's comment is the same for an
+   * act that amended the date and for an act that set a day that the clause left to it. If the act
+   * is one of {@code amending}, the acts that amend the act of the date, it amended the date: for
+   * example, 2020/910 replaces "31 December 2020" in Article 2 of 2019/103. Else it set the day:
+   * Decision 2023/201 sets the day from which 2018/1862 applies. {@code ET} followed by a number
+   * adds a provision. It skips {@code V} and {@code VOIR}, which mean "see", and a repeat of the
+   * type.
    */
-  static Clause clause(String text) {
+  @BusinessRule(
+      group = RuleGroup.WHEN_AN_ACT_APPLIES,
+      name = "a-later-act-amended-or-set-the-date",
+      revision = 2)
+  static Clause clause(String text, Set<ActIdentifier> amending) {
     Anchor from = null;
     Integer days = null;
     var provisions = new ArrayList<Provision>();
     var amendedBy = new ArrayList<ActIdentifier>();
+    var setBy = new ArrayList<ActIdentifier>();
     Provision.Type last = null;
     var tokens = text.isEmpty() ? new String[0] : text.split("\\s+");
     for (var i = 0; i < tokens.length; i++) {
@@ -253,7 +292,8 @@ final class CellarDates {
         }
         case "ET" -> {
           if (next != null && ActIdentifier.isCelex(next) && next.matches("\\d{5}[A-Z].*")) {
-            amendedBy.add(new ActIdentifier(next));
+            var named = new ActIdentifier(next);
+            (amending.contains(named) ? amendedBy : setBy).add(named);
             i++;
           } else if (next != null && last != null && isNumber(next)) {
             provisions.add(new Provision(last, next));
@@ -266,7 +306,21 @@ final class CellarDates {
         }
       }
     }
-    return new Clause(from, days, provisions, amendedBy, text);
+    return new Clause(from, days, provisions, amendedBy, setBy, text);
+  }
+
+  /**
+   * Reads the acts that a date's comment names and that amend the act of the date: the answer's
+   * {@code ?amending}, CELEX numbers with a space between them.
+   */
+  private static Set<ActIdentifier> amending(String value) {
+    var acts = new LinkedHashSet<ActIdentifier>();
+    for (var celex : value.strip().split("\\s+")) {
+      if (ActIdentifier.isCelex(celex)) {
+        acts.add(new ActIdentifier(celex));
+      }
+    }
+    return acts;
   }
 
   /**

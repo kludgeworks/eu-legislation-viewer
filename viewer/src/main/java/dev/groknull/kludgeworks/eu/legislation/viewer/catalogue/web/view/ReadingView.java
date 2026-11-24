@@ -75,12 +75,12 @@ public record ReadingView(
       List<ActIdentifier> named,
       Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
-    var makers = Wording.makers(act, version, named, language);
+    var makers = VersionWording.makers(act, version, named, language);
     return new ReadingView(
         title(act, asked),
         Dates.inWords(asked),
-        Wording.which(act, version, asked, today, language),
-        Wording.made(act, version, named, language),
+        VersionWording.which(act, version, asked, today, language),
+        VersionWording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
         StatusView.of(act, asked, language, today, tags),
         version.celex(),

@@ -244,8 +244,8 @@ class TextsTests {
   /** How many texts in English of {@code celex} are kept as built. */
   private long kept(String celex) {
     return jdbc.sql(
-            "select count(*) from expression where celex = ? and language_code = 'ENG' and state ="
-                + " 'BUILT'")
+            "select count(*) from expression where celex = ? and language_code = 'ENG' and progress"
+                + " = 'BUILT'")
         .param(celex)
         .query(Long.class)
         .single();

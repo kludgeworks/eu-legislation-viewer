@@ -100,6 +100,31 @@ class ExpandContractTest {
   }
 
   @Test
+  void passesAColumnMovedToADomainOfItsType() throws Exception {
+    released("create table act (celex text not null, title text);");
+    pending(
+        "NEXT_001__act_celex_domain.sql",
+        "create domain celex as text;",
+        "alter table act alter column celex type celex;");
+
+    assertThat(check().problems()).isEmpty();
+  }
+
+  @Test
+  void failsAColumnMovedToADomainWithACheck() throws Exception {
+    released("create table act (celex text not null, title text);");
+    pending(
+        "NEXT_001__act_celex_domain.sql",
+        "create domain celex as text check (value like '3%');",
+        "alter table act alter column celex type celex;");
+
+    assertThat(check().problems())
+        .singleElement()
+        .asString()
+        .contains("act.celex changes type from text to celex");
+  }
+
+  @Test
   void failsADeprecatedColumnThatIsStillRequired() throws Exception {
     released("create table act (celex text not null, title text not null);");
     pending(

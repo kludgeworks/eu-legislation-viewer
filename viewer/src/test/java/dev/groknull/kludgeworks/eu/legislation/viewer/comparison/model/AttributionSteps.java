@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Cited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;

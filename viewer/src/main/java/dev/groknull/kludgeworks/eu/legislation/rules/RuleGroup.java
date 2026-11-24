@@ -22,7 +22,21 @@ public enum RuleGroup {
   /** The neighbours of a difference. */
   NEIGHBOURS,
   /** The changes of one act. */
-  THE_CHANGES_OF_ONE_ACT;
+  THE_CHANGES_OF_ONE_ACT,
+  /** From when an act, or a provision of it, applies, as its dates in Cellar tell. */
+  WHEN_AN_ACT_APPLIES,
+  /** The state of an act, or of one change, on a day, and how an amending act stands. */
+  THE_STATE_ON_A_DAY,
+  /** Where the text that a reader gets on a day is not the law on that day, and why. */
+  THE_TEXT_AND_THE_LAW_ON_A_DAY,
+  /** Which occurrences of a text the place of an amendment is. */
+  PLACES,
+  /** The acts in the history of an act, its corrigenda, its days of change and their changes. */
+  THE_HISTORY_OF_AN_ACT,
+  /** The text that a comparison shows for a day, and its changes that do not apply on the day. */
+  THE_TEXT_A_COMPARISON_SHOWS,
+  /** Which two versions a comparison is between, and which acts it shows. */
+  WHAT_A_COMPARISON_COVERS;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

@@ -7,6 +7,7 @@ import java.io.UncheckedIOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
@@ -14,6 +15,7 @@ import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -191,6 +193,34 @@ public class Sparql {
     var query = template;
     for (var value : values.entrySet()) {
       query = query.replace("{{" + value.getKey() + "}}", escaped(value.getValue()));
+    }
+    if (query.contains("{{")) {
+      throw new IllegalArgumentException("A placeholder left unfilled: " + query);
+    }
+    return query;
+  }
+
+  /**
+   * Returns the query with each {@code {{name}}} replaced by its values, as typed string literals
+   * with a space between them: {@code "32023D0201"^^xsd:string "32026D2284"^^xsd:string}. The
+   * templates put such a placeholder in a {@code VALUES} block, for example {@code VALUES ?subject
+   * { {{celexes}} }}, and declare the prefix {@code xsd}. Each value is escaped as {@link #fill}
+   * escapes it, so the endpoint never reads a value as part of the query.
+   *
+   * @throws IllegalArgumentException if a list is empty, or a placeholder is left unfilled
+   */
+  public static String fillStrings(
+      String template, Map<String, ? extends Collection<String>> lists) {
+    var query = template;
+    for (var list : lists.entrySet()) {
+      if (list.getValue().isEmpty()) {
+        throw new IllegalArgumentException("No values for {{" + list.getKey() + "}}");
+      }
+      var literals =
+          list.getValue().stream()
+              .map(value -> "\"" + escaped(value) + "\"^^xsd:string")
+              .collect(Collectors.joining(" "));
+      query = query.replace("{{" + list.getKey() + "}}", literals);
     }
     if (query.contains("{{")) {
       throw new IllegalArgumentException("A placeholder left unfilled: " + query);

@@ -2,8 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
@@ -113,7 +115,7 @@ class VersionController {
     var language = language(code);
     var eli = new Eli(type, year, number);
     var found = acts.act(eli);
-    var history = on == null && !found.amendingActs(language).isEmpty();
+    var history = on == null && !ActHistory.of(found).amendingActs(language).isEmpty();
     return ActLookupPages.seeOther(
         history
             ? Links.history(eli, null, language)
@@ -250,7 +252,9 @@ class VersionController {
       version =
           before
               ? timeline.first()
-              : act.versionOn(date, language).orElseThrow(VersionController::notFound);
+              : LawOnADay.of(act)
+                  .versionOn(date, language)
+                  .orElseThrow(VersionController::notFound);
       this.date = date;
     }
 

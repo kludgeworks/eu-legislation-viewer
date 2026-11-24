@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
@@ -18,9 +19,7 @@ import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -120,7 +119,7 @@ class HistoryController {
       throw Requests.notFound();
     }
     var amending = new ActIdentifier(celex);
-    if (!act.amendingActs(language).contains(amending)) {
+    if (!ActHistory.of(act).amendingActs(language).contains(amending)) {
       throw Requests.notFound();
     }
     var today = Timeline.today(clock);
@@ -137,7 +136,7 @@ class HistoryController {
                 today,
                 language,
                 applies,
-                latest(act, language, tags),
+                ActHistory.of(act).latestText(language, tags).orElse(null),
                 step(act, amending, language, tags)))
         .render();
   }
@@ -147,30 +146,14 @@ class HistoryController {
   }
 
   /**
-   * Returns the tags of the latest text of {@code act} in {@code language} that is built, or null
-   * if none is built. {@code tags} are the tags of the texts that are built.
-   */
-  private static @Nullable TextTags latest(
-      Act act, Language language, Map<Version, TextTags> tags) {
-    return act.timeline(language).map(Timeline::versions).orElseGet(List::of).reversed().stream()
-        .map(tags::get)
-        .filter(Objects::nonNull)
-        .findFirst()
-        .orElse(null);
-  }
-
-  /**
    * Returns the two texts that show the wording of the changes of {@code amending}: the text of the
    * first version that integrates it, and the text of the version before. Returns null if no
    * version in {@code language} integrates it, or if one of the two texts is not built.
    */
   private static AmendingView.@Nullable Step step(
       Act act, ActIdentifier amending, Language language, Map<Version, TextTags> tags) {
-    var later = act.integrating(amending, language).orElse(null);
-    var earlier =
-        later == null
-            ? null
-            : act.timeline(language).flatMap(each -> each.predecessor(later)).orElse(null);
+    var later = ActHistory.of(act).integrating(amending, language).orElse(null);
+    var earlier = ActHistory.of(act).beforeIntegrating(amending, language).orElse(null);
     if (later == null || earlier == null) {
       return null;
     }

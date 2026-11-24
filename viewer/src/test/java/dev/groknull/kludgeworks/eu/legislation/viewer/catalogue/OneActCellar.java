@@ -83,35 +83,39 @@ public class OneActCellar {
                       true,
                       Instant.parse("2026-10-02T08:00:00Z"),
                       "32026R0449"))),
-          List.of(
-              date(2015, 11, 15, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "3"),
-              date(2016, 2, 1, Kind.APPLICATION, false, null, null, "2")),
-          Map.of(
-              new ActIdentifier("32019R0413"),
+          new ActDates(
+              CELEX,
               List.of(
-                  new ActDate(
-                      null,
-                      Kind.APPLICATION,
-                      false,
-                      new Clause(null, null, List.of(article("3")), List.of(), "V ART 3")),
-                  date(2019, 3, 16, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "2")),
-              new ActIdentifier("32019R0103"),
-              List.of(
-                  date(2019, 2, 1, Kind.ENTRY_INTO_FORCE, false, null, null, "2"),
-                  new ActDate(
-                      LocalDate.of(2021, 12, 31),
-                      Kind.APPLICATION,
-                      true,
-                      new Clause(
+                  date(2015, 11, 15, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "3"),
+                  date(2016, 2, 1, Kind.APPLICATION, false, null, null, "2")),
+              Map.of(
+                  new ActIdentifier("32019R0413"),
+                  List.of(
+                      new ActDate(
                           null,
-                          null,
-                          List.of(article("2")),
-                          List.of(new ActIdentifier("32020R0910")),
-                          "MA/PART V ART 2 ET 32020R0910"))),
-              new ActIdentifier("32026R0449"),
-              List.of(
-                  date(2026, 3, 22, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 20, "2"),
-                  date(2026, 10, 1, Kind.APPLICATION, true, null, null, "2"))),
+                          Kind.APPLICATION,
+                          false,
+                          new Clause(
+                              null, null, List.of(article("3")), List.of(), List.of(), "V ART 3")),
+                      date(2019, 3, 16, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "2")),
+                  new ActIdentifier("32019R0103"),
+                  List.of(
+                      date(2019, 2, 1, Kind.ENTRY_INTO_FORCE, false, null, null, "2"),
+                      new ActDate(
+                          LocalDate.of(2021, 12, 31),
+                          Kind.APPLICATION,
+                          true,
+                          new Clause(
+                              null,
+                              null,
+                              List.of(article("2")),
+                              List.of(new ActIdentifier("32020R0910")),
+                              List.of(),
+                              "MA/PART V ART 2 ET 32020R0910"))),
+                  new ActIdentifier("32026R0449"),
+                  List.of(
+                      date(2026, 3, 22, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 20, "2"),
+                      date(2026, 10, 1, Kind.APPLICATION, true, null, null, "2")))),
           List.of(),
           Map.of());
 
@@ -141,7 +145,6 @@ public class OneActCellar {
         ACT.endOfValidity(),
         new Timeline(versions),
         ACT.dates(),
-        ACT.amendingDates(),
         ACT.amendments(),
         ACT.publications());
   }
@@ -191,7 +194,7 @@ public class OneActCellar {
         LocalDate.of(year, month, day),
         kind,
         forPart,
-        new Clause(from, days, List.of(article(article)), List.of(), text));
+        new Clause(from, days, List.of(article(article)), List.of(), List.of(), text));
   }
 
   private static Provision article(String number) {

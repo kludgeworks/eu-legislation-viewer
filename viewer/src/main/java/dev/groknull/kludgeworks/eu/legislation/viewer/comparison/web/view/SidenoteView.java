@@ -235,6 +235,7 @@ public record SidenoteView(
               "",
               null,
               List.of(),
+              List.of(),
               "");
       case Applicability.Applies applies -> {
         var name = named(act, applies.act());
@@ -294,15 +295,31 @@ public record SidenoteView(
                         .collect(Collectors.joining(", "))
                     + " of "
                     + act.cited(amending),
-                act.eurLex(amending, language).toString());
+                act.eurLex(amending, language).toString(),
+                null);
     return new Applies(
         when,
         when.endsWith(" in") ? " " : " · ",
         clause,
-        applies.amendedBy().stream()
-            .map(each -> new Link(act.cited(each), act.eurLex(each, language).toString()))
-            .toList(),
+        links(act, applies.amendedBy(), language),
+        links(act, applies.setBy(), language),
         clause == null ? "" : after);
+  }
+
+  /**
+   * Returns {@code acts} as links to EUR-Lex, each named as the pages name it, with its citation
+   * for the hover. For example, "2023/201", and "2023/201: Commission Implementing Decision (EU)
+   * 2023/201 of 30 January 2023 … · OJ L 27, 31.1.2023".
+   */
+  private static List<Link> links(Act act, List<ActIdentifier> acts, Language language) {
+    return acts.stream()
+        .map(
+            each ->
+                new Link(
+                    act.cited(each),
+                    act.eurLex(each, language).toString(),
+                    act.citation(each, language)))
+        .toList();
   }
 
   /**
@@ -318,8 +335,9 @@ public record SidenoteView(
   }
 
   /**
-   * When an act applies, as the sidenote says it. For example, "applies from 1 October 2026 ·
-   * Article 2 of 2026/449, as amended by 2020/910".
+   * When an act applies, as the sidenote says it. For example, "applies from 31 December 2021 ·
+   * Article 2 of 2019/103, as amended by 2020/910", or "applies from 7 March 2023 · Article 79.5 of
+   * 2018/1862, on the day set by 2023/201".
    *
    * @param when when the act applies. For example, "applies from 1 October 2026", or "2026/449
    *     applies from more than one day: from 22 March 2026, its entry into force; a part from 1
@@ -328,19 +346,31 @@ public record SidenoteView(
    *     "set in".
    * @param clause the clause that sets the date, linked to EUR-Lex. For example, "Article 2 of
    *     2026/449". Null where Cellar does not say.
-   * @param amendedBy the acts that changed the clause since, linked to EUR-Lex. For example,
+   * @param amendedBy the later acts that amended the clause, linked to EUR-Lex. For example,
    *     2020/910.
+   * @param setBy the later acts that set the day that the clause left to them, linked to EUR-Lex.
+   *     For example, 2023/201.
    * @param after what follows the clause. For parts, this is "says which part from when".
    */
   public record Applies(
-      String when, String between, @Nullable Link clause, List<Link> amendedBy, String after) {
+      String when,
+      String between,
+      @Nullable Link clause,
+      List<Link> amendedBy,
+      List<Link> setBy,
+      String after) {
     public Applies {
       amendedBy = List.copyOf(amendedBy);
+      setBy = List.copyOf(setBy);
     }
   }
 
-  /** A link, with its words and its address. */
-  public record Link(String label, String href) {}
+  /**
+   * A link, with its words, its address, and the words of its hover.
+   *
+   * @param title the words of the hover, for example how the act was published. Null for none.
+   */
+  public record Link(String label, String href, @Nullable String title) {}
 
   /**
    * Returns the history of a provision that is the same in both texts, as the Synopsis shows it
@@ -377,6 +407,7 @@ public record SidenoteView(
             applies.between(),
             applies.clause(),
             applies.amendedBy(),
+            applies.setBy(),
             applies.after())
         : applies;
   }

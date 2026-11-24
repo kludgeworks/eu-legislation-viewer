@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -70,7 +71,7 @@ public record DivergenceNotesView(List<DivergenceNote> divergenceNotes) {
     var past = asked.isBefore(today);
     var kept = asked.equals(today) ? null : asked;
     var found = new ArrayList<DivergenceNote>();
-    for (var divergence : act.divergences(asked, language, tags)) {
+    for (var divergence : LawOnADay.of(act).divergences(asked, language, tags)) {
       var cited = act.cited(divergence.act());
       var href = Links.amending(eli, divergence.act(), kept, language);
       var prospective = divergence.kind() == Divergence.Kind.PROSPECTIVE;

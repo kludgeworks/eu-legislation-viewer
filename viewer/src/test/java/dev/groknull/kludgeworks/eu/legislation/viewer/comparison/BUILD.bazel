@@ -119,9 +119,9 @@ java_test_suite(
 
 # The glue of the rules: the steps, and the domain's types for them
 RULES_GLUE = [
+    "model/AmendedSteps.java",
     "model/ApplicabilitySteps.java",
     "model/AttributionSteps.java",
-    "model/Cited.java",
     "model/Comparing.java",
     "model/DifferenceSteps.java",
     "model/LastChangeSteps.java",
@@ -165,6 +165,7 @@ java_junit5_test(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:cited",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:recorded-acts",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:io_cucumber_cucumber_java",
@@ -185,7 +186,6 @@ java_junit5_test(
     srcs = RULES_GLUE + ["model/ComparisonKnownBugs.java"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.ComparisonKnownBugs",
     runtime_deps = [
-        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
         "//viewer/src/test/rules",
         "@maven//:io_cucumber_cucumber_junit_platform_engine",
         "@maven//:io_cucumber_cucumber_picocontainer",  # one instance of each step class a scenario; Comparing shared by constructor
@@ -196,12 +196,14 @@ java_junit5_test(
         "@maven//:org_junit_platform_junit_platform_suite_engine",
     ],
     deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:cited",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:recorded-acts",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:io_cucumber_cucumber_java",
@@ -209,8 +211,6 @@ java_junit5_test(
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
-        "@maven//:org_junit_platform_junit_platform_engine",
-        "@maven//:org_junit_platform_junit_platform_launcher",
     ],
 )
 

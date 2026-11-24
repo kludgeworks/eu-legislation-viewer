@@ -6,8 +6,8 @@ import java.util.List;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * When an act applies, as its dates in Cellar tell. {@link Act#applying} gives it. Each kind keeps
- * the dates that tell it, so a page can name the clauses that set them.
+ * When an act applies, as its dates in Cellar tell. {@link ActDates#applying} gives it. Each kind
+ * keeps the dates that tell it, so a page can name the clauses that set them.
  */
 @ValueObject
 public sealed interface Applying {

@@ -1,0 +1,39 @@
+# SPDX-License-Identifier: MIT
+# Gets how some acts were published, by their CELEX numbers, for CellarPublications. These are the
+# acts that set a day that a clause of an act left to them, for example Decision 2023/201, which
+# sets the day from which 2018/1862 applies. publications.rq cannot find them: only the comment on
+# the date names them (dates.rq). For each act it gets what publications.rq gets:
+# - the ELI.
+# - the title in each language.
+# - the place in the Official Journal, and the day of publication for each place.
+# It gives one row per act and title.
+# {{celexes}}: the CELEX numbers of the acts, as xsd:string literals. Sparql.fillStrings escapes
+# them.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?subject ?eli ?code ?title ?collection ?number ?published ?issueCollection ?issue
+    ?issuePublished
+WHERE {
+  VALUES ?subject { {{celexes}} }
+  ?work cdm:resource_legal_id_celex ?subject .
+  OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+  OPTIONAL {
+    ?expression cdm:expression_belongs_to_work ?work ;
+         cdm:expression_uses_language ?language ;
+         cdm:expression_title ?title .
+    BIND(STRAFTER(STR(?language), "/language/") AS ?code)
+  }
+  OPTIONAL {
+    ?work cdm:official-journal-act_part_of_collection_document ?collection ;
+         cdm:resource_legal_reference_oj-act ?number ;
+         cdm:official-journal-act_date_publication ?published .
+  }
+  OPTIONAL {
+    ?work cdm:resource_legal_published_in_official-journal ?journal .
+    ?journal cdm:official-journal_part_of_collection_document ?issueCollection ;
+         cdm:official-journal_number ?issue ;
+         cdm:publication_general_date_publication ?issuePublished .
+  }
+}
+ORDER BY ?subject ?code

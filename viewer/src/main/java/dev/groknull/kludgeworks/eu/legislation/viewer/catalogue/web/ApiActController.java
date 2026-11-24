@@ -1,47 +1,33 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.ACT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.ACTS;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.code;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 import org.springframework.boot.jackson.JacksonMixin;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
-import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.CacheControl;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.ErrorResponseException;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,34 +41,18 @@ import tools.jackson.databind.annotation.JsonSerialize;
 import tools.jackson.databind.util.NameTransformer;
 
 /**
- * The resources of an act in the API: the act, its versions, and the law on a date. An act is at
- * its CELEX number, because not every act has an ELI. A version is at {@code oj}, for the original
- * text, or at the date of its consolidation, as an ELI names them.
+ * An act in the API, and the lookup of an act by its CELEX number or its ELI. Its versions are
+ * {@link ApiVersionController}, the law on a day {@link ApiLawController}, and its amendments
+ * {@link ApiAmendmentsController}. What they share is {@link ApiActResources}.
  */
 @RestController
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiActController {
-  private static final String ACTS = ApiRootController.ROOT + "/acts";
-
-  /** The path of an act. */
-  static final String ACT = ACTS + "/{celex}";
-
-  /** The path of a version of an act. */
-  static final String VERSION = ACT + "/versions/{key}";
-
   /**
    * The CELEX number of a consolidated version: sector 0, which no act has. For example, {@code
    * 02015R1998-20260322}.
    */
   private static final Pattern CONSOLIDATED = Pattern.compile("0\\S+");
-
-  /** The key of the original text among the versions, as in an ELI. */
-  private static final String ORIGINAL = "oj";
-
-  /**
-   * RFC 5829's relation of the version after a version. Spring HATEOAS lists it under another name.
-   */
-  private static final LinkRelation SUCCESSOR_VERSION = LinkRelation.of("successor-version");
 
   /**
    * How long a client may keep the answer of a lookup: the act of an identifier does not change.
@@ -91,13 +61,11 @@ class ApiActController {
 
   private final Acts acts;
   private final Catalogued catalogued;
-  private final Texts texts;
   private final Clock clock;
 
-  ApiActController(Acts acts, Catalogued catalogued, Texts texts, Clock clock) {
+  ApiActController(Acts acts, Catalogued catalogued, Clock clock) {
     this.acts = acts;
     this.catalogued = catalogued;
-    this.texts = texts;
     this.clock = clock;
   }
 
@@ -126,7 +94,7 @@ class ApiActController {
             .filter(each -> each.celex().equals(celex))
             .findFirst()
             .orElseThrow(Requests::notFound);
-    return lookedUp(to(act.id(), version, IanaLinkRelations.SELF));
+    return lookedUp(ApiActResources.to(act.id(), version, IanaLinkRelations.SELF));
   }
 
   /**
@@ -170,254 +138,15 @@ class ApiActController {
    */
   @GetMapping(ACT)
   EntityModel<Act> act(@PathVariable ActIdentifier celex) {
-    var act = found(celex);
+    var act = catalogued.api(celex);
     var self = linkTo(methodOn(ApiActController.class).act(celex)).withSelfRel();
-    var model =
-        EntityModel.of(act)
-            .add(self)
-            .add(
-                linkTo(methodOn(ApiActController.class).versions(celex))
-                    .withRel(IanaLinkRelations.VERSION_HISTORY));
-    latest(act).ifPresent(model::add);
+    var model = EntityModel.of(act).add(self).add(ApiActResources.versionHistory(celex));
+    ApiActResources.latest(act, clock).ifPresent(model::add);
     return model
         .add(ApiRootController.template(self, "/on/{day}", Relation.ON))
         .add(
-            linkTo(methodOn(ApiActController.class).amendments(celex))
+            linkTo(methodOn(ApiAmendmentsController.class).amendments(celex))
                 .withRel(Relation.AMENDMENTS.rel()));
-  }
-
-  /**
-   * Returns the law on {@code day}: the day asked, the versions that apply on it, the day they
-   * apply until, the deferred application of the act, and where their text is not the law on the
-   * day, because of a pending or a prospective amendment. More than one version applies when the
-   * original text and a consolidation share a day, in different languages.
-   *
-   * <p>A day before the first version returns 404, as a problem of the type {@link
-   * ProblemType#BEFORE_FIRST_VERSION}. It has the day the act was adopted, the day its text first
-   * applies, and the address of its first version. The day asked is never moved.
-   */
-  @GetMapping(ACT + "/on/{day}")
-  RepresentationModel<?> on(
-      @PathVariable ActIdentifier celex,
-      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
-    var act = found(celex);
-    var timeline = act.timeline();
-    var applying = timeline.allApplicableOn(day);
-    if (applying.isEmpty()) {
-      throw beforeTheFirstVersion(act, day);
-    }
-    var divergences = divergences(act, applying, day);
-    return HalModelBuilder.halModelOf(
-            new LawModel(
-                day,
-                timeline.nextStartAfter(day).orElse(null),
-                deferredApplication(act, applying, day),
-                divergences))
-        .embed(
-            applying.stream().map(version -> summary(celex, version)).toList(),
-            Relation.VERSION.rel())
-        .link(linkTo(methodOn(ApiActController.class).on(celex, day)).withSelfRel())
-        .link(up(celex))
-        .build();
-  }
-
-  /**
-   * Returns the deferred application of {@code act} on {@code date}, with the languages of the
-   * versions {@code applying} in which the reader gets a text on that day. Null if the act applies
-   * in full, or is not in force.
-   */
-  private @Nullable DeferredApplicationModel deferredApplication(
-      Act act, List<Version> applying, LocalDate date) {
-    var languages = new LinkedHashMap<DeferredApplication, List<String>>();
-    applying.stream()
-        .flatMap(version -> version.languages().stream())
-        .distinct()
-        .sorted()
-        .forEach(
-            language ->
-                act.deferredApplicationOn(date, language)
-                    .ifPresent(
-                        each ->
-                            languages
-                                .computeIfAbsent(each, key -> new ArrayList<>())
-                                .add(code(language.code()))));
-    return languages.entrySet().stream()
-        .findFirst()
-        .map(
-            each ->
-                new DeferredApplicationModel(
-                    DateModel.of(each.getKey().inFull()), each.getKey().partial(), each.getValue()))
-        .orElse(null);
-  }
-
-  /**
-   * Returns the divergences of {@code act} on {@code date}, each with the languages of the versions
-   * {@code applying} whose text differs. An amending act can change the text of some languages
-   * only. The tags of the texts that are built in a language tell where its text differs. A
-   * language without built texts is compared act by act.
-   */
-  private List<DivergenceModel> divergences(Act act, List<Version> applying, LocalDate date) {
-    var languages = new LinkedHashMap<Divergence, List<String>>();
-    applying.stream()
-        .flatMap(version -> version.languages().stream())
-        .distinct()
-        .sorted()
-        .forEach(
-            language ->
-                act.divergences(date, language, texts.tags(texts.preparation(act, language)))
-                    .forEach(
-                        each ->
-                            languages
-                                .computeIfAbsent(each, key -> new ArrayList<>())
-                                .add(code(language.code()))));
-    return languages.entrySet().stream()
-        .map(
-            each -> {
-              var divergence = each.getKey();
-              var included = divergence.included();
-              return new DivergenceModel(
-                  code(divergence.kind().name()),
-                  divergence.act().celex(),
-                  act.cited(divergence.act()),
-                  divergence.kind() == Divergence.Kind.UNDATED ? null : divergence.appliesFrom(),
-                  included == null ? null : key(included),
-                  divergence.places().stream()
-                      .map(
-                          place ->
-                              new PlaceModel(
-                                  place.location().code(), place.location().place().words()))
-                      .distinct()
-                      .toList(),
-                  each.getValue());
-            })
-        .toList();
-  }
-
-  /**
-   * Returns the versions of the act, in date order:
-   *
-   * <ul>
-   *   <li>{@code item}: each version, embedded.
-   *   <li>{@code first}: the original text. The versions are a series, and they are not paged.
-   *   <li>{@code latest-version}: as on the act.
-   * </ul>
-   */
-  @GetMapping(ACT + "/versions")
-  RepresentationModel<?> versions(@PathVariable ActIdentifier celex) {
-    var act = found(celex);
-    var model =
-        HalModelBuilder.halModel()
-            .embed(
-                act.timeline().versions().stream().map(version -> summary(celex, version)).toList(),
-                IanaLinkRelations.ITEM)
-            .link(linkTo(methodOn(ApiActController.class).versions(celex)).withSelfRel())
-            .link(up(celex))
-            .link(to(celex, act.timeline().first(), IanaLinkRelations.FIRST));
-    latest(act).ifPresent(model::link);
-    return model.build();
-  }
-
-  /**
-   * Returns the version at {@code key}: {@code oj} for the original text, or the date of a
-   * consolidation. Returns 404 for any other key. It links to the versions before and after it
-   * among all the versions of the act, in any language. It links to its text in each of its
-   * languages, {@code av:text}, with the language in {@code hreflang}.
-   */
-  @GetMapping(VERSION)
-  EntityModel<VersionModel> version(@PathVariable ActIdentifier celex, @PathVariable String key) {
-    var versions = found(celex).timeline().versions();
-    var version = at(versions, key);
-    var at = versions.indexOf(version);
-    var model =
-        summary(celex, version)
-            .add(up(celex))
-            .add(
-                linkTo(methodOn(ApiActController.class).versions(celex))
-                    .withRel(IanaLinkRelations.VERSION_HISTORY));
-    if (at > 0) {
-      model.add(to(celex, versions.get(at - 1), IanaLinkRelations.PREDECESSOR_VERSION));
-    }
-    if (at < versions.size() - 1) {
-      model.add(to(celex, versions.get(at + 1), SUCCESSOR_VERSION));
-    }
-    for (var language : version.languages()) {
-      model.add(ApiTextController.to(celex, version, language, Relation.TEXT.rel()));
-    }
-    return model;
-  }
-
-  /** Returns the version at {@code key}, or throws not found. */
-  static Version at(List<Version> versions, String key) {
-    return versions.stream()
-        .filter(each -> key(each).equals(key))
-        .findFirst()
-        .orElseThrow(Requests::notFound);
-  }
-
-  /**
-   * Returns what other acts did to the provisions of the act, as Cellar annotates them: each
-   * amendment with its amending act, where it acts, what it did, and Cellar's day for it. Cellar's
-   * day can be stale where a later act moved a date of the amending act. Thus the representation
-   * also has the own dates of each amending act, which Cellar keeps up to date.
-   */
-  @GetMapping(ACT + "/amendments")
-  RepresentationModel<?> amendments(@PathVariable ActIdentifier celex) {
-    var act = found(celex);
-    var dates = new TreeMap<String, List<DateModel>>();
-    act.amendingDates()
-        .forEach(
-            (amending, own) ->
-                dates.put(amending.celex(), own.stream().map(DateModel::of).toList()));
-    return HalModelBuilder.halModelOf(
-            new AmendmentsModel(
-                act.amendments().stream().map(each -> AmendmentModel.of(act, each)).toList(),
-                dates))
-        .link(linkTo(methodOn(ApiActController.class).amendments(celex)).withSelfRel())
-        .link(up(celex))
-        .build();
-  }
-
-  private Act found(ActIdentifier celex) {
-    return catalogued.api(celex);
-  }
-
-  /** Returns the link to the version that applies today, if one does. */
-  private Optional<Link> latest(Act act) {
-    var applying = act.timeline().allApplicableOn(Timeline.today(clock));
-    return applying.isEmpty()
-        ? Optional.empty()
-        : Optional.of(to(act.id(), applying.getLast(), IanaLinkRelations.LATEST_VERSION));
-  }
-
-  private static EntityModel<VersionModel> summary(ActIdentifier celex, Version version) {
-    return EntityModel.of(VersionModel.of(version)).add(to(celex, version, IanaLinkRelations.SELF));
-  }
-
-  /** Returns a link to the version. */
-  static Link to(ActIdentifier celex, Version version, LinkRelation relation) {
-    return linkTo(methodOn(ApiActController.class).version(celex, key(version))).withRel(relation);
-  }
-
-  /** Returns a link to the act, {@code up}. */
-  static Link up(ActIdentifier celex) {
-    return linkTo(methodOn(ApiActController.class).act(celex)).withRel(IanaLinkRelations.UP);
-  }
-
-  /** Returns where a version is among the versions of its act: {@code oj}, or its date. */
-  static String key(Version version) {
-    return version.kind() == Version.Kind.ORIGINAL ? ORIGINAL : version.date().toString();
-  }
-
-  private static ErrorResponseException beforeTheFirstVersion(Act act, LocalDate date) {
-    var first = act.timeline().first();
-    var problem =
-        ProblemType.BEFORE_FIRST_VERSION.problem(
-            "The text of " + act.id() + " first applies on " + first.date() + ".");
-    problem.setProperty("day", date);
-    problem.setProperty("dateOfDocument", act.dateOfDocument());
-    problem.setProperty("firstApplies", first.date());
-    problem.setProperty("firstVersion", to(act.id(), first, IanaLinkRelations.FIRST).getHref());
-    return new ErrorResponseException(HttpStatus.NOT_FOUND, problem, null);
   }
 
   /**
@@ -498,161 +227,5 @@ class ApiActController {
           act.inForce(),
           act.endOfValidity());
     }
-  }
-
-  /**
-   * A version of an act, as the API shows it.
-   *
-   * @param version where it is among the versions: {@code oj}, or its date
-   * @param kind {@code original} or {@code consolidated}
-   * @param date the day it applies from
-   * @param celex the CELEX number of the document that holds its text
-   * @param interim whether it may still be revised
-   * @param integrates the CELEX numbers of the acts that the Publications Office lists as
-   *     integrated in this version
-   * @param languages the languages that the viewer can show its text in, by the EU's codes
-   */
-  record VersionModel(
-      String version,
-      String kind,
-      LocalDate date,
-      String celex,
-      boolean interim,
-      List<String> integrates,
-      List<String> languages) {
-
-    static VersionModel of(Version version) {
-      return new VersionModel(
-          key(version),
-          code(version.kind().name()),
-          version.date(),
-          version.celex(),
-          version.interim(),
-          version.integrates().stream().map(ActIdentifier::celex).toList(),
-          version.languages().stream().map(language -> code(language.code())).toList());
-    }
-  }
-
-  /**
-   * The law on a day, as the API shows it.
-   *
-   * @param day the day asked
-   * @param until the day the next version starts, or null if no version starts later
-   * @param deferredApplication the deferred application of the act itself on the day, or null if it
-   *     applies in full
-   * @param divergences where the text of the versions is not the law on the day: its pending and
-   *     prospective amendments
-   */
-  record LawModel(
-      LocalDate day,
-      @Nullable LocalDate until,
-      @Nullable DeferredApplicationModel deferredApplication,
-      List<DivergenceModel> divergences) {}
-
-  /**
-   * The deferred application of the act on the day, as the API shows it: the act is in force, but
-   * it does not apply in full yet. For example, 2016/679 on 1 March 2017.
-   *
-   * @param inFull the date from which the act applies in full, with the clause that sets it
-   * @param partial whether a part of the act applies on the day already
-   * @param languages the languages in which the reader gets a text on the day
-   */
-  record DeferredApplicationModel(DateModel inFull, boolean partial, List<String> languages) {}
-
-  /**
-   * Where the text is not the law on a day, as the API shows it.
-   *
-   * @param kind {@code pending}: a pending amendment, the act applies, but the text does not
-   *     include it. {@code prospective}: a prospective amendment, the text includes it, but the act
-   *     does not apply yet. {@code undated}: an undated pending amendment, the act is in force, the
-   *     text does not include it, and Cellar does not give the day from which it applies.
-   * @param act the CELEX number of the act
-   * @param cited how the Official Journal cites it. For example, {@code 2017/815}.
-   * @param appliesFrom the day from which the act applies. Null if Cellar does not give it.
-   * @param includedIn the first version that includes its text: {@code oj}, or its date. Null for a
-   *     pending amendment that no version includes yet.
-   * @param places the provisions where the text differs. Empty where the whole amending act
-   *     differs.
-   * @param languages the languages whose text differs
-   */
-  record DivergenceModel(
-      String kind,
-      String act,
-      String cited,
-      @Nullable LocalDate appliesFrom,
-      @Nullable String includedIn,
-      List<PlaceModel> places,
-      List<String> languages) {}
-
-  /**
-   * A provision where the text is not the law, as the API shows it.
-   *
-   * @param location where, in Cellar's codes, as in {@code amendments}. For example, {@code AN PO
-   *     4.1.3.3}.
-   * @param name the provision, as a page cites it. For example, {@code point 4.1.3.3}.
-   */
-  record PlaceModel(String location, String name) {}
-
-  /**
-   * What other acts did to the provisions of an act, as the API shows it.
-   *
-   * @param amendments each amendment, as Cellar annotates it
-   * @param dates the own dates of each amending act, by its CELEX number
-   */
-  record AmendmentsModel(List<AmendmentModel> amendments, Map<String, List<DateModel>> dates) {}
-
-  /**
-   * An amendment of a provision, as the API shows it.
-   *
-   * @param act the CELEX number of the amending act
-   * @param cited how the Official Journal cites the amending act. For example, {@code 2019/103}.
-   * @param location where it acts, as Cellar codes it. For example, {@code AN PO 8.1.2.3 PTA (c)}.
-   * @param role what it did: replacement, addition, deletion, repeal, amendment, extension,
-   *     suspension, deferral or other
-   * @param from the day it applies from, as Cellar has it, or null where Cellar has none
-   * @param until the day it ends, for an amendment that lapses, or null for the others
-   * @param languages the only languages it changes, by the EU's codes, for an act that corrects
-   *     only some language versions. Empty if it changes all of them.
-   */
-  record AmendmentModel(
-      String act,
-      String cited,
-      String location,
-      String role,
-      @Nullable LocalDate from,
-      @Nullable LocalDate until,
-      List<String> languages) {
-
-    static AmendmentModel of(Act amended, Amendment amendment) {
-      return new AmendmentModel(
-          amendment.act().celex(),
-          amended.cited(amendment.act()),
-          amendment.location().code(),
-          code(amendment.role().name()),
-          amendment.from(),
-          amendment.until(),
-          amendment.languages().stream().map(language -> code(language.code())).sorted().toList());
-    }
-  }
-
-  /**
-   * One of an act's own dates, as the API shows it.
-   *
-   * @param date the day, or null where Cellar has a placeholder or an impossible date
-   * @param kind {@code entry_into_force}, {@code application} or {@code taking_effect}
-   * @param forPart whether it is for a part of the act only
-   * @param clause what sets it, as Cellar writes it. For example, {@code DATPUB +20 V ART 2}.
-   */
-  record DateModel(@Nullable LocalDate date, String kind, boolean forPart, String clause) {
-
-    static DateModel of(ActDate date) {
-      return new DateModel(
-          date.date(), code(date.kind().name()), date.forPart(), date.clause().text());
-    }
-  }
-
-  /** Returns a code as the API writes it, in lower case. For example, {@code eng}. */
-  static String code(String code) {
-    return code.toLowerCase(Locale.ROOT);
   }
 }

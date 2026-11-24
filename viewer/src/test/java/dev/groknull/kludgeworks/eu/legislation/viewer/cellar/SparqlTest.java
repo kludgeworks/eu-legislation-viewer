@@ -12,6 +12,7 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
@@ -30,6 +31,18 @@ class SparqlTest {
             Sparql.fill(
                 "SELECT * WHERE { ?w ?p \"{{celex}}\" }", Map.of("celex", "32015R1998\"} #\\")))
         .isEqualTo("SELECT * WHERE { ?w ?p \"32015R1998\\\"} #\\\\\" }");
+  }
+
+  @Test
+  void fillsValuesInAsTypedStringLiteralsForAValuesBlock() {
+    assertThat(
+            Sparql.fillStrings(
+                "VALUES ?subject { {{celexes}} }",
+                Map.of("celexes", List.of("32023D0201", "x\" } ?s ?p ?o"))))
+        .isEqualTo(
+            "VALUES ?subject { \"32023D0201\"^^xsd:string \"x\\\" } ?s ?p ?o\"^^xsd:string }");
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> Sparql.fillStrings("{{celexes}}", Map.of("celexes", List.of())));
   }
 
   @Test

@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -35,9 +36,10 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>The acts that get a line are the act itself while its application is deferred ({@link
- * Act#deferredApplicationOn}), first, and the acts of {@link Act#divergences}: a prospective
- * amendment (an amending act whose text is in the text before it applies), and a pending amendment
- * (an amending act with changes that the text does not show). The tense obeys the day.
+ * LawOnADay#deferredApplicationOn}), first, and the acts of {@link LawOnADay#divergences}: a
+ * prospective amendment (an amending act whose text is in the text before it applies), and a
+ * pending amendment (an amending act with changes that the text does not show). The tense obeys the
+ * day.
  *
  * @param day the day, in words
  * @param lines the first lines, three at most
@@ -69,9 +71,10 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
       Act act, LocalDate asked, Language language, LocalDate today, Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var all = new ArrayList<Line>();
-    act.deferredApplicationOn(asked, language)
+    LawOnADay.of(act)
+        .deferredApplicationOn(asked, language)
         .ifPresent(deferred -> all.add(deferred(act, deferred, asked, today)));
-    act.divergences(asked, language, tags).stream()
+    LawOnADay.of(act).divergences(asked, language, tags).stream()
         .map(each -> line(act, each, eli, asked, language, today))
         .forEach(all::add);
     var shown = Math.min(all.size(), SHOWN);
@@ -185,7 +188,8 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
    */
   private static String setBy(Act act, Divergence undated) {
     var clause =
-        act.applying(undated.act(), Set.of())
+        act.dates()
+            .applying(undated.act(), Set.of())
             .map(applying -> Wording.clause(applying.dates(), undated.act()))
             .orElse("");
     return clause.isEmpty()

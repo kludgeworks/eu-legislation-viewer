@@ -2,8 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
@@ -104,8 +106,10 @@ public record MastheadView(
           return occurrence == null ? page.href() : page.href(occurrence);
         },
         each -> {
-          var inFrom = act.versionOn(fromDay, each).filter(v -> v.languages().contains(each));
-          var inTo = act.versionOn(toDay, each).filter(v -> v.languages().contains(each));
+          var inFrom =
+              LawOnADay.of(act).versionOn(fromDay, each).filter(v -> v.languages().contains(each));
+          var inTo =
+              LawOnADay.of(act).versionOn(toDay, each).filter(v -> v.languages().contains(each));
           if (inFrom.isPresent() && inTo.isPresent()) {
             return null;
           }
@@ -172,7 +176,8 @@ public record MastheadView(
             .toList(),
         history,
         historyLabel(act, language),
-        act.amendingActs(language).isEmpty() && act.corrigendaOf(act.id(), language).isEmpty(),
+        ActHistory.of(act).amendingActs(language).isEmpty()
+            && ActHistory.of(act).corrigendaOf(act.id(), language).isEmpty(),
         read,
         false,
         Links.notices(eli, language));
@@ -184,8 +189,8 @@ public record MastheadView(
    * that the history shows.
    */
   private static String historyLabel(Act act, Language language) {
-    var amending = act.amendingActs(language).size();
-    var corrigenda = act.corrigendaOf(act.id(), language).size();
+    var amending = ActHistory.of(act).amendingActs(language).size();
+    var corrigenda = ActHistory.of(act).corrigendaOf(act.id(), language).size();
     return "Amending acts ("
         + amending
         + ")"

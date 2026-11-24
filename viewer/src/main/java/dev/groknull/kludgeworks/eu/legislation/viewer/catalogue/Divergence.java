@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -75,7 +77,7 @@ public record Divergence(
    */
   public List<Occurrence> in(List<String> eIds) {
     var found = new LinkedHashMap<String, Occurrence>();
-    var text = Location.occurrences(eIds);
+    var text = TextOccurrences.of(eIds);
     for (var place : places) {
       var exact = place.location().in(text);
       var occurrences = exact.or(() -> place.location().around(text));
@@ -132,6 +134,8 @@ public record Divergence(
    *       it to the day before the act applies.
    * </ul>
    */
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "pending-amendment")
+  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "prospective-amendment")
   public boolean on(LocalDate day) {
     return switch (kind) {
       case PENDING ->

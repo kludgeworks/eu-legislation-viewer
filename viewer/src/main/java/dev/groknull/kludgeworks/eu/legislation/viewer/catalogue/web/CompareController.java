@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
@@ -46,7 +47,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&amp;to=2017-06-03}.
  * Each end can be any day. The page shows the two days as the reader gave them. The text for a day
- * is the act's rule, {@link Act#textOn}.
+ * is the act's rule, {@link LawOnADay#textOn}.
  *
  * <p>With {@code occurrence}, the page is limited to one provision: the wording of the provision on
  * each of the two days, and the steps between them. The history of a provision on Read links there.
@@ -55,9 +56,10 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * <ul>
  *   <li>From is after To.
- *   <li>A day is missing. A missing To is the first day of the version that applies today. A
- *       missing From is the first day of the version before the version of To.
+ *   <li>A day is missing.
  * </ul>
+ *
+ * <p>The two days are the timeline's, {@link Timeline#twoDays}.
  *
  * <p>The page is the catalogue's: the head of the act, the two days, the amending acts between
  * them, and the states of its preparation. What the comparison found is the comparison module's.
@@ -224,10 +226,9 @@ class CompareController {
    *
    * <ul>
    *   <li>the act
-   *   <li>the two days asked for. From is always the earlier day. Without days, they are the first
-   *       days of the version that applies today and of the version before it. A day before the
-   *       first version of the act has no text: the page then says that the act didn't exist yet,
-   *       or wasn't in force yet.
+   *   <li>the two days asked for, {@link Timeline#twoDays}. A day before the first version of the
+   *       act has no text: the page then says that the act didn't exist yet, or wasn't in force
+   *       yet.
    *   <li>the comparison module's view, as the reader gave it, or null
    *   <li>the provision that the page is limited to, or null
    * </ul>
@@ -256,27 +257,9 @@ class CompareController {
       language = Requests.language(code);
       act = acts.act(eli);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
-      // Without dates, use the version that applies today. If none applies today, use the latest.
-      var later =
-          to != null
-              ? to
-              : timeline.applicableOn(Timeline.today(clock)).orElseGet(timeline::latest).date();
-      var earlier = from;
-      if (earlier == null) {
-        // Without From, From is the first day of the version before To's. If To's version is the
-        // first, From is To, and To is the first day of the version after it.
-        var version = timeline.applicableOn(later);
-        var predecessor = version.flatMap(timeline::predecessor);
-        if (version.isEmpty() || predecessor.isPresent()) {
-          earlier = predecessor.map(Version::date).orElse(later);
-        } else {
-          earlier = later;
-          later = timeline.successor(version.get()).map(Version::date).orElse(later);
-        }
-      }
-      var swapped = earlier.isAfter(later);
-      fromDay = swapped ? later : earlier;
-      toDay = swapped ? earlier : later;
+      var days = timeline.twoDays(from, to, Timeline.today(clock));
+      fromDay = days.from();
+      toDay = days.to();
       before = timeline.startsAfter(fromDay);
     }
 
@@ -291,20 +274,17 @@ class CompareController {
       return occurrence == null ? page.href() : page.href(occurrence);
     }
 
-    /** Returns the version whose text shows the law on {@code day}, {@link Act#textOn}. */
+    /** Returns the version whose text shows the law on {@code day}, {@link LawOnADay#textOn}. */
     Version text(LocalDate day, Map<Version, TextTags> tags) {
-      return act.textOn(day, language, tags).orElseThrow(Requests::notFound);
+      return LawOnADay.of(act).textOn(day, language, tags).orElseThrow(Requests::notFound);
     }
 
     /**
-     * Returns the day that a comparison can end on, where From is before the first version: To, or
-     * the first day of the second version if To is before the first version also.
+     * Returns the day that a comparison from the first version can end on, {@link
+     * Timeline#endFromTheFirst}.
      */
     LocalDate afterFirst() {
-      var first = timeline.first();
-      return timeline.startsAfter(toDay)
-          ? timeline.successor(first).map(Version::date).orElseGet(first::date)
-          : toDay;
+      return timeline.endFromTheFirst(toDay);
     }
 
     /**

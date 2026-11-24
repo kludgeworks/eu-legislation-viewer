@@ -6,7 +6,13 @@
 #   - The type of date, from the authority table fd_335. EV is entry into force, MA is application
 #     and PE is taking effect. /PART means that the date applies to part of the act.
 #   - Cellar's comment on the date. For example, "DATPUB +20 V ART 2" means 20 days after
-#     publication, see Article 2. "ET 32020R0910" adds that act, which changed the date.
+#     publication, see Article 2. "ET 32020R0910" names a later act: one that amended the date, or
+#     one that set a day that the clause left to it.
+#   - ?amending: the acts that the comment names and that amend the act of the date, by their CELEX
+#     numbers, with a space between them. Cellar's comment is the same for an act that amended the
+#     date and for an act that set it. An act that amends the act of the date amended the date: for
+#     example, 2020/910 replaces "31 December 2020" in Article 2 of 2019/103. A named act that does
+#     not amend it set the day: Decision 2023/201 sets the day from which 2018/1862 applies.
 # - Each date of transposition of a directive. It has no type. Its comment starts with a code from
 #   the authority table fd_361: APPLICATION is the day from which the Member States apply their
 #   measures, and ADOPTION is the day by which they adopt them.
@@ -22,7 +28,8 @@ PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT DISTINCT ?subject ?property ?date ?type ?comment
+SELECT ?subject ?property ?date ?type ?comment
+  (GROUP_CONCAT(DISTINCT ?amender; separator=" ") AS ?amending)
 WHERE {
   {
     ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
@@ -44,5 +51,11 @@ WHERE {
     OPTIONAL { ?axiom annotation:type_of_date ?type }
     OPTIONAL { ?axiom annotation:comment_on_date ?comment }
   }
+  OPTIONAL {
+    ?amenderWork cdm:resource_legal_amends_resource_legal ?work ;
+         cdm:resource_legal_id_celex ?amender .
+    FILTER (CONTAINS(STR(?comment), STR(?amender)))
+  }
 }
+GROUP BY ?subject ?property ?date ?type ?comment
 ORDER BY ?subject ?date

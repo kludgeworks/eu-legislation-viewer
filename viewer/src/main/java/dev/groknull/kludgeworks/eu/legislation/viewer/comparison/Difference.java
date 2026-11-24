@@ -139,6 +139,26 @@ public record Difference(
   }
 
   /**
+   * Returns whether its occurrence holds the occurrence {@code eId} in the text: {@code eId} is in
+   * it by its eId, or its shown occurrence has an occurrence of that eId. An article is numbered
+   * across the act, so its eId does not start with its chapter's: Article 22b of 767/2008 is
+   * art_22b in the chapter cpt_IIIa. An annex inserted whole keeps only its opening ({@link
+   * #kept}), but the eIds of its occurrences start with its own.
+   */
+  public boolean holds(String eId) {
+    return eId.startsWith(this.eId + "/") || has(shown, eId);
+  }
+
+  private static boolean has(Element element, String eId) {
+    for (var child : element.children()) {
+      if (eId.equals(child.attribute("eId")) || has(child, eId)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /**
    * Returns the size of its occurrence: from {@code whole} if the store keeps the occurrence apart,
    * or counted in {@code shown}.
    */

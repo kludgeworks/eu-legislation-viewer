@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
 import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
@@ -33,23 +34,26 @@ public sealed interface Applicability {
   ActIdentifier act();
 
   /**
-   * An amending act's change applies as the act's dates tell ({@link Act#applying}).
+   * An amending act's change applies as the act's dates tell ({@link ActDates#applying}).
    *
    * @param act the amending act
    * @param applying when it applies: from one day, from more than one day, from a day that a clause
    *     sets, or in force from a day
    * @param clause the provisions of the act that set its dates. Empty where Cellar does not say.
-   * @param amendedBy the acts that changed those provisions since: they moved the date
+   * @param amendedBy the later acts that amended those provisions: they amended the date
+   * @param setBy the later acts that set the day that those provisions left to them
    */
   record Applies(
       ActIdentifier act,
       Applying applying,
       List<ActDate.Provision> clause,
-      List<ActIdentifier> amendedBy)
+      List<ActIdentifier> amendedBy,
+      List<ActIdentifier> setBy)
       implements Applicability {
     public Applies {
       clause = List.copyOf(clause);
       amendedBy = List.copyOf(amendedBy);
+      setBy = List.copyOf(setBy);
     }
   }
 
@@ -95,29 +99,36 @@ public sealed interface Applicability {
   }
 
   /**
-   * Returns when {@code amending} applies, from its dates in {@code act} ({@link Act#applying}).
-   * {@code days} are the days that may choose the date among the act's dates. If none chooses one,
-   * the act applies from more than one day. Returns empty where Cellar has no dates of the act, or
-   * where the act applies from a day that no clause that Cellar names sets.
+   * Returns when {@code amending} applies, from its dates in {@code act} ({@link
+   * ActDates#applying}). {@code days} are the days that may choose the date among the act's dates.
+   * If none chooses one, the act applies from more than one day. Returns empty where Cellar has no
+   * dates of the act, or where the act applies from a day that no clause that Cellar names sets.
    */
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "date-from-the-act")
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "no-day-known")
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "entry-into-force-only")
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {
-    return act.applying(amending, days)
+    return act.dates()
+        .applying(amending, days)
         .flatMap(
             applying -> {
               var provisions = new LinkedHashSet<ActDate.Provision>();
               var amendedBy = new LinkedHashSet<ActIdentifier>();
+              var setBy = new LinkedHashSet<ActIdentifier>();
               for (var date : applying.dates()) {
                 provisions.addAll(date.clause().provisions());
                 amendedBy.addAll(date.clause().amendedBy());
+                setBy.addAll(date.clause().setBy());
               }
               if (applying instanceof Applying.SetBy && provisions.isEmpty()) {
                 return Optional.empty();
               }
               return Optional.of(
-                  new Applies(amending, applying, List.copyOf(provisions), List.copyOf(amendedBy)));
+                  new Applies(
+                      amending,
+                      applying,
+                      List.copyOf(provisions),
+                      List.copyOf(amendedBy),
+                      List.copyOf(setBy)));
             });
   }
 
@@ -139,7 +150,7 @@ public sealed interface Applicability {
 
   /** Returns the days of {@code amending}'s dates after {@code from}, up to {@code to}. */
   static Set<LocalDate> daysBetween(Act act, ActIdentifier amending, Version from, Version to) {
-    return act.datesOf(amending).stream()
+    return act.dates().datesOf(amending).stream()
         .map(ActDate::date)
         .filter(Objects::nonNull)
         .filter(day -> day.isAfter(from.date()) && !day.isAfter(to.date()))
@@ -157,7 +168,8 @@ public sealed interface Applicability {
   static Corrects corrects(
       Act act, Inclusions included, Version from, Version to, ActIdentifier corrigendum) {
     var corrected = corrigendum.corrected().orElseThrow();
-    var dated = act.datesOf(corrected).stream().filter(date -> date.date() != null).toList();
+    var dated =
+        act.dates().datesOf(corrected).stream().filter(date -> date.date() != null).toList();
     var applying =
         dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
     var start =

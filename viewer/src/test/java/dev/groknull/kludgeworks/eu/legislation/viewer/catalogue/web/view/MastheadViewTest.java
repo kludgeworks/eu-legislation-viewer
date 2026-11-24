@@ -4,6 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
@@ -116,7 +118,7 @@ class MastheadViewTest {
   void labelsTheHistoryWithTheNumberOfAmendingActs() {
     var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
     assertThat(head.historyLabel())
-        .isEqualTo("Amending acts (%s)", AVSEC.amendingActs(Language.ENG).size());
+        .isEqualTo("Amending acts (%s)", ActHistory.of(AVSEC).amendingActs(Language.ENG).size());
     assertThat(head.historyEmpty()).isFalse();
   }
 
@@ -132,8 +134,7 @@ class MastheadViewTest {
             AVSEC.inForce(),
             AVSEC.endOfValidity(),
             new Timeline(List.of(AVSEC.timeline().first())),
-            AVSEC.dates(),
-            Map.of(),
+            new ActDates(AVSEC.id(), AVSEC.dates().own(), Map.of()),
             List.of(),
             Map.of());
     var head = MastheadView.reading(alone, alone.timeline().first(), ASKED, Language.ENG);
@@ -165,8 +166,7 @@ class MastheadViewTest {
                         List.of(corrigendum),
                         first.languages(),
                         Map.of()))),
-            AVSEC.dates(),
-            Map.of(),
+            new ActDates(AVSEC.id(), AVSEC.dates().own(), Map.of()),
             List.of(),
             Map.of(corrigendum, new Publication(null, Map.of(Language.ENG, "Corrigendum"), null)));
     var head = MastheadView.reading(corrected, first, ASKED, Language.ENG);

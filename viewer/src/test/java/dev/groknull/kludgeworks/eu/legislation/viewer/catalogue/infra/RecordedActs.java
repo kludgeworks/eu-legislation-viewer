@@ -6,14 +6,17 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.io.IOException;
 import java.io.UncheckedIOException;
+import java.util.List;
 import java.util.Objects;
 
 /**
  * Gives acts as Cellar has them, from its recorded answers. The answers are in {@code
  * viewer/src/test/resources/acts}, and the {@code SOURCE} file there lists them. The acts are
  * 2015/1998 (32015R1998), 185/2010 (32010R0185), Directive 76/207 (31976L0207), 917/2004
- * (32004R0917), Directive 2013/36 (32013L0036) and 767/2008 (32008R0767). This class reads them as
- * {@link CellarActs} reads Cellar's live answers.
+ * (32004R0917), Directive 2013/36 (32013L0036), 767/2008 (32008R0767), 2018/1862 (32018R1862) and
+ * 2016/679 (32016R0679). This class reads them as {@link CellarActs} reads Cellar's live answers,
+ * with the answer to {@code publications-of.rq} where an act sets a day of a date (2018/1862 and
+ * 767/2008).
  */
 public final class RecordedActs {
   private RecordedActs() {}
@@ -28,8 +31,20 @@ public final class RecordedActs {
             answer("dates-" + id.celex() + ".json"),
             answer("titles-" + id.celex() + ".json"),
             answer("amendments-" + id.celex() + ".json"),
-            answer("publications-" + id.celex() + ".json"))
+            answer("publications-" + id.celex() + ".json"),
+            setting(id))
         .orElseThrow();
+  }
+
+  /**
+   * The recorded answer to {@code publications-of.rq} for the acts that set a day of the dates of
+   * {@code id}, or no rows where no act sets one.
+   */
+  private static SparqlResult setting(ActIdentifier id) {
+    var name = "publications-of-" + id.celex() + ".json";
+    return RecordedActs.class.getResource("/acts/" + name) == null
+        ? new SparqlResult(List.of(), List.of())
+        : answer(name);
   }
 
   /** The recorded answer {@code name}. */

@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
@@ -56,6 +57,7 @@ class SidenoteViewTest {
                 LocalDate.of(2026, 3, 22),
                 List.of()),
             List.of(article("2")),
+            List.of(),
             List.of());
 
     var sidenote = sidenote(step(Modification.REPLACED, A2026_449), applies);
@@ -69,7 +71,9 @@ class SidenoteViewTest {
     assertThat(line.clause())
         .isEqualTo(
             new Link(
-                "Article 2 of 2026/449", "https://eur-lex.europa.eu/eli/reg_impl/2026/449/oj/eng"));
+                "Article 2 of 2026/449",
+                "https://eur-lex.europa.eu/eli/reg_impl/2026/449/oj/eng",
+                null));
     assertThat(line.after()).isEqualTo(" says which part from when");
   }
 
@@ -124,15 +128,55 @@ class SidenoteViewTest {
             "2019/1583 · OJ L 246, 26.9.2019 · applies from 31 December 2021, its entry into"
                 + " force");
     assertThat(line.amendedBy())
+        .extracting(Link::label, Link::href)
         .containsExactly(
-            new Link("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
+            tuple("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
+    assertThat(line.amendedBy().getFirst().title())
+        .startsWith("2020/910: Commission Implementing Regulation (EU) 2020/910");
+  }
+
+  @Test
+  void namesTheActThatSetTheDayThatTheClauseLeftToItWithItsCitationOnTheHover() {
+    var sis = RecordedActs.act(new ActIdentifier("32018R1862"));
+    var amending = new ActIdentifier("32022R1190");
+    var decision = new ActIdentifier("32026D2284");
+    var setBy =
+        new Applicability.Applies(
+            amending,
+            new Applying.From(LocalDate.of(2026, 10, 15), false, List.of()),
+            List.of(article("2")),
+            List.of(),
+            List.of(decision));
+
+    var line =
+        SidenoteView.of(
+                sis,
+                new Attributed(
+                    difference(Kind.CHANGED),
+                    Attribution.inSteps(List.of(step(Modification.REPLACED, amending))),
+                    List.of(setBy),
+                    null,
+                    null),
+                null,
+                TODAY,
+                Language.ENG)
+            .dates()
+            .getFirst();
+
+    assertThat(line.amendedBy()).isEmpty();
+    var set = line.setBy().getFirst();
+    assertThat(set.label()).isEqualTo("2026/2284");
+    assertThat(set.title())
+        .startsWith("2026/2284: Commission Implementing Decision (EU) 2026/2284 of 15")
+        .contains("setting the date from which Member States")
+        .contains(" · OJ L");
   }
 
   @Test
   void pointsToTheClauseThatSetsTheDay() {
     var setBy =
         new Applicability.Applies(
-            A2019_413, new Applying.SetBy(List.of()), List.of(article("3")), List.of());
+            A2019_413, new Applying.SetBy(List.of()), List.of(article("3")), List.of(), List.of());
 
     var line = sidenote(step(Modification.REPLACED, A2019_413), setBy).dates().getFirst();
 
@@ -300,7 +344,11 @@ class SidenoteViewTest {
   private static Applicability from(
       ActIdentifier act, LocalDate day, boolean entryIntoForce, List<ActIdentifier> amendedBy) {
     return new Applicability.Applies(
-        act, new Applying.From(day, entryIntoForce, List.of()), List.of(article("2")), amendedBy);
+        act,
+        new Applying.From(day, entryIntoForce, List.of()),
+        List.of(article("2")),
+        amendedBy,
+        List.of());
   }
 
   private static ActDate.Provision article(String number) {

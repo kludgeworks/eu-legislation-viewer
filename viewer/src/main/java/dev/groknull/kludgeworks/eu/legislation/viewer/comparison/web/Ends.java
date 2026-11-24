@@ -53,18 +53,13 @@ final class Ends {
     timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
     preparation = texts.preparation(act, language);
     included = act.inclusions(language, texts.tags(preparation));
-    this.from = timeline.startingOn(from).orElseThrow(Requests::notFound);
-    this.to = timeline.startingOn(to).orElseThrow(Requests::notFound);
-    if (this.from.date().isAfter(this.to.date())) {
-      throw Requests.notFound();
-    }
+    var versions = timeline.versionsStartingOn(from, to).orElseThrow(Requests::notFound);
+    this.from = versions.from();
+    this.to = versions.to();
     this.only =
         only == null
             ? null
-            : included.between(this.from, this.to).stream()
-                .filter(each -> each.celex().equals(only))
-                .findFirst()
-                .orElseThrow(Requests::notFound);
+            : included.oneBetween(this.from, this.to, only).orElseThrow(Requests::notFound);
   }
 
   /** Returns the versions of the act in the language, as {@link Attributions} takes them. */

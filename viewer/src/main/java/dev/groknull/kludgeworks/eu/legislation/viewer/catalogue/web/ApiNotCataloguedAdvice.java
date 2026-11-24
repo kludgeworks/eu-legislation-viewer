@@ -17,8 +17,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice(
     assignableTypes = {
       ApiActController.class,
+      ApiAmendmentsController.class,
+      ApiLawController.class,
       ApiPreparationController.class,
-      ApiTextController.class
+      ApiTextController.class,
+      ApiVersionController.class
     })
 class ApiNotCataloguedAdvice {
 

@@ -206,7 +206,11 @@ public record FailureView(
     facts.add(
         new Fact(
             "Text",
-            celex + ", from " + Dates.inWords(version.date()) + " · " + Wording.made(version)));
+            celex
+                + ", from "
+                + Dates.inWords(version.date())
+                + " · "
+                + VersionWording.made(version)));
     if (failure == Failure.NO_FORMEX) {
       var others = version.languages().stream().filter(each -> each != language).toList();
       if (!others.isEmpty()) {

@@ -113,7 +113,6 @@ class ReadingViewTest {
                         AVSEC.timeline().versions().getFirst().languages(),
                         Map.of()))),
             AVSEC.dates(),
-            AVSEC.amendingDates(),
             AVSEC.amendments(),
             AVSEC.publications());
     var unlisted = actWithUnlisted.timeline().versions().getLast();

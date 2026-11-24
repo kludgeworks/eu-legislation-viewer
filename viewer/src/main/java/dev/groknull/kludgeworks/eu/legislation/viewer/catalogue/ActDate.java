@@ -12,9 +12,11 @@ import org.jspecify.annotations.Nullable;
  * applies or takes effect, wholly or in part. For a directive, it can also be the date from which
  * the Member States apply it. It comes with the clause that sets it.
  *
- * <p>Cellar keeps these dates up to date when a later act moves one. For example, a part of
- * 2019/103 applies from 31 December 2021, by its Article 2 as amended by 2020/910. The
- * per-provision dates of Cellar are not always up to date in this way.
+ * <p>Cellar keeps these dates up to date when a later act amends one, or sets a day that a clause
+ * leaves to it. For example, a part of 2019/103 applies from 31 December 2021, by its Article 2 as
+ * amended by 2020/910. And 2018/1862 applies from 7 March 2023, by its Article 79(5), on the day
+ * that Decision 2023/201 set. The per-provision dates of Cellar are not always up to date in this
+ * way.
  *
  * @param date the day, or null where Cellar has a placeholder or an impossible date. The clause
  *     still tells where the act sets the date.
@@ -44,13 +46,19 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean forPart, Clau
 
   /**
    * What sets a date, as far as Cellar's comment on it says. It holds the day that the date counts
-   * from, how many days after that day, the provisions that set it, and the acts that changed it
-   * since.
+   * from, how many days after that day, the provisions that set it, and the later acts that the
+   * comment names: the acts that amended the date, and the acts that set a day that the provisions
+   * left to them. Cellar's comment names both in the same way. An act that amends the act of the
+   * date amended the date. Another act set the day.
    *
    * @param from the day it counts from, or null when the clause names the date itself
    * @param days how many days after {@code from}, or null for the day itself
    * @param provisions the act's provisions that set it, for example Article 2
-   * @param amendedBy later acts that changed it. For example, 2020/910 changed a date of 2019/103.
+   * @param amendedBy later acts that amended the provisions that set it. For example, 2020/910
+   *     replaces "31 December 2020" with "31 December 2021" in Article 2 of 2019/103.
+   * @param setBy later acts that set the day that the provisions left to them. For example,
+   *     Decision 2023/201 sets 7 March 2023, the day from which 2018/1862 applies by its Article
+   *     79(5).
    * @param text Cellar's comment as it is, for example {@code DATPUB +20 V ART 2}. It also holds
    *     what the other fields do not hold.
    */
@@ -60,10 +68,12 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean forPart, Clau
       @Nullable Integer days,
       List<Provision> provisions,
       List<ActIdentifier> amendedBy,
+      List<ActIdentifier> setBy,
       String text) {
     public Clause {
       provisions = List.copyOf(provisions);
       amendedBy = List.copyOf(amendedBy);
+      setBy = List.copyOf(setBy);
       if (days != null && from == null) {
         throw new IllegalArgumentException("Days after nothing: " + text);
       }
