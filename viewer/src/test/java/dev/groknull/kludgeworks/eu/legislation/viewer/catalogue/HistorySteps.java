@@ -106,7 +106,7 @@ public class HistorySteps {
 
   @Then("the text of {day} does not have {place}, {place} or {place}, and they are in {place}")
   public void heldBy(LocalDate day, Place first, Place second, Place third, Place holder) {
-    var occurrences = Location.occurrences(text(day).eIds());
+    var occurrences = TextOccurrences.of(text(day).eIds());
     var held = Location.of(holder).in(occurrences).orElseThrow().eIds();
     for (var place : List.of(first, second, third)) {
       var location = Location.of(place);
@@ -157,7 +157,7 @@ public class HistorySteps {
     var found = ActHistory.occurrences(changes.getFirst(), later, earlier);
     var expected =
         Location.of(occurrence)
-            .in(Location.occurrences(later))
+            .in(TextOccurrences.of(later))
             .orElseThrow(
                 () ->
                     new AssertionError("No " + occurrence.words() + " in the later text: " + found))
@@ -215,7 +215,7 @@ public class HistorySteps {
 
   @Then("in the text of {day}, the data names no act for {place} and {place}")
   public void unattributed(LocalDate day, Place first, Place second) {
-    var occurrences = Location.occurrences(text(day).eIds());
+    var occurrences = TextOccurrences.of(text(day).eIds());
     var expected =
         List.of(first, second).stream()
             .map(place -> Location.of(place).in(occurrences).orElseThrow().eIds().getFirst())
@@ -233,11 +233,7 @@ public class HistorySteps {
   @Then("the first text with {place} is the text of {day}")
   public void firstWith(Place place, LocalDate day) {
     var eId =
-        Location.of(place)
-            .in(Location.occurrences(text(day).eIds()))
-            .orElseThrow()
-            .eIds()
-            .getFirst();
+        Location.of(place).in(TextOccurrences.of(text(day).eIds())).orElseThrow().eIds().getFirst();
     assertThat(
             ProvisionHistory.firstWith(the.act(), eId, Language.ENG, the.texts())
                 .map(Version::date))
@@ -307,7 +303,7 @@ public class HistorySteps {
     var text = text(day);
     var eId =
         Location.of(place)
-            .in(Location.occurrences(text.eIds()))
+            .in(TextOccurrences.of(text.eIds()))
             .orElseThrow(() -> new AssertionError("No " + place.words() + " in the text of " + day))
             .eIds()
             .getFirst();

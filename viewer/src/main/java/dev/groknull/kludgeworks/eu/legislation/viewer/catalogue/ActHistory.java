@@ -221,7 +221,7 @@ public final class ActHistory {
    */
   @BusinessRule(group = RuleGroup.THE_HISTORY_OF_AN_ACT, name = "the-changes-of-an-amending-act")
   public static List<Amendment> inTextOrder(List<Amendment> changes, List<String> eIds) {
-    var occurrences = Location.occurrences(eIds);
+    var occurrences = TextOccurrences.of(eIds);
     return changes.stream()
         .sorted(
             Comparator.comparing(

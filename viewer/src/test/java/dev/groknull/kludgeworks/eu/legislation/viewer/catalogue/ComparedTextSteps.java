@@ -66,7 +66,7 @@ public class ComparedTextSteps {
 
   /** Returns the eId of the occurrence that {@code place} names in the text of {@code version}. */
   private String eId(LocalDate version, Place place) {
-    var found = Location.of(place).in(Location.occurrences(tags(version).eIds()));
+    var found = Location.of(place).in(TextOccurrences.of(tags(version).eIds()));
     assertThat(found).as("%s in the text of %s", place.words(), version).isPresent();
     assertThat(found.get().eIds()).as("%s in the text of %s", place.words(), version).hasSize(1);
     return found.get().eIds().getFirst();

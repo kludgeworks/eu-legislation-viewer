@@ -265,10 +265,12 @@ not apply yet".
 | divergence | Where the text of the day is not the law on the day: a pending amendment, an undated pending amendment or a prospective amendment (`Divergence`). |
 | pending amendment | An amending act that applies on the day, but the text of the day does not include it. EUR-Lex calls these "pending amendments". If the data does not give the day from which it applies, it is an undated pending amendment. |
 | prospective amendment | A change that the text of the day includes, but that does not apply on the day yet. |
+| place date | The day that Cellar gives for a changed place: the day from which the change applies there. |
+| version date | The first day of the first version whose text newly tags a changed place with the amending act (`VersionDate`). A place date before it makes a pending amendment, and a place date after it a prospective amendment. |
 | timeline | The versions of an act, each from its first day until the first day of the next one (`Timeline`). The pages do not show it by this name. |
 | publication | How the Official Journal published an act: its ELI, its titles and its reference (`Publication`). |
 | resource type | The kind of an act, from the EU's resource-type authority table: `REG_IMPL`, `DIR`, `DEC` (`ResourceType`). |
-| location | Cellar's code of a place, for example `AN PO 8.1.2.3 PTA (c)` (`Location`). The shared term "place" names it in words. |
+| location | Cellar's code of a place, for example `AN PO 8.1.2.3 PTA (c)` (`Location`). The shared term "place" names it in words. The viewer finds it among the occurrences of a text (`TextOccurrences`). |
 | citation | A citation of the preamble ("Having regard to …"), as the JPG names it. The word names nothing else. |
 | cite | How the Official Journal names an act: "2017/815", "Dir. 2002/73/EC" (`Act.cited`, the API's `cited`). |
 

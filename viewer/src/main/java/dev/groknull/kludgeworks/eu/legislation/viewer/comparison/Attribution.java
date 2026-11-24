@@ -8,7 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextOccurrences;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import java.util.ArrayList;
@@ -276,8 +276,8 @@ public record Attribution(
    * Returns the differences of {@code attributed} in the places {@code places} that {@code act}
    * made, for a place that has no difference of its own. Cellar can name as the place of a change a
    * chapter of an annex that the text keeps flat: its points and its attachments stand beside it,
-   * not in it ({@link Location#holds}). The changes of the act are then the differences in the
-   * points and the attachments that the chapter holds, where the act made them.
+   * not in it ({@link TextOccurrences#holds}). The changes of the act are then the differences in
+   * the points and the attachments that the chapter holds, where the act made them.
    */
   @BusinessRule(group = RuleGroup.THE_CHANGES_OF_ONE_ACT, name = "chapter-the-annex-keeps-flat")
   public static List<Difference> madeIn(
@@ -285,7 +285,8 @@ public record Attribution(
     return attributed.stream()
         .filter(
             each ->
-                places.stream().anyMatch(place -> Location.holds(place, each.difference().eId())))
+                places.stream()
+                    .anyMatch(place -> TextOccurrences.holds(place, each.difference().eId())))
         .filter(each -> each.attribution().acts().contains(act))
         .map(Attributed::difference)
         .toList();

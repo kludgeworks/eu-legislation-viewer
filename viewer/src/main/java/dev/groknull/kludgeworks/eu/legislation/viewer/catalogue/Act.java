@@ -207,8 +207,8 @@ public record Act(
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
-    var before = Location.occurrences(earlier);
-    var after = Location.occurrences(later);
+    var before = TextOccurrences.of(earlier);
+    var after = TextOccurrences.of(later);
     var byOccurrence = new LinkedHashMap<String, List<Amendment>>();
     var unplaced = 0;
     for (var amendment : amendments) {

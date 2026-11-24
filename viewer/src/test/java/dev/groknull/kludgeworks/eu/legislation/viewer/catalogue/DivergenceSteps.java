@@ -49,7 +49,7 @@ public class DivergenceSteps {
             .filter(each -> each.location().place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("%s at %s", act.cited(), place.words()).hasSize(1);
-    assertThat(changes.getFirst().location().in(Location.occurrences(text.eIds())))
+    assertThat(changes.getFirst().location().in(TextOccurrences.of(text.eIds())))
         .as("%s in the text of %s", place.words(), day)
         .isEmpty();
   }

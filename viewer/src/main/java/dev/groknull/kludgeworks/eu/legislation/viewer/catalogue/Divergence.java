@@ -77,7 +77,7 @@ public record Divergence(
    */
   public List<Occurrence> in(List<String> eIds) {
     var found = new LinkedHashMap<String, Occurrence>();
-    var text = Location.occurrences(eIds);
+    var text = TextOccurrences.of(eIds);
     for (var place : places) {
       var exact = place.location().in(text);
       var occurrences = exact.or(() -> place.location().around(text));

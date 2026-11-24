@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Found;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Occurrences;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
@@ -48,7 +47,7 @@ public class PlaceSteps {
           + " {place}")
   public void range(LocalDate day, ActIdentifier act, Place place, Place first, Place last) {
     var eIds = tags(day).eIds();
-    var text = Location.occurrences(eIds);
+    var text = TextOccurrences.of(eIds);
     var from = eIds.indexOf(eId(text, first));
     var to = eIds.indexOf(eId(text, last));
     assertThat(each(act, place, location -> location.in(text)))
@@ -95,7 +94,7 @@ public class PlaceSteps {
   }
 
   /** Returns the eId of the occurrence that {@code place} names in {@code text}. */
-  private static String eId(Occurrences text, Place place) {
+  private static String eId(TextOccurrences text, Place place) {
     var found = Location.of(place).in(text);
     assertThat(found).as("%s in the text", place.words()).isPresent();
     assertThat(found.get().eIds()).as("%s in the text", place.words()).hasSize(1);
@@ -103,8 +102,8 @@ public class PlaceSteps {
   }
 
   /** Returns the occurrences of the built text of the version that starts on {@code day}. */
-  private Occurrences text(LocalDate day) {
-    return Location.occurrences(tags(day).eIds());
+  private TextOccurrences text(LocalDate day) {
+    return TextOccurrences.of(tags(day).eIds());
   }
 
   /** Returns the tags of the built text of the version that starts on {@code day}. */

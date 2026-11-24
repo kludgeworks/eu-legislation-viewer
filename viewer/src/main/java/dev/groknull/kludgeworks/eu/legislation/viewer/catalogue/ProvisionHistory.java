@@ -65,7 +65,7 @@ public record ProvisionHistory(
   public static Map<String, List<Amendment>> changedOccurrences(
       Act act, List<String> eIds, Language language) {
     var byOccurrence = new LinkedHashMap<String, List<Amendment>>();
-    var occurrences = Location.occurrences(eIds);
+    var occurrences = TextOccurrences.of(eIds);
     for (var amendment : act.amendments()) {
       if (!amendment.changes(language)) {
         continue;
@@ -111,7 +111,7 @@ public record ProvisionHistory(
                 Comparator.nullsFirst(Comparator.<LocalDate>naturalOrder()))
             .thenComparing(ActIdentifier::celex)
             .reversed();
-    var occurrences = Location.occurrences(text.eIds());
+    var occurrences = TextOccurrences.of(text.eIds());
     var changes =
         act.amendments().stream()
             .filter(amendment -> amendment.changes(language))
