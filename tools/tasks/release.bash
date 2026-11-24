@@ -17,15 +17,24 @@ cd "$root"
 prepare=$tasks/release/prepare.bash
 workflow=release.yml
 
-require_clean_main() {
-	[[ $(git branch --show-current) = main ]] || die "release from main, not $(git branch --show-current)"
-	[[ -z $(git status --porcelain) ]] || die "the working tree has changes: commit or stash them first"
-	git fetch --quiet --tags origin
+# The workflow releases origin's main, whatever is checked out here. Commits on main here that
+# origin doesn't have are not in it: a warning, so that no one takes them to be.
+warn_unpushed() {
+	local unpushed
+	unpushed=$(git rev-list --count origin/main..main 2>/dev/null || echo 0)
+	((unpushed == 0)) ||
+		warn "main here has commits that origin's doesn't: they won't be in the release" commits "$unpushed" push "git push origin main"
 }
 
-# The workflow releases origin's main: what is here must be that, so that it is what was seen
-require_origin_main() {
-	git diff --quiet HEAD origin/main || die "main differs from origin/main: pull or push it first"
+# What the workflow would release: origin's main prepared in a worktree of its own, then removed.
+# The checkout here, its branch and its changes, play no part.
+dry_run() {
+	local scratch
+	scratch=$(mktemp -d "${TMPDIR:-/tmp}/release-dry-run.XXXXXX")
+	git worktree add --quiet --detach "$scratch/main" origin/main
+	# shellcheck disable=SC2064 # $scratch now, not when the trap runs
+	trap "git worktree remove --force '$scratch/main'; rm -rf '$scratch'" EXIT
+	REPO_ROOT="$scratch/main" usage_dry_run=true "$prepare"
 }
 
 # origin's GitHub repository (owner/name)
@@ -62,12 +71,12 @@ new_run() {
 
 main() {
 	local repo before run
-	require_clean_main
-	require_origin_main
+	git fetch --quiet --tags origin
 	if [[ ${usage_dry_run:-false} = true ]]; then
-		REPO_ROOT=$root usage_dry_run=true "$prepare"
+		dry_run
 		return 0
 	fi
+	warn_unpushed
 	repo=$(github_repo)
 	before=$(dispatched_runs "$repo")
 	gh workflow run "$workflow" --repo "$repo" --ref main

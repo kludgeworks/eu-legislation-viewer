@@ -72,33 +72,47 @@ stub_dispatch_without_run() {
 	sed -i.bak 's/^"workflow run").*/"workflow run") ;;/' "$BATS_TEST_TMPDIR/bin/gh"
 }
 
-@test "shows the next release in a dry run, without starting the workflow" {
+@test "shows what the workflow would release from origin's main in a dry run, starting nothing" {
+	write README.md "pushed\n"
+	commit
+	git -C "$repo" push --quiet origin main
+	write LOCAL.md "not pushed\n"
+	git -C "$repo" add LOCAL.md
+	git -C "$repo" commit --quiet -m "local only"
+	write DIRTY.md "not committed\n"
+
 	run env REPO_ROOT="$repo" RELEASE_MONTH=2026.11 usage_dry_run=true PATH="$PATH" \
 		bash -c "source '$project/tools/tasks/release.bash'; main"
 
 	[ "$status" -eq 0 ]
 	[[ "$output" = *"Next release version=v2026.11.0"* ]] || false
-	run ! grep -q "workflow run" "$BATS_TEST_TMPDIR/gh.calls"
+	[[ "$output" = *"## What's Changed"* ]] || false
+	[[ "$output" != *"local only"* ]] || false
+	[ ! -f "$BATS_TEST_TMPDIR/gh.calls" ]
+	[ "$(git -C "$repo" worktree list | grep -c .)" = 1 ]
+	[ -f "$repo/DIRTY.md" ]
 }
 
-@test "does not release a main that differs from origin's" {
-	write README.md "changed\n"
+@test "warns of commits on main that origin doesn't have, and releases origin's main" {
+	write README.md "not pushed\n"
 	commit
 
 	run main
 
-	[ "$status" -ne 0 ]
-	[[ "$output" = *"main differs from origin/main: pull or push it first"* ]] || false
-	[ ! -f "$BATS_TEST_TMPDIR/gh.calls" ]
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"main here has commits that origin's doesn't: they won't be in the release commits=1"* ]] || false
+	grep -qx "workflow run release.yml --repo kludgeworks/viewer --ref main" "$BATS_TEST_TMPDIR/gh.calls"
 }
 
-@test "does not release with changes in the working tree" {
-	write README.md "not committed\n"
+@test "releases origin's main whatever is checked out here, without a warning" {
+	write DIRTY.md "not committed\n"
+	git -C "$repo" checkout --quiet -b other
 
 	run main
 
-	[ "$status" -ne 0 ]
-	[[ "$output" = *"the working tree has changes"* ]] || false
+	[ "$status" -eq 0 ]
+	[[ "$output" != *"won't be in the release"* ]] || false
+	grep -qx "workflow run release.yml --repo kludgeworks/viewer --ref main" "$BATS_TEST_TMPDIR/gh.calls"
 }
 
 @test "finds origin's GitHub repository, and refuses an origin that is not on GitHub" {
@@ -111,13 +125,4 @@ stub_dispatch_without_run() {
 	run github_repo
 	[ "$status" -ne 0 ]
 	[[ "$output" = *"origin is not on GitHub: /srv/git/viewer.git"* ]] || false
-}
-
-@test "does not release from a branch other than main" {
-	git -C "$repo" checkout --quiet -b other
-
-	run main
-
-	[ "$status" -ne 0 ]
-	[[ "$output" = *"release from main, not other"* ]] || false
 }
