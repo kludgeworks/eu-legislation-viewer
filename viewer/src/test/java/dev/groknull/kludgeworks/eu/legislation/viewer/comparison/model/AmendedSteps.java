@@ -7,9 +7,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PlaceWords;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
@@ -47,7 +47,7 @@ public class AmendedSteps {
   public void after(ActIdentifier act, Place place, LocalDate day) {
     var at =
         ActHistory.of(comparing.act()).changesBy(act, Language.ENG).stream()
-            .filter(each -> each.location().place().words().equals(place.words()))
+            .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(at).as("%s at %s", act.cited(), place.words()).isNotEmpty();
     assertThat(at).allSatisfy(each -> assertThat(each.from()).isEqualTo(day));
@@ -57,8 +57,7 @@ public class AmendedSteps {
   @Then("Cellar's amendment of {act} at {place} counts")
   public void counts(ActIdentifier act, Place place) {
     assertThat(counting())
-        .anyMatch(each ->
-            each.act().equals(act) && each.location().place().words().equals(place.words()));
+        .anyMatch(each -> each.act().equals(act) && each.place().words().equals(place.words()));
   }
 
   @Then("Cellar's repeals of {act} at {place} and {place} are found on the earlier text")
@@ -78,7 +77,7 @@ public class AmendedSteps {
     var later = new ArrayList<String>();
     eIds(comparing.later(), later);
     var expected =
-        Location.of(occurrence)
+        PlaceWords.location(occurrence)
             .in(later)
             .orElseThrow(() -> new AssertionError("The later text has no " + occurrence.words()))
             .eIds();
@@ -105,7 +104,7 @@ public class AmendedSteps {
                 .anyMatch(amendment ->
                     amendment.act().equals(act)
                         && amendment.role().removes()
-                        && amendment.location().place().words().equals(place.words())))
+                        && amendment.place().words().equals(place.words())))
         .map(java.util.Map.Entry::getKey)
         .toList();
   }

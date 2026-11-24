@@ -31,7 +31,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: Other acts changed the occurrences in an appendix
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
-      When the reader reads the difference at the changed Appendix 5-A
+      When the reader reads the difference at the changed appendix 5-A
       Then it shows only its own content, and the occurrences in it that differ are differences of their own
 
   Rule: full-stop-after-a-number-is-no-change · A full stop after a number is no change
@@ -48,7 +48,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A point whose only change is its spaces
       Given the texts of Decision 2022/2319 of 16 December 2024 and of 26 March 2025
-      Then Annex I, point 1 does not differ
+      Then annex I point 1 does not differ
 
   Rule: form-of-apostrophes-and-quotes · The form of apostrophes, quotation marks and form blanks is no change
     The Publications Office chooses the form of an apostrophe or a quotation mark when it sets a
@@ -61,11 +61,11 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A point whose only change is the form of its quotation marks
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      Then Article 3(1)(60) does not differ
+      Then article 3 paragraph 1 point (60) does not differ
 
     Example: A word whose only change is its apostrophe has no edit
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
-      When the reader reads the difference at the changed point 6.4.1.2(c)
+      When the reader reads the difference at the changed point 6.4.1.2 point (c)
       Then it does not edit "applicant’s"
 
     Example: A quotation mark pairs only with a quotation mark of its own form
@@ -75,12 +75,12 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A form blank that only the earlier text prints
       Given the texts of 692/2008 of 4 February 2015 and of 1 January 2016
-      Then Annex I, point 2.8 does not differ
+      Then annex I point 2.8 does not differ
 
     @known-bug @ISS-273
     Example: A form blank at the end of a table cell
       Given the texts of 692/2008 of 4 February 2015 and of 1 January 2016
-      Then Annex I, point 1.13.3 does not differ
+      Then annex I point 1.13.3 does not differ
 
   Rule: kept-deletion-is-not-words · A kept deletion is not words of the law
     The words that a consolidated text keeps of a deletion, marked as deleted, are not words of the
@@ -88,7 +88,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A word deleted, which the later text keeps as a kept deletion
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      When the reader reads the difference at the changed Article 18(e)
+      When the reader reads the difference at the changed article 18 point (e)
       Then it deletes "or"
 
   Rule: footnotes-belong-to-their-occurrence · Footnotes belong to their occurrence
@@ -103,7 +103,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A footnote that has another number
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
-      Then point 6.8.1.1(b) does not differ, though its footnote has another number
+      Then point 6.8.1.1 point (b) does not differ, though its footnote has another number
       And its footnote is footnote 5 in the earlier text and footnote 7 in the later text
 
     @known-bug @ISS-271
@@ -125,7 +125,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: The words of an inserted paragraph
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      When the reader reads the difference at the inserted Article 100(3)
+      When the reader reads the difference at the inserted article 100 paragraph 3
       Then it inserts 84 words
 
   Rule: what-the-edits-show · What the edits show
@@ -140,7 +140,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: An inserted paragraph
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      When the reader reads the difference at the inserted Article 100(3)
+      When the reader reads the difference at the inserted article 100 paragraph 3
       Then all its words are inserted
 
     Example: A deleted point
@@ -161,7 +161,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: An inserted phrase stays whole
       Given the comparison of the texts of 2015/1998 of 31 December 2021 and of 1 January 2026
-      When the reader reads the difference at the changed Appendix 3-B, indent 9
+      When the reader reads the difference at the changed appendix 3-B indent 9
       Then it inserts "Republic of Serbia, in regard to Belgrade Nikola Tesla Airport"
 
   Rule: formula-is-one-piece · A formula is one piece
@@ -170,7 +170,7 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A formula inserted in an article
       Given the texts of Decision 2005/7 as adopted and of 15 October 2013
-      When the reader reads the difference at the changed Article 2
+      When the reader reads the difference at the changed article 2
       Then it inserts a formula whole
 
   Rule: deleted-text-stands-where-it-was · Deleted text stands where it was
@@ -189,5 +189,5 @@ Feature: What counts as a difference, and how its edits show
 
     Example: A deleted point before the occurrence inserted in its place
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      When the reader reads the difference at the deleted Article 23(1)(e)
-      Then the next difference is inserted, in Article 23(1)
+      When the reader reads the difference at the deleted article 23 paragraph 1 point (e)
+      Then the next difference is inserted, in article 23 paragraph 1

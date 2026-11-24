@@ -5,13 +5,16 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
@@ -20,9 +23,10 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Reads the amendments of an act from the answer to {@code amendments.rq}. For each amended
- * location it reads the role, the days and the languages that the amendment is limited to. The role
- * is a code from the authority table {@code fd_375}. It keeps a role it does not know as {@code
- * OTHER} and logs a warning. A placeholder for a day becomes no day.
+ * location it reads its place in words, as EUR-Lex names it ({@link Place#named}), the role, the
+ * days and the languages that the amendment is limited to. The role is a code from the authority
+ * table {@code fd_375}. It keeps a role it does not know as {@code OTHER} and logs a warning. A
+ * placeholder for a day becomes no day.
  */
 final class CellarAmendments {
   private static final Logger LOG = LoggerFactory.getLogger(CellarAmendments.class);
@@ -56,6 +60,7 @@ final class CellarAmendments {
           new Amendment(
               new ActIdentifier(subject),
               Location.parse(row.get("location")),
+              Place.named(row.get("location"), labels(row.find("labels").orElse(""))),
               role.orElse(Role.OTHER),
               row.find("from").map(CellarDates::day).orElse(null),
               row.find("until").map(CellarDates::day).orElse(null),
@@ -65,6 +70,22 @@ final class CellarAmendments {
       LOG.warn("{}: amendments of a role this doesn't know, kept as OTHER: {}", base, unknown);
     }
     return amendments;
+  }
+
+  /**
+   * Reads the English words of the codes of a location, as {@code amendments.rq} gives them: the
+   * URI of each code's concept and its words, separated by a space, for each code, separated by
+   * {@code |}. For example, {@code http://…/fd_370/AN annex|http://…/fd_370/PO point}.
+   */
+  private static Map<String, String> labels(String labels) {
+    var words = new HashMap<String, String>();
+    for (var label : labels.split("\\|")) {
+      var space = label.indexOf(' ');
+      if (space > 0) {
+        words.put(label.substring(0, space), label.substring(space + 1));
+      }
+    }
+    return words;
   }
 
   /**

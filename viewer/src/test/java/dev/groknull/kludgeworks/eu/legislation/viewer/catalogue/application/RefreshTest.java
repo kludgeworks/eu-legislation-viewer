@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendmentsUpdate
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LanguageAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionRepublished;
@@ -221,6 +222,7 @@ class RefreshTest {
                 new Amendment(
                     new ActIdentifier("32026R1972"),
                     new Location("AR 3"),
+                    new Place("article 3"),
                     Amendment.Role.AMENDMENT,
                     LocalDate.of(2026, 12, 2),
                     null,

@@ -28,16 +28,16 @@ Feature: The text and the law on a day
     Example: A place that the text tags before Cellar's day
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 12 October 2025 for the change of 2017/2226 at Article 10(1)(da)
+      Then Cellar gives 12 October 2025 for the change of 2017/2226 at article 10 paragraph 1 point (da)
       And 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
-      And its divergence is at Article 10(1)(da)
+      And its divergence is at article 10 paragraph 1 point (da)
 
     Example: A provision that an act deletes, which the text keeps until the deletion applies, and tags only around it
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 15 October 2026 for the change of 2022/1190 at Article 48(9)
+      Then Cellar gives 15 October 2026 for the change of 2022/1190 at article 48 paragraph 9
       And 2022/1190 is a prospective amendment from the version of 1 August 2022, until it applies on 15 October 2026
-      And its divergence is at Article 48(9)
+      And its divergence is at article 48 paragraph 9
 
   Rule: a-place-date-the-act-can-apply-from · A place date counts only if the act can apply from it
     A place date counts if the act can apply from it: it is one of the dates of the act. It does
@@ -47,14 +47,14 @@ Feature: The text and the law on a day
     Example: A place date that is only the entry into force
       Given the act 2015/1998 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 11 January 2016 for the change of 2015/2426 at Appendix 4-B
+      Then Cellar gives 11 January 2016 for the change of 2015/2426 at annex chapter 4 APP 4-B
       And a provision of 2015/2426 cannot apply from 11 January 2016
       And 2015/2426 applies from 29 February 2016
       And 2015/2426 makes no divergence
 
     Example: A place date that is not a date of the act
       Given the act 2015/1998 as Cellar has it
-      Then Cellar gives 31 December 2020 for the change of 2019/1583 at point 11.1.2
+      Then Cellar gives 31 December 2020 for the change of 2019/1583 at annex point 11.1.2
       And a provision of 2019/1583 cannot apply from 31 December 2020
 
   Rule: the-text-agrees-with-the-law · When the text agrees with the law
@@ -64,16 +64,16 @@ Feature: The text and the law on a day
     Example: A place date that is the version date
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 5 April 2010 for the change of 810/2009 at Article 12(2)
+      Then Cellar gives 5 April 2010 for the change of 810/2009 at article 12.2
       And 810/2009 makes no divergence
 
     Example: Two places of an act that apply from the day of the version that tags them
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 29 December 2017 for the change of 2017/2226 at Article 17a
+      Then Cellar gives 29 December 2017 for the change of 2017/2226 at chapter III article 17a
       And 2017/2226 is a prospective amendment from the version of 29 December 2017, until it applies on 12 October 2025
-      But its divergence is not at Article 17a
-      And its divergence is not at Article 26(3a)
+      But its divergence is not at chapter III article 17a
+      And its divergence is not at article 26 paragraph 3a
       And its divergence is at 14 places
 
   Rule: pending-amendment · A pending amendment
@@ -83,9 +83,9 @@ Feature: The text and the law on a day
     Example: An act that applies before the first version that includes it
       Given the act 2015/1998 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 1 June 2017 for the change of 2017/815 at point 4.1.3.1
+      Then Cellar gives 1 June 2017 for the change of 2017/815 at annex point 4.1.3.1
       And 2017/815 is a pending amendment from 1 June 2017, until the version of 7 June 2017 includes it
-      And its divergence is at point 4.1.3.1
+      And its divergence is at annex point 4.1.3.1
       And its divergence is at 57 places
       And on 31 May 2017, 2017/815 does not make the text and the law differ
       And on 1 June 2017, 2017/815 makes the text and the law differ
@@ -99,10 +99,10 @@ Feature: The text and the law on a day
     Example: A point that an act inserts
       Given the act 2015/1998 as Cellar has it
       And its texts are built where the converter has a sample
-      Then Cellar gives 1 June 2017 for the change of 2017/815 at point 4.1.3.4
-      And the text of 29 February 2016 does not have the place of the change of 2017/815 at point 4.1.3.4
+      Then Cellar gives 1 June 2017 for the change of 2017/815 at annex point 4.1.3.4
+      And the text of 29 February 2016 does not have the place of the change of 2017/815 at annex point 4.1.3.4
       And 2017/815 is a pending amendment from 1 June 2017, until the version of 7 June 2017 includes it
-      And its divergence is at point 4.1.3.4
+      And its divergence is at annex point 4.1.3.4
 
   Rule: prospective-amendment · A prospective amendment
     A place date after the version date makes a prospective amendment. The text and the law differ
@@ -157,9 +157,9 @@ Feature: The text and the law on a day
       And its texts are built where the converter has a sample
       Then the date of application of 2021/1133 is a placeholder
       And 2021/1133 is an undated pending amendment from 2 August 2021
-      And its divergence is at Article 50a
-      And its divergence is at Article 18a
-      And its divergence is at Article 44(1)(g)
+      And its divergence is at article 50a
+      And its divergence is at article 18a
+      And its divergence is at article 44 paragraph 1 point (g)
       And its divergence is at 3 places
 
     Example: A text that is not built

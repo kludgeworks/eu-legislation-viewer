@@ -99,7 +99,7 @@ public record ProvisionView(
                 .in(text.eIds())
                 .filter(found -> !found.within() && found.eIds().equals(List.of(occurrence)))
                 .isPresent())
-        .map(change -> change.location().place().words())
+        .map(change -> change.place().words())
         .filter(each -> !each.isEmpty())
         .findFirst()
         .orElse(null);
@@ -142,7 +142,7 @@ public record ProvisionView(
       if (!kept.test(change.act())) {
         continue;
       }
-      var place = change.location().place().words();
+      var place = change.place().words();
       var page = href(eli, change.act(), on, language, amending);
       lines.add(
           new Line(

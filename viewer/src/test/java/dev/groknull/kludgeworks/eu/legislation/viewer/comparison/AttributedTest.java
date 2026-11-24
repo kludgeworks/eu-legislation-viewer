@@ -371,6 +371,7 @@ class AttributedTest {
         new Amendment(
             new ActIdentifier("32019R0413"),
             replaced.location(),
+            replaced.place(),
             replaced.role(),
             null,
             null,

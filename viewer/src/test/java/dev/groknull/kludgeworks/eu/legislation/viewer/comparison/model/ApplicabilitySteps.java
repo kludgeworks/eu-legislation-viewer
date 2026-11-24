@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -39,7 +40,13 @@ public class ApplicabilitySteps {
   public void cellarDay(ActIdentifier amending, LocalDate day) {
     amendments.add(
         new Amendment(
-            amending, Location.parse("AN PO 1"), Amendment.Role.REPLACEMENT, day, null, Set.of()));
+            amending,
+            Location.parse("AN PO 1"),
+            new Place("annex point 1"),
+            Amendment.Role.REPLACEMENT,
+            day,
+            null,
+            Set.of()));
   }
 
   @When("the reader asks from when the change of {act} applies")

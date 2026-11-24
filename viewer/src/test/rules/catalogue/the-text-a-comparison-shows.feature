@@ -45,23 +45,23 @@ Feature: The text a comparison shows
       And its texts are built where the converter has a sample
       Then for 1 August 2022, a comparison shows the text of 1 August 2022
       And on 1 August 2022, the text of 1 August 2022 has a change that does not apply yet at 18 occurrences
-      And on 1 August 2022, in the text of 1 August 2022, Article 3, point 8 has a change of 2022/1190 that does not apply yet
+      And on 1 August 2022, in the text of 1 August 2022, article 3 point 8 has a change of 2022/1190 that does not apply yet
 
     Example: An occurrence in such an occurrence, and an occurrence that holds one
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
-      Then on 1 August 2022, in the text of 1 August 2022, Article 48(8)(a) has a change of 2022/1190 that does not apply yet
-      And on 1 August 2022, in the text of 1 August 2022, Article 3 has a change of 2022/1190 that does not apply yet
+      Then on 1 August 2022, in the text of 1 August 2022, article 48 paragraph 8 point (a) has a change of 2022/1190 that does not apply yet
+      And on 1 August 2022, in the text of 1 August 2022, article 3 has a change of 2022/1190 that does not apply yet
 
     Example: A change of the same act that applies already
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
-      Then on 1 August 2022, the change of 2022/1190 at Article 79(7) applies
-      And on 1 August 2022, in the text of 1 August 2022, Article 79(7) has no change that does not apply yet
+      Then on 1 August 2022, the change of 2022/1190 at article 79 paragraph 7 applies
+      And on 1 August 2022, in the text of 1 August 2022, article 79 paragraph 7 has no change that does not apply yet
 
     Example: The day from which the changes apply
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
       Then on 1 January 2018, the text of 29 December 2017 has a change that does not apply yet at 14 occurrences
-      And on 1 January 2018, in the text of 29 December 2017, Article 10(1)(da) has a change of 2017/2226 that does not apply yet
+      And on 1 January 2018, in the text of 29 December 2017, article 10 paragraph 1 point (da) has a change of 2017/2226 that does not apply yet
       And on 12 October 2025, the text of 29 December 2017 has no change that does not apply yet

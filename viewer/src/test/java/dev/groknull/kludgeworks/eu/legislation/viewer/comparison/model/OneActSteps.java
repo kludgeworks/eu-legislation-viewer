@@ -5,7 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PlaceWords;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
@@ -13,7 +14,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -88,7 +88,7 @@ public class OneActSteps {
     var attributed = attributed(found.before(), found.first());
     var later = Occurrences.of(Comparing.text(found.first()));
     var at =
-        Location.of(place)
+        PlaceWords.location(place)
             .in(List.copyOf(later.byEId().keySet()))
             .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
     assertThat(at.eIds()).as(place.words()).hasSize(1);
@@ -123,7 +123,7 @@ public class OneActSteps {
   private String eId(Place place) {
     var later = Occurrences.of(comparing.later());
     var found =
-        Location.of(place)
+        PlaceWords.location(place)
             .in(List.copyOf(later.byEId().keySet()))
             .orElseThrow(() -> new AssertionError("The later text has no " + place.words()));
     assertThat(found.eIds()).as(place.words()).hasSize(1);

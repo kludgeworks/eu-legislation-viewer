@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -104,7 +103,7 @@ public class StateSteps {
   private Amendment change(ActIdentifier act, Place place) {
     var found =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
-            .filter(each -> each.location().place().words().equals(place.words()))
+            .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(found).as("%s at %s", act.cited(), place.words()).hasSize(1);
     return found.getFirst();

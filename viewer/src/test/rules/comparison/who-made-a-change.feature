@@ -11,7 +11,7 @@ Feature: Who made a change, and from when
 
     Example: A tag names an act that the earlier text includes already
       Given the comparison of the texts of 2015/1998 of 31 December 2021 and of 1 January 2026
-      And the difference at the changed Appendix 3-B, indent 8
+      And the difference at the changed appendix 3-B indent 8
       When the reader asks who made it
       Then the steps are
         | text of       | modification | acts      |
@@ -39,17 +39,17 @@ Feature: Who made a change, and from when
 
     Example: An amendment that applies only after the later text
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
-      Then Cellar's amendment of 2021/255 at point 6.6.1.3 does not count: it applies from 1 July 2021
-      And Cellar's amendment of 2021/255 at point 6.1.4 does not count: it applies from 1 March 2022
-      But Cellar's amendment of 2021/255 at point 6.8.5.7 counts
+      Then Cellar's amendment of 2021/255 at annex point 6.6.1.3 does not count: it applies from 1 July 2021
+      And Cellar's amendment of 2021/255 at annex point 6.1.4 does not count: it applies from 1 March 2022
+      But Cellar's amendment of 2021/255 at annex point 6.8.5.7 counts
 
     Example: A repeal is found on the earlier text
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 1 January 2026
-      Then Cellar's repeals of 2017/815 at point 6.5.5 and point 6.5.6 are found on the earlier text
+      Then Cellar's repeals of 2017/815 at annex point 6.5.5 and annex point 6.5.6 are found on the earlier text
 
     Example: A repeal of a point that the earlier text does not have yet
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 15 March 2021
-      Then Cellar's repeal of 2021/255 at point 6.8.5.5 is found at point 6.8.5.5 of the later text
+      Then Cellar's repeal of 2021/255 at annex point 6.8.5.5 is found at point 6.8.5.5 of the later text
 
   Rule: tags-of-an-occurrence · The tags of an occurrence
     An occurrence's tags are its own, each once and in order. An occurrence without tags takes
@@ -57,7 +57,7 @@ Feature: Who made a change, and from when
 
     Example: A point has a tag of its own
       Given the consolidated version of 2015/1998 of 1 October 2026
-      When the reader asks for the tags of point 8.1.2.3(c)
+      When the reader asks for the tags of point 8.1.2.3 point (c)
       Then the tags are
         | act      | modification | taken from |
         | 2026/449 | replaced     |            |
@@ -72,7 +72,7 @@ Feature: Who made a change, and from when
 
     Example: A point without tags takes the tag of the point that an act replaced whole
       Given the consolidated version of 2015/1998 of 22 March 2026
-      When the reader asks for the tags of point 1.2.2.3(a)
+      When the reader asks for the tags of point 1.2.2.3 point (a)
       Then the tags are
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
@@ -85,21 +85,21 @@ Feature: Who made a change, and from when
 
     Example: The later text keeps the deleted point, marked as deleted by its act
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      And the difference at the deleted Article 67(1)(e)
+      And the difference at the deleted article 67 paragraph 1 point (e)
       Then the tags of the difference are
         | act                 | modification | taken from |
         | Directive 2024/1619 | deleted      |            |
 
     Example: An act replaced the point around it whole
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
-      And the difference at the deleted point 12.4.2.1(d)
+      And the difference at the deleted point 12.4.2.1 point (d)
       Then the tags of the difference are
         | act      | modification | taken from   |
         | 2026/449 | replaced     | point 12.4.2.1 |
 
     Example: Nothing in the later text names the act
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      And the difference at the deleted Article 23(1)(a)
+      And the difference at the deleted article 23 paragraph 1 point (a)
       Then the difference has no tags
 
   Rule: tags-else-cellar · The tags, else Cellar, name the acts
@@ -194,7 +194,7 @@ Feature: Who made a change, and from when
 
     Example: A point takes the amendment of the point around it
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 16 February 2020
-      And the difference at the inserted point 11.2.3.8(h)
+      And the difference at the inserted point 11.2.3.8 point (h)
       When the reader asks who made it
       Then the steps are
         | text of     | modification | acts     |
@@ -319,7 +319,7 @@ Feature: Who made a change, and from when
 
     Example: A directive that applies in part from the day of the later text
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      And the difference at the inserted Article 3(1)(9a)
+      And the difference at the inserted article 3 paragraph 1 point (9a)
       When the reader asks who made it
       Then the steps are
         | text of         | modification | acts               |

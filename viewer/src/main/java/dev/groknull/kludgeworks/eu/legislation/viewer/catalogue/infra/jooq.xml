@@ -6,7 +6,7 @@
        an ActIdentifier.
      - The kind of a version is Version.Kind.
      - The kind and anchor of an act date are ActDate.Kind and ActDate.Anchor.
-     - The location and role of an amendment are Location and Amendment.Role.
+     - The location, place and role of an amendment are Location, Place and Amendment.Role.
      - Each column of the domain language_code is a Language. The failure of an
        expression or an entry is a Failure.
      - Times are Instants.
@@ -57,6 +57,14 @@
             <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::code</to>
           </lambdaConverter>
           <includeExpression>act_amendment\.cellar_location</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place</userType>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place::words</to>
+          </lambdaConverter>
+          <includeExpression>act_amendment\.place</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role</userType>

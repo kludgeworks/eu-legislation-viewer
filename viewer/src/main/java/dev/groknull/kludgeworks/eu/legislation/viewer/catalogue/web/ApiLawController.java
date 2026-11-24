@@ -135,8 +135,7 @@ class ApiLawController {
               divergence.kind() == Divergence.Kind.UNDATED ? null : divergence.appliesFrom(),
               included == null ? null : ApiActResources.key(included),
               divergence.places().stream()
-                  .map(place ->
-                      new PlaceModel(place.location().code(), place.location().place().words()))
+                  .map(place -> new PlaceModel(place.location().code(), place.place().words()))
                   .distinct()
                   .toList(),
               each.getValue());

@@ -29,11 +29,11 @@ dates-32010R0185.json               dates.rq, celex 32010R0185. Recorded 2026-11
 titles-32015R1998.json              titles.rq, celex 32015R1998. Recorded 2026-11-05. 23 languages,
                                     without Irish, with one title each.
 titles-32010R0185.json              titles.rq, celex 32010R0185. Recorded 2026-11-05, in the same way.
-amendments-32015R1998.json          amendments.rq, celex 32015R1998. Recorded 2026-11-05. 386 amended
+amendments-32015R1998.json          amendments.rq, celex 32015R1998. Recorded 2026-11-24. 386 amended
                                     locations by 19 acts. The amendments by 32019R0413 have no day.
                                     32017R0837, 32022R0463 and 32026R2338 apply to some languages
                                     only.
-amendments-32010R0185.json          amendments.rq, celex 32010R0185. Recorded 2026-11-05, in the same
+amendments-32010R0185.json          amendments.rq, celex 32010R0185. Recorded 2026-11-24, in the same
                                     way.
 publications-32015R1998.json        publications.rq, celex 32015R1998. Recorded 2026-11-16. 713 rows
                                     for the act, for each act and corrigendum that its
@@ -105,3 +105,13 @@ dates-32008R0767.json: the acts that a date's comment names and that do not amen
 date. For 2018/1862: 32023D0201, 32025D0875, 32026D1155, 32026D1156 and 32026D2284. For 767/2008:
 32025D0875, 32025D1544, 32026D1155 and 32026D1156. All are Commission Implementing Decisions. The
 other recorded acts have no such act, so no query.
+
+The amendments-*.json of every act above were recorded again on 2026-11-24, with amendments.rq
+as it then was: each row also has the labels, the English words of each fd_370 code of its
+location, as EUR-Lex shows them. The rows are the same as before.
+
+subdivisions-fd_370.json: Cellar's table of subdivisions, fd_370, with the English words of each
+code (skos:prefLabel), as EUR-Lex shows them in "Subdivision concerned". Recorded 2026-11-24 with
+the query: SELECT ?code ?label WHERE { ?code skos:inScheme <…/authority/fd_370> ; skos:prefLabel
+?label . FILTER(LANG(?label) = "en") } ORDER BY ?code. 33 codes. The rules use it to read the
+places of their steps back into Cellar's codes.

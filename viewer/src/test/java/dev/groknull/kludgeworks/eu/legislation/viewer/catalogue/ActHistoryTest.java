@@ -105,7 +105,8 @@ class ActHistoryTest {
 
   private static Amendment change(
       ActIdentifier act, String place, @Nullable LocalDate from, Set<Language> languages) {
-    return new Amendment(act, new Location(place), Role.REPLACEMENT, from, null, languages);
+    return new Amendment(
+        act, new Location(place), PlaceWords.of(place), Role.REPLACEMENT, from, null, languages);
   }
 
   @Test

@@ -21,6 +21,7 @@ import org.jspecify.annotations.Nullable;
  *
  * @param act the amending act
  * @param location where, in Cellar's codes
+ * @param place where, in words, as EUR-Lex names it
  * @param role what it did
  * @param from the day it applies from, as Cellar has it, or null where Cellar has none
  * @param until the day it ends, for an amendment that lapses, or null for the others
@@ -32,6 +33,7 @@ import org.jspecify.annotations.Nullable;
 public record Amendment(
     ActIdentifier act,
     Location location,
+    Place place,
     Role role,
     @Nullable LocalDate from,
     @Nullable LocalDate until,

@@ -5,11 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PlaceWords;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
@@ -108,7 +108,7 @@ public class Comparing {
   /** Returns the eId of the one occurrence of {@code text} that is {@code place}. */
   static String eId(Place place, Occurrences text) {
     var found =
-        Location.of(place)
+        PlaceWords.location(place)
             .in(List.copyOf(text.byEId().keySet()))
             .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
     assertThat(found.eIds()).as(place.words()).hasSize(1);

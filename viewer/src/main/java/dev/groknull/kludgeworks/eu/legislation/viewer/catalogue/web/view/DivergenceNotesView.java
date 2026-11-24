@@ -84,7 +84,7 @@ public record DivergenceNotesView(List<DivergenceNote> divergenceNotes) {
                 prospective
                     ? past ? "did not apply yet" : "does not apply yet"
                     : occurrence.places().stream()
-                        .map(place -> place.location().place().words())
+                        .map(place -> place.place().words())
                         .distinct()
                         .reduce((one, other) -> one + ", " + other)
                         .orElse(""),

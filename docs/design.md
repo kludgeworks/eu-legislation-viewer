@@ -89,7 +89,7 @@ its module.
 | corrigendum | A correction of an act. It is not an amending act. |
 | version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
 | provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
-| place | A subdivision of an act, named in words as the Joint Practical Guide names it (15.4). For example: "Article 3(1)(a)", "point 8.1.2.3(c)". A subparagraph is not named, and the annex is not named if the act has one annex. Cellar codes a place as a location, and the text knows it by an eId. |
+| place | A subdivision of an act, named in words as EUR-Lex names it in "Subdivision concerned": each code of Cellar's location in the words of Cellar's table of subdivisions (fd_370), and each other word as Cellar writes it (`Place`, the rule a-place-is-named-as-eur-lex-names-it). For example: "article 114 paragraph 1 unnumbered paragraph 1", "annex point 1.3.1.1 point (g)". Cellar codes a place as a location, and the text knows it by an eId. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
 | the law on a day | What applies on that day. It is not always the text of a version (`LawOnADay`). |
 
@@ -319,7 +319,6 @@ and a kept deletion of the public model is the kept deletion of the legal text.
 | public model | The form in which the API gives a text to other programs (`PublicText`). It is small, and it changes only when the meaning of a text changes. |
 | block | A part of the public model that stands on its own lines: running text, an occurrence, a table, a figure, a quotation or a kept deletion (`PublicText.Block`). |
 | quotation | Text that an amending act quotes: the occurrences that it inserts or replaces in another act. It is not law of the act that quotes it (`PublicText.Quotation`). |
-| subdivision of a place | One of the subdivisions that name a place, from the outermost in: the place itself, or a subdivision that holds it. For example, "Article 89" and "paragraph 1" for "Article 89(1)" (`Place.Subdivision`). |
 | occurrence with footnotes | One occurrence and the footnotes that it refers to: what the API gives for one occurrence (`PublicText.OccurrenceWithFootnotes`). The footnotes are at the end of the text, not in the occurrence. |
 | removed | A stored text that no longer exists: a new text replaced it, or Cellar withdrew its version (`TextRemoved`). The word "deleted" is for the law only: a modification, or a kept deletion. |
 

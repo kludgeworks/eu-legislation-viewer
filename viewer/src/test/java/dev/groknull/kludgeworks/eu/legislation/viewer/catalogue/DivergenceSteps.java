@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
@@ -46,7 +45,7 @@ public class DivergenceSteps {
     var text = Objects.requireNonNull(the.texts().get(version(day)), "No built text of " + day);
     var changes =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
-            .filter(each -> each.location().place().words().equals(place.words()))
+            .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("%s at %s", act.cited(), place.words()).hasSize(1);
     assertThat(changes.getFirst().location().in(TextOccurrences.of(text.eIds())))
@@ -184,7 +183,7 @@ public class DivergenceSteps {
 
   private List<String> places() {
     var found = Objects.requireNonNull(divergence, "No divergence: name the divergence first");
-    return found.places().stream().map(each -> each.location().place().words()).toList();
+    return found.places().stream().map(each -> each.place().words()).toList();
   }
 
   /** Returns the one version of the act that starts on {@code day}. */

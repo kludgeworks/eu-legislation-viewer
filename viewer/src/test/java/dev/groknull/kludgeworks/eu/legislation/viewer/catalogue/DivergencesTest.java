@@ -246,6 +246,7 @@ class DivergencesTest {
             new Amendment(
                 AMENDING,
                 new Location("AN PO 1.1"),
+                new Place("annex point 1.1"),
                 Role.REPLACEMENT,
                 placeDate,
                 null,

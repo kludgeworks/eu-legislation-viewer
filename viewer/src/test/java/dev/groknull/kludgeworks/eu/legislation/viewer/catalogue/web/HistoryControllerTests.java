@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PlaceWords;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -174,9 +175,9 @@ class HistoryControllerTests {
             "Applies from 1 August 2022. 1 provision",
             "Does not apply yet. Applies from 15 October 2026. 2 provisions");
     assertThat(page.select("section.sequence.warn .place").eachText())
-        .containsExactly("Article 3, point 8", "Article 20(1)");
+        .containsExactly("article 3 point 8", "article 20 paragraph 1");
     assertThat(page.select("section.sequence:not(.warn) .place").eachText())
-        .containsExactly("Article 79(7)");
+        .containsExactly("article 79 paragraph 7");
   }
 
   @Test
@@ -193,7 +194,8 @@ class HistoryControllerTests {
   @Test
   void limitsThePageOfAnAmendingActToOneGroup() {
     var page = page(AMENDING + "?on=2022-08-01&applies=2022-08-01");
-    assertThat(page.select("ul.changes-list .place").eachText()).containsExactly("Article 79(7)");
+    assertThat(page.select("ul.changes-list .place").eachText())
+        .containsExactly("article 79 paragraph 7");
     assertThat(page.select("a.group[aria-current]").text())
         .startsWith("Applies from 1 August 2022");
   }
@@ -284,7 +286,13 @@ class HistoryControllerTests {
 
   private static Amendment change(String place, LocalDate from) {
     return new Amendment(
-        PHASED, new Location(place), Amendment.Role.REPLACEMENT, from, null, Set.of());
+        PHASED,
+        new Location(place),
+        PlaceWords.of(place),
+        Amendment.Role.REPLACEMENT,
+        from,
+        null,
+        Set.of());
   }
 
   /** Sets today for the pages to 1 June 2021. */

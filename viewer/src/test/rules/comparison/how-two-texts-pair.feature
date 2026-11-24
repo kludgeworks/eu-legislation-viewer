@@ -12,7 +12,7 @@ Feature: How the occurrences of two texts pair
 
     Example: The points of a point that moved
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
-      Then point 6.8.3.6(a) of the later text pairs with point 6.8.3.6(a) of the earlier text
+      Then point 6.8.3.6 point (a) of the later text pairs with point 6.8.3.6 point (a) of the earlier text
 
   Rule: renumbered-occurrence · A renumbered occurrence pairs by its words
     An occurrence that a tag of a renumbering newly names pairs with the earlier occurrence of
@@ -41,11 +41,11 @@ Feature: How the occurrences of two texts pair
 
     Example: An occurrence without a number that moved out of the occurrence before it
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
-      Then Appendix 5-A, indent 1 of the later text pairs with Appendix 5-A, indent 1 of the earlier text
+      Then appendix 5-A indent 1 of the later text pairs with appendix 5-A indent 1 of the earlier text
 
     Example: A point that moved does not pair with a point of another number
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      Then Article 66(2)(c)(iii) of the later text has no pair in the earlier text
+      Then article 66 paragraph 2 point (c) point (iii) of the later text has no pair in the earlier text
 
     Example: A point that moved further, into a list of the point before it
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
@@ -57,7 +57,7 @@ Feature: How the occurrences of two texts pair
 
     Example: Two points could be the one that a point moved to
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
-      Then point 6.8.5.1(a) of the later text has no pair in the earlier text
+      Then point 6.8.5.1 point (a) of the later text has no pair in the earlier text
 
     Example: A point that moved further but says other things
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
@@ -89,5 +89,5 @@ Feature: How the occurrences of two texts pair
 
     Example: Rows of a table replaced
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
-      When the reader looks at the difference at the changed Appendix 6-C4, Part 3
+      When the reader looks at the difference at the changed appendix 6-C4 part 3
       Then its rows show, in order: "inserted, inserted, inserted, deleted, deleted, deleted, deleted"

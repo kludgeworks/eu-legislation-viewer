@@ -9,7 +9,7 @@ Feature: The neighbours of a difference
 
     Example: A neighbour without tags takes the tag of the point that an act replaced whole
       Given the consolidated version of 2015/1998 of 22 March 2026
-      When the reader asks for the tags of the neighbour point 1.2.2.3(a)
+      When the reader asks for the tags of the neighbour point 1.2.2.3 point (a)
       Then the tags are
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
@@ -28,10 +28,10 @@ Feature: The neighbours of a difference
 
     Example: A provision with no tag of an amending act is as in the original act
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021
-      When the reader asks what last changed the neighbour Article 1
+      When the reader asks what last changed the neighbour article 1
       Then it is as in the original act, dated from 1 February 2016
 
     Example: A corrigendum is left out
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
-      When the reader asks what last changed the neighbour Article 162(3)
+      When the reader asks what last changed the neighbour article 162 paragraph 3
       Then it is as in the original act, dated from 17 July 2013

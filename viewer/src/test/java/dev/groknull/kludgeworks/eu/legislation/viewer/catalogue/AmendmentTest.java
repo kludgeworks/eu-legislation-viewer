@@ -48,6 +48,7 @@ class AmendmentTest {
         new Amendment(
             new ActIdentifier("32026R0449"),
             new Location("AR 1"),
+            new Place("article 1"),
             Role.AMENDMENT,
             null,
             null,

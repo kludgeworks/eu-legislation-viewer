@@ -13,6 +13,7 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":cited",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
@@ -382,6 +383,7 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":cited",
         ":controller-testing",
         ":one-act-cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
@@ -500,12 +502,16 @@ java_junit5_test(
 )
 
 # How the rules of each module cite acts: "2015/1998", "Directive 2019/878", "Corrigendum 1 to
-# 2017/815"
+# 2017/815", and how they write a place, in EUR-Lex's words (PlaceWords)
 java_library(
     name = "cited",
     testonly = True,
-    srcs = ["Cited.java"],
+    srcs = [
+        "Cited.java",
+        "PlaceWords.java",
+    ],
     visibility = ["//viewer:__subpackages__"],
+    runtime_deps = ["//viewer/src/test/resources/acts:resources"],
     deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue"],
 )
 

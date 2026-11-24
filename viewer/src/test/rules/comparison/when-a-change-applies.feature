@@ -103,11 +103,11 @@ Feature: From when a change applies
       When the reader reads the comparison on 1 January 2018
 
     Example: A change that the later text includes before it applies
-      Then at the inserted Article 10(1)(da), the difference says that 2017/2226 does not apply yet on 1 January 2018
+      Then at the inserted article 10 paragraph 1 point (da), the difference says that 2017/2226 does not apply yet on 1 January 2018
       And 14 of the 35 differences say that 2017/2226 does not apply yet
 
     Example: A change of the same act that applies already
-      Then at the inserted Article 17a, the difference says that each change applies
+      Then at the inserted article 17a, the difference says that each change applies
 
     Example: A correction by a corrigendum
-      Then at the changed Article 5(1)(a), the difference says that each change applies
+      Then at the changed article 5 paragraph 1 point (a), the difference says that each change applies

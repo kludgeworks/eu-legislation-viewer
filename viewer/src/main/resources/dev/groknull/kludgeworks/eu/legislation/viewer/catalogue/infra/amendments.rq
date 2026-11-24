@@ -3,6 +3,8 @@
 # amendment with one axiom per amended location. Each row has:
 # - the location, in Cellar's codes from the authority table fd_370. For example,
 #   "AR 89 PA 1 ALN 1" or "AN PO 8.1.2.3 PTA (c)".
+# - the labels: the English words of each code of the location, as fd_370 has them and EUR-Lex
+#   shows them. Each is the URI of the code's concept, a space and its words, separated by "|".
 # - the role, from the authority table fd_375. For example, R is replacement, J is addition, DEL is
 #   deletion, A is repeal and P is extended validity.
 # - the day the amendment applies from.
@@ -14,9 +16,11 @@
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?subject ?location ?role ?from ?until ?languages
+       (GROUP_CONCAT(DISTINCT CONCAT(STR(?code), " ", STR(?label)); separator="|") AS ?labels)
 WHERE {
   ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
   ?axiom owl:annotatedSource ?amending ;
@@ -28,5 +32,11 @@ WHERE {
   OPTIONAL { ?axiom annotation:start_of_validity ?from }
   OPTIONAL { ?axiom annotation:end_of_validity ?until }
   OPTIONAL { ?axiom annotation:language_list ?languages }
+  OPTIONAL {
+    ?code skos:inScheme <http://publications.europa.eu/resource/authority/fd_370> ;
+          skos:prefLabel ?label .
+    FILTER(LANG(?label) = "en" && CONTAINS(STR(?location), CONCAT("|", STR(?code), "}")))
+  }
 }
+GROUP BY ?subject ?location ?role ?from ?until ?languages
 ORDER BY ?subject ?from ?location

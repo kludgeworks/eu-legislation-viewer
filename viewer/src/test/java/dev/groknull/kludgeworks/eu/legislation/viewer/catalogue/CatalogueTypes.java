@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.ParameterType;
 import java.time.LocalDate;
@@ -51,11 +50,10 @@ public class CatalogueTypes {
   }
 
   /**
-   * A place, as the pages name it. For example, "Article 79(7)" or "Appendix 8-B, indent 1, point
-   * (b)".
+   * A place, as the pages name it, in EUR-Lex's words. For example, "article 79 paragraph 7" or
+   * "annex appendix 8-B indent 1 point (b)". The words that follow it in the step end it.
    */
-  @ParameterType(
-      "(?:Article|Annex|Appendix|Chapter|point) \\S+(?:, (?:indent|point|paragraph) \\S+)*")
+  @ParameterType("(?:annex|article|appendix|chapter|part|point|section|title)(?: \\S+)*?")
   public Place place(String words) {
     return new Place(words);
   }

@@ -50,19 +50,19 @@ Feature: The history of an act
       And its texts are built where the converter has a sample
       Then the latest text that is built is the text of 1 October 2026
       And 2017/815 has 62 changes, and the first three, in the order of the text, are at:
-        | point 1.0.3              |
-        | point 1.1.3.1            |
-        | point 1.2.6.2, paragraph 2 |
+        | annex point 1.0.3              |
+        | annex point 1.1.3.1            |
+        | annex point 1.2.6.2 paragraph 2 |
 
     Example: Places that the latest text does not have stand where the occurrence that holds them is
       Given the act 2015/1998 as Cellar has it
       And its texts are built where the converter has a sample
       Then in the order of the text, these changes of 2017/815 follow one another:
-        | point 6.4.1.6, paragraph 2 |
-        | point 6.5.4                |
-        | point 6.5.6                |
-        | point 6.5.5                |
-        | point 6.5.1                |
+        | annex point 6.4.1.6 paragraph 2 |
+        | annex point 6.5.4                |
+        | annex point 6.5.6                |
+        | annex point 6.5.5                |
+        | annex point 6.5.1                |
       And the text of 1 October 2026 does not have point 6.5.4, point 6.5.5 or point 6.5.6, and they are in point 6.5
 
     Example: The changes in the language
@@ -73,9 +73,9 @@ Feature: The history of an act
     Example: While no text is built
       Given the act 2015/1998 as Cellar has it
       Then 2017/815 has 62 changes, and the first three, in the order of the data, are at:
-        | point 6.8.3.6 |
-        | point 6.8.3.7 |
-        | point 6.5.1   |
+        | annex point 6.8.3.6 |
+        | annex point 6.8.3.7 |
+        | annex point 6.5.1   |
 
   Rule: the-corrigenda-of-an-act · The corrigenda of an act
     A corrigendum belongs to the act that it corrects: the act itself, or an amending act. A
@@ -124,13 +124,13 @@ Feature: The history of an act
     Example: The later text has the place
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
-      Then the occurrences of the change of 2022/1190 at Article 79(7) are Article 79(7) of the later text
+      Then the occurrences of the change of 2022/1190 at article 79 paragraph 7 are article 79 paragraph 7 of the later text
 
     Example: Neither text has the place itself
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
       Then the changes of 810/2009 show between the texts of 2 September 2008 and of 5 April 2010
-      And the occurrences of the change of 810/2009 at Article 9(4) are Article 9, point 4 of the later text
+      And the occurrences of the change of 810/2009 at article 9.4 are article 9 point 4 of the later text
 
   Rule: the-other-acts-of-its-version · A change that one of two acts made
     The text tags most changes with the act that made them. If the first version with an act
@@ -163,19 +163,19 @@ Feature: The history of an act
       And its texts are built where the converter has a sample
 
     Example: The changes of a provision and of the occurrence that holds it
-      Then in the text of 12 October 2025, the acts that changed Article 6(2) are, newest first, 2024/1356, 2021/1152, 2021/1134, 2019/817
-      And 2021/1134 changed it at Article 6
-      And 2021/1152 changed it at Article 6(2)
+      Then in the text of 12 October 2025, the acts that changed article 6 paragraph 2 are, newest first, 2024/1356, 2021/1152, 2021/1134, 2019/817
+      And 2021/1134 changed it at article 6
+      And 2021/1152 changed it at article 6 paragraph 2
 
     Example: A change in the provision is not in its history
-      Then in the text of 12 October 2025, 2021/1152 did not change Article 6
+      Then in the text of 12 October 2025, 2021/1152 did not change article 6
 
     Example: A change at a part that the text does not number
-      Then in the text of 12 October 2025, the acts that changed Article 9 are, newest first, 810/2009
-      And 810/2009 changed it at Article 9(4)
+      Then in the text of 12 October 2025, the acts that changed article 9 are, newest first, 810/2009
+      And 810/2009 changed it at article 9.4
 
     Example: An act that the text tags the provision with
-      Then in the text of 12 October 2025, the acts that changed Article 10(1)(k) include 2017/2226
+      Then in the text of 12 October 2025, the acts that changed article 10 paragraph 1 point (k) include 2017/2226
       And the text tags it with 2017/2226, which Cellar names no change of there
 
   Rule: a-provision-the-data-names-no-act-for · A provision that the data names no act for
@@ -187,8 +187,8 @@ Feature: The history of an act
     Example: Two articles that the data names no act for
       Given the act 2018/1862 as Cellar has it
       And its texts are built where the converter has a sample
-      Then in the text of 1 August 2022, the data names no act for Article 37a and Article 37b
-      And the first text with Article 37a is the text of 1 August 2022
+      Then in the text of 1 August 2022, the data names no act for article 37a and article 37b
+      And the first text with article 37a is the text of 1 August 2022
 
     Example: Without the text of the act as published
       Given the act 2018/1862 as Cellar has it
@@ -216,7 +216,7 @@ Feature: The history of an act
     Example: The acts between two days that changed one provision
       Given the act 767/2008 as Cellar has it
       And its texts are built where the converter has a sample
-      Then of the amending acts between 29 December 2017 and 12 June 2026, those that changed Article 6(2) in the text of 12 October 2025 are 2024/1356, 2021/1152, 2021/1134, 2019/817
+      Then of the amending acts between 29 December 2017 and 12 June 2026, those that changed article 6 paragraph 2 in the text of 12 October 2025 are 2024/1356, 2021/1152, 2021/1134, 2019/817
 
   Rule: the-days-of-change · The days on which an amending act changes the act
     An act that applies from one day changes the act on that day. An act that applies from more

@@ -21,8 +21,8 @@
  *
  * <ul>
  *   <li>The root package is the API of the module and part of its domain ring. It holds {@link
- *       Content}, the identities, events and outlines of texts, and how a {@link Place} in an act
- *       is named. The {@code model} package holds the JSON form of a text and its outline.
+ *       Content}, and the identities, events and outlines of texts. The {@code model} package holds
+ *       the JSON form of a text and its outline.
  *   <li>The {@code application} package is the application ring. It stores and reads texts, on a
  *       store of texts that it declares.
  *   <li>The {@code infra} package is the infrastructure: the store in Postgres.

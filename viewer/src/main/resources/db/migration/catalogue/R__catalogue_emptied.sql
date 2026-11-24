@@ -1,6 +1,6 @@
 -- SPDX-License-Identifier: MIT
--- Emptied for: the old table preparation_step is dropped, and this script now truncates only the
--- tables that exist (2026-11-23).
+-- Emptied for: an amendment keeps its place in words, as EUR-Lex names it, which only Cellar
+-- gives (2026-11-24).
 -- Flyway runs this again each time its text changes. To empty the catalogue again, change the line
 -- above to say why. Every act is then looked up again, and every text converted again. The
 -- sequences go on, so no identity is used again (the HTML cache keys on the identities of texts).

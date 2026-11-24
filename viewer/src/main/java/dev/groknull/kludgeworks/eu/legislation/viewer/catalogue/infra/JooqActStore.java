@@ -392,13 +392,15 @@ class JooqActStore implements ActStore {
         amendment.role(),
         amendment.from(),
         amendment.until(),
-        amendment.languages().stream().map(Language::code).sorted().toArray(String[]::new));
+        amendment.languages().stream().map(Language::code).sorted().toArray(String[]::new),
+        amendment.place());
   }
 
   private static Amendment amendment(ActAmendmentRecord amendment) {
     return new Amendment(
         amendment.getAmending(),
         amendment.getCellarLocation(),
+        amendment.getPlace(),
         amendment.getKind(),
         amendment.getValidFrom(),
         amendment.getValidUntil(),

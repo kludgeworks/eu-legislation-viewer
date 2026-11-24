@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
@@ -107,9 +106,9 @@ public class HistorySteps {
   @Then("the text of {day} does not have {place}, {place} or {place}, and they are in {place}")
   public void heldBy(LocalDate day, Place first, Place second, Place third, Place holder) {
     var occurrences = TextOccurrences.of(text(day).eIds());
-    var held = Location.of(holder).in(occurrences).orElseThrow().eIds();
+    var held = PlaceWords.location(holder).in(occurrences).orElseThrow().eIds();
     for (var place : List.of(first, second, third)) {
-      var location = Location.of(place);
+      var location = PlaceWords.location(place);
       assertThat(location.in(occurrences)).as(place.words()).isEmpty();
       assertThat(location.around(occurrences).orElseThrow().eIds())
           .as(place.words())
@@ -151,12 +150,12 @@ public class HistorySteps {
             .eIds();
     var changes =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
-            .filter(each -> each.location().place().words().equals(place.words()))
+            .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("%s at %s", act.cited(), place.words()).hasSize(1);
     var found = ActHistory.occurrences(changes.getFirst(), later, earlier);
     var expected =
-        Location.of(occurrence)
+        PlaceWords.location(occurrence)
             .in(TextOccurrences.of(later))
             .orElseThrow(() ->
                 new AssertionError("No " + occurrence.words() + " in the later text: " + found))
@@ -201,8 +200,7 @@ public class HistorySteps {
   @Then("{act} changed it at {place}")
   public void changedAt(ActIdentifier act, Place place) {
     assertThat(history.changes())
-        .anyMatch(each ->
-            each.act().equals(act) && each.location().place().words().equals(place.words()));
+        .anyMatch(each -> each.act().equals(act) && each.place().words().equals(place.words()));
   }
 
   @Then("the text tags it with {act}, which Cellar names no change of there")
@@ -216,7 +214,8 @@ public class HistorySteps {
     var occurrences = TextOccurrences.of(text(day).eIds());
     var expected =
         List.of(first, second).stream()
-            .map(place -> Location.of(place).in(occurrences).orElseThrow().eIds().getFirst())
+            .map(
+                place -> PlaceWords.location(place).in(occurrences).orElseThrow().eIds().getFirst())
             .toList();
     assertThat(ProvisionHistory.unattributed(the.act(), version(day), Language.ENG, the.texts()))
         .containsExactlyElementsOf(expected);
@@ -231,7 +230,11 @@ public class HistorySteps {
   @Then("the first text with {place} is the text of {day}")
   public void firstWith(Place place, LocalDate day) {
     var eId =
-        Location.of(place).in(TextOccurrences.of(text(day).eIds())).orElseThrow().eIds().getFirst();
+        PlaceWords.location(place)
+            .in(TextOccurrences.of(text(day).eIds()))
+            .orElseThrow()
+            .eIds()
+            .getFirst();
     assertThat(
             ProvisionHistory.firstWith(the.act(), eId, Language.ENG, the.texts())
                 .map(Version::date))
@@ -300,7 +303,7 @@ public class HistorySteps {
   private ProvisionHistory historyOf(LocalDate day, Place place) {
     var text = text(day);
     var eId =
-        Location.of(place)
+        PlaceWords.location(place)
             .in(TextOccurrences.of(text.eIds()))
             .orElseThrow(() -> new AssertionError("No " + place.words() + " in the text of " + day))
             .eIds()
@@ -310,7 +313,7 @@ public class HistorySteps {
 
   /** Returns the places of {@code changes}, in their order. */
   private static List<String> words(List<Amendment> changes) {
-    return changes.stream().map(each -> each.location().place().words()).toList();
+    return changes.stream().map(each -> each.place().words()).toList();
   }
 
   /** Returns the tags of the built text of the version that starts on {@code day}. */

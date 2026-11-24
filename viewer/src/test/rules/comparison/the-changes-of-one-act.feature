@@ -43,13 +43,13 @@ Feature: The changes of one act
 
     Example: An act changed an attachment of a chapter
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
-      When the reader asks for the changes of 2019/413 at Chapter 5
+      When the reader asks for the changes of 2019/413 at chapter 5
       Then its changes are 2 differences in Attachment 5-A
 
     @known-bug @ISS-272
     Example: An act changed an attachment of a chapter that Cellar names with its text
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
-      When the reader asks for the changes of 2019/413 at Chapter 3
+      When the reader asks for the changes of 2019/413 at chapter 3
       Then its changes are 1 difference in Attachment 3-B
 
   Rule: differences-at-a-place · The differences at the place of a change
@@ -59,20 +59,20 @@ Feature: The changes of one act
 
     Example: A chapter that an act inserted whole
       Given the comparison of the texts of 2018/1862 of 3 August 2021 and of 1 August 2022
-      When the reader asks for the differences at Chapter IXa
-      Then they are the difference at Chapter IXa
+      When the reader asks for the differences at chapter IXa
+      Then they are the difference at chapter IXa
 
     Example: The differences in a provision
       Given the comparison of the texts of 767/2008 of 29 December 2017 and of 12 October 2025
-      When the reader asks for the differences at Article 6
-      Then they are 2 differences in Article 6
+      When the reader asks for the differences at article 6
+      Then they are 2 differences in article 6
 
     Example: A provision with no difference of its own, in a provision that an act inserted whole
       Given the comparison of the texts of 767/2008 of 29 December 2017 and of 12 October 2025
-      When the reader asks for the differences at Article 45c(3)
-      Then they are the difference at Article 45c
+      When the reader asks for the differences at article 45c paragraph 3
+      Then they are the difference at article 45c
 
     Example: A provision in a chapter that an act inserted whole
       Given the comparison of the texts of 767/2008 of 29 December 2017 and of 12 October 2025
-      When the reader asks for the differences at Article 22b(18)
-      Then they are the difference at Chapter IIIa
+      When the reader asks for the differences at article 22b paragraph 18
+      Then they are the difference at chapter IIIa

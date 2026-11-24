@@ -25,39 +25,39 @@ Feature: The state on a day
 
     Example: Two changes, from the days that Cellar gives for their places
       Given the act 2018/1862 as Cellar has it
-      Then Cellar gives 1 August 2022 for the change of 2022/1190 at Article 79(7)
-      And on 1 August 2022, the change of 2022/1190 at Article 79(7) applies
-      And Cellar gives 15 October 2026 for the change of 2022/1190 at Article 24(1)
-      And on 1 August 2022, the change of 2022/1190 at Article 24(1) is in force and does not apply yet
-      And on 15 October 2026, the change of 2022/1190 at Article 24(1) applies
+      Then Cellar gives 1 August 2022 for the change of 2022/1190 at article 79 paragraph 7
+      And on 1 August 2022, the change of 2022/1190 at article 79 paragraph 7 applies
+      And Cellar gives 15 October 2026 for the change of 2022/1190 at article 24 paragraph 1
+      And on 1 August 2022, the change of 2022/1190 at article 24 paragraph 1 is in force and does not apply yet
+      And on 15 October 2026, the change of 2022/1190 at article 24 paragraph 1 applies
 
     Example: A day for the place that the act cannot apply from
       Given the act Directive 2013/36 as Cellar has it
-      Then Cellar gives 16 January 2023 for the change of Directive 2022/2556 at Article 85(2)
+      Then Cellar gives 16 January 2023 for the change of Directive 2022/2556 at article 85 paragraph 2
       And a provision of Directive 2022/2556 cannot apply from 16 January 2023
-      And on 1 February 2023, the change of Directive 2022/2556 at Article 85(2) is in force and does not apply yet
-      And on 17 January 2025, the change of Directive 2022/2556 at Article 85(2) applies
+      And on 1 February 2023, the change of Directive 2022/2556 at article 85 paragraph 2 is in force and does not apply yet
+      And on 17 January 2025, the change of Directive 2022/2556 at article 85 paragraph 2 applies
 
     Example: A change of an act that applies from more than one day
       Given the act Directive 2013/36 as Cellar has it
       Then a provision of Directive 2019/878 cannot apply from 27 June 2019
-      And Cellar gives 27 June 2019 for the change of Directive 2019/878 at Article 10
-      And on 1 January 2020, the change of Directive 2019/878 at Article 10 is in force and does not apply yet
-      And on 1 January 2021, the change of Directive 2019/878 at Article 10 has a state that is not known
-      And on 1 January 2022, the change of Directive 2019/878 at Article 10 applies
+      And Cellar gives 27 June 2019 for the change of Directive 2019/878 at article 10
+      And on 1 January 2020, the change of Directive 2019/878 at article 10 is in force and does not apply yet
+      And on 1 January 2021, the change of Directive 2019/878 at article 10 has a state that is not known
+      And on 1 January 2022, the change of Directive 2019/878 at article 10 applies
 
     Example: A clause sets one more day that Cellar does not give
       Given the act 767/2008 as Cellar has it
       Then 2021/1134 applies from more than one day: 2 August 2021, 3 August 2022 and 3 August 2023
       And a clause of 2021/1134 sets one more day that Cellar does not give
-      And Cellar gives no day for the change of 2021/1134 at Article 29
-      And on 1 January 2024, the change of 2021/1134 at Article 29 has a state that is not known
+      And Cellar gives no day for the change of 2021/1134 at article 29
+      And on 1 January 2024, the change of 2021/1134 at article 29 has a state that is not known
 
     Example: A clause sets the day by an event
       Given the act 2018/1862 as Cellar has it
       Then the date of application of 2021/1133 is a placeholder
-      And Cellar gives no day for the change of 2021/1133 at Article 18a
-      And on 1 September 2021, the change of 2021/1133 at Article 18a has a state that is not known
+      And Cellar gives no day for the change of 2021/1133 at article 18a
+      And on 1 September 2021, the change of 2021/1133 at article 18a has a state that is not known
 
   Rule: how-an-amending-act-stands · How an amending act stands on a day
     An amending act stands as its changes stand. Before its entry into force, it is not in force.

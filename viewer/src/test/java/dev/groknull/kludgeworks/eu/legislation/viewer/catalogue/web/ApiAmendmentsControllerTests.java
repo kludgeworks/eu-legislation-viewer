@@ -15,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import java.io.UnsupportedEncodingException;
 import java.time.LocalDate;
@@ -56,6 +57,7 @@ class ApiAmendmentsControllerTests {
         new Amendment(
             new ActIdentifier("32019R0103"),
             new Location("AN PO 11.1"),
+            new Place("annex point 11.1"),
             Amendment.Role.REPLACEMENT,
             LocalDate.of(2019, 2, 1),
             null,

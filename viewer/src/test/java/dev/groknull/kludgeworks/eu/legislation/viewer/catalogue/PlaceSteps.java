@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Found;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
@@ -88,7 +87,7 @@ public class PlaceSteps {
     var names =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
             .filter(each -> each.location().equals(location))
-            .map(each -> each.location().place().words())
+            .map(each -> each.place().words())
             .toList();
     assertThat(names).as("the changes of %s at %s", act.cited(), location).isNotEmpty();
     assertThat(names).as("the names of %s at %s", act.cited(), location).containsOnly(name);
@@ -99,7 +98,7 @@ public class PlaceSteps {
       ActIdentifier act, Place place, Function<Location, Optional<Found>> find) {
     var changes =
         ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
-            .filter(each -> each.location().place().words().equals(place.words()))
+            .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("the changes of %s at %s", act.cited(), place.words()).isNotEmpty();
     return changes.stream().map(each -> find.apply(each.location())).toList();
@@ -107,7 +106,7 @@ public class PlaceSteps {
 
   /** Returns the eId of the occurrence that {@code place} names in {@code text}. */
   private static String eId(TextOccurrences text, Place place) {
-    var found = Location.of(place).in(text);
+    var found = PlaceWords.location(place).in(text);
     assertThat(found).as("%s in the text", place.words()).isPresent();
     assertThat(found.get().eIds()).as("%s in the text", place.words()).hasSize(1);
     return found.get().eIds().getFirst();
