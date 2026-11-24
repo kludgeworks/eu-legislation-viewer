@@ -15,8 +15,8 @@ import org.springframework.core.ResolvableTypeProvider;
  * instance that published it, before commit.
  *
  * <p>A broadcast is not stored. An instance that was not reading when it was sent misses it, for
- * example while the instance starts or while Valkey is unreachable. Thus a listener reads anew the
- * state that the event is about. It never builds the state from a series of events.
+ * example while the instance starts or while Valkey is unreachable. Thus a listener reads again,
+ * from where it is kept, what the event is about. It never builds it from a series of events.
  *
  * @param event the event, as it was published
  */

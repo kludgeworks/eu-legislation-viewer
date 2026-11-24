@@ -22,7 +22,8 @@
  * once. The failure is a Spring {@code RestClientException} or a {@link CellarException}. {@link
  * CellarFailures} tells which failures mean that Cellar is not answering. Such a failure may pass.
  *
- * <p>The module holds no state and caches nothing, and it knows nothing of the viewer's domain.
+ * <p>The module keeps nothing from one call to the next, and it knows nothing of the viewer's
+ * domain.
  *
  * <p>All of it is infrastructure, the outer ring of the onion. Only the {@code infra} packages of
  * the other modules may use it. Their domain must not use it.

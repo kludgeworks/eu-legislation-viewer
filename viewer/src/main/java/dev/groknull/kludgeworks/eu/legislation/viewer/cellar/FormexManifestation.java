@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * The Formex files of one language version, from Cellar's RDF.
+ * The Formex files of one text (a version in one language): the manifestation of its expression,
+ * from Cellar's RDF.
  *
  * @param uri the manifestation
  * @param files the files, by name. The XML files are the package descriptor, the act and its

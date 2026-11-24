@@ -7,13 +7,13 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
 
-/** Tells what a failed call to Cellar means about the state of Cellar. */
+/** Tells whether a failed call to Cellar means that Cellar is not answering. */
 public final class CellarFailures {
   private CellarFailures() {}
 
   /**
-   * Returns whether {@code failure} means that Cellar is not answering. This state may pass. It is
-   * one of these cases:
+   * Returns whether {@code failure} means that Cellar is not answering. Cellar can answer again
+   * later. It is one of these cases:
    *
    * <ul>
    *   <li>The viewer cannot reach Cellar.

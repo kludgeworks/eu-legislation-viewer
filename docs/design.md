@@ -333,6 +333,19 @@ and a kept deletion of the public model is the kept deletion of the legal text.
 | occurrence with footnotes | One occurrence and the footnotes that it refers to: what the API gives for one occurrence (`PublicText.OccurrenceWithFootnotes`). The footnotes are at the end of the text, not in the occurrence. |
 | removed | A stored text that no longer exists: a new text replaced it, or Cellar withdrew its version (`TextRemoved`). The word "deleted" is for the law only: a modification, or a kept deletion. |
 
+### Cellar (module `cellar`)
+
+Cellar names its resources with the words of FRBR. The module `cellar` uses these words, because
+it knows nothing of the viewer's domain. The other modules use the shared terms. They say
+"expression" or "manifestation" only about a resource of Cellar, for example where they read Cellar.
+
+| Term | Meaning |
+| --- | --- |
+| work | What one CELEX number names: an act as published, for example 32015R1998, or a consolidated version, for example 02015R1998-20260322. |
+| expression | A work in one language. The viewer calls it a text. |
+| manifestation | An expression in one format. The viewer reads Formex, `fmx4` (`FormexManifestation`). |
+| item | One file of a manifestation, or one zip that holds all its files. |
+
 ## Principles
 
 **Convention.**
