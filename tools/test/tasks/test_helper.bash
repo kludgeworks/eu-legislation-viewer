@@ -88,3 +88,8 @@ load_publish() {
 	# shellcheck source=/dev/null # the task itself, checked on its own
 	REPO_ROOT="$repo" source "$project/tools/tasks/release/publish.bash"
 }
+
+load_discard() {
+	# shellcheck source=/dev/null # the task itself, checked on its own
+	source "$project/tools/tasks/release/discard.bash"
+}

@@ -6,6 +6,7 @@ exports_files(
         "release.bash",
         "release/artifact.bash",
         "release/db-migrations.bash",
+        "release/discard.bash",
         "release/image.bash",
         "release/notes.bash",
         "release/prepare.bash",

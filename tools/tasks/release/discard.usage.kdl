@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+// discard.bash's arguments and help (mise run release:discard --help). mise rewraps the help to
+// the terminal but keeps its line breaks: a paragraph, or a list's item, is one line.
+
+long_about """
+    Delete the images of a release that the Release workflow did not finish. The workflow runs it when a run fails or is cancelled.
+
+    The workflow publishes the images before it tags the release, so that a run that fails leaves no tag. This removes what such a run published: the image tagged with the version, and the image of each architecture.
+
+    It deletes nothing if origin has the release's tag: then the release is made, and the images are its own.
+
+    It is a cleanup only. A run of the same version replaces the images anyway.
+    """
+
+after_long_help "GH_TOKEN must be able to delete the package's versions. The workflow's token can, if the repository has the Admin role in the package's settings (Manage Actions access)."
+
+arg "<version>" env="VERSION" help="The release's version: 2026.11.0"
+flag "--repo <repo>" env="GH_REPO" required=#true help="The GitHub repository: kludgeworks/eu-legislation-viewer"
+flag "--image <image>" env="IMAGE" default="ghcr.io/kludgeworks/eu-legislation-viewer" help="The image's name"
+
+example "mise run release:discard 2026.11.20 --repo kludgeworks/eu-legislation-viewer" header="Delete the images of a release not made" help="As the Release workflow does when a run fails"

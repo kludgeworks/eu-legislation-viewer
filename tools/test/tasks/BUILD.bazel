@@ -33,6 +33,17 @@ bats_test(
 )
 
 bats_test(
+    name = "release_discard",
+    size = "small",
+    srcs = ["release_discard.bats"],
+    data = [
+        "test_helper.bash",
+        "//tools/lib:ui.bash",
+        "//tools/tasks:release/discard.bash",
+    ],
+)
+
+bats_test(
     name = "release_publish",
     size = "small",
     srcs = ["release_publish.bats"],
