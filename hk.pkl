@@ -144,6 +144,15 @@ local linters = new Mapping<String, Step> {
     batch = true
     check = "vale --minAlertLevel=error {{files}}"
   }
+  // the features written in ASD-STE100 English already: their warnings too, which vale alone does
+  // not fail on. A feature joins when it is written in it; when all have, the vale step takes their
+  // warnings and this step goes
+  ["vale_written"] = new Step {
+    glob = List("viewer/src/test/rules/comparison/who-made-a-change.feature")
+    batch = true
+    check =
+      "alerts=$(vale --output=line {{files}}) || exit; [ -z \"$alerts\" ] || { echo \"$alerts\"; exit 1; }"
+  }
   ["typos"] = (Builtins.typos) { exclude = raw + vendored + generated }
   ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored + generated }
   ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated + legalTemplates }

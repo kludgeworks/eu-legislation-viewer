@@ -29,7 +29,7 @@ public class ModificationSteps {
   private Modification tagged = Modification.AMENDED;
   private @Nullable Modification found;
 
-  @Given("a difference where the occurrence was {word}")
+  @Given("a difference where the later text {word} the occurrence")
   public void difference(String kind) {
     this.kind =
         switch (kind) {
@@ -58,7 +58,7 @@ public class ModificationSteps {
     found = Modification.ofStep(kind(), first, last, by, tagged);
   }
 
-  @When("no act is known to have made it")
+  @When("the data names no act for the difference")
   public void noAct() {
     found = Modification.of(kind());
   }

@@ -74,7 +74,7 @@ public class MadeBySteps {
     removals = Attribution.removalsOf(amended, found);
   }
 
-  @When("the reader asks who made it")
+  @When("the reader asks which acts made the change")
   public void whoMadeIt() {
     attribution =
         Attribution.of(
@@ -108,7 +108,7 @@ public class MadeBySteps {
     assertThat(Objects.requireNonNull(difference, "no difference given").tags()).isEmpty();
   }
 
-  @Then("the steps are")
+  @Then("the sidenote shows these steps")
   public void theStepsAre(List<Types.StepRow> rows) {
     assertThat(
             attribution.steps().stream()
@@ -118,7 +118,7 @@ public class MadeBySteps {
         .containsExactlyElementsOf(rows);
   }
 
-  @Given("only the texts of {days} are built")
+  @Given("the viewer built only the texts of {days}")
   public void onlyBuilt(List<LocalDate> days) {
     built = Set.copyOf(days);
   }
@@ -136,7 +136,7 @@ public class MadeBySteps {
             .get(eId);
   }
 
-  @Then("no act is named")
+  @Then("the sidenote names no act")
   public void noActIsNamed() {
     assertThat(attribution.steps()).isEmpty();
     assertThat(
@@ -180,12 +180,12 @@ public class MadeBySteps {
     return (built == null || built.contains(version.date())) && Comparing.hasText(version);
   }
 
-  @Then("{act} is not named")
+  @Then("the sidenote does not name {act}")
   public void notNamed(ActIdentifier act) {
     assertThat(attribution.acts()).doesNotContain(act);
   }
 
-  @Then("{act} is named for its part that applies from {day}")
+  @Then("the sidenote names {act} for its part that applies from {day}")
   public void namedForItsPart(ActIdentifier act, LocalDate day) {
     var step =
         attribution.steps().stream()

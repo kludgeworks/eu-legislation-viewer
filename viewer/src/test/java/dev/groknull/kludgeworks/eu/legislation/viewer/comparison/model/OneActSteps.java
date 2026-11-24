@@ -53,7 +53,7 @@ public class OneActSteps {
     assertThat(List.of(found.before().date(), found.first().date())).containsExactly(before, first);
   }
 
-  @When("the reader asks who made the differences that no act is named for")
+  @When("the reader asks which acts made the differences that the data names no act for")
   public void unnamed() {
     unnamed =
         attributed(comparing.from(), comparing.to()).stream()
@@ -61,12 +61,19 @@ public class OneActSteps {
             .toList();
   }
 
-  @Then("{int} differences are made by one of {acts}, and the data does not say which")
-  public void madeByOneOf(int count, List<ActIdentifier> acts) {
+  @Then("one of {acts} made {int} differences, and the data does not identify the act")
+  public void madeByOneOf(List<ActIdentifier> acts, int count) {
     assertThat(unnamed).hasSize(count);
     assertThat(unnamed)
         .allSatisfy(
             each -> assertThat(each.attribution().candidates()).containsExactlyElementsOf(acts));
+  }
+
+  @Then("the sidenote names no act for any of them")
+  public void namesNoActForAny() {
+    assertThat(unnamed)
+        .isNotEmpty()
+        .allSatisfy(each -> assertThat(each.attribution().candidates()).isEmpty());
   }
 
   @When("the reader opens the page of {act}")

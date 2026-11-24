@@ -60,7 +60,7 @@ public class AmendedSteps {
         .anyMatch(each -> each.act().equals(act) && each.place().words().equals(place.words()));
   }
 
-  @Then("Cellar's repeals of {act} at {place} and {place} are found on the earlier text")
+  @Then("the viewer finds Cellar's repeals of {act} at {place} and {place} on the earlier text")
   public void onTheEarlierText(ActIdentifier act, Place first, Place second) {
     var earlier = Occurrences.of(comparing.earlier()).byEId().keySet();
     var later = Occurrences.of(comparing.later()).byEId().keySet();
@@ -72,7 +72,7 @@ public class AmendedSteps {
     }
   }
 
-  @Then("Cellar's repeal of {act} at {place} is found at {place} of the later text")
+  @Then("the viewer finds Cellar's repeal of {act} at {place} in {place} of the later text")
   public void atTheLaterText(ActIdentifier act, Place place, Place occurrence) {
     var later = new ArrayList<String>();
     eIds(comparing.later(), later);
