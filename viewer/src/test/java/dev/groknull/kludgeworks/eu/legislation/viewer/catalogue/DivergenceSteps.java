@@ -111,14 +111,14 @@ public class DivergenceSteps {
     assertThat(on(day, act)).as("%s on %s", act.cited(), day).isFalse();
   }
 
-  @Then("on {day}, its application is not deferred")
+  @Then("on {day}, the act has no deferred application")
   public void notDeferred(LocalDate day) {
     assertThat(LawOnADay.of(the.act()).deferredApplicationOn(day, Language.ENG))
         .as(day.toString())
         .isEmpty();
   }
 
-  @Then("on {day}, its application is deferred until {day}, in full")
+  @Then("on {day}, the act has a deferred application: it applies in full from {day}")
   public void deferred(LocalDate day, LocalDate until) {
     assertThat(LawOnADay.of(the.act()).deferredApplicationOn(day, Language.ENG))
         .as(day.toString())

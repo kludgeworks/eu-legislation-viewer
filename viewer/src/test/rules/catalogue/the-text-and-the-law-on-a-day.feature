@@ -2,11 +2,14 @@
 Feature: The text and the law on a day
   Where the text that a reader gets on a day is not the law on that day, and why. The text is
   always a version of the act, unchanged. Where the text and the law differ, the act has a
-  divergence: a pending amendment (the act applies, but the text does not include it), a
-  prospective amendment (the text includes it, but it does not apply yet), or an undated pending
-  amendment (the act is in force, the text does not include it, and Cellar does not give the day
-  from which it applies). The changes are those to the English text. The texts are those that the
-  converter has a sample of: a version without a sample has no built text.
+  divergence. A divergence is one of these:
+  - a pending amendment: the act applies, but the text does not include it
+  - a prospective amendment: the text includes it, but it does not apply yet
+  - an undated pending amendment: the act is in force, the text does not include it, and Cellar
+    does not give the day from which it applies
+
+  The changes are those to the English text. The texts are those that the converter has a sample
+  of: a version without a sample has no built text.
 
   Rule: the-text-of-a-day-is-a-version · The text of a day is a version, unchanged
     For a day, the reader gets the newest version that starts on or before it. Before the first
@@ -40,9 +43,10 @@ Feature: The text and the law on a day
       And its divergence is at article 48 paragraph 9
 
   Rule: a-place-date-the-act-can-apply-from · A place date counts only if the act can apply from it
-    A place date counts if the act can apply from it: it is one of the dates of the act. It does
-    not count if it is only the entry into force of the act, and the whole act applies from
-    another day, or if it is not a date of the act.
+    A place date counts if the act can apply from it: it is one of the dates of the act. A place
+    date does not count in these conditions:
+    - It is only the entry into force of the act, and the whole act applies from another day.
+    - It is not a date of the act.
 
     Example: A place date that is only the entry into force
       Given the act 2015/1998 as Cellar has it
@@ -120,19 +124,21 @@ Feature: The text and the law on a day
 
   Rule: deferred-application-of-the-act · The act itself does not apply yet
     The whole text of an act does not apply yet from its first version to the day before the whole
-    act applies. This is a state of the act, not a divergence: its application is deferred.
+    act applies. This is a state of the act, not a divergence: the deferred application of the
+    act.
 
     Example: An act in force two years before it applies
       Given the act 2016/679 as Cellar has it
-      Then on 1 May 2016, its application is not deferred
-      And on 4 May 2016, its application is deferred until 25 May 2018, in full
-      And on 1 January 2017, its application is deferred until 25 May 2018, in full
-      And on 25 May 2018, its application is not deferred
+      Then on 1 May 2016, the act has no deferred application
+      And on 4 May 2016, the act has a deferred application: it applies in full from 25 May 2018
+      And on 1 January 2017, the act has a deferred application: it applies in full from 25 May 2018
+      And on 25 May 2018, the act has no deferred application
 
   Rule: an-act-compared-as-a-whole · An act compared as a whole
-    If none of the provisions of an act gives an answer, the day from which the whole act applies
-    is compared with the first version that includes the act. A provision gives no answer if a
-    version before the answer has no built text. Without the texts, no provision gives an answer.
+    The viewer can compare an act as a whole. It does this if no provision of the act gives an
+    answer. It compares the day from which the whole act applies with the first version that
+    includes the act. A provision gives no answer if a version before the answer has no built
+    text. Without the texts, no provision gives an answer.
 
     Example: An act whose provisions give no answer, because a text is not built
       Given the act 2015/1998 as Cellar has it
@@ -147,10 +153,14 @@ Feature: The text and the law on a day
       And its divergence is at no place
 
   Rule: undated-pending-amendment · An undated pending amendment
-    An act in force that no version includes, and whose day of application Cellar does not give,
-    is an undated pending amendment from its entry into force: the text of each day from then can
-    lack it. Only once the text of every version is built: before that, the viewer cannot tell that
-    no version includes it. If a version includes the act, the version date stands instead.
+    An act is an undated pending amendment from its entry into force if these conditions are true:
+    - The act is in force.
+    - No version includes the act.
+    - Cellar does not give the day from which the act applies.
+
+    The text of each day from the entry into force can lack the act. The viewer can tell this only
+    after it builds the text of every version. Before that, it cannot tell that no version
+    includes the act. If a version includes the act, the version date stands instead.
 
     Example: An act whose day of application a clause sets
       Given the act 2018/1862 as Cellar has it
@@ -174,10 +184,13 @@ Feature: The text and the law on a day
       And 2019/413 makes no divergence
 
   Rule: the-acts-that-made-a-text-in-the-language · The acts that made a text, in the language
-    The acts that made the text of a version in a language are the acts and corrigenda that the
-    Publications Office lists for the version and that change its text in that language. An act
-    changes the text in a language unless each of its amendments is for other languages only. A
-    corrigendum counts only if it is published in that language.
+    The acts that made the text of a version in a language are the acts and corrigenda with both
+    properties:
+    - The Publications Office lists them for the version.
+    - They change the text of the version in that language.
+
+    An act changes the text in a language unless each of its amendments is for other languages
+    only. A corrigendum counts only if the Publications Office publishes it in that language.
 
     Example: An act that changes only the German text
       Given the act 2015/1998 as Cellar has it
@@ -191,10 +204,12 @@ Feature: The text and the law on a day
       And in German, these acts made the text of 29 February 2016: Corrigendum 2 to 2015/1998, Corrigendum 4 to 2015/1998, 2015/2426
 
   Rule: where-the-text-of-a-day-is-not-the-law · The acts for which the text of a day is not the law
-    They are the act itself, while it is in force and does not apply in full (its deferred
-    application), and the amending acts that make the text and the law differ on the day: a
-    prospective amendment, whose changes the text has before they apply, and a pending amendment,
-    dated or undated, whose changes the text does not show. No other rule decides this.
+    The text of a day is not the law for these acts:
+    - the act itself, while it is in force and does not apply in full (its deferred application)
+    - a prospective amendment of the day: the text has its changes before they apply
+    - a pending amendment of the day, dated or undated: the text does not show its changes
+
+    No other rule decides this.
 
     Example: The act itself, an undated pending amendment and a prospective amendment
       Given the act 2018/1862 as Cellar has it
