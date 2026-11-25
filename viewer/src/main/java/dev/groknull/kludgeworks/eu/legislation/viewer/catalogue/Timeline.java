@@ -35,6 +35,7 @@ public final class Timeline {
   private final NavigableMap<LocalDate, List<Version>> byDate;
 
   /** Returns today in the EU: the date in Brussels. */
+  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "today-is-the-day-in-brussels")
   public static LocalDate today(Clock clock) {
     return LocalDate.ofInstant(clock.instant(), BRUSSELS);
   }
@@ -108,6 +109,7 @@ public final class Timeline {
   @BusinessRule(
       group = RuleGroup.WHAT_A_COMPARISON_COVERS,
       name = "one-version-a-day-in-each-language")
+  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "the-last-version-after-a-repeal")
   public Optional<Version> applicableOn(LocalDate date, Language language) {
     var entry = byDate.floorEntry(date);
     if (entry == null) {

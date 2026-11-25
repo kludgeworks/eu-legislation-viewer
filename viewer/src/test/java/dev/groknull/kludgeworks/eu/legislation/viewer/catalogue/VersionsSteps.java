@@ -5,17 +5,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the versions of an act: its timeline in a language, as {@link
- * Act#timeline} gives it, version by version from the first.
+ * Act#timeline} gives it, version by version from the first; and today, by a clock that shows a
+ * time in UTC.
  */
 public class VersionsSteps {
   private final TheAct the;
   private List<Version> versions = List.of();
   private int at;
+  private @Nullable LocalDate today;
 
   public VersionsSteps(TheAct the) {
     this.the = the;
@@ -37,5 +44,16 @@ public class VersionsSteps {
     var version = versions.get(at);
     assertThat(version.kind()).as("version %d", at).isEqualTo(Version.Kind.CONSOLIDATED);
     assertThat(version.date()).as("version %d", at).isEqualTo(day);
+  }
+
+  @When("the clock shows {word} UTC on {day}")
+  public void clock(String time, LocalDate day) {
+    var instant = day.atTime(LocalTime.parse(time)).toInstant(ZoneOffset.UTC);
+    today = Timeline.today(Clock.fixed(instant, ZoneOffset.UTC));
+  }
+
+  @Then("today is {day}")
+  public void today(LocalDate day) {
+    assertThat(today).isEqualTo(day);
   }
 }

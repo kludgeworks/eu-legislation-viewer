@@ -21,3 +21,24 @@ Feature: The versions of an act
       Given the act 2020/1812 as Cellar has it
       Then in English, the first version is the original text of 1 December 2020
       And the next version is the consolidation of 2 December 2020
+
+  Rule: the-last-version-after-a-repeal · After a repeal, the last version applies
+    The version that applies on a day is the last version that starts on or before that day
+    (the-text-of-a-day-is-a-version). This is also true after a later act repeals the act: the
+    reader gets its last version.
+
+    Example: An act that a later act repealed
+      Given the act 185/2010 as Cellar has it
+      Then on 1 January 2020, the reader gets the version of 1 February 2016
+
+  Rule: today-is-the-day-in-brussels · Today is the day in Brussels
+    The viewer takes today as the date in Brussels: the EU adopts its acts there, and the Official
+    Journal dates them there. So near midnight, today can be another day for the reader.
+
+    Example: Just after midnight in Brussels, in winter
+      When the clock shows 23:30 UTC on 31 December 2025
+      Then today is 1 January 2026
+
+    Example: Just before midnight in Brussels, in summer
+      When the clock shows 21:59 UTC on 30 June 2026
+      Then today is 30 June 2026
