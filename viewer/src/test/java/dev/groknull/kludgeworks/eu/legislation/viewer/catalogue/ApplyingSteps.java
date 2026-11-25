@@ -10,8 +10,8 @@ import java.util.Objects;
 
 /**
  * The steps of the rules of when an act applies: the day from which a whole act applies ({@link
- * ActDates#appliesFrom}), the days from which a provision can apply ({@link
- * ActDates#appliesFromDay}), and the dates that a later act amended ({@link
+ * WhenAnActApplies#wholeActAppliesFrom}), the days from which a provision can apply ({@link
+ * WhenAnActApplies#aDayTheActCanApplyFrom}), and the dates that a later act amended ({@link
  * ActDate.Clause#amendedBy}) or set ({@link ActDate.Clause#setBy}). They read the dates of the act
  * of the scenario ({@link TheAct}).
  */
@@ -24,12 +24,14 @@ public class ApplyingSteps {
 
   @Then("{act} applies from {day}")
   public void appliesFrom(ActIdentifier act, LocalDate day) {
-    assertThat(the.act().dates().appliesFrom(act).map(ActDate::date)).as(act.cited()).hasValue(day);
+    assertThat(the.dated(act).appliesFrom().from().map(ActDate::date))
+        .as(act.cited())
+        .hasValue(day);
   }
 
   @Then("{act} has no day from which the whole act applies")
   public void noDay(ActIdentifier act) {
-    assertThat(the.act().dates().appliesFrom(act).map(ActDate::date)).as(act.cited()).isEmpty();
+    assertThat(the.dated(act).appliesFrom().from().map(ActDate::date)).as(act.cited()).isEmpty();
   }
 
   @Then("{act} has a date for a part on {day}")
@@ -77,14 +79,14 @@ public class ApplyingSteps {
 
   @Then("a provision of {act} can apply from {day}")
   public void canApply(ActIdentifier act, LocalDate day) {
-    assertThat(the.act().dates().appliesFromDay(act, day))
+    assertThat(the.dated(act).canApplyFrom().contains(day))
         .as("%s on %s", act.cited(), day)
         .isTrue();
   }
 
   @Then("a provision of {act} cannot apply from {day}")
   public void cannotApply(ActIdentifier act, LocalDate day) {
-    assertThat(the.act().dates().appliesFromDay(act, day))
+    assertThat(the.dated(act).canApplyFrom().contains(day))
         .as("%s on %s", act.cited(), day)
         .isFalse();
   }

@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
@@ -11,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActSource;
@@ -368,18 +367,11 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * Returns the timeline: the original text, then the consolidated versions in date order. A
-   * consolidation that starts on the date of the original replaces the original only in the
-   * languages it exists in; for the remaining languages, the timeline keeps the original text. Each
-   * version gets the Formex that {@code formex} has for its CELEX number. A version with no entry
-   * in {@code formex} gets none.
-   *
-   * <p>The original text starts from {@code originalFrom}. A consolidation can start before it: a
-   * corrigendum published before the entry into force, for example 2020/1812. Then the original
-   * text starts from {@code dateOfDocument}, if that is before the consolidation, so that a reader
-   * can compare the act as published with it. If not, the timeline has no original text.
+   * Returns the timeline: the consolidated versions that Cellar lists, and the original text where
+   * the act has one ({@link TheVersionsOfAnAct#theOriginalTextOfAnAct}). Each version gets the
+   * Formex that {@code formex} has for its CELEX number. A version with no entry in {@code formex}
+   * gets none.
    */
-  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "the-original-text-of-an-act")
   static Timeline timeline(
       ActIdentifier id,
       LocalDate originalFrom,
@@ -412,27 +404,9 @@ class CellarActs implements ActSource {
               texts));
     }
     versions.sort(Comparator.comparing(Version::date));
-    var originalTexts = formex.getOrDefault(id.celex(), Map.of());
-    var sameDayConsolidations =
-        versions.stream().filter(v -> v.date().equals(originalFrom)).toList();
-    if (sameDayConsolidations.isEmpty()) {
-      var from = originalFrom;
-      if (!versions.isEmpty()
-          && versions.getFirst().date().isBefore(originalFrom)
-          && dateOfDocument != null) {
-        from = dateOfDocument;
-      }
-      if (versions.isEmpty() || versions.getFirst().date().isAfter(from)) {
-        versions.add(Version.original(from, id, originalTexts.keySet(), originalTexts));
-      }
-    } else {
-      var remaining = new EnumMap<Language, Version.Formex>(Language.class);
-      remaining.putAll(originalTexts);
-      sameDayConsolidations.forEach(v -> remaining.keySet().removeAll(v.languages()));
-      if (!remaining.isEmpty()) {
-        versions.add(Version.original(originalFrom, id, remaining.keySet(), remaining));
-      }
-    }
+    TheVersionsOfAnAct.theOriginalTextOfAnAct(
+            id, originalFrom, dateOfDocument, versions, formex.getOrDefault(id.celex(), Map.of()))
+        .ifPresent(versions::add);
     return new Timeline(versions);
   }
 

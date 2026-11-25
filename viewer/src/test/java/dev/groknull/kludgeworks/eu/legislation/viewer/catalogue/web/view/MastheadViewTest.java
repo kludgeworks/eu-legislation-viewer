@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -118,7 +118,7 @@ class MastheadViewTest {
   void labelsTheHistoryWithTheNumberOfAmendingActs() {
     var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
     assertThat(head.historyLabel())
-        .isEqualTo("Amending acts (%s)", ActHistory.of(AVSEC).amendingActs(Language.ENG).size());
+        .isEqualTo("Amending acts (%s)", ActOverTime.amendingActsOf(AVSEC, Language.ENG).size());
     assertThat(head.historyEmpty()).isFalse();
   }
 

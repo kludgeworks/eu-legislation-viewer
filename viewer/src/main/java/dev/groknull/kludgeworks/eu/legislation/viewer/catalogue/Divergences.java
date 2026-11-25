@@ -35,8 +35,8 @@ import org.jspecify.annotations.Nullable;
  *
  * <ol>
  *   <li>A place date is accepted if the provision can apply from it, {@link
- *       ActDates#appliesFromDay}: if it is one of the dates of the amending act. It is rejected if
- *       it is only its entry into force, and the whole act applies from another day.
+ *       WhenAnActApplies#aDayTheActCanApplyFrom}: if it is one of the dates of the amending act. It
+ *       is rejected if it is only its entry into force, and the whole act applies from another day.
  *   <li>An accepted place date that is the version date is the date of the provision.
  *   <li>If they differ, the version date is the date of the provision if the place date was
  *       rejected, or if a version that starts on the place date includes the act but does not tag
@@ -56,8 +56,9 @@ import org.jspecify.annotations.Nullable;
  * <p>A provision gives no answer if no version tags it while some version includes the act, or if a
  * version before the answer has no built text. An amending act whose provisions give no answer at
  * all is compared as a whole: the day from which the whole act applies, {@link
- * ActDates#appliesFrom}, against the first version that includes it. If no version includes it, and
- * Cellar does not give that day, the act is an undated pending amendment from its entry into force.
+ * WhenAnActApplies#wholeActAppliesFrom}, against the first version that includes it. If no version
+ * includes it, and Cellar does not give that day, the act is an undated pending amendment from its
+ * entry into force.
  */
 final class Divergences {
 
@@ -219,7 +220,7 @@ final class Divergences {
     }
     var version = versionDate.get().version();
     var from = place.from();
-    if (from == null || !act.dates().appliesFromDay(amending, from)) {
+    if (from == null || !DatedAct.of(act, amending).canApplyFrom().contains(from)) {
       // The version date stands. Without a version, the date is not known.
       return version == null ? Optional.empty() : Optional.of(Answer.AGREES);
     }
@@ -249,7 +250,7 @@ final class Divergences {
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
       name = "an-act-compared-as-a-whole")
   private List<Divergence> whole(ActIdentifier amending, List<Amendment> places) {
-    var applies = act.dates().appliesFrom(amending);
+    var applies = DatedAct.of(act, amending).appliesFrom().from();
     if (applies.isEmpty()) {
       return undated(amending, places);
     }

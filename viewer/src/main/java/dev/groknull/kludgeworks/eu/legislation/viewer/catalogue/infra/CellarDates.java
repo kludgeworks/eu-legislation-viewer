@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
@@ -10,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.WhenAnActApplies;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -238,23 +237,16 @@ final class CellarDates {
    * </ul>
    *
    * <p>{@code ET} followed by a CELEX number names a later act. Cellar's comment is the same for an
-   * act that amended the date and for an act that set a day that the clause left to it. If the act
-   * is one of {@code amending}, the acts that amend the act of the date, it amended the date: for
-   * example, 2020/910 replaces "31 December 2020" in Article 2 of 2019/103. Else it set the day:
-   * Decision 2023/201 sets the day from which 2018/1862 applies. {@code ET} followed by a number
-   * adds a provision. It skips {@code V} and {@code VOIR}, which mean "see", and a repeat of the
-   * type.
+   * act that amended the date and for an act that set a day that the clause left to it: {@link
+   * WhenAnActApplies#aLaterActAmendedOrSetTheDate} tells them apart, with {@code amending}, the
+   * acts that amend the act of the date. {@code ET} followed by a number adds a provision. It skips
+   * {@code V} and {@code VOIR}, which mean "see", and a repeat of the type.
    */
-  @BusinessRule(
-      group = RuleGroup.WHEN_AN_ACT_APPLIES,
-      name = "a-later-act-amended-or-set-the-date",
-      revision = 2)
   static Clause clause(String text, Set<ActIdentifier> amending) {
     Anchor from = null;
     Integer days = null;
     var provisions = new ArrayList<Provision>();
-    var amendedBy = new ArrayList<ActIdentifier>();
-    var setBy = new ArrayList<ActIdentifier>();
+    var named = new ArrayList<ActIdentifier>();
     Provision.Type last = null;
     var tokens = text.isEmpty() ? new String[0] : text.split("\\s+");
     for (var i = 0; i < tokens.length; i++) {
@@ -289,8 +281,7 @@ final class CellarDates {
         }
         case "ET" -> {
           if (next != null && ActIdentifier.isCelex(next) && next.matches("\\d{5}[A-Z].*")) {
-            var named = new ActIdentifier(next);
-            (amending.contains(named) ? amendedBy : setBy).add(named);
+            named.add(new ActIdentifier(next));
             i++;
           } else if (next != null && last != null && isNumber(next)) {
             provisions.add(new Provision(last, next));
@@ -303,7 +294,8 @@ final class CellarDates {
         }
       }
     }
-    return new Clause(from, days, provisions, amendedBy, setBy, text);
+    var later = WhenAnActApplies.aLaterActAmendedOrSetTheDate(named, amending);
+    return new Clause(from, days, provisions, later.amendedBy(), later.setBy(), text);
   }
 
   /**

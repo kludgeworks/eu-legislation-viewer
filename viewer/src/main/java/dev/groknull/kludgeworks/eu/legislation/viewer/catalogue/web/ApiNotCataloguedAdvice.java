@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -35,5 +39,11 @@ class ApiNotCataloguedAdvice {
         .header(HttpHeaders.RETRY_AFTER, RETRY_AFTER)
         .location(URI.create(request.getRequestURI() + (query == null ? "" : "?" + query)))
         .build();
+  }
+
+  /** Answers a request whose act no act has the identifier of with 404. */
+  @ExceptionHandler(NoSuchAct.class)
+  ErrorResponse noSuchAct() {
+    return Requests.notFound();
   }
 }

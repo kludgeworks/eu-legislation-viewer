@@ -3,28 +3,28 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.History;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.LegalState;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The history of an act on a day, or between two days: its own state, its amending acts with the
- * state of each, and its corrigenda. The rules are the act's: {@link ActHistory#amendingActs},
- * {@link ActHistory#amendingActsBetween}, {@link ActHistory#standingOn} and {@link
- * ActHistory#corrigendaOf}. This view puts them into words.
+ * state of each, and its corrigenda. The rules are the act's: {@link
+ * TheHistoryOfAnAct#amendingActs}, {@link TheHistoryOfAnAct#amendingActsBetweenTwoDays}, {@link
+ * TheStateOnADay#howAnAmendingActStands} and {@link TheHistoryOfAnAct#corrigendaOfAnAct}. This view
+ * puts them into words.
  *
  * <p>With one day, the rows are all the amending acts. With two days, the rows are the amending
  * acts between the days, and the state of each is its state on the second day. The comparison of
@@ -79,29 +79,21 @@ public record HistoryView(
   public record Between(String days, String said) {}
 
   /**
-   * Returns the history of {@code act} on {@code day}, in {@code language}. If {@code first} is
-   * given, the history is of the two days {@code first} and {@code day}: the rows are the amending
-   * acts between them, as {@link ActHistory#amendingActsBetween} gives them.
-   *
-   * @param first the first of two days, before {@code day}. Null for one day.
-   * @param tags the tags of the texts of the act in {@code language} that are built. They tell
-   *     which text shows the law on a day. They are used with two days only.
+   * Returns {@code history} as the page shows it. With two days, the rows are the amending acts
+   * between them.
    */
-  public static HistoryView of(
-      Act act,
-      LocalDate day,
-      LocalDate today,
-      Language language,
-      @Nullable LocalDate first,
-      Map<Version, TextTags> tags) {
+  public static HistoryView of(History history) {
+    var today = history.today();
+    var act = history.act();
+    var day = history.day();
+    var first = history.first();
+    var language = history.language();
+    var between = history.between();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
     var kept = day.equals(today) ? null : day;
-    var amending = ActHistory.of(act).amendingActs(language);
     var cited = act.cited(act.id());
-    var found =
-        first == null ? null : ActHistory.of(act).amendingActsBetween(first, day, language, tags);
-    var shown = found == null ? amending : found.orElseGet(List::of);
+    var state = history.state();
     return new HistoryView(
         cited
             + (first == null
@@ -117,27 +109,25 @@ public record HistoryView(
             null,
             language),
         kept == null && first == null ? null : Links.history(eli, null, language),
-        first == null ? own(act, day, past) : null,
+        state == null ? null : own(act, state, day, past),
         Links.read(eli, day, language),
-        first == null || found == null
+        first == null || between == null
             ? null
             : new Between(
                 "From " + Dates.inWords(first) + " to " + Dates.inWords(day) + ".",
-                found
-                    .map(acts -> said(acts.size(), cited))
-                    .orElseGet(() -> cited + " has no text on " + Dates.inWords(first) + ".")),
-        first == null || found == null || found.isEmpty()
+                between.textOnTheFirstDay()
+                    ? said(between.acts().size(), cited)
+                    : cited + " has no text on " + Dates.inWords(first) + "."),
+        first == null || between == null || !between.textOnTheFirstDay()
             ? null
             : Links.compare(eli, first, day, language),
         first == null
             ? "Amending acts, newest first"
             : "Amending acts between these days, newest first",
-        shown.stream().map(each -> row(act, eli, each, day, kept, past, language)).toList(),
-        amending.size(),
+        history.shown().stream().map(each -> row(act, eli, each, kept, past, language)).toList(),
+        history.amendingActs().size(),
         first == null ? null : Links.history(eli, kept, language),
-        ActHistory.of(act).corrigendaOf(act.id(), language).stream()
-            .map(each -> Corrigendum.of(act, each, language))
-            .toList());
+        history.corrigenda().stream().map(each -> Corrigendum.of(act, each, language)).toList());
   }
 
   private static String said(int acts, String cited) {
@@ -151,15 +141,15 @@ public record HistoryView(
   private static Row row(
       Act act,
       Eli eli,
-      ActIdentifier each,
-      LocalDate day,
+      History.AmendingAct amending,
       @Nullable LocalDate kept,
       boolean past,
       Language language) {
-    var standing = ActHistory.of(act).standingOn(each, language, day);
-    var state = standing.state();
-    var counts = StateWording.counts(standing, past);
-    var changes = ActHistory.of(act).changesBy(each, language).size();
+    var each = amending.act();
+    var stands = amending.stands();
+    var counts =
+        StateWording.counts(stands.applies(), stands.notApplying(), stands.notKnown(), past);
+    var changes = amending.changes().size();
     var subject = Subject.of(act, each, language);
     return new Row(
         act.cited(each),
@@ -167,9 +157,9 @@ public record HistoryView(
         subject.language(),
         act.eurLex(each, language).toString(),
         journal(act, each),
-        StateWording.label(state, !act.dates().datesOf(each).isEmpty(), past),
-        StateWording.tone(state),
-        Wording.dates(each, act.dates().applying(each, Set.of()).orElse(null)),
+        StateWording.label(stands.state(), amending.applying() != null, past),
+        StateWording.tone(stands.state()),
+        Wording.dates(each, amending.applying()),
         counts.isEmpty() ? null : counts,
         changes == 0 ? "Its changes" : changes == 1 ? "1 provision" : changes + " provisions",
         Links.amending(eli, each, kept, language));
@@ -189,59 +179,58 @@ public record HistoryView(
   /**
    * Returns the state of {@code act} itself on {@code day}, as one or two sentences. For example,
    * "2018/1862 applied in part. It applies in full from 7 March 2023 · Article 79 of 2018/1862."
+   * The words come from {@code state} and the facts that it has.
    */
-  static String own(Act act, LocalDate day, boolean past) {
+  static String own(Act act, LegalState state, LocalDate day, boolean past) {
     var id = act.id();
     var cited = act.cited(id);
-    var applying = act.dates().applying(id, Set.of());
-    var from =
-        applying
-            .map(each ->
-                switch (each) {
-                  case Applying.From one ->
-                      " It applies from "
-                          + Dates.inWords(one.day())
-                          + Wording.clauseOn(act, id, one.day())
-                          + ".";
-                  case Applying.FromMoreThanOneDay parts ->
-                      " Its first part applies from "
-                          + Dates.inWords(parts.first())
-                          + Wording.clauseOn(act, id, parts.first())
-                          + ".";
-                  case Applying.SetBy _, Applying.InForce _ -> "";
-                })
-            .orElse("");
-    return switch (act.stateOn(day)) {
-      case NO_LONGER_IN_FORCE ->
+    return switch (state) {
+      case LegalState.NoLongerInForce ended ->
           cited
               + (past ? " was no longer in force." : " is no longer in force.")
               + " Its end of validity is "
-              + Dates.inWords(Objects.requireNonNull(act.endOfValidity()))
+              + Dates.inWords(ended.endOfValidity())
               + "."
-              + (act.repealedBy().isEmpty()
+              + (ended.repealedBy().isEmpty()
                   ? ""
                   : " "
-                      + act.repealedBy().stream()
+                      + ended.repealedBy().stream()
                           .map(act::cited)
                           .collect(Collectors.joining(" and "))
                       + " repealed it.");
-      case NOT_IN_FORCE ->
+      case LegalState.NotInForce before ->
           cited
               + (past ? " was not in force yet." : " is not in force yet.")
-              + act.dates()
-                  .entryIntoForce(id)
-                  .map(first -> " Its entry into force is " + Dates.inWords(first) + ".")
-                  .orElse("");
-      case APPLIES -> cited + (past ? " applied." : " applies.") + from;
-      case NOT_APPLYING ->
+              + " Its entry into force is "
+              + Dates.inWords(before.entryIntoForce())
+              + ".";
+      case LegalState.Applies applies ->
+          cited + (past ? " applied." : " applies.") + from(act, applies.applying());
+      case LegalState.NotApplying not ->
           cited
               + (past
                   ? " was in force and did not apply yet."
                   : " is in force and does not apply yet.")
-              + from;
-      case NOT_KNOWN -> cited + notKnown(act, day, past);
-      case IN_PART ->
-          throw new IllegalStateException("The state of one act on its own is never in part");
+              + from(act, not.applying());
+      case LegalState.NotKnown _ -> cited + notKnown(act, day, past);
+    };
+  }
+
+  /** Returns the sentence that says from when {@code act} applies, or nothing. */
+  private static String from(Act act, Applying applying) {
+    var id = act.id();
+    return switch (applying) {
+      case Applying.From one ->
+          " It applies from "
+              + Dates.inWords(one.day())
+              + Wording.clauseOn(act, id, one.day())
+              + ".";
+      case Applying.FromMoreThanOneDay parts ->
+          " Its first part applies from "
+              + Dates.inWords(parts.first())
+              + Wording.clauseOn(act, id, parts.first())
+              + ".";
+      case Applying.SetBy _, Applying.InForce _ -> "";
     };
   }
 
@@ -319,9 +308,19 @@ public record HistoryView(
       String journal,
       @Nullable String places) {
 
+    /** Returns the corrigendum {@code each} of {@code act}, with the places that it corrects. */
     static Corrigendum of(Act act, ActIdentifier each, Language language) {
+      return of(
+          act,
+          new History.Corrigendum(
+              each, TheHistoryOfAnAct.changesOfAnAmendingAct(act, each, language, null)),
+          language);
+    }
+
+    static Corrigendum of(Act act, History.Corrigendum corrigendum, Language language) {
+      var each = corrigendum.act();
       var places =
-          ActHistory.of(act).changesBy(each, language).stream()
+          corrigendum.changes().stream()
               .map(change -> change.place().words())
               .filter(name -> !name.isEmpty())
               .distinct()

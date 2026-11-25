@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import java.time.Clock;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.ZoneOffset;
@@ -49,7 +48,7 @@ public class VersionsSteps {
   @When("the clock shows {word} UTC on {day}")
   public void clock(String time, LocalDate day) {
     var instant = day.atTime(LocalTime.parse(time)).toInstant(ZoneOffset.UTC);
-    today = Timeline.today(Clock.fixed(instant, ZoneOffset.UTC));
+    today = TheVersionsOfAnAct.today(instant);
   }
 
   @Then("today is {day}")

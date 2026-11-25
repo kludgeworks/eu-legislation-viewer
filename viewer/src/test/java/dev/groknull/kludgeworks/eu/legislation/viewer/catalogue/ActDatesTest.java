@@ -152,7 +152,7 @@ class ActDatesTest {
 
   @Test
   void anActWithOneDateForTheWholeActAppliesFromIt() {
-    assertThat(ACT.dates().applying(RECENT, Set.of()))
+    assertThat(DatedAct.of(ACT, RECENT).applying(Set.of()))
         .get()
         .isInstanceOfSatisfying(
             Applying.From.class,
@@ -164,7 +164,7 @@ class ActDatesTest {
 
   @Test
   void anActWithADateForAPartAppliesFromMoreThanOneDayUnlessCellarGivesTheDayOfTheProvision() {
-    assertThat(ACT.dates().applying(SUPPLEMENT, Set.of()))
+    assertThat(DatedAct.of(ACT, SUPPLEMENT).applying(Set.of()))
         .get()
         .isInstanceOfSatisfying(
             Applying.FromMoreThanOneDay.class,
@@ -175,7 +175,7 @@ class ActDatesTest {
                       new Applying.Start(LocalDate.of(2009, 4, 22), true, false),
                       new Applying.Start(LocalDate.of(2009, 6, 1), false, true));
             });
-    assertThat(ACT.dates().applying(SUPPLEMENT, Set.of(LocalDate.of(2009, 6, 1))))
+    assertThat(DatedAct.of(ACT, SUPPLEMENT).applying(Set.of(LocalDate.of(2009, 6, 1))))
         .get()
         .isInstanceOfSatisfying(
             Applying.From.class,
@@ -184,7 +184,7 @@ class ActDatesTest {
 
   @Test
   void aDirectiveWithOnlyAnEntryIntoForceIsInForceWithoutADayItApplies() {
-    assertThat(ACT.dates().applying(PAYMENTS, Set.of(LocalDate.of(2016, 1, 12))))
+    assertThat(DatedAct.of(ACT, PAYMENTS).applying(Set.of(LocalDate.of(2016, 1, 12))))
         .get()
         .isInstanceOfSatisfying(
             Applying.InForce.class,
@@ -193,13 +193,15 @@ class ActDatesTest {
 
   @Test
   void anActWithoutADayForItsApplicationAppliesFromADaySetByItsClauses() {
-    assertThat(ACT.dates().applying(EURATOM, Set.of())).get().isInstanceOf(Applying.SetBy.class);
-    assertThat(ACT.dates().applying(UNTITLED, Set.of())).isEmpty();
+    assertThat(DatedAct.of(ACT, EURATOM).applying(Set.of()))
+        .get()
+        .isInstanceOf(Applying.SetBy.class);
+    assertThat(DatedAct.of(ACT, UNTITLED).applying(Set.of())).isEmpty();
   }
 
   @Test
   void anActWithoutDatesHasNoDateFromWhichItApplies() {
-    assertThat(ACT.dates().appliesFrom(UNTITLED)).isEmpty();
+    assertThat(DatedAct.of(ACT, UNTITLED).appliesFrom().from()).isEmpty();
   }
 
   @Test
@@ -210,12 +212,15 @@ class ActDatesTest {
   @Test
   void aChangeWithoutADayOfAnActFromMoreThanOneDayHasNoKnownStateBetweenTheParts() {
     assertThat(ACT.dates().changeAppliesFrom(PARTS, Set.of())).isEmpty();
-    assertThat(ACT.dates().stateOn(PARTS, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
-    assertThat(ACT.dates().stateOn(PARTS, Set.of(), IN_FULL)).isEqualTo(State.APPLIES);
+    assertThat(DatedAct.of(ACT, PARTS).state(Set.of()).on(IN_PART).state())
+        .isEqualTo(State.NOT_KNOWN);
+    assertThat(DatedAct.of(ACT, PARTS).state(Set.of()).on(IN_FULL).state())
+        .isEqualTo(State.APPLIES);
   }
 
   @Test
   void anActWithoutDatesHasNoKnownState() {
-    assertThat(ACT.dates().stateOn(UNTITLED, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
+    assertThat(DatedAct.of(ACT, UNTITLED).state(Set.of()).on(IN_PART).state())
+        .isEqualTo(State.NOT_KNOWN);
   }
 }

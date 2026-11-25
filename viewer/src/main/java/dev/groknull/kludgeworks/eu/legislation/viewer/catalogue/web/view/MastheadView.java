@@ -2,10 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
@@ -175,8 +176,8 @@ public record MastheadView(
             .toList(),
         history,
         historyLabel(act, language),
-        ActHistory.of(act).amendingActs(language).isEmpty()
-            && ActHistory.of(act).corrigendaOf(act.id(), language).isEmpty(),
+        ActOverTime.amendingActsOf(act, language).isEmpty()
+            && TheHistoryOfAnAct.corrigendaOfAnAct(act, act.id(), language).isEmpty(),
         read,
         false,
         Links.notices(eli, language));
@@ -188,8 +189,8 @@ public record MastheadView(
    * that the history shows.
    */
   private static String historyLabel(Act act, Language language) {
-    var amending = ActHistory.of(act).amendingActs(language).size();
-    var corrigenda = ActHistory.of(act).corrigendaOf(act.id(), language).size();
+    var amending = ActOverTime.amendingActsOf(act, language).size();
+    var corrigenda = TheHistoryOfAnAct.corrigendaOfAnAct(act, act.id(), language).size();
     return "Amending acts ("
         + amending
         + ")"

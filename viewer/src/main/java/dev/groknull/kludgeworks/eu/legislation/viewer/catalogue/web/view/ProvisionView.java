@@ -3,12 +3,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -28,8 +31,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * The history of one provision, as the Read page shows it under the provision: the acts that
  * changed it, with the state of each change on the day, and a link to each change. The rules are
- * the act's: {@link ProvisionHistory#of}, {@link ActDates#stateOn} and {@link
- * ProvisionHistory#firstWith}. This view puts them into words.
+ * the act's: {@link TheHistoryOfAnAct#historyOfAProvision}, {@link TheStateOnADay#stateOnADay} and
+ * {@link TheHistoryOfAnAct#firstTextWithTheProvision}. This view puts them into words.
  *
  * @param heading the heading. For example, "History of Article 6(2)".
  * @param count how many amending acts changed the provision, in words. Null if the data names no
@@ -67,7 +70,13 @@ public record ProvisionView(
       Language language,
       Map<Version, TextTags> texts) {
     var text = Objects.requireNonNull(texts.get(reading), "the text of the version is not built");
-    var history = ProvisionHistory.of(act, occurrence, text, language);
+    var history =
+        TheHistoryOfAnAct.historyOfAProvision(
+            act,
+            language,
+            occurrence,
+            text,
+            TheHistoryOfAnAct.orderOfTheAmendingActs(act, language));
     var name = name(history, occurrence, text);
     var lines = lines(act, history, name, day, today, language, each -> true);
     var acts = history.acts().stream().filter(each -> !each.corrigendum()).toList();
@@ -88,7 +97,15 @@ public record ProvisionView(
    * provision names it. For example, "Article 6(2)". Null if no change names it.
    */
   static @Nullable String name(Act act, String occurrence, TextTags text, Language language) {
-    return name(ProvisionHistory.of(act, occurrence, text, language), occurrence, text);
+    return name(
+        TheHistoryOfAnAct.historyOfAProvision(
+            act,
+            language,
+            occurrence,
+            text,
+            TheHistoryOfAnAct.orderOfTheAmendingActs(act, language)),
+        occurrence,
+        text);
   }
 
   private static @Nullable String name(ProvisionHistory history, String occurrence, TextTags text) {
@@ -118,7 +135,13 @@ public record ProvisionView(
       LocalDate today,
       Language language,
       List<ActIdentifier> acts) {
-    var history = ProvisionHistory.of(act, occurrence, text, language);
+    var history =
+        TheHistoryOfAnAct.historyOfAProvision(
+            act,
+            language,
+            occurrence,
+            text,
+            TheHistoryOfAnAct.orderOfTheAmendingActs(act, language));
     return lines(
             act, history, name(history, occurrence, text), day, today, language, acts::contains)
         .reversed();
@@ -136,7 +159,7 @@ public record ProvisionView(
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
     var on = day.equals(today) ? null : day;
-    var amending = ActHistory.of(act).amendingActs(language);
+    var amending = ActOverTime.amendingActsOf(act, language);
     var lines = new ArrayList<Line>();
     for (var change : history.changes()) {
       if (!kept.test(change.act())) {
@@ -153,7 +176,8 @@ public record ProvisionView(
                   + (place.isEmpty() || place.equals(name) ? "it" : place)
                   + ".",
               sentence(StateWording.statement(act, change.act(), ActDates.days(change), day, past)),
-              StateWording.tone(act.dates().stateOn(change.act(), ActDates.days(change), day)),
+              StateWording.tone(
+                  DatedAct.of(act, change.act()).state(ActDates.days(change)).on(day).state()),
               amending.contains(change.act())
                   ? page
                       + "#"
@@ -174,7 +198,7 @@ public record ProvisionView(
                   : sentence(StateWording.statement(act, each, Set.of(), day, past)),
               each.corrigendum()
                   ? null
-                  : StateWording.tone(act.dates().stateOn(each, Set.of(), day)),
+                  : StateWording.tone(DatedAct.of(act, each).state(Set.of()).on(day).state()),
               null));
     }
     return lines;
@@ -207,7 +231,7 @@ public record ProvisionView(
    */
   private static Unknown unknown(
       Act act, String occurrence, Language language, Map<Version, TextTags> texts) {
-    return ProvisionHistory.firstWith(act, occurrence, language, texts)
+    return TheHistoryOfAnAct.firstTextWithTheProvision(act, language, occurrence, texts)
         .filter(first -> first.kind() != Version.Kind.ORIGINAL)
         .map(first ->
             new Unknown(
@@ -233,7 +257,10 @@ public record ProvisionView(
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var integrating =
         acts.stream()
-            .flatMap(each -> ActHistory.of(act).integrating(each, language).stream())
+            .flatMap(each ->
+                TheHistoryOfAnAct.twoTextsOfAnAmendingAct(act, each, language)
+                    .integrating()
+                    .stream())
             .sorted(Comparator.comparing(Version::date))
             .toList();
     if (integrating.isEmpty()) {
@@ -262,8 +289,9 @@ public record ProvisionView(
       return List.of();
     }
     var occurrences =
-        new ArrayList<>(ProvisionHistory.changedOccurrences(act, text.eIds(), language).keySet());
-    occurrences.addAll(ProvisionHistory.unattributed(act, reading, language, texts));
+        new ArrayList<>(TheHistoryOfAnAct.changedOccurrences(act, text.eIds(), language).keySet());
+    occurrences.addAll(
+        TheHistoryOfAnAct.aProvisionTheDataNamesNoActFor(act, language, reading, texts));
     return occurrences;
   }
 

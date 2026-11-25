@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
@@ -184,8 +185,8 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
    */
   private static String setBy(Act act, Divergence undated) {
     var clause =
-        act.dates()
-            .applying(undated.act(), Set.of())
+        DatedAct.of(act, undated.act())
+            .applying(Set.of())
             .map(applying -> Wording.clause(applying.dates(), undated.act()))
             .orElse("");
     return clause.isEmpty()

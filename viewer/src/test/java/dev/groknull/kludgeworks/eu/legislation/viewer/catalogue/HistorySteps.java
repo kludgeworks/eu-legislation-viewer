@@ -12,15 +12,16 @@ import java.util.Objects;
 
 /**
  * The steps of the rules of the history of an act: its amending acts and their order ({@link
- * ActHistory#amendingActs}), the changes of an amending act ({@link
- * ActHistory#changesInTextOrder}), the corrigenda ({@link ActHistory#corrigendaOf}), the two texts
- * and the occurrences of a change ({@link ActHistory#integrating}, {@link ActHistory#occurrences}),
- * the other acts of a version ({@link ActHistory#integratedWith}), the history of a provision
- * ({@link ProvisionHistory#of}), the occurrences that the data names no act for ({@link
- * ProvisionHistory#unattributed}), the amending acts between two days ({@link
- * ActHistory#amendingActsBetween}) and the days of change ({@link ActHistory#changeDays}). They
- * read the act of the scenario and the texts of its versions that are built ({@link TheAct}), in
- * English unless a step names the language.
+ * TheHistoryOfAnAct#amendingActs}), the changes of an amending act ({@link
+ * TheHistoryOfAnAct#changesOfAnAmendingAct}), the corrigenda ({@link
+ * TheHistoryOfAnAct#corrigendaOfAnAct}), the two texts and the occurrences of a change ({@link
+ * TheHistoryOfAnAct#twoTextsOfAnAmendingAct}, {@link TheHistoryOfAnAct#occurrencesOfAChange}), the
+ * other acts of a version ({@link TheHistoryOfAnAct#otherActsOfItsVersion}), the history of a
+ * provision ({@link TheHistoryOfAnAct#historyOfAProvision}), the occurrences that the data names no
+ * act for ({@link TheHistoryOfAnAct#aProvisionTheDataNamesNoActFor}), the amending acts between two
+ * days ({@link TheHistoryOfAnAct#amendingActsBetweenTwoDays}) and the days of change ({@link
+ * TheHistoryOfAnAct#daysOfChange}). They read the act of the scenario and the texts of its versions
+ * that are built ({@link TheAct}), in English unless a step names the language.
  */
 public class HistorySteps {
   private final TheAct the;
@@ -33,17 +34,17 @@ public class HistorySteps {
   @Then("the amending acts of the act in {language} are, newest first:")
   public void amendingActs(Language language, List<String> cited) {
     var acts = cited.stream().map(Cited::act).toList();
-    assertThat(ActHistory.of(the.act()).amendingActs(language)).containsExactlyElementsOf(acts);
+    assertThat(the.amendingActs(language)).containsExactlyElementsOf(acts);
   }
 
   @Then("{act} is an amending act of the act in {language}")
   public void amending(ActIdentifier act, Language language) {
-    assertThat(ActHistory.of(the.act()).amendingActs(language)).contains(act);
+    assertThat(the.amendingActs(language)).contains(act);
   }
 
   @Then("{act} is not an amending act of the act in {language}")
   public void notAmending(ActIdentifier act, Language language) {
-    assertThat(ActHistory.of(the.act()).amendingActs(language)).doesNotContain(act);
+    assertThat(the.amendingActs(language)).doesNotContain(act);
   }
 
   @Then("no version of the act includes {act}")
@@ -54,51 +55,51 @@ public class HistorySteps {
 
   @Then("the first day of {act} is {day}")
   public void firstDay(ActIdentifier act, LocalDate day) {
-    assertThat(ActHistory.of(the.act()).firstDay(act, Language.ENG)).contains(day);
+    assertThat(TheHistoryOfAnAct.firstDay(the.act(), act, Language.ENG)).contains(day);
   }
 
   @Then("{act} is newer than {act} in the history of the act in {language}")
   public void newer(ActIdentifier newer, ActIdentifier older, Language language) {
-    var acts = ActHistory.of(the.act()).amendingActs(language);
+    var acts = the.amendingActs(language);
     assertThat(acts).contains(newer, older);
     assertThat(acts.indexOf(newer)).isLessThan(acts.indexOf(older));
   }
 
   @Then("the latest text that the viewer builds is the text of {day}")
   public void latest(LocalDate day) {
-    assertThat(ActHistory.of(the.act()).latestText(Language.ENG, the.texts())).contains(text(day));
+    assertThat(the.latest()).contains(text(day));
   }
 
   @Then("{act} has {int} changes, and the first three, in the order of the text, are at:")
   public void firstInTextOrder(ActIdentifier act, int count, List<String> places) {
-    var latest = ActHistory.of(the.act()).latestText(Language.ENG, the.texts()).orElseThrow();
-    var changes = ActHistory.of(the.act()).changesInTextOrder(act, Language.ENG, latest);
+    assertThat(the.latest()).isPresent();
+    var changes = the.changesInTextOrder(act);
     assertThat(changes).hasSize(count);
     assertThat(words(changes).subList(0, places.size())).containsExactlyElementsOf(places);
   }
 
   @Then("{act} has {int} changes, and the first three, in the order of the data, are at:")
   public void firstInDataOrder(ActIdentifier act, int count, List<String> places) {
-    assertThat(ActHistory.of(the.act()).latestText(Language.ENG, the.texts())).isEmpty();
-    var changes = ActHistory.of(the.act()).changesInTextOrder(act, Language.ENG, null);
+    assertThat(the.latest()).isEmpty();
+    var changes = the.changesInTextOrder(act);
     assertThat(changes).hasSize(count);
     assertThat(words(changes).subList(0, places.size())).containsExactlyElementsOf(places);
   }
 
   @Then("{act} has no changes in {language}")
   public void noChanges(ActIdentifier act, Language language) {
-    assertThat(ActHistory.of(the.act()).changesBy(act, language)).isEmpty();
+    assertThat(the.changes(act, language)).isEmpty();
   }
 
   @Then("{act} has changes in {language}")
   public void changes(ActIdentifier act, Language language) {
-    assertThat(ActHistory.of(the.act()).changesBy(act, language)).isNotEmpty();
+    assertThat(the.changes(act, language)).isNotEmpty();
   }
 
   @Then("in the order of the text, these changes of {act} follow one another:")
   public void followOneAnother(ActIdentifier act, List<String> places) {
-    var latest = ActHistory.of(the.act()).latestText(Language.ENG, the.texts()).orElseThrow();
-    var words = words(ActHistory.of(the.act()).changesInTextOrder(act, Language.ENG, latest));
+    assertThat(the.latest()).isPresent();
+    var words = words(the.changesInTextOrder(act));
     assertThat(Collections.indexOfSubList(words, places))
         .as("%s in the order of the text: %s", places, words)
         .isNotNegative();
@@ -119,42 +120,58 @@ public class HistorySteps {
 
   @Then("the corrigenda of {act} in {language} are {acts}")
   public void corrigenda(ActIdentifier act, Language language, List<ActIdentifier> corrigenda) {
-    assertThat(ActHistory.of(the.act()).corrigendaOf(act, language))
+    assertThat(TheHistoryOfAnAct.corrigendaOfAnAct(the.act(), act, language))
         .containsExactlyElementsOf(corrigenda);
   }
 
   @Then("the corrigenda of {act} in {language} are none")
   public void noCorrigenda(ActIdentifier act, Language language) {
-    assertThat(ActHistory.of(the.act()).corrigendaOf(act, language)).isEmpty();
+    assertThat(TheHistoryOfAnAct.corrigendaOfAnAct(the.act(), act, language)).isEmpty();
   }
 
   @Then("the changes of {act} show between the texts of {day} and of {day}")
   public void twoTexts(ActIdentifier act, LocalDate earlier, LocalDate later) {
-    assertThat(ActHistory.of(the.act()).beforeIntegrating(act, Language.ENG).map(Version::date))
+    assertThat(
+            TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)
+                .before()
+                .map(Version::date))
         .contains(earlier);
-    assertThat(ActHistory.of(the.act()).integrating(act, Language.ENG).map(Version::date))
+    assertThat(
+            TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)
+                .integrating()
+                .map(Version::date))
         .contains(later);
   }
 
   @Then("no texts show the changes of {act}")
   public void noTexts(ActIdentifier act) {
-    assertThat(ActHistory.of(the.act()).integrating(act, Language.ENG)).isEmpty();
-    assertThat(ActHistory.of(the.act()).beforeIntegrating(act, Language.ENG)).isEmpty();
+    assertThat(
+            TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG).integrating())
+        .isEmpty();
+    assertThat(TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG).before())
+        .isEmpty();
   }
 
   @Then("the occurrences of the change of {act} at {place} are {place} of the later text")
   public void occurrences(ActIdentifier act, Place place, Place occurrence) {
     var later =
-        text(ActHistory.of(the.act()).integrating(act, Language.ENG).orElseThrow().date()).eIds();
+        text(TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)
+                .integrating()
+                .orElseThrow()
+                .date())
+            .eIds();
     var earlier =
-        text(ActHistory.of(the.act()).beforeIntegrating(act, Language.ENG).orElseThrow().date())
+        text(TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)
+                .before()
+                .orElseThrow()
+                .date())
             .eIds();
     var changes =
-        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
+        the.changes(act, Language.ENG).stream()
             .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("%s at %s", act.cited(), place.words()).hasSize(1);
-    var found = ActHistory.occurrences(changes.getFirst(), later, earlier);
+    var found = TheHistoryOfAnAct.occurrencesOfAChange(changes.getFirst(), later, earlier);
     var expected =
         PlaceWords.location(occurrence)
             .in(TextOccurrences.of(later))
@@ -166,18 +183,26 @@ public class HistorySteps {
 
   @Then("the other acts of the first version with {act} are {acts}")
   public void others(ActIdentifier act, List<ActIdentifier> others) {
-    assertThat(ActHistory.of(the.act()).integratedWith(act, Language.ENG))
+    assertThat(
+            TheHistoryOfAnAct.otherActsOfItsVersion(
+                act, TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)))
         .containsExactlyElementsOf(others);
   }
 
   @Then("the other acts of the first version with {act} are none")
   public void noOthers(ActIdentifier act) {
-    assertThat(ActHistory.of(the.act()).integratedWith(act, Language.ENG)).isEmpty();
+    assertThat(
+            TheHistoryOfAnAct.otherActsOfItsVersion(
+                act, TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)))
+        .isEmpty();
   }
 
   @Then("the first version with {act} is the version of {day}")
   public void firstVersion(ActIdentifier act, LocalDate day) {
-    assertThat(ActHistory.of(the.act()).integrating(act, Language.ENG).map(Version::date))
+    assertThat(
+            TheHistoryOfAnAct.twoTextsOfAnAmendingAct(the.act(), act, Language.ENG)
+                .integrating()
+                .map(Version::date))
         .contains(day);
   }
 
@@ -218,13 +243,17 @@ public class HistorySteps {
             .map(
                 place -> PlaceWords.location(place).in(occurrences).orElseThrow().eIds().getFirst())
             .toList();
-    assertThat(ProvisionHistory.unattributed(the.act(), version(day), Language.ENG, the.texts()))
+    assertThat(
+            TheHistoryOfAnAct.aProvisionTheDataNamesNoActFor(
+                the.act(), Language.ENG, version(day), the.texts()))
         .containsExactlyElementsOf(expected);
   }
 
   @Then("in the text of {day}, the data names an act for each occurrence")
   public void noneUnattributed(LocalDate day) {
-    assertThat(ProvisionHistory.unattributed(the.act(), version(day), Language.ENG, the.texts()))
+    assertThat(
+            TheHistoryOfAnAct.aProvisionTheDataNamesNoActFor(
+                the.act(), Language.ENG, version(day), the.texts()))
         .isEmpty();
   }
 
@@ -237,21 +266,19 @@ public class HistorySteps {
             .eIds()
             .getFirst();
     assertThat(
-            ProvisionHistory.firstWith(the.act(), eId, Language.ENG, the.texts())
+            TheHistoryOfAnAct.firstTextWithTheProvision(the.act(), Language.ENG, eId, the.texts())
                 .map(Version::date))
         .contains(day);
   }
 
   @Then("the amending acts between {day} and {day} are {acts}")
   public void between(LocalDate from, LocalDate to, List<ActIdentifier> acts) {
-    assertThat(ActHistory.of(the.act()).amendingActsBetween(from, to, Language.ENG, the.texts()))
-        .contains(acts);
+    assertThat(the.between(from, to)).contains(acts);
   }
 
   @Then("the act has no amending acts between {day} and {day}")
   public void noneBetween(LocalDate from, LocalDate to) {
-    assertThat(ActHistory.of(the.act()).amendingActsBetween(from, to, Language.ENG, the.texts()))
-        .isEmpty();
+    assertThat(the.between(from, to)).isEmpty();
   }
 
   @Then(
@@ -259,21 +286,22 @@ public class HistorySteps {
           + " {day} are {acts}")
   public void betweenForAProvision(
       LocalDate from, LocalDate to, Place place, LocalDate day, List<ActIdentifier> acts) {
-    var between =
-        ActHistory.of(the.act())
-            .amendingActsBetween(from, to, Language.ENG, the.texts())
-            .orElseThrow();
-    assertThat(historyOf(day, place).actsAmong(between)).containsExactlyElementsOf(acts);
+    assertThat(the.between(from, to)).isPresent();
+    assertThat(
+            TheHistoryOfAnAct.actsOfAProvisionBetweenTwoDays(
+                historyOf(day, place), the.between(from, to).orElseGet(List::of)))
+        .containsExactlyElementsOf(acts);
   }
 
   @Then("the act changes on {int} days")
   public void changeDays(int count) {
-    assertThat(ActHistory.of(the.act()).changeDays(Language.ENG)).hasSize(count);
+    assertThat(TheHistoryOfAnAct.daysOfChange(the.overTime(Language.ENG).amendingActs()))
+        .hasSize(count);
   }
 
   @Then("on {day}, these acts change the act: {acts}")
   public void changedOn(LocalDate day, List<ActIdentifier> acts) {
-    assertThat(ActHistory.of(the.act()).changeDays(Language.ENG).get(day))
+    assertThat(TheHistoryOfAnAct.daysOfChange(the.overTime(Language.ENG).amendingActs()).get(day))
         .containsExactlyElementsOf(acts);
   }
 
@@ -294,7 +322,9 @@ public class HistorySteps {
 
   /** Returns the days on which {@code act} changes the act of the scenario, in order. */
   private List<LocalDate> daysOf(ActIdentifier act) {
-    return ActHistory.of(the.act()).changeDays(Language.ENG).entrySet().stream()
+    return TheHistoryOfAnAct.daysOfChange(the.overTime(Language.ENG).amendingActs())
+        .entrySet()
+        .stream()
         .filter(each -> each.getValue().contains(act))
         .map(java.util.Map.Entry::getKey)
         .toList();
@@ -302,14 +332,21 @@ public class HistorySteps {
 
   /** Returns the history of the provision that {@code place} names in the text of {@code day}. */
   private ProvisionHistory historyOf(LocalDate day, Place place) {
-    var text = text(day);
-    var eId =
-        PlaceWords.location(place)
-            .in(TextOccurrences.of(text.eIds()))
-            .orElseThrow(() -> new AssertionError("No " + place.words() + " in the text of " + day))
-            .eIds()
-            .getFirst();
-    return ProvisionHistory.of(the.act(), eId, text, Language.ENG);
+    return TheHistoryOfAnAct.historyOfAProvision(
+        the.act(),
+        Language.ENG,
+        occurrence(day, place),
+        text(day),
+        TheHistoryOfAnAct.orderOfTheAmendingActs(the.act(), Language.ENG));
+  }
+
+  /** Returns the eId of the occurrence that {@code place} names in the text of {@code day}. */
+  private String occurrence(LocalDate day, Place place) {
+    return PlaceWords.location(place)
+        .in(TextOccurrences.of(text(day).eIds()))
+        .orElseThrow(() -> new AssertionError("No " + place.words() + " in the text of " + day))
+        .eIds()
+        .getFirst();
   }
 
   /** Returns the places of {@code changes}, in their order. */

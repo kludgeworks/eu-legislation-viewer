@@ -7,7 +7,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Clock;
@@ -64,7 +64,7 @@ final class ApiActResources {
 
   /** Returns the link to the version that applies today, if one does. */
   static Optional<Link> latest(Act act, Clock clock) {
-    var applying = act.timeline().allApplicableOn(Timeline.today(clock));
+    var applying = act.timeline().allApplicableOn(TheVersionsOfAnAct.today(clock.instant()));
     return applying.isEmpty()
         ? Optional.empty()
         : Optional.of(to(act.id(), applying.getLast(), IanaLinkRelations.LATEST_VERSION));

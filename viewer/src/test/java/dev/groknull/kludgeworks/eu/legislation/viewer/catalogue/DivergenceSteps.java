@@ -44,7 +44,7 @@ public class DivergenceSteps {
   public void textLacks(LocalDate day, ActIdentifier act, Place place) {
     var text = Objects.requireNonNull(the.texts().get(version(day)), "No built text of " + day);
     var changes =
-        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
+        TheHistoryOfAnAct.changesOfAnAmendingAct(the.act(), act, Language.ENG, null).stream()
             .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(changes).as("%s at %s", act.cited(), place.words()).hasSize(1);

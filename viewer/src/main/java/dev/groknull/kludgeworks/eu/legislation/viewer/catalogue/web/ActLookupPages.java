@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ActLookupView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
@@ -66,6 +68,9 @@ final class ActLookupPages {
       Templates templates, NoSuchAct missing, HttpServletRequest request) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .contentType(Requests.HTML)
-        .body(templates.catalogueNosuchact(Frame.of(request), missing.eli().path()).render());
+        .body(
+            templates
+                .catalogueNosuchact(Frame.of(request), Objects.requireNonNull(missing.eli()).path())
+                .render());
   }
 }

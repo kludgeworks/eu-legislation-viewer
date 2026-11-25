@@ -162,10 +162,10 @@ public final class LawOnADay {
   /**
    * Returns the acts and corrigenda that Cellar lists for {@code version} and that change its text
    * in {@code language}, in Cellar's order. An act changes the text in a language unless each of
-   * its amendments is for other languages only ({@link ActHistory#inLanguage}). A corrigendum is
-   * published only in the languages that it corrects, so one without a title in {@code language} is
-   * left out. For example, the version of 2015/1998 of 12 April 2022 lists 2022/463, which changes
-   * only the German text: in English it lists none.
+   * its amendments is for other languages only ({@link TheHistoryOfAnAct#inLanguage}). A
+   * corrigendum is published only in the languages that it corrects, so one without a title in
+   * {@code language} is left out. For example, the version of 2015/1998 of 12 April 2022 lists
+   * 2022/463, which changes only the German text: in English it lists none.
    */
   @BusinessRule(
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
@@ -175,7 +175,7 @@ public final class LawOnADay {
         .filter(each ->
             each.corrigendum()
                 ? act.publication(each).flatMap(p -> p.title(language)).isPresent()
-                : ActHistory.of(act).inLanguage(each, language))
+                : TheHistoryOfAnAct.inLanguage(act, each, language))
         .toList();
   }
 
@@ -203,8 +203,9 @@ public final class LawOnADay {
             .map(Version::date);
     var inForce = act.dates().entryIntoForce(act.id());
     var from = first.map(date -> inForce.filter(date::isBefore).orElse(date));
-    return act.dates()
-        .appliesFrom(act.id())
+    return DatedAct.of(act, act.id())
+        .appliesFrom()
+        .from()
         .filter(inFull -> inFull.date() != null)
         .filter(inFull ->
             from.isPresent()

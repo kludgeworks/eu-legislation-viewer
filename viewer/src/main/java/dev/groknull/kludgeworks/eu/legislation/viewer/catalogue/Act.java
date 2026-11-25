@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.SequencedSet;
-import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
@@ -29,7 +28,7 @@ import org.jspecify.annotations.Nullable;
  * the rest of its data tells is in classes of its own, each for one area of the rules:
  *
  * <ul>
- *   <li>{@link ActHistory}: its amending acts, their changes and its corrigenda.
+ *   <li>{@link TheHistoryOfAnAct}: its amending acts, their changes and its corrigenda.
  *   <li>{@link ProvisionHistory}: the acts that changed one provision.
  *   <li>{@link LawOnADay}: the version of a day, and where its text is not the law.
  * </ul>
@@ -75,19 +74,6 @@ public record Act(
     }
     amendments = List.copyOf(amendments);
     repealedBy = List.copyOf(repealedBy);
-  }
-
-  /**
-   * Returns the state of this act on {@code day}. After its end of validity, it is no longer in
-   * force: a later act repealed it, or it expired. Before that, its state is as its dates give it
-   * ({@link ActDates#stateOn}).
-   */
-  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "state-on-a-day")
-  public State stateOn(LocalDate day) {
-    if (endOfValidity != null && day.isAfter(endOfValidity)) {
-      return State.NO_LONGER_IN_FORCE;
-    }
-    return dates.stateOn(id, Set.of(), day);
   }
 
   /** Returns its title in {@code language}, or empty if Cellar has no title in that language. */

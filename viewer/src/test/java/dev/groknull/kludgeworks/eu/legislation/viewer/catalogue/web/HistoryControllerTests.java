@@ -20,6 +20,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
 import java.time.Instant;
@@ -50,7 +51,11 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * of an amending act is of a made-up act with changes in two groups.
  */
 @WebMvcTest(HistoryController.class)
-@Import({ControllerTesting.class, HistoryControllerTests.OnTheFirstOfJune2021.class})
+@Import({
+  ControllerTesting.class,
+  HistoryService.class,
+  HistoryControllerTests.OnTheFirstOfJune2021.class
+})
 class HistoryControllerTests {
   private static final String HISTORY = "/eli/reg_impl/2015/1998/eng/history";
 

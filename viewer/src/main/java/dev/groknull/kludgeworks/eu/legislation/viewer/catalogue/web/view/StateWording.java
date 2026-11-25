@@ -2,11 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Standing;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.Stands;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,8 +16,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * The wording of the state of an act, or of one of its changes, on a day: its label, its phrase,
  * its tone, and the statement of one change. The history of an act and the page of an amending act
- * use it. The state is the act's, {@link ActDates#stateOn} and {@link ActHistory#standingOn}. This
- * class only puts it into words.
+ * use it. The state is the act's, {@link TheStateOnADay#stateOnADay} and {@link
+ * TheStateOnADay#howAnAmendingActStands}. This class only puts it into words.
  *
  * <p>The tense obeys the day. For today or a later day, "does not apply yet". For a day in the
  * past, "did not apply yet".
@@ -81,16 +81,21 @@ final class StateWording {
    * Returns how many changes are in each state, where they are not all in one state. For example,
    * "Applies: 1 · Does not apply yet: 2". Returns an empty text where they are in one state.
    */
-  static String counts(Standing standing, boolean past) {
+  static String counts(Stands standing, boolean past) {
+    return counts(standing.applies(), standing.notApplying(), standing.notKnown(), past);
+  }
+
+  /** As {@link #counts(Stands, boolean)}, from the three counts. */
+  static String counts(int applies, int notApplying, int notKnown, boolean past) {
     var lines = new ArrayList<String>();
-    if (standing.applies() > 0) {
-      lines.add((past ? "Applied: " : "Applies: ") + standing.applies());
+    if (applies > 0) {
+      lines.add((past ? "Applied: " : "Applies: ") + applies);
     }
-    if (standing.notApplying() > 0) {
-      lines.add((past ? "Did not apply yet: " : "Does not apply yet: ") + standing.notApplying());
+    if (notApplying > 0) {
+      lines.add((past ? "Did not apply yet: " : "Does not apply yet: ") + notApplying);
     }
-    if (standing.notKnown() > 0) {
-      lines.add("State not known: " + standing.notKnown());
+    if (notKnown > 0) {
+      lines.add("State not known: " + notKnown);
     }
     return lines.size() < 2 ? "" : String.join(" · ", lines);
   }
@@ -105,7 +110,7 @@ final class StateWording {
   static @Nullable String statement(
       Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
     var from = act.dates().changeAppliesFrom(amending, placeDays);
-    return switch (act.dates().stateOn(amending, placeDays, day)) {
+    return switch (DatedAct.of(act, amending).state(placeDays).on(day).state()) {
       case APPLIES ->
           from.map(each ->
                   (past ? "Applied from " : "Applies from ")
@@ -123,7 +128,7 @@ final class StateWording {
                   .orElse("");
       case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
       case NOT_KNOWN ->
-          Wording.unknown(amending, act.dates().applying(amending, Set.of()).orElse(null));
+          Wording.unknown(amending, DatedAct.of(act, amending).applying(Set.of()).orElse(null));
       case IN_PART, NO_LONGER_IN_FORCE ->
           throw new IllegalStateException(
               "The state of one change is never in part, nor no longer in force");

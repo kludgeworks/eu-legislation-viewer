@@ -2,9 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -53,14 +53,14 @@ public record TagsView(List<Tag> tags) {
 
   /**
    * Returns when {@code amending} applies, with the clause that says so, from {@link
-   * ActDates#applying}. For example, "applies from 1 April 2023 · Article 2 of 2023/566", or
+   * DatedAct#applying}. For example, "applies from 1 April 2023 · Article 2 of 2023/566", or
    * "applies from more than one day, first from 22 March 2026 · Article 2 of 2026/449". It is the
    * act's date, not the occurrence's: an act that applies from more than one day says when the
    * first part starts. Returns null if Cellar has no day for it and no clause that sets one.
    */
   static @Nullable String applies(Act act, ActIdentifier amending) {
-    return act.dates()
-        .applying(amending, Set.of())
+    return DatedAct.of(act, amending)
+        .applying(Set.of())
         .map(applying -> {
           var clause = Wording.clause(applying.dates(), amending);
           var cited = clause.isEmpty() ? "" : " · " + clause;

@@ -2,9 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.Set;
@@ -17,7 +19,7 @@ import org.jspecify.annotations.Nullable;
  * <day-picker>} makes one field and a calendar of it.
  *
  * <p>The calendar marks the days on which an amending act changes the act, {@link
- * ActHistory#changeDays}. This view says, for each such day, what each act does on it:
+ * TheHistoryOfAnAct#daysOfChange}. This view says, for each such day, what each act does on it:
  *
  * <ul>
  *   <li>"2021/255 applies from this day"
@@ -65,7 +67,9 @@ public record DayView(
         single,
         range,
         occurrence,
-        ActHistory.of(act).changeDays(language).entrySet().stream()
+        TheHistoryOfAnAct.daysOfChange(ActOverTime.of(act, language).amendingActs())
+            .entrySet()
+            .stream()
             .map(each ->
                 each.getKey()
                     + "="
@@ -78,8 +82,8 @@ public record DayView(
   /** Returns what {@code amending} does on one of its days of change, in words. */
   private static String does(Act act, ActIdentifier amending) {
     var cited = act.cited(amending);
-    return act.dates()
-        .applying(amending, Set.of())
+    return DatedAct.of(act, amending)
+        .applying(Set.of())
         .map(applying ->
             switch (applying) {
               case Applying.FromMoreThanOneDay _ -> "A part of " + cited + " applies from this day";

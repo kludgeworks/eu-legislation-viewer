@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
  * Tests the history of an act and of its provisions where no real act has the case. The act is made
  * up. Its amending acts have the kinds of dates that real acts have.
  */
-class ActHistoryTest {
+class TheHistoryOfAnActTest {
   private static final ActIdentifier BASE = new ActIdentifier("32018R1862");
 
   /** Enters into force and applies in part on one day. Applies in full from a later day. */
@@ -113,16 +113,18 @@ class ActHistoryTest {
   @Test
   void anActWithoutADatedDateHasTheFirstDayOfTheFirstVersionThatIntegratesIt() {
     // No real act has no dated date: the edge of the-order-of-the-amending-acts.
-    assertThat(ActHistory.of(ACT).firstDay(UNDATED, Language.ENG))
+    assertThat(TheHistoryOfAnAct.firstDay(ACT, UNDATED, Language.ENG))
         .hasValue(LocalDate.of(2020, 5, 1));
-    assertThat(ActHistory.of(ACT).amendingActs(Language.ENG))
+    assertThat(ActOverTime.amendingActsOf(ACT, Language.ENG))
         .containsExactly(PHASED, EVENT, UNDATED, SIMPLE);
   }
 
   @Test
   void anActWithoutDatesChangesTheActOnNoDay() {
     // No real act has no dates: the edge of the-days-of-change.
-    assertThat(ActHistory.of(ACT).changeDays(Language.ENG).values())
+    assertThat(
+            TheHistoryOfAnAct.daysOfChange(ActOverTime.of(ACT, Language.ENG).amendingActs())
+                .values())
         .noneMatch(acts -> acts.contains(UNDATED));
   }
 
@@ -131,9 +133,10 @@ class ActHistoryTest {
     // No real text has these cases: the edges of the-occurrences-of-a-change.
     var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
-    assertThat(ActHistory.occurrences(change, List.of("art_3"), with))
+    assertThat(TheHistoryOfAnAct.occurrencesOfAChange(change, List.of("art_3"), with))
         .containsExactly("art_20/par_1");
-    assertThat(ActHistory.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
+    assertThat(TheHistoryOfAnAct.occurrencesOfAChange(change, List.of("art_3"), List.of("art_3")))
+        .isEmpty();
   }
 
   /** The tags of a text of the act, with the occurrences that the changes of the act are at. */
@@ -159,7 +162,7 @@ class ActHistoryTest {
 
   @Test
   void theOccurrencesWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
-    assertThat(ProvisionHistory.changedOccurrences(ACT, TEXT.eIds(), Language.ENG).keySet())
+    assertThat(TheHistoryOfAnAct.changedOccurrences(ACT, TEXT.eIds(), Language.ENG).keySet())
         .containsExactly("art_3/pnt_8", "art_20/par_1");
   }
 }

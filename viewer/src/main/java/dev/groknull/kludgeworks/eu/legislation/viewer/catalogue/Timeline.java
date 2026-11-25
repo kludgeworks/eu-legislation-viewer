@@ -4,9 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
 import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -24,21 +22,14 @@ import org.jspecify.annotations.Nullable;
  * <p>The version that applies on a date is the last one that starts on or before that date. Interim
  * versions are included once their date has passed. After a repeal, the last version applies.
  *
- * <p>Today is the day in Brussels, {@link #today}: the EU adopts its acts there, and the Official
- * Journal dates them there.
+ * <p>Today is the day in Brussels, {@link TheVersionsOfAnAct#today}: the EU adopts its acts there,
+ * and the Official Journal dates them there.
  */
 @ValueObject
 public final class Timeline {
-  private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
 
   private final List<Version> versions;
   private final NavigableMap<LocalDate, List<Version>> byDate;
-
-  /** Returns today in the EU: the date in Brussels. */
-  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "today-is-the-day-in-brussels")
-  public static LocalDate today(Clock clock) {
-    return LocalDate.ofInstant(clock.instant(), BRUSSELS);
-  }
 
   /**
    * Makes a timeline of the versions, in any order. There is at most one version a day in any one
@@ -106,23 +97,28 @@ public final class Timeline {
    * same-day consolidation in different languages), it picks the one in {@code language}, falling
    * back to the other.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "one-version-a-day-in-each-language")
   @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "the-last-version-after-a-repeal")
   public Optional<Version> applicableOn(LocalDate date, Language language) {
     var entry = byDate.floorEntry(date);
     if (entry == null) {
       return Optional.empty();
     }
-    var onDate = entry.getValue();
-    if (onDate.size() == 1) {
-      return Optional.of(onDate.getFirst());
-    }
+    return Optional.of(ofTheLanguage(entry.getValue(), language));
+  }
+
+  /**
+   * Returns the version of {@code onDate}, the versions that share a day, that is in {@code
+   * language}. If none is, it returns the first: the act has at most one version a day in each
+   * language.
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "one-version-a-day-in-each-language")
+  private static Version ofTheLanguage(List<Version> onDate, Language language) {
     return onDate.stream()
         .filter(v -> v.languages().contains(language))
         .findFirst()
-        .or(() -> Optional.of(onDate.getFirst()));
+        .orElseGet(onDate::getFirst);
   }
 
   /**
@@ -277,7 +273,7 @@ public final class Timeline {
   /**
    * Returns the two days of a comparison of the versions of this timeline, in one language, from
    * the days that the reader gave. {@code today} is the day on which the reader asks ({@link
-   * #today}).
+   * TheVersionsOfAnAct#today}).
    *
    * <ul>
    *   <li>Without To, To is the first day of the version that applies on {@code today}, or of the

@@ -5,10 +5,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
@@ -121,7 +124,7 @@ class CompareController {
     var frame = Frame.of(request);
     var masthead =
         MastheadView.comparing(page.act, page.fromDay, page.toDay, occurrence, page.language);
-    var today = Timeline.today(clock);
+    var today = TheVersionsOfAnAct.today(clock.instant());
     if (page.before) {
       return ResponseEntity.ok()
           .contentType(Requests.HTML)
@@ -257,7 +260,7 @@ class CompareController {
       language = Requests.language(code);
       act = acts.act(eli);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
-      var days = timeline.twoDays(from, to, Timeline.today(clock));
+      var days = timeline.twoDays(from, to, TheVersionsOfAnAct.today(clock.instant()));
       fromDay = days.from();
       toDay = days.to();
       before = timeline.startsAfter(fromDay);

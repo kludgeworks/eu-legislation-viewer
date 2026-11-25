@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
@@ -146,7 +146,7 @@ class ComparisonViewsController {
         attributions
             .of(ends.act, ends.versions(), earlier, later, page.later())
             .orElseThrow(Requests::notFound);
-    var today = Timeline.today(clock);
+    var today = TheVersionsOfAnAct.today(clock.instant());
     var differences = DifferencesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
     var shown = new ArrayList<DifferencesView.Shown>();

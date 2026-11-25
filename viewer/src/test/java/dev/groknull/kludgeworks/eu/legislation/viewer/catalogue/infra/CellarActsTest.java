@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provisio
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
@@ -279,7 +280,7 @@ class CellarActsTest {
     assertThat(dates).hasSize(19).doesNotContainKey(AVSEC);
     assertThat(act.timeline().versions())
         .noneMatch(each -> each.integrates().contains(inNoVersion));
-    assertThat(act.dates().appliesFrom(inNoVersion).map(ActDate::date))
+    assertThat(DatedAct.of(act, inNoVersion).appliesFrom().from().map(ActDate::date))
         .hasValue(LocalDate.of(2026, 11, 12));
     assertThat(dates.getOrDefault(new ActIdentifier("32018R0055"), List.of()))
         .extracting(ActDate::date, ActDate::kind)

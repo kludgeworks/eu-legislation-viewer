@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.Stands;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -14,13 +15,13 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the state on a day: the state of an act, or of one of its changes
- * ({@link ActDates#stateOn}), and how an amending act stands ({@link ActHistory#standingOn}, {@link
- * Standing#state}). The changes are those to the English text. They read the act of the scenario
- * ({@link TheAct}).
+ * ({@link TheStateOnADay#stateOnADay}), and how an amending act stands ({@link
+ * TheStateOnADay#howAnAmendingActStands}, {@link TheStateOnADay.Stands#state}). The changes are
+ * those to the English text. They read the act of the scenario ({@link TheAct}).
  */
 public class StateSteps {
   private final TheAct the;
-  private @Nullable Standing standing;
+  private @Nullable Stands standing;
 
   public StateSteps(TheAct the) {
     this.the = the;
@@ -29,7 +30,10 @@ public class StateSteps {
   @Then("on {day}, {act} {state}")
   public void state(LocalDate day, ActIdentifier act, State state) {
     var own = the.act().id().equals(act);
-    assertThat(own ? the.act().stateOn(day) : the.act().dates().stateOn(act, Set.of(), day))
+    assertThat(
+            (own ? the.dated(act).state(the.act()) : the.dated(act).state(Set.of()))
+                .on(day)
+                .state())
         .as("%s on %s", act.cited(), day)
         .isEqualTo(state);
   }
@@ -43,7 +47,7 @@ public class StateSteps {
   @Then("on {day}, the change of {act} at {place} {state}")
   public void stateOfChange(LocalDate day, ActIdentifier act, Place place, State state) {
     var days = ActDates.days(change(act, place));
-    assertThat(the.act().dates().stateOn(act, days, day))
+    assertThat(the.dated(act).state(days).on(day).state())
         .as("%s at %s on %s", act.cited(), place.words(), day)
         .isEqualTo(state);
   }
@@ -60,7 +64,7 @@ public class StateSteps {
 
   @Then("{act} applies from more than one day: {days}")
   public void parts(ActIdentifier act, List<LocalDate> days) {
-    assertThat(the.act().dates().applying(act, Set.of()))
+    assertThat(the.dated(act).applying(Set.of()))
         .get()
         .isInstanceOfSatisfying(
             Applying.FromMoreThanOneDay.class,
@@ -81,12 +85,12 @@ public class StateSteps {
 
   @Then("Cellar lists no changed place for {act}")
   public void noChangedPlace(ActIdentifier act) {
-    assertThat(ActHistory.of(the.act()).changesBy(act, Language.ENG)).as(act.cited()).isEmpty();
+    assertThat(the.changes(act, Language.ENG)).as(act.cited()).isEmpty();
   }
 
   @When("the reader asks how {act} stands on {day}")
   public void stands(ActIdentifier act, LocalDate day) {
-    standing = ActHistory.of(the.act()).standingOn(act, Language.ENG, day);
+    standing = ActOverTime.amending(the.act(), act, Language.ENG).stands().on(day);
   }
 
   @Then(
@@ -102,14 +106,14 @@ public class StateSteps {
     assertThat(standing().state()).isEqualTo(state);
   }
 
-  private Standing standing() {
+  private Stands standing() {
     return Objects.requireNonNull(standing, "No standing: ask how the act stands first");
   }
 
   /** Returns the one change of {@code act} to the English text at {@code place}. */
   private Amendment change(ActIdentifier act, Place place) {
     var found =
-        ActHistory.of(the.act()).changesBy(act, Language.ENG).stream()
+        the.changes(act, Language.ENG).stream()
             .filter(each -> each.place().words().equals(place.words()))
             .toList();
     assertThat(found).as("%s at %s", act.cited(), place.words()).hasSize(1);

@@ -1,25 +1,20 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Histories;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.AmendingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HistoryView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
-import java.time.Clock;
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
@@ -47,16 +42,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 class HistoryController {
   private static final String HISTORY = "/eli/{type}/{year}/{number}/{language}/history";
 
-  private final Catalogued acts;
-  private final Texts texts;
+  private final Histories histories;
   private final Templates templates;
-  private final Clock clock;
 
-  HistoryController(Catalogued acts, Texts texts, Templates templates, Clock clock) {
-    this.acts = acts;
-    this.texts = texts;
+  HistoryController(Histories histories, Templates templates) {
+    this.histories = histories;
     this.templates = templates;
-    this.clock = clock;
   }
 
   /**
@@ -78,22 +69,12 @@ class HistoryController {
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
       HttpServletRequest request) {
-    var language = Requests.language(code);
-    var act = act(type, year, number);
-    var today = Timeline.today(clock);
-    LocalDate first = null;
-    var day = on != null ? on : today;
-    if (from != null && to != null && !from.equals(to)) {
-      first = from.isBefore(to) ? from : to;
-      day = from.isBefore(to) ? to : from;
-    }
-    Map<Version, TextTags> tags =
-        first == null ? Map.of() : texts.tags(texts.preparation(act, language));
+    var history = histories.of(new Eli(type, year, number), Requests.language(code), on, from, to);
     return templates
         .catalogueHistory(
             Frame.of(request),
-            MastheadView.history(act, day, language),
-            HistoryView.of(act, day, today, language, first, tags))
+            MastheadView.history(history.act(), history.day(), history.language()),
+            HistoryView.of(history))
         .render();
   }
 
@@ -113,55 +94,19 @@ class HistoryController {
           @Nullable LocalDate on,
       @RequestParam(required = false) @Nullable String applies,
       HttpServletRequest request) {
-    var language = Requests.language(code);
-    var act = act(type, year, number);
-    if (!ActIdentifier.isCelex(celex)) {
-      throw Requests.notFound();
-    }
-    var amending = new ActIdentifier(celex);
-    if (!ActHistory.of(act).amendingActs(language).contains(amending)) {
-      throw Requests.notFound();
-    }
-    var today = Timeline.today(clock);
-    var day = on != null ? on : today;
-    var tags = texts.tags(texts.preparation(act, language));
-    return templates
-        .catalogueAmending(
-            Frame.of(request),
-            MastheadView.history(act, day, language),
-            AmendingView.of(
-                act,
-                amending,
-                day,
-                today,
-                language,
-                applies,
-                ActHistory.of(act).latestText(language, tags).orElse(null),
-                step(act, amending, language, tags)))
-        .render();
-  }
-
-  private Act act(String type, int year, String number) {
-    return acts.act(new Eli(type, year, number));
-  }
-
-  /**
-   * Returns the two texts that show the wording of the changes of {@code amending}: the text of the
-   * first version that integrates it, and the text of the version before. Returns null if no
-   * version in {@code language} integrates it, or if one of the two texts is not built.
-   */
-  private static AmendingView.@Nullable Step step(
-      Act act, ActIdentifier amending, Language language, Map<Version, TextTags> tags) {
-    var later = ActHistory.of(act).integrating(amending, language).orElse(null);
-    var earlier = ActHistory.of(act).beforeIntegrating(amending, language).orElse(null);
-    if (later == null || earlier == null) {
-      return null;
-    }
-    var before = tags.get(earlier);
-    var after = tags.get(later);
-    return before == null || after == null
-        ? null
-        : new AmendingView.Step(earlier.date(), later.date(), before.eIds(), after.eIds());
+    return Optional.of(celex)
+        .filter(ActIdentifier::isCelex)
+        .map(ActIdentifier::new)
+        .flatMap(amending ->
+            histories.amending(new Eli(type, year, number), amending, Requests.language(code), on))
+        .map(amending ->
+            templates
+                .catalogueAmending(
+                    Frame.of(request),
+                    MastheadView.history(amending.act(), amending.day(), amending.language()),
+                    AmendingView.of(amending, applies))
+                .render())
+        .orElseThrow(Requests::notFound);
   }
 
   /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */

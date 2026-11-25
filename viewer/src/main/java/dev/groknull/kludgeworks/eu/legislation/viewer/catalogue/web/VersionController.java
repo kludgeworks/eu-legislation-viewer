@@ -2,15 +2,17 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.DivergenceNotesView;
@@ -115,7 +117,7 @@ class VersionController {
     var language = language(code);
     var eli = new Eli(type, year, number);
     var found = acts.act(eli);
-    var history = on == null && !ActHistory.of(found).amendingActs(language).isEmpty();
+    var history = on == null && !ActOverTime.amendingActsOf(found, language).isEmpty();
     return ActLookupPages.seeOther(
         history
             ? Links.history(eli, null, language)
@@ -397,7 +399,7 @@ class VersionController {
 
   /** Returns today, in Brussels. */
   private LocalDate today() {
-    return Timeline.today(clock);
+    return TheVersionsOfAnAct.today(clock.instant());
   }
 
   private static Language language(String code) {
