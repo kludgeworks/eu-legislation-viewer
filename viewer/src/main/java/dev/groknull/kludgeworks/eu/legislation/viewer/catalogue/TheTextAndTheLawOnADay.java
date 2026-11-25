@@ -136,7 +136,6 @@ public final class TheTextAndTheLawOnADay {
     Version first = null;
     Version around = null;
     var newly = new ArrayList<Version>();
-    var tagging = new HashSet<Version>();
     Set<String> before = Set.of();
     for (var version : versions) {
       var text = texts.get(version);
@@ -165,9 +164,6 @@ public final class TheTextAndTheLawOnADay {
           around = version;
         }
       }
-      if (!now.isEmpty()) {
-        tagging.add(version);
-      }
       if (!before.containsAll(now)) {
         newly.add(version);
         if (first == null) {
@@ -179,14 +175,14 @@ public final class TheTextAndTheLawOnADay {
     var from = place.from();
     var onTheDay = newly.stream().filter(each -> each.date().equals(from)).findFirst();
     if (onTheDay.isPresent()) {
-      return Optional.of(new VersionDate(onTheDay.get(), tagging));
+      return Optional.of(new VersionDate(onTheDay.get()));
     }
     if (first != null || around != null) {
-      return Optional.of(new VersionDate(first != null ? first : around, tagging));
+      return Optional.of(new VersionDate(first != null ? first : around));
     }
     return versions.stream().anyMatch(includes)
         ? Optional.empty()
-        : Optional.of(new VersionDate(null, tagging));
+        : Optional.of(new VersionDate(null));
   }
 
   /**
@@ -215,25 +211,22 @@ public final class TheTextAndTheLawOnADay {
 
   /**
    * The text agrees with the law at a place if the place date counts and is the version date. The
-   * version date stands if the place date does not count. The text also agrees if a version that
-   * starts on the place date includes the act and does not tag the place.
+   * version date stands if the place date does not count.
    *
    * @param placeDate the place date, if it counts ({@link #aPlaceDateTheActCanApplyFrom}), else
    *     null
    * @param versionDate the version whose first day is the version date, or null if no version
    *     includes the act
-   * @param includedOnThePlaceDate whether a version that starts on the place date includes the act
-   *     and does not tag the place
    */
   @BusinessRule(
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
       name = "the-text-agrees-with-the-law")
   public static boolean theTextAgreesWithTheLaw(
-      @Nullable ActDate placeDate, @Nullable Version versionDate, boolean includedOnThePlaceDate) {
+      @Nullable ActDate placeDate, @Nullable Version versionDate) {
     if (versionDate == null) {
       return false;
     }
-    return placeDate == null || includedOnThePlaceDate || day(placeDate).equals(versionDate.date());
+    return placeDate == null || day(placeDate).equals(versionDate.date());
   }
 
   /**
@@ -245,15 +238,13 @@ public final class TheTextAndTheLawOnADay {
    * @param placeDate the place date, if it counts, else null
    * @param versionDate the version whose first day is the version date, or null if no version
    *     includes the act
-   * @param includedOnThePlaceDate whether a version that starts on the place date includes the act
-   *     and does not tag the place
    */
   @BusinessRule(
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
       name = "pending-amendment",
       revision = 2)
   public static Optional<Differs> pendingAmendment(
-      @Nullable ActDate placeDate, @Nullable Version versionDate, boolean includedOnThePlaceDate) {
+      @Nullable ActDate placeDate, @Nullable Version versionDate) {
     if (placeDate == null) {
       return Optional.empty();
     }
@@ -261,9 +252,9 @@ public final class TheTextAndTheLawOnADay {
     if (versionDate == null) {
       return Optional.of(new Differs(Kind.PENDING, placeDate, null, from, null));
     }
-    return includedOnThePlaceDate || !from.isBefore(versionDate.date())
-        ? Optional.empty()
-        : Optional.of(new Differs(Kind.PENDING, placeDate, versionDate, from, versionDate.date()));
+    return from.isBefore(versionDate.date())
+        ? Optional.of(new Differs(Kind.PENDING, placeDate, versionDate, from, versionDate.date()))
+        : Optional.empty();
   }
 
   /**
@@ -273,13 +264,11 @@ public final class TheTextAndTheLawOnADay {
    * @param placeDate the place date, if it counts, else null
    * @param versionDate the version whose first day is the version date, or null if no version
    *     includes the act
-   * @param includedOnThePlaceDate whether a version that starts on the place date includes the act
-   *     and does not tag the place
    */
   @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "prospective-amendment")
   public static Optional<Differs> prospectiveAmendment(
-      @Nullable ActDate placeDate, @Nullable Version versionDate, boolean includedOnThePlaceDate) {
-    if (placeDate == null || versionDate == null || includedOnThePlaceDate) {
+      @Nullable ActDate placeDate, @Nullable Version versionDate) {
+    if (placeDate == null || versionDate == null) {
       return Optional.empty();
     }
     var applies = day(placeDate);

@@ -149,22 +149,12 @@ public record LawOverTime(
             TheTextAndTheLawOnADay.aPlaceDateTheActCanApplyFrom(
                     place.from(), dated.canApplyFrom(), dated.dates())
                 .orElse(null);
-        var includedOnThePlaceDate =
-            placeDate != null
-                && versions.stream()
-                    .anyMatch(each ->
-                        each.date().equals(placeDate.date())
-                            && includes(each, amending)
-                            && !versionDate.get().tagging().contains(each));
         var differs =
-            TheTextAndTheLawOnADay.pendingAmendment(placeDate, version, includedOnThePlaceDate)
-                .or(() ->
-                    TheTextAndTheLawOnADay.prospectiveAmendment(
-                        placeDate, version, includedOnThePlaceDate));
+            TheTextAndTheLawOnADay.pendingAmendment(placeDate, version)
+                .or(() -> TheTextAndTheLawOnADay.prospectiveAmendment(placeDate, version));
         answered |=
             differs.isPresent()
-                || TheTextAndTheLawOnADay.theTextAgreesWithTheLaw(
-                    placeDate, version, includedOnThePlaceDate);
+                || TheTextAndTheLawOnADay.theTextAgreesWithTheLaw(placeDate, version);
         differs.ifPresent(
             each -> groups.computeIfAbsent(each, key -> new ArrayList<>()).add(place));
       }

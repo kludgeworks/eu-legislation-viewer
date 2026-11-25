@@ -46,18 +46,6 @@ class DivergencesTest {
   }
 
   @Test
-  void aVersionOnThePlaceDateThatIncludesTheActButDoesNotTagTheProvisionKeepsTheVersionDate() {
-    application("2017-06-01");
-    partialApplication("2017-08-01");
-    place("2017-06-01");
-    version("2016-02-29", false);
-    version("2017-06-01", true, "anx/pnt_1.2");
-    version("2017-08-01", true, POINT, "anx/pnt_1.2");
-
-    assertThat(divergences()).isEmpty();
-  }
-
-  @Test
   void theVersionOnThePlaceDateIsTheVersionDateIfItNewlyTagsTheProvision() {
     application("2017-06-01");
     place("2017-06-01");
@@ -161,10 +149,6 @@ class DivergencesTest {
 
   private void application(String day) {
     date(day, Kind.APPLICATION, false);
-  }
-
-  private void partialApplication(String day) {
-    date(day, Kind.APPLICATION, true);
   }
 
   /** Adds a date of application of the whole act whose day Cellar has as a placeholder. */

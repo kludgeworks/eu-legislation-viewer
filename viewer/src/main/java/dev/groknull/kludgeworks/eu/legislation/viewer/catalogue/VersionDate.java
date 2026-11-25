@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -11,11 +10,5 @@ import org.jspecify.annotations.Nullable;
  *
  * @param version the version whose first day is the version date, or null if no version includes
  *     the amending act
- * @param tagging every version whose text tags the place
  */
-record VersionDate(@Nullable Version version, Set<Version> tagging) {
-
-  VersionDate {
-    tagging = Set.copyOf(tagging);
-  }
-}
+record VersionDate(@Nullable Version version) {}
