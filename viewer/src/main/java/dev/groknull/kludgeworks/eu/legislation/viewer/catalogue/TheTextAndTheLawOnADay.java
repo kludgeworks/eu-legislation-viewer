@@ -12,6 +12,7 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -93,16 +94,23 @@ public final class TheTextAndTheLawOnADay {
   }
 
   /**
-   * For a day, the reader gets the newest version that starts on or before it, in the language. If
-   * two versions share that day, it is the one in {@code language}, else the other. The reader gets
-   * no version before the first version of the act.
+   * For a day, the reader gets the newest version that starts on or before it. This is also true
+   * after a later act repeals the act: the reader gets its last version. The reader gets no version
+   * before the first version of the act.
+   *
+   * @param byDate the versions of the act, by the day on which they start
+   * @param day the day
+   * @return the versions of the day: one version, or the original text and a consolidation that
+   *     start on the same day in different languages. Empty before the first version.
    */
   @BusinessRule(
       group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY,
-      name = "the-text-of-a-day-is-a-version")
-  public static Optional<Version> versionOfADay(
-      Timeline timeline, LocalDate day, Language language) {
-    return timeline.applicableOn(day, language);
+      name = "the-text-of-a-day-is-a-version",
+      revision = 2)
+  public static List<Version> theTextOfADayIsAVersion(
+      NavigableMap<LocalDate, List<Version>> byDate, LocalDate day) {
+    var entry = byDate.floorEntry(day);
+    return entry == null ? List.of() : List.copyOf(entry.getValue());
   }
 
   /**

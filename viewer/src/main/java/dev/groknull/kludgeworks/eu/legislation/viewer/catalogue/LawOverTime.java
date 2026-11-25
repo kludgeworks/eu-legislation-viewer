@@ -72,7 +72,7 @@ public record LawOverTime(
 
   /** Returns the text and the law on {@code day}. */
   public LawOnADay on(LocalDate day) {
-    var version = TheTextAndTheLawOnADay.versionOfADay(act.timeline(), day, language);
+    var version = act.timeline().applicableOn(day, language);
     var notTheLaw =
         TheTextAndTheLawOnADay.whereTheTextOfADayIsNotTheLaw(
             Optional.ofNullable(deferred)

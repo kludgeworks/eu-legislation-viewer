@@ -30,16 +30,14 @@ public class DivergenceSteps {
 
   @Then("on {day}, the reader gets the version of {day}")
   public void version(LocalDate day, LocalDate version) {
-    assertThat(
-            TheTextAndTheLawOnADay.versionOfADay(the.act().timeline(), day, Language.ENG)
-                .map(Version::date))
+    assertThat(the.act().timeline().applicableOn(day, Language.ENG).map(Version::date))
         .as("the version on %s", day)
         .contains(version);
   }
 
   @Then("on {day}, the reader gets no version")
   public void noVersion(LocalDate day) {
-    assertThat(TheTextAndTheLawOnADay.versionOfADay(the.act().timeline(), day, Language.ENG))
+    assertThat(the.act().timeline().applicableOn(day, Language.ENG))
         .as("the version on %s", day)
         .isEmpty();
   }

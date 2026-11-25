@@ -90,6 +90,15 @@ public class CoverSteps {
         .containsExactlyElementsOf(acts);
   }
 
+  @Then("the version of {day} includes {acts}")
+  public void includes(LocalDate day, List<ActIdentifier> acts) {
+    assertThat(
+            the.act()
+                .inclusions(Language.ENG, the.texts())
+                .of(english().startingOn(day).orElseThrow()))
+        .containsExactlyElementsOf(acts);
+  }
+
   @Then("the acts between the versions of {day} and of {day} include {acts}")
   public void between(LocalDate from, LocalDate to, List<ActIdentifier> acts) {
     assertThat(betweenActs(from, to)).containsAll(acts);

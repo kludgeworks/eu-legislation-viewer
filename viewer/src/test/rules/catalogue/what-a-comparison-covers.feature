@@ -5,55 +5,61 @@ Feature: What a comparison covers
   the language. What the page says where a day has no version, and how the timeline moves the two
   days, is in docs/design.md.
 
-  Rule: the-days-when-the-reader-gives-none · The two days when the reader gives none
-    To is the first day of the version that applies on the day that the reader asks. If no version
-    applies on that day, To is the first day of the latest version. From is the first day of the
-    version before it. If the
-    version of To is the first version, From is its first day, and To is the first day of the
-    version after it.
+  Rule: the-two-days-of-a-comparison · The two days of a comparison
+    The two days of a comparison come from the days that the reader gives, in this order:
+    1. A day that the reader gives stays as given: it need not be the first day of a version.
+    2. Without To, To is the first day of the version that applies on the day that the reader
+       asks. If no version applies on that day, To is the first day of the latest version.
+    3. Without From, From is the first day of the version before the version of To. If the
+       version of To is the first version, From is the day of To, and To is the first day of the
+       version after it.
+    4. If From is after To, the two days change places.
 
-    Example: The version that applies, and the version before it
+    Example: No days: the version that applies, and the version before it
       Given the act 2015/1998 as Cellar has it
       When the reader gives no days on 24 November 2026
       Then the comparison is from 22 March 2026 to 1 October 2026
 
-    Example: The first version applies
+    Example: No days: the first version applies
       Given the act 2018/1862 as Cellar has it
       When the reader gives no days on 1 January 2019
       Then the comparison is from 27 December 2018 to 11 June 2019
 
-    Example: No version applies yet
+    Example: No days: no version applies yet
       Given the act 2018/1862 as Cellar has it
       When the reader gives no days on 1 December 2018
       Then the comparison is from 3 August 2021 to 1 August 2022
-
-  Rule: the-days-as-the-reader-gives-them · The comparison keeps the days as the reader gives them
-    A day that the reader gives stays as given: it need not be the first day of a version. If From
-    is after To, the two days change places. Without From, From is the first day of the version
-    before the version that applies on To. Without To, To is as when the reader gives no days.
-
-    Example: From after To
-      Given the act 2015/1998 as Cellar has it
-      When the reader gives From 3 June 2017 and To 29 February 2016
-      Then the comparison is from 29 February 2016 to 3 June 2017
 
     Example: Only To
       Given the act 2015/1998 as Cellar has it
       When the reader gives only To 3 June 2017
       Then the comparison is from 15 November 2015 to 3 June 2017
 
+    Example: Only To, in the first version
+      Given the act 2018/1862 as Cellar has it
+      When the reader gives only To 1 January 2019
+      Then the comparison is from 1 January 2019 to 11 June 2019
+
     Example: Only From
       Given the act 2015/1998 as Cellar has it
       When the reader gives only From 29 February 2016, on 24 November 2026
       Then the comparison is from 29 February 2016 to 1 October 2026
 
-  Rule: a-comparison-is-of-two-versions · A comparison is of two versions
-    The viewer compares the law on any two days at the first days of the versions that apply on
-    them. A comparison is between the first days of two versions, the earlier first.
+    Example: From after To
+      Given the act 2015/1998 as Cellar has it
+      When the reader gives From 3 June 2017 and To 29 February 2016
+      Then the comparison is from 29 February 2016 to 3 June 2017
+
+  Rule: two-days-at-their-versions · The versions of two days
+    The viewer compares the law on any two days at the versions that apply on them.
 
     Example: Two days compared at their versions
       Given the act 2015/1998 as Cellar has it
       Then the viewer compares the law on 3 June 2017 and on 1 January 2022 at the versions of 29 February 2016 and of 31 December 2021
+
+  @revision-2
+  Rule: a-comparison-is-of-two-versions · A comparison is of two versions
+    A comparison is between the first days of two versions, the earlier first.
 
     Example: The first days of two versions
       Given the act 2015/1998 as Cellar has it
@@ -77,10 +83,8 @@ Feature: What a comparison covers
       Then in Croatian, the version of 17 July 2013 is the original text
       And in English, the version of 17 July 2013 is the consolidation
 
-  Rule: the-acts-between-two-versions · The acts between two versions
-    The acts between two versions are the acts that the versions after From include, up to and
-    with To, in the order of the versions. Corrigenda are among them. A version includes these
-    acts:
+  Rule: the-acts-a-version-includes · The acts that a version includes
+    A version includes these acts:
     - the acts that Cellar lists for it
     - the acts that its own text tags first: no earlier version includes them, by Cellar's list or
       by the tags of an earlier text that the viewer builds
@@ -91,7 +95,22 @@ Feature: What a comparison covers
       Given the act 767/2008 as Cellar has it
       And the viewer builds its texts where the converter has a sample
       Then Cellar lists Corrigendum 5 to 767/2008 for the version of 29 December 2017
-      And the acts between the versions of 18 October 2013 and of 29 December 2017 include 2017/2226
+      And the version of 29 December 2017 includes Corrigendum 5 to 767/2008, 2017/2226
+
+    Example: A text that the viewer does not build
+      Given the act 767/2008 as Cellar has it
+      Then the version of 29 December 2017 includes Corrigendum 5 to 767/2008
+
+  @revision-2
+  Rule: the-acts-between-two-versions · The acts between two versions
+    The acts between two versions are the acts that the versions after From include, up to and
+    with To (the-acts-a-version-includes). They are in the order of the versions. Corrigenda are
+    among them.
+
+    Example: An act that a version between includes, and a corrigendum
+      Given the act 767/2008 as Cellar has it
+      And the viewer builds its texts where the converter has a sample
+      Then the acts between the versions of 18 October 2013 and of 29 December 2017 include 2017/2226
       And the acts between the versions of 18 October 2013 and of 29 December 2017 include Corrigendum 5 to 767/2008
 
     Example: A text that the viewer does not build

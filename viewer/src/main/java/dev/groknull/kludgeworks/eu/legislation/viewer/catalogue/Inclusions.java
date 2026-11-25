@@ -1,13 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -39,29 +33,11 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ta
 
   /**
    * Returns what the versions of {@code timeline} include, with {@code texts}, the tags of the
-   * texts that are built, by version.
+   * texts that are built, by version ({@link WhatAComparisonCovers#theActsAVersionIncludes}).
    */
-  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "the-acts-between-two-versions")
   public static Inclusions of(Timeline timeline, Map<Version, TextTags> texts) {
-    var included = new HashSet<ActIdentifier>();
-    var tagged = new HashMap<Version, List<ActIdentifier>>();
-    for (var version : timeline.versions()) {
-      included.addAll(version.integrates());
-      var text = texts.get(version);
-      if (text == null) {
-        continue;
-      }
-      var first =
-          text.byAct().keySet().stream()
-              .filter(each -> !included.contains(each))
-              .sorted(Comparator.comparing(ActIdentifier::celex))
-              .toList();
-      if (!first.isEmpty()) {
-        tagged.put(version, first);
-        included.addAll(first);
-      }
-    }
-    return new Inclusions(timeline, tagged);
+    return new Inclusions(
+        timeline, WhatAComparisonCovers.theActsAVersionIncludes(timeline.versions(), texts));
   }
 
   /** Returns what the versions of {@code timeline} include by Cellar's lists only. */
@@ -91,26 +67,18 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ta
 
   /**
    * Returns the acts that the versions after {@code from}, up to and including {@code to}, include,
-   * in the order of the versions. The acts include their corrigenda.
+   * in the order of the versions ({@link WhatAComparisonCovers#theActsBetweenTwoVersions}). The
+   * acts include their corrigenda.
    */
-  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "the-acts-between-two-versions")
   public SequencedSet<ActIdentifier> between(Version from, Version to) {
-    var between = new LinkedHashSet<ActIdentifier>();
-    for (var version : timeline.versions()) {
-      if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
-        between.addAll(of(version));
-      }
-    }
-    return between;
+    return WhatAComparisonCovers.theActsBetweenTwoVersions(timeline.versions(), this, from, to);
   }
 
   /**
-   * Returns the act {@code celex} if it is between {@code from} and {@code to} ({@link #between}),
-   * or empty if it is not. A comparison can show the changes of one act only if the act is between
-   * its two versions.
+   * Returns the act {@code celex} if it is between {@code from} and {@code to}, or empty if it is
+   * not ({@link WhatAComparisonCovers#oneActBetweenTheVersions}).
    */
-  @BusinessRule(group = RuleGroup.WHAT_A_COMPARISON_COVERS, name = "one-act-between-the-versions")
   public Optional<ActIdentifier> oneBetween(Version from, Version to, String celex) {
-    return between(from, to).stream().filter(each -> each.celex().equals(celex)).findFirst();
+    return WhatAComparisonCovers.oneActBetweenTheVersions(between(from, to), celex);
   }
 }

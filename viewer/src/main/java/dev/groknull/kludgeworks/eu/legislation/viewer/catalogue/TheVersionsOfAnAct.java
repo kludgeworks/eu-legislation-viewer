@@ -15,8 +15,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The feature "The versions of an act": one function for each of its rules. A rule reads facts and
- * gives one new fact. The rule the-last-version-after-a-repeal is the lookup of a version on a day,
- * {@link Timeline#applicableOn(LocalDate, Language)}.
+ * gives one new fact.
  */
 public final class TheVersionsOfAnAct {
   private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");

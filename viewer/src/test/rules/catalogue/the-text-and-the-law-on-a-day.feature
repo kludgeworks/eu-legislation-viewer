@@ -11,15 +11,21 @@ Feature: The text and the law on a day
   The changes are those to the English text. The texts are those that the converter has a sample
   of: a version without a sample has no built text.
 
+  @revision-2
   Rule: the-text-of-a-day-is-a-version · The text of a day is a version, unchanged
-    For a day, the reader gets the newest version that starts on or before it. Before the first
-    version of the act, the reader gets no version.
+    For a day, the reader gets the newest version that starts on or before it. This is also true
+    after a later act repeals the act: the reader gets its last version. Before the first version
+    of the act, the reader gets no version.
 
     Example: A day between two versions, and a day before the act
       Given the act 2015/1998 as Cellar has it
       Then on 3 June 2017, the reader gets the version of 29 February 2016
       And on 7 June 2017, the reader gets the version of 7 June 2017
       And on 1 January 2015, the reader gets no version
+
+    Example: An act that a later act repealed
+      Given the act 185/2010 as Cellar has it
+      Then on 1 January 2020, the reader gets the version of 1 February 2016
 
   Rule: the-version-date-of-a-change · The place date and the version date of a change
     The place date is the day that Cellar gives for the changed place. The version date is the

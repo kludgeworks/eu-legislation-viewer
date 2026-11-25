@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheTextAndTheLawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
@@ -50,7 +49,7 @@ public class LawService implements Laws {
 
   @Override
   public Optional<Version> versionOn(Act act, LocalDate day, Language language) {
-    return TheTextAndTheLawOnADay.versionOfADay(act.timeline(), day, language);
+    return act.timeline().applicableOn(day, language);
   }
 
   /**

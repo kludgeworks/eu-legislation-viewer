@@ -20,7 +20,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheTextAndTheLawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -179,8 +178,8 @@ class CellarActsTest {
     assertThat(act.timeline().versions()).hasSize(17);
     assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2010, 3, 25));
     assertThat(
-            TheTextAndTheLawOnADay.versionOfADay(
-                    act.timeline(), LocalDate.of(2020, 1, 1), Language.ENG)
+            act.timeline()
+                .applicableOn(LocalDate.of(2020, 1, 1), Language.ENG)
                 .orElseThrow()
                 .celex())
         .isEqualTo("02010R0185-20160201");

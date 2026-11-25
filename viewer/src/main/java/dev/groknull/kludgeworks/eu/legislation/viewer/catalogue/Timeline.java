@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,11 +32,8 @@ public final class Timeline {
   /**
    * Makes a timeline of the versions, in any order. There is at most one version a day in any one
    * language. An act's original text and a consolidation may share a day when they apply to
-   * different languages.
+   * different languages. It refuses versions that do not obey this.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "one-version-a-day-in-each-language")
   public Timeline(List<Version> versions) {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
@@ -92,33 +87,14 @@ public final class Timeline {
 
   /**
    * Returns the version that applies on {@code date} for a reader in {@code language}, or empty
-   * before the first version applies. The returned version applies on {@code date} across the act,
-   * but may lack {@code language}. When multiple versions share a day (e.g. an original text and a
-   * same-day consolidation in different languages), it picks the one in {@code language}, falling
-   * back to the other.
+   * before the first version applies. It is the version in {@code language} of the versions of the
+   * day ({@link WhatAComparisonCovers#oneVersionADayInEachLanguage}). The returned version applies
+   * on {@code date} across the act, but may lack {@code language}.
    */
-  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "the-last-version-after-a-repeal")
   public Optional<Version> applicableOn(LocalDate date, Language language) {
-    var entry = byDate.floorEntry(date);
-    if (entry == null) {
-      return Optional.empty();
-    }
-    return Optional.of(ofTheLanguage(entry.getValue(), language));
-  }
-
-  /**
-   * Returns the version of {@code onDate}, the versions that share a day, that is in {@code
-   * language}. If none is, it returns the first: the act has at most one version a day in each
-   * language.
-   */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "one-version-a-day-in-each-language")
-  private static Version ofTheLanguage(List<Version> onDate, Language language) {
-    return onDate.stream()
-        .filter(v -> v.languages().contains(language))
-        .findFirst()
-        .orElseGet(onDate::getFirst);
+    return Optional.of(allApplicableOn(date))
+        .filter(ofTheDay -> !ofTheDay.isEmpty())
+        .map(ofTheDay -> WhatAComparisonCovers.oneVersionADayInEachLanguage(ofTheDay, language));
   }
 
   /**
@@ -127,8 +103,7 @@ public final class Timeline {
    * before the first version applies.
    */
   public List<Version> allApplicableOn(LocalDate date) {
-    var entry = byDate.floorEntry(date);
-    return entry == null ? List.of() : List.copyOf(entry.getValue());
+    return TheTextAndTheLawOnADay.theTextOfADayIsAVersion(byDate, date);
   }
 
   /**
@@ -154,25 +129,14 @@ public final class Timeline {
 
   /**
    * Returns the version that starts on {@code date} in {@code language}, or empty if no version
-   * does. The returned version starts on {@code date} across the act, but may lack {@code
-   * language}. When multiple versions share the start day, it picks the one in {@code language},
-   * falling back to the other.
+   * does. It is the version in {@code language} of the versions that start on the day ({@link
+   * WhatAComparisonCovers#oneVersionADayInEachLanguage}). The returned version starts on {@code
+   * date} across the act, but may lack {@code language}.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "one-version-a-day-in-each-language")
   public Optional<Version> startingOn(LocalDate date, Language language) {
-    var onDate = byDate.get(date);
-    if (onDate == null || onDate.isEmpty()) {
-      return Optional.empty();
-    }
-    if (onDate.size() == 1) {
-      return Optional.of(onDate.getFirst());
-    }
-    return onDate.stream()
-        .filter(v -> v.languages().contains(language))
-        .findFirst()
-        .or(() -> Optional.of(onDate.getFirst()));
+    return Optional.ofNullable(byDate.get(date))
+        .filter(ofTheDay -> !ofTheDay.isEmpty())
+        .map(ofTheDay -> WhatAComparisonCovers.oneVersionADayInEachLanguage(ofTheDay, language));
   }
 
   /**
@@ -272,39 +236,11 @@ public final class Timeline {
 
   /**
    * Returns the two days of a comparison of the versions of this timeline, in one language, from
-   * the days that the reader gave. {@code today} is the day on which the reader asks ({@link
-   * TheVersionsOfAnAct#today}).
-   *
-   * <ul>
-   *   <li>Without To, To is the first day of the version that applies on {@code today}, or of the
-   *       latest version if none applies on {@code today}.
-   *   <li>Without From, From is the first day of the version before the version of To. If the
-   *       version of To is the first version, From is its first day, and To is the first day of the
-   *       version after it.
-   *   <li>A day that the reader gave stays as given. If From is after To, the two days change
-   *       places.
-   * </ul>
+   * the days that the reader gave ({@link WhatAComparisonCovers#theTwoDaysOfAComparison}). {@code
+   * today} is the day on which the reader asks ({@link TheVersionsOfAnAct#today}).
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "the-days-when-the-reader-gives-none")
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "the-days-as-the-reader-gives-them")
   public TwoDays twoDays(@Nullable LocalDate from, @Nullable LocalDate to, LocalDate today) {
-    var later = to != null ? to : applicableOn(today).orElseGet(this::latest).date();
-    var earlier = from;
-    if (earlier == null) {
-      var version = applicableOn(later);
-      var predecessor = version.flatMap(this::predecessor);
-      if (version.isEmpty() || predecessor.isPresent()) {
-        earlier = predecessor.map(Version::date).orElse(later);
-      } else {
-        earlier = later;
-        later = successor(version.get()).map(Version::date).orElse(later);
-      }
-    }
-    return earlier.isAfter(later) ? new TwoDays(later, earlier) : new TwoDays(earlier, later);
+    return WhatAComparisonCovers.theTwoDaysOfAComparison(this, from, to, today);
   }
 
   /**
@@ -319,32 +255,23 @@ public final class Timeline {
 
   /**
    * Returns the versions that start on {@code from} and on {@code to}: the two versions of a
-   * comparison at its canonical address. Returns empty if a day is not the first day of a version,
-   * or if {@code from} is after {@code to}.
+   * comparison at its canonical address ({@link WhatAComparisonCovers#aComparisonIsOfTwoVersions}).
+   * Returns empty if a day is not the first day of a version, or if {@code from} is after {@code
+   * to}.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "a-comparison-is-of-two-versions")
   public Optional<TwoVersions> versionsStartingOn(LocalDate from, LocalDate to) {
-    if (from.isAfter(to)) {
-      return Optional.empty();
-    }
-    return startingOn(from)
-        .flatMap(earlier -> startingOn(to).map(later -> new TwoVersions(earlier, later)));
+    return WhatAComparisonCovers.aComparisonIsOfTwoVersions(
+        from, to, startingOn(from).orElse(null), startingOn(to).orElse(null));
   }
 
   /**
    * Returns the versions of a comparison of the law on {@code from} with the law on {@code to}, in
-   * {@code language}: the versions that apply on the two days. A comparison is between the first
-   * days of these versions. Returns empty if no version applies on a day.
+   * {@code language}: the versions that apply on the two days ({@link
+   * WhatAComparisonCovers#twoDaysAtTheirVersions}). Returns empty if no version applies on a day.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
-      name = "a-comparison-is-of-two-versions")
   public Optional<TwoVersions> versionsOn(LocalDate from, LocalDate to, Language language) {
-    return applicableOn(from, language)
-        .flatMap(
-            earlier -> applicableOn(to, language).map(later -> new TwoVersions(earlier, later)));
+    return WhatAComparisonCovers.twoDaysAtTheirVersions(
+        applicableOn(from, language).orElse(null), applicableOn(to, language).orElse(null));
   }
 
   private void checkSingleVersionPerDay() {
