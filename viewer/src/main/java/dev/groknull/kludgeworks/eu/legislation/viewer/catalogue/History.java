@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.S
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -45,12 +44,15 @@ public record History(
    * Returns this history as the history of two days: {@code first} and the day of this history. It
    * has the amending acts between the two days.
    *
-   * @param built the tags of the texts of the act in the language that are built
+   * @param law the text and the law of the act over time, in the language
    */
-  public History between(LocalDate first, Map<Version, TextTags> built) {
+  public History between(LocalDate first, LawOverTime law) {
     var found =
         TheHistoryOfAnAct.amendingActsBetweenTwoDays(
-            act, language, first, day, amendingActs.stream().map(AmendingAct::act).toList(), built);
+            act,
+            law.on(first).shown(),
+            law.on(day).shown(),
+            amendingActs.stream().map(AmendingAct::act).toList());
     var between = found.map(Set::copyOf).orElseGet(Set::of);
     return new History(
         act,

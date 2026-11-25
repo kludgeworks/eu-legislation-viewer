@@ -9,7 +9,7 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * The deferred application of an act on a day: the act is in force, but it does not apply in full
  * on the day yet. Its application is deferred, as the Joint Practical Guide calls it (20.11). If a
  * part of it applies already, its application is partial (20.12). {@link
- * LawOnADay#deferredApplicationOn} gives it.
+ * LawOnADay#deferredApplication} gives it.
  *
  * <p>It is a state of the act, not a divergence: the act is not an amendment of itself. For
  * example:

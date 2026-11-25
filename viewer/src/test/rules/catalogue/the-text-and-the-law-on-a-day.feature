@@ -80,9 +80,11 @@ Feature: The text and the law on a day
       And its divergence is not at article 26 paragraph 3a
       And its divergence is at 14 places
 
+  @revision-2
   Rule: pending-amendment · A pending amendment
     A place date before the version date makes a pending amendment. The text and the law differ
-    from the place date to the day before the version date.
+    from the place date to the day before the version date. A provision that the act adds is
+    pending in the same way, also if the version before the version date does not have it.
 
     Example: An act that applies before the first version that includes it
       Given the act 2015/1998 as Cellar has it
@@ -95,10 +97,6 @@ Feature: The text and the law on a day
       And on 1 June 2017, 2017/815 makes the text and the law differ
       And on 6 June 2017, 2017/815 makes the text and the law differ
       And on 7 June 2017, 2017/815 does not make the text and the law differ
-
-  Rule: a-provision-not-in-the-text-yet · A provision that the text does not have yet
-    A provision that the act adds makes the text pending, also if the version before the version
-    date does not have it.
 
     Example: A point that an act inserts
       Given the act 2015/1998 as Cellar has it

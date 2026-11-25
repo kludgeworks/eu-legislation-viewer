@@ -17,9 +17,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheTextAndTheLawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -178,8 +179,8 @@ class CellarActsTest {
     assertThat(act.timeline().versions()).hasSize(17);
     assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2010, 3, 25));
     assertThat(
-            LawOnADay.of(act)
-                .versionOn(LocalDate.of(2020, 1, 1), Language.ENG)
+            TheTextAndTheLawOnADay.versionOfADay(
+                    act.timeline(), LocalDate.of(2020, 1, 1), Language.ENG)
                 .orElseThrow()
                 .celex())
         .isEqualTo("02010R0185-20160201");
@@ -341,7 +342,7 @@ class CellarActsTest {
 
   @Test
   void theTextHasAPendingAmendmentWhileItLacksAnActThatApplies() {
-    assertThat(LawOnADay.of(act(AVSEC)).divergences(Language.ENG, Map.of()))
+    assertThat(LawOverTime.of(act(AVSEC), Language.ENG, Map.of()).divergences())
         .extracting(
             Divergence::kind,
             each -> each.act().celex(),
@@ -365,22 +366,35 @@ class CellarActsTest {
   void theTextDiffersFromTheLawOnlyOnTheDaysOfADivergence() {
     var act = act(AVSEC);
 
-    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 5, 31), Language.ENG, Map.of()))
+    assertThat(
+            LawOverTime.of(act, Language.ENG, Map.of()).on(LocalDate.of(2017, 5, 31)).divergences())
         .isEmpty();
-    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 1), Language.ENG, Map.of()))
+    assertThat(
+            LawOverTime.of(act, Language.ENG, Map.of()).on(LocalDate.of(2017, 6, 1)).divergences())
         .extracting(each -> each.act().celex())
         .containsExactly("32017R0815");
-    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 6), Language.ENG, Map.of()))
+    assertThat(
+            LawOverTime.of(act, Language.ENG, Map.of()).on(LocalDate.of(2017, 6, 6)).divergences())
         .hasSize(1);
-    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of()))
+    assertThat(
+            LawOverTime.of(act, Language.ENG, Map.of()).on(LocalDate.of(2017, 6, 7)).divergences())
         .isEmpty();
     // Before 2015/1998 applies, its application is deferred: a state of the act, not a divergence.
-    assertThat(LawOnADay.of(act).divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of()))
+    assertThat(
+            LawOverTime.of(act, Language.ENG, Map.of()).on(LocalDate.of(2016, 1, 31)).divergences())
         .isEmpty();
-    assertThat(LawOnADay.of(act).deferredApplicationOn(LocalDate.of(2016, 1, 31), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(act, Language.ENG, Map.of())
+                    .on(LocalDate.of(2016, 1, 31))
+                    .deferredApplication()))
         .hasValueSatisfying(
             deferred -> assertThat(deferred.day()).isEqualTo(LocalDate.of(2016, 2, 1)));
-    assertThat(LawOnADay.of(act).deferredApplicationOn(LocalDate.of(2016, 2, 1), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(act, Language.ENG, Map.of())
+                    .on(LocalDate.of(2016, 2, 1))
+                    .deferredApplication()))
         .isEmpty();
   }
 

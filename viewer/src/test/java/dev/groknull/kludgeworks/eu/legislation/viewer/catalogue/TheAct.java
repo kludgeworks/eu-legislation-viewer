@@ -80,7 +80,8 @@ public class TheAct {
 
   /** The amending acts between two days, by the English texts that are built. */
   public Optional<List<ActIdentifier>> between(LocalDate from, LocalDate to) {
+    var law = LawOverTime.of(act(), Language.ENG, texts);
     return TheHistoryOfAnAct.amendingActsBetweenTwoDays(
-        act(), Language.ENG, from, to, amendingActs(Language.ENG), texts);
+        act(), law.on(from).shown(), law.on(to).shown(), amendingActs(Language.ENG));
   }
 }

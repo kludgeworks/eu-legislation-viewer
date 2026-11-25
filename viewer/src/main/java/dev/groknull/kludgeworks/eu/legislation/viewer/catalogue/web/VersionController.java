@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -87,14 +87,16 @@ class VersionController {
 
   private final Catalogued acts;
   private final Texts texts;
+  private final Laws laws;
   private final Content content;
   private final Templates templates;
   private final Clock clock;
 
   VersionController(
-      Catalogued acts, Texts texts, Content content, Templates templates, Clock clock) {
+      Catalogued acts, Texts texts, Laws laws, Content content, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
+    this.laws = laws;
     this.content = content;
     this.templates = templates;
     this.clock = clock;
@@ -254,9 +256,7 @@ class VersionController {
       version =
           before
               ? timeline.first()
-              : LawOnADay.of(act)
-                  .versionOn(date, language)
-                  .orElseThrow(VersionController::notFound);
+              : laws.versionOn(act, date, language).orElseThrow(VersionController::notFound);
       this.date = date;
     }
 
@@ -284,11 +284,12 @@ class VersionController {
         @Nullable ArrivingView arriving,
         List<ActIdentifier> named,
         Map<Version, TextTags> tags) {
+      var law = laws.of(act, language, tags).on(date);
       return templates
           .catalogueVersion(
               frame,
               masthead,
-              ReadingView.of(act, version, date, language, today(), named, tags),
+              ReadingView.of(act, version, date, language, today(), named, law),
               text,
               arrived,
               arriving)
@@ -331,7 +332,12 @@ class VersionController {
                 "/content/" + ready.text(),
                 content.outline(ready.text()).orElseGet(Outline::empty),
                 TagsView.of(act, version, language),
-                DivergenceNotesView.of(act, version, date, language, tags, today()),
+                DivergenceNotesView.of(
+                    act,
+                    laws.of(act, language, tags).on(date),
+                    tags.get(version),
+                    language,
+                    today()),
                 Links.read(eli, date, language) + "/provision",
                 ProvisionView.occurrences(act, version, language, tags),
                 self,

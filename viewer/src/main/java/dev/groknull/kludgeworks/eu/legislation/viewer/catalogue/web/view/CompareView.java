@@ -72,7 +72,7 @@ public record CompareView(
   /**
    * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
    * for {@code act}, on {@code today}. {@code from} and {@code to} are the versions whose texts
-   * show the law on the two days, {@link LawOnADay#textOn}.
+   * show the law on the two days, {@link LawOnADay#shown}.
    *
    * @param occurrence the eId of the provision that the page is limited to, or null
    * @param tags the tags of the built texts in {@code language}, by version

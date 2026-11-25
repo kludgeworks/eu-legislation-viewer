@@ -12,7 +12,7 @@ import org.jspecify.annotations.Nullable;
  * It gives the addresses of the page and of its fragments.
  *
  * <p>The page has the two days that the reader gave. Its fragments have the first days of the two
- * versions whose texts show the law on those days ({@code Act.textOn}), and the two days also.
+ * versions whose texts show the law on those days ({@code LawOnADay.shown}), and the two days also.
  *
  * <p>For example, the page {@code
  * /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03} has its differences at {@code

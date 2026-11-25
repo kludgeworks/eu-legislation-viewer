@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -33,6 +34,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -50,7 +52,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *
  * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&amp;to=2017-06-03}.
  * Each end can be any day. The page shows the two days as the reader gave them. The text for a day
- * is the act's rule, {@link LawOnADay#textOn}.
+ * is the act's rule, {@link LawOnADay#shown}.
  *
  * <p>With {@code occurrence}, the page is limited to one provision: the wording of the provision on
  * each of the two days, and the steps between them. The history of a provision on Read links there.
@@ -77,12 +79,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 class CompareController {
   private final Catalogued acts;
   private final Texts texts;
+  private final Laws laws;
   private final Templates templates;
   private final Clock clock;
 
-  CompareController(Catalogued acts, Texts texts, Templates templates, Clock clock) {
+  CompareController(Catalogued acts, Texts texts, Laws laws, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
+    this.laws = laws;
     this.templates = templates;
     this.clock = clock;
   }
@@ -277,9 +281,10 @@ class CompareController {
       return occurrence == null ? page.href() : page.href(occurrence);
     }
 
-    /** Returns the version whose text shows the law on {@code day}, {@link LawOnADay#textOn}. */
+    /** Returns the version whose text shows the law on {@code day}, {@link LawOnADay#shown}. */
     Version text(LocalDate day, Map<Version, TextTags> tags) {
-      return LawOnADay.of(act).textOn(day, language, tags).orElseThrow(Requests::notFound);
+      return Optional.ofNullable(laws.of(act, language, tags).on(day).shown())
+          .orElseThrow(Requests::notFound);
     }
 
     /**

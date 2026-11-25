@@ -301,8 +301,10 @@ public final class TheHistoryOfAnAct {
    * The amending acts between two days are those that the text of the later day includes and the
    * text of the earlier day does not.
    *
+   * @param earlier the version whose text a comparison shows for the earlier day, or null if that
+   *     day is before the first version
+   * @param later the version whose text a comparison shows for the later day, or null
    * @param amendingActs the amending acts of the act, newest first
-   * @param built the tags of the texts that are built
    * @return the amending acts between the days, newest first. Empty if one of the days is before
    *     the first version of the act.
    */
@@ -311,17 +313,13 @@ public final class TheHistoryOfAnAct {
       name = "the-amending-acts-between-two-days")
   public static Optional<List<ActIdentifier>> amendingActsBetweenTwoDays(
       Act act,
-      Language language,
-      LocalDate from,
-      LocalDate to,
-      List<ActIdentifier> amendingActs,
-      Map<Version, TextTags> built) {
-    var earlier = LawOnADay.of(act).textOn(from, language, built);
-    var later = LawOnADay.of(act).textOn(to, language, built);
-    if (earlier.isEmpty() || later.isEmpty()) {
+      @Nullable Version earlier,
+      @Nullable Version later,
+      List<ActIdentifier> amendingActs) {
+    if (earlier == null || later == null) {
       return Optional.empty();
     }
-    var between = act.integratedBetween(earlier.get(), later.get());
+    var between = act.integratedBetween(earlier, later);
     return Optional.of(amendingActs.stream().filter(between::contains).toList());
   }
 

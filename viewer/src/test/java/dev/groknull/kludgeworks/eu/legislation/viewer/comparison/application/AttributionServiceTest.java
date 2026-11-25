@@ -58,7 +58,8 @@ class AttributionServiceTest {
   private final Comparisons comparisons = mock();
 
   /** The service, with no outline of a text, and no tags. */
-  private final AttributionService service = new AttributionService(comparisons, mock(), mock());
+  private final AttributionService service =
+      new AttributionService(comparisons, mock(), mock(), mock());
 
   @Test
   void namesTheActsOfEachDifferenceAndTheTextWhereAnUnnamedChangeFirstAppears() {

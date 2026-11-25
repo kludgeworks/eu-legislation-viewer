@@ -333,6 +333,20 @@ public final class Timeline {
         .flatMap(earlier -> startingOn(to).map(later -> new TwoVersions(earlier, later)));
   }
 
+  /**
+   * Returns the versions of a comparison of the law on {@code from} with the law on {@code to}, in
+   * {@code language}: the versions that apply on the two days. A comparison is between the first
+   * days of these versions. Returns empty if no version applies on a day.
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_A_COMPARISON_COVERS,
+      name = "a-comparison-is-of-two-versions")
+  public Optional<TwoVersions> versionsOn(LocalDate from, LocalDate to, Language language) {
+    return applicableOn(from, language)
+        .flatMap(
+            earlier -> applicableOn(to, language).map(later -> new TwoVersions(earlier, later)));
+  }
+
   private void checkSingleVersionPerDay() {
     if (versions.size() != byDate.size()) {
       throw new IllegalStateException(

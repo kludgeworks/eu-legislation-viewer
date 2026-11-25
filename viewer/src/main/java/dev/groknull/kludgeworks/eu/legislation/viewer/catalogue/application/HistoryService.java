@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CataloguedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Histories;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.History;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -31,11 +32,13 @@ import org.springframework.stereotype.Service;
 public class HistoryService implements Histories {
   private final Lookups lookups;
   private final Texts texts;
+  private final Laws laws;
   private final Clock clock;
 
-  public HistoryService(Lookups lookups, Texts texts, Clock clock) {
+  public HistoryService(Lookups lookups, Texts texts, Laws laws, Clock clock) {
     this.lookups = lookups;
     this.texts = texts;
+    this.laws = laws;
     this.clock = clock;
   }
 
@@ -51,7 +54,7 @@ public class HistoryService implements Histories {
     var days = Days.asked(on, from, to, today);
     var history = ActOverTime.of(act, language).on(days.day(), today);
     return Optional.ofNullable(days.first())
-        .map(first -> history.between(first, built(act, language)))
+        .map(first -> history.between(first, laws.of(act, language, built(act, language))))
         .orElse(history);
   }
 

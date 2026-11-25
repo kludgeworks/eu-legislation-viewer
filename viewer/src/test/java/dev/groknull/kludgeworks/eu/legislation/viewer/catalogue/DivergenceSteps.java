@@ -7,15 +7,17 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the text and the law on a day: the version that a reader gets on a day
- * ({@link LawOnADay#versionOn}), the divergences of the versions in English ({@link
+ * ({@link LawOnADay#version}), the divergences of the versions in English ({@link
  * LawOnADay#divergences}), the deferred application of the act ({@link
- * LawOnADay#deferredApplicationOn}) and the acts that made a text in a language ({@link
- * LawOnADay#changingIn}). They read the act of the scenario and the texts of its versions that are
+ * LawOnADay#deferredApplication}) and the acts that made a text in a language ({@link
+ * LawOnADay#madeBy}). They read the act of the scenario and the texts of its versions that are
  * built ({@link TheAct}).
  */
 public class DivergenceSteps {
@@ -28,14 +30,16 @@ public class DivergenceSteps {
 
   @Then("on {day}, the reader gets the version of {day}")
   public void version(LocalDate day, LocalDate version) {
-    assertThat(LawOnADay.of(the.act()).versionOn(day, Language.ENG).map(Version::date))
+    assertThat(
+            TheTextAndTheLawOnADay.versionOfADay(the.act().timeline(), day, Language.ENG)
+                .map(Version::date))
         .as("the version on %s", day)
         .contains(version);
   }
 
   @Then("on {day}, the reader gets no version")
   public void noVersion(LocalDate day) {
-    assertThat(LawOnADay.of(the.act()).versionOn(day, Language.ENG))
+    assertThat(TheTextAndTheLawOnADay.versionOfADay(the.act().timeline(), day, Language.ENG))
         .as("the version on %s", day)
         .isEmpty();
   }
@@ -113,14 +117,18 @@ public class DivergenceSteps {
 
   @Then("on {day}, the act has no deferred application")
   public void notDeferred(LocalDate day) {
-    assertThat(LawOnADay.of(the.act()).deferredApplicationOn(day, Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(the.act(), Language.ENG, Map.of()).on(day).deferredApplication()))
         .as(day.toString())
         .isEmpty();
   }
 
   @Then("on {day}, the act has a deferred application: it applies in full from {day}")
   public void deferred(LocalDate day, LocalDate until) {
-    assertThat(LawOnADay.of(the.act()).deferredApplicationOn(day, Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(the.act(), Language.ENG, Map.of()).on(day).deferredApplication()))
         .as(day.toString())
         .hasValueSatisfying(deferred -> {
           assertThat(deferred.inFull().date()).isEqualTo(until);
@@ -130,12 +138,17 @@ public class DivergenceSteps {
 
   @Then("in {language}, no act made the text of {day}")
   public void madeByNone(Language language, LocalDate day) {
-    assertThat(LawOnADay.of(the.act()).changingIn(version(day), language)).isEmpty();
+    assertThat(
+            TheTextAndTheLawOnADay.theActsThatMadeATextInTheLanguage(
+                the.act(), version(day), language))
+        .isEmpty();
   }
 
   @Then("in {language}, these acts made the text of {day}: {acts}")
   public void madeBy(Language language, LocalDate day, List<ActIdentifier> acts) {
-    assertThat(LawOnADay.of(the.act()).changingIn(version(day), language))
+    assertThat(
+            TheTextAndTheLawOnADay.theActsThatMadeATextInTheLanguage(
+                the.act(), version(day), language))
         .containsExactlyElementsOf(acts);
   }
 
@@ -154,18 +167,14 @@ public class DivergenceSteps {
    * application is deferred, then the acts of the divergences of the day.
    */
   private List<ActIdentifier> notTheLaw(LocalDate day) {
-    var acts = new java.util.ArrayList<ActIdentifier>();
-    LawOnADay.of(the.act())
-        .deferredApplicationOn(day, Language.ENG)
-        .ifPresent(_ -> acts.add(the.act().id()));
-    LawOnADay.of(the.act())
-        .divergences(day, Language.ENG, the.texts())
-        .forEach(each -> acts.add(each.act()));
-    return acts;
+    return LawOverTime.of(the.act(), Language.ENG, the.texts())
+        .on(day)
+        .notTheLaw()
+        .acts(the.act().id());
   }
 
   private boolean on(LocalDate day, ActIdentifier act) {
-    return LawOnADay.of(the.act()).divergences(day, Language.ENG, the.texts()).stream()
+    return LawOverTime.of(the.act(), Language.ENG, the.texts()).on(day).divergences().stream()
         .anyMatch(each -> each.act().equals(act));
   }
 
@@ -176,7 +185,7 @@ public class DivergenceSteps {
   }
 
   private List<Divergence> divergencesOf(ActIdentifier act) {
-    return LawOnADay.of(the.act()).divergences(Language.ENG, the.texts()).stream()
+    return LawOverTime.of(the.act(), Language.ENG, the.texts()).divergences().stream()
         .filter(each -> each.act().equals(act))
         .toList();
   }

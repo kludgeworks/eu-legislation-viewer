@@ -10,15 +10,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -37,7 +35,7 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>The acts that get a line are the act itself while its application is deferred ({@link
- * LawOnADay#deferredApplicationOn}), first, and the acts of {@link LawOnADay#divergences}: a
+ * LawOnADay#deferredApplication}), first, and the acts of {@link LawOnADay#divergences}: a
  * prospective amendment (an amending act whose text is in the text before it applies), and a
  * pending amendment (an amending act with changes that the text does not show). The tense obeys the
  * day.
@@ -62,20 +60,18 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   }
 
   /**
-   * Returns the status lines of {@code act} on {@code asked}, a day on which a version gives the
-   * text, in {@code language}.
+   * Returns the status lines of {@code act} for {@code law}, the text and the law on a day on which
+   * a version gives the text, in {@code language}.
    *
    * @param today the date today, which gives the tense
-   * @param tags the tags of the built texts in {@code language}, by version
    */
-  public static StatusView of(
-      Act act, LocalDate asked, Language language, LocalDate today, Map<Version, TextTags> tags) {
+  public static StatusView of(Act act, LawOnADay law, Language language, LocalDate today) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
+    var asked = law.day();
     var all = new ArrayList<Line>();
-    LawOnADay.of(act)
-        .deferredApplicationOn(asked, language)
+    Optional.ofNullable(law.deferredApplication())
         .ifPresent(deferred -> all.add(deferred(act, deferred, asked, today)));
-    LawOnADay.of(act).divergences(asked, language, tags).stream()
+    law.divergences().stream()
         .map(each -> line(act, each, eli, asked, language, today))
         .forEach(all::add);
     var shown = Math.min(all.size(), SHOWN);

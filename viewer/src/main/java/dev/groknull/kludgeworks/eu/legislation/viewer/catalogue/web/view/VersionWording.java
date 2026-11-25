@@ -71,14 +71,18 @@ public final class VersionWording {
    *   <li>If the Publications Office lists no act, it names the acts that the text of the version
    *       names, from {@code named}.
    *   <li>It names only the acts and corrigenda that change the text in {@code language} ({@link
-   *       LawOnADay#changingIn}).
+   *       LawOnADay#madeBy}).
    *   <li>If the Publications Office lists acts, but none of them changes the text in {@code
    *       language}, it says that the wording is the same as the text before: "Same wording in
    *       English as the text of 31 December 2021".
    * </ul>
    */
   public static String made(
-      Act act, Version version, List<ActIdentifier> named, Language language) {
+      Act act,
+      Version version,
+      List<ActIdentifier> named,
+      List<ActIdentifier> changing,
+      Language language) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return "the act as published"
           + act.publication(act.id())
@@ -89,7 +93,6 @@ public final class VersionWording {
     if (version.integrates().isEmpty() && !named.isEmpty()) {
       return "made by " + names(named, act::cited);
     }
-    var changing = LawOnADay.of(act).changingIn(version, language);
     if (changing.isEmpty() && !version.integrates().isEmpty()) {
       var before = act.timeline(language).flatMap(timeline -> timeline.predecessor(version));
       if (before.isPresent()) {
@@ -109,16 +112,16 @@ public final class VersionWording {
    * <ul>
    *   <li>For the act as published, returns the act.
    *   <li>Else returns the acts that the version integrates and that change the text in {@code
-   *       language} ({@link LawOnADay#changingIn}).
+   *       language} ({@link LawOnADay#madeBy}).
    *   <li>If there are none, returns the acts that its text names.
    * </ul>
    */
   public static List<ActIdentifier> makers(
-      Act act, Version version, List<ActIdentifier> named, Language language) {
+      Act act, Version version, List<ActIdentifier> named, List<ActIdentifier> changing) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return List.of(act.id());
     }
-    return version.integrates().isEmpty() ? named : LawOnADay.of(act).changingIn(version, language);
+    return version.integrates().isEmpty() ? named : changing;
   }
 
   private static String names(List<ActIdentifier> acts, Function<ActIdentifier, String> cite) {

@@ -11,13 +11,18 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.DateModel;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.IanaLinkRelations;
@@ -38,10 +43,12 @@ import org.springframework.web.bind.annotation.RestController;
 class ApiLawController {
   private final Catalogued catalogued;
   private final Texts texts;
+  private final Laws laws;
 
-  ApiLawController(Catalogued catalogued, Texts texts) {
+  ApiLawController(Catalogued catalogued, Texts texts, Laws laws) {
     this.catalogued = catalogued;
     this.texts = texts;
+    this.laws = laws;
   }
 
   /**
@@ -83,7 +90,7 @@ class ApiLawController {
    * versions {@code applying} in which the reader gets a text on that day. Null if the act applies
    * in full, or is not in force.
    */
-  private static @Nullable DeferredApplicationModel deferredApplication(
+  private @Nullable DeferredApplicationModel deferredApplication(
       Act act, List<Version> applying, LocalDate date) {
     var languages = new LinkedHashMap<DeferredApplication, List<String>>();
     applying.stream()
@@ -91,8 +98,8 @@ class ApiLawController {
         .distinct()
         .sorted()
         .forEach(language ->
-            LawOnADay.of(act)
-                .deferredApplicationOn(date, language)
+            Optional.ofNullable(laws.of(act, language, built(act, language)).on(date))
+                .map(LawOnADay::deferredApplication)
                 .ifPresent(each ->
                     languages
                         .computeIfAbsent(each, key -> new ArrayList<>())
@@ -118,8 +125,9 @@ class ApiLawController {
         .distinct()
         .sorted()
         .forEach(language ->
-            LawOnADay.of(act)
-                .divergences(date, language, texts.tags(texts.preparation(act, language)))
+            laws.of(act, language, built(act, language))
+                .on(date)
+                .divergences()
                 .forEach(each ->
                     languages
                         .computeIfAbsent(each, key -> new ArrayList<>())
@@ -141,6 +149,11 @@ class ApiLawController {
               each.getValue());
         })
         .toList();
+  }
+
+  /** Returns the tags of the texts of {@code act} in {@code language} that are built. */
+  private Map<Version, TextTags> built(Act act, Language language) {
+    return texts.tags(texts.preparation(act, language));
   }
 
   private static ErrorResponseException beforeTheFirstVersion(Act act, LocalDate date) {

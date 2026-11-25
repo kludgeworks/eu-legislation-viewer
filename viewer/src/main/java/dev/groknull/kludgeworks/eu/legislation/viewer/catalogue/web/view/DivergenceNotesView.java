@@ -5,14 +5,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The divergence notes on the Read page: the divergence notes beside the text where it is not the
@@ -49,29 +48,23 @@ public record DivergenceNotesView(List<DivergenceNote> divergenceNotes) {
   }
 
   /**
-   * Returns the divergence notes of the text of {@code version} of {@code act}, for the day {@code
-   * asked}.
+   * Returns the divergence notes of a text of {@code act}, for {@code law}, the text and the law on
+   * the day asked.
    *
-   * @param tags the tags of the built texts in {@code language}, by version. Without the text of
-   *     {@code version}, there are no divergence notes.
+   * @param text the tags of the text. Without them, there are no divergence notes.
    * @param today the date today, which gives the tense
    */
   public static DivergenceNotesView of(
-      Act act,
-      Version version,
-      LocalDate asked,
-      Language language,
-      Map<Version, TextTags> tags,
-      LocalDate today) {
-    var text = tags.get(version);
+      Act act, LawOnADay law, @Nullable TextTags text, Language language, LocalDate today) {
     if (text == null) {
       return none();
     }
+    var asked = law.day();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = asked.isBefore(today);
     var kept = asked.equals(today) ? null : asked;
     var found = new ArrayList<DivergenceNote>();
-    for (var divergence : LawOnADay.of(act).divergences(asked, language, tags)) {
+    for (var divergence : law.divergences()) {
       var cited = act.cited(divergence.act());
       var href = Links.amending(eli, divergence.act(), kept, language);
       var prospective = divergence.kind() == Divergence.Kind.PROSPECTIVE;

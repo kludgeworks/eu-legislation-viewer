@@ -7,12 +7,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * The steps of the rules of the text that a comparison shows: the version whose text a comparison
- * shows for a day ({@link LawOnADay#textOn}), and the occurrences of a text with a change that does
- * not apply on a day yet ({@link LawOnADay#prospective}, {@link Prospective#at}). They read the act
- * of the scenario and the texts of its versions that are built ({@link TheAct}), in English.
+ * shows for a day ({@link LawOnADay#shown}), and the occurrences of a text with a change that does
+ * not apply on a day yet ({@link LawOverTime#changesThatDoNotApplyYet}, {@link Prospective#at}).
+ * They read the act of the scenario and the texts of its versions that are built ({@link TheAct}),
+ * in English.
  */
 public class ComparedTextSteps {
   private final TheAct the;
@@ -23,14 +25,19 @@ public class ComparedTextSteps {
 
   @Then("for {day}, a comparison shows the text of {day}")
   public void shows(LocalDate day, LocalDate version) {
-    assertThat(LawOnADay.of(the.act()).textOn(day, Language.ENG, the.texts()).map(Version::date))
+    assertThat(
+            Optional.ofNullable(
+                    LawOverTime.of(the.act(), Language.ENG, the.texts()).on(day).shown())
+                .map(Version::date))
         .as("the text that a comparison shows for %s", day)
         .contains(version);
   }
 
   @Then("for {day}, a comparison shows no text")
   public void showsNone(LocalDate day) {
-    assertThat(LawOnADay.of(the.act()).textOn(day, Language.ENG, the.texts()))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(the.act(), Language.ENG, the.texts()).on(day).shown()))
         .as("the text that a comparison shows for %s", day)
         .isEmpty();
   }
@@ -60,7 +67,8 @@ public class ComparedTextSteps {
   }
 
   private Prospective prospective(LocalDate day, LocalDate version) {
-    return LawOnADay.of(the.act()).prospective(version(version), day, Language.ENG, the.texts());
+    return LawOverTime.of(the.act(), Language.ENG, the.texts())
+        .changesThatDoNotApplyYet(version(version), day);
   }
 
   /** Returns the eId of the occurrence that {@code place} names in the text of {@code version}. */

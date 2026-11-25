@@ -7,7 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Prospective;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import java.time.LocalDate;
@@ -123,9 +123,9 @@ public record Attributed(
   /**
    * Returns this difference with the change at its occurrence that does not apply on the day of
    * {@code prospective} yet, if there is one: a change that the later text includes before its act
-   * applies ({@link LawOnADay#prospective}). The change is at the occurrence of the difference, at
-   * an occurrence that it is in, or at an occurrence in it. Returns this difference if each change
-   * there applies.
+   * applies ({@link LawOverTime#changesThatDoNotApplyYet}). The change is at the occurrence of the
+   * difference, at an occurrence that it is in, or at an occurrence in it. Returns this difference
+   * if each change there applies.
    */
   @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "change-that-does-not-apply-yet")
   public Attributed notApplying(Prospective prospective) {

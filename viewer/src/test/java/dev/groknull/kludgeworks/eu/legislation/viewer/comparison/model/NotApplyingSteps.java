@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -45,7 +45,8 @@ public class NotApplyingSteps {
         texts.put(version, TextTags.of(Outlines.of(Comparing.text(version))));
       }
     }
-    var prospective = LawOnADay.of(act).prospective(comparing.to(), day, Language.ENG, texts);
+    var prospective =
+        LawOverTime.of(act, Language.ENG, texts).changesThatDoNotApplyYet(comparing.to(), day);
     differences =
         Differ.differences(comparing.earlier(), comparing.later()).differences().stream()
             .map(

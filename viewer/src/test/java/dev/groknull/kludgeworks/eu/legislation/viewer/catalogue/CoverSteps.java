@@ -54,7 +54,7 @@ public class CoverSteps {
 
   @Then("the viewer compares the law on {day} and on {day} at the versions of {day} and of {day}")
   public void lookedUp(LocalDate from, LocalDate to, LocalDate earlier, LocalDate later) {
-    var versions = LawOnADay.of(the.act()).versionsOn(from, to, Language.ENG).orElseThrow();
+    var versions = the.act().timeline().versionsOn(from, to, Language.ENG).orElseThrow();
     assertThat(List.of(versions.from().date(), versions.to().date()))
         .containsExactly(earlier, later);
   }

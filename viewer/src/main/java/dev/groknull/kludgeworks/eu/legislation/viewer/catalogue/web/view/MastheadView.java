@@ -5,7 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -108,9 +107,9 @@ public record MastheadView(
         },
         each -> {
           var inFrom =
-              LawOnADay.of(act).versionOn(fromDay, each).filter(v -> v.languages().contains(each));
+              act.timeline().applicableOn(fromDay, each).filter(v -> v.languages().contains(each));
           var inTo =
-              LawOnADay.of(act).versionOn(toDay, each).filter(v -> v.languages().contains(each));
+              act.timeline().applicableOn(toDay, each).filter(v -> v.languages().contains(each));
           if (inFrom.isPresent() && inTo.isPresent()) {
             return null;
           }

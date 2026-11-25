@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -27,6 +25,9 @@ import org.jspecify.annotations.Nullable;
  *     undated pending amendment, the date from which {@code act} can apply: its entry into force.
  * @param included the first version that includes the text of {@code act}. Null for a pending
  *     amendment that no version includes yet, and for an undated pending amendment.
+ * @param from the first day on which the text and the law differ
+ * @param until the first day on which they agree again. Null if no such day is known: for a pending
+ *     amendment that no version includes yet, and for an undated pending amendment.
  * @param places the provisions where the text differs, as Cellar annotates them. Empty where the
  *     whole act differs, or where Cellar does not say where.
  */
@@ -36,6 +37,8 @@ public record Divergence(
     ActIdentifier act,
     ActDate applies,
     @Nullable Version included,
+    LocalDate from,
+    @Nullable LocalDate until,
     List<Amendment> places) {
 
   public Divergence {
@@ -123,26 +126,10 @@ public record Divergence(
   }
 
   /**
-   * Returns whether the text and the law differ on {@code day}.
-   *
-   * <ul>
-   *   <li>An undated pending amendment can make them differ on each day from the entry into force
-   *       of the act.
-   *   <li>A pending amendment makes them differ from the day the act applies to the day before the
-   *       version that includes it. If no version includes it, on each day from the day it applies.
-   *   <li>A prospective amendment makes them differ from the first day of the version that includes
-   *       it to the day before the act applies.
-   * </ul>
+   * Returns whether the text and the law differ on {@code day}: the day is in the period of this
+   * divergence. The rules of {@link TheTextAndTheLawOnADay} set the period.
    */
-  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "pending-amendment")
-  @BusinessRule(group = RuleGroup.THE_TEXT_AND_THE_LAW_ON_A_DAY, name = "prospective-amendment")
   public boolean on(LocalDate day) {
-    return switch (kind) {
-      case PENDING ->
-          !day.isBefore(appliesFrom()) && (included == null || day.isBefore(included.date()));
-      case PROSPECTIVE ->
-          !day.isBefore(Objects.requireNonNull(included).date()) && day.isBefore(appliesFrom());
-      case UNDATED -> !day.isBefore(appliesFrom());
-    };
+    return !day.isBefore(from) && (until == null || day.isBefore(until));
   }
 }

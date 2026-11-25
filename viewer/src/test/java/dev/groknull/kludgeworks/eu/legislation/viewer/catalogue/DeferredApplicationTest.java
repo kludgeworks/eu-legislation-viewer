@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
@@ -46,7 +47,11 @@ class DeferredApplicationTest {
 
   @Test
   void anActInForceThatDoesNotApplyYetHasItsApplicationDeferredInFull() {
-    var deferred = LawOnADay.of(GDPR).deferredApplicationOn(LocalDate.of(2017, 3, 1), Language.ENG);
+    var deferred =
+        Optional.ofNullable(
+            LawOverTime.of(GDPR, Language.ENG, Map.of())
+                .on(LocalDate.of(2017, 3, 1))
+                .deferredApplication());
 
     assertThat(deferred).isPresent();
     assertThat(deferred.get().day()).isEqualTo(GDPR_IN_FULL);
@@ -55,34 +60,63 @@ class DeferredApplicationTest {
 
   @Test
   void anActHasNoDeferredApplicationFromTheDayItAppliesInFull() {
-    assertThat(LawOnADay.of(GDPR).deferredApplicationOn(GDPR_IN_FULL, Language.ENG)).isEmpty();
-    assertThat(LawOnADay.of(GDPR).deferredApplicationOn(GDPR_IN_FULL.minusDays(1), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(GDPR, Language.ENG, Map.of())
+                    .on(GDPR_IN_FULL)
+                    .deferredApplication()))
+        .isEmpty();
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(GDPR, Language.ENG, Map.of())
+                    .on(GDPR_IN_FULL.minusDays(1))
+                    .deferredApplication()))
         .isPresent();
   }
 
   @Test
   void anActThatAppliesInPartHasAPartialDeferredApplication() {
-    var deferred = LawOnADay.of(SIS).deferredApplicationOn(LocalDate.of(2022, 8, 1), Language.ENG);
+    var deferred =
+        Optional.ofNullable(
+            LawOverTime.of(SIS, Language.ENG, Map.of())
+                .on(LocalDate.of(2022, 8, 1))
+                .deferredApplication());
 
     assertThat(deferred).isPresent();
     assertThat(deferred.get().day()).isEqualTo(SIS_IN_FULL);
     assertThat(deferred.get().partial()).isTrue();
     // On the day of its first version, no part applies yet.
-    assertThat(LawOnADay.of(SIS).deferredApplicationOn(LocalDate.of(2018, 12, 27), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(SIS, Language.ENG, Map.of())
+                    .on(LocalDate.of(2018, 12, 27))
+                    .deferredApplication()))
         .hasValueSatisfying(first -> assertThat(first.partial()).isFalse());
   }
 
   @Test
   void anActThatAppliesFromItsEntryIntoForceHasNoDeferredApplication() {
-    assertThat(LawOnADay.of(AT_ONCE).deferredApplicationOn(LocalDate.of(2019, 6, 11), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(AT_ONCE, Language.ENG, Map.of())
+                    .on(LocalDate.of(2019, 6, 11))
+                    .deferredApplication()))
         .isEmpty();
-    assertThat(LawOnADay.of(AT_ONCE).deferredApplicationOn(LocalDate.of(2025, 1, 1), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(AT_ONCE, Language.ENG, Map.of())
+                    .on(LocalDate.of(2025, 1, 1))
+                    .deferredApplication()))
         .isEmpty();
   }
 
   @Test
   void aDayBeforeTheFirstVersionHasNoDeferredApplication() {
-    assertThat(LawOnADay.of(GDPR).deferredApplicationOn(LocalDate.of(2016, 5, 3), Language.ENG))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(GDPR, Language.ENG, Map.of())
+                    .on(LocalDate.of(2016, 5, 3))
+                    .deferredApplication()))
         .isEmpty();
   }
 

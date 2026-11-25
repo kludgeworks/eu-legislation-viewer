@@ -15,6 +15,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
@@ -91,7 +92,7 @@ class DivergencesTest {
     var texts = new LinkedHashMap<>(texts(act));
     texts.remove(act.timeline().versions().getLast());
 
-    assertThat(LawOnADay.of(act).divergences(Language.ENG, texts)).isEmpty();
+    assertThat(LawOverTime.of(act, Language.ENG, texts).divergences()).isEmpty();
   }
 
   @Test
@@ -148,7 +149,11 @@ class DivergencesTest {
     version("2016-02-29", false);
     var act = act();
 
-    assertThat(LawOnADay.of(act).textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
+    assertThat(
+            Optional.ofNullable(
+                LawOverTime.of(act, Language.ENG, texts(act))
+                    .on(LocalDate.parse("2017-06-03"))
+                    .shown()))
         .contains(act.timeline().versions().get(1));
   }
 
@@ -200,7 +205,7 @@ class DivergencesTest {
 
   private List<Divergence> divergences() {
     var act = act();
-    return LawOnADay.of(act).divergences(Language.ENG, texts(act));
+    return LawOverTime.of(act, Language.ENG, texts(act)).divergences();
   }
 
   private Map<Version, TextTags> texts(Act act) {
