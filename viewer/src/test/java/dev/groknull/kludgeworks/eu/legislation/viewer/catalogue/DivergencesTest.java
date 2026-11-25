@@ -240,6 +240,7 @@ class DivergencesTest {
         null,
         true,
         null,
+        List.of(),
         new Timeline(versions),
         new ActDates(BASE, List.of(), dates),
         List.of(

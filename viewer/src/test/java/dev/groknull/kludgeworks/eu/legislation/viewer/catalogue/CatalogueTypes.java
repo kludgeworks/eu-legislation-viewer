@@ -69,11 +69,12 @@ public class CatalogueTypes {
 
   /** The state of an act, or of one change, on a day, in the words of the rules. */
   @ParameterType(
-      "is not in force|is in force and does not apply yet|applies in part|applies|has a state that"
-          + " is not known")
+      "is not in force|is no longer in force|is in force and does not apply yet|applies in"
+          + " part|applies|has a state that is not known")
   public State state(String words) {
     return switch (words) {
       case "is not in force" -> State.NOT_IN_FORCE;
+      case "is no longer in force" -> State.NO_LONGER_IN_FORCE;
       case "is in force and does not apply yet" -> State.NOT_APPLYING;
       case "applies in part" -> State.IN_PART;
       case "applies" -> State.APPLIES;

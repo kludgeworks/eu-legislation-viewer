@@ -348,6 +348,7 @@ class CellarActs implements ActSource {
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
+        distinct(work, "repealedBy").stream().map(ActIdentifier::new).toList(),
         timeline,
         new ActDates(id, dates.getOrDefault(id, List.of()), amendingDates),
         amendments,

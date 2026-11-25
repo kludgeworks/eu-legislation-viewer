@@ -262,6 +262,7 @@ class HistoryControllerTests {
         null,
         true,
         null,
+        List.of(),
         new Timeline(List.of(ORIGINAL, WITH_PHASED)),
         new ActDates(
             PHASED_BASE,

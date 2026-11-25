@@ -251,7 +251,7 @@ public record AmendingView(
     return switch (state) {
       case APPLIES -> (past ? "Applied from " : "Applies from ") + day;
       case NOT_APPLYING -> (past ? "Did not apply yet, from " : "Does not apply yet, from ") + day;
-      case NOT_IN_FORCE, IN_PART, NOT_KNOWN -> "From " + day;
+      case NOT_IN_FORCE, NO_LONGER_IN_FORCE, IN_PART, NOT_KNOWN -> "From " + day;
     };
   }
 

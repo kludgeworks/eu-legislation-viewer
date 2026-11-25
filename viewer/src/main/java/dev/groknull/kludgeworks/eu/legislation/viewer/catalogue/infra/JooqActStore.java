@@ -159,6 +159,7 @@ class JooqActStore implements ActStore {
                 .set(ACT.DATE_OF_DOCUMENT, act.dateOfDocument())
                 .set(ACT.IN_FORCE, act.inForce())
                 .set(ACT.END_OF_VALIDITY, act.endOfValidity())
+                .set(ACT.REPEALED_BY, celexes(act.repealedBy()))
                 .set(ACT.CHECKED_AT, currentInstant())
                 .onConflictDoNothing()
                 .execute()
@@ -194,6 +195,7 @@ class JooqActStore implements ActStore {
         .set(ACT.DATE_OF_DOCUMENT, act.dateOfDocument())
         .set(ACT.IN_FORCE, act.inForce())
         .set(ACT.END_OF_VALIDITY, act.endOfValidity())
+        .set(ACT.REPEALED_BY, celexes(act.repealedBy()))
         .set(ACT.CHECKED_AT, currentInstant())
         .where(ACT.CELEX.eq(act.id()))
         .execute();
@@ -448,10 +450,16 @@ class JooqActStore implements ActStore {
         act.getDateOfDocument(),
         act.getInForce(),
         act.getEndOfValidity(),
+        Arrays.stream(act.getRepealedBy()).map(ActIdentifier::new).toList(),
         new Timeline(versions),
         new ActDates(act.getCelex(), own == null ? List.of() : own, bySubject),
         amendments,
         publications);
+  }
+
+  /** Returns the CELEX numbers of {@code acts}, as the store keeps a list of acts. */
+  private static String[] celexes(List<ActIdentifier> acts) {
+    return acts.stream().map(ActIdentifier::celex).toArray(String[]::new);
   }
 
   private static ActDate date(ActDateRecord date) {

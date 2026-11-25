@@ -10,6 +10,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 public enum State {
   /** The act is not in force yet on the day. */
   NOT_IN_FORCE,
+  /**
+   * The act is no longer in force on the day: the day is after its end of validity. A later act
+   * repealed it, or it expired. Only an act on its own is in this state ({@link Act#stateOn}).
+   */
+  NO_LONGER_IN_FORCE,
   /** The act is in force, and it does not apply yet on the day. */
   NOT_APPLYING,
   /** It applies on the day. */

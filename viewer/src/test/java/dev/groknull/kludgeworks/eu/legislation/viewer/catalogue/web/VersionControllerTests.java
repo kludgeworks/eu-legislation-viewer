@@ -79,6 +79,7 @@ class VersionControllerTests {
                     published.dateOfDocument(),
                     published.inForce(),
                     published.endOfValidity(),
+                    List.of(),
                     published.timeline(),
                     new ActDates(published.id(), published.dates().own(), Map.of()),
                     List.of(),

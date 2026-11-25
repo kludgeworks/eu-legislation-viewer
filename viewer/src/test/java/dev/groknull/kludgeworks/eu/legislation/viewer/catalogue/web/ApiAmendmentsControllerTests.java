@@ -73,6 +73,7 @@ class ApiAmendmentsControllerTests {
                     act.dateOfDocument(),
                     act.inForce(),
                     act.endOfValidity(),
+                    List.of(),
                     act.timeline(),
                     act.dates(),
                     List.of(amendment),

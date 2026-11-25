@@ -1,4 +1,4 @@
 
-{ "head": { "link": [], "vars": ["eli", "type", "dateOfDocument", "inForce", "entryIntoForce", "endOfValidity"] },
+{ "head": { "link": [], "vars": ["eli", "type", "dateOfDocument", "inForce", "entryIntoForce", "endOfValidity", "repealedBy"] },
   "results": { "distinct": false, "ordered": true, "bindings": [
     { "eli": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#anyURI", "value": "http://data.europa.eu/eli/dir/2013/36/oj" }	, "type": { "type": "uri", "value": "http://publications.europa.eu/resource/authority/resource-type/DIR" }	, "dateOfDocument": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2013-06-26" }	, "inForce": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#boolean", "value": "1" }	, "entryIntoForce": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2013-07-17" }	, "endOfValidity": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "9999-12-31" }} ] } }

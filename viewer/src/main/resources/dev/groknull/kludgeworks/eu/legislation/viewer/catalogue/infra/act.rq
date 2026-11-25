@@ -5,12 +5,13 @@
 # - the dates of entry into force. There can be several. Cellar types them with annotations, which
 #   this query does not read. The earliest date is the entry into force itself.
 # - the date of end of validity. It is 9999-12-31 while the act is open-ended.
+# - the acts that repeal it, by their CELEX number.
 # It gives one row per combination of values. CellarActs folds the rows.
 # {{celex}}: the CELEX number of a base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT DISTINCT ?eli ?type ?dateOfDocument ?inForce ?entryIntoForce ?endOfValidity
+SELECT DISTINCT ?eli ?type ?dateOfDocument ?inForce ?entryIntoForce ?endOfValidity ?repealedBy
 WHERE {
   ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
   OPTIONAL { ?work cdm:resource_legal_eli ?eli }
@@ -19,4 +20,8 @@ WHERE {
   OPTIONAL { ?work cdm:resource_legal_in-force ?inForce }
   OPTIONAL { ?work cdm:resource_legal_date_entry-into-force ?entryIntoForce }
   OPTIONAL { ?work cdm:resource_legal_date_end-of-validity ?endOfValidity }
+  OPTIONAL {
+    ?repealing cdm:resource_legal_repeals_resource_legal ?work ;
+         cdm:resource_legal_id_celex ?repealedBy .
+  }
 }

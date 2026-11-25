@@ -29,7 +29,7 @@ final class StateWording {
   /** The tone of a state that Cellar does not tell. */
   static final String UNKNOWN = "unknown";
 
-  /** The tone of an act that is not in force yet. */
+  /** The tone of an act that is not in force yet, or no longer in force. */
   static final String NOT_IN_FORCE = "not-in-force";
 
   private StateWording() {}
@@ -43,6 +43,7 @@ final class StateWording {
   static String label(State state, boolean dated, boolean past) {
     return switch (state) {
       case NOT_IN_FORCE -> past ? "Was not in force yet" : "Not in force yet";
+      case NO_LONGER_IN_FORCE -> past ? "Was no longer in force" : "No longer in force";
       case APPLIES -> past ? "Applied" : "Applies";
       case IN_PART -> past ? "Applied in part" : "Applies in part";
       case NOT_APPLYING -> past ? "In force, did not apply yet" : "In force, does not apply yet";
@@ -54,6 +55,7 @@ final class StateWording {
   static String phrase(State state, boolean past) {
     return switch (state) {
       case NOT_IN_FORCE -> past ? "was not in force yet" : "is not in force yet";
+      case NO_LONGER_IN_FORCE -> past ? "was no longer in force" : "is no longer in force";
       case APPLIES -> past ? "applied" : "applies";
       case IN_PART -> past ? "applied in part" : "applies in part";
       case NOT_APPLYING ->
@@ -70,7 +72,7 @@ final class StateWording {
     return switch (state) {
       case IN_PART, NOT_APPLYING -> WARN;
       case NOT_KNOWN -> UNKNOWN;
-      case NOT_IN_FORCE -> NOT_IN_FORCE;
+      case NOT_IN_FORCE, NO_LONGER_IN_FORCE -> NOT_IN_FORCE;
       case APPLIES -> null;
     };
   }
@@ -122,7 +124,9 @@ final class StateWording {
       case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
       case NOT_KNOWN ->
           Wording.unknown(amending, act.dates().applying(amending, Set.of()).orElse(null));
-      case IN_PART -> throw new IllegalStateException("The state of one change is never in part");
+      case IN_PART, NO_LONGER_IN_FORCE ->
+          throw new IllegalStateException(
+              "The state of one change is never in part, nor no longer in force");
     };
   }
 }

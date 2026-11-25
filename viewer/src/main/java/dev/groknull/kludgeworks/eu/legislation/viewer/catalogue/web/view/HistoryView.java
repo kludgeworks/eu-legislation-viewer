@@ -211,7 +211,20 @@ public record HistoryView(
                   case Applying.SetBy _, Applying.InForce _ -> "";
                 })
             .orElse("");
-    return switch (act.dates().stateOn(id, Set.of(), day)) {
+    return switch (act.stateOn(day)) {
+      case NO_LONGER_IN_FORCE ->
+          cited
+              + (past ? " was no longer in force." : " is no longer in force.")
+              + " Its end of validity is "
+              + Dates.inWords(Objects.requireNonNull(act.endOfValidity()))
+              + "."
+              + (act.repealedBy().isEmpty()
+                  ? ""
+                  : " "
+                      + act.repealedBy().stream()
+                          .map(act::cited)
+                          .collect(Collectors.joining(" and "))
+                      + " repealed it.");
       case NOT_IN_FORCE ->
           cited
               + (past ? " was not in force yet." : " is not in force yet.")

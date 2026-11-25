@@ -101,6 +101,7 @@ class ReadingViewTest {
             AVSEC.dateOfDocument(),
             AVSEC.inForce(),
             AVSEC.endOfValidity(),
+            List.of(),
             new Timeline(
                 List.of(
                     AVSEC.timeline().versions().getFirst(),

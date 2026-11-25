@@ -24,11 +24,21 @@ Feature: The state on a day
 
     In each other case the state is not known. For example, a clause sets the day by an event.
 
+    Cellar gives a date of end of validity for an act that a later act repealed, or that expired.
+    After that day, the act is no longer in force. This state is of the act on its own, never of
+    one change. The page names the act that repealed it, if Cellar names one.
+
     Example: An act before its entry into force, and before its date of application
       Given the act 2016/679 as Cellar has it
       Then on 1 May 2016, 2016/679 is not in force
       And on 1 January 2017, 2016/679 is in force and does not apply yet
       And on 25 May 2018, 2016/679 applies
+
+    Example: An act that a later act repealed
+      Given the act 185/2010 as Cellar has it
+      Then on 14 November 2015, 185/2010 applies
+      And on 15 November 2015, 185/2010 is no longer in force
+      And 2015/1998 repealed 185/2010
 
     Example: Two changes, from the days that Cellar gives for their places
       Given the act 2018/1862 as Cellar has it

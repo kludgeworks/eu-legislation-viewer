@@ -17,6 +17,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
@@ -162,6 +163,7 @@ class ApiActControllerTests {
         act.dateOfDocument(),
         act.inForce(),
         act.endOfValidity(),
+        List.of(),
         act.timeline(),
         new ActDates(TREATY, act.dates().own(), act.dates().amending()),
         act.amendments(),

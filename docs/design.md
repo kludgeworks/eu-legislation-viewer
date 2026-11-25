@@ -249,6 +249,7 @@ not apply yet".
 | Value | Page words | Meaning |
 | --- | --- | --- |
 | `NOT_IN_FORCE` | "Not in force yet" | The act is not in force yet on the day. |
+| `NO_LONGER_IN_FORCE` | "No longer in force" | The day is after the date of end of validity of the act: a later act repealed it, or it expired. Only an act on its own is in this state, never one change. As EUR-Lex says it. The status line gives the date of end of validity and the act that repealed it: "Reg. (EU) 185/2010 is no longer in force. Its end of validity is 14 November 2015. 2015/1998 repealed it." The reader still gets its last version (the-last-version-after-a-repeal). |
 | `NOT_APPLYING` | "In force, does not apply yet" | The act is in force and does not apply yet on the day. |
 | `APPLIES` | "Applies" | It applies on the day. |
 | `IN_PART` | "Applies in part" | Some changes of the act apply on the day, and some do not apply yet. Only an act as a whole is in this state, never one change. "in part" is this state only. |
@@ -296,7 +297,7 @@ not apply yet".
 | group | On the page of an amending act: the changes that apply from one day (`AmendingView.Group`). The reader chooses a group to see only its changes. |
 | a day before the act | On Compare, where From is a day before the first version of the act: the panel says that the act did not exist yet on that day, or was not in force yet if it was adopted by then, and when it was adopted and came into force. Its first button, "Compare from 15 November 2015", compares from the first version with To, or with the first day of the second version if To is before the first version also (`Timeline.endFromTheFirst`). |
 | same wording on the two days | On Compare, where the texts of the two days are the text of one version: the page says "The wording is the same on the two days." and links to Read on To. |
-| tone | The class that gives a state its colour: `warn` (amber: does not apply yet, or applies in part), `unknown` (the data does not tell), `not-in-force`. A state that applies has no tone. |
+| tone | The class that gives a state its colour: `warn` (amber: does not apply yet, or applies in part), `unknown` (the data does not tell), `not-in-force` (not in force yet, or no longer in force). A state that applies has no tone. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
 

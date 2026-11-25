@@ -216,6 +216,7 @@ class RefreshTest {
             STORED.dateOfDocument(),
             STORED.inForce(),
             STORED.endOfValidity(),
+            List.of(),
             STORED.timeline(),
             STORED.dates(),
             List.of(

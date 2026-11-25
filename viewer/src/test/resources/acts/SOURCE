@@ -122,3 +122,8 @@ and publications-32020R1812.json) were recorded on 2026-11-25. Implementing Regu
 of 1 December 2020, enters into force on 22 December 2020. Its only consolidation,
 02020R1812-20201202, starts on 2 December 2020 and integrates Corrigendum 1 (32020R1812R(01)):
 it starts before the entry into force. The rule the-original-text-of-an-act uses it.
+
+The act-*.json of every act above were recorded again on 2026-11-25, with act.rq as it then was:
+each row also has the acts that repeal the act (repealedBy), by their CELEX. The other values are
+the same as before. 31976L0207 is repealed by 32006L0054, 32004R0917 by 32015R1366, and
+32010R0185 by 32015R1998. The others have none.

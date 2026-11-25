@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.SequencedSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
@@ -41,6 +42,7 @@ import org.jspecify.annotations.Nullable;
  * @param dateOfDocument the date it was adopted or signed
  * @param inForce whether it is in force, as Cellar says
  * @param endOfValidity the day it ceases to apply, or null while it is open-ended
+ * @param repealedBy the acts that repeal it, as Cellar says. Empty if none does.
  * @param timeline its versions
  * @param dates its own dates and the dates of the acts that its versions integrate or that amend
  *     it. They are of this act: their {@code id} is the act's.
@@ -59,6 +61,7 @@ public record Act(
     @Nullable LocalDate dateOfDocument,
     boolean inForce,
     @Nullable LocalDate endOfValidity,
+    List<ActIdentifier> repealedBy,
     Timeline timeline,
     ActDates dates,
     List<Amendment> amendments,
@@ -71,6 +74,20 @@ public record Act(
       throw new IllegalArgumentException("The dates of " + dates.id() + " are not of " + id);
     }
     amendments = List.copyOf(amendments);
+    repealedBy = List.copyOf(repealedBy);
+  }
+
+  /**
+   * Returns the state of this act on {@code day}. After its end of validity, it is no longer in
+   * force: a later act repealed it, or it expired. Before that, its state is as its dates give it
+   * ({@link ActDates#stateOn}).
+   */
+  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "state-on-a-day")
+  public State stateOn(LocalDate day) {
+    if (endOfValidity != null && day.isAfter(endOfValidity)) {
+      return State.NO_LONGER_IN_FORCE;
+    }
+    return dates.stateOn(id, Set.of(), day);
   }
 
   /** Returns its title in {@code language}, or empty if Cellar has no title in that language. */

@@ -133,6 +133,7 @@ class MastheadViewTest {
             AVSEC.dateOfDocument(),
             AVSEC.inForce(),
             AVSEC.endOfValidity(),
+            List.of(),
             new Timeline(List.of(AVSEC.timeline().first())),
             new ActDates(AVSEC.id(), AVSEC.dates().own(), Map.of()),
             List.of(),
@@ -155,6 +156,7 @@ class MastheadViewTest {
             AVSEC.dateOfDocument(),
             AVSEC.inForce(),
             AVSEC.endOfValidity(),
+            List.of(),
             new Timeline(
                 List.of(
                     first,

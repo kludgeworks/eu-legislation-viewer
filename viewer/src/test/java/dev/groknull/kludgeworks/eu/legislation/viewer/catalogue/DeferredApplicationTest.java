@@ -96,6 +96,7 @@ class DeferredApplicationTest {
         null,
         true,
         null,
+        List.of(),
         new Timeline(
             List.of(Version.original(original, id, EnumSet.allOf(Language.class), Map.of()))),
         new ActDates(id, List.of(dates), Map.of()),

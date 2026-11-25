@@ -42,6 +42,7 @@ class VersionWordingTest {
         null,
         true,
         null,
+        List.of(),
         new Timeline(List.of(original)),
         new ActDates(AI, dates, Map.of()),
         List.of(),

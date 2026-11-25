@@ -28,9 +28,16 @@ public class StateSteps {
 
   @Then("on {day}, {act} {state}")
   public void state(LocalDate day, ActIdentifier act, State state) {
-    assertThat(the.act().dates().stateOn(act, Set.of(), day))
+    var own = the.act().id().equals(act);
+    assertThat(own ? the.act().stateOn(day) : the.act().dates().stateOn(act, Set.of(), day))
         .as("%s on %s", act.cited(), day)
         .isEqualTo(state);
+  }
+
+  @Then("{act} repealed {act}")
+  public void repealed(ActIdentifier repealing, ActIdentifier act) {
+    assertThat(the.act().id()).as("the act").isEqualTo(act);
+    assertThat(the.act().repealedBy()).containsExactly(repealing);
   }
 
   @Then("on {day}, the change of {act} at {place} {state}")
