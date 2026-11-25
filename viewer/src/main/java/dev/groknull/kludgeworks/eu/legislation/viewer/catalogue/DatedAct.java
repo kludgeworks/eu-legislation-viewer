@@ -49,14 +49,9 @@ public record DatedAct(
   /**
    * Returns when the act applies at a place for which Cellar gives {@code placeDays}. They are
    * empty for the act as a whole. The answer is empty if Cellar has no dates of the act.
-   *
-   * <p>The rule entry-into-force-only is an exception to the rule cellar-day-else-the-parts: it is
-   * applied first, and the other rule only if it is not for this act.
    */
   public Optional<Applying> applying(Set<LocalDate> placeDays) {
-    return WhenAChangeApplies.entryIntoForceOnly(dates, appliesFrom)
-        .or(() ->
-            WhenAChangeApplies.cellarDayElseTheParts(dates, appliesFrom, canApplyFrom, placeDays));
+    return WhenAChangeApplies.dateFromTheAct(dates, appliesFrom, canApplyFrom, placeDays);
   }
 
   /**

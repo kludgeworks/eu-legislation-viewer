@@ -99,13 +99,13 @@ public sealed interface Applicability {
   }
 
   /**
-   * Returns when {@code amending} applies, from its dates in {@code act} ({@link
-   * DatedAct#applying}). {@code days} are the days that may choose the date among the act's dates.
-   * If none chooses one, the act applies from more than one day. Returns empty where Cellar has no
-   * dates of the act, or where the act applies from a day that no clause that Cellar names sets.
+   * Returns when {@code amending} applies, as its dates in {@code act} tell ({@link
+   * DatedAct#applying}), with the clause that sets the date and the later acts that amended that
+   * clause: they moved the date. {@code days} are the days that Cellar gives for the place. Returns
+   * empty where Cellar has no dates of the act, or where a clause sets a day that Cellar does not
+   * know and Cellar names no such clause.
    */
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "date-from-the-act")
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "no-day-known")
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "the-clause-of-the-date")
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {
     return DatedAct.of(act, amending)
         .applying(days)
@@ -136,7 +136,7 @@ public sealed interface Applicability {
    * {@code from}. A day that is not after the earlier text is stale: the earlier text does not have
    * the change, so the change does not apply from that day.
    */
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "cellar-day-else-the-parts")
+  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "a-stale-day-of-cellar")
   static Set<LocalDate> cellarDays(
       List<Amendment> amendments, ActIdentifier amending, Version from) {
     return amendments.stream()
