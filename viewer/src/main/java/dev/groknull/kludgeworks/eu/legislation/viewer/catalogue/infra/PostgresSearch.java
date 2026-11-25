@@ -26,6 +26,7 @@ import static org.jooq.impl.DSL.when;
 import static org.jooq.impl.SQLDataType.VARCHAR;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Citation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
@@ -42,13 +43,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.Field;
 import org.jooq.Record;
-import org.jooq.Record1;
 import org.jooq.Record6;
 import org.jooq.Record8;
 import org.jooq.Result;
@@ -81,11 +80,6 @@ class PostgresSearch implements Search {
   private static final Field<Boolean> TYPO = field(name("typo"), SQLDataType.BOOLEAN);
   private static final Field<Float> SCORE = field(name("score"), SQLDataType.REAL);
   private static final Pattern SEARCH_WORD = Pattern.compile("[\\p{L}\\p{N}]+");
-  private static final Pattern CITATION =
-      Pattern.compile(
-          "(?:(?:(implementing|delegated)\\s+)?(regulation|directive|decision)\\s+(?:\\((?:eu|ec|eec)\\)\\s+)?(?:no\\s+)?)?"
-              + "(\\d{1,4})\\s*/\\s*(\\d{1,4})(?:/(?:eu|ec|eec))?",
-          Pattern.CASE_INSENSITIVE);
   private final DSLContext catalogue;
   private final CellarSearch cellar;
   private final TransactionOperations transactions;
@@ -108,55 +102,34 @@ class PostgresSearch implements Search {
 
   @Override
   public Optional<ActIdentifier> identified(String typed) {
-    var citation = CITATION.matcher(typed.strip());
-    if (!citation.matches()) {
+    var citation = Citation.read(typed);
+    if (citation.isEmpty()) {
       return Optional.empty();
     }
     return Observation.createNotStarted("catalogue.search.identify", observations)
-        .observe(() -> identify(citation));
+        .observe(() -> identify(citation.get()));
   }
 
-  /** Returns the one act that the typed citation names, if it names exactly one. */
-  private Optional<ActIdentifier> identify(Matcher citation) {
-    int left = Integer.parseInt(citation.group(3));
-    int right = Integer.parseInt(citation.group(4));
-    String kind =
-        switch (Objects.toString(citation.group(2), "").toLowerCase(Locale.ROOT)) {
-          case "regulation" -> "R";
-          case "directive" -> "L";
-          case "decision" -> "D";
-          default -> "";
-        };
-    String subtype =
-        switch (Objects.toString(citation.group(1), "").toLowerCase(Locale.ROOT)) {
-          case "implementing" -> "IMPL";
-          case "delegated" -> "DEL";
-          default -> "";
-        };
-    // Pre-2000 directives may cite the year with two digits, as in 95/46/EC.
-    if (!kind.isEmpty()
-        && citation.group(3).length() == 2
-        && citation.group(4).length() < 4
-        && left >= 50) {
-      left += 1900;
-    }
+  /**
+   * Returns the one act that {@code citation} names, if it names exactly one: of the acts whose
+   * year and number are its two numbers, in either order ({@link Citation#names}).
+   */
+  private Optional<ActIdentifier> identify(Citation citation) {
     var work = CATALOGUE_SEARCH_WORK;
     var condition =
         work.ACT_YEAR
-            .eq(left)
-            .and(work.NATURAL_NUMBER.eq(right))
-            .or(work.ACT_YEAR.eq(right).and(work.NATURAL_NUMBER.eq(left)));
-    if (!kind.isEmpty()) {
-      condition = condition.and(sector(work.CELEX).eq(kind));
-    }
-    if (!subtype.isEmpty()) {
-      condition =
-          condition.and(
-              work.RESOURCE_TYPE.endsWith("_" + subtype).or(work.RESOURCE_TYPE.eq(subtype)));
-    }
-    List<ActIdentifier> ids =
-        catalogue.select(work.CELEX).from(work).where(condition).limit(2).fetch(Record1::value1);
-    return ids.size() == 1 ? Optional.of(ids.getFirst()) : Optional.empty();
+            .eq(citation.first())
+            .and(work.NATURAL_NUMBER.eq(citation.second()))
+            .or(work.ACT_YEAR.eq(citation.second()).and(work.NATURAL_NUMBER.eq(citation.first())));
+    var candidates =
+        catalogue
+            .select(work.CELEX, work.RESOURCE_TYPE)
+            .from(work)
+            .where(condition)
+            .fetch(row ->
+                new Citation.Candidate(
+                    row.value1(), row.value2() == null ? null : ResourceType.ofUri(row.value2())));
+    return citation.names(candidates);
   }
 
   @Override

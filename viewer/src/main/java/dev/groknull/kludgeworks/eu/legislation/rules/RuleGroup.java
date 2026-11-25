@@ -36,7 +36,9 @@ public enum RuleGroup {
   /** The text that a comparison shows for a day, and its changes that do not apply on the day. */
   THE_TEXT_A_COMPARISON_SHOWS,
   /** Which two versions a comparison is between, and which acts it shows. */
-  WHAT_A_COMPARISON_COVERS;
+  WHAT_A_COMPARISON_COVERS,
+  /** Which act a citation that a reader types in the search names. */
+  SEARCH;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

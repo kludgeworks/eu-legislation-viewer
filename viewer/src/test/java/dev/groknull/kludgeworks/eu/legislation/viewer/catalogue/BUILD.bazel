@@ -525,6 +525,7 @@ CATALOGUE_RULES_GLUE = [
     "HistorySteps.java",
     "PlaceSteps.java",
     "SampleTexts.java",
+    "SearchSteps.java",
     "StateSteps.java",
     "TheAct.java",
 ]
