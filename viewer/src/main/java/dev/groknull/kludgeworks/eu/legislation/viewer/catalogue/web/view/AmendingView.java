@@ -1,38 +1,24 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendingHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
-import java.util.TreeMap;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The page of one amending act: what it changed in an act, and the state of each change on a day.
- * The rules are the act's: {@link TheHistoryOfAnAct#changesOfAnAmendingAct}, {@link
- * TheStateOnADay#stateOnADay} and {@link ActDates#changeAppliesFrom}. This view puts them into
- * words.
+ * {@link AmendingHistory} has what the rules give. This view applies no rule: it puts the history
+ * into words.
  *
  * @param title the title of the page
  * @param heading the heading, for example "What 2022/1190 changed in 2018/1862"
@@ -98,64 +84,31 @@ public record AmendingView(
 
   /**
    * Returns the page of the amending act of {@code history}. If {@code group} is given, the page
-   * shows only the changes that apply from that day.
+   * shows only the changes that apply from that day: a day, or {@link #NOT_KNOWN}.
    */
   public static AmendingView of(AmendingHistory history, @Nullable String group) {
-    var texts = history.texts();
-    return of(
-        history.act(),
-        history.amending(),
-        history.day(),
-        history.today(),
-        history.language(),
-        group,
-        history.latest(),
-        texts == null
-            ? null
-            : new Step(
-                texts.earlier().date(),
-                texts.later().date(),
-                texts.before().eIds(),
-                texts.after().eIds()));
-  }
-
-  /**
-   * Returns the page of {@code amending} for {@code act} on {@code day}, in {@code language}.
-   *
-   * @param group the day of application that limits the page, or {@link #NOT_KNOWN}. Null for all
-   *     changes.
-   * @param text the tags of the latest built text of the act, which give the order of the text.
-   *     Null if no text is built.
-   * @param step the two texts that show the wording of the changes. Null if they are not built, or
-   *     if no version integrates the amending act.
-   */
-  static AmendingView of(
-      Act act,
-      ActIdentifier amending,
-      LocalDate day,
-      LocalDate today,
-      Language language,
-      @Nullable String group,
-      @Nullable TextTags text,
-      @Nullable Step step) {
+    var act = history.act();
+    var amending = history.amending();
+    var language = history.language();
+    var day = history.day();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
-    var past = day.isBefore(today);
-    var kept = day.equals(today) ? null : day;
-    var all = TheHistoryOfAnAct.changesOfAnAmendingAct(act, amending, language, null);
-    var inOrder = TheHistoryOfAnAct.changesOfAnAmendingAct(act, amending, language, text);
+    var past = day.isBefore(history.today());
+    var kept = day.equals(history.today()) ? null : day;
     var page = Links.amending(eli, amending, kept, language);
-    var standing = ActOverTime.amending(act, amending, language).stands().on(day);
     var subject = HistoryView.Subject.of(act, amending, language);
     var cited = act.cited(amending);
+    var texts = history.texts();
     var compare =
-        step == null
+        texts == null
             ? null
             : new ComparePage(
-                Links.compare(eli, language), step.from(), step.to(), amending.celex(), null);
-    var shown =
-        inOrder.stream()
-            .filter(change -> group == null || group.equals(key(act, amending, change)))
-            .toList();
+                Links.compare(eli, language),
+                texts.earlier().date(),
+                texts.later().date(),
+                amending.celex(),
+                null);
+    var all = history.changes();
+    var shown = all.stream().filter(change -> group == null || group.equals(key(change))).toList();
     return new AmendingView(
         cited + " in " + act.cited(act.id()) + " · on " + Dates.inShort(day),
         "What " + cited + " changed in " + act.cited(act.id()),
@@ -170,75 +123,22 @@ public record AmendingView(
         act.cited(act.id()),
         cited
             + " "
-            + StateWording.phrase(standing.state(), past)
+            + StateWording.phrase(history.stands().state(), past)
             + "."
             + (all.isEmpty()
                 ? " The data lists no changed provisions."
                 : " It changed "
                     + (all.size() == 1 ? "1 provision." : all.size() + " provisions.")),
-        Wording.dates(amending, DatedAct.of(act, amending).applying(Set.of()).orElse(null)),
-        clause(act, amending, language),
-        groups(act, amending, all, day, past, page, group),
-        sequences(
-            shown.stream()
-                .map(change -> change(act, amending, change, day, past, compare, step))
-                .toList()),
-        text != null,
+        Wording.dates(amending, history.applying()),
+        clause(history),
+        groups(history, past, page, group),
+        sequences(shown.stream().map(change -> change(history, change, past, compare)).toList()),
+        history.latest() != null,
         shown.size() <= OPEN,
-        compare == null
-                || TheHistoryOfAnAct.otherActsOfItsVersion(
-                        amending,
-                        TheHistoryOfAnAct.twoTextsOfAnAmendingAct(act, amending, language))
-                    .isEmpty()
-            ? null
-            : compare.either(),
-        TheHistoryOfAnAct.corrigendaOfAnAct(act, amending, language).stream()
+        compare == null || history.otherActs().isEmpty() ? null : compare.either(),
+        history.corrigenda().stream()
             .map(each -> HistoryView.Corrigendum.of(act, each, language))
             .toList());
-  }
-
-  /** Returns the group of {@code change}: the day from which it applies, or {@link #NOT_KNOWN}. */
-  private static String key(Act act, ActIdentifier amending, Amendment change) {
-    return act.dates()
-        .changeAppliesFrom(amending, ActDates.days(change))
-        .map(LocalDate::toString)
-        .orElse(NOT_KNOWN);
-  }
-
-  private static List<Group> groups(
-      Act act,
-      ActIdentifier amending,
-      List<Amendment> all,
-      LocalDate day,
-      boolean past,
-      String page,
-      @Nullable String on) {
-    Map<Optional<LocalDate>, Integer> counts =
-        new TreeMap<>(
-            Comparator.comparing(
-                (Optional<LocalDate> each) -> each.orElse(LocalDate.MAX),
-                Comparator.naturalOrder()));
-    all.forEach(change ->
-        counts.merge(
-            act.dates().changeAppliesFrom(amending, ActDates.days(change)), 1, Integer::sum));
-    if (counts.size() < 2) {
-      return List.of();
-    }
-    var separator = page.contains("?") ? "&" : "?";
-    var groups = new ArrayList<Group>();
-    groups.add(new Group("All changes", all.size(), page, on == null, null));
-    counts.forEach((from, count) -> {
-      var key = from.map(LocalDate::toString).orElse(NOT_KNOWN);
-      var state = from.map(each -> DatedAct.of(act, amending).state(Set.of(each)).on(day).state());
-      groups.add(
-          new Group(
-              from.map(each -> label(state.orElseThrow(), each, past)).orElse("Day not known"),
-              count,
-              page + separator + "applies=" + key,
-              key.equals(on),
-              state.isPresent() ? StateWording.tone(state.get()) : StateWording.UNKNOWN));
-    });
-    return groups;
   }
 
   /**
@@ -246,9 +146,11 @@ public record AmendingView(
    * Returns null if Cellar knows the day, or if it names no article. The address is the text of the
    * act on EUR-Lex, at the anchor of the article: "art_" and its number.
    */
-  private static @Nullable Clause clause(Act act, ActIdentifier amending, Language language) {
-    return DatedAct.of(act, amending)
-        .applying(Set.of())
+  private static @Nullable Clause clause(AmendingHistory history) {
+    var act = history.act();
+    var amending = history.amending();
+    var language = history.language();
+    return Optional.ofNullable(history.applying())
         .flatMap(applying ->
             switch (applying) {
               case Applying.SetBy set ->
@@ -308,29 +210,54 @@ public record AmendingView(
     return sequences;
   }
 
+  /** Returns the group of {@code change}: the day from which it applies, or {@link #NOT_KNOWN}. */
+  private static String key(AmendingHistory.Change change) {
+    return Optional.ofNullable(change.appliesFrom()).map(LocalDate::toString).orElse(NOT_KNOWN);
+  }
+
+  private static List<Group> groups(
+      AmendingHistory history, boolean past, String page, @Nullable String on) {
+    if (history.parts().size() < 2) {
+      return List.of();
+    }
+    var separator = page.contains("?") ? "&" : "?";
+    var groups = new ArrayList<Group>();
+    groups.add(new Group("All changes", history.changes().size(), page, on == null, null));
+    for (var part : history.parts()) {
+      var from = part.from();
+      var state = part.state();
+      var key = from == null ? NOT_KNOWN : from.toString();
+      groups.add(
+          new Group(
+              from == null || state == null ? "Day not known" : label(state.state(), from, past),
+              part.changes(),
+              page + separator + "applies=" + key,
+              key.equals(on),
+              state == null ? StateWording.UNKNOWN : StateWording.tone(state.state())));
+    }
+    return groups;
+  }
+
   private static Change change(
-      Act act,
-      ActIdentifier amending,
-      Amendment change,
-      LocalDate day,
+      AmendingHistory history,
+      AmendingHistory.Change of,
       boolean past,
-      @Nullable ComparePage compare,
-      @Nullable Step step) {
-    var occurrences =
-        step == null
-            ? List.<String>of()
-            : TheHistoryOfAnAct.occurrencesOfAChange(change, step.later(), step.earlier());
-    var days = ActDates.days(change);
-    var state = DatedAct.of(act, amending).state(days).on(day).state();
+      @Nullable ComparePage compare) {
+    var change = of.change();
     var name = change.place().words();
-    var statement = StateWording.statement(act, amending, days, day, past);
     return new Change(
         name.isEmpty() ? change.location().code() : name,
         made(change.role()),
-        statement,
-        StateWording.tone(state),
+        StateWording.statement(
+            history.act(),
+            history.amending(),
+            of.appliesFrom(),
+            of.state().state(),
+            history.applying(),
+            past),
+        StateWording.tone(of.state().state()),
         anchor(change),
-        compare == null || occurrences.isEmpty() ? null : compare.place(occurrences));
+        compare == null || of.occurrences().isEmpty() ? null : compare.place(of.occurrences()));
   }
 
   /** Returns what an act did to a provision, as one word. For example, "Replaced". */
@@ -394,21 +321,6 @@ public record AmendingView(
       @Nullable String tone,
       String anchor,
       @Nullable String wording) {}
-
-  /**
-   * The two texts that show the wording of the changes of an amending act.
-   *
-   * @param from the first day of the version before the act
-   * @param to the first day of the first version that integrates the act
-   * @param earlier the eIds of the occurrences of the text of {@code from}, in document order
-   * @param later the eIds of the occurrences of the text of {@code to}, in document order
-   */
-  public record Step(LocalDate from, LocalDate to, List<String> earlier, List<String> later) {
-    public Step {
-      earlier = List.copyOf(earlier);
-      later = List.copyOf(later);
-    }
-  }
 
   /**
    * Changes that follow each other in the text and have the same state.

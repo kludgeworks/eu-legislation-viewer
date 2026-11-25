@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
@@ -10,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.S
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -109,8 +111,33 @@ final class StateWording {
    */
   static @Nullable String statement(
       Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
-    var from = act.dates().changeAppliesFrom(amending, placeDays);
-    return switch (DatedAct.of(act, amending).state(placeDays).on(day).state()) {
+    var dated = DatedAct.of(act, amending);
+    return statement(
+        act,
+        amending,
+        act.dates().changeAppliesFrom(amending, placeDays).orElse(null),
+        dated.state(placeDays).on(day).state(),
+        dated.applying(Set.of()).orElse(null),
+        past);
+  }
+
+  /**
+   * As {@link #statement(Act, ActIdentifier, Set, LocalDate, boolean)}, from what the rules give
+   * for the change. It applies no rule.
+   *
+   * @param appliesFrom the day from which the change applies. Null if the data gives no one day.
+   * @param state the state of the change on the day
+   * @param whole when the amending act applies as a whole. Null if Cellar has no dates of it.
+   */
+  static @Nullable String statement(
+      Act act,
+      ActIdentifier amending,
+      @Nullable LocalDate appliesFrom,
+      State state,
+      @Nullable Applying whole,
+      boolean past) {
+    var from = Optional.ofNullable(appliesFrom);
+    return switch (state) {
       case APPLIES ->
           from.map(each ->
                   (past ? "Applied from " : "Applies from ")
@@ -127,8 +154,7 @@ final class StateWording {
                           + ".")
                   .orElse("");
       case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
-      case NOT_KNOWN ->
-          Wording.unknown(amending, DatedAct.of(act, amending).applying(Set.of()).orElse(null));
+      case NOT_KNOWN -> Wording.unknown(amending, whole);
       case IN_PART, NO_LONGER_IN_FORCE ->
           throw new IllegalStateException(
               "The state of one change is never in part, nor no longer in force");
