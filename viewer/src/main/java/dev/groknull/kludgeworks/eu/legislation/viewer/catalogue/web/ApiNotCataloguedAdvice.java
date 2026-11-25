@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
     assignableTypes = {
       ApiActController.class,
       ApiAmendmentsController.class,
+      ApiHistoryController.class,
       ApiLawController.class,
       ApiPreparationController.class,
       ApiTextController.class,
