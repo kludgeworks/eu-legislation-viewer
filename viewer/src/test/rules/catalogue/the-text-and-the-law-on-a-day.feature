@@ -123,14 +123,19 @@ Feature: The text and the law on a day
       And on 12 October 2025, 2017/2226 does not make the text and the law differ
 
   Rule: deferred-application-of-the-act · The act itself does not apply yet
-    The whole text of an act does not apply yet from its first version to the day before the whole
-    act applies. This is a state of the act, not a divergence: the deferred application of the
-    act.
+    The deferred application of an act is a state of the act, not a divergence. In this period,
+    the whole text of the act does not apply yet:
+    - It starts on the entry into force of the act, or on its first version if that day is later.
+    - It ends on the day before the whole act applies.
+
+    Before its entry into force, the act is not in force (state-on-a-day), so it has no deferred
+    application.
 
     Example: An act in force two years before it applies
       Given the act 2016/679 as Cellar has it
       Then on 1 May 2016, the act has no deferred application
-      And on 4 May 2016, the act has a deferred application: it applies in full from 25 May 2018
+      And on 4 May 2016, the act has no deferred application
+      And on 24 May 2016, the act has a deferred application: it applies in full from 25 May 2018
       And on 1 January 2017, the act has a deferred application: it applies in full from 25 May 2018
       And on 25 May 2018, the act has no deferred application
 

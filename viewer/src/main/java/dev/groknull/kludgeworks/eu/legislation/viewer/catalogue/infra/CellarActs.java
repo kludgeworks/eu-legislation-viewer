@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
@@ -316,7 +318,7 @@ class CellarActs implements ActSource {
     if (originalFrom == null) {
       throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
-    var timeline = timeline(id, originalFrom, consolidations, formex);
+    var timeline = timeline(id, originalFrom, dateOfDocument, consolidations, formex);
     // The acts that the versions integrate, and the acts that amend the act. An act that amends it
     // can be in no version yet.
     var amending = new HashSet<ActIdentifier>();
@@ -370,10 +372,17 @@ class CellarActs implements ActSource {
    * languages it exists in; for the remaining languages, the timeline keeps the original text. Each
    * version gets the Formex that {@code formex} has for its CELEX number. A version with no entry
    * in {@code formex} gets none.
+   *
+   * <p>The original text starts from {@code originalFrom}. A consolidation can start before it: a
+   * corrigendum published before the entry into force, for example 2020/1812. Then the original
+   * text starts from {@code dateOfDocument}, if that is before the consolidation, so that a reader
+   * can compare the act as published with it. If not, the timeline has no original text.
    */
+  @BusinessRule(group = RuleGroup.THE_VERSIONS_OF_AN_ACT, name = "the-original-text-of-an-act")
   static Timeline timeline(
       ActIdentifier id,
       LocalDate originalFrom,
+      @Nullable LocalDate dateOfDocument,
       SparqlResult consolidations,
       Map<String, Map<Language, Version.Formex>> formex) {
     var byVersion = new LinkedHashMap<String, List<SparqlResult.Row>>();
@@ -406,8 +415,14 @@ class CellarActs implements ActSource {
     var sameDayConsolidations =
         versions.stream().filter(v -> v.date().equals(originalFrom)).toList();
     if (sameDayConsolidations.isEmpty()) {
-      if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
-        versions.add(Version.original(originalFrom, id, originalTexts.keySet(), originalTexts));
+      var from = originalFrom;
+      if (!versions.isEmpty()
+          && versions.getFirst().date().isBefore(originalFrom)
+          && dateOfDocument != null) {
+        from = dateOfDocument;
+      }
+      if (versions.isEmpty() || versions.getFirst().date().isAfter(from)) {
+        versions.add(Version.original(from, id, originalTexts.keySet(), originalTexts));
       }
     } else {
       var remaining = new EnumMap<Language, Version.Formex>(Language.class);

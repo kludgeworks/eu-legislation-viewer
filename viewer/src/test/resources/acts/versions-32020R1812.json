@@ -1,0 +1,5 @@
+
+{ "head": { "link": [], "vars": ["version", "date", "pdf", "listed"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "version": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#string", "value": "02020R1812-20201202" }	, "date": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2020-12-02" }	, "pdf": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#integer", "value": "1" }	, "listed": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#string", "value": "32020R1812" }},
+    { "version": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#string", "value": "02020R1812-20201202" }	, "date": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2020-12-02" }	, "pdf": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#integer", "value": "1" }	, "listed": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#string", "value": "32020R1812R(01)" }} ] } }

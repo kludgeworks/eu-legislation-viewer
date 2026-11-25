@@ -115,3 +115,10 @@ code (skos:prefLabel), as EUR-Lex shows them in "Subdivision concerned". Recorde
 the query: SELECT ?code ?label WHERE { ?code skos:inScheme <…/authority/fd_370> ; skos:prefLabel
 ?label . FILTER(LANG(?label) = "en") } ORDER BY ?code. 33 codes. The rules use it to read the
 places of their steps back into Cellar's codes.
+
+The answers to act.rq, versions.rq, languages.rq, dates.rq, titles.rq, amendments.rq and
+publications.rq for celex 32020R1812 (act-, versions-, languages-, dates-, titles-, amendments-
+and publications-32020R1812.json) were recorded on 2026-11-25. Implementing Regulation 2020/1812,
+of 1 December 2020, enters into force on 22 December 2020. Its only consolidation,
+02020R1812-20201202, starts on 2 December 2020 and integrates Corrigendum 1 (32020R1812R(01)):
+it starts before the entry into force. The rule the-original-text-of-an-act uses it.

@@ -182,9 +182,10 @@ public final class LawOnADay {
   /**
    * Returns the deferred application of the act on {@code day}, in {@code language}: the act is in
    * force, but it applies in full only from a later day. The reader gets a text on such a day: it
-   * is on or after the first version of the act in {@code language}, and the act applies in full
-   * after that version starts. For example, 2016/679 on 1 March 2017, and 2018/1862 on 1 August
-   * 2022, which applies in part on that day.
+   * is on or after the first version of the act in {@code language}, and on or after its entry into
+   * force. The act applies in full after both. For example, 2016/679 on 1 March 2017, but not on 4
+   * May 2016, before its entry into force, and 2018/1862 on 1 August 2022, which applies in part on
+   * that day.
    *
    * <p>Returns empty on a day without a text, on or after the day from which the act applies in
    * full, and where Cellar does not give that day.
@@ -197,14 +198,18 @@ public final class LawOnADay {
       name = "where-the-text-of-a-day-is-not-the-law")
   public Optional<DeferredApplication> deferredApplicationOn(LocalDate day, Language language) {
     var first =
-        act.timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
+        act.timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
+            .findFirst()
+            .map(Version::date);
+    var inForce = act.dates().entryIntoForce(act.id());
+    var from = first.map(date -> inForce.filter(date::isBefore).orElse(date));
     return act.dates()
         .appliesFrom(act.id())
         .filter(inFull -> inFull.date() != null)
         .filter(inFull ->
-            first.isPresent()
-                && Objects.requireNonNull(inFull.date()).isAfter(first.get().date())
-                && !day.isBefore(first.get().date())
+            from.isPresent()
+                && Objects.requireNonNull(inFull.date()).isAfter(from.get())
+                && !day.isBefore(from.get())
                 && day.isBefore(inFull.date()))
         .map(inFull -> new DeferredApplication(inFull, act.dates().appliesInPartOn(act.id(), day)));
   }

@@ -528,6 +528,7 @@ CATALOGUE_RULES_GLUE = [
     "SearchSteps.java",
     "StateSteps.java",
     "TheAct.java",
+    "VersionsSteps.java",
 ]
 
 # The business rules that the catalogue's domain applies (viewer/src/test/rules/catalogue), run by

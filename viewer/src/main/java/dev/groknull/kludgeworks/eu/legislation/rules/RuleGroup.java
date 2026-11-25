@@ -38,7 +38,9 @@ public enum RuleGroup {
   /** Which two versions a comparison is between, and which acts it shows. */
   WHAT_A_COMPARISON_COVERS,
   /** Which act a citation that a reader types in the search names. */
-  SEARCH;
+  SEARCH,
+  /** The versions of an act: its original text and its consolidations, and when each starts. */
+  THE_VERSIONS_OF_AN_ACT;
 
   /** Returns the name of the group's feature file, without its extension. */
   public String feature() {

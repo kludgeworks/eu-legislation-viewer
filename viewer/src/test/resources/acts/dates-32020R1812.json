@@ -1,0 +1,4 @@
+
+{ "head": { "link": [], "vars": ["subject", "property", "date", "type", "comment", "amending"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "subject": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#string", "value": "32020R1812" }	, "property": { "type": "uri", "value": "http://publications.europa.eu/ontology/cdm#resource_legal_date_entry-into-force" }	, "date": { "type": "literal", "datatype": "http://www.w3.org/2001/XMLSchema#date", "value": "2020-12-22" }	, "type": { "type": "literal", "value": "{EV|http://publications.europa.eu/resource/authority/fd_335/EV}" }	, "comment": { "type": "literal", "value": "{DATPUB|http://publications.europa.eu/resource/authority/fd_335/DATPUB} +20 {V|http://publications.europa.eu/resource/authority/fd_335/V} {ART|http://publications.europa.eu/resource/authority/fd_335/ART} 5" }	, "amending": { "type": "literal", "value": "" }} ] } }
