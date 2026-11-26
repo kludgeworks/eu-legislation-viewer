@@ -31,10 +31,15 @@ import org.springframework.web.bind.annotation.RestController;
 class ApiHistoryController {
   private final Histories histories;
   private final HistoryModelAssembler assembler;
+  private final OverTimeModelAssembler overTimeAssembler;
 
-  ApiHistoryController(Histories histories, HistoryModelAssembler assembler) {
+  ApiHistoryController(
+      Histories histories,
+      HistoryModelAssembler assembler,
+      OverTimeModelAssembler overTimeAssembler) {
     this.histories = histories;
     this.assembler = assembler;
+    this.overTimeAssembler = overTimeAssembler;
   }
 
   /** Returns the history of the act on {@code day}, by its changes to the text in a language. */
@@ -55,7 +60,7 @@ class ApiHistoryController {
   EntityModel<OverTimeModel> overTime(
       @PathVariable ActIdentifier celex, @PathVariable String language) {
     var overTime = histories.overTime(celex, Requests.language(language));
-    return assembler.toModel(overTime);
+    return overTimeAssembler.toModel(overTime);
   }
 
   /**

@@ -126,6 +126,13 @@ public record Divergence(
   }
 
   /**
+   * Returns the day from which {@code act} applies, or null if {@code act} is an undated amendment.
+   */
+  public @Nullable LocalDate appliesFromDate() {
+    return kind == Kind.UNDATED ? null : appliesFrom();
+  }
+
+  /**
    * Returns whether the text and the law differ on {@code day}: the day is in the period of this
    * divergence. The rules of {@link TheTextAndTheLawOnADay} set the period.
    */

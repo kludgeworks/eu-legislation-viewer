@@ -6,9 +6,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -43,5 +45,10 @@ public class CataloguedTesting {
   @Bean
   Catalogued catalogued(Lookups lookups) {
     return new Catalogued(lookups);
+  }
+
+  @Bean
+  Texts texts() {
+    return Mockito.mock();
   }
 }

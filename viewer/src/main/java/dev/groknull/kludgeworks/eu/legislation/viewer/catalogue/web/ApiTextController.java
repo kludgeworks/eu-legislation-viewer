@@ -5,9 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.Asked;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.OccurrenceAnswer;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.OutlineAnswer;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.TextAnswer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
@@ -57,6 +54,8 @@ class ApiTextController {
   private final Texts texts;
   private final Content content;
   private final TextModelAssembler assembler;
+  private final OutlineModelAssembler outlineAssembler;
+  private final OccurrenceModelAssembler occurrenceAssembler;
   private final PreparationModelAssembler preparationAssembler;
 
   ApiTextController(
@@ -64,11 +63,15 @@ class ApiTextController {
       Texts texts,
       Content content,
       TextModelAssembler assembler,
+      OutlineModelAssembler outlineAssembler,
+      OccurrenceModelAssembler occurrenceAssembler,
       PreparationModelAssembler preparationAssembler) {
     this.acts = acts;
     this.texts = texts;
     this.content = content;
     this.assembler = assembler;
+    this.outlineAssembler = outlineAssembler;
+    this.occurrenceAssembler = occurrenceAssembler;
     this.preparationAssembler = preparationAssembler;
   }
 
@@ -91,10 +94,7 @@ class ApiTextController {
     var asked = asked(celex, key, language);
     return answer(
         asked,
-        text ->
-            content
-                .publicText(text)
-                .map(publicText -> assembler.toModel(new TextAnswer(asked, publicText))));
+        text -> content.publicText(text).map(publicText -> assembler.toModel(asked, publicText)));
   }
 
   /**
@@ -106,11 +106,7 @@ class ApiTextController {
       @PathVariable ActIdentifier celex, @PathVariable String key, @PathVariable String language) {
     var asked = asked(celex, key, language);
     return answer(
-        asked,
-        id ->
-            content
-                .outline(id)
-                .map(outline -> assembler.toOutlineModel(new OutlineAnswer(asked, outline))));
+        asked, id -> content.outline(id).map(outline -> outlineAssembler.toModel(asked, outline)));
   }
 
   /**
@@ -131,8 +127,7 @@ class ApiTextController {
         id ->
             content
                 .publicOccurrence(id, eId)
-                .map(occurrence ->
-                    assembler.toOccurrenceModel(new OccurrenceAnswer(asked, occurrence, eId))));
+                .map(occurrence -> occurrenceAssembler.toModel(asked, eId, occurrence)));
   }
 
   private ResponseEntity<RepresentationModel<?>> answer(

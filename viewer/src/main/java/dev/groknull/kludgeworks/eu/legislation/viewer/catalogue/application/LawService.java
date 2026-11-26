@@ -24,7 +24,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.stereotype.Service;
 
 /**
@@ -40,10 +39,10 @@ public class LawService implements Laws {
    */
   private static final long OCCURRENCES_KEPT = 500_000;
 
-  private final @Nullable Texts texts;
+  private final Texts texts;
 
-  public LawService(ObjectProvider<Texts> texts) {
-    this.texts = texts.getIfAvailable();
+  public LawService(Texts texts) {
+    this.texts = texts;
   }
 
   /**
@@ -94,6 +93,8 @@ public class LawService implements Laws {
                 .map(LawOnADay::deferredApplication)
                 .ifPresent(each ->
                     languages.computeIfAbsent(each, key -> new ArrayList<>()).add(language)));
+    // An act's deferred application applies to the entire act across all official languages.
+    // The languages grouped here are those that currently have a text for this version.
     return languages.entrySet().stream()
         .findFirst()
         .map(each -> new Deferred(each.getKey(), each.getValue()))
@@ -118,7 +119,7 @@ public class LawService implements Laws {
   }
 
   private Map<Version, TextTags> built(Act act, Language language) {
-    return texts == null ? Map.of() : texts.tags(texts.preparation(act, language));
+    return texts.tags(texts.preparation(act, language));
   }
 
   /**

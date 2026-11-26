@@ -52,11 +52,15 @@ final class ApiActTesting {
     OnTheFirstOfJune2021.class,
     ActModelAssembler.class,
     VersionModelAssembler.class,
+    VersionsModelAssembler.class,
     AmendmentsModelAssembler.class,
     HistoryModelAssembler.class,
+    OverTimeModelAssembler.class,
     LawModelAssembler.class,
     PreparationModelAssembler.class,
-    TextModelAssembler.class
+    TextModelAssembler.class,
+    OutlineModelAssembler.class,
+    OccurrenceModelAssembler.class
   })
   static class Assemblers {}
 }

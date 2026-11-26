@@ -79,18 +79,21 @@ class ApiComparisonController {
   private final Comparisons comparisons;
   private final Content content;
   private final ComparisonModelAssembler assembler;
+  private final DifferenceModelAssembler differenceAssembler;
 
   ApiComparisonController(
       Acts acts,
       Texts texts,
       Comparisons comparisons,
       Content content,
-      ComparisonModelAssembler assembler) {
+      ComparisonModelAssembler assembler,
+      DifferenceModelAssembler differenceAssembler) {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
     this.content = content;
     this.assembler = assembler;
+    this.differenceAssembler = differenceAssembler;
   }
 
   /**
@@ -159,7 +162,7 @@ class ApiComparisonController {
     if (texts == null) {
       return ResponseEntity.status(HttpStatus.ACCEPTED)
           .header(HttpHeaders.RETRY_AFTER, Long.toString(RETRY_AFTER.toSeconds()))
-          .body(assembler.toModel(ends));
+          .body(assembler.toPreparingModel(ends));
     }
     var comparison =
         comparisons.between(texts.earlier(), texts.later()).orElseThrow(Requests::notFound);
@@ -178,9 +181,7 @@ class ApiComparisonController {
         ends.later().date(),
         ends.language().code(),
         comparison.differences().size());
-    return ResponseEntity.ok(
-        assembler.toComparisonModel(
-            new ComparisonModelAssembler.Compared(ends, comparison, amended)));
+    return ResponseEntity.ok(assembler.toModel(ends, comparison, amended));
   }
 
   /**
@@ -213,8 +214,7 @@ class ApiComparisonController {
                 outline(texts.earlier()).eIds(),
                 outline(texts.later()).eIds(),
                 ends.language());
-    return assembler.toDifferenceModel(
-        new ComparisonModelAssembler.Differed(ends, difference, amended, eId));
+    return differenceAssembler.toModel(ends, difference, amended, eId);
   }
 
   private Act found(ActIdentifier celex) {

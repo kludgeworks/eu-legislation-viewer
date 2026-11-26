@@ -63,7 +63,8 @@ import tools.jackson.databind.json.JsonMapper;
   ApiConfiguration.class,
   ActComparisonLinks.class,
   ApiComparisonControllerTests.ActLinks.class,
-  ComparisonModelAssembler.class
+  ComparisonModelAssembler.class,
+  DifferenceModelAssembler.class
 })
 class ApiComparisonControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";

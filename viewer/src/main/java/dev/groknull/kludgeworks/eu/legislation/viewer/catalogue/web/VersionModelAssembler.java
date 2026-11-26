@@ -1,22 +1,16 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.VersionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.LinkRelation;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
-/** Assembles the hypermedia representations of {@link Version}s in the API. */
+/** Assembles the hypermedia representation of a single {@link Version} in the API. */
 @Component
 class VersionModelAssembler
     implements RepresentationModelAssembler<
@@ -28,12 +22,6 @@ class VersionModelAssembler
 
   /** A version of an act. */
   record ActVersion(Act act, Version version) {}
-
-  private final Today today;
-
-  VersionModelAssembler(Today today) {
-    this.today = today;
-  }
 
   /**
    * Returns the representation of a single version of an act: its summary, links to the act ({@code
@@ -63,26 +51,5 @@ class VersionModelAssembler
       model.add(TextModelAssembler.to(celex, version, language, Relation.TEXT.rel()));
     }
     return model;
-  }
-
-  /**
-   * Returns the collection representation of all versions of an act, with each version embedded as
-   * {@code item}, {@code self}, {@code up}, {@code first}, and {@code latest-version} if one
-   * applies today.
-   */
-  public RepresentationModel<?> toCollectionModel(Act act) {
-    var celex = act.id();
-    var model =
-        HalModelBuilder.halModel()
-            .embed(
-                act.timeline().versions().stream()
-                    .map(version -> ApiActResources.summary(celex, version))
-                    .toList(),
-                IanaLinkRelations.ITEM)
-            .link(linkTo(methodOn(ApiVersionController.class).versions(celex)).withSelfRel())
-            .link(ApiActResources.up(celex))
-            .link(ApiActResources.to(celex, act.timeline().first(), IanaLinkRelations.FIRST));
-    ApiActResources.latest(act, today.today()).ifPresent(model::link);
-    return model.build();
   }
 }

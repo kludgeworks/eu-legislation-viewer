@@ -9,14 +9,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Ends;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.ApiComparisonController.ComparisonModel;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.ApiComparisonController.DifferenceModel;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.ApiComparisonController.DifferenceSummary;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.ApiComparisonController.Preparing;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.site.ApiLinks;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Arrays;
@@ -31,29 +27,16 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.hateoas.UriTemplate;
 import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.hateoas.server.EntityLinks;
-import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.UriUtils;
 
-/** Assembles the hypermedia representations of comparisons and differences in the API. */
+/** Assembles the hypermedia representation of a comparison between two versions in the API. */
 @Component
-class ComparisonModelAssembler
-    implements RepresentationModelAssembler<Ends, RepresentationModel<?>> {
+class ComparisonModelAssembler {
 
-  /** The JSON Schema of a difference, in version 1 of the API. */
-  static final String DIFFERENCE_SCHEMA = "/api/schemas/v1/difference.schema.json";
-
-  /** The answer of a ready comparison between two versions. */
-  record Compared(Ends ends, Comparison comparison, Amended amended) {}
-
-  /** The answer of a difference at an occurrence. */
-  record Differed(Ends ends, Difference difference, Amended amended, String eId) {}
-
-  private final Content content;
   private final EntityLinks links;
 
-  ComparisonModelAssembler(Content content, EntityLinks links) {
-    this.content = content;
+  ComparisonModelAssembler(EntityLinks links) {
     this.links = links;
   }
 
@@ -61,8 +44,7 @@ class ComparisonModelAssembler
    * Returns the representation of a comparison whose texts are still being prepared: links to
    * {@code self} and {@code up} (the act).
    */
-  @Override
-  public RepresentationModel<?> toModel(Ends ends) {
+  public RepresentationModel<?> toPreparingModel(Ends ends) {
     var celex = ends.act().id();
     var self = at(ends, IanaLinkRelations.SELF);
     return HalModelBuilder.halModelOf(Preparing.of(ends)).link(self).link(up(celex)).build();
@@ -72,10 +54,7 @@ class ComparisonModelAssembler
    * Returns the representation of a comparison whole: each difference embedded as {@code item},
    * {@code self}, {@code up} (the act), and {@code av:difference} (URI template).
    */
-  public RepresentationModel<?> toComparisonModel(Compared compared) {
-    var ends = compared.ends();
-    var comparison = compared.comparison();
-    var amended = compared.amended();
+  public RepresentationModel<?> toModel(Ends ends, Comparison comparison, Amended amended) {
     var celex = ends.act().id();
     var self = at(ends, IanaLinkRelations.SELF);
     return HalModelBuilder.halModelOf(ComparisonModel.of(ends, comparison))
@@ -89,27 +68,6 @@ class ComparisonModelAssembler
         .link(self)
         .link(up(celex))
         .link(Link.of(differenceTemplate(self), DIFFERENCE))
-        .build();
-  }
-
-  /**
-   * Returns the representation of a single difference at {@code eId}: links to its canonical
-   * address, {@code up} (the comparison), and {@code describedby} schema.
-   */
-  public RepresentationModel<?> toDifferenceModel(Differed differed) {
-    var ends = differed.ends();
-    var difference = differed.difference();
-    var amended = differed.amended();
-    var eId = differed.eId();
-    var comparison = at(ends, IanaLinkRelations.UP);
-    return HalModelBuilder.halModelOf(
-            new DifferenceModel(
-                DifferenceSummary.of(ends.act(), difference, amended),
-                content.publicWording(difference.shown()),
-                content.publicOccurrence(difference.shown())))
-        .link(Link.of(differenceHref(comparison, eId)))
-        .link(comparison)
-        .link(ApiLinks.schema(DIFFERENCE_SCHEMA))
         .build();
   }
 

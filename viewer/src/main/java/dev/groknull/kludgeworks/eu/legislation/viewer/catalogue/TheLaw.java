@@ -9,7 +9,7 @@ import org.jspecify.annotations.Nullable;
 /**
  * The law of an act on a day: the versions that apply on it, the day they apply until, the deferred
  * application of the act itself, and where their text is not the law on the day. {@link Laws#on}
- * gives it. A page and the API show the same answer: each only puts it into its own form.
+ * gives it for consumers such as the API.
  *
  * @param act the act
  * @param day the day asked

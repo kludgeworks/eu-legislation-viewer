@@ -21,10 +21,15 @@ import org.springframework.web.bind.annotation.RestController;
 class ApiVersionController {
   private final Catalogued catalogued;
   private final VersionModelAssembler assembler;
+  private final VersionsModelAssembler versionsAssembler;
 
-  ApiVersionController(Catalogued catalogued, VersionModelAssembler assembler) {
+  ApiVersionController(
+      Catalogued catalogued,
+      VersionModelAssembler assembler,
+      VersionsModelAssembler versionsAssembler) {
     this.catalogued = catalogued;
     this.assembler = assembler;
+    this.versionsAssembler = versionsAssembler;
   }
 
   /**
@@ -38,7 +43,7 @@ class ApiVersionController {
    */
   @GetMapping(VERSIONS)
   RepresentationModel<?> versions(@PathVariable ActIdentifier celex) {
-    return assembler.toCollectionModel(catalogued.api(celex));
+    return versionsAssembler.toModel(catalogued.api(celex));
   }
 
   /**
