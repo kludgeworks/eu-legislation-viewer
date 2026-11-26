@@ -1,17 +1,15 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -32,9 +30,12 @@ public record TagsView(List<Tag> tags) {
   }
 
   /**
-   * Returns the tags of the text of {@code reading}, a version of {@code act}, in {@code language}.
+   * Returns the tags of the text of {@code reading}, a version of the act of {@code overTime}, in
+   * its language.
    */
-  public static TagsView of(Act act, Version reading, Language language) {
+  public static TagsView of(ActOverTime overTime, Version reading) {
+    var act = overTime.act();
+    var language = overTime.language();
     var versions =
         act.timeline()
             .in(language)
@@ -48,7 +49,7 @@ public record TagsView(List<Tag> tags) {
       }
     }
     return new TagsView(
-        seen.stream().map(each -> new Tag(each.celex(), applies(act, each))).toList());
+        seen.stream().map(each -> new Tag(each.celex(), applies(overTime, each))).toList());
   }
 
   /**
@@ -58,9 +59,9 @@ public record TagsView(List<Tag> tags) {
    * act's date, not the occurrence's: an act that applies from more than one day says when the
    * first part starts. Returns null if Cellar has no day for it and no clause that sets one.
    */
-  static @Nullable String applies(Act act, ActIdentifier amending) {
-    return DatedAct.of(act, amending)
-        .applying(Set.of())
+  static @Nullable String applies(ActOverTime overTime, ActIdentifier amending) {
+    return overTime
+        .applying(amending)
         .map(applying -> {
           var clause = Wording.clause(applying.dates(), amending);
           var cited = clause.isEmpty() ? "" : " · " + clause;

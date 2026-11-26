@@ -2,9 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.broadcast.Broadcast;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.NoticeView;
@@ -24,7 +24,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
@@ -43,6 +42,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * the streams that it holds. A stream ends after a while, and then the page connects again. A
  * notice sent while a page was not connected is not sent again.
  */
+/*
+ * A handler takes the act and the language of its address as an ActAddress, which
+ * ActAddressResolver gives. The check knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class NoticeController {
   private static final Logger LOG = LoggerFactory.getLogger(NoticeController.class);
@@ -66,13 +70,9 @@ class NoticeController {
   @GetMapping(
       path = "/eli/{type}/{year}/{number}/{language}/notices",
       produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-  SseEmitter events(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code) {
-    var language = Requests.language(code);
-    var act = acts.catalogued(new Eli(type, year, number)).orElseThrow(Requests::notFound);
+  SseEmitter events(ActAddress address) {
+    var language = address.language();
+    var act = acts.catalogued(address.eli()).orElseThrow(Requests::notFound);
     var stream = new Stream(new SseEmitter(LASTS.toMillis()), act.id(), language);
     stream.emitter().onCompletion(() -> streams.remove(stream));
     stream.emitter().onTimeout(() -> streams.remove(stream));

@@ -7,8 +7,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.VersionModel;
-import java.time.Clock;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.LinkRelation;
@@ -31,11 +31,11 @@ class ApiVersionController {
   private static final LinkRelation SUCCESSOR_VERSION = LinkRelation.of("successor-version");
 
   private final Catalogued catalogued;
-  private final Clock clock;
+  private final Today today;
 
-  ApiVersionController(Catalogued catalogued, Clock clock) {
+  ApiVersionController(Catalogued catalogued, Today today) {
     this.catalogued = catalogued;
-    this.clock = clock;
+    this.today = today;
   }
 
   /**
@@ -60,7 +60,7 @@ class ApiVersionController {
             .link(linkTo(methodOn(ApiVersionController.class).versions(celex)).withSelfRel())
             .link(ApiActResources.up(celex))
             .link(ApiActResources.to(celex, act.timeline().first(), IanaLinkRelations.FIRST));
-    ApiActResources.latest(act, clock).ifPresent(model::link);
+    ApiActResources.latest(act, today.today()).ifPresent(model::link);
     return model.build();
   }
 

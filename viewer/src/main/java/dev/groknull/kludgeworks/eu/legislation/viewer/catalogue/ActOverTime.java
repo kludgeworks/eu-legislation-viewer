@@ -5,8 +5,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.L
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.Stands;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -20,17 +24,29 @@ import org.jspecify.annotations.Nullable;
  * @param state the states of the act itself, with the days of each
  * @param amendingActs each amending act of the act, newest first
  * @param corrigenda the corrigenda of the act that correct the text in the language
+ * @param daysOfChange the days on which an amending act changes the act, each with its amending
+ *     acts
  */
 public record ActOverTime(
     Act act,
     Language language,
     Periods<LegalState> state,
     List<Amending> amendingActs,
-    List<History.Corrigendum> corrigenda) {
+    List<History.Corrigendum> corrigenda,
+    SortedMap<LocalDate, List<ActIdentifier>> daysOfChange) {
 
   public ActOverTime {
     amendingActs = List.copyOf(amendingActs);
     corrigenda = List.copyOf(corrigenda);
+    daysOfChange = Collections.unmodifiableSortedMap(new TreeMap<>(daysOfChange));
+  }
+
+  /**
+   * Returns when {@code each} applies, as its dates tell: the act itself, an act that amends it, or
+   * an act that one of its versions integrates. Empty if Cellar has no dates of it.
+   */
+  public Optional<Applying> applying(ActIdentifier each) {
+    return DatedAct.of(act, each).applying(Set.of());
   }
 
   /**
@@ -66,6 +82,7 @@ public record ActOverTime(
    *   <li>The amending acts, in order, each with its changes.
    *   <li>The states of each change, and from them how its amending act stands.
    *   <li>The corrigenda.
+   *   <li>The days of change.
    * </ol>
    */
   public static ActOverTime of(Act act, Language language) {
@@ -78,7 +95,13 @@ public record ActOverTime(
                 new History.Corrigendum(
                     each, TheHistoryOfAnAct.changesOfAnAmendingAct(act, each, language, null)))
             .toList();
-    return new ActOverTime(act, language, state, amendingActs, corrigenda);
+    return new ActOverTime(
+        act,
+        language,
+        state,
+        amendingActs,
+        corrigenda,
+        TheHistoryOfAnAct.daysOfChange(amendingActs));
   }
 
   /** Returns the amending acts of {@code act}, in their order: the newest is first. */
@@ -115,6 +138,7 @@ public record ActOverTime(
         state.on(day),
         amendingActs.stream().map(each -> each.on(day)).toList(),
         null,
-        corrigenda);
+        corrigenda,
+        this);
   }
 }

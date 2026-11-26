@@ -4,20 +4,18 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -65,14 +63,15 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
    *
    * @param today the date today, which gives the tense
    */
-  public static StatusView of(Act act, LawOnADay law, Language language, LocalDate today) {
+  public static StatusView of(ActOverTime overTime, LawOnADay law, LocalDate today) {
+    var act = overTime.act();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var asked = law.day();
     var all = new ArrayList<Line>();
     Optional.ofNullable(law.deferredApplication())
         .ifPresent(deferred -> all.add(deferred(act, deferred, asked, today)));
     law.divergences().stream()
-        .map(each -> line(act, each, eli, asked, language, today))
+        .map(each -> line(overTime, each, eli, asked, today))
         .forEach(all::add);
     var shown = Math.min(all.size(), SHOWN);
     return new StatusView(
@@ -105,12 +104,9 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   }
 
   private static Line line(
-      Act act,
-      Divergence divergence,
-      Eli eli,
-      LocalDate asked,
-      Language language,
-      LocalDate today) {
+      ActOverTime overTime, Divergence divergence, Eli eli, LocalDate asked, LocalDate today) {
+    var act = overTime.act();
+    var language = overTime.language();
     var past = asked.isBefore(today);
     var cited = act.cited(divergence.act());
     var from = divergence.appliesFrom();
@@ -147,7 +143,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
               href,
               StateWording.phrase(State.NOT_KNOWN, past)
                   + ". "
-                  + setBy(act, divergence)
+                  + setBy(overTime, divergence)
                   + count(count, ", not in this text."));
     };
   }
@@ -179,10 +175,10 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
   /**
    * Returns what sets the day of an undated pending amendment, whose day the data does not give.
    */
-  private static String setBy(Act act, Divergence undated) {
+  private static String setBy(ActOverTime overTime, Divergence undated) {
     var clause =
-        DatedAct.of(act, undated.act())
-            .applying(Set.of())
+        overTime
+            .applying(undated.act())
             .map(applying -> Wording.clause(applying.dates(), undated.act()))
             .orElse("");
     return clause.isEmpty()

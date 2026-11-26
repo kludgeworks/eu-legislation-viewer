@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
@@ -21,6 +21,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
@@ -34,8 +37,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -59,6 +61,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * first days of two versions in the language, the earlier first, and an act between them, if any.
  * Anything else is 404. {@link ComparisonViewsController} serves the whole comparison.
  */
+/*
+ * A handler takes the act and the language of its address as an ActAddress, which the catalogue
+ * gives. The check knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class DifferenceController {
   private static final Logger LOG = LoggerFactory.getLogger(DifferenceController.class);
@@ -118,20 +125,17 @@ class DifferenceController {
   @GetMapping(path = ComparePage.DIFFERENCE_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   @Nullable String difference(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
-      @RequestParam(ComparePage.EID) String eId,
-      @RequestParam(name = ComparePage.TABLE, required = false) @Nullable Integer table,
-      @RequestParam(name = ComparePage.ROWS, required = false) @Nullable String rows,
-      @RequestParam(name = ComparePage.OUTLINE, defaultValue = "false") boolean outline,
+      ActAddress address,
+      @Valid @ModelAttribute DifferenceRequest asked,
       HttpServletRequest request,
       HttpServletResponse response) {
-    var ends = fragments.ends(new Eli(type, year, number), code, from, to, act);
+    var from = asked.from();
+    var to = asked.to();
+    var eId = asked.eId();
+    var table = asked.table();
+    var rows = asked.rows();
+    var outline = Boolean.TRUE.equals(asked.outline());
+    var ends = fragments.ends(address, from, to, asked.act());
     var page =
         ComparePage.ofFragment(
             request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
@@ -207,24 +211,17 @@ class DifferenceController {
   @GetMapping(path = ComparePage.PLACE_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   @Nullable String place(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
-      @RequestParam(ComparePage.EID) List<String> eIds,
-      @RequestParam(name = ComparePage.SIDES, defaultValue = "false") boolean sides,
-      @RequestParam(name = ComparePage.FROM_DAY, required = false)
-          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate fromDay,
-      @RequestParam(name = ComparePage.TO_DAY, required = false)
-          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate toDay,
+      ActAddress address,
+      @Valid @ModelAttribute PlaceRequest asked,
       HttpServletRequest request,
       HttpServletResponse response) {
-    var ends = fragments.ends(new Eli(type, year, number), code, from, to, act);
+    var from = asked.from();
+    var to = asked.to();
+    var eIds = asked.eId();
+    var sides = Boolean.TRUE.equals(asked.sides());
+    var fromDay = asked.fromDay();
+    var toDay = asked.toDay();
+    var ends = fragments.ends(address, from, to, asked.act());
     var page =
         ComparePage.ofFragment(
                 request.getRequestURI(),
@@ -291,15 +288,10 @@ class DifferenceController {
   @GetMapping(path = ComparePage.EITHER_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String either(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(ComparePage.ACT) String act,
-      HttpServletRequest request) {
-    var ends = fragments.ends(new Eli(type, year, number), code, from, to, act);
+      ActAddress address, @Valid @ModelAttribute EitherRequest asked, HttpServletRequest request) {
+    var from = asked.from();
+    var to = asked.to();
+    var ends = fragments.ends(address, from, to, asked.act());
     var only = Objects.requireNonNull(ends.only);
     var page = ComparePage.ofFragment(request.getRequestURI(), from, to, only.celex(), null);
     var started = System.nanoTime();
@@ -348,4 +340,64 @@ class DifferenceController {
     }
     return Optional.empty();
   }
+
+  /**
+   * What the address of one difference asks for, beside the act and the language. The names are
+   * those that {@link ComparePage} writes.
+   *
+   * @param from the first day of the earlier version
+   * @param to the first day of the later version
+   * @param act the CELEX number of the act that the comparison is limited to, or null
+   * @param eId the eId of the occurrence of the difference
+   * @param table the number of the table whose rows the address asks for, or null
+   * @param rows the rows of the table, or null. For example, {@code 10-40}.
+   * @param outline true if the answer has the outline of the difference, or null
+   */
+  record DifferenceRequest(
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @Nullable String act,
+      @NotNull String eId,
+      @Nullable Integer table,
+      @Nullable String rows,
+      @Nullable Boolean outline) {}
+
+  /**
+   * What the address of the differences at a place asks for, beside the act and the language. The
+   * names are those that {@link ComparePage} writes.
+   *
+   * @param from the first day of the earlier version
+   * @param to the first day of the later version
+   * @param act the CELEX number of the act that the comparison is limited to, or null
+   * @param eId the eIds of the occurrences
+   * @param sides true if the answer is the wording on each of the two days, side by side, or null
+   * @param fromDay the earlier day of the page, if it is not {@code from}, or null
+   * @param toDay the later day of the page, if it is not {@code to}, or null
+   */
+  record PlaceRequest(
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @Nullable String act,
+      @NotEmpty List<String> eId,
+      @Nullable Boolean sides,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate fromDay,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate toDay) {
+
+    PlaceRequest {
+      eId = eId == null ? List.of() : List.copyOf(eId);
+    }
+  }
+
+  /**
+   * What the address of the differences of an act or another act asks for, beside the act and the
+   * language. The names are those that {@link ComparePage} writes.
+   *
+   * @param from the first day of the earlier version
+   * @param to the first day of the later version
+   * @param act the CELEX number of the act that the comparison is limited to
+   */
+  record EitherRequest(
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @NotNull String act) {}
 }

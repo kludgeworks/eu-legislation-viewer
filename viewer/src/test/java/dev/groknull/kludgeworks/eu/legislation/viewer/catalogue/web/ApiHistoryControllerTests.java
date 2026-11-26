@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
 import java.time.Clock;
 import java.time.Instant;
@@ -100,6 +101,7 @@ class ApiHistoryControllerTests {
 
   /** Sets today for the service to 1 June 2021. */
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheFirstOfJune2021 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean

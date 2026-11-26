@@ -6,6 +6,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ActLookupView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.io.IOException;
 import java.time.Duration;
 import org.slf4j.Logger;
@@ -13,8 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
@@ -31,6 +32,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * <p>The stream joins the lookup that runs, or starts one. It ends when the lookup ends, or after a
  * while, and then the page connects again.
  */
+/*
+ * A handler takes the act of its address as an Eli, which ActAddressResolver gives. The check
+ * knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class ActLookupController {
   private static final Logger LOG = LoggerFactory.getLogger(ActLookupController.class);
@@ -53,12 +59,8 @@ class ActLookupController {
   @GetMapping(
       path = "/eli/{type}/{year}/{number}/lookup/events",
       produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-  SseEmitter events(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @RequestParam String page) {
-    var eli = new Eli(type, year, number);
+  SseEmitter events(Eli eli, @Valid @ModelAttribute LookupRequest asked) {
+    var page = asked.page();
     if (!page.startsWith("/eli/" + eli.path() + "/")) {
       throw Requests.notFound();
     }
@@ -83,4 +85,11 @@ class ActLookupController {
         });
     return emitter;
   }
+
+  /**
+   * What the address of the stream of a lookup asks for, beside the act.
+   *
+   * @param page the address of the page that waits
+   */
+  record LookupRequest(@NotNull String page) {}
 }

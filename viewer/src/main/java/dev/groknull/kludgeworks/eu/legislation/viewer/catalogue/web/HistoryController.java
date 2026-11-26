@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Histories;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
@@ -13,6 +13,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
@@ -22,8 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -38,6 +39,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * catalogue. They do not wait for the texts of the act. The page of an amending act puts its
  * changes in the order of the text if a text of the act is built.
  */
+/*
+ * A handler takes the act and the language of its address as an ActAddress, which
+ * ActAddressResolver gives. The check knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class HistoryController {
   private static final String HISTORY = "/eli/{type}/{year}/{number}/{language}/history";
@@ -58,22 +64,12 @@ class HistoryController {
   @GetMapping(path = HISTORY, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String history(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate on,
-      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate from,
-      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate to,
-      HttpServletRequest request) {
-    var history = histories.of(new Eli(type, year, number), Requests.language(code), on, from, to);
+      ActAddress act, @Valid @ModelAttribute HistoryRequest asked, HttpServletRequest request) {
+    var history = histories.of(act.eli(), act.language(), asked.on(), asked.from(), asked.to());
     return templates
         .catalogueHistory(
             Frame.of(request),
-            MastheadView.history(history.act(), history.day(), history.language()),
+            MastheadView.history(history.overTime(), history.day()),
             HistoryView.of(history))
         .render();
   }
@@ -85,29 +81,44 @@ class HistoryController {
   @GetMapping(path = HISTORY + "/{celex}", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String amending(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @PathVariable String celex,
-      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate on,
-      @RequestParam(required = false) @Nullable String applies,
-      HttpServletRequest request) {
-    return Optional.of(celex)
+      ActAddress act, @Valid @ModelAttribute AmendingRequest asked, HttpServletRequest request) {
+    return Optional.of(asked.celex())
         .filter(ActIdentifier::isCelex)
         .map(ActIdentifier::new)
-        .flatMap(amending ->
-            histories.amending(new Eli(type, year, number), amending, Requests.language(code), on))
+        .flatMap(amending -> histories.amending(act.eli(), amending, act.language(), asked.on()))
         .map(amending ->
             templates
                 .catalogueAmending(
                     Frame.of(request),
-                    MastheadView.history(amending.act(), amending.day(), amending.language()),
-                    AmendingView.of(amending, applies))
+                    MastheadView.history(amending.overTime(), amending.day()),
+                    AmendingView.of(amending, asked.applies()))
                 .render())
         .orElseThrow(Requests::notFound);
   }
+
+  /**
+   * What the address of the history of an act asks for, beside the act and the language.
+   *
+   * @param on the day of the history, or null for today
+   * @param from the first of two days, or null
+   * @param to the second of two days, or null
+   */
+  record HistoryRequest(
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate on,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate from,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate to) {}
+
+  /**
+   * What the address of the page of an amending act asks for, beside the act and the language.
+   *
+   * @param celex the CELEX number of the amending act
+   * @param on the day, or null for today
+   * @param applies the day whose changes the page shows only, or null
+   */
+  record AmendingRequest(
+      @NotNull String celex,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate on,
+      @Nullable String applies) {}
 
   /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
   @ExceptionHandler(NotCatalogued.class)

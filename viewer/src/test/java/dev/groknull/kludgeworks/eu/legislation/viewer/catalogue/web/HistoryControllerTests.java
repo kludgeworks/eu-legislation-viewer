@@ -20,6 +20,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
@@ -303,6 +304,7 @@ class HistoryControllerTests {
 
   /** Sets today for the pages to 1 June 2021. */
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheFirstOfJune2021 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean

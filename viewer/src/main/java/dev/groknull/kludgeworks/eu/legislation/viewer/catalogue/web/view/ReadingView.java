@@ -3,9 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.List;
@@ -65,13 +65,14 @@ public record ReadingView(
    * @param law the text and the law on {@code asked}. It tells where the text is not the law.
    */
   public static ReadingView of(
-      Act act,
+      ActOverTime overTime,
       Version version,
       LocalDate asked,
-      Language language,
       LocalDate today,
       List<ActIdentifier> named,
       LawOnADay law) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var makers = VersionWording.makers(act, version, named, law.madeBy());
     return new ReadingView(
@@ -80,24 +81,20 @@ public record ReadingView(
         VersionWording.which(act, version, asked, today, language),
         VersionWording.made(act, version, named, law.madeBy(), language),
         makers.isEmpty() ? null : act.citations(makers, language),
-        StatusView.of(act, law, language, today),
+        StatusView.of(overTime, law, today),
         version.celex(),
         version.eurLex(language).toString(),
         DayView.of(
-            act,
-            asked,
-            null,
-            Links.act(eli, language),
-            Links.compare(eli, language),
-            null,
-            language));
+            overTime, asked, null, Links.act(eli, language), Links.compare(eli, language), null));
   }
 
   /**
    * Returns the Reading card of the law on {@code asked}, a day before the first version of {@code
    * act}. There is no version: the card shows the day and a dash.
    */
-  public static ReadingView before(Act act, LocalDate asked, Language language) {
+  public static ReadingView before(ActOverTime overTime, LocalDate asked) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     return new ReadingView(
         title(act, asked),
@@ -109,13 +106,7 @@ public record ReadingView(
         null,
         null,
         DayView.of(
-            act,
-            asked,
-            null,
-            Links.act(eli, language),
-            Links.compare(eli, language),
-            null,
-            language));
+            overTime, asked, null, Links.act(eli, language), Links.compare(eli, language), null));
   }
 
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */

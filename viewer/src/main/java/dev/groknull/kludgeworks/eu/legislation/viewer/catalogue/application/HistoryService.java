@@ -6,18 +6,20 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.AmendingHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CataloguedActs;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparedDays;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Histories;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.History;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Clock;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
@@ -33,13 +35,13 @@ public class HistoryService implements Histories {
   private final Lookups lookups;
   private final Texts texts;
   private final Laws laws;
-  private final Clock clock;
+  private final Today today;
 
-  public HistoryService(Lookups lookups, Texts texts, Laws laws, Clock clock) {
+  public HistoryService(Lookups lookups, Texts texts, Laws laws, Today today) {
     this.lookups = lookups;
     this.texts = texts;
     this.laws = laws;
-    this.clock = clock;
+    this.today = today;
   }
 
   @Override
@@ -65,7 +67,41 @@ public class HistoryService implements Histories {
 
   @Override
   public ActOverTime overTime(ActIdentifier id, Language language) {
-    return ActOverTime.of(CataloguedActs.act(lookups, id), language);
+    return overTime(CataloguedActs.act(lookups, id), language);
+  }
+
+  @Override
+  public ActOverTime overTime(Act act, Language language) {
+    return ActOverTime.of(act, language);
+  }
+
+  @Override
+  public Optional<ProvisionOnADay> provision(
+      ActOverTime overTime,
+      Version reading,
+      String occurrence,
+      LocalDate day,
+      Map<Version, TextTags> texts) {
+    return Optional.ofNullable(texts.get(reading))
+        .filter(text -> text.eIds().contains(occurrence))
+        .map(text -> ProvisionOnADay.of(overTime, reading, occurrence, text, day, texts));
+  }
+
+  @Override
+  public List<String> provisionsWithAHistory(
+      ActOverTime overTime, Version reading, Map<Version, TextTags> texts) {
+    return ProvisionOnADay.withAHistory(overTime.act(), overTime.language(), reading, texts);
+  }
+
+  @Override
+  public ComparedDays compared(
+      ActOverTime overTime,
+      Version from,
+      Version to,
+      @Nullable String occurrence,
+      LocalDate toDay,
+      Map<Version, TextTags> texts) {
+    return ComparedDays.of(overTime, from, to, occurrence, toDay, texts);
   }
 
   @Override
@@ -86,7 +122,7 @@ public class HistoryService implements Histories {
   }
 
   private LocalDate today() {
-    return TheVersionsOfAnAct.today(clock.instant());
+    return today.today();
   }
 
   /** Returns the tags of the texts of {@code act} in {@code language} that are built. */

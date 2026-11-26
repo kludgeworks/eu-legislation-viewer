@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparedDays;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
@@ -34,7 +36,12 @@ class CompareViewTest {
   @Test
   void showsTheTwoDaysAsTheReaderGaveThemAndTheAmendingActsBetweenThem() {
     var view =
-        CompareView.of(AVSEC, FROM, FROM_DAY, TO, TO_DAY, null, Language.ENG, TODAY, Map.of());
+        CompareView.of(
+            ComparedDays.of(ActOverTime.of(AVSEC, Language.ENG), FROM, TO, null, TO_DAY, Map.of()),
+            FROM_DAY,
+            TO_DAY,
+            null,
+            TODAY);
 
     assertThat(view.heading()).isEqualTo("2015/1998 on two days");
     assertThat(view.days()).isEqualTo("From 15 March 2016 to 3 June 2017.");
@@ -54,7 +61,13 @@ class CompareViewTest {
   @Test
   void saysThatNoAmendingActChangedTheActWhereTheTwoDaysHaveOneText() {
     var view =
-        CompareView.of(AVSEC, FROM, FROM_DAY, FROM, TO_DAY, null, Language.ENG, TODAY, Map.of());
+        CompareView.of(
+            ComparedDays.of(
+                ActOverTime.of(AVSEC, Language.ENG), FROM, FROM, null, TO_DAY, Map.of()),
+            FROM_DAY,
+            TO_DAY,
+            null,
+            TODAY);
 
     assertThat(view.said()).isEqualTo("No amending act changed 2015/1998 between these days.");
     assertThat(view.acts()).isEmpty();
@@ -64,15 +77,17 @@ class CompareViewTest {
   void listsTheStepsOfOneProvisionOldestFirstAndLinksToTheWholeAct() {
     var view =
         CompareView.of(
-            AVSEC,
-            FROM,
+            ComparedDays.of(
+                ActOverTime.of(AVSEC, Language.ENG),
+                FROM,
+                LATEST,
+                POINT,
+                TODAY,
+                Map.of(LATEST, new TextTags(OCCURRENCES, Map.of()))),
             FROM_DAY,
-            LATEST,
             TODAY,
             POINT,
-            Language.ENG,
-            TODAY,
-            Map.of(LATEST, new TextTags(OCCURRENCES, Map.of())));
+            TODAY);
 
     assertThat(view.heading()).endsWith(" of 2015/1998 on two days").doesNotContain("A provision");
     assertThat(view.picker().occurrence()).isEqualTo(POINT);
@@ -87,7 +102,8 @@ class CompareViewTest {
 
   @Test
   void aDayBeforeTheFirstTextHasTheDaysAndNoActs() {
-    var view = CompareView.before(AVSEC, LocalDate.of(2000, 1, 1), TO_DAY, Language.ENG);
+    var view =
+        CompareView.before(ActOverTime.of(AVSEC, Language.ENG), LocalDate.of(2000, 1, 1), TO_DAY);
 
     assertThat(view.days()).isEqualTo("From 1 January 2000 to 3 June 2017.");
     assertThat(view.said()).isNull();

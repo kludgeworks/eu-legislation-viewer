@@ -31,7 +31,7 @@ class MastheadViewTest {
 
   @Test
   void titlesTheActInThePagesLanguageAndLinksItsIdsToEurLex() {
-    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA);
+    var head = MastheadView.reading(ActOverTime.of(AVSEC, Language.FRA), VERSION, ASKED);
     assertThat(head.title()).startsWith("Règlement d'exécution (UE) 2015/1998 de la Commission");
     assertThat(head.titleLanguage()).isEqualTo("fr");
     assertThat(head.eli()).isEqualTo("eli/reg_impl/2015/1998/oj");
@@ -42,23 +42,24 @@ class MastheadViewTest {
 
   @Test
   void splitsAnEnglishTitleAfterItsDate() {
-    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
+    var head = MastheadView.reading(ActOverTime.of(AVSEC, Language.ENG), VERSION, ASKED);
     assertThat(head.title())
         .isEqualTo("Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015");
     assertThat(head.subject()).startsWith("laying down detailed measures");
-    assertThat(MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA).subject()).isNull();
+    assertThat(MastheadView.reading(ActOverTime.of(AVSEC, Language.FRA), VERSION, ASKED).subject())
+        .isNull();
   }
 
   @Test
   void titlesItInEnglishWhereCellarHasNoTitleInTheLanguage() {
-    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.GLE);
+    var head = MastheadView.reading(ActOverTime.of(AVSEC, Language.GLE), VERSION, ASKED);
     assertThat(head.title()).startsWith("Commission Implementing Regulation (EU) 2015/1998");
     assertThat(head.titleLanguage()).isEqualTo("en");
   }
 
   @Test
   void listsAllTheLanguagesInTheEusOrderGreyingThoseTheVersionIsntIn() {
-    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA);
+    var head = MastheadView.reading(ActOverTime.of(AVSEC, Language.FRA), VERSION, ASKED);
     assertThat(head.language()).isEqualTo("français");
     assertThat(head.languages())
         .hasSize(24)
@@ -86,7 +87,8 @@ class MastheadViewTest {
   void greysALanguageThatHasNoTextForADayComparedSayingWhich() {
     var from = AVSEC.timeline().versions().getFirst();
     var head =
-        MastheadView.comparing(AVSEC, from.date(), VERSION.date().plusDays(3), null, Language.ENG);
+        MastheadView.comparing(
+            ActOverTime.of(AVSEC, Language.ENG), from.date(), VERSION.date().plusDays(3), null);
     assertThat(head.languages())
         .filteredOn(choice -> choice.missing() != null)
         .extracting(Choice::name, Choice::missing)
@@ -105,7 +107,10 @@ class MastheadViewTest {
     // It keeps the provision that the page is limited to.
     assertThat(
             MastheadView.comparing(
-                    AVSEC, from.date(), VERSION.date().plusDays(3), "anx/pnt_1", Language.ENG)
+                    ActOverTime.of(AVSEC, Language.ENG),
+                    from.date(),
+                    VERSION.date().plusDays(3),
+                    "anx/pnt_1")
                 .languages())
         .filteredOn(choice -> choice.name().equals("Deutsch"))
         .extracting(Choice::href)
@@ -116,7 +121,7 @@ class MastheadViewTest {
 
   @Test
   void labelsTheHistoryWithTheNumberOfAmendingActs() {
-    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
+    var head = MastheadView.reading(ActOverTime.of(AVSEC, Language.ENG), VERSION, ASKED);
     assertThat(head.historyLabel())
         .isEqualTo("Amending acts (%s)", ActOverTime.amendingActsOf(AVSEC, Language.ENG).size());
     assertThat(head.historyEmpty()).isFalse();
@@ -138,7 +143,8 @@ class MastheadViewTest {
             new ActDates(AVSEC.id(), AVSEC.dates().own(), Map.of()),
             List.of(),
             Map.of());
-    var head = MastheadView.reading(alone, alone.timeline().first(), ASKED, Language.ENG);
+    var head =
+        MastheadView.reading(ActOverTime.of(alone, Language.ENG), alone.timeline().first(), ASKED);
     assertThat(head.historyLabel()).isEqualTo("Amending acts (0)");
     assertThat(head.historyEmpty()).isTrue();
   }
@@ -171,7 +177,7 @@ class MastheadViewTest {
             new ActDates(AVSEC.id(), AVSEC.dates().own(), Map.of()),
             List.of(),
             Map.of(corrigendum, new Publication(null, Map.of(Language.ENG, "Corrigendum"), null)));
-    var head = MastheadView.reading(corrected, first, ASKED, Language.ENG);
+    var head = MastheadView.reading(ActOverTime.of(corrected, Language.ENG), first, ASKED);
     assertThat(head.historyLabel()).isEqualTo("Amending acts (0) · Corrigenda (1)");
     assertThat(head.historyEmpty()).isFalse();
   }

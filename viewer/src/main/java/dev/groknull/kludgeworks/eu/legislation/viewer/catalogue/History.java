@@ -23,6 +23,7 @@ import org.jspecify.annotations.Nullable;
  * @param amendingActs each amending act of the act, newest first, as it stands on {@code day}
  * @param between the amending acts between the two days. Null with one day.
  * @param corrigenda the corrigenda of the act that correct the text in the language
+ * @param overTime what the rules tell of the act for each day, which this history is read from
  */
 public record History(
     Act act,
@@ -33,7 +34,8 @@ public record History(
     @Nullable LegalState state,
     List<AmendingAct> amendingActs,
     @Nullable Between between,
-    List<Corrigendum> corrigenda) {
+    List<Corrigendum> corrigenda,
+    ActOverTime overTime) {
 
   public History {
     amendingActs = List.copyOf(amendingActs);
@@ -65,7 +67,8 @@ public record History(
         new Between(
             found.isPresent(),
             amendingActs.stream().filter(each -> between.contains(each.act())).toList()),
-        corrigenda);
+        corrigenda,
+        overTime);
   }
 
   /** Returns the amending acts that the history is of: those between the two days, else all. */

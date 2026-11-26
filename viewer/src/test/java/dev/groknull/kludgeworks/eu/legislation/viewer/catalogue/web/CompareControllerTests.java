@@ -8,6 +8,9 @@ import static org.mockito.Mockito.when;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.CompareService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
 import jakarta.servlet.http.Cookie;
 import java.io.UnsupportedEncodingException;
 import java.time.Clock;
@@ -37,7 +40,12 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * out. The comparison's fragments of the page are the comparison module's, and its tests test them.
  */
 @WebMvcTest(CompareController.class)
-@Import({ControllerTesting.class, CompareControllerTests.OnTheSixthOfNovember2026.class})
+@Import({
+  ControllerTesting.class,
+  HistoryService.class,
+  CompareService.class,
+  CompareControllerTests.OnTheSixthOfNovember2026.class
+})
 class CompareControllerTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
   private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
@@ -129,6 +137,7 @@ class CompareControllerTests {
   }
 
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheSixthOfNovember2026 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean

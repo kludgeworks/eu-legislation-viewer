@@ -4,15 +4,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import gg.jte.generated.precompiled.StaticTemplates;
 import gg.jte.generated.precompiled.Templates;
-import java.time.Clock;
 import java.time.Instant;
-import java.time.ZoneOffset;
+import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.List;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -84,10 +84,20 @@ final class FragmentFixtures {
       return new Release("2026.11.5");
     }
 
+    /** Today is 6 November 2026: a fixed stand-in for the app's bean. */
     @Bean
-    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
-    Clock sixthOfNovember2026() {
-      return Clock.fixed(Instant.parse("2026-11-06T08:00:00Z"), ZoneOffset.UTC);
+    Today sixthOfNovember2026() {
+      return new Today() {
+        @Override
+        public LocalDate today() {
+          return LocalDate.of(2026, 11, 6);
+        }
+
+        @Override
+        public Instant now() {
+          return Instant.parse("2026-11-06T08:00:00Z");
+        }
+      };
     }
   }
 }

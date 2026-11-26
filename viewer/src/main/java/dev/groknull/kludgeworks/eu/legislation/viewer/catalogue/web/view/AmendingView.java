@@ -118,7 +118,12 @@ public record AmendingView(
         HistoryView.journal(act, amending),
         Dates.inWords(day),
         DayView.of(
-            act, day, null, Links.amending(eli, amending, null, language), null, null, language),
+            history.overTime(),
+            day,
+            null,
+            Links.amending(eli, amending, null, language),
+            null,
+            null),
         Links.history(eli, kept, language),
         act.cited(act.id()),
         cited

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -37,10 +38,9 @@ class ReadingViewTest {
     assertThat(card.made()).isEqualTo("made by 2019/103, 2019/1583, 2020/910");
     assertThat(
             ReadingView.of(
-                    AVSEC,
+                    ActOverTime.of(AVSEC, Language.DEU),
                     version("2021-12-31"),
                     LocalDate.parse("2021-12-31"),
-                    Language.DEU,
                     TODAY,
                     List.of(),
                     LawOverTime.of(AVSEC, Language.DEU, Map.of()).on(LocalDate.parse("2021-12-31")))
@@ -84,19 +84,17 @@ class ReadingViewTest {
     var april = version("2022-04-12");
     var english =
         ReadingView.of(
-            AVSEC,
+            ActOverTime.of(AVSEC, Language.ENG),
             april,
             april.date(),
-            Language.ENG,
             TODAY,
             List.of(),
             LawOverTime.of(AVSEC, Language.ENG, Map.of()).on(april.date()));
     var german =
         ReadingView.of(
-            AVSEC,
+            ActOverTime.of(AVSEC, Language.DEU),
             april,
             april.date(),
-            Language.DEU,
             TODAY,
             List.of(),
             LawOverTime.of(AVSEC, Language.DEU, Map.of()).on(april.date()));
@@ -134,10 +132,9 @@ class ReadingViewTest {
     var unlisted = actWithUnlisted.timeline().versions().getLast();
     var named =
         ReadingView.of(
-            actWithUnlisted,
+            ActOverTime.of(actWithUnlisted, Language.ENG),
             unlisted,
             LocalDate.parse("2018-02-06"),
-            Language.ENG,
             TODAY,
             List.of(new ActIdentifier("32017R0815")),
             LawOverTime.of(actWithUnlisted, Language.ENG, Map.of())
@@ -203,7 +200,8 @@ class ReadingViewTest {
 
   @Test
   void showsTheDayAndADashBeforeTheFirstVersion() {
-    var before = ReadingView.before(AVSEC, LocalDate.parse("2015-01-01"), Language.ENG);
+    var before =
+        ReadingView.before(ActOverTime.of(AVSEC, Language.ENG), LocalDate.parse("2015-01-01"));
     assertThat(before.title()).isEqualTo("2015/1998 · the law on 1 Jan 2015");
     assertThat(before.day()).isEqualTo("1 January 2015");
     assertThat(before.version()).isNull();
@@ -215,10 +213,9 @@ class ReadingViewTest {
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */
   private static ReadingView card(String version, String asked, LocalDate today) {
     return ReadingView.of(
-        AVSEC,
+        ActOverTime.of(AVSEC, Language.ENG),
         version(version),
         LocalDate.parse(asked),
-        Language.ENG,
         today,
         List.of(),
         LawOverTime.of(AVSEC, Language.ENG, Map.of()).on(LocalDate.parse(asked)));

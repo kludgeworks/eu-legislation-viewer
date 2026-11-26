@@ -101,13 +101,12 @@ public record HistoryView(
                 : " · " + Dates.inShort(first) + " → " + Dates.inShort(day)),
         Dates.inWords(day),
         DayView.of(
-            act,
+            history.overTime(),
             day,
             first,
             Links.history(eli, null, language),
             Links.history(eli, null, language),
-            null,
-            language),
+            null),
         kept == null && first == null ? null : Links.history(eli, null, language),
         state == null ? null : own(act, state, day, past),
         Links.read(eli, day, language),
@@ -308,15 +307,7 @@ public record HistoryView(
       String journal,
       @Nullable String places) {
 
-    /** Returns the corrigendum {@code each} of {@code act}, with the places that it corrects. */
-    static Corrigendum of(Act act, ActIdentifier each, Language language) {
-      return of(
-          act,
-          new History.Corrigendum(
-              each, TheHistoryOfAnAct.changesOfAnAmendingAct(act, each, language, null)),
-          language);
-    }
-
+    /** Returns {@code corrigendum} of {@code act}, with the places that it corrects. */
     static Corrigendum of(Act act, History.Corrigendum corrigendum, Language language) {
       var each = corrigendum.act();
       var places =

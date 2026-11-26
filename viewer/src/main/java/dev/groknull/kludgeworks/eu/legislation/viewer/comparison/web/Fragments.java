@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -38,10 +38,14 @@ final class Fragments {
   }
 
   /** Returns the ends of the comparison at a canonical address of the compare page. */
-  Ends ends(Eli eli, String code, LocalDate from, LocalDate to, @Nullable String only) {
-    var language = Requests.language(code);
+  Ends ends(ActAddress address, LocalDate from, LocalDate to, @Nullable String only) {
     return new Ends(
-        acts.find(eli).orElseThrow(Requests::notFound), language, from, to, only, texts);
+        acts.find(address.eli()).orElseThrow(Requests::notFound),
+        address.language(),
+        from,
+        to,
+        only,
+        texts);
   }
 
   /**

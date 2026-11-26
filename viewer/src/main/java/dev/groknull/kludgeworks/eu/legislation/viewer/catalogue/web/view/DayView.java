@@ -1,15 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
-import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
@@ -48,42 +44,39 @@ public record DayView(
     String changes) {
 
   /**
-   * Returns the day control of a page of {@code act} in {@code language}.
+   * Returns the day control of a page of the act of {@code overTime}.
    *
    * @param day the day of the page, or its second day
    * @param first the first day of a page with two days, or null
    */
   static DayView of(
-      Act act,
+      ActOverTime overTime,
       LocalDate day,
       @Nullable LocalDate first,
       String single,
       @Nullable String range,
-      @Nullable String occurrence,
-      Language language) {
+      @Nullable String occurrence) {
     return new DayView(
         day.toString(),
         first == null ? null : first.toString(),
         single,
         range,
         occurrence,
-        TheHistoryOfAnAct.daysOfChange(ActOverTime.of(act, language).amendingActs())
-            .entrySet()
-            .stream()
+        overTime.daysOfChange().entrySet().stream()
             .map(each ->
                 each.getKey()
                     + "="
                     + each.getValue().stream()
-                        .map(amending -> does(act, amending))
+                        .map(amending -> does(overTime, amending))
                         .collect(Collectors.joining("|")))
             .collect(Collectors.joining(";")));
   }
 
   /** Returns what {@code amending} does on one of its days of change, in words. */
-  private static String does(Act act, ActIdentifier amending) {
-    var cited = act.cited(amending);
-    return DatedAct.of(act, amending)
-        .applying(Set.of())
+  private static String does(ActOverTime overTime, ActIdentifier amending) {
+    var cited = overTime.act().cited(amending);
+    return overTime
+        .applying(amending)
         .map(applying ->
             switch (applying) {
               case Applying.FromMoreThanOneDay _ -> "A part of " + cited + " applies from this day";

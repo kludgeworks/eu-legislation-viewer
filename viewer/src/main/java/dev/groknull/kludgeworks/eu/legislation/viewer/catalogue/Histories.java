@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
@@ -38,6 +40,43 @@ public interface Histories {
    * changes to the text in {@code language}. The history on one day is read from it.
    */
   ActOverTime overTime(ActIdentifier act, Language language);
+
+  /** Returns what the rules tell of {@code act} for each day, in {@code language}. */
+  ActOverTime overTime(Act act, Language language);
+
+  /**
+   * Returns the history of the occurrence {@code occurrence} of the text of {@code reading}, on
+   * {@code day}. Empty if the text is not built, or if it does not have the occurrence.
+   *
+   * @param texts the tags of the built texts in the language, by version
+   */
+  Optional<ProvisionOnADay> provision(
+      ActOverTime overTime,
+      Version reading,
+      String occurrence,
+      LocalDate day,
+      Map<Version, TextTags> texts);
+
+  /**
+   * Returns the occurrences of the text of {@code reading} that have a history to show, by their
+   * eIds. Empty if the text is not built.
+   */
+  List<String> provisionsWithAHistory(
+      ActOverTime overTime, Version reading, Map<Version, TextTags> texts);
+
+  /**
+   * Returns what the comparison of the texts of {@code from} and {@code to} covers.
+   *
+   * @param occurrence the eId of the provision that the comparison is limited to, or null
+   * @param toDay the later day of the comparison
+   */
+  ComparedDays compared(
+      ActOverTime overTime,
+      Version from,
+      Version to,
+      @Nullable String occurrence,
+      LocalDate toDay,
+      Map<Version, TextTags> texts);
 
   /**
    * Returns {@code amending} in the history of the act that {@code act} names, on the day {@code

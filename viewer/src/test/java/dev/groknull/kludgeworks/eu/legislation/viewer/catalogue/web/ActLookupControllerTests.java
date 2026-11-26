@@ -10,6 +10,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.CompareService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ReadService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import java.io.UnsupportedEncodingException;
 import java.time.Clock;
@@ -39,6 +43,9 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 @WebMvcTest({VersionController.class, ActLookupController.class, ApiActController.class})
 @Import({
   ControllerTesting.class,
+  HistoryService.class,
+  ReadService.class,
+  CompareService.class,
   ApiConfiguration.class,
   ActLookupControllerTests.OnTheFirstOfJune2021.class
 })
@@ -164,6 +171,7 @@ class ActLookupControllerTests {
   }
 
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheFirstOfJune2021 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean

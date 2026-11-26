@@ -2,9 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.broadcast.Broadcast;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
@@ -17,7 +17,6 @@ import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
@@ -37,6 +36,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  *
  * <p>A stream also ends after a while, and then the page connects again.
  */
+/*
+ * A handler takes the act and the language of its address as an ActAddress, which
+ * ActAddressResolver gives. The check knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class PreparationController {
   private final PreparationStreams streams = new PreparationStreams(this::send);
@@ -56,13 +60,9 @@ class PreparationController {
   @GetMapping(
       path = "/eli/{type}/{year}/{number}/{language}/prepare/events",
       produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-  SseEmitter events(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code) {
-    var language = Requests.language(code);
-    var act = acts.find(new Eli(type, year, number)).orElseThrow(Requests::notFound);
+  SseEmitter events(ActAddress address) {
+    var language = address.language();
+    var act = acts.find(address.eli()).orElseThrow(Requests::notFound);
     if (act.timeline().in(language).isEmpty()) {
       throw Requests.notFound();
     }

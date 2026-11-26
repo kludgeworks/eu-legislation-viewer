@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheStateOnADay.Stands;
@@ -12,7 +11,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -103,27 +101,11 @@ final class StateWording {
   }
 
   /**
-   * Returns the state on {@code day} of one change of {@code amending}, with the date and the
-   * clause, as sentences. {@code placeDays} are the days that Cellar gives for the place of the
-   * change. For example, "Does not apply yet. Applies from 15 October 2026 · Article 2 of
-   * 2022/1190." Returns null for a change that applies, where the data gives no day for it, and
-   * where {@link Wording#unknown} has no words.
-   */
-  static @Nullable String statement(
-      Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
-    var dated = DatedAct.of(act, amending);
-    return statement(
-        act,
-        amending,
-        act.dates().changeAppliesFrom(amending, placeDays).orElse(null),
-        dated.state(placeDays).on(day).state(),
-        dated.applying(Set.of()).orElse(null),
-        past);
-  }
-
-  /**
-   * As {@link #statement(Act, ActIdentifier, Set, LocalDate, boolean)}, from what the rules give
-   * for the change. It applies no rule.
+   * Returns the state of one change of {@code amending}, with the date and the clause, as
+   * sentences, from what the rules give for the change. It applies no rule. For example, "Does not
+   * apply yet. Applies from 15 October 2026 · Article 2 of 2022/1190." Returns null for a change
+   * that applies, where the data gives no day for it, and where {@link Wording#unknown} has no
+   * words.
    *
    * @param appliesFrom the day from which the change applies. Null if the data gives no one day.
    * @param state the state of the change on the day

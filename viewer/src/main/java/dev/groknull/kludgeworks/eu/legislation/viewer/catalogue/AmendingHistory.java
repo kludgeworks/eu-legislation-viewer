@@ -36,6 +36,7 @@ import org.jspecify.annotations.Nullable;
  *     with no such day are last.
  * @param otherActs the other acts that the first version with the amending act integrates
  * @param corrigenda the corrigenda of the amending act that correct the text in the language
+ * @param overTime what the rules tell of the act for each day
  */
 public record AmendingHistory(
     Act act,
@@ -50,7 +51,8 @@ public record AmendingHistory(
     List<Change> changes,
     List<Part> parts,
     List<ActIdentifier> otherActs,
-    List<History.Corrigendum> corrigenda) {
+    List<History.Corrigendum> corrigenda,
+    ActOverTime overTime) {
 
   public AmendingHistory {
     changes = List.copyOf(changes);
@@ -135,7 +137,8 @@ public record AmendingHistory(
             .map(each ->
                 new History.Corrigendum(
                     each, TheHistoryOfAnAct.changesOfAnAmendingAct(act, each, language, null)))
-            .toList());
+            .toList(),
+        ActOverTime.of(act, language));
   }
 
   private static Change change(

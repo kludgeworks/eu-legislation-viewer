@@ -4,17 +4,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparedDays;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
@@ -71,82 +68,58 @@ public record CompareView(
 
   /**
    * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
-   * for {@code act}, on {@code today}. {@code from} and {@code to} are the versions whose texts
-   * show the law on the two days, {@link LawOnADay#shown}.
+   * on {@code today}, from {@code compared}: what the comparison covers.
    *
    * @param occurrence the eId of the provision that the page is limited to, or null
-   * @param tags the tags of the built texts in {@code language}, by version
    */
   public static CompareView of(
-      Act act,
-      Version from,
+      ComparedDays compared,
       LocalDate fromDay,
-      Version to,
       LocalDate toDay,
       @Nullable String occurrence,
-      Language language,
-      LocalDate today,
-      Map<Version, TextTags> tags) {
+      LocalDate today) {
+    var overTime = compared.overTime();
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = eli(act);
-    var amending = ActOverTime.amendingActsOf(act, language);
-    var between =
-        act.inclusions(language, tags).between(from, to).stream()
-            .filter(amending::contains)
-            .toList();
-    var text = occurrence == null ? null : tags.get(to);
-    var name =
-        text == null || occurrence == null
-            ? null
-            : ProvisionView.name(act, occurrence, text, language);
-    var changed =
-        text == null || occurrence == null
-            ? between
-            : TheHistoryOfAnAct.actsOfAProvisionBetweenTwoDays(
-                    TheHistoryOfAnAct.historyOfAProvision(
-                        act,
-                        language,
-                        occurrence,
-                        text,
-                        TheHistoryOfAnAct.orderOfTheAmendingActs(act, language)),
-                    between)
-                .reversed();
+    var provision = compared.provision();
+    var name = provision == null ? null : provision.name();
+    var changed = compared.acts();
     var kept = toDay.equals(today) ? null : toDay;
     var subject = occurrence == null ? act.id().cited() : name == null ? "this provision" : name;
     return new CompareView(
         heading(act, occurrence, name),
         days(fromDay, toDay),
         DayView.of(
-            act,
+            overTime,
             toDay,
             fromDay,
             Links.history(eli, null, language),
             Links.compare(eli, language),
-            occurrence,
-            language),
+            occurrence),
         said(changed.size(), subject),
         links(act, changed, kept, language),
         occurrence == null ? null : Links.compare(eli, fromDay, toDay, language),
-        text == null || occurrence == null
-            ? List.of()
-            : ProvisionView.steps(act, occurrence, text, toDay, today, language, changed));
+        provision == null ? List.of() : ProvisionView.steps(provision, today, changed));
   }
 
   /**
    * Returns the head of a comparison whose From, {@code fromDay}, is a day before the first text of
    * {@code act}. It has the days and no acts: a panel in place of the differences says why.
    */
-  public static CompareView before(Act act, LocalDate fromDay, LocalDate toDay, Language language) {
+  public static CompareView before(ActOverTime overTime, LocalDate fromDay, LocalDate toDay) {
+    var act = overTime.act();
+    var language = overTime.language();
     return new CompareView(
         heading(act, null, null),
         days(fromDay, toDay),
         DayView.of(
-            act,
+            overTime,
             toDay,
             fromDay,
             Links.history(eli(act), null, language),
             Links.compare(eli(act), language),
-            null,
-            language),
+            null),
         null,
         List.of(),
         null,

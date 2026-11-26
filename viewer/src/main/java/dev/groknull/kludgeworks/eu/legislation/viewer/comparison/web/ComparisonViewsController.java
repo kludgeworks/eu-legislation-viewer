@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheVersionsOfAnAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
@@ -26,7 +26,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
-import java.time.Clock;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,8 +42,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -66,6 +66,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * {@link Attributions} finds who made each difference. The sidenote puts it into words. {@link
  * DifferenceController} serves one difference.
  */
+/*
+ * A handler takes the act and the language of its address as an ActAddress, which the catalogue
+ * gives. The check knows only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class ComparisonViewsController {
   private static final Logger LOG = LoggerFactory.getLogger(ComparisonViewsController.class);
@@ -74,7 +79,7 @@ class ComparisonViewsController {
   private final Content content;
   private final Templates templates;
   private final LegalRenderer html;
-  private final Clock clock;
+  private final Today today;
   private final Fragments fragments;
 
   ComparisonViewsController(
@@ -85,12 +90,12 @@ class ComparisonViewsController {
       Templates templates,
       LegalRenderer html,
       Release release,
-      Clock clock) {
+      Today today) {
     this.attributions = attributions;
     this.content = content;
     this.templates = templates;
     this.html = html;
-    this.clock = clock;
+    this.today = today;
     this.fragments = new Fragments(acts, texts, release, html);
   }
 
@@ -119,22 +124,15 @@ class ComparisonViewsController {
   @GetMapping(path = ComparePage.DIFFERENCES_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String differences(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.VIEW, defaultValue = "differences") String viewCode,
-      @RequestParam(name = ComparePage.FROM_DAY, required = false)
-          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate fromDay,
-      @RequestParam(name = ComparePage.TO_DAY, required = false)
-          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate toDay,
+      ActAddress address,
+      @Valid @ModelAttribute DifferencesRequest asked,
       HttpServletRequest request) {
-    var view = view(viewCode);
-    var ends = fragments.ends(new Eli(type, year, number), code, from, to, null);
+    var from = asked.from();
+    var to = asked.to();
+    var fromDay = asked.fromDay();
+    var toDay = asked.toDay();
+    var view = view(Objects.requireNonNullElse(asked.view(), ComparePage.DIFFERENCES));
+    var ends = fragments.ends(address, from, to, null);
     var page =
         ComparePage.ofFragment(request.getRequestURI(), from, to, null, view.parameter())
             .on(fromDay, toDay);
@@ -146,7 +144,7 @@ class ComparisonViewsController {
         attributions
             .of(ends.act, ends.versions(), earlier, later, page.later())
             .orElseThrow(Requests::notFound);
-    var today = TheVersionsOfAnAct.today(clock.instant());
+    var today = this.today.today();
     var differences = DifferencesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
     var shown = new ArrayList<DifferencesView.Shown>();
@@ -273,16 +271,10 @@ class ComparisonViewsController {
    */
   @GetMapping(path = ComparePage.SAME_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String same(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(ComparePage.FIRST) String first,
-      @RequestParam(ComparePage.LAST) String last) {
-    var ends = fragments.ends(new Eli(type, year, number), code, from, to, null);
+  String same(ActAddress address, @Valid @ModelAttribute SameRequest asked) {
+    var first = asked.first();
+    var last = asked.last();
+    var ends = fragments.ends(address, asked.from(), asked.to(), null);
     var started = System.nanoTime();
     if (!(ends.preparation.texts().get(ends.to) instanceof Text.Ready later)) {
       throw Requests.notFound();
@@ -318,4 +310,36 @@ class ComparisonViewsController {
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates.comparisonNeighbours(rows, this.html).render();
   }
+
+  /**
+   * What the address of the differences asks for, beside the act and the language. The names are
+   * those that {@link ComparePage} writes.
+   *
+   * @param from the first day of the earlier version
+   * @param to the first day of the later version
+   * @param view the code of the view. Without it, the view is Differences.
+   * @param fromDay the earlier day of the page, if it is not {@code from}, or null
+   * @param toDay the later day of the page, if it is not {@code to}, or null
+   */
+  record DifferencesRequest(
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @Nullable String view,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate fromDay,
+      @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) @Nullable LocalDate toDay) {}
+
+  /**
+   * What the address of a fold of the Synopsis asks for, beside the act and the language. The names
+   * are those that {@link ComparePage} writes.
+   *
+   * @param from the first day of the earlier version
+   * @param to the first day of the later version
+   * @param first the eId of the first occurrence of the fold
+   * @param last the eId of the last occurrence of the fold
+   */
+  record SameRequest(
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @NotNull String first,
+      @NotNull String last) {}
 }

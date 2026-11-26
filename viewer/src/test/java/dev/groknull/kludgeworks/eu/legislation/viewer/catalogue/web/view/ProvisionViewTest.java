@@ -6,6 +6,8 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
@@ -13,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
@@ -32,7 +35,15 @@ class ProvisionViewTest {
       List.of("anx", "anx/pnt_4", "anx/pnt_4.1", "anx/pnt_4.1.3", POINT, ARTICLE);
 
   private static ProvisionView history(String occurrence, Map<Version, TextTags> texts) {
-    return ProvisionView.of(AVSEC, READING, occurrence, TODAY, TODAY, Language.ENG, texts);
+    return ProvisionView.of(
+        ProvisionOnADay.of(
+            ActOverTime.of(AVSEC, Language.ENG),
+            READING,
+            occurrence,
+            Objects.requireNonNull(texts.get(READING)),
+            TODAY,
+            texts),
+        TODAY);
   }
 
   @Test
@@ -66,13 +77,15 @@ class ProvisionViewTest {
     var day = LocalDate.of(2017, 5, 1);
     var view =
         ProvisionView.of(
-            AVSEC,
-            READING,
-            POINT,
-            day,
-            TODAY,
-            Language.ENG,
-            Map.of(READING, new TextTags(OCCURRENCES, Map.of())));
+            ProvisionOnADay.of(
+                ActOverTime.of(AVSEC, Language.ENG),
+                READING,
+                POINT,
+                Objects.requireNonNull(
+                    Map.of(READING, new TextTags(OCCURRENCES, Map.of())).get(READING)),
+                day,
+                Map.of(READING, new TextTags(OCCURRENCES, Map.of()))),
+            TODAY);
 
     var oldest =
         view.lines().stream()
@@ -97,6 +110,28 @@ class ProvisionViewTest {
         .extracting(ProvisionView.Line::act, ProvisionView.Line::words, ProvisionView.Line::change)
         .containsExactly(tuple("2020/910", "changed it.", null));
     assertThat(view.compare()).isNull();
+  }
+
+  @Test
+  void anActThatOnlyTheTextTagsTheProvisionWithHasItsDateOnAPastDay() {
+    var tagged = new ActIdentifier("32020R0910");
+    var texts = Map.of(READING, new TextTags(OCCURRENCES, Map.of(tagged, Set.of(ARTICLE))));
+    var view =
+        ProvisionView.of(
+            ProvisionOnADay.of(
+                ActOverTime.of(AVSEC, Language.ENG),
+                READING,
+                ARTICLE,
+                Objects.requireNonNull(texts.get(READING)),
+                READING.date(),
+                texts),
+            TODAY);
+
+    assertThat(view.lines())
+        .singleElement()
+        .extracting(ProvisionView.Line::statement)
+        .asString()
+        .startsWith("Applied from ");
   }
 
   @Test
@@ -127,10 +162,10 @@ class ProvisionViewTest {
   void theOccurrencesWithAHistoryToShowAreTheChangedOccurrencesAndTheOccurrencesWithNoAct() {
     var first = AVSEC.timeline().versions().getFirst();
     var occurrences =
-        ProvisionView.occurrences(
+        ProvisionOnADay.withAHistory(
             AVSEC,
-            READING,
             Language.ENG,
+            READING,
             Map.of(
                 first,
                 new TextTags(OCCURRENCES.subList(0, 5), Map.of()),

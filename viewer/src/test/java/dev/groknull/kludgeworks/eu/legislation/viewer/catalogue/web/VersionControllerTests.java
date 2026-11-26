@@ -11,6 +11,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ReadService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
@@ -41,7 +44,12 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * theme and assets. {@code VersionPagesTests} tests the pages as the whole app builds them.
  */
 @WebMvcTest(VersionController.class)
-@Import({ControllerTesting.class, VersionControllerTests.OnTheFirstOfJune2021.class})
+@Import({
+  ControllerTesting.class,
+  HistoryService.class,
+  ReadService.class,
+  VersionControllerTests.OnTheFirstOfJune2021.class
+})
 class VersionControllerTests {
   private static final String PAGE = "/eli/reg_impl/2015/1998/2026-03-22/eng";
 
@@ -180,6 +188,7 @@ class VersionControllerTests {
    * applies.
    */
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheFirstOfJune2021 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean

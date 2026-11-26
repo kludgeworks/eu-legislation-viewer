@@ -5,7 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheHistoryOfAnAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
@@ -78,11 +77,12 @@ public record MastheadView(
    * Returns the head of the page of {@code version} of {@code act}, in {@code language}. The reader
    * asked for the version on the date {@code asked}. The language switch keeps that date.
    */
-  public static MastheadView reading(Act act, Version version, LocalDate asked, Language language) {
+  public static MastheadView reading(ActOverTime overTime, Version version, LocalDate asked) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = eli(act);
     return of(
-        act,
-        language,
+        overTime,
         each -> Links.read(eli, asked, each),
         each -> version.languages().contains(each) ? null : "Not for this text",
         Links.history(eli, asked, language),
@@ -96,11 +96,12 @@ public record MastheadView(
    * text in on a day. Read reads the law on {@code toDay}.
    */
   public static MastheadView comparing(
-      Act act, LocalDate fromDay, LocalDate toDay, @Nullable String occurrence, Language language) {
+      ActOverTime overTime, LocalDate fromDay, LocalDate toDay, @Nullable String occurrence) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = eli(act);
     return of(
-        act,
-        language,
+        overTime,
         each -> {
           var page = new ComparePage(Links.compare(eli, each), fromDay, toDay, null, null);
           return occurrence == null ? page.href() : page.href(occurrence);
@@ -129,11 +130,12 @@ public record MastheadView(
    * page of one of its amending acts. The language switch keeps the day. Read reads the law on
    * {@code day}.
    */
-  public static MastheadView history(Act act, LocalDate day, Language language) {
+  public static MastheadView history(ActOverTime overTime, LocalDate day) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = eli(act);
     return of(
-        act,
-        language,
+        overTime,
         each -> Links.history(eli, day, each),
         each -> null,
         null,
@@ -141,12 +143,13 @@ public record MastheadView(
   }
 
   private static MastheadView of(
-      Act act,
-      Language language,
+      ActOverTime overTime,
       Function<Language, String> page,
       Function<Language, @Nullable String> missing,
       @Nullable String history,
       @Nullable String read) {
+    var act = overTime.act();
+    var language = overTime.language();
     var eli = eli(act);
     var titled = act.title(language).isPresent() ? language : Language.ENG;
     var full = act.title(titled).orElseGet(act.id()::celex);
@@ -174,9 +177,8 @@ public record MastheadView(
             })
             .toList(),
         history,
-        historyLabel(act, language),
-        ActOverTime.amendingActsOf(act, language).isEmpty()
-            && TheHistoryOfAnAct.corrigendaOfAnAct(act, act.id(), language).isEmpty(),
+        historyLabel(overTime),
+        overTime.amendingActs().isEmpty() && overTime.corrigenda().isEmpty(),
         read,
         false,
         Links.notices(eli, language));
@@ -187,9 +189,9 @@ public record MastheadView(
    * acts, and below them the corrigenda. The label names the corrigenda only where they are all
    * that the history shows.
    */
-  private static String historyLabel(Act act, Language language) {
-    var amending = ActOverTime.amendingActsOf(act, language).size();
-    var corrigenda = TheHistoryOfAnAct.corrigendaOfAnAct(act, act.id(), language).size();
+  private static String historyLabel(ActOverTime overTime) {
+    var amending = overTime.amendingActs().size();
+    var corrigenda = overTime.corrigenda().size();
     return "Amending acts ("
         + amending
         + ")"

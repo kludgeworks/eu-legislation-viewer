@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import java.io.UnsupportedEncodingException;
 import java.time.Clock;
 import java.time.Instant;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.stream.StreamSupport;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
 import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
@@ -35,6 +37,7 @@ final class ApiActTesting {
 
   /** Today is 1 June 2021. */
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(BrusselsToday.class)
   static class OnTheFirstOfJune2021 {
     @Bean
     @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
