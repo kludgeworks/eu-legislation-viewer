@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
 import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.WhenAnActApplies.WholeAct;
 import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
@@ -54,6 +55,30 @@ public final class TheStateOnADay {
       }
     }
 
+    /**
+     * The act applies in part: a part of it applies, and the whole act does not apply yet. Only an
+     * act on its own has this state.
+     *
+     * @param applying when the act applies
+     * @param inFull the date from which the whole act applies, with the clause that sets it. It has
+     *     a day.
+     */
+    record InPart(Applying applying, ActDate inFull) implements LegalState {
+      public InPart {
+        Objects.requireNonNull(inFull.date(), "an act that applies in part has the day it ends");
+      }
+
+      @Override
+      public State state() {
+        return State.IN_PART;
+      }
+
+      /** Returns the day from which the whole act applies. */
+      public LocalDate inFullFrom() {
+        return Objects.requireNonNull(inFull.date());
+      }
+    }
+
     /** The act, or the change, applies. */
     record Applies(Applying applying) implements LegalState {
       @Override
@@ -99,15 +124,20 @@ public final class TheStateOnADay {
 
   /**
    * The state of an act, or of one change, on a day: no longer in force, not in force, in force and
-   * does not apply yet, or applies. Else the data does not tell.
+   * does not apply yet, applies in part, or applies. Else the data does not tell.
    *
    * <ol>
    *   <li>Before the entry into force of the act, it is not in force.
    *   <li>If it applies from one day, it applies from that day, and does not apply yet before it.
-   *   <li>If it applies from more than one day, it does not apply yet before the first part. It
-   *       applies from the last part, unless a clause sets one more day that Cellar does not know.
-   *       Between them, Cellar does not tell which part the change is in, so the state is not
-   *       known.
+   *   <li>An act on its own applies in part if a date for a part is on or before the day, and the
+   *       day is before the day from which the whole act applies. For example, parts of 2018/1862
+   *       apply from 27 December 2018, and the whole act applies from 7 March 2023. A date for a
+   *       part does not give this state if the data does not tell the day for the whole act: the
+   *       data does not tell if the rest of the act applies. For example, 767/2008.
+   *   <li>A change of an act that applies from more than one day does not apply yet before the
+   *       first part. It applies from the last part, unless a clause sets one more day that Cellar
+   *       does not know. Between them, Cellar does not tell which part the change is in, so the
+   *       state is not known.
    *   <li>In each other case the state is not known. For example, a clause sets the day by an
    *       event, or Cellar has no dates of the act.
    *   <li>After its end of validity, an act is no longer in force: a later act repealed it, or it
@@ -115,20 +145,36 @@ public final class TheStateOnADay {
    * </ol>
    *
    * @param applying when the act, or the change, applies. Null if Cellar has no dates of the act.
+   * @param wholeAct from which day the whole act applies, for the act on its own. Null for one
+   *     change.
    * @param dates the dates of the act
    * @param endOfValidity the end of validity of the act. Null if it has none, or for a change.
    * @param repealedBy the acts that repeal the act
    * @return the states, with the days of each
    */
-  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "state-on-a-day")
+  @BusinessRule(group = RuleGroup.THE_STATE_ON_A_DAY, name = "state-on-a-day", revision = 2)
   public static Periods<LegalState> stateOnADay(
       @Nullable Applying applying,
+      @Nullable WholeAct wholeAct,
       List<ActDate> dates,
       @Nullable LocalDate endOfValidity,
       List<ActIdentifier> repealedBy) {
     Periods.Builder<LegalState> states;
+    var inFull = wholeAct == null ? null : wholeAct.from().orElse(null);
+    var whole = inFull == null ? null : inFull.date();
     if (applying == null) {
       states = Periods.always(new LegalState.NotKnown(LegalState.Why.NO_DATES, null));
+    } else if (inFull != null && whole != null) {
+      // The act on its own: a date for a part is an exception for that part only.
+      states = Periods.always(new LegalState.NotApplying(applying));
+      dates.stream()
+          .filter(ActDate::forPart)
+          .map(ActDate::date)
+          .filter(Objects::nonNull)
+          .filter(part -> part.isBefore(whole))
+          .min(Comparator.naturalOrder())
+          .ifPresent(part -> states.from(part, new LegalState.InPart(applying, inFull)));
+      states.from(whole, new LegalState.Applies(applying));
     } else {
       states =
           switch (applying) {

@@ -138,6 +138,8 @@ class ApiHistoryController {
    * @param repealedBy the acts that repealed it
    * @param entryIntoForce its entry into force, for an act that is not in force yet
    * @param appliesFrom the day from which it applies, if it applies from one day
+   * @param appliesInFullFrom the day from which the whole act applies, for an act that applies in
+   *     part
    * @param notKnownBecause why the data does not tell the state
    */
   record StateModel(
@@ -146,6 +148,7 @@ class ApiHistoryController {
       List<String> repealedBy,
       @Nullable LocalDate entryIntoForce,
       @Nullable LocalDate appliesFrom,
+      @Nullable LocalDate appliesInFullFrom,
       @Nullable String notKnownBecause) {
 
     static StateModel of(LegalState state) {
@@ -158,15 +161,18 @@ class ApiHistoryController {
                 ended.repealedBy().stream().map(ActIdentifier::celex).toList(),
                 null,
                 null,
+                null,
                 null);
         case LegalState.NotInForce before ->
-            new StateModel(name, null, List.of(), before.entryIntoForce(), null, null);
+            new StateModel(name, null, List.of(), before.entryIntoForce(), null, null, null);
         case LegalState.NotApplying not ->
-            new StateModel(name, null, List.of(), null, from(not.applying()), null);
+            new StateModel(name, null, List.of(), null, from(not.applying()), null, null);
+        case LegalState.InPart part ->
+            new StateModel(name, null, List.of(), null, null, part.inFullFrom(), null);
         case LegalState.Applies applies ->
-            new StateModel(name, null, List.of(), null, from(applies.applying()), null);
+            new StateModel(name, null, List.of(), null, from(applies.applying()), null, null);
         case LegalState.NotKnown unknown ->
-            new StateModel(name, null, List.of(), null, null, code(unknown.why().name()));
+            new StateModel(name, null, List.of(), null, null, null, code(unknown.why().name()));
       };
     }
 

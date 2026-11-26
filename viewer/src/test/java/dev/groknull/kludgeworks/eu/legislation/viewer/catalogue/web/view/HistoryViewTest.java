@@ -38,6 +38,6 @@ class HistoryViewTest {
 
   private static String own(LocalDate day, boolean past) {
     return HistoryView.own(
-        REPEALED, DatedAct.of(REPEALED, REPEALED.id()).state(REPEALED).on(day), day, past);
+        REPEALED, DatedAct.of(REPEALED, REPEALED.id()).state(REPEALED).on(day), past);
   }
 }

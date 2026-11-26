@@ -59,14 +59,20 @@ public record DatedAct(
    * for which Cellar gives {@code placeDays}.
    */
   public Periods<LegalState> state(Set<LocalDate> placeDays) {
-    return TheStateOnADay.stateOnADay(applying(placeDays).orElse(null), dates, null, List.of());
+    return TheStateOnADay.stateOnADay(
+        applying(placeDays).orElse(null), null, dates, null, List.of());
   }
 
   /**
-   * Returns the states of the act itself: after {@code endOfValidity}, it is no longer in force.
+   * Returns the states of the act itself. It can apply in part, and after {@code endOfValidity} it
+   * is no longer in force.
    */
   public Periods<LegalState> state(Act itself) {
     return TheStateOnADay.stateOnADay(
-        applying(Set.of()).orElse(null), dates, itself.endOfValidity(), itself.repealedBy());
+        applying(Set.of()).orElse(null),
+        appliesFrom,
+        dates,
+        itself.endOfValidity(),
+        itself.repealedBy());
   }
 }

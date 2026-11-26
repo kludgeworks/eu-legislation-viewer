@@ -6,21 +6,33 @@ Feature: The state on a day
   - in force and does not apply yet
   - applies
   - applies in part
+  - no longer in force
   - not known
 
   A change is an amendment that changes the words of the English text. These rules use only the
   catalogue: the dates of the acts and their amendments. They do not use the texts of the
   versions.
 
+  @revision-2
   Rule: state-on-a-day · The state of an act, or of one change, on a day
     Before the entry into force of the act, it is not in force. If it applies from one day, it
     applies from that day. Before that day, it is in force and does not apply yet. For one change,
     the day is the day that Cellar gives for the changed place, if the act can apply from it.
 
-    Some acts apply from more than one day. If Cellar gives no such day for the changed place, the
-    change does not apply yet before the first of these days. It applies from the last of them,
-    unless a clause sets one more day that Cellar does not give. Between them, the state is not
-    known.
+    An act can have a date for a part (date-for-a-part). The act applies in part on a day if these
+    two conditions are true:
+    - a date for a part is on or before the day
+    - the day is before the day from which the whole act applies
+
+    This state is of the act on its own, never of one change.
+
+    If the data does not tell the day from which the whole act applies, a date for a part does not
+    give this state. The data does not tell if the rest of the act applies.
+
+    Some acts apply from more than one day. Cellar can give no such day for the place that a
+    change of such an act changes. Then the change does not apply yet before the first of these
+    days. It applies from the last of them, unless a clause sets one more day that Cellar does not
+    give. Between them, the state of the change is not known.
 
     In each other case the state is not known. For example, a clause sets the day by an event.
 
@@ -39,6 +51,20 @@ Feature: The state on a day
       Then on 14 November 2015, 185/2010 applies
       And on 15 November 2015, 185/2010 is no longer in force
       And 2015/1998 repealed 185/2010
+
+    Example: An act with parts that apply before the whole act
+      Given the act 2018/1862 as Cellar has it
+      Then 2018/1862 has a date for a part on 28 December 2019
+      And 2018/1862 applies from 7 March 2023
+      And on 1 December 2018, 2018/1862 is not in force
+      And on 1 August 2022, 2018/1862 applies in part
+      And on 7 March 2023, 2018/1862 applies
+
+    Example: An act with a part that applies, and no day for the whole act
+      Given the act 767/2008 as Cellar has it
+      Then 767/2008 has a date for a part on 2 September 2008
+      And the date of application of 767/2008 is a placeholder
+      And on 1 January 2012, 767/2008 has a state that is not known
 
     Example: Two changes, from the days that Cellar gives for their places
       Given the act 2018/1862 as Cellar has it

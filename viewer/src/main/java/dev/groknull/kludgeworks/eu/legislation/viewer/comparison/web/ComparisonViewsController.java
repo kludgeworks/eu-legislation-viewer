@@ -137,12 +137,11 @@ class ComparisonViewsController {
         ComparePage.ofFragment(request.getRequestURI(), from, to, null, view.parameter())
             .on(fromDay, toDay);
     var started = System.nanoTime();
-    var preparation = ends.preparation;
-    var earlier = ends.from;
-    var later = ends.to;
+    var earlier = ends.from();
+    var later = ends.to();
     var attributed =
         attributions
-            .of(ends.act, ends.versions(), earlier, later, page.later())
+            .of(ends.act(), ends.versions(), earlier, later, page.later())
             .orElseThrow(Requests::notFound);
     var today = this.today.today();
     var differences = DifferencesView.of(attributed.comparison());
@@ -153,7 +152,7 @@ class ComparisonViewsController {
         sidenotes.put(
             each.number(),
             SidenoteView.of(
-                ends.act, attributed.of(each.difference()), null, today, ends.language));
+                ends.act(), attributed.of(each.difference()), null, today, ends.language()));
         shown.add(each);
       }
     }
@@ -213,9 +212,9 @@ class ComparisonViewsController {
                     histories.put(
                         eId,
                         SidenoteView.history(
-                            ends.act,
-                            LastChange.of(ends.act, ends.included, later, neighbour.tags()),
-                            ends.language));
+                            ends.act(),
+                            LastChange.of(ends.act(), ends.included(), later, neighbour.tags()),
+                            ends.language()));
                   });
             }
             yield templates
@@ -239,10 +238,10 @@ class ComparisonViewsController {
         "{} of {} from {} to {} in {}: {} of {} differences, {} of Cellar's amendments"
             + " between them at their occurrences, {} at none, in {} ms",
         view.label(),
-        ends.act.id(),
+        ends.act().id(),
         earlier.date(),
         later.date(),
-        ends.language.code(),
+        ends.language().code(),
         shown.size(),
         attributed.comparison().differences().size(),
         attributed.amended().placed(),
@@ -276,7 +275,7 @@ class ComparisonViewsController {
     var last = asked.last();
     var ends = fragments.ends(address, asked.from(), asked.to(), null);
     var started = System.nanoTime();
-    if (!(ends.preparation.texts().get(ends.to) instanceof Text.Ready later)) {
+    if (!(ends.preparation().texts().get(ends.to()) instanceof Text.Ready later)) {
       throw Requests.notFound();
     }
     var text = content.read(later.text()).orElseThrow(Requests::notFound);
@@ -294,17 +293,17 @@ class ComparisonViewsController {
                 Neighbours.sibling(neighbour.occurrence()),
                 neighbour.occurrence(),
                 SidenoteView.history(
-                    ends.act,
-                    LastChange.of(ends.act, ends.included, ends.to, neighbour.tags()),
-                    ends.language)));
+                    ends.act(),
+                    LastChange.of(ends.act(), ends.included(), ends.to(), neighbour.tags()),
+                    ends.language())));
       }
     }
     LOG.info(
         "Same occurrences of {} from {} to {} in {}: {} of {}, in {} ms",
-        ends.act.id(),
-        ends.from.date(),
-        ends.to.date(),
-        ends.language.code(),
+        ends.act().id(),
+        ends.from().date(),
+        ends.to().date(),
+        ends.language().code(),
         rows.size(),
         eIds.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());

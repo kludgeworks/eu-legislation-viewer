@@ -81,8 +81,7 @@ public final class Timeline {
    */
   public Optional<Version> applicableOn(LocalDate date) {
     checkSingleVersionPerDay();
-    var entry = byDate.floorEntry(date);
-    return entry == null ? Optional.empty() : Optional.of(entry.getValue().getFirst());
+    return allApplicableOn(date).stream().findFirst();
   }
 
   /**

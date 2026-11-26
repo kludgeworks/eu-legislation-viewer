@@ -108,7 +108,7 @@ public record HistoryView(
             Links.history(eli, null, language),
             null),
         kept == null && first == null ? null : Links.history(eli, null, language),
-        state == null ? null : own(act, state, day, past),
+        state == null ? null : own(act, state, past),
         Links.read(eli, day, language),
         first == null || between == null
             ? null
@@ -176,11 +176,11 @@ public record HistoryView(
   }
 
   /**
-   * Returns the state of {@code act} itself on {@code day}, as one or two sentences. For example,
-   * "2018/1862 applied in part. It applies in full from 7 March 2023 · Article 79 of 2018/1862."
-   * The words come from {@code state} and the facts that it has.
+   * Returns the state of {@code act} itself, as one or two sentences. For example, "2018/1862
+   * applied in part. It applies in full from 7 March 2023 · Article 79 of 2018/1862." The words
+   * come from {@code state} and the facts that it has.
    */
-  static String own(Act act, LegalState state, LocalDate day, boolean past) {
+  static String own(Act act, LegalState state, boolean past) {
     var id = act.id();
     var cited = act.cited(id);
     return switch (state) {
@@ -211,7 +211,14 @@ public record HistoryView(
                   ? " was in force and did not apply yet."
                   : " is in force and does not apply yet.")
               + from(act, not.applying());
-      case LegalState.NotKnown _ -> cited + notKnown(act, day, past);
+      case LegalState.InPart part ->
+          cited
+              + (past ? " applied in part." : " applies in part.")
+              + " It applies in full from "
+              + Dates.inWords(part.inFullFrom())
+              + Wording.clauseOn(act, id, part.inFullFrom())
+              + ".";
+      case LegalState.NotKnown unknown -> cited + notKnown(act, unknown, past);
     };
   }
 
@@ -234,31 +241,25 @@ public record HistoryView(
   }
 
   /**
-   * Returns the rest of the sentence for an act whose state on {@code day} Cellar does not tell as
-   * a whole. An act that applies in part says so, and from when it applies in full.
+   * Returns the rest of the sentence for an act whose state the data does not tell. If a part of
+   * the act applies, it says from when, and names the clause that sets the other days: the data
+   * does not tell if they are past.
    */
-  private static String notKnown(Act act, LocalDate day, boolean past) {
-    var id = act.id();
-    if (!act.dates().appliesInPartOn(id, day)) {
-      return (past ? " was in force." : " is in force.")
-          + " The data does not give the day from which it applies.";
-    }
-    var inPart = past ? " applied in part." : " applies in part.";
-    var full = act.dates().inFullAfter(day);
-    if (full.isPresent()) {
-      return inPart
-          + " It applies in full from "
-          + Dates.inWords(full.get())
-          + Wording.clauseOn(act, id, full.get())
-          + ".";
+  private static String notKnown(Act act, LegalState.NotKnown state, boolean past) {
+    var inForce =
+        (past ? " was in force." : " is in force.")
+            + " The data does not give the day from which it applies.";
+    if (!(state.applying() instanceof Applying.FromMoreThanOneDay parts)) {
+      return inForce;
     }
     var unknown = act.dates().unknownDays();
-    return unknown.isEmpty()
-        ? inPart
-        : inPart
-            + " Other parts apply from dates set in "
-            + unknown.stream().map(ActDate.Provision::cited).collect(Collectors.joining(", "))
-            + ".";
+    return inForce
+        + from(act, parts)
+        + (unknown.isEmpty()
+            ? ""
+            : " Other parts apply from dates set in "
+                + unknown.stream().map(ActDate.Provision::cited).collect(Collectors.joining(", "))
+                + ".");
   }
 
   /**

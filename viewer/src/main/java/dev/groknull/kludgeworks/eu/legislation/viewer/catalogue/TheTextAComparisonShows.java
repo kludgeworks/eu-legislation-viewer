@@ -3,17 +3,17 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
 import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
-import java.time.LocalDate;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The feature "The text a comparison shows": one function for each of its rules. A rule reads facts
- * and gives one new fact. It does not call another rule: {@link LawOverTime} applies the rules.
+ * and gives one new fact. It does not call another rule: {@link LawOverTime} and {@link
+ * Prospective} apply the rules.
  */
 public final class TheTextAComparisonShows {
 
@@ -50,28 +50,38 @@ public final class TheTextAComparisonShows {
 
   /**
    * A text can have a change that does not apply on the day yet. That change comes from a
-   * prospective amendment of the day, at each occurrence of the text that the amendment touches
-   * ({@link Divergence#in}). {@link Prospective#at} tells which occurrences have such a change.
+   * prospective amendment of the day. An occurrence has such a change if a prospective amendment of
+   * the day changes one of these occurrences:
    *
-   * @param day the day
-   * @param text the tags of the text, or null if the viewer did not build it
-   * @param ofTheDay the divergences of the day
+   * <ul>
+   *   <li>the occurrence itself
+   *   <li>an occurrence that contains it
+   *   <li>an occurrence in it
+   * </ul>
+   *
+   * <p>The eIds tell which occurrence is in which. A change at another occurrence beside it does
+   * not count. For example, the text of 2018/1862 of 1 August 2022 includes the changes of
+   * 2022/1190, which apply from 15 October 2026. On 1 August 2022, Article 3, point 8 has such a
+   * change, and so has Article 3. Article 3, point 1 has none.
+   *
+   * @param occurrence the eId of the occurrence
+   * @param changed the act of each prospective amendment of the day, by the eId of the occurrence
+   *     of the text that it changes
+   * @return the act of the change. Empty if each change there applies.
    */
   @BusinessRule(
       group = RuleGroup.THE_TEXT_A_COMPARISON_SHOWS,
       name = "changes-that-do-not-apply-yet")
-  public static Prospective changesThatDoNotApplyYet(
-      LocalDate day, @Nullable TextTags text, List<Divergence> ofTheDay) {
-    var byOccurrence = new LinkedHashMap<String, ActIdentifier>();
-    if (text != null) {
-      for (var divergence : ofTheDay) {
-        if (divergence.kind() == Divergence.Kind.PROSPECTIVE) {
-          divergence
-              .in(text.eIds())
-              .forEach(occurrence -> byOccurrence.putIfAbsent(occurrence.eId(), divergence.act()));
-        }
-      }
+  public static Optional<ActIdentifier> changesThatDoNotApplyYet(
+      String occurrence, Map<String, ActIdentifier> changed) {
+    var itself = changed.get(occurrence);
+    if (itself != null) {
+      return Optional.of(itself);
     }
-    return new Prospective(day, byOccurrence);
+    return changed.entrySet().stream()
+        .filter(
+            each -> Amended.in(occurrence, each.getKey()) || Amended.in(each.getKey(), occurrence))
+        .map(Map.Entry::getValue)
+        .findFirst();
   }
 }

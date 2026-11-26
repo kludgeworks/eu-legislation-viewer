@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Ends;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
@@ -184,25 +185,28 @@ class ApiComparisonController {
     var comparison =
         comparisons.between(texts.earlier(), texts.later()).orElseThrow(Requests::notFound);
     var amended =
-        asked.ends.act.amended(
-            asked.earlier,
-            asked.later,
-            outline(texts.earlier()).eIds(),
-            outline(texts.later()).eIds(),
-            asked.ends.language);
+        asked
+            .ends
+            .act()
+            .amended(
+                asked.earlier,
+                asked.later,
+                outline(texts.earlier()).eIds(),
+                outline(texts.later()).eIds(),
+                asked.ends.language());
     LOG.info(
         "Comparison of {} from {} to {} in {} for the API: {} differences",
-        asked.ends.act.id(),
+        asked.ends.act().id(),
         asked.earlier.date(),
         asked.later.date(),
-        asked.ends.language.code(),
+        asked.ends.language().code(),
         comparison.differences().size());
     return ResponseEntity.ok(
         HalModelBuilder.halModelOf(ComparisonModel.of(asked, comparison))
             .embed(
                 comparison.differences().stream()
                     .map(difference ->
-                        EntityModel.of(DifferenceSummary.of(asked.ends.act, difference, amended))
+                        EntityModel.of(DifferenceSummary.of(asked.ends.act(), difference, amended))
                             .add(Link.of(differenceHref(self, difference.eId()))))
                     .toList(),
                 IanaLinkRelations.ITEM)
@@ -235,16 +239,19 @@ class ApiComparisonController {
     var difference =
         comparisons.difference(texts.earlier(), texts.later(), eId).orElseThrow(Requests::notFound);
     var amended =
-        asked.ends.act.amended(
-            asked.earlier,
-            asked.later,
-            outline(texts.earlier()).eIds(),
-            outline(texts.later()).eIds(),
-            asked.ends.language);
+        asked
+            .ends
+            .act()
+            .amended(
+                asked.earlier,
+                asked.later,
+                outline(texts.earlier()).eIds(),
+                outline(texts.later()).eIds(),
+                asked.ends.language());
     var comparison = at(celex, from, to, language, amendingAct, IanaLinkRelations.UP);
     return HalModelBuilder.halModelOf(
             new DifferenceModel(
-                DifferenceSummary.of(asked.ends.act, difference, amended),
+                DifferenceSummary.of(asked.ends.act(), difference, amended),
                 content.publicWording(difference.shown()),
                 content.publicOccurrence(difference.shown())))
         .link(Link.of(differenceHref(comparison, eId)))
@@ -293,12 +300,13 @@ class ApiComparisonController {
       LocalDate to,
       String language,
       @Nullable String amendingAct) {
-    var ends = new Ends(found(celex), Requests.language(language), from, to, amendingAct, texts);
-    var only = ends.only;
-    var inclusion = only == null ? null : ends.inclusion(only).orElseThrow(Requests::notFound);
-    var later = inclusion == null ? ends.to : inclusion.first();
-    var earlier = inclusion == null ? ends.from : inclusion.before();
-    return new Asked(ends, earlier, later);
+    var act = found(celex);
+    var in = Requests.language(language);
+    var preparation = texts.preparation(act, in);
+    var ends =
+        Ends.of(act, in, from, to, amendingAct, preparation, texts.tags(preparation))
+            .orElseThrow(Requests::notFound);
+    return new Asked(ends, ends.earlier(), ends.later());
   }
 
   /**
@@ -307,7 +315,7 @@ class ApiComparisonController {
    * language.
    */
   private @Nullable Ready ready(Asked asked) {
-    var preparation = texts.prepare(asked.ends.act, asked.ends.language);
+    var preparation = texts.prepare(asked.ends.act(), asked.ends.language());
     var earlier = text(preparation.texts().get(asked.earlier));
     var later = text(preparation.texts().get(asked.later));
     return earlier == null || later == null ? null : new Ready(earlier, later);
@@ -364,7 +372,7 @@ class ApiComparisonController {
 
     static Preparing of(Asked asked) {
       return new Preparing(
-          asked.earlier.date(), asked.later.date(), code(asked.ends.language.code()));
+          asked.earlier.date(), asked.later.date(), code(asked.ends.language().code()));
     }
   }
 
@@ -386,12 +394,12 @@ class ApiComparisonController {
       @Nullable String withoutPreamble) {
 
     static ComparisonModel of(Asked asked, Comparison comparison) {
-      var only = asked.ends.only;
+      var only = asked.ends.only();
       var without = comparison.withoutPreamble();
       return new ComparisonModel(
           asked.earlier.date(),
           asked.later.date(),
-          code(asked.ends.language.code()),
+          code(asked.ends.language().code()),
           only == null ? null : only.celex(),
           without == null ? null : code(without.name()));
     }

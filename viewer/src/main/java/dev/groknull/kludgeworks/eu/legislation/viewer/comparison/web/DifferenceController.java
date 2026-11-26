@@ -138,10 +138,14 @@ class DifferenceController {
     var ends = fragments.ends(address, from, to, asked.act());
     var page =
         ComparePage.ofFragment(
-            request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
+            request.getRequestURI(),
+            from,
+            to,
+            ends.only() == null ? null : ends.only().celex(),
+            null);
     var started = System.nanoTime();
-    var preparation = ends.preparation;
-    var only = ends.only;
+    var preparation = ends.preparation();
+    var only = ends.only();
     var pair = Fragments.ready(ends, preparation);
     var earlier = pair.earlier();
     var later = pair.later();
@@ -162,10 +166,10 @@ class DifferenceController {
       var html = fragments.render(new DifferencesView.Shown(0, difference, "").folded(page));
       LOG.info(
           "Difference of {} from {} to {} in {}{} at {}, in {} ms",
-          ends.act.id(),
+          ends.act().id(),
           earlier.date(),
           later.date(),
-          ends.language.code(),
+          ends.language().code(),
           only == null ? "" : " by " + only,
           difference.eId(),
           Duration.ofNanos(System.nanoTime() - started).toMillis());
@@ -185,10 +189,10 @@ class DifferenceController {
     found.forEach(row -> html.append(fragments.render(row)));
     LOG.info(
         "Rows of {} from {} to {} in {}{} at {}: {} rows, in {} ms",
-        ends.act.id(),
+        ends.act().id(),
         earlier.date(),
         later.date(),
-        ends.language.code(),
+        ends.language().code(),
         only == null ? "" : " by " + only,
         difference.eId(),
         found.size(),
@@ -227,12 +231,12 @@ class DifferenceController {
                 request.getRequestURI(),
                 from,
                 to,
-                ends.only == null ? null : ends.only.celex(),
+                ends.only() == null ? null : ends.only().celex(),
                 null)
             .on(fromDay, toDay);
     var started = System.nanoTime();
-    var preparation = ends.preparation;
-    var only = ends.only;
+    var preparation = ends.preparation();
+    var only = ends.only();
     var pair = Fragments.ready(ends, preparation);
     var earlier = pair.earlier();
     var later = pair.later();
@@ -246,7 +250,7 @@ class DifferenceController {
       // A chapter that the annex keeps flat has no difference of its own.
       var attributed =
           attributions
-              .of(ends.act, ends.versions(), earlier, later, null)
+              .of(ends.act(), ends.versions(), earlier, later, null)
               .orElseThrow(Requests::notFound);
       found = Attribution.madeIn(attributed.each(), eIds, only);
       lead =
@@ -265,10 +269,10 @@ class DifferenceController {
             : templates.comparisonPlace(shown, html, page, lead).render();
     LOG.info(
         "Place of {} from {} to {} in {}{} at {} occurrences: {} differences, in {} ms",
-        ends.act.id(),
+        ends.act().id(),
         earlier.date(),
         later.date(),
-        ends.language.code(),
+        ends.language().code(),
         only == null ? "" : " by " + only,
         eIds.size(),
         shown.size(),
@@ -292,13 +296,12 @@ class DifferenceController {
     var from = asked.from();
     var to = asked.to();
     var ends = fragments.ends(address, from, to, asked.act());
-    var only = Objects.requireNonNull(ends.only);
+    var only = Objects.requireNonNull(ends.only());
     var page = ComparePage.ofFragment(request.getRequestURI(), from, to, only.celex(), null);
     var started = System.nanoTime();
-    var inclusion = ends.inclusion(only).orElseThrow(Requests::notFound);
     var attributed =
         attributions
-            .of(ends.act, ends.versions(), inclusion.before(), inclusion.first(), null)
+            .of(ends.act(), ends.versions(), ends.earlier(), ends.later(), null)
             .orElseThrow(Requests::notFound);
     var alternatives = Alternatives.of(only, attributed.each());
     var others = alternatives.others();
@@ -309,7 +312,7 @@ class DifferenceController {
     var rendered =
         templates
             .comparisonEither(
-                DifferencesView.either(others.stream().map(ends.act::cited).toList()),
+                DifferencesView.either(others.stream().map(ends.act()::cited).toList()),
                 shown,
                 shown.size() <= OPEN,
                 html,
@@ -317,10 +320,10 @@ class DifferenceController {
             .render();
     LOG.info(
         "Differences of {} from {} to {} in {} by {} or another act: {}, in {} ms",
-        ends.act.id(),
-        inclusion.before().date(),
-        inclusion.first().date(),
-        ends.language.code(),
+        ends.act().id(),
+        ends.earlier().date(),
+        ends.later().date(),
+        ends.language().code(),
         only,
         shown.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());

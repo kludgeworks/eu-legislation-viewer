@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Ends;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
@@ -39,25 +40,20 @@ final class Fragments {
 
   /** Returns the ends of the comparison at a canonical address of the compare page. */
   Ends ends(ActAddress address, LocalDate from, LocalDate to, @Nullable String only) {
-    return new Ends(
-        acts.find(address.eli()).orElseThrow(Requests::notFound),
-        address.language(),
-        from,
-        to,
-        only,
-        texts);
+    var act = acts.find(address.eli()).orElseThrow(Requests::notFound);
+    var preparation = texts.preparation(act, address.language());
+    return Ends.of(act, address.language(), from, to, only, preparation, texts.tags(preparation))
+        .orElseThrow(Requests::notFound);
   }
 
   /**
    * Returns the two texts of a fragment of the page of an amending act, or of a comparison: the
-   * text before {@code ends.only} and the first text with it, or the texts of the two ends. Throws
-   * 404 if either text is not built.
+   * text before {@code ends.only()} and the first text with it, or the texts of the two ends.
+   * Throws 404 if either text is not built.
    */
   static ReadyTexts ready(Ends ends, Preparation preparation) {
-    var only = ends.only;
-    var inclusion = only == null ? null : ends.inclusion(only).orElseThrow(Requests::notFound);
-    var earlier = inclusion == null ? ends.from : inclusion.before();
-    var later = inclusion == null ? ends.to : inclusion.first();
+    var earlier = ends.earlier();
+    var later = ends.later();
     if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
         || !(preparation.texts().get(later) instanceof Text.Ready after)) {
       throw Requests.notFound();

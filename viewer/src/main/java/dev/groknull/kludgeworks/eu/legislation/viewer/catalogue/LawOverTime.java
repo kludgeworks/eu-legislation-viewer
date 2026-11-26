@@ -102,8 +102,7 @@ public record LawOverTime(
    * on {@code day} yet. Empty if the text of {@code version} is not built.
    */
   public Prospective changesThatDoNotApplyYet(Version version, LocalDate day) {
-    return TheTextAComparisonShows.changesThatDoNotApplyYet(
-        day, texts.get(version), on(day).divergences());
+    return Prospective.of(day, texts.get(version), on(day).divergences());
   }
 
   /** Applies the rules to each amending act. It keeps the occurrences of each text ready. */
