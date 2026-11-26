@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 import dev.groknull.kludgeworks.eu.legislation.viewer.broadcast.Broadcast;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -23,12 +20,8 @@ import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;
-import org.springframework.hateoas.EntityModel;
-import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.hateoas.Link;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,11 +49,14 @@ class ApiPreparationController {
   private final Acts acts;
   private final Catalogued catalogued;
   private final Texts texts;
+  private final PreparationModelAssembler assembler;
 
-  ApiPreparationController(Acts acts, Catalogued catalogued, Texts texts) {
+  ApiPreparationController(
+      Acts acts, Catalogued catalogued, Texts texts, PreparationModelAssembler assembler) {
     this.acts = acts;
     this.catalogued = catalogued;
     this.texts = texts;
+    this.assembler = assembler;
   }
 
   /**
@@ -81,7 +77,7 @@ class ApiPreparationController {
   RepresentationModel<?> preparation(
       @PathVariable ActIdentifier celex, @PathVariable String language) {
     var act = found(celex);
-    return model(act, texts.preparation(act, in(act, language)));
+    return assembler.toModel(texts.preparation(act, in(act, language)));
   }
 
   /**
@@ -95,13 +91,15 @@ class ApiPreparationController {
       @PathVariable ActIdentifier celex, @PathVariable String language) {
     var act = found(celex);
     var in = in(act, language);
-    if (!retryable(texts.preparation(act, in))) {
+    var preparation = texts.preparation(act, in);
+    if (!preparation.retryable()) {
       throw new ResponseStatusException(
           HttpStatus.CONFLICT, "No text failed in a way that trying again may help.");
     }
     texts.retry(act, in);
     LOG.info("Trying again the texts of {} in {} that failed, for the API", act.id(), in.code());
-    return ResponseEntity.status(HttpStatus.ACCEPTED).body(model(act, texts.preparation(act, in)));
+    return ResponseEntity.status(HttpStatus.ACCEPTED)
+        .body(assembler.toModel(texts.preparation(act, in)));
   }
 
   /**
@@ -124,59 +122,9 @@ class ApiPreparationController {
     streams.changed(broadcast.event());
   }
 
-  /** Returns a link to the preparation of the act in the language, {@code av:preparation}. */
-  static Link to(ActIdentifier celex, Language language) {
-    return linkTo(
-            methodOn(ApiPreparationController.class)
-                .preparation(celex, ApiActResources.code(language.code())))
-        .withRel(Relation.PREPARATION.rel());
-  }
-
-  /** Returns the preparation as the API shows it. */
-  static RepresentationModel<?> model(Act act, Preparation preparation) {
-    var celex = act.id();
-    var language = ApiActResources.code(preparation.language().code());
-    var model =
-        HalModelBuilder.halModelOf(PreparationModel.of(preparation))
-            .embed(
-                preparation.texts().entrySet().stream()
-                    .map(each ->
-                        progress(celex, preparation.language(), each.getKey(), each.getValue()))
-                    .toList(),
-                IanaLinkRelations.ITEM)
-            .link(to(celex, preparation.language()).withSelfRel())
-            .link(ApiActResources.up(celex))
-            .link(
-                linkTo(methodOn(ApiPreparationController.class).events(celex, language))
-                    .withRel(Relation.EVENTS.rel()));
-    if (retryable(preparation)) {
-      model.link(to(celex, preparation.language()).withRel(Relation.RETRY.rel()));
-    }
-    return model.build();
-  }
-
   /** Returns a failure as the API writes it. For example, {@code no-formex}. */
   static String code(Failure failure) {
     return failure.name().toLowerCase(Locale.ROOT).replace('_', '-');
-  }
-
-  private static EntityModel<Progress> progress(
-      ActIdentifier celex, Language language, Version version, Text text) {
-    var model = EntityModel.of(Progress.of(version, text));
-    return switch (text) {
-      case Text.Ready _ ->
-          model.add(ApiTextController.to(celex, version, language, Relation.TEXT.rel()));
-      case Text.Waiting _, Text.Converting _, Text.Failed _ -> model;
-    };
-  }
-
-  private static boolean retryable(Preparation preparation) {
-    return preparation.texts().values().stream()
-        .anyMatch(text ->
-            switch (text) {
-              case Text.Failed failed -> failed.failure().retryable();
-              case Text.Waiting _, Text.Converting _, Text.Ready _ -> false;
-            });
   }
 
   private Act found(ActIdentifier celex) {

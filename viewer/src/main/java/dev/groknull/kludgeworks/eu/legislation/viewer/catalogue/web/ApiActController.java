@@ -11,7 +11,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -61,12 +60,12 @@ class ApiActController {
 
   private final Acts acts;
   private final Catalogued catalogued;
-  private final Today today;
+  private final ActModelAssembler assembler;
 
-  ApiActController(Acts acts, Catalogued catalogued, Today today) {
+  ApiActController(Acts acts, Catalogued catalogued, ActModelAssembler assembler) {
     this.acts = acts;
     this.catalogued = catalogued;
-    this.today = today;
+    this.assembler = assembler;
   }
 
   /**
@@ -138,15 +137,7 @@ class ApiActController {
    */
   @GetMapping(ACT)
   EntityModel<Act> act(@PathVariable ActIdentifier celex) {
-    var act = catalogued.api(celex);
-    var self = linkTo(methodOn(ApiActController.class).act(celex)).withSelfRel();
-    var model = EntityModel.of(act).add(self).add(ApiActResources.versionHistory(celex));
-    ApiActResources.latest(act, today.today()).ifPresent(model::add);
-    return model
-        .add(ApiRootController.template(self, "/on/{day}", Relation.ON))
-        .add(
-            linkTo(methodOn(ApiAmendmentsController.class).amendments(celex))
-                .withRel(Relation.AMENDMENTS.rel()));
+    return assembler.toModel(catalogued.api(celex));
   }
 
   /**

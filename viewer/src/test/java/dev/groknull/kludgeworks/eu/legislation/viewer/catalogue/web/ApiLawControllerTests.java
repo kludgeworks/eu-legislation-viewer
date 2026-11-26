@@ -12,9 +12,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ApiConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TheLaw;
 import java.io.UnsupportedEncodingException;
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,11 +34,16 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * {@link OneActCellar}.
  */
 @WebMvcTest(ApiLawController.class)
-@Import({ApiConfiguration.class, CataloguedTesting.class, ApiActTesting.OnTheFirstOfJune2021.class})
+@Import({
+  ApiConfiguration.class,
+  CataloguedTesting.class,
+  ApiActTesting.OnTheFirstOfJune2021.class,
+  ApiActTesting.Assemblers.class
+})
 class ApiLawControllerTests {
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
-  @MockitoBean Texts texts;
+  @MockitoBean Laws laws;
 
   @BeforeEach
   void act() {
@@ -49,6 +57,15 @@ class ApiLawControllerTests {
   @Test
   void showsTheLawOnTheDayAskedWithTheVersionThatAppliesAndTheDayItAppliesUntil()
       throws UnsupportedEncodingException {
+    var act = OneActCellar.ACT;
+    var day = LocalDate.of(2022, 2, 14);
+    var version = ApiActResources.at(act.timeline().versions(), "2021-12-31");
+    when(laws.on(act, day))
+        .thenReturn(
+            Optional.of(
+                new TheLaw(
+                    act, day, List.of(version), LocalDate.of(2026, 3, 22), null, List.of())));
+
     var law = json(mvc.get().uri("/api/acts/32015R1998/on/2022-02-14").exchange());
 
     assertThat(law.at("/day").asString()).isEqualTo("2022-02-14");
@@ -63,6 +80,8 @@ class ApiLawControllerTests {
   @Test
   void saysWhenTheTextFirstAppliesForADayBeforeTheFirstVersion()
       throws UnsupportedEncodingException {
+    when(laws.on(OneActCellar.ACT, LocalDate.of(2015, 11, 10))).thenReturn(Optional.empty());
+
     var result = mvc.get().uri("/api/acts/32015R1998/on/2015-11-10").exchange();
     assertThat(result)
         .hasStatus(HttpStatus.NOT_FOUND)

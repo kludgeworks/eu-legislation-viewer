@@ -10,24 +10,19 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.CompareService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ReadService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import java.io.UnsupportedEncodingException;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneOffset;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -44,10 +39,11 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 @Import({
   ControllerTesting.class,
   HistoryService.class,
+  LawService.class,
   ReadService.class,
   CompareService.class,
   ApiConfiguration.class,
-  ActLookupControllerTests.OnTheFirstOfJune2021.class
+  ApiActTesting.Assemblers.class
 })
 class ActLookupControllerTests {
   private static final String PAGE = "/eli/reg_impl/2015/1998/2026-03-22/eng";
@@ -156,16 +152,6 @@ class ActLookupControllerTests {
       return result.getResponse().getContentAsString();
     } catch (UnsupportedEncodingException e) {
       throw new IllegalStateException(e);
-    }
-  }
-
-  @TestConfiguration(proxyBeanMethods = false)
-  @Import(BrusselsToday.class)
-  static class OnTheFirstOfJune2021 {
-    @Bean
-    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
-    Clock firstOfJune2021() {
-      return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
     }
   }
 }

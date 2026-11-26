@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ReadService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -47,6 +48,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 @Import({
   ControllerTesting.class,
   HistoryService.class,
+  LawService.class,
   ReadService.class,
   VersionControllerTests.OnTheFirstOfJune2021.class
 })

@@ -72,6 +72,11 @@ public record Preparation(
     return texts.values().stream().allMatch(Text::settled);
   }
 
+  /** Returns whether any of its texts failed in a way that trying again may help. */
+  public boolean retryable() {
+    return texts.values().stream().anyMatch(Text::retryable);
+  }
+
   /** Returns how long it took, once it is settled. */
   public Optional<Duration> took() {
     return Optional.ofNullable(settledAt).map(at -> Duration.between(started, at));

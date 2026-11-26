@@ -25,4 +25,11 @@ public interface Laws {
    * empty before the first version of the act. The version can lack the language.
    */
   Optional<Version> versionOn(Act act, LocalDate day, Language language);
+
+  /**
+   * Returns the law of {@code act} on {@code day}: the versions that apply on it, the day they
+   * apply until, the deferred application of the act, and its divergences in each language. Empty
+   * if no version applies on the day (for example, on a day before the first version).
+   */
+  Optional<TheLaw> on(Act act, LocalDate day);
 }

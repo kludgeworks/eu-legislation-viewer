@@ -22,6 +22,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
 import java.time.Instant;
@@ -55,6 +56,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 @Import({
   ControllerTesting.class,
   HistoryService.class,
+  LawService.class,
   HistoryControllerTests.OnTheFirstOfJune2021.class
 })
 class HistoryControllerTests {

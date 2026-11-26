@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
@@ -123,6 +124,14 @@ public record Divergence(
   /** Returns the day from which {@code act} applies. */
   public LocalDate appliesFrom() {
     return Objects.requireNonNull(applies.date());
+  }
+
+  /**
+   * Returns the day from which {@code act} applies, or empty if {@code act} is an undated
+   * amendment.
+   */
+  public Optional<LocalDate> applicationDate() {
+    return kind == Kind.UNDATED ? Optional.empty() : Optional.of(appliesFrom());
   }
 
   /**

@@ -3,8 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.ACT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.code;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -13,11 +11,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResour
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import org.jspecify.annotations.Nullable;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiAmendmentsController {
   private final Catalogued catalogued;
+  private final AmendmentsModelAssembler assembler;
 
-  ApiAmendmentsController(Catalogued catalogued) {
+  ApiAmendmentsController(Catalogued catalogued, AmendmentsModelAssembler assembler) {
     this.catalogued = catalogued;
+    this.assembler = assembler;
   }
 
   /**
@@ -41,20 +39,8 @@ class ApiAmendmentsController {
    * also has the own dates of each amending act, which Cellar keeps up to date.
    */
   @GetMapping(ACT + "/amendments")
-  RepresentationModel<?> amendments(@PathVariable ActIdentifier celex) {
-    var act = catalogued.api(celex);
-    var dates = new TreeMap<String, List<DateModel>>();
-    act.dates()
-        .amending()
-        .forEach((amending, own) ->
-            dates.put(amending.celex(), own.stream().map(DateModel::of).toList()));
-    return HalModelBuilder.halModelOf(
-            new AmendmentsModel(
-                act.amendments().stream().map(each -> AmendmentModel.of(act, each)).toList(),
-                dates))
-        .link(linkTo(methodOn(ApiAmendmentsController.class).amendments(celex)).withSelfRel())
-        .link(ApiActResources.up(celex))
-        .build();
+  EntityModel<AmendmentsModel> amendments(@PathVariable ActIdentifier celex) {
+    return assembler.toModel(catalogued.api(celex));
   }
 
   /**

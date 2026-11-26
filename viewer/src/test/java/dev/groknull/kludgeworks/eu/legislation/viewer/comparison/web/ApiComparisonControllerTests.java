@@ -62,7 +62,11 @@ import tools.jackson.databind.json.JsonMapper;
 @Import({
   ApiConfiguration.class,
   ActComparisonLinks.class,
-  ApiComparisonControllerTests.ActLinks.class
+  ApiComparisonControllerTests.ActLinks.class,
+  ComparisonLinks.class,
+  ComparisonModelAssembler.class,
+  ComparisonPreparingModelAssembler.class,
+  DifferenceModelAssembler.class
 })
 class ApiComparisonControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";
@@ -155,6 +159,34 @@ class ApiComparisonControllerTests {
         .hasStatus(HttpStatus.ACCEPTED)
         .headers()
         .hasValue(HttpHeaders.RETRY_AFTER, "5");
+  }
+
+  @Test
+  void limitsAComparisonToOneAmendingAct() throws UnsupportedEncodingException {
+    textsAre(new Text.Ready(EARLIER), new Text.Ready(LATER));
+
+    var comparison =
+        json(mvc.get().uri(COMPARISON + "/texts/eng?amendingAct=32019R0103").exchange());
+
+    assertThat(comparison.at("/from").asString()).isEqualTo("2021-03-15");
+    assertThat(comparison.at("/to").asString()).isEqualTo("2021-12-31");
+    assertThat(comparison.at("/amendingAct").asString()).isEqualTo("32019R0103");
+    assertThat(comparison.at("/_links/self/href").asString())
+        .isEqualTo(ACT + "/comparisons/2021-03-15..2021-12-31/texts/eng?amendingAct=32019R0103");
+    assertThat(comparison.at("/_links/up/href").asString()).isEqualTo(ACT);
+    assertThat(comparison.at("/_links/av:difference/href").asString())
+        .isEqualTo(
+            ACT
+                + "/comparisons/2021-03-15..2021-12-31/texts/eng/differences/{+eId}?amendingAct=32019R0103");
+
+    var difference =
+        json(
+            mvc.get()
+                .uri(COMPARISON + "/texts/eng/differences/anx/pnt_1.2?amendingAct=32019R0103")
+                .exchange());
+
+    assertThat(difference.at("/_links/up/href").asString())
+        .isEqualTo(ACT + "/comparisons/2021-03-15..2021-12-31/texts/eng?amendingAct=32019R0103");
   }
 
   @Test

@@ -2,33 +2,18 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.ACT;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.code;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DeferredApplication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.LawOnADay;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.DateModel;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.ErrorResponseException;
@@ -42,13 +27,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiLawController {
   private final Catalogued catalogued;
-  private final Texts texts;
   private final Laws laws;
+  private final LawModelAssembler assembler;
 
-  ApiLawController(Catalogued catalogued, Texts texts, Laws laws) {
+  ApiLawController(Catalogued catalogued, Laws laws, LawModelAssembler assembler) {
     this.catalogued = catalogued;
-    this.texts = texts;
     this.laws = laws;
+    this.assembler = assembler;
   }
 
   /**
@@ -66,94 +51,8 @@ class ApiLawController {
       @PathVariable ActIdentifier celex,
       @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
     var act = catalogued.api(celex);
-    var timeline = act.timeline();
-    var applying = timeline.allApplicableOn(day);
-    if (applying.isEmpty()) {
-      throw beforeTheFirstVersion(act, day);
-    }
-    return HalModelBuilder.halModelOf(
-            new LawModel(
-                day,
-                timeline.nextStartAfter(day).orElse(null),
-                deferredApplication(act, applying, day),
-                divergences(act, applying, day)))
-        .embed(
-            applying.stream().map(version -> ApiActResources.summary(celex, version)).toList(),
-            Relation.VERSION.rel())
-        .link(linkTo(methodOn(ApiLawController.class).on(celex, day)).withSelfRel())
-        .link(ApiActResources.up(celex))
-        .build();
-  }
-
-  /**
-   * Returns the deferred application of {@code act} on {@code date}, with the languages of the
-   * versions {@code applying} in which the reader gets a text on that day. Null if the act applies
-   * in full, or is not in force.
-   */
-  private @Nullable DeferredApplicationModel deferredApplication(
-      Act act, List<Version> applying, LocalDate date) {
-    var languages = new LinkedHashMap<DeferredApplication, List<String>>();
-    applying.stream()
-        .flatMap(version -> version.languages().stream())
-        .distinct()
-        .sorted()
-        .forEach(language ->
-            Optional.ofNullable(laws.of(act, language, built(act, language)).on(date))
-                .map(LawOnADay::deferredApplication)
-                .ifPresent(each ->
-                    languages
-                        .computeIfAbsent(each, key -> new ArrayList<>())
-                        .add(code(language.code()))));
-    return languages.entrySet().stream()
-        .findFirst()
-        .map(each ->
-            new DeferredApplicationModel(
-                DateModel.of(each.getKey().inFull()), each.getKey().partial(), each.getValue()))
-        .orElse(null);
-  }
-
-  /**
-   * Returns the divergences of {@code act} on {@code date}, each with the languages of the versions
-   * {@code applying} whose text differs. An amending act can change the text of some languages
-   * only. The tags of the texts that are built in a language tell where its text differs. A
-   * language without built texts is compared act by act.
-   */
-  private List<DivergenceModel> divergences(Act act, List<Version> applying, LocalDate date) {
-    var languages = new LinkedHashMap<Divergence, List<String>>();
-    applying.stream()
-        .flatMap(version -> version.languages().stream())
-        .distinct()
-        .sorted()
-        .forEach(language ->
-            laws.of(act, language, built(act, language))
-                .on(date)
-                .divergences()
-                .forEach(each ->
-                    languages
-                        .computeIfAbsent(each, key -> new ArrayList<>())
-                        .add(code(language.code()))));
-    return languages.entrySet().stream()
-        .map(each -> {
-          var divergence = each.getKey();
-          var included = divergence.included();
-          return new DivergenceModel(
-              code(divergence.kind().name()),
-              divergence.act().celex(),
-              act.cited(divergence.act()),
-              divergence.kind() == Divergence.Kind.UNDATED ? null : divergence.appliesFrom(),
-              included == null ? null : ApiActResources.key(included),
-              divergence.places().stream()
-                  .map(place -> new PlaceModel(place.location().code(), place.place().words()))
-                  .distinct()
-                  .toList(),
-              each.getValue());
-        })
-        .toList();
-  }
-
-  /** Returns the tags of the texts of {@code act} in {@code language} that are built. */
-  private Map<Version, TextTags> built(Act act, Language language) {
-    return texts.tags(texts.preparation(act, language));
+    var law = laws.on(act, day).orElseThrow(() -> beforeTheFirstVersion(act, day));
+    return assembler.toModel(law);
   }
 
   private static ErrorResponseException beforeTheFirstVersion(Act act, LocalDate date) {
