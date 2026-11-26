@@ -11,7 +11,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -35,7 +35,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 class SearchIndexTests {
   @Autowired MeterRegistry meters;
   @Autowired SearchRebuild job;
-  @Autowired Search search;
+  @Autowired Searches search;
   @Autowired JdbcTemplate database;
   @Autowired PlatformTransactionManager transactionManager;
   @MockitoBean Sparql cellar;
@@ -43,7 +43,7 @@ class SearchIndexTests {
   @Test
   void servesOnlyCompleteBuilds() throws Exception {
     when(cellar.select(anyString())).thenReturn(new SparqlResult(List.of(), List.of()));
-    var query = Search.Query.of("aviation", Search.Kind.ALL, 0, 1).orElseThrow();
+    var query = Searches.Query.of("aviation", Searches.Kind.ALL, 0, 1).orElseThrow();
     assertThat(search.matching(query).acts()).isEmpty();
     verify(cellar).select(anyString());
 
@@ -87,28 +87,30 @@ class SearchIndexTests {
     assertThat(search.identified("GDPR")).isEmpty();
     assertThat(search.identified("679/2016")).isEqualTo(search.identified("2016/679"));
     assertThat(search.identified("2016/679")).isPresent();
-    var second = search.matching(Search.Query.of("aviation", Search.Kind.ALL, 1, 1).orElseThrow());
+    var second =
+        search.matching(Searches.Query.of("aviation", Searches.Kind.ALL, 1, 1).orElseThrow());
     assertThat(second.more()).isFalse();
     assertThat(second.acts().getFirst().amends())
         .extracting(a -> a.id().celex())
         .containsExactly("32016R0679");
     assertThat(
             search
-                .matching(Search.Query.of("aviation", Search.Kind.DIRECTIVE, 0, 5).orElseThrow())
+                .matching(
+                    Searches.Query.of("aviation", Searches.Kind.DIRECTIVE, 0, 5).orElseThrow())
                 .acts())
         .hasSize(1);
     assertThat(
             search
-                .matching(Search.Query.of("aviaton", Search.Kind.AMENDING, 0, 5).orElseThrow())
+                .matching(Searches.Query.of("aviaton", Searches.Kind.AMENDING, 0, 5).orElseThrow())
                 .acts())
         .hasSize(1);
 
     var citing =
-        Search.Query.of("2016/679 adequacy Japan", Search.Kind.DIRECTIVE, 0, 5).orElseThrow();
+        Searches.Query.of("2016/679 adequacy Japan", Searches.Kind.DIRECTIVE, 0, 5).orElseThrow();
     assertThat(search.matching(citing).acts())
         .extracting(match -> match.id().celex())
         .containsExactly("32016L0001");
-    var pastEnd = Search.Query.of("aviation", Search.Kind.ALL, 2, 1).orElseThrow();
+    var pastEnd = Searches.Query.of("aviation", Searches.Kind.ALL, 2, 1).orElseThrow();
     assertThat(search.matching(pastEnd).acts()).isEmpty();
 
     makeRebuildDue();
@@ -256,7 +258,7 @@ class SearchIndexTests {
         from catalogue_search_work where celex in ('32010R0185','32010D0185','32015R1998')
         """);
     assertThat(search.identified("185/2010")).isEmpty();
-    var query = Search.Query.of("185/2010", Search.Kind.ALL, 0, 3).orElseThrow();
+    var query = Searches.Query.of("185/2010", Searches.Kind.ALL, 0, 3).orElseThrow();
     assertThat(search.matching(query).acts())
         .extracting(match -> match.id().celex())
         .containsExactly("32010D0185", "32010R0185", "32015R1998");

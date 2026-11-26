@@ -12,9 +12,10 @@ import java.util.Objects;
 import java.util.Optional;
 
 /**
- * The steps of the rules of the search: how a typed citation reads ({@link Citation#read}), and the
- * act that it names ({@link Citation#names}). The acts that it can name are given as the catalogue
- * has them, each with its resource type: the acts whose year and number are its two numbers.
+ * The steps of the rules of the search: how a typed citation reads ({@link Citation#read}, {@link
+ * Search#aYearOfTwoDigits}), and the act that it names ({@link Search#aCitationGoesToOneAct}). The
+ * acts that it can name are given as the catalogue has them, each with its resource type: the acts
+ * whose year and number are its two numbers.
  */
 public class SearchSteps {
   private List<Citation.Candidate> candidates = List.of();
@@ -38,12 +39,12 @@ public class SearchSteps {
 
   @Then("the search goes to {act}")
   public void goesTo(ActIdentifier act) {
-    assertThat(citation().names(candidates)).contains(act);
+    assertThat(Search.aCitationGoesToOneAct(citation(), candidates)).contains(act);
   }
 
   @Then("the reader gets the list")
   public void getsTheList() {
-    assertThat(citation().names(candidates)).isEmpty();
+    assertThat(Search.aCitationGoesToOneAct(citation(), candidates)).isEmpty();
   }
 
   @Then("its numbers are {int} and {int}")

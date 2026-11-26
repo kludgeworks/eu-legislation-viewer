@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -86,13 +84,12 @@ public record Location(String code) {
   }
 
   /**
-   * Returns the occurrences of a text that it is, as {@link #in(List)} does. Use this to find many
-   * locations in one text: {@code occurrences} are made one time.
+   * Returns the occurrences of a text that it is, as {@link #in(List)} does ({@link
+   * Places#aPlaceIsTheOccurrencesItNames}). Use this to find many locations in one text: {@code
+   * occurrences} are made one time.
    */
-  @BusinessRule(group = RuleGroup.PLACES, name = "a-place-is-the-occurrences-it-names")
-  @BusinessRule(group = RuleGroup.PLACES, name = "no-guess")
   public Optional<Found> in(TextOccurrences occurrences) {
-    return occurrences.find(this, false);
+    return Places.aPlaceIsTheOccurrencesItNames(occurrences.walk(this));
   }
 
   /**
@@ -106,11 +103,13 @@ public record Location(String code) {
   }
 
   /**
-   * Returns the occurrences of a text that it is or that hold it, as {@link #around(List)} does.
+   * Returns the occurrences of a text that it is or that hold it, as {@link #around(List)} does
+   * ({@link Places#aPlaceTheTextDoesNotHave}).
    */
-  @BusinessRule(group = RuleGroup.PLACES, name = "a-place-the-text-does-not-have")
   public Optional<Found> around(TextOccurrences occurrences) {
-    return occurrences.find(this, true);
+    var walk = occurrences.walk(this);
+    return Places.aPlaceIsTheOccurrencesItNames(walk)
+        .or(() -> Places.aPlaceTheTextDoesNotHave(walk, occurrences));
   }
 
   /**

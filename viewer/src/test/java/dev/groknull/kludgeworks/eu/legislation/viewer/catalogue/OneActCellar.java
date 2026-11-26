@@ -204,8 +204,8 @@ public class OneActCellar {
   }
 
   /** 2026/449, as a search finds it. */
-  public static final Search.Match AMENDING =
-      new Search.Match(
+  public static final Searches.Match AMENDING =
+      new Searches.Match(
           new ActIdentifier("32026R0449"),
           new Eli("reg_impl/2026/449"),
           new ResourceType("REG_IMPL"),
@@ -213,11 +213,11 @@ public class OneActCellar {
               + " Implementing Regulation (EU) 2015/1998 as regards certain detailed measures for"
               + " the implementation of the common basic standards on aviation security",
           true,
-          List.of(new Search.Amends(CELEX, ELI)));
+          List.of(new Searches.Amends(CELEX, ELI)));
 
   @Bean
   @Primary
-  Search search() {
+  Searches search() {
     return query -> {
       asked.add("SEARCH " + String.join(" ", query.words()) + " " + query.kind().code());
       return found(query);
@@ -228,14 +228,14 @@ public class OneActCellar {
    * What Cellar finds for {@code query}. On the first page, a search for "security" finds 2015/1998
    * and 2026/449. Any other search finds nothing.
    */
-  public static Search.Found found(Search.Query query) {
+  public static Searches.Found found(Searches.Query query) {
     if (!query.words().contains("security") || query.offset() > 0) {
-      return new Search.Found(List.of(), false);
+      return new Searches.Found(List.of(), false);
     }
     var avsec =
-        new Search.Match(
+        new Searches.Match(
             CELEX, ELI, ACT.type(), ACT.title(Language.ENG).orElseThrow(), true, List.of());
-    return new Search.Found(List.of(avsec, AMENDING), false);
+    return new Searches.Found(List.of(avsec, AMENDING), false);
   }
 
   @Bean

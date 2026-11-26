@@ -1,14 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Found;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -101,10 +99,49 @@ public final class TextOccurrences {
   }
 
   /**
-   * Returns the occurrences that {@code location} is. If {@code around}, a code that finds no
-   * occurrence stops the search at the occurrence found so far.
+   * How far a location goes in a text: the viewer reads its codes from the outermost in, and finds
+   * the occurrence of each code below the occurrence of the code before it. The rules of the
+   * feature "Places" tell what the place is ({@link Places}).
    */
-  Optional<Found> find(Location location, boolean around) {
+  public sealed interface Walk {
+
+    /**
+     * Each code found its occurrence.
+     *
+     * @param eIds the occurrence, or for a range of points each occurrence from the first to the
+     *     last, in document order
+     * @param within whether the location is finer than the occurrence: it ends in a part that the
+     *     text does not number, for example a sentence
+     */
+    record Reached(List<String> eIds, boolean within) implements Walk {
+      public Reached {
+        eIds = List.copyOf(eIds);
+      }
+    }
+
+    /**
+     * A code found no occurrence: the text does not have the place.
+     *
+     * @param at the occurrence found so far. Empty if the first code found none.
+     * @param outer the occurrence that {@code at} is in, if {@code at} is a frame such as a
+     *     chapter. What follows a frame can be beside it. Else null.
+     * @param names the names of the code in an eId. Empty if the viewer does not know the code.
+     * @param number the number that found no occurrence. Null for a code that the viewer does not
+     *     know, and for a range of points.
+     */
+    record Missing(String at, @Nullable String outer, List<String> names, @Nullable String number)
+        implements Walk {
+      public Missing {
+        names = List.copyOf(names);
+      }
+    }
+
+    /** A code found several occurrences, or nothing that a place can be in. */
+    record DeadEnd() implements Walk {}
+  }
+
+  /** Returns how far {@code location} goes in the text. */
+  public Walk walk(Location location) {
     var tokens = location.tokens();
     var at = "";
     // The occurrence in which a frame, such as a chapter, was found. What follows the frame may be
@@ -122,7 +159,7 @@ public final class TextOccurrences {
       }
       var names = Location.NAMES.get(token);
       if (names == null) {
-        return around ? held(at) : Optional.empty();
+        return new Walk.Missing(at, null, List.of(), null);
       }
       if (!numbered || next == null) {
         if (!token.equals("AN")) {
@@ -130,7 +167,7 @@ public final class TextOccurrences {
           continue;
         }
         if (annex == null) {
-          return Optional.empty();
+          return new Walk.DeadEnd();
         }
         at = annex;
         continue;
@@ -138,7 +175,7 @@ public final class TextOccurrences {
       i++;
       var number = Location.number(next);
       if (number.contains("-") && (token.equals("PO") || token.equals("PTA"))) {
-        return range(at, outer, names, number, within, around);
+        return range(at, outer, names, number, within);
       }
       var found = below(at, outer, names, number);
       // a numbered paragraph coded as a point
@@ -162,92 +199,40 @@ public final class TextOccurrences {
         // A subparagraph or a paragraph that our occurrences do not number, for example one of a
         // point.
         within = true;
-      } else if (found.isEmpty() && around) {
-        return holding(at, outer, names, number);
+      } else if (found.isEmpty()) {
+        return new Walk.Missing(at, outer, names, number);
       } else {
-        return Optional.empty();
+        return new Walk.DeadEnd();
       }
     }
-    return at.isEmpty() ? Optional.empty() : Optional.of(new Found(List.of(at), within));
+    return at.isEmpty() ? new Walk.DeadEnd() : new Walk.Reached(List.of(at), within);
   }
 
   /**
-   * Returns each occurrence of a range of points, for example {@code 11.3.2-11.3.5}, below {@code
-   * at}. Returns empty if an end finds no occurrence or several. If {@code around}, and neither end
-   * is there, returns {@code at} as the occurrence that holds the range.
+   * Returns how far a range of points goes, for example {@code 11.3.2-11.3.5}, below {@code at}:
+   * each occurrence from its first point to its last. The text does not have the range if neither
+   * end is there.
    */
-  private Optional<Found> range(
-      String at,
-      @Nullable String outer,
-      List<String> names,
-      String number,
-      boolean within,
-      boolean around) {
+  private Walk range(
+      String at, @Nullable String outer, List<String> names, String number, boolean within) {
     var ends = number.split("-", 2);
     var first = below(at, outer, names, ends[0]);
     var last = below(at, outer, names, ends[1]);
     if (first.size() == 1 && last.size() == 1) {
-      return Optional.of(
-          new Found(
-              eIds.subList(eIds.indexOf(first.getFirst()), eIds.indexOf(last.getFirst()) + 1),
-              within));
+      return new Walk.Reached(
+          eIds.subList(eIds.indexOf(first.getFirst()), eIds.indexOf(last.getFirst()) + 1), within);
     }
-    return around && first.isEmpty() && last.isEmpty() ? held(at) : Optional.empty();
+    return first.isEmpty() && last.isEmpty()
+        ? new Walk.Missing(at, null, List.of(), null)
+        : new Walk.DeadEnd();
   }
 
   /**
-   * Returns the occurrence that holds an occurrence numbered {@code number} that is not below
-   * {@code at}.
-   *
-   * <ul>
-   *   <li>A point numbered 4.1.3.4 is in point 4.1.3, if there is one.
-   *   <li>An occurrence whose number has a letter after it is at the occurrence with the number
-   *       alone. An act inserts Article 18a after Article 18.
-   *   <li>If not, it is in {@code at}.
-   * </ul>
+   * Returns the occurrences that have the names of {@code missing} and the number {@code number},
+   * where the walk stopped.
    */
-  private Optional<Found> holding(
-      String at, @Nullable String outer, List<String> names, String number) {
-    List<String> found = List.of();
-    for (var upper = upper(number); upper != null && found.isEmpty(); upper = upper(upper)) {
-      found = below(at, outer, names, upper);
-    }
-    var alone = withoutLetters(number);
-    if (found.isEmpty() && !alone.equals(number)) {
-      found = below(at, outer, names, alone);
-    }
-    return held(found.size() == 1 ? found.getFirst() : at);
-  }
-
-  /**
-   * Returns {@code number} without the letters after it. For example, 18 for 18a. Returns {@code
-   * number} as it is if it does not start with a digit, or if it has no letter after it.
-   */
-  private static String withoutLetters(String number) {
-    var end = number.length();
-    while (end > 0 && Character.isLetter(number.charAt(end - 1))) {
-      end--;
-    }
-    return end > 0 && isDigits(number.substring(0, end)) ? number.substring(0, end) : number;
-  }
-
-  /**
-   * Returns {@code occurrence} as the occurrence that holds a location, or empty if it is no
-   * occurrence.
-   */
-  private static Optional<Found> held(String occurrence) {
-    return occurrence.isEmpty()
-        ? Optional.empty()
-        : Optional.of(new Found(List.of(occurrence), true));
-  }
-
-  /**
-   * Returns the number of the point that holds the point numbered {@code number}, or null if the
-   * number has no dot. For example, 4.1.3 for 4.1.3.4.
-   */
-  private static @Nullable String upper(String number) {
-    var dot = number.lastIndexOf('.');
-    return dot > 0 ? number.substring(0, dot) : null;
+  public List<String> numbered(Walk.Missing missing, String number) {
+    return below(missing.at(), missing.outer(), missing.names(), number);
   }
 
   /**

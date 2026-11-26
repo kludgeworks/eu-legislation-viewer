@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ class HomeViewTest {
   void splitsATitleAfterItsDateWhoseSpacesDontBreak() {
     // This is the title as Cellar has it, with a no-break space between the day and the month.
     var match =
-        new Search.Match(
+        new Searches.Match(
             new ActIdentifier("32021D2147"),
             new Eli("dec/2021/2147"),
             new ResourceType("DEC"),
@@ -29,10 +29,10 @@ class HomeViewTest {
         Objects.requireNonNull(
             HomeView.found(
                     "aviation security",
-                    Search.Kind.ALL,
+                    Searches.Kind.ALL,
                     1,
                     20,
-                    new Search.Found(List.of(match), false))
+                    new Searches.Found(List.of(match), false))
                 .results());
 
     var row = results.rows().getFirst();

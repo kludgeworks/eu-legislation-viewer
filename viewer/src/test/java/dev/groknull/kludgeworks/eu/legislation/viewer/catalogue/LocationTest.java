@@ -94,7 +94,8 @@ class LocationTest {
 
   @Test
   void findsNoneForACodeThatItDoesNotKnow() {
-    // The rule "no-guess" (catalogue/places.feature) has the real examples.
+    // The rule "a-place-is-the-occurrences-it-names" (catalogue/places.feature) has the real
+    // examples.
     assertThat(in("DU 1", EMIR)).isEmpty();
   }
 

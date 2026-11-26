@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedActs;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -67,10 +67,10 @@ class HomeController {
   private static final Duration REMEMBERED = Duration.ofHours(2);
 
   private final NamedActs named;
-  private final Search search;
+  private final Searches search;
   private final Templates templates;
 
-  HomeController(NamedActs named, Search search, Templates templates) {
+  HomeController(NamedActs named, Searches search, Templates templates) {
     this.named = named;
     this.search = search;
     this.templates = templates;
@@ -87,7 +87,7 @@ class HomeController {
       @RequestParam(defaultValue = "all") String type,
       @RequestParam(defaultValue = "1") int page,
       Frame frame) {
-    var kind = Search.Kind.of(type).orElseThrow(Requests::notFound);
+    var kind = Searches.Kind.of(type).orElseThrow(Requests::notFound);
     if (page < 1) {
       throw Requests.notFound();
     }
@@ -100,7 +100,7 @@ class HomeController {
     if (act.isPresent()) {
       return show(act.get(), words, frame);
     }
-    var query = Search.Query.of(words, kind, (page - 1) * PAGE, PAGE);
+    var query = Searches.Query.of(words, kind, (page - 1) * PAGE, PAGE);
     if (query.isEmpty()) {
       LOG.info("Searched for “{}”: no words to search by", typed(words));
       return page(frame, "Amendment viewer", HomeView.none(words, "Type words of an act's title."));
@@ -120,7 +120,7 @@ class HomeController {
                 Frame.SEARCH,
                 "q="
                     + URLEncoder.encode(words, StandardCharsets.UTF_8)
-                    + (kind == Search.Kind.ALL ? "" : "&type=" + kind.code()))
+                    + (kind == Searches.Kind.ALL ? "" : "&type=" + kind.code()))
             .path("/")
             .maxAge(REMEMBERED)
             .httpOnly(true)
@@ -154,7 +154,7 @@ class HomeController {
         .map(act -> show(act, words, frame))
         .orElseGet(() ->
             ResponseEntity.status(HttpStatus.SEE_OTHER)
-                .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
+                .location(URI.create(Links.home(words, Searches.Kind.ALL, 1)))
                 .build());
   }
 
@@ -242,7 +242,8 @@ class HomeController {
   }
 
   private static HomeView.Unanswered unanswered(String words, NamedAct.Name name) {
-    return new HomeView.Unanswered(Links.home(words, Search.Kind.ALL, 1), name.eurLex().toString());
+    return new HomeView.Unanswered(
+        Links.home(words, Searches.Kind.ALL, 1), name.eurLex().toString());
   }
 
   /** Returns the line that says that no act has {@code words}, a CELEX number or an ELI. */

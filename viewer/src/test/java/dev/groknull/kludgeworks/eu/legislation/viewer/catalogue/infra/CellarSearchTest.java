@@ -6,9 +6,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Amends;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Found;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Match;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches.Amends;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches.Found;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches.Match;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 

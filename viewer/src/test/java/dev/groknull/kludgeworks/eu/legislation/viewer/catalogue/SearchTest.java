@@ -3,8 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Query;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches.Query;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;

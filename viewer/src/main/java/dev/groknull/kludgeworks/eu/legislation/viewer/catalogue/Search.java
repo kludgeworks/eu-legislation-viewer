@@ -1,157 +1,71 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
+import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
-import java.util.regex.MatchResult;
-import java.util.regex.Pattern;
-import org.jmolecules.ddd.annotation.Repository;
-import org.jmolecules.ddd.annotation.ValueObject;
-import org.jspecify.annotations.Nullable;
 
 /**
- * Acts by the words of their title. Search uses the local English index after its first successful
- * build. The closest match comes first. It finds only regulations, directives and decisions. These
- * are the acts whose versions, or whose changes, a reader compares.
+ * The feature "Search": one function for each of its rules. A rule reads facts and gives one new
+ * fact. It does not call another rule: {@link Citation#read} and the search of the catalogue
+ * ({@link Searches#identified}) apply the rules.
  */
-@Repository
-public interface Search {
-  /** Returns the one act identified by a curated name or unambiguous natural number. */
-  default Optional<ActIdentifier> identified(String typed) {
-    return Optional.empty();
-  }
+public final class Search {
 
-  /** Returns a page of the acts that match {@code query}. */
-  Found matching(Query query);
+  private Search() {}
 
   /**
-   * What kind of act a search is for, as the link of its filter names it. For example, {@code
-   * ?type=regulation}.
-   */
-  enum Kind {
-    ALL("all", "All"),
-    REGULATION("regulation", "Regulations"),
-    DIRECTIVE("directive", "Directives"),
-    DECISION("decision", "Decisions"),
-    AMENDING("amending", "Amending acts");
-
-    private final String code;
-    private final String label;
-
-    Kind(String code, String label) {
-      this.code = code;
-      this.label = label;
-    }
-
-    public String code() {
-      return code;
-    }
-
-    public String label() {
-      return label;
-    }
-
-    /** Returns the kind with this code, or empty if there is no such kind. */
-    public static Optional<Kind> of(String code) {
-      for (var kind : values()) {
-        if (kind.code.equals(code)) {
-          return Optional.of(kind);
-        }
-      }
-      return Optional.empty();
-    }
-  }
-
-  /**
-   * A search.
+   * A citation goes to an act only if it names one act. The acts that a citation can name are the
+   * acts whose year and number are its two numbers, in either order. Of these acts, the citation
+   * names only the acts of its kind and its subtype, if the reader typed them. If it names exactly
+   * one act, the search goes to that act. If it names two or more acts, or none, the search does
+   * not guess: the reader gets the list.
    *
-   * @param words the words of the title, as a reader typed them, in lower case. Each word has only
-   *     letters and digits.
-   * @param kind the kind of act
-   * @param offset how many matches come before the page
-   * @param typed the trimmed original input, including punctuation
-   * @param size the most matches that the page has
+   * <p>For example, "185/2010" can name Regulation 185/2010 and Decision 2010/185, so the reader
+   * gets the list. "Decision 2010/185/EU" names one act.
+   *
+   * @param citation the citation that the reader typed
+   * @param candidates the acts whose year and number are the two numbers of the citation
+   * @return the one act that the citation names. Empty if it names none, or more than one.
    */
-  @ValueObject
-  record Query(List<String> words, Kind kind, int offset, int size, String typed) {
-    public Query(List<String> words, Kind kind, int offset, int size) {
-      this(words, kind, offset, size, String.join(" ", words));
-    }
-
-    /** Matches a word of letters and digits, in any script. */
-    private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]+");
-
-    /** The most words that a search takes. Words after them are left out. */
-    public static final int MOST_WORDS = 10;
-
-    public Query {
-      words = List.copyOf(words);
-      if (words.isEmpty() || words.stream().anyMatch(w -> !WORD.matcher(w).matches())) {
-        throw new IllegalArgumentException("Not a search's words: " + words);
-      }
-      if (offset < 0 || size < 1) {
-        throw new IllegalArgumentException("Not a page: " + offset + ", " + size);
-      }
-    }
-
-    /**
-     * Returns the search for the words in {@code text}. What is between the words, such as
-     * punctuation or a hyphen, is left out. Returns empty if the text has no words.
-     */
-    public static Optional<Query> of(String text, Kind kind, int offset, int size) {
-      var lower = text.strip().toLowerCase(Locale.ROOT);
-      var tokens = WORD.matcher(lower).results().limit(MOST_WORDS).toList();
-      if (tokens.isEmpty()) {
-        return Optional.empty();
-      }
-      var words = tokens.stream().map(MatchResult::group).toList();
-      return Optional.of(new Query(words, kind, offset, size, text.strip()));
-    }
+  @BusinessRule(group = RuleGroup.SEARCH, name = "a-citation-goes-to-one-act")
+  public static Optional<ActIdentifier> aCitationGoesToOneAct(
+      Citation citation, List<Citation.Candidate> candidates) {
+    var named =
+        candidates.stream()
+            .filter(each ->
+                citation.kind().isEmpty()
+                    || each.act().celex().substring(5, 6).equals(citation.kind()))
+            .filter(each ->
+                citation.subtype().isEmpty()
+                    || each.type() != null && each.type().code().endsWith("_" + citation.subtype()))
+            .map(Citation.Candidate::act)
+            .distinct()
+            .toList();
+    return named.size() == 1 ? Optional.of(named.getFirst()) : Optional.empty();
   }
 
   /**
-   * A page of matches.
+   * An act from before 2000 can cite its year with two digits, as Directive 95/46/EC does. The
+   * first number is the year 19xx if these conditions are true:
    *
-   * @param acts the acts, the closest match first
-   * @param more whether there are more matches after them
+   * <ul>
+   *   <li>The citation names the kind of act.
+   *   <li>The first number has two digits, and the second number has fewer than four digits.
+   *   <li>The first number is 50 or more.
+   * </ul>
+   *
+   * @param namesTheKind whether the citation names the kind of act
+   * @param first the first number, as the reader typed it
+   * @param second the second number, as the reader typed it
+   * @return the first number: the year 19xx, or the number as the reader typed it
    */
-  @ValueObject
-  record Found(List<Match> acts, boolean more) {
-    public Found {
-      acts = List.copyOf(acts);
-    }
+  @BusinessRule(group = RuleGroup.SEARCH, name = "a-year-of-two-digits")
+  public static int aYearOfTwoDigits(boolean namesTheKind, String first, String second) {
+    var number = Integer.parseInt(first);
+    return namesTheKind && first.length() == 2 && second.length() < 4 && number >= 50
+        ? number + 1900
+        : number;
   }
-
-  /**
-   * An act matching a search.
-   *
-   * @param id its CELEX
-   * @param eli its ELI, if Cellar has one
-   * @param type its resource type, if Cellar has one
-   * @param title its English title
-   * @param inForce whether it is in force
-   * @param amends the acts it amends, or an empty list for an act that amends none
-   */
-  @ValueObject
-  record Match(
-      ActIdentifier id,
-      @Nullable Eli eli,
-      @Nullable ResourceType type,
-      String title,
-      boolean inForce,
-      List<Amends> amends) {
-    public Match {
-      amends = List.copyOf(amends);
-    }
-  }
-
-  /**
-   * An act a match amends.
-   *
-   * @param id its CELEX
-   * @param eli its ELI, if Cellar has one
-   */
-  @ValueObject
-  record Amends(ActIdentifier id, @Nullable Eli eli) {}
 }

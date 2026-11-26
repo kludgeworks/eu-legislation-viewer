@@ -7,7 +7,7 @@ import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.NamedActService;
 import java.util.Objects;
 import java.util.Optional;
@@ -38,7 +38,7 @@ class HomeControllerTests {
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
-  @MockitoBean Search search;
+  @MockitoBean Searches search;
 
   @BeforeEach
   void cellar() {

@@ -30,6 +30,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Citation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Routines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.CatalogueSearchAmendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
@@ -61,7 +62,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.support.TransactionOperations;
 
 @Component
-class PostgresSearch implements Search {
+class PostgresSearch implements Searches {
   private static final Logger LOG = LoggerFactory.getLogger(PostgresSearch.class);
 
   /**
@@ -112,7 +113,7 @@ class PostgresSearch implements Search {
 
   /**
    * Returns the one act that {@code citation} names, if it names exactly one: of the acts whose
-   * year and number are its two numbers, in either order ({@link Citation#names}).
+   * year and number are its two numbers, in either order ({@link Search#aCitationGoesToOneAct}).
    */
   private Optional<ActIdentifier> identify(Citation citation) {
     var work = CATALOGUE_SEARCH_WORK;
@@ -129,7 +130,7 @@ class PostgresSearch implements Search {
             .fetch(row ->
                 new Citation.Candidate(
                     row.value1(), row.value2() == null ? null : ResourceType.ofUri(row.value2())));
-    return citation.names(candidates);
+    return Search.aCitationGoesToOneAct(citation, candidates);
   }
 
   @Override
@@ -295,7 +296,7 @@ class PostgresSearch implements Search {
 
   /** Returns the condition that an act of {@code celex} is of {@code kind}. */
   private static Condition kind(
-      Search.Kind kind, Field<ActIdentifier> celex, CatalogueSearchAmendment amendment) {
+      Searches.Kind kind, Field<ActIdentifier> celex, CatalogueSearchAmendment amendment) {
     return switch (kind) {
       case ALL -> noCondition();
       case REGULATION -> sector(celex).eq("R");
@@ -313,7 +314,7 @@ class PostgresSearch implements Search {
   private static String terms(Query query) {
     // Preserve slashes inside citations, discarding punctuation outside the first ten words.
     var lower = query.typed().toLowerCase(Locale.ROOT);
-    var words = SEARCH_WORD.matcher(lower).results().limit(Search.Query.MOST_WORDS).toList();
+    var words = SEARCH_WORD.matcher(lower).results().limit(Searches.Query.MOST_WORDS).toList();
     if (words.isEmpty()) return "";
     return lower
         .substring(words.getFirst().start(), words.getLast().end())

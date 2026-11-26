@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URLEncoder;
@@ -176,10 +176,10 @@ public final class Links {
    * /?q=aviation+security&type=regulation&page=2}. The address has no {@code type} parameter for
    * all kinds, and no {@code page} parameter for the first page.
    */
-  public static String home(String words, Search.Kind kind, int page) {
+  public static String home(String words, Searches.Kind kind, int page) {
     return "/?q="
         + URLEncoder.encode(words, StandardCharsets.UTF_8)
-        + (kind == Search.Kind.ALL ? "" : "&type=" + kind.code())
+        + (kind == Searches.Kind.ALL ? "" : "&type=" + kind.code())
         + (page == 1 ? "" : "&page=" + page);
   }
 }

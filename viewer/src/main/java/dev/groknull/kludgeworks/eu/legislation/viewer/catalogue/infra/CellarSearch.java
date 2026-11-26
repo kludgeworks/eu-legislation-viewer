@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
  * with the query {@code search.rq} kept next to this class. It asks for one page of acts and one
  * more act. The extra act tells whether there are more acts.
  */
-class CellarSearch implements Search {
+class CellarSearch implements Searches {
   private static final Logger LOG = LoggerFactory.getLogger(CellarSearch.class);
   private static final String SEARCH = Sparql.template(CellarSearch.class, "search.rq");
 

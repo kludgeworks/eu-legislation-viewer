@@ -21,7 +21,7 @@ public interface NamedActs {
    * @param kind the kind of act that the search is for. Only a search of all kinds takes an
    *     identifier of the index for the name of an act.
    */
-  Optional<NamedAct> searched(String words, Search.Kind kind);
+  Optional<NamedAct> searched(String words, Searches.Kind kind);
 
   /**
    * Returns what the lookup of {@code words} found. It waits for the lookup. The answer is {@link

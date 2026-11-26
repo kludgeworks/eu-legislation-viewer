@@ -6,10 +6,14 @@ Feature: Places
   The changes are those to the English text. The texts are those that the converter has a sample
   of.
 
+  @revision-2
   Rule: a-place-is-the-occurrences-it-names · A place is the occurrences of the text that it names
     A place is the occurrence of the text that it names. A part of an occurrence that the text does
     not number, such as a subparagraph or a sentence, is in the occurrence that holds it. A range of
     points is each occurrence from the first point to the last.
+
+    The viewer does not guess. A place that finds no occurrence, or that finds several occurrences
+    where it names one, finds none.
 
     Background:
       Given the act 2015/1998 as Cellar has it
@@ -23,14 +27,6 @@ Feature: Places
 
     Example: A range of points
       Then in the text of 29 February 2016, the change of 2025/920 at annex chapter 12 point 12.4.2.3-12.4.2.5 is each occurrence from point 12.4.2.3 to point 12.4.2.5
-
-  Rule: no-guess · No guess
-    A place that finds no occurrence, or that finds several occurrences where it names one, finds
-    none.
-
-    Background:
-      Given the act 2015/1998 as Cellar has it
-      And the viewer builds its texts where the converter has a sample
 
     Example: A point that the text does not have yet
       Then in the text of 29 February 2016, the change of 2026/449 at annex point 6.8.1.8 is no occurrence

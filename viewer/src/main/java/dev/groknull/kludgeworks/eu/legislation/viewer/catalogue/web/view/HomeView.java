@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -83,9 +83,9 @@ public record HomeView(
    * 1. {@code found} is what Cellar found.
    */
   public static HomeView found(
-      String words, Search.Kind kind, int page, int size, Search.Found found) {
+      String words, Searches.Kind kind, int page, int size, Searches.Found found) {
     var filters =
-        Arrays.stream(Search.Kind.values())
+        Arrays.stream(Searches.Kind.values())
             .map(each -> new Filter(each.label(), Links.home(words, each, 1), each == kind))
             .toList();
     var rows = found.acts().stream().map(HomeView::row).toList();
@@ -106,7 +106,7 @@ public record HomeView(
         null);
   }
 
-  private static Row row(Search.Match match) {
+  private static Row row(Searches.Match match) {
     var title = Wording.DATED.matcher(match.title());
     var head = title.matches() ? title.group(1) : match.title();
     var rest = title.matches() ? title.group(2) : null;
@@ -135,7 +135,7 @@ public record HomeView(
    *   <li>If the resource type is not known, the name comes from its CELEX.
    * </ul>
    */
-  private static String kind(Search.Match match) {
+  private static String kind(Searches.Match match) {
     if (!match.amends().isEmpty()) {
       return "Amending act";
     }

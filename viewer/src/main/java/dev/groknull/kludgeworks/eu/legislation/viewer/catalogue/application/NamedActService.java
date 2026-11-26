@@ -8,7 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedActs;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Searches;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.Locale;
@@ -60,16 +60,16 @@ public class NamedActService implements NamedActs {
 
   private final Acts acts;
   private final Lookups lookups;
-  private final Search search;
+  private final Searches search;
 
-  public NamedActService(Acts acts, Lookups lookups, Search search) {
+  public NamedActService(Acts acts, Lookups lookups, Searches search) {
     this.acts = acts;
     this.lookups = lookups;
     this.search = search;
   }
 
   @Override
-  public Optional<NamedAct> searched(String words, Search.Kind kind) {
+  public Optional<NamedAct> searched(String words, Searches.Kind kind) {
     var started = System.nanoTime();
     return named(words, kind)
         .map(named -> {
@@ -88,7 +88,7 @@ public class NamedActService implements NamedActs {
   @Override
   public Optional<NamedAct> lookedUp(String words) {
     var started = System.nanoTime();
-    return named(words, Search.Kind.ALL)
+    return named(words, Searches.Kind.ALL)
         .map(named -> {
           var act = named.catalogued(acts);
           if (act.isEmpty()) {
@@ -114,7 +114,7 @@ public class NamedActService implements NamedActs {
 
   @Override
   public Optional<Running> lookingUp(String words) {
-    return named(words, Search.Kind.ALL)
+    return named(words, Searches.Kind.ALL)
         .map(named ->
             new Running(named.name(), named.lookUp(lookups).thenApply(Optional::isPresent)));
   }
@@ -141,9 +141,9 @@ public class NamedActService implements NamedActs {
   }
 
   /** Returns what names one act in {@code words}, or empty if they are title words. */
-  private Optional<Named> named(String words, Search.Kind kind) {
+  private Optional<Named> named(String words, Searches.Kind kind) {
     var named = Named.of(words);
-    if (named.isEmpty() && kind == Search.Kind.ALL) {
+    if (named.isEmpty() && kind == Searches.Kind.ALL) {
       named = search.identified(words).map(id -> Named.of("indexed identifier", id));
     }
     return named;
