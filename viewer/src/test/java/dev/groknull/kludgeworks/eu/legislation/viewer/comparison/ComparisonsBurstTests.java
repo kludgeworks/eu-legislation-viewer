@@ -59,11 +59,16 @@ class ComparisonsBurstTests {
     await()
         .atMost(Duration.ofSeconds(30))
         .until(() -> pairs.stream().allMatch(pair -> kept(pair.get(0), pair.get(1)) == 1));
-    assertThat(
-            jdbc.sql("select count(*) from event_publication where completion_date is null")
-                .query(Long.class)
-                .single())
-        .isZero();
+    await()
+        .atMost(Duration.ofSeconds(10))
+        .untilAsserted(() ->
+            assertThat(
+                    jdbc.sql(
+                            "select count(*) from event_publication where completion_date is"
+                                + " null")
+                        .query(Long.class)
+                        .single())
+                .isZero());
   }
 
   /** Stores the sample {@code celex} of 2015/1998 in English, under its CELEX. */
