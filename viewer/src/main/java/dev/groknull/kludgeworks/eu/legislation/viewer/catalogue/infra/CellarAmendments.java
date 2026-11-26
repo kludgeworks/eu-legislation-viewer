@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Places;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
@@ -23,10 +23,10 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Reads the amendments of an act from the answer to {@code amendments.rq}. For each amended
- * location it reads its place in words, as EUR-Lex names it ({@link Place#named}), the role, the
- * days and the languages that the amendment is limited to. The role is a code from the authority
- * table {@code fd_375}. It keeps a role it does not know as {@code OTHER} and logs a warning. A
- * placeholder for a day becomes no day.
+ * location it reads its place in words, as EUR-Lex names it ({@link
+ * Places#aPageNamesAPlaceAsEurLexDoes}), the role, the days and the languages that the amendment is
+ * limited to. The role is a code from the authority table {@code fd_375}. It keeps a role it does
+ * not know as {@code OTHER} and logs a warning. A placeholder for a day becomes no day.
  */
 final class CellarAmendments {
   private static final Logger LOG = LoggerFactory.getLogger(CellarAmendments.class);
@@ -60,7 +60,8 @@ final class CellarAmendments {
           new Amendment(
               new ActIdentifier(subject),
               Location.parse(row.get("location")),
-              Place.named(row.get("location"), labels(row.find("labels").orElse(""))),
+              Places.aPageNamesAPlaceAsEurLexDoes(
+                  row.get("location"), labels(row.find("labels").orElse(""))),
               role.orElse(Role.OTHER),
               row.find("from").map(CellarDates::day).orElse(null),
               row.find("until").map(CellarDates::day).orElse(null),

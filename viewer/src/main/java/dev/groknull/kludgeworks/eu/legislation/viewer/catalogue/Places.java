@@ -6,18 +6,46 @@ import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Found;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextOccurrences.Walk;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The feature "Places": one function for each of its rules. A rule reads facts and gives one new
- * fact. It does not call another rule: {@link Location} applies the rules. The facts are how far
- * the codes of a location go in a text ({@link TextOccurrences#walk}). The rule
- * a-page-names-a-place-as-eur-lex-does is {@link Place#named}.
+ * fact. It does not call another rule: {@link Location} applies the rules that find a place. The
+ * facts are how far the codes of a location go in a text ({@link TextOccurrences#walk}), and the
+ * words of Cellar for each code.
  */
 public final class Places {
 
+  /**
+   * A code as Cellar writes it in a location, with the URI of its concept in the table of
+   * subdivisions. For example, {@code {AR|http://…/fd_370/AR}}.
+   */
+  private static final Pattern CODE = Pattern.compile("\\{([^|}]*)\\|([^}]*)}");
+
   private Places() {}
+
+  /**
+   * A page names a place as EUR-Lex names it: each code in its words in Cellar's table of
+   * subdivisions, from the outermost in, and each other word as Cellar writes it. A code without
+   * words in {@code labels} keeps its code.
+   *
+   * @param location the location as Cellar writes it, with the URIs of its codes. For example,
+   *     {@code {AN|…/fd_370/AN} {PO|…/fd_370/PO} 1.3.1.1 {PTA|…/fd_370/PTA} (g)}.
+   * @param labels the English words of each code of the location, by the URI of its concept, as
+   *     Cellar gives them. For example, "point" for {@code …/fd_370/PTA}.
+   */
+  @BusinessRule(group = RuleGroup.PLACES, name = "a-page-names-a-place-as-eur-lex-does")
+  public static Place aPageNamesAPlaceAsEurLexDoes(String location, Map<String, String> labels) {
+    var words =
+        CODE.matcher(location)
+            .replaceAll(code ->
+                Matcher.quoteReplacement(labels.getOrDefault(code.group(2), code.group(1))));
+    return new Place(words.strip().replaceAll("\\s+", " "));
+  }
 
   /**
    * A place is the occurrence of the text that it names. A part of an occurrence that the text does

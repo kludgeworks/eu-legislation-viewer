@@ -14,10 +14,10 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * How the rules and the tests write a place: in words, as EUR-Lex names it ({@link Place#named}).
- * The words of each code are Cellar's, from its table of subdivisions as recorded in {@code
- * /acts/subdivisions-fd_370.json}. For example, "annex point 1.3.1.1 point (g)" is {@code AN PO
- * 1.3.1.1 PTA (g)}.
+ * How the rules and the tests write a place: in words, as EUR-Lex names it ({@link
+ * Places#aPageNamesAPlaceAsEurLexDoes}). The words of each code are Cellar's, from its table of
+ * subdivisions as recorded in {@code /acts/subdivisions-fd_370.json}. For example, "annex point
+ * 1.3.1.1 point (g)" is {@code AN PO 1.3.1.1 PTA (g)}.
  */
 public final class PlaceWords {
 
@@ -39,9 +39,9 @@ public final class PlaceWords {
   private PlaceWords() {}
 
   /**
-   * Returns the place that a location of only codes and numbers names, as {@link Place#named} names
-   * it. For example, "article 114 paragraph 1 unnumbered paragraph 1" for {@code AR 114 PA 1 ALN
-   * 1}.
+   * Returns the place that a location of only codes and numbers names, as {@link
+   * Places#aPageNamesAPlaceAsEurLexDoes} names it. For example, "article 114 paragraph 1 unnumbered
+   * paragraph 1" for {@code AR 114 PA 1 ALN 1}.
    */
   public static Place of(String code) {
     var words = new ArrayList<String>();

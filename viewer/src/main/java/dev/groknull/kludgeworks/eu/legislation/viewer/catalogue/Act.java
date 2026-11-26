@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URI;
 import java.time.LocalDate;
@@ -182,30 +180,17 @@ public record Act(
   }
 
   /**
-   * Returns Cellar's amendments of this act's provisions, placed at the occurrences of two texts.
+   * Returns Cellar's amendments of this act's provisions that count for two texts, placed at the
+   * occurrences of the texts. The rule {@link WhoMadeAChange#cellarsAmendmentsThatCount} tells
+   * which amendments count, and at which occurrences each is.
    *
-   * <p>An amendment is included if its act is integrated between {@code from} and {@code to}, and
-   * if it changes the text in {@code language}. An amendment that applies only after {@code to} is
-   * left out. An amendment that applies before {@code from} is kept. A version can lag the law by
-   * weeks, so its date does not tell what the version already contains.
-   *
-   * <ul>
-   *   <li>An addition or a replacement is placed at an occurrence of the later text. {@code later}
-   *       holds the eIds of its occurrences, in document order.
-   *   <li>A deletion or a repeal is placed at an occurrence of the earlier text, or else at one of
-   *       the later text. {@code earlier} holds the eIds of the earlier text's occurrences, in
-   *       document order. The later text has the place of a deletion where it keeps the deleted
-   *       occurrence, and the earlier text does not have it where it came before the occurrence.
-   *       For example, 2021/255 repeals point 6.8.5.5 of 2015/1998, which came in after the text of
-   *       15 November 2015: in the comparison of that text with the text of 15 March 2021, the
-   *       repeal is at the later text's kept deletion. The two lists hold kept deletions too.
-   *   <li>An amendment whose location is in neither text is counted as unplaced.
-   * </ul>
+   * @param from the version of the earlier text
+   * @param to the version of the later text
+   * @param earlier the eIds of the earlier text's occurrences, in document order, with its kept
+   *     deletions
+   * @param later the same for the later text
+   * @param language the language of the two texts
    */
-  @BusinessRule(
-      group = RuleGroup.WHO_MADE_A_CHANGE,
-      name = "cellars-amendments-that-count",
-      revision = 2)
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
@@ -214,23 +199,21 @@ public record Act(
     var byOccurrence = new LinkedHashMap<String, List<Amendment>>();
     var unplaced = 0;
     for (var amendment : amendments) {
-      var applies = amendment.from();
-      // An amendment that applies only after the later version is not in its text. It is a later
-      // part of the act.
-      if (!between.contains(amendment.act())
-          || !amendment.changes(language)
-          || (applies != null && applies.isAfter(to.date()))) {
+      var counts =
+          WhoMadeAChange.cellarsAmendmentsThatCount(
+              amendment,
+              between.contains(amendment.act()),
+              language,
+              to.date(),
+              amendment.location().in(before).orElse(null),
+              amendment.location().in(after).orElse(null));
+      if (counts.isEmpty()) {
         continue;
       }
-      var found =
-          amendment.role().removes()
-              ? amendment.location().in(before).or(() -> amendment.location().in(after))
-              : amendment.location().in(after);
-      if (found.isEmpty()) {
+      if (counts.get().isEmpty()) {
         unplaced++;
-        continue;
       }
-      for (var eId : found.get().eIds()) {
+      for (var eId : counts.get()) {
         byOccurrence.computeIfAbsent(eId, occurrence -> new ArrayList<>()).add(amendment);
       }
     }
