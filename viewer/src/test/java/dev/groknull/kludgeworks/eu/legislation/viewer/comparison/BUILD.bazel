@@ -155,7 +155,6 @@ java_test_suite(
 
 # The glue of the rules: the steps, and the domain's types for them
 RULES_GLUE = [
-    "model/AmendedSteps.java",
     "model/ApplicabilitySteps.java",
     "model/AttributionSteps.java",
     "model/Comparing.java",

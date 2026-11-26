@@ -1,11 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import java.util.Locale;
 import org.jmolecules.ddd.annotation.ValueObject;
 
@@ -42,72 +37,5 @@ public enum Modification {
    */
   public static Modification of(String word) {
     return valueOf(word.toUpperCase(Locale.ROOT));
-  }
-
-  /**
-   * Returns the modification of one step of {@code kind} of difference, which {@code act} made.
-   * {@code tagged} is the modification that the act's tag, or Cellar, gives.
-   *
-   * <ul>
-   *   <li>A corrigendum corrected it.
-   *   <li>The first step of an inserted occurrence inserted it. The last step of a deleted
-   *       occurrence deleted it.
-   *   <li>Another step replaced or renumbered it, as the tag says. Else it amended it: words were
-   *       inserted in, or deleted from, an occurrence that is still there.
-   * </ul>
-   */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "modification-of-each-step")
-  public static Modification ofStep(
-      Kind kind, boolean first, boolean last, ActIdentifier act, Modification tagged) {
-    if (act.corrigendum()) {
-      return CORRECTED;
-    }
-    if (first && kind == Kind.INSERTED) {
-      return INSERTED;
-    }
-    if (last && kind == Kind.DELETED) {
-      return DELETED;
-    }
-    return tagged == REPLACED || tagged == RENUMBERED ? tagged : AMENDED;
-  }
-
-  /**
-   * Returns the modification of {@code kind} of difference where no act is known to have made it:
-   * inserted, deleted, or amended for an occurrence in both texts whose wording changed.
-   */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "modification-without-an-act")
-  public static Modification of(Kind kind) {
-    return switch (kind) {
-      case INSERTED -> INSERTED;
-      case DELETED -> DELETED;
-      case CHANGED -> AMENDED;
-    };
-  }
-
-  /**
-   * Returns the modification that Cellar's role of an amendment gives: a replacement replaced, an
-   * addition inserted, a deletion or a repeal deleted, an amendment amended.
-   *
-   * <p>A role that changes when the words apply, not the words (an extension, a suspension, a
-   * deferral), or that Cellar does not type, gives no modification of the words. Such an amendment
-   * never reaches a sidenote: only the amendments that change the words count ({@code
-   * Act.amended}).
-   *
-   * @throws IllegalArgumentException for a role that does not change the words
-   */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "modification-from-cellar")
-  public static Modification of(Amendment.Role role) {
-    return switch (role) {
-      case REPLACEMENT -> REPLACED;
-      case DELETION, REPEAL -> DELETED;
-      case AMENDMENT -> AMENDED;
-      case ADDITION -> INSERTED;
-      case EXTENSION, SUSPENSION, DEFERRAL, OTHER ->
-          throw new IllegalArgumentException(
-              "A "
-                  + role
-                  + " does not change the words, so it has no modification: only an amendment that"
-                  + " changes the words reaches a sidenote");
-    };
   }
 }

@@ -60,7 +60,7 @@ public interface ComparedTexts {
    * Returns the differences at the occurrences {@code eIds} of the comparison. A place can have no
    * difference of its own: a chapter that the annex keeps flat. If the comparison is limited to one
    * act, the differences are then those that the act made in the place ({@link
-   * Attribution#madeIn}). Empty if either text is not built.
+   * TheChangesOfOneAct#chapterTheAnnexKeepsFlat}). Empty if either text is not built.
    */
   Optional<AtAPlace> at(Ends ends, List<String> eIds);
 

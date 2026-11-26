@@ -45,7 +45,8 @@ public class TagsSteps {
   public void tagsOfTheNeighbour(Place place) {
     var eId = Comparing.eId(place, text());
     var neighbour =
-        Neighbours.of(Objects.requireNonNull(version, "no consolidated version given"), Set.of(eId))
+        NeighbourFinder.of(
+                Objects.requireNonNull(version, "no consolidated version given"), Set.of(eId))
             .get(eId);
     tags = Objects.requireNonNull(neighbour, place.words()).tags();
   }

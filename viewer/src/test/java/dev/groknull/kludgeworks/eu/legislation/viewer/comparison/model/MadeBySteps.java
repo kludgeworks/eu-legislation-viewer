@@ -9,11 +9,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Appearance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Given;
@@ -70,7 +70,7 @@ public class MadeBySteps {
                 Outlines.of(comparing.earlier()).eIds(),
                 Outlines.of(comparing.later()).eIds(),
                 Language.ENG);
-    amendments = Attribution.amendmentsOf(amended, found);
+    amendments = WhoMadeAChange.amendmentsAroundAndInside(amended, found);
     removals = Attribution.removalsOf(amended, found);
   }
 
@@ -127,7 +127,7 @@ public class MadeBySteps {
   public void whereItAppears() {
     var eId = Objects.requireNonNull(difference, "no difference given").eId();
     appeared =
-        Appearance.of(
+        WhoMadeAChange.firstTextWithTheChange(
                 comparing.act().timeline(),
                 comparing.from(),
                 comparing.to(),
@@ -140,9 +140,9 @@ public class MadeBySteps {
   public void noActIsNamed() {
     assertThat(attribution.steps()).isEmpty();
     assertThat(
-            Attribution.unnamed(
+            WhoMadeAChange.noActNamed(
                 Inclusions.listed(comparing.act().timeline()), comparing.from(), comparing.to()))
-        .isEqualTo(Attribution.NONE);
+        .isEmpty();
   }
 
   @Then("it first appears in the text of {day}, which consolidates {acts}")

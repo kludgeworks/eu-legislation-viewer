@@ -5,11 +5,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ConsecutiveTexts
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Appearance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -91,7 +91,7 @@ class ComparisonService implements Comparisons {
   @Override
   public Map<String, Version> appeared(
       Timeline timeline, Map<Version, Text> texts, Version from, Version to, Set<String> eIds) {
-    return Appearance.of(
+    return WhoMadeAChange.firstTextWithTheChange(
         timeline,
         from,
         to,

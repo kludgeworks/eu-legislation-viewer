@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -29,65 +29,59 @@ final class Tags {
   private Tags() {}
 
   /**
-   * Returns the tags on the own content of {@code occurrence}, in {@code occurrences}. If it has
-   * none, returns the tags of the nearest enclosing occurrence that has some. Those tags name that
-   * enclosing occurrence in {@code in}.
+   * Returns the tags of {@code occurrence}, in {@code occurrences} ({@link
+   * WhoMadeAChange#tagsOfAnOccurrence}). The tags of an occurrence around it name that occurrence
+   * in {@code in}.
    */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "tags-of-an-occurrence")
   static List<Tag> of(Occurrence occurrence, Occurrences occurrences) {
-    var found = new LinkedHashSet<Tag>();
-    collect(occurrence.element(), found);
-    for (var at = occurrence.parent(); found.isEmpty() && at != null; ) {
+    var own = new LinkedHashSet<Tag>();
+    collect(occurrence.element(), own);
+    var around = new ArrayList<List<Tag>>();
+    for (var at = occurrence.parent(); at != null; ) {
       var enclosing = occurrences.get(at);
       if (enclosing == null) {
         break;
       }
-      for (var child : enclosing.element().children()) {
-        var act = child.attribute("amendingAct");
-        var modification = child.attribute("modification");
-        if (child.name().equals("tag") && act != null && modification != null) {
-          found.add(new Tag(act, Modification.of(modification), enclosing.eId()));
-        }
-      }
+      around.add(tags(enclosing, false));
       at = enclosing.parent();
     }
-    return List.copyOf(found);
+    return WhoMadeAChange.tagsOfAnOccurrence(List.copyOf(own), around);
   }
 
   /**
-   * Returns the tags of the act that deleted {@code occurrence} of the earlier text. The later text
-   * {@code after} tells which act it was. The occurrence was in the occurrence that {@code in} is
-   * in the later text. {@code in} is null for an outermost occurrence.
-   *
-   * <ul>
-   *   <li>If the later text keeps the occurrence as a kept deletion, it returns the tags of that
-   *       deletion.
-   *   <li>If not, it returns the tags of the nearest enclosing occurrence that an act replaced
-   *       whole, without the occurrence. Those tags name that enclosing occurrence in {@code in}.
-   *   <li>If neither applies, it returns an empty list.
-   * </ul>
+   * Returns the tags of the act that deleted {@code occurrence} of the earlier text ({@link
+   * WhoMadeAChange#whoDeletedAnOccurrence}). The later text {@code after} tells which act it was.
+   * The occurrence was in the occurrence that {@code in} is in the later text. {@code in} is null
+   * for an outermost occurrence. The tags of an occurrence around it name that occurrence in {@code
+   * in}.
    */
-  @BusinessRule(group = RuleGroup.WHO_MADE_A_CHANGE, name = "who-deleted-an-occurrence")
   static List<Tag> deleted(Occurrence occurrence, Occurrences after, @Nullable Occurrence in) {
-    var kept = after.keptDeletions().get(occurrence.eId());
-    if (kept != null) {
-      return kept;
-    }
+    var replaced = new ArrayList<List<Tag>>();
     for (var enclosing = in; enclosing != null; ) {
-      var found = new ArrayList<Tag>();
-      for (var child : enclosing.element().children()) {
-        var act = child.attribute("amendingAct");
-        var modification = child.attribute("modification");
-        if (child.name().equals("tag") && act != null && "replaced".equals(modification)) {
-          found.add(new Tag(act, Modification.REPLACED, enclosing.eId()));
-        }
-      }
-      if (!found.isEmpty()) {
-        return List.copyOf(found);
-      }
+      replaced.add(tags(enclosing, true));
       enclosing = enclosing.parent() == null ? null : after.get(enclosing.parent());
     }
-    return List.of();
+    return WhoMadeAChange.whoDeletedAnOccurrence(
+        after.keptDeletions().get(occurrence.eId()), replaced);
+  }
+
+  /**
+   * Returns the tags of {@code enclosing} itself, in order. They name it in {@code in}. If {@code
+   * replacedOnly} is true, returns only the tags of an act that replaced it.
+   */
+  private static List<Tag> tags(Occurrence enclosing, boolean replacedOnly) {
+    Collection<Tag> found = replacedOnly ? new ArrayList<>() : new LinkedHashSet<>();
+    for (var child : enclosing.element().children()) {
+      var act = child.attribute("amendingAct");
+      var modification = child.attribute("modification");
+      if (child.name().equals("tag")
+          && act != null
+          && modification != null
+          && (!replacedOnly || "replaced".equals(modification))) {
+        found.add(new Tag(act, Modification.of(modification), enclosing.eId()));
+      }
+    }
+    return List.copyOf(found);
   }
 
   private static void collect(Element element, Set<Tag> found) {

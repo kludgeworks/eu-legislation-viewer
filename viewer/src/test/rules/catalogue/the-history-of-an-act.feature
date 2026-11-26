@@ -272,3 +272,45 @@ Feature: The history of an act
     Example: An act in force, where Cellar does not tell from when it applies
       Given the act Directive 2013/36 as Cellar has it
       Then Directive 2015/2366 changes the act on 12 January 2016
+
+  @revision-2
+  Rule: cellars-amendments-that-count · Which of Cellar's amendments count
+    A sidenote reads only some of Cellar's amendments. An amendment counts if both conditions are
+    true:
+    - An act between the two texts made the amendment.
+    - The amendment changes the text in the language of the page.
+
+    An amendment that applies only after the later text does not count. It is a later part of the
+    act, and the later text does not have that part.
+
+    The viewer finds each amendment on one of the two texts:
+    - a deletion or a repeal: on the earlier text, else on the later text, which keeps the deleted
+      occurrence
+    - an addition or a replacement: on the later text
+
+    Background:
+      Given the act 2015/1998 as Cellar has it
+      And the viewer builds its texts where the converter has a sample
+
+    Example: The amendments of the acts between the two texts
+      Given the two texts of 2 July 2020 and of 15 March 2021
+      Then Cellar's amendments that count are those of 2019/413, 2021/255
+
+    Example: An act that changes only other languages
+      Given the two texts of 29 February 2016 and of 7 June 2017
+      Then Cellar's amendments that count are those of 2017/815
+      And 2017/837 is between the two texts, but none of its amendments count
+
+    Example: An amendment that applies only after the later text
+      Given the two texts of 2 July 2020 and of 15 March 2021
+      Then Cellar's amendment of 2021/255 at annex point 6.6.1.3 does not count: it applies from 1 July 2021
+      And Cellar's amendment of 2021/255 at annex point 6.1.4 does not count: it applies from 1 March 2022
+      But Cellar's amendment of 2021/255 at annex point 6.8.5.7 counts
+
+    Example: The viewer finds a repeal on the earlier text
+      Given the two texts of 29 February 2016 and of 1 January 2026
+      Then the viewer finds Cellar's repeals of 2017/815 at annex point 6.5.5 and annex point 6.5.6 on the earlier text
+
+    Example: A repeal of a point that the earlier text does not have yet
+      Given the two texts of 15 November 2015 and of 15 March 2021
+      Then the viewer finds Cellar's repeal of 2021/255 at annex point 6.8.5.5 in point 6.8.5.5 of the later text

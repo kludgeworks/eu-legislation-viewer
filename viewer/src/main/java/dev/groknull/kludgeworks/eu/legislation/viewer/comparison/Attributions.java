@@ -24,7 +24,7 @@ public interface Attributions {
    *
    * <ul>
    *   <li>Cellar's amendments of the occurrences of the two texts give the acts, with the tags of
-   *       the later text ({@link Attribution#amendmentsOf}).
+   *       the later text ({@link WhoMadeAChange#amendmentsAroundAndInside}).
    *   <li>Where no act is named, the difference names the text where the change first appears
    *       ({@link Comparisons#appeared}).
    *   <li>With {@code day}, the later day of the comparison, a difference has the change that does

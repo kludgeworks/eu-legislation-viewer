@@ -24,46 +24,13 @@ Feature: Who made a change, and from when
       But the sidenote does not name 2019/413
 
   @revision-2
-  Rule: cellars-amendments-that-count · Which of Cellar's amendments count
-    A sidenote reads only some of Cellar's amendments. An amendment counts if both conditions are
-    true:
-    - An act between the two texts made the amendment.
-    - The amendment changes the text in the language of the page.
-
-    An amendment that applies only after the later text does not count. It is a later part of the
-    act, and the later text does not have that part.
-
-    The viewer finds each amendment on one of the two texts:
-    - a deletion or a repeal: on the earlier text, else on the later text, which keeps the deleted
-      occurrence
-    - an addition or a replacement: on the later text
-
-    Example: The amendments of the acts between the two texts
-      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
-      Then Cellar's amendments that count are those of 2019/413 and 2021/255
-
-    Example: An act that changes only other languages
-      Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 7 June 2017
-      Then Cellar's amendments that count are those of 2017/815
-      And 2017/837 is between the two texts, but none of its amendments count
-
-    Example: An amendment that applies only after the later text
-      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
-      Then Cellar's amendment of 2021/255 at annex point 6.6.1.3 does not count: it applies from 1 July 2021
-      And Cellar's amendment of 2021/255 at annex point 6.1.4 does not count: it applies from 1 March 2022
-      But Cellar's amendment of 2021/255 at annex point 6.8.5.7 counts
-
-    Example: The viewer finds a repeal on the earlier text
-      Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 1 January 2026
-      Then the viewer finds Cellar's repeals of 2017/815 at annex point 6.5.5 and annex point 6.5.6 on the earlier text
-
-    Example: A repeal of a point that the earlier text does not have yet
-      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 15 March 2021
-      Then the viewer finds Cellar's repeal of 2021/255 at annex point 6.8.5.5 in point 6.8.5.5 of the later text
-
   Rule: tags-of-an-occurrence · The tags of an occurrence
     An occurrence's tags are its own, each once and in order. An occurrence without tags takes
     those of the nearest occurrence around it that has some.
+
+    The viewer finds the tags in this way for each occurrence whose tags it reads:
+    - the occurrence of a difference
+    - a neighbour of a difference, which the Synopsis shows
 
     Example: A point has a tag of its own
       Given the consolidated version of 2015/1998 of 1 October 2026
@@ -83,6 +50,13 @@ Feature: Who made a change, and from when
     Example: A point without tags takes the tag of the point that an act replaced whole
       Given the consolidated version of 2015/1998 of 22 March 2026
       When the reader asks for the tags of point 1.2.2.3 point (a)
+      Then the tags are
+        | act      | modification | taken from    |
+        | 2026/449 | replaced     | point 1.2.2.3 |
+
+    Example: A neighbour without tags takes the tag of the point that an act replaced whole
+      Given the consolidated version of 2015/1998 of 22 March 2026
+      When the reader asks for the tags of the neighbour point 1.2.2.3 point (a)
       Then the tags are
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
@@ -168,13 +142,7 @@ Feature: Who made a change, and from when
     - One text is the first text that includes each of these acts.
 
     It tells the reader that the data does not identify the act. If the conditions are not true,
-    the sidenote names the first text that has the change, and the acts that this text
-    consolidates. To find this text:
-    1. Start at the text of the earlier day.
-    2. Compare each text with the next text, up to the text of the later day.
-    3. Skip a pair if the viewer did not build both texts of the pair.
-    4. Stop at the first pair whose comparison has the difference. Its later text is the first
-       text that has the change.
+    the sidenote names no act.
 
     Example: One text is the first text that includes two acts, and no data identifies the act
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
@@ -185,6 +153,15 @@ Feature: Who made a change, and from when
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 31 December 2021
       When the reader asks which acts made the differences that the data names no act for
       Then the sidenote names no act for any of them
+
+  Rule: first-text-with-the-change · The first text that has a change of no named act
+    The sidenote can name no act for a difference (no-act-named). It then names the first text
+    that has the change, and the acts that this text consolidates. To find this text:
+    1. Start at the text of the earlier day.
+    2. Compare each text with the next text, up to the text of the later day.
+    3. Skip a pair if the viewer did not build both texts of the pair.
+    4. Stop at the first pair whose comparison has the difference. Its later text is the first
+       text that has the change.
 
     Example: The later text follows the earlier text
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026

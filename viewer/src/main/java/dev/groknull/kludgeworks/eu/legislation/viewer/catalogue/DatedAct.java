@@ -55,7 +55,7 @@ public record DatedAct(
    * empty for the act as a whole. The answer is empty if Cellar has no dates of the act.
    */
   public Optional<Applying> applying(Set<LocalDate> placeDays) {
-    return WhenAChangeApplies.dateFromTheAct(dates, appliesFrom, canApplyFrom, placeDays);
+    return WhenAnActApplies.dateFromTheAct(dates, appliesFrom, canApplyFrom, placeDays);
   }
 
   /**

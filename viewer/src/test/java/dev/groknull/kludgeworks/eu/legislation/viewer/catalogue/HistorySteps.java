@@ -4,11 +4,16 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the history of an act: its amending acts and their order ({@link
@@ -26,6 +31,8 @@ import java.util.Objects;
 public class HistorySteps {
   private final TheAct the;
   private ProvisionHistory history = new ProvisionHistory("", List.of(), List.of());
+  private @Nullable LocalDate from;
+  private @Nullable LocalDate to;
 
   public HistorySteps(TheAct the) {
     this.the = the;
@@ -352,6 +359,94 @@ public class HistorySteps {
   /** Returns the places of {@code changes}, in their order. */
   private static List<String> words(List<Amendment> changes) {
     return changes.stream().map(each -> each.place().words()).toList();
+  }
+
+  @Given("the two texts of {day} and of {day}")
+  public void twoTexts(LocalDate earlier, LocalDate later) {
+    from = earlier;
+    to = later;
+  }
+
+  @Then("Cellar's amendments that count are those of {acts}")
+  public void countingActs(List<ActIdentifier> acts) {
+    assertThat(counting().stream().map(Amendment::act).collect(Collectors.toSet()))
+        .isEqualTo(Set.copyOf(acts));
+  }
+
+  @Then("{act} is between the two texts, but none of its amendments count")
+  public void noneOf(ActIdentifier act) {
+    assertThat(the.act().integratedBetween(version(from()), version(to()))).contains(act);
+    assertThat(counting()).noneMatch(each -> each.act().equals(act));
+  }
+
+  @Then("Cellar's amendment of {act} at {place} does not count: it applies from {day}")
+  public void after(ActIdentifier act, Place place, LocalDate day) {
+    var at =
+        TheHistoryOfAnAct.changesOfAnAmendingAct(the.act(), act, Language.ENG, null).stream()
+            .filter(each -> each.place().words().equals(place.words()))
+            .toList();
+    assertThat(at).as("%s at %s", act.cited(), place.words()).isNotEmpty();
+    assertThat(at).allSatisfy(each -> assertThat(each.from()).isEqualTo(day));
+    assertThat(counting()).doesNotContainAnyElementsOf(at);
+  }
+
+  @Then("Cellar's amendment of {act} at {place} counts")
+  public void counts(ActIdentifier act, Place place) {
+    assertThat(counting())
+        .anyMatch(each -> each.act().equals(act) && each.place().words().equals(place.words()));
+  }
+
+  @Then("the viewer finds Cellar's repeals of {act} at {place} and {place} on the earlier text")
+  public void onTheEarlierText(ActIdentifier act, Place first, Place second) {
+    var earlier = text(from()).eIds();
+    for (var place : List.of(first, second)) {
+      var found = placed(act, place);
+      assertThat(found).as("where %s at %s is found", act.cited(), place.words()).isNotEmpty();
+      assertThat(earlier).as(place.words()).containsAll(found);
+    }
+  }
+
+  @Then("the viewer finds Cellar's repeal of {act} at {place} in {place} of the later text")
+  public void atTheLaterText(ActIdentifier act, Place place, Place occurrence) {
+    var expected =
+        PlaceWords.location(occurrence)
+            .in(text(to()).eIds())
+            .orElseThrow(() -> new AssertionError("The later text has no " + occurrence.words()))
+            .eIds();
+    assertThat(placed(act, place)).containsExactlyElementsOf(expected);
+  }
+
+  /** Returns the occurrences at which the removals of {@code act} at {@code place} are found. */
+  private List<String> placed(ActIdentifier act, Place place) {
+    return amended().byOccurrence().entrySet().stream()
+        .filter(each ->
+            each.getValue().stream()
+                .anyMatch(amendment ->
+                    amendment.act().equals(act)
+                        && amendment.role().removes()
+                        && amendment.place().words().equals(place.words())))
+        .map(Map.Entry::getKey)
+        .toList();
+  }
+
+  /** Returns the amendments that count between the two texts, each one time. */
+  private List<Amendment> counting() {
+    return amended().byOccurrence().values().stream().flatMap(List::stream).distinct().toList();
+  }
+
+  /** Returns Cellar's amendments that count between the two texts, at their occurrences. */
+  private Amended amended() {
+    return the.act()
+        .amended(
+            version(from()), version(to()), text(from()).eIds(), text(to()).eIds(), Language.ENG);
+  }
+
+  private LocalDate from() {
+    return Objects.requireNonNull(from, "No texts: the scenario gives \"the two texts of …\"");
+  }
+
+  private LocalDate to() {
+    return Objects.requireNonNull(to, "No texts: the scenario gives \"the two texts of …\"");
   }
 
   /** Returns the tags of the built text of the version that starts on {@code day}. */

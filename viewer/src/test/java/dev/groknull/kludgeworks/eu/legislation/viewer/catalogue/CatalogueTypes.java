@@ -2,12 +2,15 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import io.cucumber.java.DataTableType;
 import io.cucumber.java.ParameterType;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * The words of the catalogue's rules, as the domain's types: the parameter types of the steps
@@ -94,5 +97,15 @@ public class CatalogueTypes {
       case "Croatian" -> Language.HRV;
       default -> throw new IllegalArgumentException("Not a language of the rules: " + name);
     };
+  }
+
+  /** A day from which a part of an act applies, as a table gives it: "its entry into force" … */
+  @DataTableType
+  public Applying.Start start(Map<String, String> row) {
+    var what = Objects.requireNonNull(row.get("what"), "what");
+    return new Applying.Start(
+        day(Objects.requireNonNull(row.get("from"), "from")),
+        what.equals("its entry into force"),
+        what.equals("a part"));
   }
 }

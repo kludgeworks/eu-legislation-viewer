@@ -80,7 +80,8 @@ public record Ends(
         .included()
         .oneBetween(earlier, later, only)
         .flatMap(one ->
-            Inclusion.of(timeline.get(), versions.included(), earlier, later, one)
+            TheChangesOfOneAct.oneActIsOneStep(
+                    timeline.get(), versions.included(), earlier, later, one)
                 .map(inclusion -> new Ends(act, versions, earlier, later, one, inclusion)));
   }
 

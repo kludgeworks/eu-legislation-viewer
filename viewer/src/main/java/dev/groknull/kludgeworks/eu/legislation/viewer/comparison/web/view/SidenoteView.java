@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
@@ -137,8 +138,8 @@ public record SidenoteView(
 
   /**
    * Returns the sidenote of a difference for which no act is named. Where {@code attribution} has
-   * the acts of which one made it ({@link Attribution#unnamed}), it names them, but not which one
-   * made it. If not, it does not say who made it.
+   * the acts of which one made it ({@link WhoMadeAChange#noActNamed}), it names them, but not which
+   * one made it. If not, it does not say who made it.
    */
   private static SidenoteView unknown(
       Act act,
@@ -173,7 +174,7 @@ public record SidenoteView(
    */
   private static SidenoteView appeared(
       Act act, Attributed.Appeared appeared, Difference difference) {
-    var did = verb(Modification.of(difference.kind()));
+    var did = verb(WhoMadeAChange.modificationWithoutAnAct(difference.kind()));
     var consolidates = appeared.consolidates();
     return new SidenoteView(
         did
@@ -192,7 +193,7 @@ public record SidenoteView(
    */
   private static String unsaid(Difference difference) {
     return "The data does not say which act "
-        + Modification.of(difference.kind()).word()
+        + WhoMadeAChange.modificationWithoutAnAct(difference.kind()).word()
         + " this.";
   }
 

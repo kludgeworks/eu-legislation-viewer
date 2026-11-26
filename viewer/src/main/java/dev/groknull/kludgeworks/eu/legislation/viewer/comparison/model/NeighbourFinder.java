@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
@@ -15,12 +13,11 @@ import java.util.Set;
  * Finds the neighbours of the differences of a comparison, as the Synopsis shows them. A neighbour
  * is an occurrence near a difference that is the same in both texts.
  *
- * <p>Each neighbour is the occurrence as the later text has it, with its tags. Its tags are found
- * as for a difference ({@link Tags#of}): the tags on its own content, or else the tags of the
- * nearest enclosing occurrence that has tags of its own.
+ * <p>Each neighbour is the occurrence as the later text has it, with its tags, found as for each
+ * occurrence ({@link Tags#of}).
  */
-public final class Neighbours {
-  private Neighbours() {}
+public final class NeighbourFinder {
+  private NeighbourFinder() {}
 
   /**
    * An occurrence the same in both texts.
@@ -59,7 +56,6 @@ public final class Neighbours {
    * Returns the occurrences {@code eIds} of {@code later}, by eId. An occurrence that {@code later}
    * does not have is not in the result.
    */
-  @BusinessRule(group = RuleGroup.NEIGHBOURS, name = "neighbour-tags")
   public static Map<String, Neighbour> of(Element later, Set<String> eIds) {
     var occurrences = Occurrences.of(later);
     var found = new HashMap<String, Neighbour>();

@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.NeighbourFinder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;
@@ -268,7 +268,7 @@ class ComparisonViewsController {
         fold.occurrences().stream()
             .map(each ->
                 new NeighbourView(
-                    Neighbours.sibling(each.occurrence()),
+                    NeighbourFinder.sibling(each.occurrence()),
                     each.occurrence(),
                     SidenoteView.history(ends.act(), each.lastChange(), ends.language())))
             .toList();

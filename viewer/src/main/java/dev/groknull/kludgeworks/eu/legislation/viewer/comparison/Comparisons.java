@@ -31,10 +31,10 @@ public interface Comparisons {
 
   /**
    * Returns the version whose text first has each change of {@code eIds}, by the eId of its
-   * occurrence, from the kept comparisons of the neighbouring versions ({@link Appearance}). The
-   * comparison of {@code from} with {@code to} has these changes. {@code texts} are the texts of
-   * the versions, as their preparation has them: a pair whose texts are not both ready is passed
-   * over.
+   * occurrence, from the kept comparisons of the neighbouring versions ({@link
+   * WhoMadeAChange#firstTextWithTheChange}). The comparison of {@code from} with {@code to} has
+   * these changes. {@code texts} are the texts of the versions, as their preparation has them: a
+   * pair whose texts are not both ready is passed over.
    */
   Map<String, Version> appeared(
       Timeline timeline, Map<Version, Text> texts, Version from, Version to, Set<String> eIds);

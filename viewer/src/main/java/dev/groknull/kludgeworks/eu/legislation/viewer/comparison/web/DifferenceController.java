@@ -4,9 +4,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.TheChangesOfOneAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
@@ -195,8 +195,9 @@ class DifferenceController {
 
   /**
    * Returns the differences at the occurrences {@code eIds} of the comparison, as the views show
-   * them ({@link Comparison#at}). The page of an amending act loads the wording of one of its
-   * changes from here. If the occurrences are the same in both texts, it says so.
+   * them ({@link TheChangesOfOneAct#differencesAtAPlace}). The page of an amending act loads the
+   * wording of one of its changes from here. If the occurrences are the same in both texts, it says
+   * so.
    *
    * <p>With {@code sides}, it returns the wording on each of the two days of the Compare page, side
    * by side. The Compare page of one provision loads it. {@code fromDay} and {@code toDay} are the

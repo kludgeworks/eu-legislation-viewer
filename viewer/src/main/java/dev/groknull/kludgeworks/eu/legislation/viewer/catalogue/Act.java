@@ -181,7 +181,7 @@ public record Act(
 
   /**
    * Returns Cellar's amendments of this act's provisions that count for two texts, placed at the
-   * occurrences of the texts. The rule {@link WhoMadeAChange#cellarsAmendmentsThatCount} tells
+   * occurrences of the texts. The rule {@link TheHistoryOfAnAct#cellarsAmendmentsThatCount} tells
    * which amendments count, and at which occurrences each is.
    *
    * @param from the version of the earlier text
@@ -200,7 +200,7 @@ public record Act(
     var unplaced = 0;
     for (var amendment : amendments) {
       var counts =
-          WhoMadeAChange.cellarsAmendmentsThatCount(
+          TheHistoryOfAnAct.cellarsAmendmentsThatCount(
               amendment,
               between.contains(amendment.act()),
               language,

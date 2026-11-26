@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
@@ -62,17 +61,6 @@ public class ApplicabilitySteps {
             false);
   }
 
-  @Then("it applies from {day}")
-  public void appliesFrom(LocalDate day) {
-    assertThat(applying())
-        .isInstanceOfSatisfying(
-            Applying.From.class,
-            from -> {
-              assertThat(from.day()).isEqualTo(day);
-              assertThat(from.entryIntoForce()).as("only its entry into force").isFalse();
-            });
-  }
-
   @Then("it applies from {day}, its entry into force")
   public void appliesFromItsEntryIntoForce(LocalDate day) {
     assertThat(applying())
@@ -90,22 +78,6 @@ public class ApplicabilitySteps {
         .isInstanceOfSatisfying(
             Applying.FromMoreThanOneDay.class,
             parts -> assertThat(parts.starts()).containsExactlyElementsOf(starts));
-  }
-
-  @Then("it applies from a day that {word} {int} of {act} sets")
-  public void appliesFromADaySetBy(String type, int number, ActIdentifier amending) {
-    assertThat(applying()).isInstanceOf(Applying.SetBy.class);
-    assertThat(applies().clause())
-        .extracting(ActDate.Provision::cited)
-        .containsExactly(type + " " + number);
-    assertThat(applies().act()).isEqualTo(amending);
-  }
-
-  @Then("it is in force from {day}, and the data does not say from when it applies")
-  public void inForce(LocalDate day) {
-    assertThat(applying())
-        .isInstanceOfSatisfying(
-            Applying.InForce.class, inForce -> assertThat(inForce.day()).isEqualTo(day));
   }
 
   @Then("the sidenote says nothing of when it applies")

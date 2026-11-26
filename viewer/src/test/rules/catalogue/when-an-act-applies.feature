@@ -104,3 +104,50 @@ Feature: When an act applies
     Example: The day from which the changes of an amending act apply, which a decision set
       Given the act 2018/1862 as Cellar has it
       Then the date of 2022/1190 of 15 October 2026 names Decision 2026/2284 as the act that set its day
+
+  @revision-2
+  Rule: date-from-the-act · The date is the act's
+    The date of a change comes from the dates of the act that made it. It never comes from the
+    date of the text that first has the change. The first of these cases that is true for the act
+    gives the date:
+    1. Cellar has no day for the act's application. A clause of the act sets the day.
+    2. The only date of the act is its entry into force. The act applies from that day. A
+       directive is only in force from that day. The data does not say from when it applies: the
+       Member States apply it through their own measures.
+    3. The place of the change has one day for the change, and the act can apply from that day
+       (a-day-the-act-can-apply-from). The change applies from that day.
+    4. The act has one day of application, and that day is for the whole act. The change applies
+       from that day.
+    5. No other case is true. The act applies from more than one day: each day from which a part
+       of it applies.
+
+    If Cellar has no dates of the act, nothing tells from when the change applies.
+
+    Example: Case 1: a clause sets the day
+      Given the act 2015/1998 as Cellar has it
+      Then a change of 2019/413 applies from a day that Article 3 of 2019/413 sets
+
+    Example: Case 2: an act that has only its entry into force
+      Given the act 2015/1998 as Cellar has it
+      Then a change of 2019/1583 applies from 31 December 2021, its entry into force
+
+    Example: Case 2: a directive that has only its entry into force
+      Given the act Directive 1976/207 as Cellar has it
+      Then a change of Directive 2002/73 is in force from 5 October 2002, and the data does not say from when it applies
+
+    Example: Case 3: Cellar's day at the place is a day that the act can apply from
+      Given the act 2015/1998 as Cellar has it
+      And Cellar dates a change of 2026/449 at its place from 1 October 2026
+      Then that change applies from 1 October 2026
+
+    Example: Case 4: one day of application, before the text that has the change
+      Given the act 2015/1998 as Cellar has it
+      Then a change of 2017/815 applies from 1 June 2017
+
+    Example: Case 5: Cellar's day at the place is not a day that the act can apply from
+      Given the act 2015/1998 as Cellar has it
+      And Cellar dates a change of 2026/449 at its place from 15 May 2026
+      Then that change applies from more than one day
+        | from            | what                 |
+        | 22 March 2026   | its entry into force |
+        | 1 October 2026  | a part               |

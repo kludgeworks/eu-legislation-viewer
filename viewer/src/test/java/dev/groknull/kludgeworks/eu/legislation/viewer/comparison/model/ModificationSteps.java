@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -55,18 +56,18 @@ public class ModificationSteps {
   public void position(String position) {
     var first = position.equals("first") || position.equals("only");
     var last = position.equals("last") || position.equals("only");
-    found = Modification.ofStep(kind(), first, last, by, tagged);
+    found = WhoMadeAChange.modificationOfEachStep(kind(), first, last, by, tagged);
   }
 
   @When("the data names no act for the difference")
   public void noAct() {
-    found = Modification.of(kind());
+    found = WhoMadeAChange.modificationWithoutAnAct(kind());
   }
 
   @When("Cellar types the amendment with the code {word}")
   public void cellar(String code) {
     found =
-        Modification.of(
+        WhoMadeAChange.modificationFromCellar(
             Amendment.Role.of(code)
                 .orElseThrow(() -> new IllegalArgumentException("Not a code of Cellar: " + code)));
   }

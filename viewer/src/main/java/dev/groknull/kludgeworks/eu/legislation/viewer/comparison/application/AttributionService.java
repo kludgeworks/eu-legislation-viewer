@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Versions;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import java.time.LocalDate;
@@ -65,7 +66,7 @@ class AttributionService implements Attributions {
               from,
               to,
               difference,
-              Attribution.amendmentsOf(amended, difference),
+              WhoMadeAChange.amendmentsAroundAndInside(amended, difference),
               Attribution.removalsOf(amended, difference)));
     }
     var unattributed =

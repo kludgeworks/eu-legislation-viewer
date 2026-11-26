@@ -151,9 +151,9 @@ word. The forms:
 | Acts of one step, with the comparison limited to one of them | "Replaced by 2019/1583, together with 2019/103" |
 | Three or more acts | "2017/815, 2019/103 and 2019/1583" |
 
-Where nothing names an act (`no-act-named`), the first line names the text where the change first
-appears, and the acts that this text consolidates. It does not name an act as the one that made
-the change. The page says "text", not "version". If the text consolidates no act, the words
+Where nothing names an act (`first-text-with-the-change`), the first line names the text where the
+change first appears, and the acts that this text consolidates. It does not name an act as the one
+that made the change. The page says "text", not "version". If the text consolidates no act, the words
 ", which consolidates …" are left out. The forms:
 
 | Case | Words |
@@ -205,7 +205,7 @@ has. For example, in Directive 2013/36 from 17 January 2025 to 11 January 2026, 
 before Article 23(2). If the later text has no provision before it or after it, it stands at the
 end.
 
-Synopsis shows the two texts side by side, provision by provision (`neighbour-tags`). Near each
+Synopsis shows the two texts side by side, provision by provision. Near each
 difference it shows its neighbours. Where more than three neighbours are in a row, it shows the
 first and the last, and a fold holds the others. With three or fewer, it shows all of them. Beside
 each neighbour, a line says what last made it as it is (`last-change-of-a-neighbour`), with the date

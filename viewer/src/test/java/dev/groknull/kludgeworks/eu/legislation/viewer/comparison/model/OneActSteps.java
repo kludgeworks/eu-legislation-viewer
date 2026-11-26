@@ -11,10 +11,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.TheChangesOfOneAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Then;
@@ -79,7 +79,8 @@ public class OneActSteps {
   @When("the reader opens the page of {act}")
   public void pageOf(ActIdentifier act) {
     var found = inclusion(act);
-    alternatives = Alternatives.of(act, attributed(found.before(), found.first()));
+    alternatives =
+        TheChangesOfOneAct.thisActOrAnother(act, attributed(found.before(), found.first()));
   }
 
   @Then("the page lists {int} differences apart, by this act or by {acts}")
@@ -100,18 +101,16 @@ public class OneActSteps {
             .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
     assertThat(at.eIds()).as(place.words()).hasSize(1);
     var differences = attributed.stream().map(Attributed::difference).toList();
-    var comparison = new Comparison(new TextId(1), new TextId(2), differences, List.of(), null);
-    assertThat(comparison.at(at.eIds()))
+    assertThat(TheChangesOfOneAct.differencesAtAPlace(differences, at.eIds()))
         .as("%s has no difference of its own", place.words())
         .isEmpty();
-    changes = Attribution.madeIn(attributed, at.eIds(), act);
+    changes = TheChangesOfOneAct.chapterTheAnnexKeepsFlat(attributed, at.eIds(), act);
   }
 
   @When("the reader asks for the differences at {place}")
   public void differencesAt(Place place) {
     var differences = Differ.differences(comparing.earlier(), comparing.later()).differences();
-    var comparison = new Comparison(new TextId(1), new TextId(2), differences, List.of(), null);
-    changes = comparison.at(List.of(eId(place)));
+    changes = TheChangesOfOneAct.differencesAtAPlace(differences, List.of(eId(place)));
   }
 
   @Then("they are the difference at {place}")
@@ -147,7 +146,7 @@ public class OneActSteps {
 
   /** Returns the texts of the changes of {@code act} in the comparison. */
   private Inclusion inclusion(ActIdentifier act) {
-    return Inclusion.of(
+    return TheChangesOfOneAct.oneActIsOneStep(
             comparing.act().timeline(),
             Inclusions.listed(comparing.act().timeline()),
             comparing.from(),
@@ -176,7 +175,7 @@ public class OneActSteps {
                     from,
                     to,
                     difference,
-                    Attribution.amendmentsOf(amended, difference),
+                    WhoMadeAChange.amendmentsAroundAndInside(amended, difference),
                     Attribution.removalsOf(amended, difference))))
         .toList();
   }

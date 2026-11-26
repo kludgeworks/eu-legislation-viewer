@@ -1,11 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import java.util.LinkedHashSet;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhatThePageShows.Shown;
 import java.util.List;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -32,32 +29,17 @@ public record Summary(
 
   /**
    * Returns the summary of the differences {@code shown}, with who made each ({@link Attributed}),
-   * in the order that the page shows them.
+   * in the order that the page shows them. It applies the rules of {@link WhatThePageShows}.
    */
-  @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "act-that-made-every-difference")
-  @BusinessRule(group = RuleGroup.WHAT_THE_PAGE_SHOWS, name = "legend-names-the-edits-shown")
   public static Summary of(List<Attributed> shown) {
-    var inserted = false;
-    var deleted = false;
-    var corrected = false;
-    var acts = new LinkedHashSet<ActIdentifier>();
-    var known = true;
-    for (var each : shown) {
-      var difference = each.difference();
-      var attribution = each.attribution();
-      if (attribution.corrected()) {
-        corrected = true;
-      } else {
-        inserted |= difference.kind() == Kind.INSERTED || difference.inserted() > 0;
-        deleted |= difference.kind() == Kind.DELETED || difference.deleted() > 0;
-      }
-      if (attribution.acts().isEmpty()) {
-        known = false;
-      } else {
-        acts.addAll(attribution.acts());
-      }
-    }
-    return new Summary(
-        inserted, deleted, corrected, known && acts.size() == 1 ? acts.getFirst() : null);
+    var legend =
+        WhatThePageShows.legendNamesTheEditsShown(
+            shown.stream()
+                .map(each -> new Shown(each.difference(), each.attribution().corrected()))
+                .toList());
+    var by =
+        WhatThePageShows.actThatMadeEveryDifference(
+            shown.stream().map(each -> each.attribution().acts()).toList());
+    return new Summary(legend.inserted(), legend.deleted(), legend.corrected(), by.orElse(null));
   }
 }

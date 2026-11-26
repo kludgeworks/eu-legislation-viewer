@@ -16,8 +16,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Ends;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.TheChangesOfOneAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Versions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.NeighbourFinder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
@@ -109,14 +110,15 @@ public class ComparedTextService implements ComparedTexts {
     if (comparison.isEmpty()) {
       return Optional.empty();
     }
-    var found = comparison.get().at(eIds);
+    var found = TheChangesOfOneAct.differencesAtAPlace(comparison.get().differences(), eIds);
     var only = ends.only();
     if (!found.isEmpty() || only == null) {
       return Optional.of(new AtAPlace(found, null));
     }
     // A chapter that the annex keeps flat has no difference of its own.
     return attributed(ends, null)
-        .map(attributed -> Attribution.madeIn(attributed.each(), eIds, only))
+        .map(attributed ->
+            TheChangesOfOneAct.chapterTheAnnexKeepsFlat(attributed.each(), eIds, only))
         .map(made -> new AtAPlace(made, made.isEmpty() ? null : only));
   }
 
@@ -125,7 +127,8 @@ public class ComparedTextService implements ComparedTexts {
     var only = ends.only();
     return only == null
         ? Optional.empty()
-        : attributed(ends, null).map(attributed -> Alternatives.of(only, attributed.each()));
+        : attributed(ends, null)
+            .map(attributed -> TheChangesOfOneAct.thisActOrAnother(only, attributed.each()));
   }
 
   @Override
@@ -168,7 +171,7 @@ public class ComparedTextService implements ComparedTexts {
   }
 
   private static List<Unchanged> unchanged(Ends ends, Element text, List<String> eIds) {
-    var found = Neighbours.of(text, Set.copyOf(eIds));
+    var found = NeighbourFinder.of(text, Set.copyOf(eIds));
     var unchanged = new ArrayList<Unchanged>();
     for (var eId : eIds) {
       var neighbour = found.get(eId);

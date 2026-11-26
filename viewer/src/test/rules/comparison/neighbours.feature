@@ -3,17 +3,6 @@ Feature: The neighbours of a difference
   The Synopsis shows the occurrences near a difference that are the same in both texts: the
   neighbours. Each neighbour says which act last made it as it is.
 
-  Rule: neighbour-tags · A neighbour has its tags as an occurrence does
-    The viewer finds the tags of a neighbour as for any occurrence (tags-of-an-occurrence). They
-    are its own tags, or else those of the nearest occurrence around it that has some.
-
-    Example: A neighbour without tags takes the tag of the point that an act replaced whole
-      Given the consolidated version of 2015/1998 of 22 March 2026
-      When the reader asks for the tags of the neighbour point 1.2.2.3 point (a)
-      Then the tags are
-        | act      | modification | taken from    |
-        | 2026/449 | replaced     | point 1.2.2.3 |
-
   Rule: last-change-of-a-neighbour · What last made a neighbour as it is
     Beside a neighbour, the Synopsis says what last made it as it is. That is the act that its tags
     name and that was last (tagged-act-was-last), up to the later text. A corrigendum corrects and

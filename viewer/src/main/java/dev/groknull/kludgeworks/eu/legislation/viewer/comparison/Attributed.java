@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
@@ -28,7 +26,8 @@ import org.jspecify.annotations.Nullable;
  *     Applicability}), in the order of its steps, or of its candidates. An act whose date is not
  *     known has no entry.
  * @param appeared the text where the change first appears, where no act is named ({@link
- *     Appearance}). Null where an act is named, or where nothing shows where it appears.
+ *     WhoMadeAChange#firstTextWithTheChange}). Null where an act is named, or where nothing shows
+ *     where it appears.
  * @param notApplying the act whose change at the occurrence does not apply on the later day of the
  *     comparison yet, a prospective amendment. Null where each change applies.
  */
@@ -78,7 +77,7 @@ public record Attributed(
    * @param included the acts that each version includes: Cellar's lists, and the acts that the
    *     built texts tag first
    * @param amendments Cellar's amendments of the occurrence, by the acts between the two versions
-   *     ({@link Attribution#amendmentsOf})
+   *     ({@link WhoMadeAChange#amendmentsAroundAndInside})
    * @param removals Cellar's amendments that take the occurrence out of the text ({@link
    *     Attribution#removalsOf})
    */
@@ -122,16 +121,15 @@ public record Attributed(
 
   /**
    * Returns this difference with the change at its occurrence that does not apply on the day of
-   * {@code prospective} yet, if there is one: a change that the later text includes before its act
-   * applies ({@link LawOverTime#changesThatDoNotApplyYet}). The change is at the occurrence of the
-   * difference, at an occurrence that it is in, or at an occurrence in it. Returns this difference
-   * if each change there applies.
+   * {@code prospective} yet, if there is one ({@link
+   * WhenAChangeApplies#changeThatDoesNotApplyYet}): a change that the later text includes before
+   * its act applies ({@link LawOverTime#changesThatDoNotApplyYet}). Returns this difference if each
+   * change there applies.
    */
-  @BusinessRule(group = RuleGroup.WHEN_A_CHANGE_APPLIES, name = "change-that-does-not-apply-yet")
   public Attributed notApplying(Prospective prospective) {
-    return prospective
-        .at(difference.eId())
-        .map(act -> notApplyingYet(act, prospective.day()))
+    return WhenAChangeApplies.changeThatDoesNotApplyYet(
+            prospective.at(difference.eId()).orElse(null), prospective.day())
+        .map(change -> new Attributed(difference, attribution, applies, appeared, change))
         .orElse(this);
   }
 

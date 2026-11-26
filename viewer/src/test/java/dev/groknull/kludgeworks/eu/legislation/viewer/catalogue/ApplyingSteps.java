@@ -3,10 +3,13 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of when an act applies: the day from which a whole act applies ({@link
@@ -17,6 +20,8 @@ import java.util.Objects;
  */
 public class ApplyingSteps {
   private final TheAct the;
+  private @Nullable ActIdentifier changed;
+  private Set<LocalDate> placeDays = Set.of();
 
   public ApplyingSteps(TheAct the) {
     this.the = the;
@@ -120,5 +125,81 @@ public class ApplyingSteps {
         the.act().dates().datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
     assertThat(dates).as("the dates of %s on %s", act.cited(), day).isNotEmpty();
     return dates;
+  }
+
+  @Given("Cellar dates a change of {act} at its place from {day}")
+  public void cellarDay(ActIdentifier act, LocalDate day) {
+    changed = act;
+    placeDays = Set.of(day);
+  }
+
+  @Then("a change of {act} applies from a day that {word} {int} of {act} sets")
+  public void changeAppliesFromADaySetBy(
+      ActIdentifier act, String type, int number, ActIdentifier setting) {
+    assertThat(act).isEqualTo(setting);
+    assertThat(applying(act, Set.of()))
+        .isInstanceOfSatisfying(
+            Applying.SetBy.class,
+            setBy ->
+                assertThat(setBy.dates())
+                    .flatExtracting(date -> date.clause().provisions())
+                    .extracting(ActDate.Provision::cited)
+                    .containsOnly(type + " " + number));
+  }
+
+  @Then("a change of {act} applies from {day}, its entry into force")
+  public void changeAppliesFromItsEntryIntoForce(ActIdentifier act, LocalDate day) {
+    assertThat(applying(act, Set.of()))
+        .isInstanceOfSatisfying(
+            Applying.From.class,
+            from -> {
+              assertThat(from.day()).isEqualTo(day);
+              assertThat(from.entryIntoForce()).as("only its entry into force").isTrue();
+            });
+  }
+
+  @Then("a change of {act} is in force from {day}, and the data does not say from when it applies")
+  public void changeIsInForce(ActIdentifier act, LocalDate day) {
+    assertThat(applying(act, Set.of()))
+        .isInstanceOfSatisfying(
+            Applying.InForce.class, inForce -> assertThat(inForce.day()).isEqualTo(day));
+  }
+
+  @Then("a change of {act} applies from {day}")
+  public void changeAppliesFrom(ActIdentifier act, LocalDate day) {
+    appliesFromADay(applying(act, Set.of()), day);
+  }
+
+  @Then("that change applies from {day}")
+  public void thatChangeAppliesFrom(LocalDate day) {
+    appliesFromADay(applying(Objects.requireNonNull(changed, "no change given"), placeDays), day);
+  }
+
+  @Then("that change applies from more than one day")
+  public void thatChangeAppliesFromMoreThanOneDay(List<Applying.Start> starts) {
+    assertThat(applying(Objects.requireNonNull(changed, "no change given"), placeDays))
+        .isInstanceOfSatisfying(
+            Applying.FromMoreThanOneDay.class,
+            parts -> assertThat(parts.starts()).containsExactlyElementsOf(starts));
+  }
+
+  private static void appliesFromADay(Applying applying, LocalDate day) {
+    assertThat(applying)
+        .isInstanceOfSatisfying(
+            Applying.From.class,
+            from -> {
+              assertThat(from.day()).isEqualTo(day);
+              assertThat(from.entryIntoForce()).as("only its entry into force").isFalse();
+            });
+  }
+
+  /**
+   * Returns when a change of {@code act} applies, as its dates tell. {@code days} are the days that
+   * Cellar gives for the change at its place.
+   */
+  private Applying applying(ActIdentifier act, Set<LocalDate> days) {
+    var applying = the.dated(act).applying(days);
+    assertThat(applying).as("when a change of %s applies", act.cited()).isPresent();
+    return applying.orElseThrow();
   }
 }

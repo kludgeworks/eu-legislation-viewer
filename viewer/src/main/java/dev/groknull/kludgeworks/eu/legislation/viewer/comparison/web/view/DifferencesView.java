@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.WhoMadeAChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -186,7 +186,7 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
    * shows it only when no act is known to have made it; the line of the act says it otherwise.
    */
   static String label(Difference difference) {
-    return SidenoteView.verb(Modification.of(difference.kind()));
+    return SidenoteView.verb(WhoMadeAChange.modificationWithoutAnAct(difference.kind()));
   }
 
   /**
