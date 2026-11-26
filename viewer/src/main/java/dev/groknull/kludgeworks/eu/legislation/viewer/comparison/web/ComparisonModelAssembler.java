@@ -88,7 +88,7 @@ class ComparisonModelAssembler
             IanaLinkRelations.ITEM)
         .link(self)
         .link(up(celex))
-        .link(Link.of(UriTemplate.of(self.getHref() + "/differences/{+eId}"), DIFFERENCE))
+        .link(Link.of(differenceTemplate(self), DIFFERENCE))
         .build();
   }
 
@@ -145,6 +145,14 @@ class ComparisonModelAssembler
 
   Link up(ActIdentifier celex) {
     return links.linkToItemResource(Act.class, celex).withRel(IanaLinkRelations.UP);
+  }
+
+  /** Returns the template of a difference of a comparison. */
+  static UriTemplate differenceTemplate(Link comparison) {
+    var href = comparison.getHref();
+    var query = href.indexOf('?');
+    var path = query < 0 ? href : href.substring(0, query);
+    return UriTemplate.of(path + "/differences/{+eId}" + (query < 0 ? "" : href.substring(query)));
   }
 
   /** Returns the address of the difference at {@code eId} of a comparison. Its {@code /} stays. */

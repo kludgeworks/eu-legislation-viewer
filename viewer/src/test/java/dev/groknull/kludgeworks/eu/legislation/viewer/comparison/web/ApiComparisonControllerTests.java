@@ -171,6 +171,10 @@ class ApiComparisonControllerTests {
     assertThat(comparison.at("/_links/self/href").asString())
         .isEqualTo(ACT + "/comparisons/2021-03-15..2021-12-31/texts/eng?amendingAct=32019R0103");
     assertThat(comparison.at("/_links/up/href").asString()).isEqualTo(ACT);
+    assertThat(comparison.at("/_links/av:difference/href").asString())
+        .isEqualTo(
+            ACT
+                + "/comparisons/2021-03-15..2021-12-31/texts/eng/differences/{+eId}?amendingAct=32019R0103");
 
     var difference =
         json(
