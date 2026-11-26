@@ -180,20 +180,31 @@ default_java_toolchain(
 )
 
 # Our packages, stricter than Error Prone's defaults as Bazel runs them, its errors alone: Picnic's
-# checks above, and three of Error Prone's own, are errors too. RequireExplicitNullMarking: no class slips past NullAway unmarked;
+# checks above, Error Prone's Javadoc checks, and three of Error Prone's own, are errors too.
+# RequireExplicitNullMarking: no class slips past NullAway unmarked;
 # ReturnMissingNullable (off in rules_java's defaults): a return of null says @Nullable;
-# SameNameButDifferent: one simple name means one type in a file. A javac warning
-# fails the build (-Werror; Error Prone's warnings don't count). javac's doclint: a Javadoc {@link}
-# that doesn't resolve, a @param for no parameter, malformed HTML, down to private members; not
-# "missing": a comment on every member would be noise.
+# SameNameButDifferent: one simple name means one type in a file.
+# Error Prone's Javadoc checks replace doclint: InvalidLink checks {@link} targets, InvalidParam
+# checks parameter names, InvalidThrows checks exceptions, EmptyBlockTag flags empty tags, etc.
+# A javac warning fails the build (-Werror).
 java_package_configuration(
     name = "strict",
     javacopts = [
         "-Werror",
+        "-Xdoclint:none",
         "-Xep:RequireExplicitNullMarking:ERROR",
         "-Xep:ReturnMissingNullable:ERROR",
         "-Xep:SameNameButDifferent:ERROR",
-        "-Xdoclint:all/private,-missing",
+        "-Xep:AlmostJavadoc:ERROR",
+        "-Xep:EmptyBlockTag:ERROR",
+        "-Xep:InheritDoc:ERROR",
+        "-Xep:InvalidBlockTag:ERROR",
+        "-Xep:InvalidInlineTag:ERROR",
+        "-Xep:InvalidLink:ERROR",
+        "-Xep:InvalidParam:ERROR",
+        "-Xep:InvalidThrows:ERROR",
+        "-Xep:ReturnFromVoid:ERROR",
+        "-Xep:UnescapedEntity:ERROR",
     ] + ["-Xep:%s:ERROR" % check for check in PICNIC_CHECKS] + ["-Xep:%s:OFF" % check for check in PICNIC_OFF],
     packages = [":ours"],
 )

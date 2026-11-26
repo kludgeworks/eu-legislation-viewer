@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Fast file-level checks on changed files (pre-commit) and on everything (`hk check --all`, CI).
-// Checks that need the real schema are Bazel tests; javac's (Error Prone, NullAway, doclint) are the
-// compile's, so the build fails on them: before a push (pre-push), and in CI's mise run test.
+// Checks that need the real schema are Bazel tests; javac's (Error Prone, NullAway) are the
+// compile's, so the build fails on them in CI's mise run test.
 amends "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Config.pkl"
 
 import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.pkl"
@@ -175,10 +175,6 @@ hooks {
     fix = true
     stash = "git"
     steps { ...staged }
-  }
-  // javac's checks, before the commits leave: Bazel builds what changed since its last build
-  ["pre-push"] {
-    steps { ["build"] = new Step { check = "bazel build //..." } }
   }
   ["commit-msg"] {
     steps { ["conventional"] = Builtins.check_conventional_commit }
