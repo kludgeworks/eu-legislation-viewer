@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActOverTime;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparedLaw;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparedLaws;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
@@ -17,13 +16,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Failure
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.time.LocalDate;
@@ -94,20 +91,17 @@ class CompareController {
    */
   @GetMapping(path = ComparePage.PATH, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> page(
-      ActAddress act, @Valid @ModelAttribute CompareRequest page, HttpServletRequest request) {
-    var from = page.from();
-    var to = page.to();
-    var occurrence = page.occurrence();
-    var prepared = Boolean.TRUE.equals(page.prepared());
-    var asked = new Asked(act.eli(), act.language(), page.view(), occurrence, request);
+      ActAddress act, @Valid @ModelAttribute CompareRequest page, Frame frame) {
+    var asked = new Asked(act, page, frame);
     return switch (compared
-        .of(asked.eli, asked.language, from, to, occurrence)
+        .of(act.eli(), act.language(), page.from(), page.to(), page.occurrence())
         .orElseThrow(Requests::notFound)) {
       case ComparedLaw.Elsewhere elsewhere ->
-          ActLookupPages.seeOther(asked.address(elsewhere.days()), request);
+          ActLookupPages.seeOther(asked.address(elsewhere.days()));
       case ComparedLaw.BeforeTheAct before -> html(before(before, asked));
       case ComparedLaw.Preparing preparing -> html(preparing(preparing, asked));
-      case ComparedLaw.Prepared ready -> html(prepared(ready, asked, prepared));
+      case ComparedLaw.Prepared ready ->
+          html(prepared(ready, asked, Boolean.TRUE.equals(page.prepared())));
     };
   }
 
@@ -139,16 +133,19 @@ class CompareController {
     var days = before.days();
     return templates
         .catalogueCompare(
-            asked.frame,
+            asked.frame(),
             title(before.overTime(), days),
             asked.masthead(before.overTime(), days),
             CompareView.before(before.overTime(), days.from(), days.to()),
             templates.catalogueTextFailed(
                 FailureView.comparingBefore(
-                    before.overTime().act(), days.from(), before.afterFirst(), asked.language)),
+                    before.overTime().act(),
+                    days.from(),
+                    before.afterFirst(),
+                    asked.act().language())),
             false,
             null,
-            asked.view)
+            asked.page().view())
         .render();
   }
 
@@ -157,7 +154,7 @@ class CompareController {
     var days = preparing.days();
     return templates
         .cataloguePreparing(
-            asked.frame,
+            asked.frame(),
             title(preparing.overTime(), days),
             asked.masthead(preparing.overTime(), days).whilePreparing(),
             PreparingView.of(
@@ -167,7 +164,7 @@ class CompareController {
                     + Dates.inWords(days.from())
                     + " with the law on "
                     + Dates.inWords(days.to()),
-                asked.self,
+                asked.frame().here(),
                 preparing.now()))
         .render();
   }
@@ -177,20 +174,20 @@ class CompareController {
     var days = ready.days();
     return templates
         .catalogueCompare(
-            asked.frame,
+            asked.frame(),
             title(ready.overTime(), days),
             asked.masthead(ready.overTime(), days),
             CompareView.of(
-                ready.compared(), days.from(), days.to(), asked.occurrence, ready.today()),
+                ready.compared(), days.from(), days.to(), asked.page().occurrence(), ready.today()),
             ready.earlier().equals(ready.later())
                 ? templates.catalogueCompareSame(
                     "The wording is the same on the two days.",
-                    Links.read(asked.eli, days.to(), asked.language),
+                    Links.read(asked.act().eli(), days.to(), asked.act().language()),
                     "Read the law on " + Dates.inWords(days.to()))
                 : differences(ready, asked),
             arrived,
             ArrivingView.of(ready.preparation()).orElse(null),
-            asked.view)
+            asked.page().view())
         .render();
   }
 
@@ -217,30 +214,32 @@ class CompareController {
     var days = ready.days();
     if (preparation.ready() == 0) {
       return templates.catalogueTextFailed(
-          FailureView.act(act, preparation, asked.self, asked.frame.results()));
+          FailureView.act(act, preparation, asked.frame().here(), asked.frame().results()));
     }
     // Both texts are in the language, because the versions come from the timeline in it.
     var earlier = Objects.requireNonNull(preparation.texts().get(from));
     var later = Objects.requireNonNull(preparation.texts().get(to));
     if (earlier instanceof Text.Failed failed) {
       return templates.catalogueTextFailed(
-          FailureView.comparing(act, from, to, from, failed, asked.language, asked.self));
+          FailureView.comparing(
+              act, from, to, from, failed, asked.act().language(), asked.frame().here()));
     }
     if (later instanceof Text.Failed failed && earlier instanceof Text.Ready) {
       return templates.catalogueTextFailed(
-          FailureView.comparing(act, from, to, to, failed, asked.language, asked.self));
+          FailureView.comparing(
+              act, from, to, to, failed, asked.act().language(), asked.frame().here()));
     }
     if (!(earlier instanceof Text.Ready) || !(later instanceof Text.Ready)) {
       // The version appeared since, and it is being prepared.
       return templates.catalogueTextArriving();
     }
     var fragments =
-        Links.page(asked.eli, from, to, asked.language, null, asked.view)
+        Links.page(asked.act().eli(), from, to, asked.act().language(), null, asked.page().view())
             .on(days.from(), days.to());
     return templates.catalogueCompareReady(
-        asked.occurrence == null
+        asked.page().occurrence() == null
             ? fragments.differences()
-            : fragments.sides(List.of(asked.occurrence)),
+            : fragments.sides(List.of(asked.page().occurrence())),
         "Comparing the law on "
             + Dates.inWords(days.from())
             + " with the law on "
@@ -277,51 +276,34 @@ class CompareController {
       @Nullable Boolean prepared) {}
 
   /**
-   * What the reader asked for, beside the two days: the act, the language, the comparison module's
-   * view, and the provision that the page is limited to.
+   * What the reader asked for: the act and the language of the address, the parameters of the page,
+   * and the frame of the page.
    */
-  private static final class Asked {
-    final Eli eli;
-    final Language language;
-    final @Nullable String view;
-    final @Nullable String occurrence;
-    final Frame frame;
-    final String self;
-
-    Asked(
-        Eli eli,
-        Language language,
-        @Nullable String view,
-        @Nullable String occurrence,
-        HttpServletRequest request) {
-      this.eli = eli;
-      this.language = language;
-      this.view = view;
-      this.occurrence = occurrence;
-      this.frame = Frame.of(request);
-      this.self = request.getRequestURI() + "?" + request.getQueryString();
-    }
+  private record Asked(ActAddress act, CompareRequest page, Frame frame) {
 
     /** Returns the address of the page at {@code days}, with its view or its provision. */
     String address(TwoDays days) {
-      var page = new ComparePage(Links.compare(eli, language), days.from(), days.to(), null, view);
-      return occurrence == null ? page.href() : page.href(occurrence);
+      var occurrence = page.occurrence();
+      var at =
+          new ComparePage(
+              Links.compare(act.eli(), act.language()), days.from(), days.to(), null, page.view());
+      return occurrence == null ? at.href() : at.href(occurrence);
     }
 
     MastheadView masthead(ActOverTime overTime, TwoDays days) {
-      return MastheadView.comparing(overTime, days.from(), days.to(), occurrence);
+      return MastheadView.comparing(overTime, days.from(), days.to(), page.occurrence());
     }
   }
 
   /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
   @ExceptionHandler(NotCatalogued.class)
-  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
-    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, Frame frame) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, frame);
   }
 
   /** Answers a page whose address no act has with the page that says so, with 404. */
   @ExceptionHandler(NoSuchAct.class)
-  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
-    return ActLookupPages.missing(templates, missing, request);
+  ResponseEntity<String> missing(NoSuchAct missing, Frame frame) {
+    return ActLookupPages.missing(templates, missing, frame);
   }
 }

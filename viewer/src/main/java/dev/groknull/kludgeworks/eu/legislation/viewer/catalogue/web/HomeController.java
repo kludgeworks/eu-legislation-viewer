@@ -13,7 +13,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
-import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -55,6 +54,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * <p>The search is kept in the {@link Frame#SEARCH} cookie for a while. The site bar uses it to
  * link back to the results.
  */
+/*
+ * A handler takes the frame of its page as a Frame, which the site module gives. The check knows
+ * only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class HomeController {
   private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
@@ -121,18 +125,17 @@ class HomeController {
       @RequestParam(defaultValue = "") String q,
       @RequestParam(defaultValue = "all") String type,
       @RequestParam(defaultValue = "1") int page,
-      HttpServletRequest request) {
+      Frame frame) {
     var kind = Search.Kind.of(type).orElseThrow(Requests::notFound);
     if (page < 1) {
       throw Requests.notFound();
     }
     var words = q.strip();
-    var frame = Frame.of(request);
     if (words.isEmpty()) {
       return page(frame, "Amendment viewer", HomeView.empty());
     }
     var started = System.nanoTime();
-    var straight = straight(words, frame, started, null, kind);
+    var straight = straight(words, frame, started, false, kind);
     if (straight.isPresent()) {
       return straight.get();
     }
@@ -177,16 +180,15 @@ class HomeController {
   /**
    * Looks up the act that {@code q}, a CELEX number or an ELI, names, and goes to it. The home page
    * asks for this address when the lookup of the act found it, and a page without JavaScript goes
-   * to it at once: it waits for the lookup, which runs in the background ({@link Lookups}). A
-   * request from htmx gets the address of the act in {@code HX-Redirect}. If no act has it, the
-   * response is the home page that says so. If the Publications Office does not answer, the
-   * response is the home page that says so, with 503. Other words go to their results. A lookup is
-   * logged when it starts and when it ends.
+   * to it at once: it waits for the lookup, which runs in the background ({@link Lookups}). If no
+   * act has it, the response is the home page that says so. If the Publications Office does not
+   * answer, the response is the home page that says so, with 503. Other words go to their results.
+   * A lookup is logged when it starts and when it ends.
    */
   @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
-  ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
+  ResponseEntity<String> lookUp(@RequestParam String q, Frame frame) {
     var words = q.strip();
-    return straight(words, Frame.of(request), System.nanoTime(), request, Search.Kind.ALL)
+    return straight(words, frame, System.nanoTime(), true, Search.Kind.ALL)
         .orElseGet(() ->
             ResponseEntity.status(HttpStatus.SEE_OTHER)
                 .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
@@ -256,17 +258,13 @@ class HomeController {
   /**
    * Returns the response when {@code words} identify one act. That is a redirect to the comparison
    * of the act, or the home page saying that no act has it. If the catalogue does not have the act
-   * yet and {@code lookingUp} is null, it is the home page that says it looks the act up. Returns
+   * yet and {@code lookingUp} is false, it is the home page that says it looks the act up. Returns
    * none if the words are title words.
    *
-   * @param lookingUp the request to {@link #LOOK_UP}, or null for a search
+   * @param lookingUp true for a request to {@link #LOOK_UP}, false for a search
    */
   private Optional<ResponseEntity<String>> straight(
-      String words,
-      Frame frame,
-      long started,
-      @Nullable HttpServletRequest lookingUp,
-      Search.Kind kind) {
+      String words, Frame frame, long started, boolean lookingUp, Search.Kind kind) {
     var named = named(words, kind);
     if (named.isEmpty()) {
       return Optional.empty();
@@ -274,7 +272,7 @@ class HomeController {
     var name = named.get();
     var act = name.catalogued(acts);
     var unanswered = unanswered(words, name);
-    if (act.isEmpty() && lookingUp == null) {
+    if (act.isEmpty() && !lookingUp) {
       LOG.info(
           "Searched for “{}” by {}: not in the catalogue yet, so the page looks it up",
           typed(words),
@@ -316,7 +314,7 @@ class HomeController {
     }
     LOG.info(
         "{} “{}” by {}: {}, in {} ms",
-        lookingUp == null ? "Searched for" : "Looked up",
+        lookingUp ? "Looked up" : "Searched for",
         typed(words),
         name.as(),
         act.map(found -> found.id().celex() + (found.eli() == null ? ", which has no ELI" : ""))
@@ -329,9 +327,7 @@ class HomeController {
     }
     var location = Links.act(eli.get(), Language.ENG);
     return Optional.of(
-        lookingUp != null && lookingUp.getHeader("HX-Request") != null
-            ? ResponseEntity.ok().header("HX-Redirect", location).build()
-            : ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build());
+        ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build());
   }
 
   /**

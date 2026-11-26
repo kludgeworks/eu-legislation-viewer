@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Reading;
@@ -18,13 +17,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Prepari
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TagsView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.net.URI;
@@ -91,8 +88,7 @@ class VersionController {
    * redirects to the law on that date. The date form of the Reading card sends {@code on}.
    */
   @GetMapping(path = "/eli/{type}/{year}/{number}/{language}", produces = MediaType.TEXT_HTML_VALUE)
-  ResponseEntity<Void> act(
-      ActAddress act, @Valid @ModelAttribute ActRequest asked, HttpServletRequest request) {
+  ResponseEntity<Void> act(ActAddress act, @Valid @ModelAttribute ActRequest asked) {
     var language = act.language();
     var eli = act.eli();
     var on = asked.on();
@@ -100,8 +96,7 @@ class VersionController {
     return ActLookupPages.seeOther(
         on == null && amended
             ? Links.history(eli, null, language)
-            : Links.read(eli, on != null ? on : today.today(), language),
-        request);
+            : Links.read(eli, on != null ? on : today.today(), language));
   }
 
   /**
@@ -113,15 +108,15 @@ class VersionController {
    */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String page(ActAddress act, @Valid @ModelAttribute DayRequest day, HttpServletRequest request) {
-    var date = day.date();
-    var prepared = Boolean.TRUE.equals(day.prepared());
-    var asked = new Asked(act.eli(), act.language(), date, request);
-    return switch (readings.of(asked.eli, asked.language, date).orElseThrow(Requests::notFound)) {
+  String page(ActAddress act, @Valid @ModelAttribute DayRequest day, Frame frame) {
+    var asked = new Asked(act, day.date(), frame);
+    return switch (readings
+        .of(act.eli(), act.language(), day.date())
+        .orElseThrow(Requests::notFound)) {
       case Reading.BeforeTheAct before -> before(before, asked);
       case Reading.NotInTheLanguage missing -> missing(missing, asked);
       case Reading.Preparing preparing -> preparing(preparing, asked);
-      case Reading.Prepared ready -> prepared(ready, asked, prepared);
+      case Reading.Prepared ready -> prepared(ready, asked, Boolean.TRUE.equals(day.prepared()));
     };
   }
 
@@ -147,10 +142,10 @@ class VersionController {
    * redirects to the page, which prepares the act again.
    */
   @PostMapping(path = PATH)
-  ResponseEntity<Void> retry(ActAddress act, HttpServletRequest request) {
+  ResponseEntity<Void> retry(ActAddress act, @Valid @ModelAttribute DayRequest day) {
     readings.retry(act.eli(), act.language());
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
-        .location(URI.create(request.getRequestURI()))
+        .location(URI.create(Links.read(act.eli(), day.date(), act.language())))
         .build();
   }
 
@@ -162,11 +157,11 @@ class VersionController {
     var overTime = before.overTime();
     return templates
         .catalogueVersion(
-            asked.frame,
-            MastheadView.reading(overTime, before.version(), asked.date),
-            ReadingView.before(overTime, asked.date),
+            asked.frame(),
+            MastheadView.reading(overTime, before.version(), asked.date()),
+            ReadingView.before(overTime, asked.date()),
             templates.catalogueTextFailed(
-                FailureView.before(overTime.act(), asked.date, asked.language)),
+                FailureView.before(overTime.act(), asked.date(), asked.act().language())),
             false,
             null)
         .render();
@@ -178,12 +173,12 @@ class VersionController {
     var version = missing.version();
     return templates
         .catalogueVersion(
-            asked.frame,
-            MastheadView.reading(overTime, version, asked.date),
+            asked.frame(),
+            MastheadView.reading(overTime, version, asked.date()),
             ReadingView.of(
-                overTime, version, asked.date, missing.today(), List.of(), missing.law()),
+                overTime, version, asked.date(), missing.today(), List.of(), missing.law()),
             templates.catalogueTextFailed(
-                FailureView.missing(overTime.act(), version, asked.language, asked.self)),
+                FailureView.missing(overTime.act(), version, asked.act().language(), asked.self())),
             false,
             null)
         .render();
@@ -194,15 +189,15 @@ class VersionController {
     var act = preparing.overTime().act();
     return templates
         .cataloguePreparing(
-            asked.frame,
-            ReadingView.title(act, asked.date),
-            MastheadView.reading(preparing.overTime(), preparing.version(), asked.date)
+            asked.frame(),
+            ReadingView.title(act, asked.date()),
+            MastheadView.reading(preparing.overTime(), preparing.version(), asked.date())
                 .whilePreparing(),
             PreparingView.of(
                 act,
                 preparing.preparation(),
-                "You asked for the law on " + Dates.inWords(asked.date),
-                asked.self,
+                "You asked for the law on " + Dates.inWords(asked.date()),
+                asked.self(),
                 preparing.now()))
         .render();
   }
@@ -213,10 +208,10 @@ class VersionController {
     var version = ready.version();
     return templates
         .catalogueVersion(
-            asked.frame,
-            MastheadView.reading(overTime, version, asked.date),
+            asked.frame(),
+            MastheadView.reading(overTime, version, asked.date()),
             ReadingView.of(
-                overTime, version, asked.date, ready.today(), ready.named(), ready.law()),
+                overTime, version, asked.date(), ready.today(), ready.named(), ready.law()),
             text(ready, asked),
             arrived,
             ArrivingView.of(ready.preparation()).orElse(null))
@@ -248,11 +243,11 @@ class VersionController {
     if (text == null) {
       // The version is not in the language.
       return templates.catalogueTextFailed(
-          FailureView.missing(act, version, asked.language, asked.self));
+          FailureView.missing(act, version, asked.act().language(), asked.self()));
     }
     if (preparation.ready() == 0) {
       return templates.catalogueTextFailed(
-          FailureView.act(act, preparation, asked.self, asked.frame.results()));
+          FailureView.act(act, preparation, asked.self(), asked.frame().results()));
     }
     return switch (text) {
       case Text.Ready built ->
@@ -260,16 +255,17 @@ class VersionController {
               "/content/" + built.text(),
               Objects.requireNonNull(ready.outline()),
               TagsView.of(overTime, version),
-              DivergenceNotesView.of(act, ready.law(), ready.text(), asked.language, ready.today()),
-              Links.read(asked.eli, asked.date, asked.language) + "/provision",
+              DivergenceNotesView.of(
+                  act, ready.law(), ready.text(), asked.act().language(), ready.today()),
+              asked.self() + "/provision",
               ready.provisions(),
-              asked.self,
-              version.eurLex(asked.language).toString());
+              asked.self(),
+              version.eurLex(asked.act().language()).toString());
       // The version appeared since, and it is being prepared.
       case Text.Waiting _, Text.Converting _ -> templates.catalogueTextArriving();
       case Text.Failed failed ->
           templates.catalogueTextFailed(
-              FailureView.reading(act, version, failed, asked.language, asked.self));
+              FailureView.reading(act, version, failed, asked.act().language(), asked.self()));
     };
   }
 
@@ -300,32 +296,27 @@ class VersionController {
       @NotNull @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
       @NotNull String occurrence) {}
 
-  /** What the reader asked for: the act, the language and the day. */
-  private static final class Asked {
-    final Eli eli;
-    final Language language;
-    final LocalDate date;
-    final Frame frame;
-    final String self;
+  /**
+   * What the reader asked for: the act and the language of the address, the day, and the frame of
+   * the page.
+   */
+  private record Asked(ActAddress act, LocalDate date, Frame frame) {
 
-    Asked(Eli eli, Language language, LocalDate date, HttpServletRequest request) {
-      this.eli = eli;
-      this.language = language;
-      this.date = date;
-      this.frame = Frame.of(request);
-      this.self = request.getRequestURI();
+    /** Returns the address of the page, without its query. */
+    String self() {
+      return Links.read(act.eli(), date, act.language());
     }
   }
 
   /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
   @ExceptionHandler(NotCatalogued.class)
-  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
-    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, Frame frame) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, frame);
   }
 
   /** Answers a page whose address no act has with the page that says so, with 404. */
   @ExceptionHandler(NoSuchAct.class)
-  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
-    return ActLookupPages.missing(templates, missing, request);
+  ResponseEntity<String> missing(NoSuchAct missing, Frame frame) {
+    return ActLookupPages.missing(templates, missing, frame);
   }
 }

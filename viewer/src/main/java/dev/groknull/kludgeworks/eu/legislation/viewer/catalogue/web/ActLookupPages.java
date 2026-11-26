@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ActLook
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
-import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.util.Objects;
 import org.springframework.http.CacheControl;
@@ -26,51 +25,39 @@ import org.springframework.http.ResponseEntity;
  */
 final class ActLookupPages {
 
-  /**
-   * The header of the request that the waiting page sends when the act is found. An address that
-   * redirects answers it with {@code HX-Redirect}, so that the browser goes to the address that it
-   * redirects to: htmx follows a redirect, but keeps the address that it asked for.
-   */
-  static final String FOUND = "X-Act-Found";
-
   private ActLookupPages() {}
 
   /**
-   * Returns the redirect to {@code location}. For the request of the waiting page when the act is
-   * found ({@link #FOUND}), it is {@code HX-Redirect}.
+   * Returns the redirect to {@code location}. The waiting page follows it too: htmx puts the
+   * address that it got in the address bar.
    */
-  static <T> ResponseEntity<T> seeOther(String location, HttpServletRequest request) {
-    return request.getHeader(FOUND) != null
-        ? ResponseEntity.ok().header("HX-Redirect", location).build()
-        : ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
+  static <T> ResponseEntity<T> seeOther(String location) {
+    return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
   }
 
   /** Returns the page that waits for the lookup of {@code notCatalogued}'s act. */
   static ResponseEntity<String> lookingUp(
-      Templates templates, NotCatalogued notCatalogued, HttpServletRequest request) {
+      Templates templates, NotCatalogued notCatalogued, Frame frame) {
     var eli = Objects.requireNonNull(notCatalogued.eli());
-    var query = request.getQueryString();
-    var self = request.getRequestURI() + (query == null ? "" : "?" + query);
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .cacheControl(CacheControl.noStore())
         .body(
             templates
                 .catalogueActlookup(
-                    Frame.of(request),
+                    frame,
                     "Looking up " + eli.path() + " · Amendment viewer",
-                    ActLookupView.of(eli, self))
+                    ActLookupView.of(eli, frame.here()))
                 .render());
   }
 
   /** Returns the page that says that no act has the address, with 404. */
-  static ResponseEntity<String> missing(
-      Templates templates, NoSuchAct missing, HttpServletRequest request) {
+  static ResponseEntity<String> missing(Templates templates, NoSuchAct missing, Frame frame) {
     return ResponseEntity.status(HttpStatus.NOT_FOUND)
         .contentType(Requests.HTML)
         .body(
             templates
-                .catalogueNosuchact(Frame.of(request), Objects.requireNonNull(missing.eli()).path())
+                .catalogueNosuchact(frame, Objects.requireNonNull(missing.eli()).path())
                 .render());
   }
 }

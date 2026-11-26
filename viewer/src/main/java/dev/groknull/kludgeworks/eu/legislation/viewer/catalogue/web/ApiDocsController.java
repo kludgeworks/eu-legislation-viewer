@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -24,6 +23,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  *       /api/docs#text-failed}.
  * </ul>
  */
+/*
+ * A handler takes the frame of its page as a Frame, which the site module gives. The check knows
+ * only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class ApiDocsController {
   /** The address of the page. */
@@ -39,17 +43,13 @@ class ApiDocsController {
 
   /** Returns the page. */
   @GetMapping(path = DOCS, produces = MediaType.TEXT_HTML_VALUE)
-  ResponseEntity<String> docs(HttpServletRequest request) {
+  ResponseEntity<String> docs(Frame frame) {
     var sections = docs.read();
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
             templates
-                .catalogueApi(
-                    Frame.of(request),
-                    sections.resources(),
-                    sections.examples(),
-                    sections.problems())
+                .catalogueApi(frame, sections.resources(), sections.examples(), sections.problems())
                 .render());
   }
 }

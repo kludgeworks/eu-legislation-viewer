@@ -5,7 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,6 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
  * The About page, which the home page's footer links to ("About · Privacy · API"). It says what the
  * viewer is, what it keeps about a reader, what it offers other programs, and which build this is.
  */
+/*
+ * A handler takes the frame of its page as a Frame, which the site module gives. The check knows
+ * only the arguments that Spring gives.
+ */
+@SuppressWarnings("RequestMappingAnnotation")
 @Controller
 class AboutController {
   private final Templates templates;
@@ -35,14 +39,13 @@ class AboutController {
    * same frame.
    */
   @GetMapping(path = "/about", produces = MediaType.TEXT_HTML_VALUE)
-  ResponseEntity<String> about(HttpServletRequest request) {
+  ResponseEntity<String> about(Frame frame) {
     var sections = docs.read();
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
             templates
-                .catalogueAbout(
-                    Frame.of(request), release.value(), sections.resources(), sections.problems())
+                .catalogueAbout(frame, release.value(), sections.resources(), sections.problems())
                 .render());
   }
 }

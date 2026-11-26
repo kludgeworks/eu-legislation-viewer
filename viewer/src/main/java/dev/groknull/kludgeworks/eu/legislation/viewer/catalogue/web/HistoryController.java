@@ -12,7 +12,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Masthea
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -63,14 +62,11 @@ class HistoryController {
    */
   @GetMapping(path = HISTORY, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String history(
-      ActAddress act, @Valid @ModelAttribute HistoryRequest asked, HttpServletRequest request) {
+  String history(ActAddress act, @Valid @ModelAttribute HistoryRequest asked, Frame frame) {
     var history = histories.of(act.eli(), act.language(), asked.on(), asked.from(), asked.to());
     return templates
         .catalogueHistory(
-            Frame.of(request),
-            MastheadView.history(history.overTime(), history.day()),
-            HistoryView.of(history))
+            frame, MastheadView.history(history.overTime(), history.day()), HistoryView.of(history))
         .render();
   }
 
@@ -80,8 +76,7 @@ class HistoryController {
    */
   @GetMapping(path = HISTORY + "/{celex}", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String amending(
-      ActAddress act, @Valid @ModelAttribute AmendingRequest asked, HttpServletRequest request) {
+  String amending(ActAddress act, @Valid @ModelAttribute AmendingRequest asked, Frame frame) {
     return Optional.of(asked.celex())
         .filter(ActIdentifier::isCelex)
         .map(ActIdentifier::new)
@@ -89,7 +84,7 @@ class HistoryController {
         .map(amending ->
             templates
                 .catalogueAmending(
-                    Frame.of(request),
+                    frame,
                     MastheadView.history(amending.overTime(), amending.day()),
                     AmendingView.of(amending, asked.applies()))
                 .render())
@@ -122,13 +117,13 @@ class HistoryController {
 
   /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
   @ExceptionHandler(NotCatalogued.class)
-  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
-    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, Frame frame) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, frame);
   }
 
   /** Answers a page whose address no act has with the page that says so, with 404. */
   @ExceptionHandler(NoSuchAct.class)
-  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
-    return ActLookupPages.missing(templates, missing, request);
+  ResponseEntity<String> missing(NoSuchAct missing, Frame frame) {
+    return ActLookupPages.missing(templates, missing, frame);
   }
 }

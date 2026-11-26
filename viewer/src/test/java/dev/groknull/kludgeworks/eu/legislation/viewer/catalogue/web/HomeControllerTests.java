@@ -108,6 +108,8 @@ class HomeControllerTests {
     // The stream says when the lookup ends. If it found the act (done), the page asks the lookup
     // address, which goes to the act.
     assertThat(looking.attr("hx-get")).isEqualTo("/lookup?q=32015R1998");
+    // htmx follows the redirect to the act, and shows the address of the act.
+    assertThat(looking.attr("hx-push-url")).isEqualTo("true");
     assertThat(looking.attr("hx-trigger")).isEqualTo("done");
     assertThat(
             Objects.requireNonNull(looking.selectFirst("[hx-sse:connect]")).attr("hx-sse:connect"))
@@ -161,10 +163,6 @@ class HomeControllerTests {
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
         .hasValue(HttpHeaders.LOCATION, READ);
-    assertThat(mvc.get().uri("/lookup?q=32015R1998").header("HX-Request", "true"))
-        .hasStatusOk()
-        .headers()
-        .hasValue("HX-Redirect", READ);
   }
 
   @Test

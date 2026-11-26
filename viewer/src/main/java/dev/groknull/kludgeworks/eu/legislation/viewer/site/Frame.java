@@ -23,8 +23,8 @@ import org.springframework.web.util.WebUtils;
  *   <li>the link back to the results of a search
  * </ul>
  *
- * <p>A controller makes the frame from the request with {@link #of}. It passes the frame to the
- * template of its page, for the layout.
+ * <p>A handler of a page takes the frame as an argument, which {@link FrameResolver} makes from the
+ * request. The handler passes the frame to the template of its page, for the layout.
  *
  * @param theme the colour theme of the reader, from the {@link #THEME} cookie. It is {@link
  *     Theme#SYSTEM} if there is no cookie.
@@ -45,7 +45,7 @@ public record Frame(Theme theme, String here, Assets assets, @Nullable Results r
   public static final String SEARCH = "search";
 
   /** Returns the frame of the page that {@code request} asks for. */
-  public static Frame of(HttpServletRequest request) {
+  static Frame of(HttpServletRequest request) {
     var cookie = WebUtils.getCookie(request, THEME);
     var query = request.getQueryString();
     return new Frame(

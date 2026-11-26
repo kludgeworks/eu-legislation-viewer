@@ -27,7 +27,7 @@
       <p class="ex">A CELEX number or ELI goes straight to the act. Try <a href="/?q=32015R1998">32015R1998</a> <a href="/?q=eli/reg_impl/2015/1998/oj">eli/reg_impl/2015/1998/oj</a> <a href="/?q=air+cargo+security">air cargo security</a></p>
     </form>
     @if(home.lookingUp() != null)
-      <div id="looking" class="looking" role="status" hx-get="${home.lookingUp().href()}" hx-trigger="done" hx-target="main" hx-select="main" hx-swap="outerHTML">
+      <div id="looking" class="looking" role="status" hx-get="${home.lookingUp().href()}" hx-trigger="done" hx-push-url="true" hx-target="body" hx-swap="innerHTML">
         <p class="none">${home.lookingUp().line()}</p>
         <p class="slow">The Publications Office is slow to answer.</p>
         <template class="failed">@template.catalogue.unanswered(unanswered = home.lookingUp().unanswered())</template>

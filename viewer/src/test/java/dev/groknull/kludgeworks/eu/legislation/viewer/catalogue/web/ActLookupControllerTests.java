@@ -79,6 +79,8 @@ class ActLookupControllerTests {
             "Looking up reg_impl/2015/1998 at the Publications Office…",
             "The Publications Office is slow to answer.");
     assertThat(lookup.attr("hx-get")).isEqualTo(PAGE);
+    // htmx follows a redirect of the address, and shows the address that it got.
+    assertThat(lookup.attr("hx-replace-url")).isEqualTo("true");
     assertThat(lookup.attr("hx-trigger")).isEqualTo("done");
     var stream = Objects.requireNonNull(lookup.selectFirst("[hx-sse:connect]"));
     assertThat(stream.attr("hx-sse:connect")).isEqualTo(EVENTS);
@@ -99,19 +101,6 @@ class ActLookupControllerTests {
     assertThat(missing.select("p").text())
         .isEqualTo("The Publications Office has no act with the ELI reg_impl/2015/1998.");
     assertThat(missing.select("a").attr("href")).isEqualTo("/");
-  }
-
-  @Test
-  void sendsTheWaitingPageToTheAddressThatTheActRedirectsTo() {
-    when(lookups.lookUp(OneActCellar.ELI))
-        .thenReturn(CompletableFuture.completedFuture(Optional.of(OneActCellar.ACT)));
-
-    // htmx follows a redirect but keeps the address it asked for, so the page is sent on.
-    assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng").header("X-Act-Found", "true"))
-        .hasStatusOk()
-        .headers()
-        .hasValue("HX-Redirect", "/eli/reg_impl/2015/1998/eng/history");
-    assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng")).hasStatus(HttpStatus.SEE_OTHER);
   }
 
   @Test
