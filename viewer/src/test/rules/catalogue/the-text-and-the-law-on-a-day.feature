@@ -132,7 +132,7 @@ Feature: The text and the law on a day
     - It starts on the entry into force of the act, or on its first version if that day is later.
     - It ends on the day before the whole act applies.
 
-    Before its entry into force, the act is not in force (state-on-a-day), so it has no deferred
+    Before its entry into force, the act is not in force (not-in-force), so it has no deferred
     application.
 
     Example: An act in force two years before it applies

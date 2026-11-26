@@ -2,8 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 /**
- * The legal state of an act, or of one change that an amending act makes, on a day. {@link
- * TheStateOnADay#stateOnADay} gives the state of one change, and {@link
+ * The legal state of an act, or of one change that an amending act makes, on a day. The rules of
+ * {@link TheStateOnADay} give the state of an act or of one change, and {@link
  * TheStateOnADay.Stands#state} the state of an amending act from the states of its changes. "state"
  * is the legal state only: how far a text or a preparation is, is its progress.
  */

@@ -16,7 +16,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * The wording of the state of an act, or of one of its changes, on a day: its label, its phrase,
  * its tone, and the statement of one change. The history of an act and the page of an amending act
- * use it. The state is the act's, {@link TheStateOnADay#stateOnADay} and {@link
+ * use it. The state is the act's, {@link
+ * dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.DatedAct#state} and {@link
  * TheStateOnADay#howAnAmendingActStands}. This class only puts it into words.
  *
  * <p>The tense obeys the day. For today or a later day, "does not apply yet". For a day in the

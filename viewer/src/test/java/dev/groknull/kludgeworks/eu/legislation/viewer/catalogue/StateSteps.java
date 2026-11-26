@@ -15,7 +15,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules of the state on a day: the state of an act, or of one of its changes
- * ({@link TheStateOnADay#stateOnADay}), and how an amending act stands ({@link
+ * ({@link DatedAct#state}), and how an amending act stands ({@link
  * TheStateOnADay#howAnAmendingActStands}, {@link TheStateOnADay.Stands#state}). The changes are
  * those to the English text. They read the act of the scenario ({@link TheAct}).
  */
