@@ -430,7 +430,6 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "@maven//:org_assertj_assertj_core",  # MvcTestResult is an AssertProvider
-        "@maven//:org_mockito_mockito_core",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",

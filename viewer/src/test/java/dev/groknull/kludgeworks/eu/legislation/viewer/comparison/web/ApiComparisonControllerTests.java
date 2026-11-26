@@ -63,7 +63,9 @@ import tools.jackson.databind.json.JsonMapper;
   ApiConfiguration.class,
   ActComparisonLinks.class,
   ApiComparisonControllerTests.ActLinks.class,
+  ComparisonLinks.class,
   ComparisonModelAssembler.class,
+  ComparisonPreparingModelAssembler.class,
   DifferenceModelAssembler.class
 })
 class ApiComparisonControllerTests {

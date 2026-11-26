@@ -95,6 +95,15 @@ public class LawService implements Laws {
                     languages.computeIfAbsent(each, key -> new ArrayList<>()).add(language)));
     // An act's deferred application applies to the entire act across all official languages.
     // The languages grouped here are those that currently have a text for this version.
+    if (languages.size() > 1) {
+      throw new IllegalStateException(
+          "Act "
+              + act.id()
+              + " has different deferred applications across languages on "
+              + date
+              + ": "
+              + languages.keySet());
+    }
     return languages.entrySet().stream()
         .findFirst()
         .map(each -> new Deferred(each.getKey(), each.getValue()))

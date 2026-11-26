@@ -79,6 +79,7 @@ class ApiComparisonController {
   private final Comparisons comparisons;
   private final Content content;
   private final ComparisonModelAssembler assembler;
+  private final ComparisonPreparingModelAssembler preparingAssembler;
   private final DifferenceModelAssembler differenceAssembler;
 
   ApiComparisonController(
@@ -87,12 +88,14 @@ class ApiComparisonController {
       Comparisons comparisons,
       Content content,
       ComparisonModelAssembler assembler,
+      ComparisonPreparingModelAssembler preparingAssembler,
       DifferenceModelAssembler differenceAssembler) {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
     this.content = content;
     this.assembler = assembler;
+    this.preparingAssembler = preparingAssembler;
     this.differenceAssembler = differenceAssembler;
   }
 
@@ -162,7 +165,7 @@ class ApiComparisonController {
     if (texts == null) {
       return ResponseEntity.status(HttpStatus.ACCEPTED)
           .header(HttpHeaders.RETRY_AFTER, Long.toString(RETRY_AFTER.toSeconds()))
-          .body(assembler.toPreparingModel(ends));
+          .body(preparingAssembler.toModel(ends));
     }
     var comparison =
         comparisons.between(texts.earlier(), texts.later()).orElseThrow(Requests::notFound);

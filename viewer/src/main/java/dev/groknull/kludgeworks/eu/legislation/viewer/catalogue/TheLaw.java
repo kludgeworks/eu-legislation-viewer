@@ -7,9 +7,10 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The law of an act on a day: the versions that apply on it, the day they apply until, the deferred
- * application of the act itself, and where their text is not the law on the day. {@link Laws#on}
- * gives it for consumers such as the API.
+ * The law of an act on a day across all its languages: the versions that apply on it, the day they
+ * apply until, the deferred application of the act itself, and where their text is not the law on
+ * the day. Both the reading page and the API apply the same rules through {@link LawOverTime}, but
+ * the API aggregates the answer across languages in this form. {@link Laws#on} gives it.
  *
  * @param act the act
  * @param day the day asked

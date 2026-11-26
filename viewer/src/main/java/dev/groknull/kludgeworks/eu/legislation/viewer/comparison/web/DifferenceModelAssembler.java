@@ -21,11 +21,11 @@ class DifferenceModelAssembler {
   static final String DIFFERENCE_SCHEMA = "/api/schemas/v1/difference.schema.json";
 
   private final Content content;
-  private final ComparisonModelAssembler comparisonAssembler;
+  private final ComparisonLinks links;
 
-  DifferenceModelAssembler(Content content, ComparisonModelAssembler comparisonAssembler) {
+  DifferenceModelAssembler(Content content, ComparisonLinks links) {
     this.content = content;
-    this.comparisonAssembler = comparisonAssembler;
+    this.links = links;
   }
 
   /**
@@ -34,13 +34,13 @@ class DifferenceModelAssembler {
    */
   public EntityModel<DifferenceModel> toModel(
       Ends ends, Difference difference, Amended amended, String eId) {
-    var comparison = comparisonAssembler.at(ends, IanaLinkRelations.UP);
+    var comparison = links.at(ends, IanaLinkRelations.UP);
     return EntityModel.of(
         new DifferenceModel(
             DifferenceSummary.of(ends.act(), difference, amended),
             content.publicWording(difference.shown()),
             content.publicOccurrence(difference.shown())),
-        Link.of(ComparisonModelAssembler.differenceHref(comparison, eId)),
+        Link.of(ComparisonLinks.differenceHref(comparison, eId)),
         comparison,
         ApiLinks.schema(DIFFERENCE_SCHEMA));
   }

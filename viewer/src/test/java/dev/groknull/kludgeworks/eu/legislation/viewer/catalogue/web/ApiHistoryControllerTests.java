@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,6 +33,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
   ApiConfiguration.class,
   CataloguedTesting.class,
   HistoryService.class,
+  LawService.class,
   ApiActTesting.Assemblers.class
 })
 class ApiHistoryControllerTests {

@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.CompareService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ReadService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import java.io.UnsupportedEncodingException;
@@ -38,6 +39,7 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 @Import({
   ControllerTesting.class,
   HistoryService.class,
+  LawService.class,
   ReadService.class,
   CompareService.class,
   ApiConfiguration.class,

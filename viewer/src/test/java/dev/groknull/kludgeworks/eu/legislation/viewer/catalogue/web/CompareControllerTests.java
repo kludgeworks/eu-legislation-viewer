@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.CompareService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.LawService;
 import jakarta.servlet.http.Cookie;
 import java.io.UnsupportedEncodingException;
 import java.time.Clock;
@@ -43,6 +44,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 @Import({
   ControllerTesting.class,
   HistoryService.class,
+  LawService.class,
   CompareService.class,
   CompareControllerTests.OnTheSixthOfNovember2026.class
 })

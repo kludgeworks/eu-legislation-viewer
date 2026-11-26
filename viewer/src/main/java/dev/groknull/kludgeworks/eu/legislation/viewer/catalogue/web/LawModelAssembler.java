@@ -68,7 +68,7 @@ class LawModelAssembler implements RepresentationModelAssembler<TheLaw, Represen
               ApiActResources.code(divergence.kind().name()),
               divergence.act().celex(),
               act.cited(divergence.act()),
-              divergence.appliesFromDate(),
+              divergence.applicationDate().orElse(null),
               included == null ? null : ApiActResources.key(included),
               divergence.places().stream()
                   .map(place -> new PlaceModel(place.location().code(), place.place().words()))
