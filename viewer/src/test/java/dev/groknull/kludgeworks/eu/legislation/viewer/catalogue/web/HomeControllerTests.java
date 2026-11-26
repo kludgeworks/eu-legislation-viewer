@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.NamedActService;
 import java.util.Objects;
 import java.util.Optional;
 import org.jsoup.Jsoup;
@@ -31,7 +32,7 @@ import org.springframework.web.client.ResourceAccessException;
  * OneActCellar}: 2015/1998, and 2026/449, which amends it.
  */
 @WebMvcTest(HomeController.class)
-@Import(ControllerTesting.class)
+@Import({ControllerTesting.class, NamedActService.class})
 class HomeControllerTests {
   private static final String READ = "/eli/reg_impl/2015/1998/eng";
 

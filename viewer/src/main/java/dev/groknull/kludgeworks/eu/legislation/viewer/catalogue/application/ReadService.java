@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CataloguedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.FirstPage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Histories;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Laws;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
@@ -26,6 +27,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -93,8 +95,13 @@ public class ReadService implements Readings {
   }
 
   @Override
-  public boolean amended(Eli eli, Language language) {
-    return !histories.overTime(CataloguedActs.act(lookups, eli), language).amendingActs().isEmpty();
+  public FirstPage first(Eli eli, Language language, @Nullable LocalDate on) {
+    var amended =
+        !histories.overTime(CataloguedActs.act(lookups, eli), language).amendingActs().isEmpty();
+    if (on != null) {
+      return new FirstPage.Read(on);
+    }
+    return amended ? new FirstPage.History() : new FirstPage.Read(today.today());
   }
 
   @Override

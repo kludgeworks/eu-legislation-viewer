@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.FirstPage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NoSuchAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NotCatalogued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Reading;
@@ -91,12 +92,11 @@ class VersionController {
   ResponseEntity<Void> act(ActAddress act, @Valid @ModelAttribute ActRequest asked) {
     var language = act.language();
     var eli = act.eli();
-    var on = asked.on();
-    var amended = readings.amended(eli, language);
     return ActLookupPages.seeOther(
-        on == null && amended
-            ? Links.history(eli, null, language)
-            : Links.read(eli, on != null ? on : today.today(), language));
+        switch (readings.first(eli, language, asked.on())) {
+          case FirstPage.History _ -> Links.history(eli, null, language);
+          case FirstPage.Read read -> Links.read(eli, read.day(), language);
+        });
   }
 
   /**

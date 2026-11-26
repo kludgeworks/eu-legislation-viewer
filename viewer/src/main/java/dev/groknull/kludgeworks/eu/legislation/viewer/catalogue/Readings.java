@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The law of an act on a day, as a reader gets it. The Read page asks here, and only here, for what
@@ -22,8 +23,12 @@ public interface Readings {
    */
   Optional<Reading> of(Eli act, Language language, LocalDate day);
 
-  /** Returns whether the act has amending acts that change its text in {@code language}. */
-  boolean amended(Eli act, Language language);
+  /**
+   * Returns the page that the address of the act without a page opens, in {@code language}.
+   *
+   * @param on the day that the reader gave, or null
+   */
+  FirstPage first(Eli act, Language language, @Nullable LocalDate on);
 
   /**
    * Returns the history of the occurrence {@code occurrence} of the text that the reader gets on

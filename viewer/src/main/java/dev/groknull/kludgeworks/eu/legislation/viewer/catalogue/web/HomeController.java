@@ -1,11 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Lookups;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedAct;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NamedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
@@ -18,15 +15,6 @@ import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
-import java.util.regex.Pattern;
-import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -69,12 +57,6 @@ class HomeController {
   /** The address of the stream that says when a lookup ends. */
   static final String LOOK_UP_EVENTS = LOOK_UP + "/events";
 
-  /**
-   * How long the lookup address waits for the lookup, for a page without JavaScript. After that,
-   * the page says that the Publications Office did not answer.
-   */
-  private static final Duration WAIT = Duration.ofSeconds(60);
-
   /** How long a lookup's stream lasts before the page is asked to connect again. */
   private static final Duration STREAM = Duration.ofMinutes(2);
 
@@ -84,33 +66,12 @@ class HomeController {
   /** How long the way back to a search's results stays in the site bar. */
   private static final Duration REMEMBERED = Duration.ofHours(2);
 
-  /**
-   * The CELEX number of an act, as a reader may type it. For example, {@code 32015R1998} or {@code
-   * celex:32015r1998}.
-   */
-  private static final Pattern CELEX = Pattern.compile("(?:CELEX:)?(3\\d{4}[A-Z]\\d{4})");
-
-  /**
-   * The ELI of an act, as a reader may type or paste it. For example:
-   *
-   * <ul>
-   *   <li>{@code http://data.europa.eu/eli/reg_impl/2015/1998/oj}
-   *   <li>{@code eli/reg_impl/2015/1998}
-   *   <li>{@code reg_impl/2015/1998}
-   * </ul>
-   */
-  private static final Pattern ELI =
-      Pattern.compile(
-          "(?:https?://data\\.europa\\.eu/)?(?:eli/)?([a-z_]+)/(\\d{4})/(\\d+)(?:/oj)?(?:/[a-z]{3})?/?");
-
-  private final Acts acts;
-  private final Lookups lookups;
+  private final NamedActs named;
   private final Search search;
   private final Templates templates;
 
-  HomeController(Acts acts, Lookups lookups, Search search, Templates templates) {
-    this.acts = acts;
-    this.lookups = lookups;
+  HomeController(NamedActs named, Search search, Templates templates) {
+    this.named = named;
     this.search = search;
     this.templates = templates;
   }
@@ -135,9 +96,9 @@ class HomeController {
       return page(frame, "Amendment viewer", HomeView.empty());
     }
     var started = System.nanoTime();
-    var straight = straight(words, frame, started, false, kind);
-    if (straight.isPresent()) {
-      return straight.get();
+    var act = named.searched(words, kind);
+    if (act.isPresent()) {
+      return show(act.get(), words, frame);
     }
     var query = Search.Query.of(words, kind, (page - 1) * PAGE, PAGE);
     if (query.isEmpty()) {
@@ -180,7 +141,7 @@ class HomeController {
   /**
    * Looks up the act that {@code q}, a CELEX number or an ELI, names, and goes to it. The home page
    * asks for this address when the lookup of the act found it, and a page without JavaScript goes
-   * to it at once: it waits for the lookup, which runs in the background ({@link Lookups}). If no
+   * to it at once: it waits for the lookup, which runs in the background ({@link NamedActs}). If no
    * act has it, the response is the home page that says so. If the Publications Office does not
    * answer, the response is the home page that says so, with 503. Other words go to their results.
    * A lookup is logged when it starts and when it ends.
@@ -188,7 +149,9 @@ class HomeController {
   @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> lookUp(@RequestParam String q, Frame frame) {
     var words = q.strip();
-    return straight(words, frame, System.nanoTime(), true, Search.Kind.ALL)
+    return named
+        .lookedUp(words)
+        .map(act -> show(act, words, frame))
         .orElseGet(() ->
             ResponseEntity.status(HttpStatus.SEE_OTHER)
                 .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
@@ -212,13 +175,14 @@ class HomeController {
   @GetMapping(path = LOOK_UP_EVENTS, produces = MediaType.TEXT_EVENT_STREAM_VALUE)
   SseEmitter lookUpEvents(@RequestParam String q) {
     var words = q.strip();
-    var name = named(words, Search.Kind.ALL).orElseThrow(Requests::notFound);
-    var unanswered = unanswered(words, name);
+    var running = named.lookingUp(words).orElseThrow(Requests::notFound);
+    var unanswered = unanswered(words, running.name());
     var emitter = new SseEmitter(STREAM.toMillis());
-    name.lookUp(lookups)
-        .whenComplete((act, failure) -> {
+    running
+        .found()
+        .whenComplete((found, failure) -> {
           try {
-            if (failure == null && act.isPresent()) {
+            if (failure == null && found) {
               emitter.send(SseEmitter.event().name("done").data(""));
             } else {
               var ended =
@@ -236,48 +200,25 @@ class HomeController {
     return emitter;
   }
 
-  /** Returns what names one act in {@code words}, or empty if they are title words. */
-  private Optional<Named> named(String words, Search.Kind kind) {
-    var named = Named.of(words);
-    if (named.isEmpty() && kind == Search.Kind.ALL) {
-      named =
-          search.identified(words).map(id -> new Named("indexed identifier", id.cited(), id, null));
-    }
-    return named;
-  }
-
-  private static HomeView.Unanswered unanswered(String words, Named name) {
-    return new HomeView.Unanswered(Links.home(words, Search.Kind.ALL, 1), name.eurLex().toString());
-  }
-
-  /** Returns the line that says that no act has {@code words}, a CELEX number or an ELI. */
-  private static String noAct(String words) {
-    return "No act has the CELEX number or ELI " + words + ".";
-  }
-
   /**
-   * Returns the response when {@code words} identify one act. That is a redirect to the comparison
-   * of the act, or the home page saying that no act has it. If the catalogue does not have the act
-   * yet and {@code lookingUp} is false, it is the home page that says it looks the act up. Returns
-   * none if the words are title words.
+   * Returns the answer for words that name one act:
    *
-   * @param lookingUp true for a request to {@link #LOOK_UP}, false for a search
+   * <ul>
+   *   <li>a redirect to the act, if the catalogue has it
+   *   <li>the home page that says that no act has the number
+   *   <li>the home page that says it looks the act up, and waits for the lookup
+   *   <li>the home page that says that the Publications Office did not answer, with 503
+   * </ul>
    */
-  private Optional<ResponseEntity<String>> straight(
-      String words, Frame frame, long started, boolean lookingUp, Search.Kind kind) {
-    var named = named(words, kind);
-    if (named.isEmpty()) {
-      return Optional.empty();
-    }
-    var name = named.get();
-    var act = name.catalogued(acts);
-    var unanswered = unanswered(words, name);
-    if (act.isEmpty() && !lookingUp) {
-      LOG.info(
-          "Searched for “{}” by {}: not in the catalogue yet, so the page looks it up",
-          typed(words),
-          name.as());
-      return Optional.of(
+  private ResponseEntity<String> show(NamedAct act, String words, Frame frame) {
+    var name = act.name();
+    return switch (act) {
+      case NamedAct.Found found ->
+          ResponseEntity.status(HttpStatus.SEE_OTHER)
+              .location(URI.create(Links.act(found.eli(), Language.ENG)))
+              .build();
+      case NamedAct.NoAct _ -> page(frame, "Amendment viewer", HomeView.none(words, noAct(words)));
+      case NamedAct.LookingUp _ ->
           page(
               frame,
               "Looking up " + name.number() + " · Amendment viewer",
@@ -286,88 +227,27 @@ class HomeController {
                   "Looking up " + name.number() + " at the Publications Office…",
                   LOOK_UP + "?q=" + URLEncoder.encode(words, StandardCharsets.UTF_8),
                   LOOK_UP_EVENTS + "?q=" + URLEncoder.encode(words, StandardCharsets.UTF_8),
-                  unanswered)));
-    }
-    if (act.isEmpty()) {
-      LOG.info("Waiting for the lookup of “{}” by {}", typed(words), name.as());
-      try {
-        act = name.lookUp(lookups).get(WAIT.toMillis(), TimeUnit.MILLISECONDS);
-      } catch (ExecutionException | TimeoutException | InterruptedException e) {
-        if (e instanceof InterruptedException) {
-          Thread.currentThread().interrupt();
-        }
-        // The lookup logs its own failure, with its cause.
-        LOG.info(
-            "Looked up “{}” by {}: the Publications Office did not answer, in {} ms",
-            typed(words),
-            name.as(),
-            millis(started));
-        return Optional.of(
-            ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-                .contentType(Requests.HTML)
-                .body(
-                    templates
-                        .catalogueHome(
-                            frame, "Amendment viewer", HomeView.unanswered(words, unanswered))
-                        .render()));
-      }
-    }
-    LOG.info(
-        "{} “{}” by {}: {}, in {} ms",
-        lookingUp ? "Looked up" : "Searched for",
-        typed(words),
-        name.as(),
-        act.map(found -> found.id().celex() + (found.eli() == null ? ", which has no ELI" : ""))
-            .orElse("no act has it"),
-        millis(started));
-    // An act without an ELI has no page here.
-    var eli = act.map(Act::eli);
-    if (eli.isEmpty()) {
-      return Optional.of(page(frame, "Amendment viewer", HomeView.none(words, noAct(words))));
-    }
-    var location = Links.act(eli.get(), Language.ENG);
-    return Optional.of(
-        ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build());
+                  unanswered(words, name)));
+      case NamedAct.Unanswered _ ->
+          ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+              .contentType(Requests.HTML)
+              .body(
+                  templates
+                      .catalogueHome(
+                          frame,
+                          "Amendment viewer",
+                          HomeView.unanswered(words, unanswered(words, name)))
+                      .render());
+    };
   }
 
-  /**
-   * What a reader typed that names one act: its CELEX number or its ELI.
-   *
-   * @param as how it names the act, for the log. For example, "CELEX number".
-   * @param number the act's number, as a reader reads it. For example, "2015/1998" for a CELEX
-   *     number, or "reg_impl/2015/1998" for an ELI.
-   */
-  private record Named(String as, String number, @Nullable ActIdentifier celex, @Nullable Eli eli) {
+  private static HomeView.Unanswered unanswered(String words, NamedAct.Name name) {
+    return new HomeView.Unanswered(Links.home(words, Search.Kind.ALL, 1), name.eurLex().toString());
+  }
 
-    /** Returns the act that {@code words} name, or empty if they are title words. */
-    static Optional<Named> of(String words) {
-      var celex = CELEX.matcher(words.toUpperCase(Locale.ROOT));
-      if (celex.matches()) {
-        var id = new ActIdentifier(celex.group(1));
-        return Optional.of(new Named("CELEX number", id.cited(), id, null));
-      }
-      var path = ELI.matcher(words.toLowerCase(Locale.ROOT));
-      if (path.matches()) {
-        var eli = new Eli(path.group(1), Integer.parseInt(path.group(2)), path.group(3));
-        return Optional.of(new Named("ELI", eli.path(), null, eli));
-      }
-      return Optional.empty();
-    }
-
-    Optional<Act> catalogued(Acts acts) {
-      return celex != null ? acts.catalogued(celex) : acts.catalogued(Objects.requireNonNull(eli));
-    }
-
-    CompletableFuture<Optional<Act>> lookUp(Lookups lookups) {
-      return celex != null ? lookups.lookUp(celex) : lookups.lookUp(Objects.requireNonNull(eli));
-    }
-
-    /** Returns the act on EUR-Lex, in English. */
-    URI eurLex() {
-      return celex != null
-          ? celex.eurLex(Language.ENG)
-          : Objects.requireNonNull(eli).eurLex(Language.ENG);
-    }
+  /** Returns the line that says that no act has {@code words}, a CELEX number or an ELI. */
+  private static String noAct(String words) {
+    return "No act has the CELEX number or ELI " + words + ".";
   }
 
   /**
