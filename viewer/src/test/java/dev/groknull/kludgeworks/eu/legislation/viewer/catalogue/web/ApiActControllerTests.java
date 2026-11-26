@@ -37,7 +37,12 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * OneActCellar}, and today is 1 June 2021, when its consolidation of 15 March 2021 applies.
  */
 @WebMvcTest(ApiActController.class)
-@Import({ApiConfiguration.class, CataloguedTesting.class, ApiActTesting.OnTheFirstOfJune2021.class})
+@Import({
+  ApiConfiguration.class,
+  CataloguedTesting.class,
+  ApiActTesting.OnTheFirstOfJune2021.class,
+  ApiActTesting.Assemblers.class
+})
 class ApiActControllerTests {
   /** A treaty, whose CELEX number has a {@code /}. */
   private static final ActIdentifier TREATY = new ActIdentifier("12016E/TXT");

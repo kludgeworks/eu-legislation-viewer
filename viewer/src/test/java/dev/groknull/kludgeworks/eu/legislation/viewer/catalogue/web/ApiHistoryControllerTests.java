@@ -11,18 +11,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.BrusselsToday;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.HistoryService;
-import java.time.Clock;
-import java.time.Instant;
-import java.time.ZoneOffset;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
@@ -38,7 +32,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
   ApiConfiguration.class,
   CataloguedTesting.class,
   HistoryService.class,
-  ApiHistoryControllerTests.OnTheFirstOfJune2021.class
+  ApiActTesting.Assemblers.class
 })
 class ApiHistoryControllerTests {
   @Autowired MockMvcTester mvc;
@@ -97,16 +91,5 @@ class ApiHistoryControllerTests {
     assertThat(mvc.get().uri("/api/acts/32099R9999/history/eng/2021-06-01"))
         .hasStatus(HttpStatus.NOT_FOUND);
     assertThat(mvc.get().uri("/api/acts/32099R9999/history/eng")).hasStatus(HttpStatus.NOT_FOUND);
-  }
-
-  /** Sets today for the service to 1 June 2021. */
-  @TestConfiguration(proxyBeanMethods = false)
-  @Import(BrusselsToday.class)
-  static class OnTheFirstOfJune2021 {
-    @Bean
-    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
-    Clock firstOfJune2021() {
-      return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
-    }
   }
 }

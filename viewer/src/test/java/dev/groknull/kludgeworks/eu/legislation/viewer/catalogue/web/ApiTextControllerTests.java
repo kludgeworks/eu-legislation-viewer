@@ -47,7 +47,7 @@ import tools.jackson.databind.json.JsonMapper;
  * consolidation of 15 March 2021 in English.
  */
 @WebMvcTest(ApiTextController.class)
-@Import({ApiConfiguration.class, CataloguedTesting.class})
+@Import({ApiConfiguration.class, CataloguedTesting.class, ApiActTesting.Assemblers.class})
 class ApiTextControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";
   private static final String VERSION = ACT + "/versions/2021-03-15";

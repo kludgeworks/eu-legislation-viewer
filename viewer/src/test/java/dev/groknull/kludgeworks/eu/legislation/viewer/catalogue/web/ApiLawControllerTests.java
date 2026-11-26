@@ -31,7 +31,12 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * {@link OneActCellar}.
  */
 @WebMvcTest(ApiLawController.class)
-@Import({ApiConfiguration.class, CataloguedTesting.class, ApiActTesting.OnTheFirstOfJune2021.class})
+@Import({
+  ApiConfiguration.class,
+  CataloguedTesting.class,
+  ApiActTesting.OnTheFirstOfJune2021.class,
+  ApiActTesting.Assemblers.class
+})
 class ApiLawControllerTests {
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;

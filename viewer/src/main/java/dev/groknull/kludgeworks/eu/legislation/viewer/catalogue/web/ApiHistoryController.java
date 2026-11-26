@@ -3,8 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.ACT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiActResources.code;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
@@ -16,9 +14,8 @@ import java.time.LocalDate;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.MediaTypes;
-import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,24 +30,21 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiHistoryController {
   private final Histories histories;
+  private final HistoryModelAssembler assembler;
 
-  ApiHistoryController(Histories histories) {
+  ApiHistoryController(Histories histories, HistoryModelAssembler assembler) {
     this.histories = histories;
+    this.assembler = assembler;
   }
 
   /** Returns the history of the act on {@code day}, by its changes to the text in a language. */
   @GetMapping(ACT + "/history/{language}/{day}")
-  RepresentationModel<?> history(
+  EntityModel<HistoryModel> history(
       @PathVariable ActIdentifier celex,
       @PathVariable String language,
       @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate day) {
     var history = histories.of(celex, Requests.language(language), day);
-    return HalModelBuilder.halModelOf(HistoryModel.of(history))
-        .link(
-            linkTo(methodOn(ApiHistoryController.class).history(celex, language, day))
-                .withSelfRel())
-        .link(ApiActResources.up(celex))
-        .build();
+    return assembler.toModel(history);
   }
 
   /**
@@ -58,31 +52,10 @@ class ApiHistoryController {
    * day. The history of a day is read from the same answer.
    */
   @GetMapping(ACT + "/history/{language}")
-  RepresentationModel<?> overTime(
+  EntityModel<OverTimeModel> overTime(
       @PathVariable ActIdentifier celex, @PathVariable String language) {
     var overTime = histories.overTime(celex, Requests.language(language));
-    return HalModelBuilder.halModelOf(
-            new OverTimeModel(
-                overTime.state().periods().stream()
-                    .map(period ->
-                        new PeriodModel<>(
-                            period.from(), period.until(), StateModel.of(period.value())))
-                    .toList(),
-                overTime.amendingActs().stream()
-                    .map(each ->
-                        new AmendingOverTimeModel(
-                            each.act().celex(),
-                            each.stands().periods().stream()
-                                .map(period ->
-                                    new PeriodModel<>(
-                                        period.from(),
-                                        period.until(),
-                                        code(period.value().state().name())))
-                                .toList()))
-                    .toList()))
-        .link(linkTo(methodOn(ApiHistoryController.class).overTime(celex, language)).withSelfRel())
-        .link(ApiActResources.up(celex))
-        .build();
+    return assembler.toModel(overTime);
   }
 
   /**

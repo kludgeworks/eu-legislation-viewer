@@ -1,34 +1,24 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.Asked;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.OccurrenceAnswer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.OutlineAnswer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.TextModelAssembler.TextAnswer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
-import java.nio.charset.StandardCharsets;
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
-import org.springframework.hateoas.IanaLinkRelations;
-import org.springframework.hateoas.Link;
-import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
-import org.springframework.hateoas.UriTemplate;
-import org.springframework.hateoas.mediatype.hal.HalModelBuilder;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -38,8 +28,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.springframework.web.util.UriUtils;
 
 /**
  * The text of a version in a language, in the API, with its outline and its occurrences. The text
@@ -62,24 +50,26 @@ import org.springframework.web.util.UriUtils;
 class ApiTextController {
   private static final String TEXT = ApiActResources.VERSION + "/texts/{language}";
 
-  /**
-   * The IANA relation of a link to the schema of an answer, as the registry spells it. Spring
-   * HATEOAS's {@code IanaLinkRelations.DESCRIBED_BY} is {@code describedBy}, and a HAL client looks
-   * up its links by the exact name.
-   */
-  private static final LinkRelation DESCRIBED_BY = LinkRelation.of("describedby");
-
   /** How long a client waits before it asks again for a text that is not ready. */
   private static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
   private final Catalogued acts;
   private final Texts texts;
   private final Content content;
+  private final TextModelAssembler assembler;
+  private final PreparationModelAssembler preparationAssembler;
 
-  ApiTextController(Catalogued acts, Texts texts, Content content) {
+  ApiTextController(
+      Catalogued acts,
+      Texts texts,
+      Content content,
+      TextModelAssembler assembler,
+      PreparationModelAssembler preparationAssembler) {
     this.acts = acts;
     this.texts = texts;
     this.content = content;
+    this.assembler = assembler;
+    this.preparationAssembler = preparationAssembler;
   }
 
   /**
@@ -88,10 +78,11 @@ class ApiTextController {
    *
    * <ul>
    *   <li>{@code up}: the version.
-   *   <li>{@code alternate}: the text in each other language of the version, with {@code hreflang}.
-   *   <li>{@code av:outline}, {@code av:occurrence}: its outline, and an occurrence by its eId.
-   *   <li>{@code av:preparation}: the preparation of the act in the language.
-   *   <li>{@code describedby}: the JSON Schema of the answer.
+   *   <li>{@code alternate}: the text of the same version in each other language.
+   *   <li>{@code av:outline}: the outline of the text.
+   *   <li>{@code av:occurrence}: an occurrence by its eId, a URI template.
+   *   <li>{@code av:preparation}: how far the preparation of the act in the language is.
+   *   <li>{@code describedby}: the JSON Schema of the text.
    * </ul>
    */
   @GetMapping(TEXT)
@@ -103,32 +94,7 @@ class ApiTextController {
         text ->
             content
                 .publicText(text)
-                .map(publicText -> {
-                  var self = to(celex, asked.version(), asked.language(), IanaLinkRelations.SELF);
-                  var model =
-                      HalModelBuilder.halModelOf(
-                              new TextModel(
-                                  ApiActResources.key(asked.version()),
-                                  asked.version().celex(),
-                                  ApiActResources.code(asked.language().code()),
-                                  publicText))
-                          .link(self)
-                          .link(ApiActResources.to(celex, asked.version(), IanaLinkRelations.UP))
-                          .link(
-                              linkTo(
-                                      methodOn(ApiTextController.class)
-                                          .outline(celex, key, language))
-                                  .withRel(Relation.OUTLINE.rel()))
-                          .link(occurrenceTemplate(self))
-                          .link(schema("text"))
-                          .link(ApiPreparationController.to(celex, asked.language()));
-                  for (var other : asked.version().languages()) {
-                    if (other != asked.language()) {
-                      model.link(to(celex, asked.version(), other, IanaLinkRelations.ALTERNATE));
-                    }
-                  }
-                  return model.build();
-                }));
+                .map(publicText -> assembler.toModel(new TextAnswer(asked, publicText))));
   }
 
   /**
@@ -139,20 +105,12 @@ class ApiTextController {
   ResponseEntity<RepresentationModel<?>> outline(
       @PathVariable ActIdentifier celex, @PathVariable String key, @PathVariable String language) {
     var asked = asked(celex, key, language);
-    var text = to(celex, asked.version(), asked.language(), IanaLinkRelations.UP);
     return answer(
         asked,
         id ->
             content
                 .outline(id)
-                .map(outline ->
-                    HalModelBuilder.halModelOf(OutlineModel.of(outline))
-                        .link(
-                            linkTo(methodOn(ApiTextController.class).outline(celex, key, language))
-                                .withSelfRel())
-                        .link(text)
-                        .link(occurrenceTemplate(text))
-                        .build()));
+                .map(outline -> assembler.toOutlineModel(new OutlineAnswer(asked, outline))));
   }
 
   /**
@@ -168,33 +126,15 @@ class ApiTextController {
       @PathVariable("eId") String path) {
     var eId = path.substring(1);
     var asked = asked(celex, key, language);
-    var text = to(celex, asked.version(), asked.language(), IanaLinkRelations.UP);
     return answer(
         asked,
         id ->
             content
                 .publicOccurrence(id, eId)
                 .map(occurrence ->
-                    HalModelBuilder.halModelOf(occurrence)
-                        .link(Link.of(occurrenceHref(text, eId)))
-                        .link(text)
-                        .link(schema("occurrence"))
-                        .build()));
+                    assembler.toOccurrenceModel(new OccurrenceAnswer(asked, occurrence, eId))));
   }
 
-  /** Returns a link to the text of the version in the language. */
-  static Link to(ActIdentifier celex, Version version, Language language, LinkRelation relation) {
-    return linkTo(
-            methodOn(ApiTextController.class)
-                .text(celex, ApiActResources.key(version), ApiActResources.code(language.code())))
-        .withRel(relation)
-        .withHreflang(language.iso());
-  }
-
-  /**
-   * Answers with the text that {@code ready} makes of the stored text, once it is ready. Answers
-   * 202 with the preparation while it is not, and a problem if it failed.
-   */
   private ResponseEntity<RepresentationModel<?>> answer(
       Asked asked, Function<TextId, Optional<RepresentationModel<?>>> ready) {
     var preparation = texts.prepare(asked.act(), asked.language());
@@ -208,7 +148,7 @@ class ApiTextController {
       case Text.Waiting _, Text.Converting _ ->
           ResponseEntity.status(HttpStatus.ACCEPTED)
               .header(HttpHeaders.RETRY_AFTER, Long.toString(RETRY_AFTER.toSeconds()))
-              .body(ApiPreparationController.model(asked.act(), preparation));
+              .body(preparationAssembler.toModel(preparation));
       case null -> throw Requests.notFound();
     };
   }
@@ -235,40 +175,9 @@ class ApiTextController {
     problem.setProperty("failure", ApiPreparationController.code(failed.failure()));
     problem.setProperty("retryable", failed.failure().retryable());
     problem.setProperty(
-        "preparation", ApiPreparationController.to(asked.act().id(), asked.language()).getHref());
+        "preparation", ApiActResources.preparation(asked.act().id(), asked.language()).getHref());
     return new ErrorResponseException(HttpStatus.NOT_FOUND, problem, null);
   }
-
-  /**
-   * Returns the link to the JSON Schema of an answer, {@code describedby}. The schemas are static
-   * files, one folder for each major version of the API.
-   */
-  static Link schema(String answer) {
-    return Link.of(
-        ServletUriComponentsBuilder.fromCurrentContextPath()
-            .path("/api/schemas/v1/{answer}.schema.json")
-            .buildAndExpand(answer)
-            .toUriString(),
-        DESCRIBED_BY);
-  }
-
-  /** Returns the link to an occurrence of {@code text} by its eId, a URI template. */
-  private static Link occurrenceTemplate(Link text) {
-    return Link.of(
-        UriTemplate.of(text.getHref() + "/occurrences/{+eId}"), Relation.OCCURRENCE.rel());
-  }
-
-  /** Returns the address of the occurrence {@code eId} of {@code text}. Its {@code /} stays. */
-  private static String occurrenceHref(Link text, String eId) {
-    return text.getHref()
-        + "/occurrences/"
-        + Arrays.stream(eId.split("/", -1))
-            .map(segment -> UriUtils.encodePathSegment(segment, StandardCharsets.UTF_8))
-            .collect(Collectors.joining("/"));
-  }
-
-  /** The version and language that a path names, of its act. */
-  private record Asked(Act act, Version version, Language language) {}
 
   /**
    * The text of a version in a language, as the API shows it.

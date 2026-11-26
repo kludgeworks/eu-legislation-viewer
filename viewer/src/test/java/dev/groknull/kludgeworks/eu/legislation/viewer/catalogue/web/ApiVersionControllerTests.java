@@ -30,7 +30,12 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * OneActCellar}, and today is 1 June 2021, when its consolidation of 15 March 2021 applies.
  */
 @WebMvcTest(ApiVersionController.class)
-@Import({ApiConfiguration.class, CataloguedTesting.class, ApiActTesting.OnTheFirstOfJune2021.class})
+@Import({
+  ApiConfiguration.class,
+  CataloguedTesting.class,
+  ApiActTesting.OnTheFirstOfJune2021.class,
+  ApiActTesting.Assemblers.class
+})
 class ApiVersionControllerTests {
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;

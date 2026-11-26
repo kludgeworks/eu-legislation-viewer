@@ -45,4 +45,18 @@ final class ApiActTesting {
       return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
     }
   }
+
+  /** Assemblers of the resources of an act in the API. */
+  @TestConfiguration(proxyBeanMethods = false)
+  @Import({
+    OnTheFirstOfJune2021.class,
+    ActModelAssembler.class,
+    VersionModelAssembler.class,
+    AmendmentsModelAssembler.class,
+    HistoryModelAssembler.class,
+    LawModelAssembler.class,
+    PreparationModelAssembler.class,
+    TextModelAssembler.class
+  })
+  static class Assemblers {}
 }

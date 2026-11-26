@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.LocalDate;
 import java.util.List;
@@ -66,6 +67,13 @@ final class ApiActResources {
     return applying.isEmpty()
         ? Optional.empty()
         : Optional.of(to(act.id(), applying.getLast(), IanaLinkRelations.LATEST_VERSION));
+  }
+
+  /** Returns a link to the preparation of the act in the language, {@code av:preparation}. */
+  static Link preparation(ActIdentifier celex, Language language) {
+    return linkTo(
+            methodOn(ApiPreparationController.class).preparation(celex, code(language.code())))
+        .withRel(Relation.PREPARATION.rel());
   }
 
   /** Returns the version as a resource with its own address. */
