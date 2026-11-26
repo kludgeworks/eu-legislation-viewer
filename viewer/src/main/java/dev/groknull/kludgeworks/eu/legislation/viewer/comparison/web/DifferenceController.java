@@ -2,12 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
@@ -80,28 +76,26 @@ class DifferenceController {
    */
   private static final int OPEN = 25;
 
+  private final ComparedTexts compared;
   private final Comparisons comparisons;
-  private final Attributions attributions;
   private final Content content;
   private final Templates templates;
   private final LegalRenderer html;
   private final Fragments fragments;
 
   DifferenceController(
-      Acts acts,
-      Texts texts,
+      ComparedTexts compared,
       Comparisons comparisons,
-      Attributions attributions,
       Content content,
       Templates templates,
       LegalRenderer html,
       Release release) {
+    this.compared = compared;
     this.comparisons = comparisons;
-    this.attributions = attributions;
     this.content = content;
     this.templates = templates;
     this.html = html;
-    this.fragments = new Fragments(acts, texts, release, html);
+    this.fragments = new Fragments(compared, release, html);
   }
 
   /**
@@ -144,9 +138,8 @@ class DifferenceController {
             ends.only() == null ? null : ends.only().celex(),
             null);
     var started = System.nanoTime();
-    var preparation = ends.preparation();
     var only = ends.only();
-    var pair = Fragments.ready(ends, preparation);
+    var pair = Fragments.ready(ends);
     var earlier = pair.earlier();
     var later = pair.later();
     if (fragments.notModified(request, response, pair)) {
@@ -235,31 +228,25 @@ class DifferenceController {
                 null)
             .on(fromDay, toDay);
     var started = System.nanoTime();
-    var preparation = ends.preparation();
     var only = ends.only();
-    var pair = Fragments.ready(ends, preparation);
+    var pair = Fragments.ready(ends);
     var earlier = pair.earlier();
     var later = pair.later();
     if (fragments.notModified(request, response, pair)) {
       return null;
     }
-    var found =
-        comparisons.between(pair.before(), pair.after()).orElseThrow(Requests::notFound).at(eIds);
-    String lead = null;
-    if (found.isEmpty() && only != null) {
-      // A chapter that the annex keeps flat has no difference of its own.
-      var attributed =
-          attributions
-              .of(ends.act(), ends.versions(), earlier, later, null)
-              .orElseThrow(Requests::notFound);
-      found = Attribution.madeIn(attributed.each(), eIds, only);
-      lead =
-          found.isEmpty()
-              ? null
-              : "The text tags these changes in this part of the annex with " + only.cited() + ".";
-    }
+    var found = compared.at(ends, eIds).orElseThrow(Requests::notFound);
+    var taggedBy = found.taggedBy();
+    var lead =
+        taggedBy == null
+            ? null
+            : "The text tags these changes in this part of the annex with "
+                + taggedBy.cited()
+                + ".";
     var shown =
-        found.stream().map(difference -> new DifferencesView.Shown(0, difference, "")).toList();
+        found.differences().stream()
+            .map(difference -> new DifferencesView.Shown(0, difference, ""))
+            .toList();
     var rendered =
         sides
             ? templates
@@ -299,11 +286,7 @@ class DifferenceController {
     var only = Objects.requireNonNull(ends.only());
     var page = ComparePage.ofFragment(request.getRequestURI(), from, to, only.celex(), null);
     var started = System.nanoTime();
-    var attributed =
-        attributions
-            .of(ends.act(), ends.versions(), ends.earlier(), ends.later(), null)
-            .orElseThrow(Requests::notFound);
-    var alternatives = Alternatives.of(only, attributed.each());
+    var alternatives = compared.either(ends).orElseThrow(Requests::notFound);
     var others = alternatives.others();
     var shown =
         alternatives.differences().stream()

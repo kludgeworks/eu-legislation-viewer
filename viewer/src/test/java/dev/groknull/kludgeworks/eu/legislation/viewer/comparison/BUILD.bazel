@@ -308,6 +308,7 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",

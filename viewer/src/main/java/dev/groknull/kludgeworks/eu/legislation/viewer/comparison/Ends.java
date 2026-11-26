@@ -5,9 +5,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.Map;
@@ -100,6 +102,41 @@ public record Ends(
   /** Returns the acts that each version includes. */
   public Inclusions included() {
     return versions.included();
+  }
+
+  /** The two texts of the comparison, as the viewer has them: built, not built yet, or failed. */
+  public sealed interface TwoTexts {}
+
+  /**
+   * Both texts are built.
+   *
+   * @param earlier the version of the earlier text
+   * @param later the version of the later text
+   * @param before the earlier text
+   * @param after the later text
+   */
+  public record Built(Version earlier, Version later, TextId before, TextId after)
+      implements TwoTexts {}
+
+  /** A text is not built yet, and no text failed. */
+  public record NotBuiltYet() implements TwoTexts {}
+
+  /** The viewer could not build a text, or the preparation does not have one. */
+  public record Failed() implements TwoTexts {}
+
+  /** Returns the two texts that the comparison compares, as the preparation has them. */
+  public TwoTexts texts() {
+    var before = preparation().texts().get(earlier());
+    var after = preparation().texts().get(later());
+    if (before instanceof Text.Ready(var first) && after instanceof Text.Ready(var second)) {
+      return new Built(earlier(), later(), first, second);
+    }
+    return before == null
+            || after == null
+            || before instanceof Text.Failed
+            || after instanceof Text.Failed
+        ? new Failed()
+        : new NotBuiltYet();
   }
 
   /**

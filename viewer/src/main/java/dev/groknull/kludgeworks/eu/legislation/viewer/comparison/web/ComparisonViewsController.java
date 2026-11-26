@@ -2,13 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
@@ -34,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Objects;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,7 +71,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 class ComparisonViewsController {
   private static final Logger LOG = LoggerFactory.getLogger(ComparisonViewsController.class);
 
-  private final Attributions attributions;
+  private final ComparedTexts compared;
   private final Content content;
   private final Templates templates;
   private final LegalRenderer html;
@@ -83,20 +79,18 @@ class ComparisonViewsController {
   private final Fragments fragments;
 
   ComparisonViewsController(
-      Acts acts,
-      Texts texts,
-      Attributions attributions,
+      ComparedTexts compared,
       Content content,
       Templates templates,
       LegalRenderer html,
       Release release,
       Today today) {
-    this.attributions = attributions;
+    this.compared = compared;
     this.content = content;
     this.templates = templates;
     this.html = html;
     this.today = today;
-    this.fragments = new Fragments(acts, texts, release, html);
+    this.fragments = new Fragments(compared, release, html);
   }
 
   /**
@@ -139,10 +133,7 @@ class ComparisonViewsController {
     var started = System.nanoTime();
     var earlier = ends.from();
     var later = ends.to();
-    var attributed =
-        attributions
-            .of(ends.act(), ends.versions(), earlier, later, page.later())
-            .orElseThrow(Requests::notFound);
+    var attributed = compared.attributed(ends, page.later()).orElseThrow(Requests::notFound);
     var today = this.today.today();
     var differences = DifferencesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
@@ -205,16 +196,14 @@ class ComparisonViewsController {
             var occurrences = new HashMap<String, Element>();
             var histories = new HashMap<String, SidenoteView.History>();
             if (!same.isEmpty()) {
-              var text = content.read(attributed.later()).orElseThrow(Requests::notFound);
-              Neighbours.of(text, same)
-                  .forEach((eId, neighbour) -> {
-                    occurrences.put(eId, neighbour.occurrence());
+              compared
+                  .unchanged(ends, same)
+                  .orElseThrow(Requests::notFound)
+                  .forEach(each -> {
+                    occurrences.put(each.eId(), each.occurrence());
                     histories.put(
-                        eId,
-                        SidenoteView.history(
-                            ends.act(),
-                            LastChange.of(ends.act(), ends.included(), later, neighbour.tags()),
-                            ends.language()));
+                        each.eId(),
+                        SidenoteView.history(ends.act(), each.lastChange(), ends.language()));
                   });
             }
             yield templates
@@ -271,33 +260,18 @@ class ComparisonViewsController {
   @GetMapping(path = ComparePage.SAME_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String same(ActAddress address, @Valid @ModelAttribute SameRequest asked) {
-    var first = asked.first();
-    var last = asked.last();
     var ends = fragments.ends(address, asked.from(), asked.to(), null);
     var started = System.nanoTime();
-    if (!(ends.preparation().texts().get(ends.to()) instanceof Text.Ready later)) {
-      throw Requests.notFound();
-    }
-    var text = content.read(later.text()).orElseThrow(Requests::notFound);
-    var eIds = new ArrayList<String>();
-    for (var occurrence : text.occurrences(first, last)) {
-      eIds.add(Objects.requireNonNull(occurrence.attribute("eId")));
-    }
-    var found = Neighbours.of(text, Set.copyOf(eIds));
-    var rows = new ArrayList<NeighbourView>();
-    for (var eId : eIds) {
-      var neighbour = found.get(eId);
-      if (neighbour != null) {
-        rows.add(
-            new NeighbourView(
-                Neighbours.sibling(neighbour.occurrence()),
-                neighbour.occurrence(),
-                SidenoteView.history(
-                    ends.act(),
-                    LastChange.of(ends.act(), ends.included(), ends.to(), neighbour.tags()),
-                    ends.language())));
-      }
-    }
+    var fold =
+        compared.unchanged(ends, asked.first(), asked.last()).orElseThrow(Requests::notFound);
+    var rows =
+        fold.occurrences().stream()
+            .map(each ->
+                new NeighbourView(
+                    Neighbours.sibling(each.occurrence()),
+                    each.occurrence(),
+                    SidenoteView.history(ends.act(), each.lastChange(), ends.language())))
+            .toList();
     LOG.info(
         "Same occurrences of {} from {} to {} in {}: {} of {}, in {} ms",
         ends.act().id(),
@@ -305,7 +279,7 @@ class ComparisonViewsController {
         ends.to().date(),
         ends.language().code(),
         rows.size(),
-        eIds.size(),
+        fold.asked(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates.comparisonNeighbours(rows, this.html).render();
   }

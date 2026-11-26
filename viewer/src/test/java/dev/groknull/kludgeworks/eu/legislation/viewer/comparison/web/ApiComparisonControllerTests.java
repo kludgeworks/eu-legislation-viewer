@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attributions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -21,6 +22,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application.ComparedTextService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
@@ -66,7 +68,8 @@ import tools.jackson.databind.json.JsonMapper;
   ComparisonLinks.class,
   ComparisonModelAssembler.class,
   ComparisonPreparingModelAssembler.class,
-  DifferenceModelAssembler.class
+  DifferenceModelAssembler.class,
+  ComparedTextService.class
 })
 class ApiComparisonControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";
@@ -89,6 +92,7 @@ class ApiComparisonControllerTests {
   @MockitoBean Acts acts;
   @MockitoBean Texts texts;
   @MockitoBean Comparisons comparisons;
+  @MockitoBean Attributions attributions;
   @MockitoBean Content content;
 
   @BeforeEach

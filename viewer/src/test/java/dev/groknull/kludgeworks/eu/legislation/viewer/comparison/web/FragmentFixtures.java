@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application.ComparedTextService;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
@@ -17,6 +18,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 /**
  * What the tests of the comparison's fragments share: the act of {@link OneActCellar} with its
@@ -73,6 +75,7 @@ final class FragmentFixtures {
 
   /** The templates of the fragments, as the app has them. The test slice leaves them out. */
   @TestConfiguration(proxyBeanMethods = false)
+  @Import(ComparedTextService.class)
   static class Pages {
     @Bean
     Templates templates() {

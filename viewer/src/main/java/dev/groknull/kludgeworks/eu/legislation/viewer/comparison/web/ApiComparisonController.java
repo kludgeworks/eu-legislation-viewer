@@ -7,17 +7,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Ends;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
@@ -74,26 +70,20 @@ class ApiComparisonController {
   /** How long a client waits before it asks again for a comparison whose texts are not ready. */
   private static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
-  private final Acts acts;
-  private final Texts texts;
+  private final ComparedTexts compared;
   private final Comparisons comparisons;
-  private final Content content;
   private final ComparisonModelAssembler assembler;
   private final ComparisonPreparingModelAssembler preparingAssembler;
   private final DifferenceModelAssembler differenceAssembler;
 
   ApiComparisonController(
-      Acts acts,
-      Texts texts,
+      ComparedTexts compared,
       Comparisons comparisons,
-      Content content,
       ComparisonModelAssembler assembler,
       ComparisonPreparingModelAssembler preparingAssembler,
       DifferenceModelAssembler differenceAssembler) {
-    this.acts = acts;
-    this.texts = texts;
+    this.compared = compared;
     this.comparisons = comparisons;
-    this.content = content;
     this.assembler = assembler;
     this.preparingAssembler = preparingAssembler;
     this.differenceAssembler = differenceAssembler;
@@ -124,9 +114,10 @@ class ApiComparisonController {
     if (from.isAfter(to)) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "From is after to.");
     }
-    var act = found(celex);
-    var in = Requests.language(language);
-    var versions = act.timeline().versionsOn(from, to, in).orElseThrow(Requests::notFound);
+    var versions =
+        compared
+            .applyingOn(celex, Requests.language(language), from, to)
+            .orElseThrow(Requests::notFound);
     var earlier = versions.from();
     var later = versions.to();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
@@ -169,14 +160,7 @@ class ApiComparisonController {
     }
     var comparison =
         comparisons.between(texts.earlier(), texts.later()).orElseThrow(Requests::notFound);
-    var amended =
-        ends.act()
-            .amended(
-                ends.earlier(),
-                ends.later(),
-                outline(texts.earlier()).eIds(),
-                outline(texts.later()).eIds(),
-                ends.language());
+    var amended = compared.amended(texts.ends()).orElseThrow(Requests::notFound);
     LOG.info(
         "Comparison of {} from {} to {} in {} for the API: {} differences",
         ends.act().id(),
@@ -209,19 +193,8 @@ class ApiComparisonController {
     }
     var difference =
         comparisons.difference(texts.earlier(), texts.later(), eId).orElseThrow(Requests::notFound);
-    var amended =
-        ends.act()
-            .amended(
-                ends.earlier(),
-                ends.later(),
-                outline(texts.earlier()).eIds(),
-                outline(texts.later()).eIds(),
-                ends.language());
+    var amended = compared.amended(texts.ends()).orElseThrow(Requests::notFound);
     return differenceAssembler.toModel(ends, difference, amended, eId);
-  }
-
-  private Act found(ActIdentifier celex) {
-    return acts.find(celex).orElseThrow(Requests::notFound);
   }
 
   /** Returns what a canonical address asks for, or throws not found. */
@@ -231,10 +204,8 @@ class ApiComparisonController {
       LocalDate to,
       String language,
       @Nullable String amendingAct) {
-    var act = found(celex);
-    var in = Requests.language(language);
-    var preparation = texts.preparation(act, in);
-    return Ends.of(act, in, from, to, amendingAct, preparation, texts.tags(preparation))
+    return compared
+        .ends(celex, Requests.language(language), from, to, amendingAct)
         .orElseThrow(Requests::notFound);
   }
 
@@ -243,29 +214,17 @@ class ApiComparisonController {
    * Throws not found if one could not be built. It starts the preparation of the act in the
    * language.
    */
-  private @Nullable Ready ready(Ends ends) {
-    var preparation = texts.prepare(ends.act(), ends.language());
-    var earlier = text(preparation.texts().get(ends.earlier()));
-    var later = text(preparation.texts().get(ends.later()));
-    return earlier == null || later == null ? null : new Ready(earlier, later);
-  }
-
-  /** Returns the stored text, or null while it is not built. Throws not found if it failed. */
-  private static @Nullable TextId text(@Nullable Text text) {
-    return switch (text) {
-      case Text.Ready(var id) -> id;
-      case Text.Waiting _, Text.Converting _ -> null;
-      case Text.Failed _ -> throw Requests.notFound();
-      case null -> throw Requests.notFound();
+  private @Nullable Ready ready(Ends asked) {
+    var ends = compared.prepared(asked);
+    return switch (ends.texts()) {
+      case Ends.Built built -> new Ready(ends, built.before(), built.after());
+      case Ends.NotBuiltYet _ -> null;
+      case Ends.Failed _ -> throw Requests.notFound();
     };
   }
 
-  private Outline outline(TextId text) {
-    return content.outline(text).orElseGet(Outline::empty);
-  }
-
   /** The two texts of a comparison, built. */
-  private record Ready(TextId earlier, TextId later) {}
+  private record Ready(Ends ends, TextId earlier, TextId later) {}
 
   /**
    * A comparison whose texts are not built yet, as the API shows it.
