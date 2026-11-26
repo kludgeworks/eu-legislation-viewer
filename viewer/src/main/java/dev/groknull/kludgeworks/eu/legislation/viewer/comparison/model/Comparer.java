@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Stan
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Edits.Edited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.Stood;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,8 +50,7 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
           WhatCountsAsADifference.oneDifferenceForEachOccurrence(
               true, pairs.is(occurrence) != null, false);
       if (kind.filter(Kind.DELETED::equals).isPresent()) {
-        var place =
-            WhatCountsAsADifference.deletedTextStandsWhereItWas(new Stood.Occurrence(laterOf, i));
+        var place = WhatCountsAsADifference.deletedTextStandsWhereItWas(laterOf, i);
         deleted.get(place).add(deleted(occurrence, is, standing(later, place, is)));
       }
     }

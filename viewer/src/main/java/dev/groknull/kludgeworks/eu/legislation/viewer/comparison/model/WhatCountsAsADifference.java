@@ -193,73 +193,28 @@ final class WhatCountsAsADifference {
             after));
   }
 
-  /** Deleted text, among the text of the later text. */
-  sealed interface Stood {
-
-    /**
-     * A deleted block, among the later blocks of one stretch that differs.
-     *
-     * @param earlierOf for each later block, the position of the earlier block that it pairs with,
-     *     or -1
-     * @param at the position of the deleted block among the earlier blocks
-     */
-    record Block(List<Integer> earlierOf, int at) implements Stood {
-      public Block {
-        earlierOf = List.copyOf(earlierOf);
-      }
-    }
-
-    /**
-     * A deleted occurrence, among the later occurrences in the same occurrence.
-     *
-     * @param laterOf for each earlier occurrence, the position among the later occurrences of the
-     *     one that it pairs with, or -1
-     * @param at the position of the deleted occurrence among the earlier occurrences
-     */
-    record Occurrence(List<Integer> laterOf, int at) implements Stood {
-      public Occurrence {
-        laterOf = List.copyOf(laterOf);
-      }
-    }
-  }
-
   /**
-   * Deleted text stands where it was.
+   * Deleted text stands where it was: after the later text that pairs with the last paired text
+   * before it, or first if there is none. Thus it comes before the text inserted in its place. The
+   * text is the occurrences in one occurrence, or the blocks of one stretch that differs.
    *
-   * <ul>
-   *   <li>A deleted block stands before the first later block that pairs with a block after it.
-   *   <li>A deleted occurrence stands after the later occurrence that pairs with the last paired
-   *       occurrence before it, or first if there is none. Thus it comes before the occurrences
-   *       inserted in its place.
-   * </ul>
-   *
-   * @param stood the deleted text
-   * @return the position of the later text that it stands before. The count of the later text if it
+   * @param laterOf for each earlier occurrence or block, the position among the later ones of the
+   *     one that it pairs with, or -1
+   * @param at the position of the deleted one among the earlier ones
+   * @return the position of the later one that it stands before. The count of the later ones if it
    *     stands last.
    */
   @BusinessRule(
       group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
       name = "deleted-text-stands-where-it-was")
-  static int deletedTextStandsWhereItWas(Stood stood) {
-    return switch (stood) {
-      case Stood.Block(var earlierOf, var at) -> {
-        for (var i = 0; i < earlierOf.size(); i++) {
-          if (earlierOf.get(i) > at) {
-            yield i;
-          }
-        }
-        yield earlierOf.size();
+  static int deletedTextStandsWhereItWas(List<Integer> laterOf, int at) {
+    var place = 0;
+    for (var i = 0; i < at; i++) {
+      if (laterOf.get(i) >= 0) {
+        place = laterOf.get(i) + 1;
       }
-      case Stood.Occurrence(var laterOf, var at) -> {
-        var place = 0;
-        for (var i = 0; i < at; i++) {
-          if (laterOf.get(i) >= 0) {
-            place = laterOf.get(i) + 1;
-          }
-        }
-        yield place;
-      }
-    };
+    }
+    return place;
   }
 
   /**

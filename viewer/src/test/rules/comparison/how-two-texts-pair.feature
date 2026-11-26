@@ -98,4 +98,4 @@ Feature: How the occurrences of two texts pair
     Example: Rows of a table replaced
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
       When the reader looks at the difference at the changed appendix 6-C4 part 3
-      Then its rows show, in order: "inserted, inserted, inserted, deleted, deleted, deleted, deleted"
+      Then its rows show, in order: "deleted, deleted, deleted, deleted, inserted, inserted, inserted"

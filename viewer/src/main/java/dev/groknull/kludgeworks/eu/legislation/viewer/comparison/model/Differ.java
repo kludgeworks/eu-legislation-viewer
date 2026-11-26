@@ -91,9 +91,8 @@ public final class Differ {
         WhatCountsAsADifference.preambleOfOneText(preamble(from), preamble(to)).orElse(null);
     var before = Occurrences.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
     var after = Occurrences.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
-    var show = new Ordering();
-    show.occurrences(
-        new Comparer(before, after, Pairing.of(before, after)).occurrences(null, null), null);
+    var show =
+        Ordering.of(new Comparer(before, after, Pairing.of(before, after)).occurrences(null, null));
     return new Compared(show.placed(), show.closing(), withoutPreamble);
   }
 

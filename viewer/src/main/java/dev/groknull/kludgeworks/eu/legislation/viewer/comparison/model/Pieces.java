@@ -3,10 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import com.github.difflib.DiffUtils;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Edits.Edited;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.Stood;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,8 +21,8 @@ import java.util.Map;
  *   <li>Pieces that are alike pair: the piece changed. See {@link
  *       HowTwoTextsPair#blocksPairWithWhatTheyWere}.
  *   <li>A piece of only the later text is inserted.
- *   <li>A piece of only the earlier text is deleted. It stood before the first later piece that
- *       pairs with a piece after it, as the rule deleted-text-stands-where-it-was tells.
+ *   <li>A piece of only the earlier text is deleted. It stands where the rule
+ *       deleted-text-stands-where-it-was puts it.
  * </ul>
  */
 final class Pieces {
@@ -62,7 +61,12 @@ final class Pieces {
       var earlier = from.subList(source.getPosition(), source.getPosition() + source.size());
       var later = to.subList(target.getPosition(), target.getPosition() + target.size());
       var sourceOf = HowTwoTextsPair.blocksPairWithWhatTheyWere(earlier, later);
-      var earlierOf = Arrays.stream(sourceOf).boxed().toList();
+      var laterOf = new ArrayList<>(Collections.nCopies(earlier.size(), -1));
+      for (var i = 0; i < sourceOf.length; i++) {
+        if (sourceOf[i] >= 0) {
+          laterOf.set(sourceOf[i], i);
+        }
+      }
       var paired = new boolean[earlier.size()];
       for (var i = 0; i < later.size(); i++) {
         var at = target.getPosition() + i;
@@ -75,8 +79,7 @@ final class Pieces {
       }
       for (var i = 0; i < earlier.size(); i++) {
         if (!paired[i]) {
-          var stands =
-              WhatCountsAsADifference.deletedTextStandsWhereItWas(new Stood.Block(earlierOf, i));
+          var stands = WhatCountsAsADifference.deletedTextStandsWhereItWas(laterOf, i);
           found.add(new Deleted(target.getPosition() + stands, earlier.get(i)));
         }
       }

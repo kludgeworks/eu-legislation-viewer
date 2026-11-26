@@ -72,9 +72,7 @@ class OrderingTest {
   private static Ordering ordered(Element earlier, Element later) {
     var before = Occurrences.of(earlier);
     var after = Occurrences.of(later);
-    var ordering = new Ordering();
-    ordering.occurrences(
-        new Comparer(before, after, Pairing.of(before, after)).occurrences(null, null), null);
-    return ordering;
+    return Ordering.of(
+        new Comparer(before, after, Pairing.of(before, after)).occurrences(null, null));
   }
 }
