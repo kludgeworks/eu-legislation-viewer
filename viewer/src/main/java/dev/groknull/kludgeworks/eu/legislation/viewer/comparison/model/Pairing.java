@@ -7,48 +7,95 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.HowTwoTex
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The pairing of two texts: which occurrence of the later text is which occurrence of the earlier
- * text. {@link #of} applies the rules of {@link HowTwoTextsPair} in three stages. A stage pairs
+ * text. {@link #of} applies the rules of {@link HowTwoTextsPair} in three stages. Each stage is a
+ * function of the two texts and the pairs so far, and gives the pairs that it finds. A stage pairs
  * only occurrences that pair with none yet.
  *
  * <ol>
- *   <li><b>Among siblings.</b> The outermost occurrences of the two texts pair, then the
- *       occurrences in each two occurrences that pair, to the innermost. Among siblings, the
- *       renumbered occurrences pair first, then each other occurrence by its eId.
- *   <li><b>Moved into the occurrence before it, or out of it.</b> For each pair, from the innermost
- *       to the outermost: the occurrences in one of the two pair with the occurrences that stand
- *       right after the other. The occurrences in a new pair then go through stages 1 and 2.
+ *   <li><b>Among siblings.</b> The occurrences in two occurrences that pair, then the occurrences
+ *       in each of those pairs, to the innermost. Among siblings, the renumbered occurrences pair
+ *       first, then each other occurrence by its eId.
+ *   <li><b>Moved into the occurrence before it, or out of it.</b> For each pair of stage 1: the
+ *       occurrences in one of the two pair with the occurrences that stand right after the other.
  *   <li><b>Moved further.</b> Each occurrence that still pairs with none, in the order of the later
- *       text. The occurrences in a new pair then go through stages 1 and 2.
+ *       text.
  * </ol>
+ *
+ * <p>The occurrences in a pair of stage 2 or 3 pair with none yet. Thus {@link #of} does the stages
+ * again for them, until no stage finds a pair.
  */
 final class Pairing {
-  private final Occurrences before;
-  private final Occurrences after;
-  private final Map<String, Occurrence> earlierOf = new HashMap<>();
-  private final Map<String, Occurrence> laterOf = new HashMap<>();
+  private static final Pairing NONE = new Pairing(Map.of(), Map.of());
 
-  private Pairing(Occurrences before, Occurrences after) {
-    this.before = before;
-    this.after = after;
+  private final Map<String, Occurrence> earlierOf;
+  private final Map<String, Occurrence> laterOf;
+
+  private Pairing(Map<String, Occurrence> earlierOf, Map<String, Occurrence> laterOf) {
+    this.earlierOf = earlierOf;
+    this.laterOf = laterOf;
   }
 
   /**
    * Pairs the occurrences of {@code after}, the later text, with the occurrences of {@code before}.
    */
   static Pairing of(Occurrences before, Occurrences after) {
-    var pairing = new Pairing(before, after);
-    var pairs = pairing.amongSiblings(null, null);
-    pairing.movedIntoOrOutOf(pairs);
-    pairing.movedFurther();
+    var pairing = settled(before, after, NONE, amongSiblings(before, after, null));
+    for (var further = movedFurther(before, after, pairing);
+        !further.isEmpty();
+        further = movedFurther(before, after, pairing)) {
+      pairing = settled(before, after, pairing.with(further), within(before, after, further));
+    }
     return pairing;
+  }
+
+  /**
+   * Returns {@code pairing} with {@code pairs}, the pairs that stage 1 found, and with each pair
+   * that stages 2 and 1 then find in turn, until stage 2 finds none.
+   */
+  private static Pairing settled(
+      Occurrences before, Occurrences after, Pairing pairing, List<Among> pairs) {
+    var found = pairing.with(pairs.stream().map(Among::pair).toList());
+    var open = pairs;
+    while (!open.isEmpty()) {
+      var moved = movedIntoOrOutOf(before, after, found, open);
+      open = within(before, after, moved);
+      found = found.with(moved).with(open.stream().map(Among::pair).toList());
+    }
+    return found;
+  }
+
+  /** Returns what stage 1 finds in each of {@code pairs}. */
+  private static List<Among> within(Occurrences before, Occurrences after, List<Pair> pairs) {
+    var found = new ArrayList<Among>();
+    for (var pair : pairs) {
+      amongSiblings(before, after, pair, found);
+    }
+    return found;
+  }
+
+  /** Returns this pairing with {@code pairs} too. */
+  private Pairing with(List<Pair> pairs) {
+    if (pairs.isEmpty()) {
+      return this;
+    }
+    var earlier = new HashMap<>(earlierOf);
+    var later = new HashMap<>(laterOf);
+    for (var pair : pairs) {
+      earlier.put(pair.is().eId(), pair.was());
+      later.put(pair.was().eId(), pair.is());
+    }
+    return new Pairing(earlier, later);
   }
 
   /**
@@ -77,18 +124,45 @@ final class Pairing {
    */
   private record Among(Pair pair, List<Occurrence> earlierAfter, List<Occurrence> laterAfter) {}
 
+  /** The pairs that one stage found so far, and this pairing before the stage. */
+  private final class Found {
+    private final List<Pair> pairs = new ArrayList<>();
+    private final Set<String> earlier = new HashSet<>();
+    private final Set<String> later = new HashSet<>();
+
+    void add(Pair pair) {
+      pairs.add(pair);
+      earlier.add(pair.was().eId());
+      later.add(pair.is().eId());
+    }
+
+    /** Returns whether {@code occurrence} of the earlier text pairs. */
+    boolean pairsEarlier(Occurrence occurrence) {
+      return is(occurrence) != null || earlier.contains(occurrence.eId());
+    }
+
+    /** Returns whether {@code occurrence} of the later text pairs. */
+    boolean pairsLater(Occurrence occurrence) {
+      return was(occurrence) != null || later.contains(occurrence.eId());
+    }
+  }
+
   /**
-   * Stage 1. Pairs the occurrences in the occurrence {@code was} of the earlier text with those in
-   * the occurrence {@code is} of the later text, and the occurrences in each pair in turn. If both
-   * are null, pairs the outermost occurrences. Returns the pairs, the innermost first.
+   * Stage 1. Pairs the occurrences in the two occurrences of {@code within}, and the occurrences in
+   * each pair in turn. If {@code within} is null, pairs the outermost occurrences of the two texts.
+   * None of these occurrences pairs yet. Returns the pairs, the innermost first.
    */
-  private List<Among> amongSiblings(@Nullable Occurrence was, @Nullable Occurrence is) {
+  private static List<Among> amongSiblings(
+      Occurrences before, Occurrences after, @Nullable Pair within) {
     var found = new ArrayList<Among>();
-    amongSiblings(was, is, found);
+    amongSiblings(before, after, within, found);
     return found;
   }
 
-  private void amongSiblings(@Nullable Occurrence was, @Nullable Occurrence is, List<Among> found) {
+  private static void amongSiblings(
+      Occurrences before, Occurrences after, @Nullable Pair within, List<Among> found) {
+    var was = within == null ? null : within.was();
+    var is = within == null ? null : within.is();
     var siblings =
         new Siblings(
             in(before, was),
@@ -98,30 +172,31 @@ final class Pairing {
     var renumbered = HowTwoTextsPair.renumberedOccurrence(siblings);
     var pairs = new ArrayList<>(renumbered);
     pairs.addAll(HowTwoTextsPair.placeAmongSiblings(siblings, renumbered));
-    pairs.forEach(this::pair);
+    var earlier = pairs.stream().map(pair -> pair.was().eId()).collect(Collectors.toSet());
+    var later = pairs.stream().map(pair -> pair.is().eId()).collect(Collectors.toSet());
     var here = new ArrayList<Among>();
     for (var pair : pairs) {
-      amongSiblings(pair.was(), pair.is(), found);
+      amongSiblings(before, after, pair, found);
       here.add(
           new Among(
               pair,
-              after(siblings.earlier(), pair.was(), true),
-              after(siblings.later(), pair.is(), false)));
+              after(siblings.earlier(), pair.was(), earlier),
+              after(siblings.later(), pair.is(), later)));
     }
     found.addAll(here);
   }
 
   /**
    * Returns the occurrences of {@code siblings} that stand right after {@code occurrence} and pair
-   * with none: up to the next sibling that pairs. {@code earlier} tells whether they are
-   * occurrences of the earlier text.
+   * with none: up to the next sibling that pairs. {@code paired} holds the eIds of the siblings
+   * that pair.
    */
-  private List<Occurrence> after(
-      List<Occurrence> siblings, Occurrence occurrence, boolean earlier) {
+  private static List<Occurrence> after(
+      List<Occurrence> siblings, Occurrence occurrence, Set<String> paired) {
     var found = new ArrayList<Occurrence>();
     for (var i = siblings.indexOf(occurrence) + 1; i < siblings.size(); i++) {
       var each = siblings.get(i);
-      if ((earlier ? is(each) : was(each)) != null) {
+      if (paired.contains(each.eId())) {
         break;
       }
       found.add(each);
@@ -131,65 +206,63 @@ final class Pairing {
 
   /**
    * Stage 2. For each of {@code pairs}, pairs the occurrences that moved into the later occurrence
-   * or out of the earlier one.
+   * or out of the earlier one. {@code pairing} holds the pairs so far. Returns the pairs that it
+   * finds.
    */
-  private void movedIntoOrOutOf(List<Among> pairs) {
+  private static List<Pair> movedIntoOrOutOf(
+      Occurrences before, Occurrences after, Pairing pairing, List<Among> pairs) {
+    var found = pairing.new Found();
     for (var among : pairs) {
       // Moved in: the occurrences stood after the earlier occurrence, and are in the later one.
-      moved(among.earlierAfter(), in(after, among.pair().is()));
+      moved(among.earlierAfter(), in(after, among.pair().is()), found);
       // Moved out: the occurrences were in the earlier occurrence, and stand after the later one.
-      moved(in(before, among.pair().was()), among.laterAfter());
+      moved(in(before, among.pair().was()), among.laterAfter(), found);
     }
+    return found.pairs;
   }
 
-  private void moved(List<Occurrence> earlier, List<Occurrence> later) {
-    var from = earlier.stream().filter(occurrence -> is(occurrence) == null).toList();
-    var to = later.stream().filter(occurrence -> was(occurrence) == null).toList();
+  private static void moved(List<Occurrence> earlier, List<Occurrence> later, Found found) {
+    var from = earlier.stream().filter(occurrence -> !found.pairsEarlier(occurrence)).toList();
+    var to = later.stream().filter(occurrence -> !found.pairsLater(occurrence)).toList();
     if (from.isEmpty() || to.isEmpty()) {
       return;
     }
-    for (var pair : HowTwoTextsPair.movedOccurrence(new Moved.IntoOrOutOf(from, to))) {
-      pairWithin(pair);
-    }
+    HowTwoTextsPair.movedOccurrence(new Moved.IntoOrOutOf(from, to)).forEach(found::add);
   }
 
-  /** Stage 3. Pairs the occurrences that pair with none and moved further. */
-  private void movedFurther() {
-    var earlier = alone(before, true);
-    var later = alone(after, false);
+  /**
+   * Stage 3. Pairs the occurrences that pair with none and moved further. {@code pairing} holds the
+   * pairs so far. Returns the pairs that it finds.
+   */
+  private static List<Pair> movedFurther(Occurrences before, Occurrences after, Pairing pairing) {
+    var found = pairing.new Found();
+    var earlier = pairing.alone(before, true);
+    var later = pairing.alone(after, false);
     for (var segment : later.entrySet()) {
       var from = earlier.getOrDefault(segment.getKey(), List.of());
       for (var is : segment.getValue()) {
         for (var was : from) {
-          if (is(was) != null || was(is) != null) {
+          if (found.pairsEarlier(was) || found.pairsLater(is)) {
             continue;
           }
-          var eachAroundPairs = inPaired(was, before, true) && inPaired(is, after, false);
+          var eachAroundPairs =
+              pairing.inPaired(was, before, true) && pairing.inPaired(is, after, false);
           var further =
               new Moved.Further(
                   was,
                   is,
                   eachAroundPairs,
-                  eachAroundPairs && alone(was, is, from, segment.getValue()));
+                  eachAroundPairs
+                      && pairing.alone(before, after, was, is, from, segment.getValue()));
           var pairs = HowTwoTextsPair.movedOccurrence(further);
           if (!pairs.isEmpty()) {
-            pairWithin(pairs.getFirst());
+            found.add(pairs.getFirst());
             break;
           }
         }
       }
     }
-  }
-
-  /** Pairs the two, and puts the occurrences in them through stages 1 and 2. */
-  private void pairWithin(Pair pair) {
-    pair(pair);
-    movedIntoOrOutOf(amongSiblings(pair.was(), pair.is()));
-  }
-
-  private void pair(Pair pair) {
-    earlierOf.put(pair.is().eId(), pair.was());
-    laterOf.put(pair.was().eId(), pair.is());
+    return found.pairs;
   }
 
   /**
@@ -199,7 +272,12 @@ final class Pairing {
    * segment.
    */
   private boolean alone(
-      Occurrence was, Occurrence is, List<Occurrence> earlier, List<Occurrence> later) {
+      Occurrences before,
+      Occurrences after,
+      Occurrence was,
+      Occurrence is,
+      List<Occurrence> earlier,
+      List<Occurrence> later) {
     var holder = after.get(Objects.requireNonNullElse(is.parent(), ""));
     while (holder != null) {
       var paired = was(holder);
