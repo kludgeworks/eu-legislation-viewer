@@ -5,15 +5,27 @@ Feature: How the occurrences of two texts pair
   pairs with none as inserted. It shows an occurrence of the earlier text that pairs with none as
   deleted.
 
+  @revision-2
   Rule: place-among-siblings · Occurrences pair by their place in the occurrence around them
     Two occurrences pair with their siblings: the occurrences in two occurrences that pair. Among
-    siblings, an occurrence pairs by its place in the occurrence around it, not by where that
-    occurrence is. So the occurrences in a renumbered occurrence, or in an occurrence that moved,
-    still pair.
+    siblings, an occurrence pairs by its place in the occurrence around it. This rule is not for an
+    occurrence that a tag of a renumbering gave a new number.
+
+    The place of the occurrence around it does not count. So the occurrences in a renumbered
+    occurrence, or in an occurrence that moved, still pair.
+
+    The words of the occurrence do not count. So an occurrence that an act replaced where it stands
+    pairs with what it was. It shows as changed, under its own number, not as deleted and inserted.
 
     Example: The points of a point that moved
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.3.6 point (a) of the later text pairs with point 6.8.3.6 point (a) of the earlier text
+
+    Example: A point that an act replaced
+      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
+      When the reader looks at the difference at the changed point 9.1.3.1
+      Then the point has the same place in both texts
+      And its tags name 2026/449, which replaced it
 
   Rule: renumbered-occurrence · A renumbered occurrence pairs by its words
     A tag of a renumbering can give an occurrence a new number. That occurrence pairs with the
@@ -68,16 +80,6 @@ Feature: How the occurrences of two texts pair
     Example: A point that moved further but says other things
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.3.7 of the later text has no pair in the earlier text
-
-  Rule: replaced-where-it-stands · An occurrence replaced where it stands
-    An occurrence that an act replaced where it stands pairs with what it was. It shows as
-    changed, under its own number, not as deleted and inserted.
-
-    Example: A point that an act replaced
-      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
-      When the reader looks at the difference at the changed point 9.1.3.1
-      Then the point has the same place in both texts
-      And its tags name 2026/449, which replaced it
 
   Rule: blocks-pair-with-what-they-were · Blocks pair with what they were
     In a changed occurrence, the blocks that say the same pair first. Then the blocks that are

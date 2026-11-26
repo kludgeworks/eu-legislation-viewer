@@ -241,7 +241,9 @@ class DifferSamplesTest {
   private static void read(
       Element element, String without, String occurrence, Map<String, StringBuilder> said) {
     var name = element.name();
-    if (name.equals(without) || name.equals("footnotes") || Wording.SILENT.contains(name)) {
+    if (name.equals(without)
+        || name.equals("footnotes")
+        || WhatCountsAsADifference.keptDeletionIsNotWords(element)) {
       return;
     }
     var eId = Occurrences.eId(element);

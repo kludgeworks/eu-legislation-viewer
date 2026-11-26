@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
@@ -85,18 +83,12 @@ public final class Differ {
 
   /**
    * Returns the differences of {@code to} from {@code from}, in the order of {@code to}. Each
-   * deleted occurrence is where it stood, before the occurrences inserted in its place.
-   *
-   * <p>If only one text has a preamble, the preamble is not compared. The Publications Office
-   * publishes some consolidations without the preamble, although no act removed it. For example,
-   * the consolidations of 2015/1998 from 2017.
+   * deleted occurrence is where it stood, before the occurrences inserted in its place. If only one
+   * text has a preamble, the preamble is not compared: the rule preamble-of-one-text.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "preamble-of-one-text")
   public static Compared differences(Element from, Element to) {
-    var earlierPreamble = preamble(from);
-    var laterPreamble = preamble(to);
     @Nullable Side withoutPreamble =
-        earlierPreamble == laterPreamble ? null : earlierPreamble ? Side.LATER : Side.EARLIER;
+        WhatCountsAsADifference.preambleOfOneText(preamble(from), preamble(to)).orElse(null);
     var before = Occurrences.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
     var after = Occurrences.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
     var show = new Ordering();

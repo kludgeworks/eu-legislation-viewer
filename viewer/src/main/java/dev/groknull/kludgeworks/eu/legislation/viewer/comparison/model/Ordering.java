@@ -46,7 +46,7 @@ final class Ordering {
         occurrences(node.occurrences(), occurrence);
         continue;
       }
-      var whole = node.showsWhole();
+      var whole = WhatCountsAsADifference.sameActsOneDifference(node);
       if (whole) {
         var inserted = node.inserted();
         var deleted = node.deleted();

@@ -37,7 +37,7 @@ class ComparedOccurrenceTest {
 
     var one = find(compared(earlier, later), "1", false);
 
-    assertThat(one.showsWhole()).isTrue();
+    assertThat(WhatCountsAsADifference.sameActsOneDifference(one)).isTrue();
     var shown = ShownOccurrence.of(one, true);
     assertThat(descendants(shown))
         .filteredOn(each -> each.name().equals("occurrence"))
@@ -68,7 +68,7 @@ class ComparedOccurrenceTest {
 
     var one = find(compared(earlier, later), "1", false);
 
-    assertThat(one.showsWhole()).isTrue();
+    assertThat(WhatCountsAsADifference.sameActsOneDifference(one)).isTrue();
     assertThat(one.inserted()).isGreaterThan(0);
     assertThat(one.deleted()).isGreaterThan(0);
     assertThat(said(ShownOccurrence.of(one, true))).contains("[-Point a text]");
@@ -78,7 +78,7 @@ class ComparedOccurrenceTest {
   void showsADeletedPointInTheRenumberedArticleThatTheSameActReplaced() {
     var article = find(compared(articlesWithPoint(), articlesRenumbered("ActX")), "art_6", false);
 
-    assertThat(article.showsWhole()).isTrue();
+    assertThat(WhatCountsAsADifference.sameActsOneDifference(article)).isTrue();
     assertThat(said(ShownOccurrence.of(article, true)))
         .contains("[-Deleted point on inspection requirements.]");
   }
@@ -88,6 +88,6 @@ class ComparedOccurrenceTest {
     Element later = articlesRenumbered("ActY");
     var article = find(compared(articlesWithPoint(), later), "art_6", false);
 
-    assertThat(article.showsWhole()).isFalse();
+    assertThat(WhatCountsAsADifference.sameActsOneDifference(article)).isFalse();
   }
 }

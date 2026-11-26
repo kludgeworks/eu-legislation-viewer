@@ -1,12 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import com.github.difflib.DiffUtils;
-import com.github.difflib.algorithm.myers.MyersDiffWithLinearSpace;
-import com.github.difflib.text.DiffRowGenerator;
-import com.github.difflib.text.deltamerge.InlineDeltaMergeInfo;
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,7 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.regex.Pattern;
 
 /**
  * Shows the edits of a comparison in legal-text: its insertions and deletions. Inserted words go in
@@ -31,15 +24,7 @@ import java.util.regex.Pattern;
  *
  * <p>A table is not one run of tokens. It is compared by its rows and cells. See {@link #pieces}.
  *
- * <p>The Myers diff in linear space of java-diff-utils aligns the tokens of two blocks.
- *
- * <ul>
- *   <li>Its middle snakes keep an inserted phrase whole. The greedy diff splits it at a word that
- *       it repeats. For example, "in ... and in combination".
- *   <li>Its whitespace merger joins changes that only a run of spaces separates. Thus a replaced
- *       phrase reads as one deletion and one insertion.
- *   <li>A change of spaces alone is not a change.
- * </ul>
+ * <p>The rule replaced-phrase aligns the tokens of two blocks.
  */
 final class Edits {
   static final String INSERTED = "diff:ins";
@@ -53,8 +38,6 @@ final class Edits {
    */
   static final String ONLY = "diff";
 
-  private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
-
   private Edits() {}
 
   /**
@@ -62,32 +45,11 @@ final class Edits {
    * not have are shown inserted. The words of {@code from} that {@code to} does not have are added
    * as deleted. Each deleted run goes before the token of {@code to} that it stood before.
    *
-   * <p>A table is compared by its pieces. See {@link #PIECES}.
+   * <p>A table is compared by its pieces: the rule table-row-by-row.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-the-edits-show")
   static Edited between(Element from, Element to) {
-    return from.name().equals(to.name()) && PIECES.contains(to.name())
-        ? pieces(from, to)
-        : words(from, to);
+    return HowTwoTextsPair.tableRowByRow(from, to) ? pieces(from, to) : words(from, to);
   }
-
-  /**
-   * The elements that a comparison reads as a sequence of pieces, not as one run of words. They are
-   * a table and what is in it: its caption, its rows and groups of rows, its cells, and the lists,
-   * occurrences and footnotes in a cell. Thus the words deleted from a cell stay in that cell, and
-   * a row inserted or deleted whole shows as a row.
-   */
-  private static final Set<String> PIECES =
-      Set.of(
-          "table",
-          "caption",
-          "rowGroup",
-          "tr",
-          "td",
-          "list",
-          "occurrence",
-          "footnotes",
-          "footnote");
 
   /**
    * Returns {@code to}, edited against {@code from} piece by piece.
@@ -100,7 +62,6 @@ final class Edits {
    *   <li>A piece that is only in {@code from} is shown deleted whole, where it stood.
    * </ul>
    */
-  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "table-row-by-row")
   private static Edited pieces(Element from, Element to) {
     var before = from.children();
     var after = to.children();
@@ -110,16 +71,17 @@ final class Edits {
       switch (each) {
         case Pieces.Changed(int at, Element was, Element is) -> {
           if (was.name().equals(is.name())) {
-            shown.replace(at, between(was, is));
+            shown.replace(at, WhatCountsAsADifference.whatTheEditsShow(was, is));
           } else {
-            shown.delete(at, all(was, DELETED));
-            shown.replace(at, all(is, INSERTED));
+            shown.delete(at, WhatCountsAsADifference.whatTheEditsShow(was, null));
+            shown.replace(at, WhatCountsAsADifference.whatTheEditsShow(null, is));
           }
         }
-        case Pieces.Inserted(int at, Element is) -> shown.replace(at, all(is, INSERTED));
+        case Pieces.Inserted(int at, Element is) ->
+            shown.replace(at, WhatCountsAsADifference.whatTheEditsShow(null, is));
         case Pieces.Deleted(int at, Element was) -> {
-          if (!Wording.SILENT.contains(was.name())) {
-            shown.delete(at, all(was, DELETED));
+          if (!WhatCountsAsADifference.keptDeletionIsNotWords(was)) {
+            shown.delete(at, WhatCountsAsADifference.whatTheEditsShow(was, null));
           }
         }
       }
@@ -132,8 +94,10 @@ final class Edits {
     return pieces.stream().map(piece -> piece.name() + ":" + Wording.key(piece)).toList();
   }
 
-  /** Returns {@code to}, edited against {@code from} word by word. */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "replaced-phrase")
+  /**
+   * Returns {@code to}, edited against {@code from} word by word. The rule replaced-phrase aligns
+   * the tokens. A change of spaces alone is not a change.
+   */
   private static Edited words(Element from, Element to) {
     var before = new ArrayList<String>();
     var pieces = new ArrayList<Element>();
@@ -145,14 +109,7 @@ final class Edits {
     var deletedAt = new HashMap<Integer, List<Element>>();
     var inserted = 0;
     var deleted = 0;
-    var deltas =
-        DiffRowGenerator.WHITESPACE_EQUALITIES_MERGER.apply(
-            new InlineDeltaMergeInfo(
-                DiffUtils.diff(
-                        beforeSaid, afterSaid, new MyersDiffWithLinearSpace<String>(), null, false)
-                    .getDeltas(),
-                beforeSaid,
-                afterSaid));
+    var deltas = WhatCountsAsADifference.replacedPhrase(beforeSaid, afterSaid);
     for (var delta : deltas) {
       var source = delta.getSource();
       var target = delta.getTarget();
@@ -177,7 +134,6 @@ final class Edits {
    * Returns {@code element} with every word in it edited {@code edit}, which is {@link #INSERTED}
    * or {@link #DELETED}.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-the-edits-show")
   static Edited all(Element element, String edit) {
     var tokens = Wording.tokens(element);
     var edited = new boolean[tokens.size()];
@@ -247,12 +203,8 @@ final class Edits {
     return tokens.stream().allMatch(String::isBlank);
   }
 
-  /**
-   * Returns how many of {@code tokens} are words. A word has a letter or a digit. Spaces and
-   * punctuation alone are not words.
-   */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "what-a-word-is")
+  /** Returns how many of {@code tokens} are words. */
   private static int words(List<String> tokens) {
-    return (int) tokens.stream().filter(token -> WORD.matcher(token).find()).count();
+    return (int) tokens.stream().filter(WhatCountsAsADifference::whatAWordIs).count();
   }
 }

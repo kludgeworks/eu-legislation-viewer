@@ -1,15 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -42,30 +38,6 @@ record ComparedOccurrence(
     return new ComparedOccurrence(occurrence, earlier, difference, editing, occurrences, differs);
   }
 
-  /**
-   * Returns whether the occurrence shows whole, as one difference with the occurrences in it that
-   * differ. It does if it is changed, and the acts that changed it also made every difference in
-   * it.
-   */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "same-acts-one-difference")
-  boolean showsWhole() {
-    return difference != null
-        && difference.kind() == Kind.CHANGED
-        && occurrences.stream().anyMatch(ComparedOccurrence::differs)
-        && madeBy(acts(difference));
-  }
-
-  /** Returns whether {@code acts} made every difference in the occurrence. */
-  private boolean madeBy(Set<String> acts) {
-    for (var each : occurrences) {
-      var in = each.difference();
-      if ((in != null && !acts(in).equals(acts)) || !each.madeBy(acts)) {
-        return false;
-      }
-    }
-    return true;
-  }
-
   /** Returns how many words are inserted in the occurrence and the occurrences in it. */
   int inserted() {
     var own = difference == null ? 0 : difference.inserted();
@@ -87,17 +59,5 @@ record ComparedOccurrence(
     return difference != null && difference.kind() != Kind.CHANGED
         ? difference.shown()
         : ShownOccurrence.of(this, true);
-  }
-
-  /**
-   * Returns the acts that made {@code difference}, from its tags. Returns an empty set if it has no
-   * tags.
-   */
-  private static Set<String> acts(DifferenceBuilder difference) {
-    var acts = new HashSet<String>();
-    for (var tag : difference.tags()) {
-      acts.add(tag.act());
-    }
-    return acts;
   }
 }

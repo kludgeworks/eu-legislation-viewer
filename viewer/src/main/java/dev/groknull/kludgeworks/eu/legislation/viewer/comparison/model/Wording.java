@@ -1,15 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.Read;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.text.BreakIterator;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
@@ -37,18 +35,7 @@ import org.jspecify.annotations.Nullable;
  * writes the edits of a block with a walk.
  */
 public final class Wording {
-  /** The elements whose words are not words of the law, for a comparison: a kept deletion. */
-  static final Set<String> SILENT = Set.of("deleted");
-
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
-
-  /**
-   * A form blank: an ellipsis that stands alone as a word, where a form leaves room to fill in. For
-   * example, "Make (trade name of manufacturer): …" and "Mass in running order: … kg". The
-   * Publications Office chooses whether a consolidation prints it. An ellipsis joined to a word, as
-   * in "Annex…", is not a blank.
-   */
-  private static final Pattern BLANK = Pattern.compile("(?<![\\p{L}\\p{N}])…(?![\\p{L}\\p{N}])");
 
   private Wording() {}
 
@@ -64,29 +51,23 @@ public final class Wording {
   }
 
   /**
-   * Returns what a comparison matches {@code block} on: its wording without spaces, without form
-   * blanks ({@link #BLANK}), and with each apostrophe and quotation mark in its plain form ({@link
-   * #plain}). A change of these alone is not a change. For example, "DOB: 30 March 1977" and
-   * "DOB:30 March 1977" match.
+   * Returns what a comparison matches {@code block} on: its wording as the rules
+   * form-of-apostrophes-and-quotes and spaces-are-no-change read a block. Two blocks with the same
+   * key do not differ. For example, "DOB: 30 March 1977" and "DOB:30 March 1977" match.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "spaces-are-no-change")
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "form-of-apostrophes-and-quotes")
   public static String key(Element block) {
-    return SPACE.matcher(BLANK.matcher(plain(of(block))).replaceAll("")).replaceAll("");
+    var form = WhatCountsAsADifference.formOfApostrophesAndQuotes(new Read.Block(of(block)));
+    return WhatCountsAsADifference.spacesAreNoChange(new Read.Block(form));
   }
 
   /**
    * Returns {@code text} with each apostrophe and single quotation mark as ', and each double
    * quotation mark as ". The Publications Office chooses these forms when it sets a text. No act
    * changes them, so a change of these forms alone is not a change. For example, "institution's"
-   * and "institution’s" match, as do "“group”" and "\"group\"".
+   * and "institution’s" match, as do "“group”" and "\"group\"". The plain text has the length of
+   * {@code text}.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "form-of-apostrophes-and-quotes")
-  public static String plain(String text) {
+  static String plain(String text) {
     var out = new StringBuilder(text.length());
     for (var i = 0; i < text.length(); i++) {
       var c = text.charAt(i);
@@ -137,22 +118,13 @@ public final class Wording {
   }
 
   /**
-   * Returns what {@code tokens} say, as the comparison compares them: a run of spaces as one space,
-   * and a word with each apostrophe in its plain form ({@link #plain}). Thus "institution's" and
-   * "institution’s" are the same word. A quotation mark alone keeps its form: the plain form of an
-   * opening quotation mark and of a closing one is the same, and they would then match one with the
-   * other.
+   * Returns what {@code tokens} say, as the comparison compares them: each token as the rules
+   * spaces-are-no-change and form-of-apostrophes-and-quotes read a token.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "spaces-are-no-change")
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "form-of-apostrophes-and-quotes")
   static List<String> said(List<String> tokens) {
     return tokens.stream()
-        .map(token ->
-            SPACE.matcher(token).matches()
-                ? " "
-                : token.codePoints().anyMatch(Character::isLetterOrDigit) ? plain(token) : token)
+        .map(token -> WhatCountsAsADifference.spacesAreNoChange(new Read.Token(token)))
+        .map(token -> WhatCountsAsADifference.formOfApostrophesAndQuotes(new Read.Token(token)))
         .toList();
   }
 
@@ -161,8 +133,6 @@ public final class Wording {
    * result is what goes in the place of the element: one element, several elements or none. For
    * example, a {@code t} that is split at its edits gives several elements.
    */
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "formula-is-one-piece")
-  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "kept-deletion-is-not-words")
   static List<Element> walk(Element element, Sink sink) {
     var v = element.attributes().getOrDefault("v", "");
     switch (element.name()) {
@@ -179,12 +149,10 @@ public final class Wording {
         return sink.token(element, "[image " + element.attribute("src") + "]", true);
       }
       case "math" -> {
-        // A formula is one token. A changed formula shows whole as deleted, then whole as
-        // inserted: the elements of its MathML alone do not read.
-        return sink.token(element, formula(element), true);
+        return sink.token(element, WhatCountsAsADifference.formulaIsOnePiece(element), true);
       }
       default -> {
-        if (SILENT.contains(element.name())) {
+        if (WhatCountsAsADifference.keptDeletionIsNotWords(element)) {
           return List.of(element);
         }
         if (!element.text().isEmpty()) {
@@ -202,18 +170,6 @@ public final class Wording {
         return List.of(Differ.copy(element, children));
       }
     }
-  }
-
-  /** Returns what the formula {@code math} says: the text of its MathML elements, joined. */
-  private static String formula(Element math) {
-    var out = new StringBuilder();
-    mathText(math, out);
-    return SPACE.matcher(out).replaceAll(" ").strip();
-  }
-
-  private static void mathText(Element element, StringBuilder out) {
-    out.append(element.text());
-    element.children().forEach(child -> mathText(child, out));
   }
 
   /**

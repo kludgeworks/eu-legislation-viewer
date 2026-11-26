@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Standing;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Edits.Edited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.Stood;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
@@ -26,42 +27,54 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
    * occurrences in the occurrence {@code was} that it pairs with. If both are null, returns the
    * outermost occurrences.
    *
-   * <p>The occurrences are in the order of the later text. Each deleted occurrence comes after the
-   * later occurrence that pairs with the last paired occurrence before it, or first if there is no
-   * such occurrence. An occurrence that moved out of {@code was} is not deleted: it shows where the
-   * later text has it.
+   * <p>The rule one-difference-for-each-occurrence tells what each occurrence is. The occurrences
+   * are in the order of the later text, and each deleted occurrence is where the rule
+   * deleted-text-stands-where-it-was puts it. An occurrence that moved out of {@code was} is not
+   * deleted: it shows where the later text has it.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "one-difference-for-each-occurrence")
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "deleted-text-stands-where-it-was")
   List<ComparedOccurrence> occurrences(@Nullable Occurrence was, @Nullable Occurrence is) {
+    var earlier = in(before, was);
     var later = in(after, is);
-    // The deleted occurrences that stood first, then those that stood after each later
-    // occurrence.
+    var laterOf = new ArrayList<Integer>();
+    for (var occurrence : earlier) {
+      var now = pairs.is(occurrence);
+      laterOf.add(now == null ? -1 : later.indexOf(now));
+    }
+    // The deleted occurrences that stand before each later occurrence, then those that stand last.
     var deleted = new ArrayList<List<ComparedOccurrence>>();
     for (var j = 0; j <= later.size(); j++) {
       deleted.add(new ArrayList<>());
     }
-    var place = 0;
-    for (var occurrence : in(before, was)) {
-      var now = pairs.is(occurrence);
-      if (now == null) {
+    for (var i = 0; i < earlier.size(); i++) {
+      var occurrence = earlier.get(i);
+      var kind =
+          WhatCountsAsADifference.oneDifferenceForEachOccurrence(
+              true, pairs.is(occurrence) != null, false);
+      if (kind.filter(Kind.DELETED::equals).isPresent()) {
+        var place =
+            WhatCountsAsADifference.deletedTextStandsWhereItWas(new Stood.Occurrence(laterOf, i));
         deleted.get(place).add(deleted(occurrence, is, standing(later, place, is)));
-      } else if (later.contains(now)) {
-        place = later.indexOf(now) + 1;
       }
     }
     var nodes = new ArrayList<ComparedOccurrence>(deleted.get(0));
     for (var j = 0; j < later.size(); j++) {
-      var occurrence = later.get(j);
-      var earlier = pairs.was(occurrence);
-      nodes.add(earlier == null ? inserted(occurrence) : paired(earlier, occurrence));
+      nodes.add(compared(pairs.was(later.get(j)), later.get(j)));
       nodes.addAll(deleted.get(j + 1));
     }
     return nodes;
+  }
+
+  /** Returns the occurrence {@code is} of the later text, compared with what it was, if any. */
+  private ComparedOccurrence compared(@Nullable Occurrence was, Occurrence is) {
+    var editing = was == null ? null : OccurrenceEdits.of(was, is);
+    var kind =
+        WhatCountsAsADifference.oneDifferenceForEachOccurrence(was != null, true, editing != null);
+    if (was == null || kind.filter(Kind.INSERTED::equals).isPresent()) {
+      return inserted(is);
+    }
+    return editing != null && kind.filter(Kind.CHANGED::equals).isPresent()
+        ? changed(was, is, editing)
+        : ComparedOccurrence.of(is, false, null, null, occurrences(was, is));
   }
 
   /**
@@ -79,15 +92,12 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
   }
 
   /**
-   * Returns where a deleted occurrence stands among {@code later}, the occurrences of the later
-   * occurrence {@code in}, if it comes at {@code place} among them: after the occurrence before
-   * that place. If it comes first, before the first occurrence. If {@code in} has none, after
-   * {@code in}. Null if it comes first among the outermost occurrences and the later text has none:
-   * at the end of the text.
+   * Returns how a difference cites the place of a deleted occurrence that stands at {@code place}
+   * among {@code later}, the occurrences of the later occurrence {@code in}: after the occurrence
+   * before that place. If it comes first, before the first occurrence. If {@code in} has none,
+   * after {@code in}. Null if it comes first among the outermost occurrences and the later text has
+   * none: at the end of the text.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "deleted-text-stands-where-it-was")
   private static @Nullable Standing standing(
       List<Occurrence> later, int place, @Nullable Occurrence in) {
     if (place > 0) {
@@ -108,19 +118,11 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
   }
 
   /**
-   * Returns the occurrence {@code is} of the later text, compared with the occurrence {@code was}
-   * of the earlier text that it pairs with. The occurrence is changed if its own blocks or
-   * footnotes differ.
+   * Returns the changed occurrence {@code is} of the later text, with its edits against the
+   * occurrence {@code was} of the earlier text that it pairs with.
    */
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "one-difference-for-each-occurrence")
-  private ComparedOccurrence paired(Occurrence was, Occurrence is) {
-    var editing = OccurrenceEdits.of(was, is);
+  private ComparedOccurrence changed(Occurrence was, Occurrence is, OccurrenceEdits editing) {
     var occurrences = occurrences(was, is);
-    if (editing == null) {
-      return ComparedOccurrence.of(is, false, null, null, occurrences);
-    }
     var difference =
         DifferenceBuilder.builder()
             .eId(is.eId())
@@ -145,32 +147,39 @@ record Comparer(Occurrences before, Occurrences after, Pairing pairs) {
    */
   private static DifferenceBuilder whole(
       Occurrence occurrence, Occurrences occurrences, Kind kind, @Nullable String parent) {
-    var edit = kind == Kind.INSERTED ? Edits.INSERTED : Edits.DELETED;
-    var edited = Edits.all(occurrence.element(), edit);
+    var inserted = kind == Kind.INSERTED;
+    var edited = edits(occurrence.element(), inserted);
     var shown = edited.element();
-    var inserted = edited.inserted();
-    var deleted = edited.deleted();
+    var insertedWords = edited.inserted();
+    var deletedWords = edited.deleted();
     var referred = occurrences.footnotesOf(occurrence.element());
     if (!referred.isEmpty()) {
-      var footnotes = Edits.all(Differ.footnotes(referred), edit);
+      var footnotes = edits(Differ.footnotes(referred), inserted);
       var children = new ArrayList<>(shown.children());
       children.add(footnotes.element());
       shown = Differ.copy(shown, children);
-      inserted += footnotes.inserted();
-      deleted += footnotes.deleted();
+      insertedWords += footnotes.inserted();
+      deletedWords += footnotes.deleted();
     }
     return DifferenceBuilder.builder()
         .eId(occurrence.eId())
         .kind(kind)
         .occurrence(sibling(occurrence))
         .shown(shown)
-        .inserted(inserted)
-        .deleted(deleted)
+        .inserted(insertedWords)
+        .deleted(deletedWords)
         .parent(parent)
         .list(occurrence.list())
         .section(occurrence.section())
         .tags(List.of())
         .earlierTags(List.of());
+  }
+
+  /** Returns {@code element} with every word in it shown inserted, or shown deleted. */
+  private static Edited edits(Element element, boolean inserted) {
+    return inserted
+        ? WhatCountsAsADifference.whatTheEditsShow(null, element)
+        : WhatCountsAsADifference.whatTheEditsShow(element, null);
   }
 
   /**

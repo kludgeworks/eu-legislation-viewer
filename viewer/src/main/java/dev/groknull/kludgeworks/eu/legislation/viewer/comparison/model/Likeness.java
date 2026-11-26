@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.rules.BusinessRule;
-import dev.groknull.kludgeworks.eu.legislation.rules.RuleGroup;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.text.BreakIterator;
 import java.util.Arrays;
@@ -26,54 +24,13 @@ final class Likeness {
   static final double MINIMUM = 0.5;
 
   /**
-   * The most pairs of pieces whose likeness {@link #pairs} works out. Above it, the pieces pair in
-   * order. For example, a table of 500 rows replaced whole by a table of 500 others.
+   * The most pairs of pieces whose likeness the rule blocks-pair-with-what-they-were works out.
+   * Above it, the pieces pair in order. For example, a table of 500 rows replaced whole by a table
+   * of 500 others.
    */
-  private static final long MOST = 250_000;
+  static final long MOST = 250_000;
 
   private Likeness() {}
-
-  /**
-   * Pairs the pieces {@code from} of one text with the pieces {@code to} of the other. They are the
-   * pieces between two pieces that are the same in both texts, so each of them differs.
-   *
-   * <ul>
-   *   <li>First, pieces that are alike pair, in order. Of the ways to pair them, the one with the
-   *       greatest likeness in all wins. For example, a row changed by one word pairs with the row
-   *       that it was, not with a row inserted before it.
-   *   <li>Then, between two such pairs, the pieces left with the same name pair in order. For
-   *       example, the num "12." with the num "13.".
-   * </ul>
-   *
-   * @return for each piece of {@code to}, the position in {@code from} of the piece that it pairs
-   *     with, or -1 if it pairs with none
-   */
-  @BusinessRule(group = RuleGroup.HOW_TWO_TEXTS_PAIR, name = "blocks-pair-with-what-they-were")
-  static int[] pairs(List<Element> from, List<Element> to) {
-    var sourceOf = new int[to.size()];
-    Arrays.fill(sourceOf, -1);
-    if ((long) from.size() * to.size() <= MOST) {
-      alike(from, to, sourceOf);
-    }
-    rest(from, to, sourceOf);
-    return sourceOf;
-  }
-
-  /**
-   * Returns where the piece {@code source} of one text, paired with none, goes among the pieces of
-   * the other: before the first piece that pairs with a piece after it.
-   */
-  @BusinessRule(
-      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
-      name = "deleted-text-stands-where-it-was")
-  static int before(int[] sourceOf, int source) {
-    for (var i = 0; i < sourceOf.length; i++) {
-      if (sourceOf[i] > source) {
-        return i;
-      }
-    }
-    return sourceOf.length;
-  }
 
   /** Returns the likeness of {@code earlier} and {@code later}, from 0 to 1. */
   static double of(Map<String, Integer> earlier, Map<String, Integer> later) {
@@ -165,7 +122,7 @@ final class Likeness {
   }
 
   /** Pairs the pieces that are alike, in order, with the greatest likeness in all. */
-  private static void alike(List<Element> from, List<Element> to, int[] sourceOf) {
+  static void alike(List<Element> from, List<Element> to, int[] sourceOf) {
     var earlier = from.stream().map(piece -> words(Wording.of(piece))).toList();
     var later = to.stream().map(piece -> words(Wording.of(piece))).toList();
     var found =
@@ -180,7 +137,7 @@ final class Likeness {
   }
 
   /** Pairs the pieces left between two pairs, in order, while they have the same name. */
-  private static void rest(List<Element> from, List<Element> to, int[] sourceOf) {
+  static void rest(List<Element> from, List<Element> to, int[] sourceOf) {
     var source = 0;
     var target = 0;
     while (target < to.size()) {
