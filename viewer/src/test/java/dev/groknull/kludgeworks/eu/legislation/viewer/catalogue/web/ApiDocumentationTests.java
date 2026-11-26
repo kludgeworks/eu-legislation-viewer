@@ -65,6 +65,17 @@ class ApiDocumentationTests {
   }
 
   @Test
+  void showsTheHistoryOfAnAct() {
+    assertThat(documented("act/history", ACT + "/history/texts/eng")).hasStatusOk();
+  }
+
+  @Test
+  void showsTheHistoryOnADay() {
+    assertThat(documented("act/history-on", ACT + "/history/texts/eng/on/2026-04-01"))
+        .hasStatusOk();
+  }
+
+  @Test
   void showsAnOccurrenceOfAText() {
     var occurrence = ACT + "/versions/2026-10-01/texts/eng/occurrences/art_1";
     await()

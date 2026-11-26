@@ -132,6 +132,7 @@ class ApiActController {
    *       applies only in the future is reached from it by {@code successor-version}. The link is
    *       absent before the first version applies.
    *   <li>{@code av:on}: the law on a date.
+   *   <li>{@code av:history}: its history, by its changes to the text in a language.
    *   <li>{@code av:amendments}: what other acts did to its provisions.
    * </ul>
    */

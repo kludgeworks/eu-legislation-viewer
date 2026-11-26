@@ -8,6 +8,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.History;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiHistoryController.HistoryModel;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +19,8 @@ class HistoryModelAssembler
 
   /**
    * Returns the representation of an act's history on a day: its state and each amending act as it
-   * stands on that day, linked with {@code self} and {@code up}.
+   * stands on that day, linked with {@code self} and {@code up}, the history of the act for each
+   * day.
    */
   @Override
   public EntityModel<HistoryModel> toModel(History history) {
@@ -28,6 +30,7 @@ class HistoryModelAssembler
     return EntityModel.of(
         HistoryModel.of(history),
         linkTo(methodOn(ApiHistoryController.class).history(celex, language, day)).withSelfRel(),
-        ApiActResources.up(celex));
+        linkTo(methodOn(ApiHistoryController.class).overTime(celex, language))
+            .withRel(IanaLinkRelations.UP));
   }
 }

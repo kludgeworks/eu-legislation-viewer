@@ -1,0 +1,88 @@
+<h3>History</h3>
+<p>The history of an act, by its changes to the text in one language: the state of the act itself for each day, and the
+  state of each act that amends it. An amending act can change the text of some languages only, so the history is of
+  one language. It links to the act, <span class="mono">up</span>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>state</dt>
+  <dd>
+    <p>The states of the act itself, as periods in order. Each has:</p>
+    <dl class="api-members">
+      <dt>from</dt>
+      <dd>The first day of the period. Null if it has no start.</dd>
+      <dt>until</dt>
+      <dd>The first day of the next period. Null if it has no end.</dd>
+      <dt>value</dt>
+      <dd>The state of the act in the period, as in the history on a day.</dd>
+    </dl>
+  </dd>
+  <dt>amendingActs</dt>
+  <dd>
+    <p>Each amending act, newest first. Each has:</p>
+    <dl class="api-members">
+      <dt>celex</dt>
+      <dd>Its CELEX number.</dd>
+      <dt>state</dt>
+      <dd>Its state as a whole, as periods in order. The <span class="mono">value</span> of a period is the code of
+        the state.</dd>
+    </dl>
+  </dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>av:on</dt>
+  <dd>The history on a day. A template with one variable, <span class="mono">day</span>. For example,
+    <span class="mono">2022-02-14</span>.</dd>
+</dl>
+${act/history}
+<h4>The history on a day</h4>
+<p>The same history, read for one day. It links to the history, <span class="mono">up</span>.</p>
+<dl class="api-members">
+  <dt>day</dt>
+  <dd>The day asked.</dd>
+  <dt>state</dt>
+  <dd>
+    <p>The state of the act itself on the day, with the facts that give it. A fact that does not belong to the state
+      is null. It has:</p>
+    <dl class="api-members">
+      <dt>state</dt>
+      <dd><span class="mono">not_in_force</span>: the act is not in force yet.
+        <span class="mono">not_applying</span>: the act is in force, and it does not apply yet.
+        <span class="mono">in_part</span>: the act applies in part.
+        <span class="mono">applies</span>: the act applies.
+        <span class="mono">no_longer_in_force</span>: the act is no longer in force.
+        <span class="mono">not_known</span>: the data does not tell the state.</dd>
+      <dt>entryIntoForce</dt>
+      <dd>The entry into force, for an act that is not in force yet.</dd>
+      <dt>appliesFrom</dt>
+      <dd>The day from which the act applies, if it applies from one day.</dd>
+      <dt>appliesInFullFrom</dt>
+      <dd>The day from which the whole act applies, for an act that applies in part.</dd>
+      <dt>endOfValidity</dt>
+      <dd>The end of validity, for an act that is no longer in force.</dd>
+      <dt>repealedBy</dt>
+      <dd>The CELEX numbers of the acts that repealed it.</dd>
+      <dt>notKnownBecause</dt>
+      <dd>Why the data does not tell the state. For example, <span class="mono">a_clause_sets_the_day</span>.</dd>
+    </dl>
+  </dd>
+  <dt>amendingActs</dt>
+  <dd>
+    <p>Each amending act, newest first, as it stands on the day. Each has:</p>
+    <dl class="api-members">
+      <dt>celex</dt>
+      <dd>Its CELEX number.</dd>
+      <dt>state</dt>
+      <dd>Its state as a whole, as a code of the states above.</dd>
+      <dt>applies</dt>
+      <dd>How many of its changes apply.</dd>
+      <dt>notApplying</dt>
+      <dd>How many of its changes do not apply yet.</dd>
+      <dt>notKnown</dt>
+      <dd>How many of its changes have a state that the data does not tell.</dd>
+      <dt>changes</dt>
+      <dd>How many changes it makes to the text in the language.</dd>
+    </dl>
+  </dd>
+</dl>
+${act/history-on}

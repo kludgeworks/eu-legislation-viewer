@@ -114,6 +114,9 @@ class ApiActControllerTests {
     assertThat(act.at("/_links/version-history/href").asString()).isEqualTo(ACT + "/versions");
     assertThat(act.at("/_links/av:on/href").asString()).isEqualTo(ACT + "/on/{day}");
     assertThat(act.at("/_links/av:on/templated").asBoolean()).isTrue();
+    assertThat(act.at("/_links/av:history/href").asString())
+        .isEqualTo(ACT + "/history/texts/{language}");
+    assertThat(act.at("/_links/av:history/templated").asBoolean()).isTrue();
     assertThat(act.at("/_links/av:amendments/href").asString()).isEqualTo(ACT + "/amendments");
   }
 

@@ -23,8 +23,8 @@ class OverTimeModelAssembler
 
   /**
    * Returns the representation of what the rules tell of an act for each day: the periods of each
-   * state of the act itself, and how each amending act stands over time, linked with {@code self}
-   * and {@code up}.
+   * state of the act itself, and how each amending act stands over time, linked with {@code self},
+   * {@code up} and {@code av:on}, the history of a day.
    */
   @Override
   public EntityModel<OverTimeModel> toModel(ActOverTime overTime) {
@@ -48,9 +48,11 @@ class OverTimeModelAssembler
                                     code(period.value().state().name())))
                             .toList()))
                 .toList());
+    var self = linkTo(methodOn(ApiHistoryController.class).overTime(celex, language)).withSelfRel();
     return EntityModel.of(
         model,
-        linkTo(methodOn(ApiHistoryController.class).overTime(celex, language)).withSelfRel(),
+        self,
+        ApiRootController.template(self, "/on/{day}", Relation.ON),
         ApiActResources.up(celex));
   }
 }

@@ -19,6 +19,7 @@ enum Relation {
   ACT_BY_ELI("act-by-eli"),
   AMENDMENTS("amendments"),
   EVENTS("events"),
+  HISTORY("history"),
   ON("on"),
   OUTLINE("outline"),
   PREPARATION("preparation"),

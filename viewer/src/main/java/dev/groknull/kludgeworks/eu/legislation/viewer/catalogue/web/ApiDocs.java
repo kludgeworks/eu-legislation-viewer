@@ -27,7 +27,7 @@ import org.springframework.util.StringUtils;
  *   <li>{@code api/resources/<order>-<name>.html}: a resource, an HTML fragment that starts with
  *       its title, {@code <h3>Act</h3>}. The resources are in the order of their names. For
  *       example, the catalogue's {@code api/resources/02-act.html} and the comparison's {@code
- *       api/resources/10-comparison.html}. A resource shows an example by its name: {@code
+ *       api/resources/11-comparison.html}. A resource shows an example by its name: {@code
  *       ${act/lookup}}.
  *   <li>{@code api/snippets/<name>/example.html}: an example, an exchange, as the module's
  *       documenting tests write it with Spring REST Docs. For example, {@code

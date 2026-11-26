@@ -51,7 +51,7 @@ class ApiHistoryControllerTests {
   @Test
   void showsTheStateOfTheActWithItsFactsAndHowEachAmendingActStands() {
     var history =
-        assertThat(mvc.get().uri("/api/acts/32015R1998/history/eng/2021-06-01"))
+        assertThat(mvc.get().uri("/api/acts/32015R1998/history/texts/eng/on/2021-06-01"))
             .hasStatusOk()
             .bodyJson();
     history.extractingPath("$.state.state").isEqualTo("applies");
@@ -67,7 +67,7 @@ class ApiHistoryControllerTests {
   @Test
   void saysThatTheActIsNotInForceYetWithItsEntryIntoForce() {
     var history =
-        assertThat(mvc.get().uri("/api/acts/32015R1998/history/eng/2015-11-01"))
+        assertThat(mvc.get().uri("/api/acts/32015R1998/history/texts/eng/on/2015-11-01"))
             .hasStatusOk()
             .bodyJson();
     history.extractingPath("$.state.state").isEqualTo("not_in_force");
@@ -77,7 +77,9 @@ class ApiHistoryControllerTests {
   @Test
   void showsTheStatesOfTheActForEachDay() {
     var overTime =
-        assertThat(mvc.get().uri("/api/acts/32015R1998/history/eng")).hasStatusOk().bodyJson();
+        assertThat(mvc.get().uri("/api/acts/32015R1998/history/texts/eng"))
+            .hasStatusOk()
+            .bodyJson();
     overTime
         .extractingPath("$.state[*].value.state")
         .asArray()
@@ -86,12 +88,17 @@ class ApiHistoryControllerTests {
         .extractingPath("$.state[*].from")
         .asArray()
         .containsExactly(null, "2015-11-15", "2016-02-01");
+    overTime
+        .extractingPath("$._links.av:on.href")
+        .asString()
+        .endsWith("/api/acts/32015R1998/history/texts/eng/on/{day}");
   }
 
   @Test
   void answersNotFoundForAnActThatNoActHasTheNumberOf() {
-    assertThat(mvc.get().uri("/api/acts/32099R9999/history/eng/2021-06-01"))
+    assertThat(mvc.get().uri("/api/acts/32099R9999/history/texts/eng/on/2021-06-01"))
         .hasStatus(HttpStatus.NOT_FOUND);
-    assertThat(mvc.get().uri("/api/acts/32099R9999/history/eng")).hasStatus(HttpStatus.NOT_FOUND);
+    assertThat(mvc.get().uri("/api/acts/32099R9999/history/texts/eng"))
+        .hasStatus(HttpStatus.NOT_FOUND);
   }
 }

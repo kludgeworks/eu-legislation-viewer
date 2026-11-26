@@ -29,6 +29,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(produces = {MediaTypes.HAL_JSON_VALUE, MediaType.APPLICATION_JSON_VALUE})
 class ApiHistoryController {
+  /** The history of an act, by its changes to the text in a language. */
+  private static final String HISTORY = ACT + "/history/texts/{language}";
+
   private final Histories histories;
   private final HistoryModelAssembler assembler;
   private final OverTimeModelAssembler overTimeAssembler;
@@ -43,7 +46,7 @@ class ApiHistoryController {
   }
 
   /** Returns the history of the act on {@code day}, by its changes to the text in a language. */
-  @GetMapping(ACT + "/history/{language}/{day}")
+  @GetMapping(HISTORY + "/on/{day}")
   EntityModel<HistoryModel> history(
       @PathVariable ActIdentifier celex,
       @PathVariable String language,
@@ -54,9 +57,9 @@ class ApiHistoryController {
 
   /**
    * Returns the states of the act itself for each day, and how each amending act stands for each
-   * day. The history of a day is read from the same answer.
+   * day. The history of a day is read from the same answer: {@code av:on}.
    */
-  @GetMapping(ACT + "/history/{language}")
+  @GetMapping(HISTORY)
   EntityModel<OverTimeModel> overTime(
       @PathVariable ActIdentifier celex, @PathVariable String language) {
     var overTime = histories.overTime(celex, Requests.language(language));

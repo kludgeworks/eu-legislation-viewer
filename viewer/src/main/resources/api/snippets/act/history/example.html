@@ -1,0 +1,128 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts/32015R1998/history/texts/eng</span> <span class="api-status" data-status="200">200 OK</span></figcaption>
+<pre data-tab="Response"><code class="language-json">{
+  &quot;_links&quot; : {
+    &quot;self&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/history/texts/eng&quot;
+    },
+    &quot;av:on&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/history/texts/eng/on/{day}&quot;,
+      &quot;templated&quot; : true
+    },
+    &quot;up&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998&quot;
+    },
+    &quot;curies&quot; : [ {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/docs#{rel}&quot;,
+      &quot;name&quot; : &quot;av&quot;,
+      &quot;templated&quot; : true
+    } ]
+  },
+  &quot;state&quot; : [ {
+    &quot;from&quot; : null,
+    &quot;until&quot; : &quot;2015-11-15&quot;,
+    &quot;value&quot; : {
+      &quot;state&quot; : &quot;not_in_force&quot;,
+      &quot;endOfValidity&quot; : null,
+      &quot;repealedBy&quot; : [ ],
+      &quot;entryIntoForce&quot; : &quot;2015-11-15&quot;,
+      &quot;appliesFrom&quot; : null,
+      &quot;appliesInFullFrom&quot; : null,
+      &quot;notKnownBecause&quot; : null
+    }
+  }, {
+    &quot;from&quot; : &quot;2015-11-15&quot;,
+    &quot;until&quot; : &quot;2016-02-01&quot;,
+    &quot;value&quot; : {
+      &quot;state&quot; : &quot;not_applying&quot;,
+      &quot;endOfValidity&quot; : null,
+      &quot;repealedBy&quot; : [ ],
+      &quot;entryIntoForce&quot; : null,
+      &quot;appliesFrom&quot; : &quot;2016-02-01&quot;,
+      &quot;appliesInFullFrom&quot; : null,
+      &quot;notKnownBecause&quot; : null
+    }
+  }, {
+    &quot;from&quot; : &quot;2016-02-01&quot;,
+    &quot;until&quot; : null,
+    &quot;value&quot; : {
+      &quot;state&quot; : &quot;applies&quot;,
+      &quot;endOfValidity&quot; : null,
+      &quot;repealedBy&quot; : [ ],
+      &quot;entryIntoForce&quot; : null,
+      &quot;appliesFrom&quot; : &quot;2016-02-01&quot;,
+      &quot;appliesInFullFrom&quot; : null,
+      &quot;notKnownBecause&quot; : null
+    }
+  } ],
+  &quot;amendingActs&quot; : [ {
+    &quot;celex&quot; : &quot;32026R0449&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : &quot;2026-03-22&quot;,
+      &quot;value&quot; : &quot;not_in_force&quot;
+    }, {
+      &quot;from&quot; : &quot;2026-03-22&quot;,
+      &quot;until&quot; : &quot;2026-10-01&quot;,
+      &quot;value&quot; : &quot;not_known&quot;
+    }, {
+      &quot;from&quot; : &quot;2026-10-01&quot;,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;applies&quot;
+    } ]
+  }, {
+    &quot;celex&quot; : &quot;32020R0910&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;not_known&quot;
+    } ]
+  }, {
+    &quot;celex&quot; : &quot;32019R1583&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;not_known&quot;
+    } ]
+  }, {
+    &quot;celex&quot; : &quot;32021R0255&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;not_known&quot;
+    } ]
+  }, {
+    &quot;celex&quot; : &quot;32019R0413&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : &quot;2019-03-16&quot;,
+      &quot;value&quot; : &quot;not_in_force&quot;
+    }, {
+      &quot;from&quot; : &quot;2019-03-16&quot;,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;not_known&quot;
+    } ]
+  }, {
+    &quot;celex&quot; : &quot;32019R0103&quot;,
+    &quot;state&quot; : [ {
+      &quot;from&quot; : null,
+      &quot;until&quot; : &quot;2019-02-01&quot;,
+      &quot;value&quot; : &quot;not_in_force&quot;
+    }, {
+      &quot;from&quot; : &quot;2019-02-01&quot;,
+      &quot;until&quot; : &quot;2021-12-31&quot;,
+      &quot;value&quot; : &quot;not_known&quot;
+    }, {
+      &quot;from&quot; : &quot;2021-12-31&quot;,
+      &quot;until&quot; : null,
+      &quot;value&quot; : &quot;applies&quot;
+    } ]
+  } ]
+}</code></pre>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: application/hal+json
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts/32015R1998/history/texts/eng&#39; -i -X GET \
+    -H &#39;Accept: application/hal+json&#39;</code></pre>
+</figure>

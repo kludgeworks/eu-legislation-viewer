@@ -12,8 +12,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * Assembles the hypermedia representation of an {@link Act} in the API: its self link, version
- * history, the latest applicable version today in Brussels, the date lookup template, and its
- * amendments.
+ * history, the latest applicable version today in Brussels, the date lookup template, its history
+ * template, and its amendments.
  */
 @Component
 class ActModelAssembler implements RepresentationModelAssembler<Act, EntityModel<Act>> {
@@ -31,6 +31,7 @@ class ActModelAssembler implements RepresentationModelAssembler<Act, EntityModel
     ApiActResources.latest(act, today.today()).ifPresent(model::add);
     return model
         .add(ApiRootController.template(self, "/on/{day}", Relation.ON))
+        .add(ApiRootController.template(self, "/history/texts/{language}", Relation.HISTORY))
         .add(
             linkTo(methodOn(ApiAmendmentsController.class).amendments(celex))
                 .withRel(Relation.AMENDMENTS.rel()));
