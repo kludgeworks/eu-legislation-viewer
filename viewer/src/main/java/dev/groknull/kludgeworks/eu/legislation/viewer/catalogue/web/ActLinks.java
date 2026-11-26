@@ -6,6 +6,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.ApiLinks;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.server.LinkBuilder;
 import org.springframework.hateoas.server.core.AbstractEntityLinks;
@@ -47,7 +48,7 @@ class ActLinks extends AbstractEntityLinks {
   @Override
   public Link linkToCollectionResource(Class<?> type) {
     var root = linkTo(methodOn(ApiRootController.class).root()).withSelfRel();
-    return ApiRootController.template(root, "/acts{?celex}", Relation.ACT_BY_CELEX);
+    return ApiLinks.template(root, "/acts{?celex}", Relation.ACT_BY_CELEX.rel());
   }
 
   @Override

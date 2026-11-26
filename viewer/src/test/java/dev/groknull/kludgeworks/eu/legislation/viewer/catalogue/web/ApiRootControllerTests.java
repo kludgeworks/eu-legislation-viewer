@@ -20,7 +20,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 /** Tests the root of the API: its links, and how a controller of the API answers. */
 @WebMvcTest(ApiRootController.class)
-@Import(ApiConfiguration.class)
+@Import({ApiConfiguration.class, RootModelAssembler.class})
 class ApiRootControllerTests {
   @Autowired MockMvcTester mvc;
 

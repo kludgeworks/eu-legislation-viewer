@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiHistoryCo
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiHistoryController.OverTimeModel;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiHistoryController.PeriodModel;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiHistoryController.StateModel;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.ApiLinks;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -52,7 +53,7 @@ class OverTimeModelAssembler
     return EntityModel.of(
         model,
         self,
-        ApiRootController.template(self, "/on/{day}", Relation.ON),
+        ApiLinks.template(self, "/on/{day}", Relation.ON.rel()),
         ApiActResources.up(celex));
   }
 }

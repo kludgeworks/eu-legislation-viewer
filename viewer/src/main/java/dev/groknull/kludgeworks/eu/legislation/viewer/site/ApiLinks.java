@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.site;
 
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
+import org.springframework.hateoas.UriTemplate;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /** What resources in the API share for links and schemas. */
@@ -22,5 +23,13 @@ public final class ApiLinks {
     return Link.of(
         ServletUriComponentsBuilder.fromCurrentContextPath().path(path).toUriString(),
         DESCRIBED_BY);
+  }
+
+  /**
+   * Returns a link whose address is a URI template of RFC 6570: the address of {@code from}, then
+   * {@code template}. For example, {@code /acts/{celex}} or {@code /acts{?eli}}.
+   */
+  public static Link template(Link from, String template, LinkRelation relation) {
+    return Link.of(UriTemplate.of(from.getHref() + template), relation);
   }
 }

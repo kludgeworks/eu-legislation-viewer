@@ -6,6 +6,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Today;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.ApiLinks;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;
@@ -30,8 +31,8 @@ class ActModelAssembler implements RepresentationModelAssembler<Act, EntityModel
     var model = EntityModel.of(act).add(self).add(ApiActResources.versionHistory(celex));
     ApiActResources.latest(act, today.today()).ifPresent(model::add);
     return model
-        .add(ApiRootController.template(self, "/on/{day}", Relation.ON))
-        .add(ApiRootController.template(self, "/history/texts/{language}", Relation.HISTORY))
+        .add(ApiLinks.template(self, "/on/{day}", Relation.ON.rel()))
+        .add(ApiLinks.template(self, "/history/texts/{language}", Relation.HISTORY.rel()))
         .add(
             linkTo(methodOn(ApiAmendmentsController.class).amendments(celex))
                 .withRel(Relation.AMENDMENTS.rel()));
