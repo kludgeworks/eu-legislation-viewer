@@ -64,7 +64,7 @@
         <div class="ledger-row ledger-lead" role="row"><div role="cell"></div><div class="from" role="cell">${html.element(lead.occurrence())}</div><div class="to" role="cell">${html.element(lead.occurrence())}</div><div role="cell"></div></div>
       @elseif(passage instanceof DifferencesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        !{var occurrence = html.element(shown.folded(page));}
+        !{var occurrence = (shown.kind().equals("deleted") ? html.deleted() : html).element(shown.folded(page));}
         <div class="ledger-row difference-${shown.kind()}${sidenote != null && sidenote.attribution().corrected() ? " corrected" : ""}${sidenote != null && sidenote.prospective() != null ? " prospective" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${occurrence}@endif</div>

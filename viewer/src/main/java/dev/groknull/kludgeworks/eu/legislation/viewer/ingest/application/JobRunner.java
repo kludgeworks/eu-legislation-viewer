@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.Images;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionPostponed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionStarted;
@@ -67,6 +68,7 @@ class JobRunner {
 
   private final Conversions conversions;
   private final Content content;
+  private final Images images;
   private final IngestJobs jobs;
   private final ApplicationEventPublisher events;
   private final TransactionTemplate transactions;
@@ -77,6 +79,7 @@ class JobRunner {
   JobRunner(
       Conversions conversions,
       Content content,
+      Images images,
       IngestJobs jobs,
       ApplicationEventPublisher events,
       TransactionTemplate transactions,
@@ -85,6 +88,7 @@ class JobRunner {
       IngestProperties properties) {
     this.conversions = conversions;
     this.content = content;
+    this.images = images;
     this.jobs = jobs;
     this.events = events;
     this.transactions = transactions;
@@ -155,8 +159,8 @@ class JobRunner {
   private @Nullable RuntimeException build(IngestJob job) {
     var start = System.nanoTime();
     try {
-      var text = conversions.convert(job.celex(), job.language());
-      if (text.isEmpty()) {
+      var converted = conversions.convert(job.celex(), job.language());
+      if (converted.isEmpty()) {
         fail(job, Failure.NO_FORMEX, "Cellar has no Formex of it in the language");
         return null;
       }
@@ -164,7 +168,9 @@ class JobRunner {
       var stored =
           Objects.requireNonNull(
               transactions.execute(status -> {
-                var id = content.store(job.celex(), job.language(), converter, text.get());
+                var result = converted.get();
+                var id = content.store(job.celex(), job.language(), converter, result.legalText());
+                images.register(id, result.manifestation(), result.images());
                 jobs.save(job.built());
                 events.publishEvent(new TextConverted(job.celex(), job.language()));
                 return id;

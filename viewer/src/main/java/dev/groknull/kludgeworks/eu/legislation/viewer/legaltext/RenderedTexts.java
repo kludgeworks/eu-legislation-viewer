@@ -39,11 +39,12 @@ class RenderedTexts {
       unless = "#result == null")
   public Optional<String> whole(TextId text) {
     var start = System.nanoTime();
+    var bound = html.forText(text);
     return content
         .read(text)
         .map(read -> {
           var out = new StringOutput();
-          html.element(read).writeTo(out);
+          bound.element(read).writeTo(out);
           var rendered = out.toString();
           LOG.debug(
               "Rendered the whole text {}, not cached: {} KB of HTML, in {} ms",
@@ -71,8 +72,9 @@ class RenderedTexts {
       return Optional.empty();
     }
     var out = new StringOutput();
+    var bound = html.forText(text);
     var occurrences = read.get().occurrences(first, last);
-    occurrences.forEach(occurrence -> html.element(occurrence).writeTo(out));
+    occurrences.forEach(occurrence -> bound.element(occurrence).writeTo(out));
     var rendered = out.toString();
     LOG.debug(
         "Rendered occurrences of text {} from one eId to another, not cached: {} occurrences, {} KB"

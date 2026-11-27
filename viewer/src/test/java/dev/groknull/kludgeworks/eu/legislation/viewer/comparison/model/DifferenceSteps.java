@@ -16,6 +16,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
@@ -265,6 +266,226 @@ public class DifferenceSteps {
   @Then("it inserts a formula whole")
   public void formula() {
     assertThat(wholeFormulas(difference().shown())).as("the formulas inserted whole").isPositive();
+  }
+
+  private @Nullable Element earlierArticle;
+  private @Nullable Element laterArticle;
+
+  @Given("an article with figure {string} and caption {string}")
+  public void articleWithFigure(String src, String caption) {
+    earlierArticle = articleText(src, caption);
+  }
+
+  @Given("a later article with figure {string} and caption {string}")
+  public void laterArticleWithFigure(String src, String caption) {
+    laterArticle = articleText(src, caption);
+  }
+
+  @Given("an article with a quotation of figure {string} and caption {string}")
+  public void articleWithQuotedFigure(String src, String caption) {
+    earlierArticle = articleQuotedText(src, caption);
+  }
+
+  @Given("a later article with a quotation of figure {string} and caption {string}")
+  public void laterArticleWithQuotedFigure(String src, String caption) {
+    laterArticle = articleQuotedText(src, caption);
+  }
+
+  @Given("an article with inline image {string}")
+  public void articleWithInlineImage(String src) {
+    earlierArticle = articleInlineText(null, src);
+  }
+
+  @Given("a later article with inline image {string}")
+  public void laterArticleWithInlineImage(String src) {
+    laterArticle = articleInlineText(null, src);
+  }
+
+  @Given("an article with paragraph {string} and inline image {string}")
+  public void articleWithParagraphAndInlineImage(String words, String src) {
+    earlierArticle = articleInlineText(words, src);
+  }
+
+  @Given("a later article with paragraph {string} and inline image {string}")
+  public void laterArticleWithParagraphAndInlineImage(String words, String src) {
+    laterArticle = articleInlineText(words, src);
+  }
+
+  @Given("an article with a list item holding figure {string} and words {string}")
+  public void articleWithListItem(String src, String words) {
+    earlierArticle = articleListItemText(src, words);
+  }
+
+  @Given("a later article with a list item holding figure {string} and words {string}")
+  public void laterArticleWithListItem(String src, String words) {
+    laterArticle = articleListItemText(src, words);
+  }
+
+  @Given("an article with a table cell holding figure {string} and caption {string}")
+  public void articleWithTableCellFigure(String src, String caption) {
+    earlierArticle = articleTableCellText(src, caption);
+  }
+
+  @Given("a later article with a table cell holding figure {string} and caption {string}")
+  public void laterArticleWithTableCellFigure(String src, String caption) {
+    laterArticle = articleTableCellText(src, caption);
+  }
+
+  @Given("an article with paragraph {string}")
+  public void articleWithParagraph(String words) {
+    earlierArticle = articleParagraphText(words, null);
+  }
+
+  @Given("a later article with paragraph {string} and figure {string}")
+  public void laterArticleWithParagraphAndFigure(String words, String src) {
+    laterArticle = articleParagraphText(words, src);
+  }
+
+  @When("the reader compares the two articles")
+  public void compareTwoArticles() {
+    comparing.texts(
+        Objects.requireNonNull(earlierArticle, "no earlier article"),
+        Objects.requireNonNull(laterArticle, "no later article"));
+    difference =
+        compared().differences().stream()
+            .filter(each -> each.eId().equals("art_1"))
+            .findFirst()
+            .orElseThrow(() -> new AssertionError("No difference at art_1"));
+  }
+
+  @Then("it deletes image {string}")
+  public void deletesImage(String src) {
+    assertThat(editedImage(difference().shown(), Edits.DELETED, src))
+        .as("deleted image %s", src)
+        .isTrue();
+  }
+
+  @Then("it inserts image {string}")
+  public void insertsImage(String src) {
+    assertThat(editedImage(difference().shown(), Edits.INSERTED, src))
+        .as("inserted image %s", src)
+        .isTrue();
+  }
+
+  @Then("it keeps image {string}")
+  public void keepsImage(String src) {
+    assertThat(keptImage(difference().shown(), src)).as("kept image %s", src).isTrue();
+  }
+
+  @Then("it deletes and inserts nothing else")
+  public void deletesAndInsertsNothingElse() {
+    var deletedRuns = edited(DELETED);
+    var insertedRuns = edited(INSERTED);
+    assertThat(deletedRuns).as("the deleted runs").hasSize(1);
+    assertThat(insertedRuns).as("the inserted runs").hasSize(1);
+  }
+
+  private static Element articleListItemText(String src, String words) {
+    var item =
+        new Element(
+            "occurrence",
+            Map.of("kind", "point"),
+            List.of(paragraphElement(words), figureElement(src, "Diagram")),
+            "");
+    var list = new Element("list", Map.of("kind", "alpha"), List.of(item), "");
+    var article =
+        new Element("occurrence", Map.of("eId", "art_1", "kind", "article"), List.of(list), "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element articleTableCellText(String src, String caption) {
+    var td = new Element("td", Map.of(), List.of(figureElement(src, caption)), "");
+    var tr = new Element("tr", Map.of(), List.of(td), "");
+    var table = new Element("table", Map.of("cols", "1"), List.of(tr), "");
+    var article =
+        new Element("occurrence", Map.of("eId", "art_1", "kind", "article"), List.of(table), "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element articleParagraphText(String words, @Nullable String src) {
+    var children = new ArrayList<Element>();
+    children.add(new Element("t", Map.of("v", words), List.of(), ""));
+    if (src != null) {
+      children.add(figureElement(src, "Diagram"));
+    }
+    var paragraph = new Element("p", Map.of(), children, "");
+    var article =
+        new Element(
+            "occurrence", Map.of("eId", "art_1", "kind", "article"), List.of(paragraph), "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element paragraphElement(String words) {
+    return new Element(
+        "p", Map.of(), List.of(new Element("t", Map.of("v", words), List.of(), "")), "");
+  }
+
+  private static Element articleInlineText(@Nullable String words, String src) {
+    var children = new ArrayList<Element>();
+    if (words != null) {
+      children.add(new Element("t", Map.of("v", words + " "), List.of(), ""));
+    }
+    children.add(new Element("img", Map.of("src", src, "content", "other"), List.of(), ""));
+    var paragraph = new Element("p", Map.of(), children, "");
+    var article =
+        new Element(
+            "occurrence", Map.of("eId", "art_1", "kind", "article"), List.of(paragraph), "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element articleQuotedText(String src, String captionText) {
+    var quoted =
+        new Element("quotedStructure", Map.of(), List.of(figureElement(src, captionText)), "");
+    var article =
+        new Element("occurrence", Map.of("eId", "art_1", "kind", "article"), List.of(quoted), "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element articleText(String src, String captionText) {
+    var article =
+        new Element(
+            "occurrence",
+            Map.of("eId", "art_1", "kind", "article"),
+            List.of(figureElement(src, captionText)),
+            "");
+    return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
+  }
+
+  private static Element figureElement(String src, String captionText) {
+    var caption =
+        new Element(
+            "caption",
+            Map.of(),
+            List.of(
+                new Element(
+                    "p",
+                    Map.of(),
+                    List.of(new Element("t", Map.of("v", captionText), List.of(), "")),
+                    "")),
+            "");
+    return new Element("figure", Map.of("src", src, "content", "techDesign"), List.of(caption), "");
+  }
+
+  private static boolean editedImage(Element element, String edit, String src) {
+    if (element.name().equals(edit)
+        && element.children().stream()
+            .anyMatch(child ->
+                (child.name().equals("figure") || child.name().equals("img"))
+                    && src.equals(child.attribute("src")))) {
+      return true;
+    }
+    return element.children().stream().anyMatch(child -> editedImage(child, edit, src));
+  }
+
+  private static boolean keptImage(Element element, String src) {
+    if (element.name().equals(Edits.DELETED) || element.name().equals(Edits.INSERTED)) {
+      return false;
+    }
+    if ((element.name().equals("figure") || element.name().equals("img"))
+        && src.equals(element.attribute("src"))) {
+      return true;
+    }
+    return element.children().stream().anyMatch(child -> keptImage(child, src));
   }
 
   @Then("it stands first in {place}")

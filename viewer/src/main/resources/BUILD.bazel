@@ -32,6 +32,7 @@ java_library(
         "catalogue",
         "comparison",
         "content",
+        "image",
         "ingest",
     ]
 ]

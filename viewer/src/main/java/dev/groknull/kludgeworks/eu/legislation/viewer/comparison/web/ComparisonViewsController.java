@@ -74,7 +74,6 @@ class ComparisonViewsController {
   private final ComparedTexts compared;
   private final Content content;
   private final Templates templates;
-  private final LegalRenderer html;
   private final Today today;
   private final Fragments fragments;
 
@@ -88,7 +87,6 @@ class ComparisonViewsController {
     this.compared = compared;
     this.content = content;
     this.templates = templates;
-    this.html = html;
     this.today = today;
     this.fragments = new Fragments(compared, release, html);
   }
@@ -152,6 +150,7 @@ class ComparisonViewsController {
         OutlineView.of(
             attributed.outline(), shown.stream().map(DifferencesView.Shown::difference).toList());
     var views = ControlsView.views(page, view);
+    var renderer = fragments.renderer(ends);
     var html =
         switch (view) {
           case DIFFERENCES ->
@@ -161,7 +160,7 @@ class ComparisonViewsController {
                       outline,
                       sidenotes,
                       pieces,
-                      this.html,
+                      renderer,
                       "/content/" + attributed.later() + "/occurrences",
                       page,
                       views)
@@ -174,7 +173,7 @@ class ComparisonViewsController {
                       WholeText.of(
                           content.read(attributed.later()).orElseThrow(Requests::notFound),
                           shown,
-                          this.html,
+                          renderer,
                           each -> RowFoldLinks.of(each.difference().shown(), each.fragment(page)),
                           (each, occurrence) -> {
                             var sidenote = sidenotes.get(each.number());
@@ -214,7 +213,7 @@ class ComparisonViewsController {
                     pieces,
                     occurrences,
                     histories,
-                    this.html,
+                    renderer,
                     Dates.inWords(page.earlier()),
                     Dates.inWords(page.later()),
                     views,
@@ -281,7 +280,7 @@ class ComparisonViewsController {
         rows.size(),
         fold.asked(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
-    return templates.comparisonNeighbours(rows, this.html).render();
+    return templates.comparisonNeighbours(rows, fragments.renderer(ends)).render();
   }
 
   /**

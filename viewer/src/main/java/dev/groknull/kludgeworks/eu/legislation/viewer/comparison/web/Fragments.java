@@ -61,10 +61,21 @@ final class Fragments {
         release.etag(texts.before(), texts.after(), DifferVersion.value()));
   }
 
+  /** Returns a renderer bound to the two ends of {@code ends}, or {@link #html} if not built. */
+  LegalRenderer renderer(Ends ends) {
+    return ends.texts() instanceof Ends.Built built ? renderer(built) : html;
+  }
+
+  /** Returns a renderer bound to {@code texts} so deleted and current images resolve. */
+  LegalRenderer renderer(Ends.Built texts) {
+    return html.forComparison(texts.before(), texts.after());
+  }
+
   /** Returns {@code element} rendered as the legal text renders it. */
-  String render(Element element) {
+  String render(Element element, Ends.Built texts, boolean deleted) {
     var out = new StringOutput();
-    html.element(element).writeTo(out);
+    var renderer = renderer(texts);
+    (deleted ? renderer.deleted() : renderer).element(element).writeTo(out);
     return out.toString();
   }
 }

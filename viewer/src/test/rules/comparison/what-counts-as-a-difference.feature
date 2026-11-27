@@ -180,6 +180,82 @@ Feature: What counts as a difference, and how its edits show
       When the reader reads the difference at the changed article 2
       Then it inserts a formula whole
 
+  Rule: image-is-one-piece · An image is one piece
+    The comparison reads an image as one piece. The piece is the file of the image. Thus a changed
+    inline image shows whole as deleted, then whole as inserted.
+
+    Example: An inline image in a paragraph has a different image file
+      Given an article with inline image "old.tif"
+      And a later article with inline image "new.tif"
+      When the reader compares the two articles
+      Then it deletes image "old.tif"
+      And it inserts image "new.tif"
+
+    Example: An inline image with the same image file stays, and a changed word beside it shows its edit
+      Given an article with paragraph "See old" and inline image "same.tif"
+      And a later article with paragraph "See new" and inline image "same.tif"
+      When the reader compares the two articles
+      Then it keeps image "same.tif"
+      And it deletes "old"
+      And it inserts "new"
+      And it deletes and inserts nothing else
+
+  Rule: image-shows-before-and-after · A changed image shows as deleted and inserted
+    The comparison reads the file of a figure as one piece. When the image file changes, the old
+    image shows as deleted and the new image shows as inserted, not edits in one image. When only
+    the caption of a figure changes, the figure stays and its caption shows edits.
+
+    Example: A figure in an article has a different image file
+      Given an article with figure "old.tif" and caption "Diagram"
+      And a later article with figure "new.tif" and caption "Diagram"
+      When the reader compares the two articles
+      Then it deletes image "old.tif"
+      And it inserts image "new.tif"
+
+    Example: A figure with the same file keeps the figure and edits its caption
+      Given an article with figure "same.tif" and caption "Diagram 1"
+      And a later article with figure "same.tif" and caption "Diagram 2"
+      When the reader compares the two articles
+      Then it keeps image "same.tif"
+      And it deletes "1"
+      And it inserts "2"
+
+  Rule: block-with-a-figure-compares-by-its-pieces · A block that holds a figure compares by its pieces
+    The comparison reads a block that holds a figure piece by piece. The figure stays in its
+    place. The words around the figure show their edits word by word.
+
+    Example: A figure in a quotation with only a changed caption edits its caption
+      Given an article with a quotation of figure "same.tif" and caption "Diagram 1"
+      And a later article with a quotation of figure "same.tif" and caption "Diagram 2"
+      When the reader compares the two articles
+      Then it keeps image "same.tif"
+      And it deletes "1"
+      And it inserts "2"
+
+    Example: A list item holds a figure and words, and one word outside the figure changes
+      Given an article with a list item holding figure "same.tif" and words "Keep old text."
+      And a later article with a list item holding figure "same.tif" and words "Keep new text."
+      When the reader compares the two articles
+      Then it keeps image "same.tif"
+      And it deletes "old"
+      And it inserts "new"
+      And it deletes and inserts nothing else
+
+    Example: A table cell holds a figure, and only the caption changes
+      Given an article with a table cell holding figure "same.tif" and caption "Diagram 1"
+      And a later article with a table cell holding figure "same.tif" and caption "Diagram 2"
+      When the reader compares the two articles
+      Then it keeps image "same.tif"
+      And it deletes "1"
+      And it inserts "2"
+
+    Example: A paragraph has no figure in the earlier text and has a figure in the later text
+      Given an article with paragraph "First sentence."
+      And a later article with paragraph "First sentence." and figure "added.tif"
+      When the reader compares the two articles
+      Then it inserts image "added.tif"
+      And it does not edit "First sentence."
+
   Rule: deleted-text-stands-where-it-was · Deleted text stands where it was
     A deleted block or occurrence shows where it stood in the earlier text, before the insertion
     in its place. Each view of the comparison shows it there.

@@ -63,6 +63,12 @@ viewpoints:
     desc: The jobs that build the texts.
     tables:
       - ingest_job
+  - id: image
+    name: image
+    desc: Source mappings and LRU-bounded WebP renditions for Formex TIFF images.
+    tables:
+      - image_rendition
+      - image_source
   - id: events
     name: events
     desc: Spring Modulith's event publication registry, which every module shares (__root).

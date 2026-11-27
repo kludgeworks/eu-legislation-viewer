@@ -146,7 +146,10 @@ public final class Wording {
         return sink.token(element, " ", false);
       }
       case "img" -> {
-        return sink.token(element, "[image " + element.attribute("src") + "]", true);
+        return sink.token(element, WhatCountsAsADifference.imageIsOnePiece(element), true);
+      }
+      case "figure" -> {
+        return sink.figure(element);
       }
       case "math" -> {
         return sink.token(element, WhatCountsAsADifference.formulaIsOnePiece(element), true);
@@ -211,6 +214,9 @@ public final class Wording {
      */
     List<Element> token(Element element, String said, boolean editable);
 
+    /** Visits a figure with its optional image file reference and child caption or description. */
+    List<Element> figure(Element element);
+
     /** Visits a quotation mark of a quote, which has no element of its own. */
     QuotationMark quotationMark(String mark);
   }
@@ -251,6 +257,13 @@ public final class Wording {
     }
 
     @Override
+    public List<Element> figure(Element element) {
+      tokens.add(of(element));
+      pieces.add(element);
+      return List.of(element);
+    }
+
+    @Override
     public QuotationMark quotationMark(String mark) {
       if (!mark.isEmpty()) {
         tokens.add(mark);
@@ -274,6 +287,18 @@ public final class Wording {
         out.append(' ').append(said).append(' ');
       } else {
         out.append(said);
+      }
+      return List.of(element);
+    }
+
+    @Override
+    public List<Element> figure(Element element) {
+      var src = element.attribute("src");
+      if (src != null && !src.isEmpty()) {
+        out.append(' ').append(WhatCountsAsADifference.imageIsOnePiece(element)).append(' ');
+      }
+      for (var child : element.children()) {
+        walk(child, this);
       }
       return List.of(element);
     }

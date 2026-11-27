@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.FigureComparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +35,15 @@ record OccurrenceEdits(Pieces.Shown blocks, @Nullable Element footnotes) {
     var blocks = new Pieces.Shown();
     for (var each : Pieces.differing(from.blocks(), to.blocks(), from.keys(), to.keys())) {
       switch (each) {
-        case Pieces.Changed(int at, Element was, Element is) ->
+        case Pieces.Changed(int at, Element was, Element is) -> {
+          if (WhatCountsAsADifference.imageShowsBeforeAndAfter(was, is)
+              == FigureComparison.BEFORE_AND_AFTER) {
+            blocks.delete(at, WhatCountsAsADifference.whatTheEditsShow(was, null));
+            blocks.replace(at, WhatCountsAsADifference.whatTheEditsShow(null, is));
+          } else {
             blocks.replace(at, WhatCountsAsADifference.whatTheEditsShow(was, is));
+          }
+        }
         case Pieces.Inserted(int at, Element is) ->
             blocks.replace(at, WhatCountsAsADifference.whatTheEditsShow(null, is));
         case Pieces.Deleted(int at, Element was) ->

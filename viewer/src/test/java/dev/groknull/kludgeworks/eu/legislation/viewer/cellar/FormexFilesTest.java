@@ -40,10 +40,11 @@ class FormexFilesTest {
             "L_2009330EN.01008001.xml",
             "L_2009330EN.01008102.tif");
     assertThat(version.file("L_2009330EN.01008102.tif"))
-        .map(f -> f.mediaType() + " " + f.uri())
+        .map(f -> f.mediaType() + " " + f.uri() + " " + f.sha1())
         .contains(
             "image/tiff"
-                + " http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01/DOC_4");
+                + " http://publications.europa.eu/resource/cellar/8f145680-d086-4e3d-b6a0-a8b83cdc04b9.0006.01/DOC_4"
+                + " 0e2f1dcaa096a07478cfb6a82a4b74d4e832f621");
   }
 
   @Test

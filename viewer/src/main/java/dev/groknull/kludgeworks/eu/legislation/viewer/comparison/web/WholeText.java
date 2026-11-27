@@ -109,7 +109,7 @@ final class WholeText {
       LegalRenderer html,
       Function<DifferencesView.Shown, Element> occurrence,
       BiFunction<DifferencesView.Shown, Content, Content> edited) {
-    return edited.apply(deleted, html.asIs(occurrence.apply(deleted)));
+    return edited.apply(deleted, html.deleted().asIs(occurrence.apply(deleted)));
   }
 
   /**

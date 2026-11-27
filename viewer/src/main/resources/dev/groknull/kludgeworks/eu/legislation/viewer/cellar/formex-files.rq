@@ -17,6 +17,7 @@ PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?manifestation ?item ?mime (SAMPLE(COALESCE(?streamName, STRAFTER(STR(?same), ".fmx4."))) AS ?file)
+       (SAMPLE(?fixity) AS ?sha1)
        ?modified
 WHERE {
   VALUES (?celex ?language) { ("{{celex}}"^^xsd:string <http://publications.europa.eu/resource/authority/language/{{language}}>) }
@@ -30,6 +31,12 @@ WHERE {
         cmr:manifestationMimeType ?mime .
   OPTIONAL { ?item tdm:stream_name ?streamName }
   OPTIONAL { ?item owl:sameAs ?same }
+  OPTIONAL {
+    ?item tdm:stream_fixity ?fixityNode .
+    ?fixityNode tdm:fixity_message_digest ?fixity ;
+                tdm:fixity_message_digest_algorithm ?fixityAlg .
+    FILTER(LCASE(STR(?fixityAlg)) IN ("sha-1", "sha1"))
+  }
 }
 GROUP BY ?manifestation ?item ?mime ?modified
 ORDER BY ?item

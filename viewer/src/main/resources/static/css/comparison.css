@@ -885,6 +885,45 @@ del.diff {
   text-decoration: line-through;
 }
 
+/* Changed or replaced figures show old and new as distinct framed images rather than mixing
+ * inline strike/underline decoration across graphics. */
+del.diff:has(> .figure),
+ins.diff:has(> .figure) {
+  display: block;
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+  border-radius: 3px;
+  text-decoration: none;
+}
+
+del.diff:has(> .figure) {
+  border: 2px solid var(--del-ink);
+}
+
+ins.diff:has(> .figure) {
+  border: 2px solid var(--ins-ink);
+}
+
+del.diff:has(> .figure) .figure,
+ins.diff:has(> .figure) .figure {
+  margin: 0;
+}
+
+del.diff .figure img,
+del.diff img.img {
+  opacity: 0.85;
+}
+
+del.diff img.img {
+  padding: 2px;
+  border: 2px solid var(--del-ink);
+}
+
+ins.diff img.img {
+  padding: 2px;
+  border: 2px solid var(--ins-ink);
+}
+
 /* The edits of a correction, in every view. Words that a corrigendum added have a dotted
  * underline. Words that it removed are struck through. Both are violet. */
 .corrected ins.diff,
@@ -892,6 +931,13 @@ del.diff {
   color: var(--corr-ink);
   background: var(--corr-bg);
   text-decoration-color: var(--corr-ink);
+}
+
+.corrected del.diff:has(> .figure),
+.corrected ins.diff:has(> .figure),
+.corrected del.diff img.img,
+.corrected ins.diff img.img {
+  border-color: var(--corr-ink);
 }
 
 .corrected ins.diff {

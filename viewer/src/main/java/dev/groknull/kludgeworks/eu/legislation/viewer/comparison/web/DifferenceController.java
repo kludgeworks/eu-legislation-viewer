@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActAddress;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparedTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.TheChangesOfOneAct;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;
@@ -80,7 +81,6 @@ class DifferenceController {
   private final Comparisons comparisons;
   private final Content content;
   private final Templates templates;
-  private final LegalRenderer html;
   private final Fragments fragments;
 
   DifferenceController(
@@ -94,7 +94,6 @@ class DifferenceController {
     this.comparisons = comparisons;
     this.content = content;
     this.templates = templates;
-    this.html = html;
     this.fragments = new Fragments(compared, release, html);
   }
 
@@ -155,8 +154,11 @@ class DifferenceController {
     }
     var difference =
         comparisons.difference(pair.before(), pair.after(), eId).orElseThrow(Requests::notFound);
+    var deleted = difference.kind() == Kind.DELETED;
     if (table == null && rows == null) {
-      var html = fragments.render(new DifferencesView.Shown(0, difference, "").folded(page));
+      var html =
+          fragments.render(
+              new DifferencesView.Shown(0, difference, "").folded(page), pair, deleted);
       LOG.info(
           "Difference of {} from {} to {} in {}{} at {}, in {} ms",
           ends.act().id(),
@@ -179,7 +181,7 @@ class DifferenceController {
       throw Requests.notFound();
     }
     var html = new StringBuilder();
-    found.forEach(row -> html.append(fragments.render(row)));
+    found.forEach(row -> html.append(fragments.render(row, pair, deleted)));
     LOG.info(
         "Rows of {} from {} to {} in {}{} at {}: {} rows, in {} ms",
         ends.act().id(),
@@ -248,13 +250,18 @@ class DifferenceController {
         found.differences().stream()
             .map(difference -> new DifferencesView.Shown(0, difference, ""))
             .toList();
+    var renderer = fragments.renderer(pair);
     var rendered =
         sides
             ? templates
                 .comparisonSides(
-                    shown, html, page, Dates.inWords(page.earlier()), Dates.inWords(page.later()))
+                    shown,
+                    renderer,
+                    page,
+                    Dates.inWords(page.earlier()),
+                    Dates.inWords(page.later()))
                 .render()
-            : templates.comparisonPlace(shown, html, page, lead).render();
+            : templates.comparisonPlace(shown, renderer, page, lead).render();
     LOG.info(
         "Place of {} from {} to {} in {}{} at {} occurrences: {} differences, in {} ms",
         ends.act().id(),
@@ -299,7 +306,7 @@ class DifferenceController {
                 DifferencesView.either(others.stream().map(ends.act()::cited).toList()),
                 shown,
                 shown.size() <= OPEN,
-                html,
+                fragments.renderer(ends),
                 page)
             .render();
     LOG.info(

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.FigureComparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +49,12 @@ final class Edits {
    * <p>A table is compared by its pieces: the rule table-row-by-row.
    */
   static Edited between(Element from, Element to) {
-    return HowTwoTextsPair.tableRowByRow(from, to) ? pieces(from, to) : words(from, to);
+    if (HowTwoTextsPair.tableRowByRow(from, to)
+        || WhatCountsAsADifference.imageShowsBeforeAndAfter(from, to) == FigureComparison.BY_PIECES
+        || WhatCountsAsADifference.blockWithAFigureComparesByItsPieces(from, to)) {
+      return pieces(from, to);
+    }
+    return words(from, to);
   }
 
   /**
@@ -70,7 +76,9 @@ final class Edits {
     for (var each : differing) {
       switch (each) {
         case Pieces.Changed(int at, Element was, Element is) -> {
-          if (was.name().equals(is.name())) {
+          if (was.name().equals(is.name())
+              && WhatCountsAsADifference.imageShowsBeforeAndAfter(was, is)
+                  != FigureComparison.BEFORE_AND_AFTER) {
             shown.replace(at, WhatCountsAsADifference.whatTheEditsShow(was, is));
           } else {
             shown.delete(at, WhatCountsAsADifference.whatTheEditsShow(was, null));
@@ -136,11 +144,15 @@ final class Edits {
    */
   static Edited all(Element element, String edit) {
     var tokens = Wording.tokens(element);
+    var words = words(Wording.said(tokens));
+    var marker = edit.equals(INSERTED) ? "ins" : "del";
+    if (element.name().equals("figure")) {
+      var wrapped = Runs.wrap(edit, only(element, marker));
+      return edit.equals(INSERTED) ? new Edited(wrapped, words, 0) : new Edited(wrapped, 0, words);
+    }
     var edited = new boolean[tokens.size()];
     Arrays.fill(edited, true);
-    var words = words(Wording.said(tokens));
-    var shown =
-        only(Runs.edited(element, edit, edited, Map.of()), edit.equals(INSERTED) ? "ins" : "del");
+    var shown = only(Runs.edited(element, edit, edited, Map.of()), marker);
     return edit.equals(INSERTED) ? new Edited(shown, words, 0) : new Edited(shown, 0, words);
   }
 

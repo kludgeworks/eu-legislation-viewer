@@ -26,7 +26,7 @@
         @if(each.annexInserted())
           @template.comparison.annexfold(shown = each, page = page)
         @else
-          ${html.element(each.folded(page))}
+          ${(each.kind().equals("deleted") ? html.deleted() : html).element(each.folded(page))}
         @endif
       </div>
     @endfor

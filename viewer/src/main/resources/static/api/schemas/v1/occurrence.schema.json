@@ -7,7 +7,8 @@
   "properties": {
     "_links": { "$ref": "text.schema.json#/$defs/links" },
     "occurrence": { "$ref": "text.schema.json#/$defs/occurrence" },
-    "footnotes": { "$ref": "text.schema.json#/$defs/footnotes", "description": "The footnotes that the occurrence refers to, in the order of the text. Absent if there are none." }
+    "footnotes": { "$ref": "text.schema.json#/$defs/footnotes", "description": "The footnotes that the occurrence refers to, in the order of the text. Absent if there are none." },
+    "images": { "$ref": "text.schema.json#/$defs/images" }
   },
   "required": ["_links", "occurrence"]
 }

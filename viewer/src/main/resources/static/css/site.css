@@ -12,6 +12,7 @@
 :root {
   color-scheme: light dark;
   --bg: light-dark(#fff, #14171b);
+  --figure-bg: light-dark(transparent, #fff);
   --ink: light-dark(#1b1f24, #e4e7ea);
   --ink2: light-dark(#454c55, #c2c8ce);
   --ink3: light-dark(#30363d, #cfd4d9);

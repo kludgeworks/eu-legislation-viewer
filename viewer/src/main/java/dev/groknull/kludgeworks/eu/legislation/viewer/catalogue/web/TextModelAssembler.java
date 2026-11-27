@@ -7,15 +7,22 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiTextController.ImageLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiTextController.TextModel;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.ImageUrls;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.ApiLinks;
+import java.net.URI;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.LinkRelation;
 import org.springframework.hateoas.UriTemplate;
+import org.springframework.hateoas.server.mvc.BasicLinkBuilder;
 import org.springframework.stereotype.Component;
 
 /** Assembles the hypermedia representation of an act's legal text in the API. */
@@ -39,14 +46,24 @@ class TextModelAssembler {
    * self}, {@code up} (the version), {@code av:outline}, {@code av:occurrence} (template), {@code
    * describedby} schema, {@code av:preparation}, and {@code alternate} for each other language.
    */
-  public EntityModel<TextModel> toModel(Asked asked, PublicText text) {
+  public EntityModel<TextModel> toModel(
+      Asked asked,
+      TextId textId,
+      PublicText text,
+      Map<String, URI> sourceUris,
+      String imageVersion) {
     var celex = asked.act().id();
     var key = ApiActResources.key(asked.version());
     var languageCode = ApiActResources.code(asked.language().code());
     var self = to(celex, asked.version(), asked.language(), IanaLinkRelations.SELF);
     var model =
         EntityModel.of(
-            new TextModel(key, asked.version().celex(), languageCode, text),
+            new TextModel(
+                key,
+                asked.version().celex(),
+                languageCode,
+                text,
+                imageLinks(textId, sourceUris, imageVersion)),
             self,
             ApiActResources.to(celex, asked.version(), IanaLinkRelations.UP),
             linkTo(methodOn(ApiTextController.class).outline(celex, key, languageCode))
@@ -60,6 +77,23 @@ class TextModelAssembler {
       }
     }
     return model;
+  }
+
+  static Map<String, ImageLinks> imageLinks(
+      TextId textId, Map<String, URI> sourceUris, String imageVersion) {
+    if (sourceUris.isEmpty()) {
+      return Map.of();
+    }
+    var baseUrl = BasicLinkBuilder.linkToCurrentMapping().withSelfRel().getHref();
+    var links = new LinkedHashMap<String, ImageLinks>();
+    sourceUris.forEach((file, sourceUri) ->
+        links.put(
+            file,
+            new ImageLinks(
+                baseUrl + ImageUrls.preview(textId, file, imageVersion),
+                baseUrl + ImageUrls.original(textId, file, imageVersion),
+                sourceUri.toString())));
+    return Map.copyOf(links);
   }
 
   static Link occurrenceTemplate(Link text) {
