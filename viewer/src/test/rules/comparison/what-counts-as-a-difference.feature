@@ -188,8 +188,7 @@ Feature: What counts as a difference, and how its edits show
       Given an article with inline image "old.tif"
       And a later article with inline image "new.tif"
       When the reader compares the two articles
-      Then it deletes image "old.tif"
-      And it inserts image "new.tif"
+      Then it deletes image "old.tif", and inserts image "new.tif" just after it
 
     Example: An inline image with the same image file stays, and a changed word beside it shows its edit
       Given an article with paragraph "See old" and inline image "same.tif"

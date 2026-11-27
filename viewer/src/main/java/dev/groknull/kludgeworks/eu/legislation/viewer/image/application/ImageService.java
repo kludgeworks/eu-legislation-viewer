@@ -26,6 +26,7 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.modulith.events.ApplicationModuleListener;
@@ -50,6 +51,7 @@ class ImageService implements Images {
   private final ObservationRegistry observations;
   private final Semaphore fetches;
   private final Semaphore workers;
+  private final Semaphore misses;
   private final ConcurrentMap<FlightKey, CompletableFuture<Rendition>> inFlight =
       new ConcurrentHashMap<>();
 
@@ -68,6 +70,7 @@ class ImageService implements Images {
     this.observations = observations;
     this.fetches = new Semaphore(properties.maxFetches());
     this.workers = new Semaphore(properties.maxConversions());
+    this.misses = new Semaphore(properties.maxFetches() + properties.maxConversions());
   }
 
   @Override
@@ -108,11 +111,21 @@ class ImageService implements Images {
     if (existing.isPresent()) {
       return existing;
     }
-    var key = new FlightKey(foundSource.itemUri(), variant);
+    var pinnedHex =
+        foundSource.sourceSha256() == null
+            ? null
+            : HexFormat.of().formatHex(foundSource.sourceSha256());
+    var key = new FlightKey(foundSource.itemUri(), variant, pinnedHex, foundSource.rdfSha1());
     var created = new CompletableFuture<Rendition>();
     var running = inFlight.putIfAbsent(key, created);
     if (running != null) {
-      return Optional.of(await(running));
+      var rendered = await(running);
+      if (foundSource.sourceSha256() == null) {
+        var digest = HexFormat.of().parseHex(rendered.sourceSha256());
+        transactions.executeWithoutResult(
+            status -> store.recordSourceDigest(foundSource.text(), foundSource.file(), digest));
+      }
+      return Optional.of(rendered);
     }
     try {
       var rendered =
@@ -157,45 +170,55 @@ class ImageService implements Images {
     }
     var started = System.nanoTime();
     try {
-      var tiff =
-          Objects.requireNonNull(
-              Observation.createNotStarted("image.fetch", observations)
-                  .observe(() -> fetchWithPermit(source.itemUri())));
-      var sha256 = digest("SHA-256", tiff);
-      verifyDigests(source, tiff, sha256);
-      var sha256Hex = HexFormat.of().formatHex(sha256);
-      var existing = store.findRendition(sha256, variant, recipe);
-      if (existing.isPresent()) {
+      acquirePermit(
+          misses,
+          "Timed out waiting for image cache miss slot",
+          "Interrupted waiting for image cache miss slot");
+      try {
+        var tiff =
+            Objects.requireNonNull(
+                Observation.createNotStarted("image.fetch", observations)
+                    .observe(() -> fetchWithPermit(source.itemUri())));
+        var sha256 = digest("SHA-256", tiff);
+        verifyDigests(source, tiff, sha256);
+        var sha256Hex = HexFormat.of().formatHex(sha256);
+        var existing = store.findRendition(sha256, variant, recipe);
+        if (existing.isPresent()) {
+          transactions.executeWithoutResult(status -> {
+            store.recordSourceDigest(source.text(), source.file(), sha256);
+            store.touchRenditionIfStale(
+                sha256, variant, recipe, properties.cache().touchInterval());
+          });
+          return existing.get();
+        }
+        var rendered = renderWithPermit(tiff, variant);
         transactions.executeWithoutResult(status -> {
           store.recordSourceDigest(source.text(), source.file(), sha256);
-          store.touchRenditionIfStale(sha256, variant, recipe, properties.cache().touchInterval());
+          store.storeRendition(
+              sha256,
+              variant,
+              recipe,
+              rendered.width(),
+              rendered.height(),
+              rendered.webp(),
+              properties.cache().maxBytes(),
+              properties.cache().evictionBatch());
         });
-        return existing.get();
-      }
-      var rendered = renderWithPermit(tiff, variant);
-      transactions.executeWithoutResult(status -> {
-        store.recordSourceDigest(source.text(), source.file(), sha256);
-        store.storeRendition(
-            sha256,
+        LOG.debug(
+            "Converted {} ({}) of text {}: {} KB TIFF -> {}x{} {} KB WebP in {} ms",
+            source.file(),
             variant,
-            recipe,
+            source.text().value(),
+            tiff.length / 1024,
             rendered.width(),
             rendered.height(),
-            rendered.webp(),
-            properties.cache().maxBytes(),
-            properties.cache().evictionBatch());
-      });
-      LOG.debug(
-          "Converted {} ({}) of text {}: {} KB TIFF -> {}x{} {} KB WebP in {} ms",
-          source.file(),
-          variant,
-          source.text().value(),
-          tiff.length / 1024,
-          rendered.width(),
-          rendered.height(),
-          rendered.webp().length / 1024,
-          Duration.ofNanos(System.nanoTime() - started).toMillis());
-      return new Rendition(rendered.webp(), sha256Hex, recipe, rendered.width(), rendered.height());
+            rendered.webp().length / 1024,
+            Duration.ofNanos(System.nanoTime() - started).toMillis());
+        return new Rendition(
+            rendered.webp(), sha256Hex, recipe, rendered.width(), rendered.height());
+      } finally {
+        misses.release();
+      }
     } catch (ImageGoneException gone) {
       var reason = Objects.requireNonNullElse(gone.getMessage(), "Image permanently unavailable");
       transactions.executeWithoutResult(
@@ -217,14 +240,10 @@ class ImageService implements Images {
   }
 
   private byte[] fetchWithPermit(URI itemUri) {
-    try {
-      if (!fetches.tryAcquire(PERMIT_WAIT_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS)) {
-        throw new ImageUnavailableException("Timed out waiting for Cellar download slot");
-      }
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ImageUnavailableException("Interrupted waiting for Cellar download slot", e);
-    }
+    acquirePermit(
+        fetches,
+        "Timed out waiting for Cellar download slot",
+        "Interrupted waiting for Cellar download slot");
     try {
       return fetcher.fetch(itemUri, properties.maxSourceBytes());
     } finally {
@@ -233,18 +252,26 @@ class ImageService implements Images {
   }
 
   private ImageRenderer.Rendered renderWithPermit(byte[] tiff, Variant variant) {
-    try {
-      if (!workers.tryAcquire(PERMIT_WAIT_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS)) {
-        throw new ImageUnavailableException("Timed out waiting for image conversion worker");
-      }
-    } catch (InterruptedException e) {
-      Thread.currentThread().interrupt();
-      throw new ImageUnavailableException("Interrupted waiting for image conversion worker", e);
-    }
+    acquirePermit(
+        workers,
+        "Timed out waiting for image conversion worker",
+        "Interrupted waiting for image conversion worker");
     try {
       return renderer.render(tiff, variant);
     } finally {
       workers.release();
+    }
+  }
+
+  private static void acquirePermit(
+      Semaphore permit, String timeoutMessage, String interruptedMessage) {
+    try {
+      if (!permit.tryAcquire(PERMIT_WAIT_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS)) {
+        throw new ImageUnavailableException(timeoutMessage);
+      }
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
+      throw new ImageUnavailableException(interruptedMessage, e);
     }
   }
 
@@ -287,5 +314,6 @@ class ImageService implements Images {
     }
   }
 
-  private record FlightKey(URI itemUri, Variant variant) {}
+  private record FlightKey(
+      URI itemUri, Variant variant, @Nullable String pinnedSha256, @Nullable String rdfSha1) {}
 }

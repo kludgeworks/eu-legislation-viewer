@@ -367,6 +367,15 @@ public class DifferenceSteps {
         .isTrue();
   }
 
+  @Then("it deletes image {string}, and inserts image {string} just after it")
+  public void deletesThenInsertsImage(String deletedSrc, String insertedSrc) {
+    assertThat(deletesBeforeInsertsImage(difference().shown(), deletedSrc, insertedSrc))
+        .as(
+            "deleted whole image %s immediately before inserted whole image %s",
+            deletedSrc, insertedSrc)
+        .isTrue();
+  }
+
   @Then("it keeps image {string}")
   public void keepsImage(String src) {
     assertThat(keptImage(difference().shown(), src)).as("kept image %s", src).isTrue();
@@ -467,14 +476,32 @@ public class DifferenceSteps {
   }
 
   private static boolean editedImage(Element element, String edit, String src) {
-    if (element.name().equals(edit)
-        && element.children().stream()
-            .anyMatch(child ->
-                (child.name().equals("figure") || child.name().equals("img"))
-                    && src.equals(child.attribute("src")))) {
+    if (isWholeEditedImage(element, edit, src)) {
       return true;
     }
     return element.children().stream().anyMatch(child -> editedImage(child, edit, src));
+  }
+
+  private static boolean deletesBeforeInsertsImage(
+      Element element, String deletedSrc, String insertedSrc) {
+    var children = element.children();
+    for (var i = 0; i + 1 < children.size(); i++) {
+      if (isWholeEditedImage(children.get(i), Edits.DELETED, deletedSrc)
+          && isWholeEditedImage(children.get(i + 1), Edits.INSERTED, insertedSrc)) {
+        return true;
+      }
+    }
+    return children.stream()
+        .anyMatch(child -> deletesBeforeInsertsImage(child, deletedSrc, insertedSrc));
+  }
+
+  private static boolean isWholeEditedImage(Element element, String edit, String src) {
+    if (!element.name().equals(edit) || element.children().size() != 1) {
+      return false;
+    }
+    var child = element.children().getFirst();
+    return (child.name().equals("figure") || child.name().equals("img"))
+        && src.equals(child.attribute("src"));
   }
 
   private static boolean keptImage(Element element, String src) {

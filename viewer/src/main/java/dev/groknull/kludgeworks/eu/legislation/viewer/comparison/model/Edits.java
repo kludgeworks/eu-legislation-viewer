@@ -144,7 +144,7 @@ final class Edits {
    */
   static Edited all(Element element, String edit) {
     var tokens = Wording.tokens(element);
-    var words = words(Wording.said(tokens));
+    var words = wordCount(element);
     var marker = edit.equals(INSERTED) ? "ins" : "del";
     if (element.name().equals("figure")) {
       var wrapped = Runs.wrap(edit, only(element, marker));
@@ -154,6 +154,23 @@ final class Edits {
     Arrays.fill(edited, true);
     var shown = only(Runs.edited(element, edit, edited, Map.of()), marker);
     return edit.equals(INSERTED) ? new Edited(shown, words, 0) : new Edited(shown, 0, words);
+  }
+
+  private static int wordCount(Element element) {
+    if (element.name().equals("figure")) {
+      var src = element.attribute("src");
+      var image = src != null && !src.isEmpty() ? 1 : 0;
+      return image + element.children().stream().mapToInt(Edits::wordCount).sum();
+    }
+    if (hasFigure(element)) {
+      return element.children().stream().mapToInt(Edits::wordCount).sum();
+    }
+    return words(Wording.said(Wording.tokens(element)));
+  }
+
+  private static boolean hasFigure(Element element) {
+    return element.children().stream()
+        .anyMatch(child -> child.name().equals("figure") || hasFigure(child));
   }
 
   /**

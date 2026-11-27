@@ -77,12 +77,62 @@ class FigureEditsTest {
     assertThat(edited.children()).hasSize(2);
     assertThat(edited.children().get(0).name()).isEqualTo("diff:del");
     assertThat(edited.children().get(0).children()).hasSize(1);
-    assertThat(edited.children().get(0).children().getFirst().attribute("src"))
-        .isEqualTo("old.tif");
+    var delFigure = edited.children().get(0).children().getFirst();
+    assertThat(delFigure.attribute("src")).isEqualTo("old.tif");
+    assertThat(BuiltTexts.said(delFigure)).contains("Diagram 1");
+    assertThat(
+            descendants(delFigure).stream()
+                .filter(el -> el.name().equals("caption"))
+                .map(BuiltTexts::said))
+        .containsExactly("Diagram 1");
     assertThat(edited.children().get(1).name()).isEqualTo("diff:ins");
     assertThat(edited.children().get(1).children()).hasSize(1);
-    assertThat(edited.children().get(1).children().getFirst().attribute("src"))
-        .isEqualTo("new.tif");
+    var insFigure = edited.children().get(1).children().getFirst();
+    assertThat(insFigure.attribute("src")).isEqualTo("new.tif");
+    assertThat(
+            descendants(insFigure).stream()
+                .filter(el -> el.name().equals("caption"))
+                .map(BuiltTexts::said))
+        .containsExactly("Diagram 2");
+  }
+
+  @Test
+  void replacedFigureCountsWordsInCaptionAndDescription() {
+    var before =
+        new Element(
+            "figure",
+            Map.of("src", "old.tif", "content", "techDesign"),
+            List.of(
+                new Element(
+                    "caption",
+                    Map.of(),
+                    List.of(
+                        new Element(
+                            "p",
+                            Map.of(),
+                            List.of(new Element("t", Map.of("v", "Old diagram"), List.of(), "")),
+                            "")),
+                    ""),
+                new Element(
+                    "description",
+                    Map.of(),
+                    List.of(
+                        new Element(
+                            "p",
+                            Map.of(),
+                            List.of(
+                                new Element(
+                                    "t", Map.of("v", "Three deleted words"), List.of(), "")),
+                            "")),
+                    "")),
+            "");
+    var after = figure("new.tif", "New diagram");
+
+    var edited = OccurrenceEdits.of(occurrence(before), occurrence(after));
+
+    assertThat(edited).isNotNull();
+    assertThat(edited.blocks().deleted()).isEqualTo(6);
+    assertThat(edited.blocks().inserted()).isEqualTo(3);
   }
 
   @Test

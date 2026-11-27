@@ -112,7 +112,7 @@ class ApiTextControllerTests {
         .hasContentType(MediaTypes.HAL_JSON)
         .headers()
         .hasValue(HttpHeaders.CONTENT_LANGUAGE, "en")
-        .hasValue(HttpHeaders.ETAG, "W/\"7\"");
+        .hasValue(HttpHeaders.ETAG, "W/\"7-v1\"");
     var text = json(result);
     assertThat(text.at("/version").asString()).isEqualTo("2021-03-15");
     assertThat(text.at("/celex").asString()).isEqualTo("02015R1998-20210315");
@@ -135,11 +135,17 @@ class ApiTextControllerTests {
   }
 
   @Test
-  void answersAClientThatHasTheTextWithNotModified() {
+  void answersAClientThatHasTheTextWithNotModifiedUntilImageVersionChanges() {
     textIs(new Text.Ready(STORED));
 
-    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7\""))
+    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7-v1\""))
         .hasStatus(HttpStatus.NOT_MODIFIED);
+
+    when(images.version()).thenReturn("v2");
+    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7-v1\""))
+        .hasStatusOk()
+        .headers()
+        .hasValue(HttpHeaders.ETAG, "W/\"7-v2\"");
   }
 
   @Test

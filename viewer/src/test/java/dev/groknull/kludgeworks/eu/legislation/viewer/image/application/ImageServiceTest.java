@@ -28,7 +28,9 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.TransactionStatus;
@@ -47,9 +49,14 @@ class ImageServiceTest {
   @Test
   void coalescesConcurrentCacheMissesIntoOneFetch() throws Exception {
     var store = new InMemoryStore();
+    var secondText = new TextId(12);
     store.replaceSources(
         TEXT,
         URI.create("http://cellar/manifest"),
+        List.of(new Source(FILE, ITEM, "image/tiff", null)));
+    store.replaceSources(
+        secondText,
+        URI.create("http://cellar/manifest-2"),
         List.of(new Source(FILE, ITEM, "image/tiff", null)));
     var entered = new CountDownLatch(1);
     var release = new CountDownLatch(1);
@@ -73,9 +80,21 @@ class ImageServiceTest {
         CompletableFuture.supplyAsync(
             () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
     entered.await();
+    var secondStarted = new CountDownLatch(1);
+    var secondThread = new AtomicReference<Thread>();
     var second =
-        CompletableFuture.supplyAsync(
-            () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
+        CompletableFuture.supplyAsync(() -> {
+          secondThread.set(Thread.currentThread());
+          secondStarted.countDown();
+          return service.rendition(secondText, FILE, Variant.PREVIEW).orElseThrow();
+        });
+    secondStarted.await();
+    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    while (System.nanoTime() < deadline
+        && (store.sourceLookups() < 2 || secondThread.get().getState() != Thread.State.WAITING)) {
+      Thread.onSpinWait();
+    }
+    assertThat(secondThread.get().getState()).isEqualTo(Thread.State.WAITING);
     release.countDown();
 
     var a = first.get();
@@ -83,6 +102,50 @@ class ImageServiceTest {
     assertThat(fetches.get()).isEqualTo(1);
     assertThat(a.sourceSha256()).isEqualTo(b.sourceSha256());
     assertThat(a.webp()).isEqualTo(new byte[] {1, 2, 3});
+    assertThat(store.findSourceDigest(secondText, FILE)).isPresent();
+  }
+
+  @Test
+  void isolatesConcurrentMissesWhenPinnedDigestsDifferForSameItemUri() throws Exception {
+    var store = new InMemoryStore();
+    var otherText = new TextId(12);
+    var payload = "valid-tiff".getBytes(StandardCharsets.UTF_8);
+    var validSha1 = "a35a551de39fccbd49f5baf430afbe192e28a2c8";
+    store.replaceSources(
+        TEXT,
+        URI.create("http://cellar/manifest"),
+        List.of(new Source(FILE, ITEM, "image/tiff", "0000000000000000000000000000000000000000")));
+    store.replaceSources(
+        otherText,
+        URI.create("http://cellar/manifest-2"),
+        List.of(new Source(FILE, ITEM, "image/tiff", validSha1)));
+    var entered = new CountDownLatch(1);
+    var release = new CountDownLatch(1);
+    SourceFetcher fetcher =
+        (uri, maxBytes) -> {
+          entered.countDown();
+          try {
+            release.await();
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(e);
+          }
+          return payload;
+        };
+    var service =
+        service(store, fetcher, (bytes, variant) -> new Rendered(new byte[] {1, 2, 3}, 100, 50));
+
+    var badFirst =
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
+    entered.await();
+    var goodSecond =
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(otherText, FILE, Variant.PREVIEW).orElseThrow());
+    release.countDown();
+
+    assertThatThrownBy(badFirst::get).hasCauseInstanceOf(ImageGoneException.class);
+    assertThat(goodSecond.get().webp()).isEqualTo(new byte[] {1, 2, 3});
   }
 
   @Test
@@ -210,6 +273,77 @@ class ImageServiceTest {
   }
 
   @Test
+  void boundsConcurrentInFlightMissesToMaxFetchesPlusMaxConversions() throws Exception {
+    var store = new InMemoryStore();
+    var item2 = URI.create("http://cellar/item/fig_2");
+    var item3 = URI.create("http://cellar/item/fig_3");
+    store.replaceSources(
+        TEXT,
+        URI.create("http://cellar/manifest"),
+        List.of(
+            new Source(FILE, ITEM, "image/tiff", null),
+            new Source("fig_2.tif", item2, "image/tiff", null),
+            new Source("fig_3.tif", item3, "image/tiff", null)));
+    var fetched = new AtomicInteger();
+    var renderEntered = new CountDownLatch(1);
+    var releaseRender = new CountDownLatch(1);
+    ImageRenderer renderer =
+        (bytes, variant) -> {
+          renderEntered.countDown();
+          try {
+            releaseRender.await();
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(e);
+          }
+          return new Rendered(new byte[] {1}, 10, 10);
+        };
+    SourceFetcher fetcher =
+        (uri, maxBytes) -> {
+          fetched.incrementAndGet();
+          return uri.toString().getBytes(StandardCharsets.UTF_8);
+        };
+    var props =
+        new ImageProperties(1, 1, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+    var service = service(store, fetcher, renderer, props);
+
+    var first =
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
+    renderEntered.await();
+    // 1 miss is rendering; maxFetches + maxConversions = 2 permits allow fig_2 to download while
+    // blocking fig_3 until a miss completes.
+    var second =
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(TEXT, "fig_2.tif", Variant.PREVIEW).orElseThrow());
+    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    while (System.nanoTime() < deadline && fetched.get() < 2) {
+      Thread.onSpinWait();
+    }
+    var thirdStarted = new CountDownLatch(1);
+    var thirdThread = new AtomicReference<Thread>();
+    var third =
+        CompletableFuture.supplyAsync(() -> {
+          thirdThread.set(Thread.currentThread());
+          thirdStarted.countDown();
+          return service.rendition(TEXT, "fig_3.tif", Variant.PREVIEW).orElseThrow();
+        });
+    thirdStarted.await();
+    long thirdDeadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
+    while (System.nanoTime() < thirdDeadline
+        && thirdThread.get().getState() != Thread.State.TIMED_WAITING) {
+      Thread.onSpinWait();
+    }
+    assertThat(fetched.get()).isEqualTo(2);
+    releaseRender.countDown();
+
+    first.get();
+    second.get();
+    third.get();
+    assertThat(fetched.get()).isEqualTo(3);
+  }
+
+  @Test
   void removesSourcesOnTextReplacedAndTextRemoved() {
     var store = new InMemoryStore();
     store.replaceSources(
@@ -255,6 +389,7 @@ class ImageServiceTest {
   private static final class InMemoryStore implements ImageStore {
     private final ConcurrentMap<String, ImageSource> sources = new ConcurrentHashMap<>();
     private final ConcurrentMap<String, Rendition> renditions = new ConcurrentHashMap<>();
+    private final AtomicInteger sourceLookupCount = new AtomicInteger();
 
     @Override
     public void replaceSources(TextId text, URI manifestation, List<Source> list) {
@@ -276,7 +411,12 @@ class ImageServiceTest {
 
     @Override
     public Optional<ImageSource> findSource(TextId text, String file) {
+      sourceLookupCount.incrementAndGet();
       return Optional.ofNullable(sources.get(key(text, file)));
+    }
+
+    int sourceLookups() {
+      return sourceLookupCount.get();
     }
 
     @Override

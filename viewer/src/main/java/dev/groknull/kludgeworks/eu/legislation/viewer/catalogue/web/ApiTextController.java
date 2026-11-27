@@ -150,7 +150,7 @@ class ApiTextController {
     return switch (preparation.texts().get(asked.version())) {
       case Text.Ready(var id) ->
           ResponseEntity.ok()
-              .eTag("W/\"" + id + "\"")
+              .eTag("W/\"" + id + "-" + images.version() + "\"")
               .header(HttpHeaders.CONTENT_LANGUAGE, asked.language().iso())
               .body(ready.apply(id).orElseThrow(Requests::notFound));
       case Text.Failed failed -> throw failed(asked, failed);

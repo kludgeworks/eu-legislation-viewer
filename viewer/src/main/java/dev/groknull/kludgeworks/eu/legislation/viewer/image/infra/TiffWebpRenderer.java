@@ -15,6 +15,7 @@ import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
 import javax.imageio.metadata.IIOMetadataNode;
+import javax.imageio.stream.MemoryCacheImageInputStream;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Component;
 
@@ -55,10 +56,7 @@ class TiffWebpRenderer implements ImageRenderer {
   }
 
   private static DecodedImage decode(byte[] tiffBytes) throws IOException {
-    try (var input = ImageIO.createImageInputStream(new ByteArrayInputStream(tiffBytes))) {
-      if (input == null) {
-        throw new ImageGoneException("No image input stream could be opened for TIFF bytes");
-      }
+    try (var input = new MemoryCacheImageInputStream(new ByteArrayInputStream(tiffBytes))) {
       var readers = ImageIO.getImageReadersByFormatName("TIFF");
       if (!readers.hasNext()) {
         throw new ImageUnavailableException("No TIFF ImageReader registered in JDK ImageIO");
