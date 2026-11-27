@@ -298,6 +298,9 @@ public final class Wording {
         out.append(' ').append(WhatCountsAsADifference.imageIsOnePiece(element)).append(' ');
       }
       for (var child : element.children()) {
+        if (!out.isEmpty()) {
+          out.append(' ');
+        }
         walk(child, this);
       }
       return List.of(element);

@@ -318,6 +318,32 @@ final class WhatCountsAsADifference {
   }
 
   /**
+   * The words of a figure: an image counts as one word, and each word of its caption and its
+   * description counts as a word.
+   *
+   * @param figureToken the figure as {@link Wording} reads it
+   * @return how many words the figure has
+   */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "words-of-a-figure")
+  static int wordsOfAFigure(String figureToken) {
+    var words = 0;
+    var text = figureToken;
+    if (text.startsWith("[image ")) {
+      var end = text.indexOf(']');
+      if (end >= 0) {
+        words++;
+        text = text.substring(end + 1);
+      }
+    }
+    for (var part : Wording.words(text)) {
+      if (LETTER_OR_DIGIT.matcher(part).find()) {
+        words++;
+      }
+    }
+    return words;
+  }
+
+  /**
    * A formula is one piece. The comparison reads it whole, as one token, not symbol by symbol: the
    * elements of its MathML alone do not read. Thus a changed formula shows whole as deleted, then
    * whole as inserted.

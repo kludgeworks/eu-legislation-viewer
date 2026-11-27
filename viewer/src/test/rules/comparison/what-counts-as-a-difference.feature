@@ -255,6 +255,15 @@ Feature: What counts as a difference, and how its edits show
       Then it inserts image "added.tif"
       And it does not edit "First sentence."
 
+  Rule: words-of-a-figure · The words of a figure
+    An image counts as one word, and each word of its caption and its description counts as a word.
+
+    Example: A figure with a caption and a description counts its image and their words
+      Given an article with paragraph "Intro."
+      And a later article with paragraph "Intro.", figure "fig.tif", caption "First second" and description "Third fourth fifth"
+      When the reader compares the two articles
+      Then it inserts 6 words
+
   Rule: deleted-text-stands-where-it-was · Deleted text stands where it was
     A deleted block or occurrence shows where it stood in the earlier text, before the insertion
     in its place. Each view of the comparison shows it there.

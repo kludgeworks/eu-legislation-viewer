@@ -26,6 +26,7 @@ java_test_suite(
         "@maven//:dev_matrixlab_webp4j_webp4j_core",
         "@maven//:io_micrometer_micrometer_observation",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_spring_tx",

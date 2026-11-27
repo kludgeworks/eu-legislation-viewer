@@ -333,12 +333,20 @@ public class DifferenceSteps {
 
   @Given("an article with paragraph {string}")
   public void articleWithParagraph(String words) {
-    earlierArticle = articleParagraphText(words, null);
+    earlierArticle = articleParagraphText(words, null, null, null);
   }
 
   @Given("a later article with paragraph {string} and figure {string}")
   public void laterArticleWithParagraphAndFigure(String words, String src) {
-    laterArticle = articleParagraphText(words, src);
+    laterArticle = articleParagraphText(words, src, "Diagram", null);
+  }
+
+  @Given(
+      "a later article with paragraph {string}, figure {string}, caption {string} and description"
+          + " {string}")
+  public void laterArticleWithParagraphAndDescribedFigure(
+      String words, String src, String caption, String description) {
+    laterArticle = articleParagraphText(words, src, caption, description);
   }
 
   @When("the reader compares the two articles")
@@ -411,11 +419,12 @@ public class DifferenceSteps {
     return new Element("legalText", Map.of("kind", "act", "xml:lang", "en"), List.of(article), "");
   }
 
-  private static Element articleParagraphText(String words, @Nullable String src) {
+  private static Element articleParagraphText(
+      String words, @Nullable String src, @Nullable String caption, @Nullable String description) {
     var children = new ArrayList<Element>();
     children.add(new Element("t", Map.of("v", words), List.of(), ""));
     if (src != null) {
-      children.add(figureElement(src, "Diagram"));
+      children.add(figureElement(src, Objects.requireNonNullElse(caption, "Diagram"), description));
     }
     var paragraph = new Element("p", Map.of(), children, "");
     var article =
@@ -461,7 +470,13 @@ public class DifferenceSteps {
   }
 
   private static Element figureElement(String src, String captionText) {
-    var caption =
+    return figureElement(src, captionText, null);
+  }
+
+  private static Element figureElement(
+      String src, String captionText, @Nullable String descriptionText) {
+    var children = new ArrayList<Element>();
+    children.add(
         new Element(
             "caption",
             Map.of(),
@@ -471,8 +486,21 @@ public class DifferenceSteps {
                     Map.of(),
                     List.of(new Element("t", Map.of("v", captionText), List.of(), "")),
                     "")),
-            "");
-    return new Element("figure", Map.of("src", src, "content", "techDesign"), List.of(caption), "");
+            ""));
+    if (descriptionText != null) {
+      children.add(
+          new Element(
+              "description",
+              Map.of(),
+              List.of(
+                  new Element(
+                      "p",
+                      Map.of(),
+                      List.of(new Element("t", Map.of("v", descriptionText), List.of(), "")),
+                      "")),
+              ""));
+    }
+    return new Element("figure", Map.of("src", src, "content", "techDesign"), children, "");
   }
 
   private static boolean editedImage(Element element, String edit, String src) {

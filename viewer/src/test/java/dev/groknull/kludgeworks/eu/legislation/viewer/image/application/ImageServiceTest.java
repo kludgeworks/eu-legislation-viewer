@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.image.application;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextRemoved;
@@ -30,7 +31,6 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Consumer;
 import org.junit.jupiter.api.Test;
 import org.springframework.transaction.TransactionStatus;
@@ -80,25 +80,19 @@ class ImageServiceTest {
         CompletableFuture.supplyAsync(
             () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
     entered.await();
-    var secondStarted = new CountDownLatch(1);
-    var secondThread = new AtomicReference<Thread>();
     var second =
-        CompletableFuture.supplyAsync(() -> {
-          secondThread.set(Thread.currentThread());
-          secondStarted.countDown();
-          return service.rendition(secondText, FILE, Variant.PREVIEW).orElseThrow();
-        });
-    secondStarted.await();
-    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
-    while (System.nanoTime() < deadline
-        && (store.sourceLookups() < 2 || secondThread.get().getState() != Thread.State.WAITING)) {
-      Thread.onSpinWait();
-    }
-    assertThat(secondThread.get().getState()).isEqualTo(Thread.State.WAITING);
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(secondText, FILE, Variant.PREVIEW).orElseThrow());
+    await().atMost(Duration.ofSeconds(5)).until(() -> store.sourceLookups() == 2);
+    await()
+        .during(Duration.ofMillis(30))
+        .atMost(Duration.ofSeconds(1))
+        .until(() -> fetches.get() == 1);
     release.countDown();
 
     var a = first.get();
     var b = second.get();
+    assertThat(store.sourceLookups()).isEqualTo(2);
     assertThat(fetches.get()).isEqualTo(1);
     assertThat(a.sourceSha256()).isEqualTo(b.sourceSha256());
     assertThat(a.webp()).isEqualTo(new byte[] {1, 2, 3});
@@ -119,16 +113,22 @@ class ImageServiceTest {
         otherText,
         URI.create("http://cellar/manifest-2"),
         List.of(new Source(FILE, ITEM, "image/tiff", validSha1)));
-    var entered = new CountDownLatch(1);
-    var release = new CountDownLatch(1);
+    var firstEntered = new CountDownLatch(1);
+    var secondEntered = new CountDownLatch(1);
+    var releaseFirst = new CountDownLatch(1);
+    var fetches = new AtomicInteger();
     SourceFetcher fetcher =
         (uri, maxBytes) -> {
-          entered.countDown();
-          try {
-            release.await();
-          } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new IllegalStateException(e);
+          if (fetches.incrementAndGet() == 1) {
+            firstEntered.countDown();
+            try {
+              releaseFirst.await();
+            } catch (InterruptedException e) {
+              Thread.currentThread().interrupt();
+              throw new IllegalStateException(e);
+            }
+          } else {
+            secondEntered.countDown();
           }
           return payload;
         };
@@ -138,14 +138,16 @@ class ImageServiceTest {
     var badFirst =
         CompletableFuture.supplyAsync(
             () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
-    entered.await();
+    firstEntered.await();
     var goodSecond =
         CompletableFuture.supplyAsync(
             () -> service.rendition(otherText, FILE, Variant.PREVIEW).orElseThrow());
-    release.countDown();
+    assertThat(secondEntered.await(5, TimeUnit.SECONDS)).isTrue();
+    releaseFirst.countDown();
 
     assertThatThrownBy(badFirst::get).hasCauseInstanceOf(ImageGoneException.class);
     assertThat(goodSecond.get().webp()).isEqualTo(new byte[] {1, 2, 3});
+    assertThat(fetches.get()).isEqualTo(2);
   }
 
   @Test
@@ -316,24 +318,15 @@ class ImageServiceTest {
     var second =
         CompletableFuture.supplyAsync(
             () -> service.rendition(TEXT, "fig_2.tif", Variant.PREVIEW).orElseThrow());
-    long deadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
-    while (System.nanoTime() < deadline && fetched.get() < 2) {
-      Thread.onSpinWait();
-    }
-    var thirdStarted = new CountDownLatch(1);
-    var thirdThread = new AtomicReference<Thread>();
+    await().atMost(Duration.ofSeconds(5)).until(() -> fetched.get() == 2);
     var third =
-        CompletableFuture.supplyAsync(() -> {
-          thirdThread.set(Thread.currentThread());
-          thirdStarted.countDown();
-          return service.rendition(TEXT, "fig_3.tif", Variant.PREVIEW).orElseThrow();
-        });
-    thirdStarted.await();
-    long thirdDeadline = System.nanoTime() + TimeUnit.SECONDS.toNanos(5);
-    while (System.nanoTime() < thirdDeadline
-        && thirdThread.get().getState() != Thread.State.TIMED_WAITING) {
-      Thread.onSpinWait();
-    }
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(TEXT, "fig_3.tif", Variant.PREVIEW).orElseThrow());
+    await().atMost(Duration.ofSeconds(5)).until(() -> store.sourceLookups() == 3);
+    await()
+        .during(Duration.ofMillis(50))
+        .atMost(Duration.ofSeconds(1))
+        .until(() -> fetched.get() == 2);
     assertThat(fetched.get()).isEqualTo(2);
     releaseRender.countDown();
 
@@ -341,6 +334,53 @@ class ImageServiceTest {
     second.get();
     third.get();
     assertThat(fetched.get()).isEqualTo(3);
+  }
+
+  @Test
+  void timesOutWhenJoiningAnInFlightConversionThatDoesNotFinish() throws Exception {
+    var store = new InMemoryStore();
+    var secondText = new TextId(12);
+    store.replaceSources(
+        TEXT,
+        URI.create("http://cellar/manifest"),
+        List.of(new Source(FILE, ITEM, "image/tiff", null)));
+    store.replaceSources(
+        secondText,
+        URI.create("http://cellar/manifest-2"),
+        List.of(new Source(FILE, ITEM, "image/tiff", null)));
+    var entered = new CountDownLatch(1);
+    var release = new CountDownLatch(1);
+    ImageRenderer renderer =
+        (bytes, variant) -> {
+          entered.countDown();
+          try {
+            release.await();
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException(e);
+          }
+          return new Rendered(new byte[] {1, 2, 3}, 100, 50);
+        };
+    var props =
+        new ImageProperties(4, 2, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+    var service =
+        service(
+            store,
+            (uri, maxBytes) -> "tiff-bytes".getBytes(StandardCharsets.UTF_8),
+            renderer,
+            props,
+            Duration.ofMillis(80));
+
+    var first =
+        CompletableFuture.supplyAsync(
+            () -> service.rendition(TEXT, FILE, Variant.PREVIEW).orElseThrow());
+    entered.await();
+
+    assertThatThrownBy(() -> service.rendition(secondText, FILE, Variant.PREVIEW))
+        .isInstanceOf(ImageUnavailableException.class)
+        .hasMessageContaining("Timed out");
+    release.countDown();
+    assertThat(first.get().webp()).isEqualTo(new byte[] {1, 2, 3});
   }
 
   @Test
@@ -376,6 +416,15 @@ class ImageServiceTest {
 
   private static ImageService service(
       ImageStore store, SourceFetcher fetcher, ImageRenderer renderer, ImageProperties props) {
+    return service(store, fetcher, renderer, props, Duration.ofSeconds(30));
+  }
+
+  private static ImageService service(
+      ImageStore store,
+      SourceFetcher fetcher,
+      ImageRenderer renderer,
+      ImageProperties props,
+      Duration waitTimeout) {
     var tx =
         new TransactionTemplate() {
           @Override
@@ -383,7 +432,8 @@ class ImageServiceTest {
             action.accept(new SimpleTransactionStatus());
           }
         };
-    return new ImageService(store, fetcher, renderer, props, tx, ObservationRegistry.NOOP);
+    return ImageService.withWaitTimeout(
+        store, fetcher, renderer, props, tx, ObservationRegistry.NOOP, waitTimeout);
   }
 
   private static final class InMemoryStore implements ImageStore {

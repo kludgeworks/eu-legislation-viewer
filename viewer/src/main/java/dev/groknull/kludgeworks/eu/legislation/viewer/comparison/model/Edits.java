@@ -108,9 +108,11 @@ final class Edits {
    */
   private static Edited words(Element from, Element to) {
     var before = new ArrayList<String>();
-    var pieces = new ArrayList<Element>();
-    Wording.collect(from, before, pieces);
-    var after = Wording.tokens(to);
+    var beforePieces = new ArrayList<Element>();
+    Wording.collect(from, before, beforePieces);
+    var after = new ArrayList<String>();
+    var afterPieces = new ArrayList<Element>();
+    Wording.collect(to, after, afterPieces);
     var beforeSaid = Wording.said(before);
     var afterSaid = Wording.said(after);
     var edited = new boolean[after.size()];
@@ -127,12 +129,19 @@ final class Edits {
       for (var i = 0; i < target.size(); i++) {
         edited[target.getPosition() + i] = true;
       }
-      inserted += words(target.getLines());
+      inserted +=
+          words(afterSaid, afterPieces, target.getPosition(), target.getPosition() + target.size());
       if (source.size() > 0) {
         deletedAt
             .computeIfAbsent(target.getPosition(), at -> new ArrayList<>())
-            .addAll(pieces.subList(source.getPosition(), source.getPosition() + source.size()));
-        deleted += words(source.getLines());
+            .addAll(
+                beforePieces.subList(source.getPosition(), source.getPosition() + source.size()));
+        deleted +=
+            words(
+                beforeSaid,
+                beforePieces,
+                source.getPosition(),
+                source.getPosition() + source.size());
       }
     }
     return new Edited(Runs.edited(to, INSERTED, edited, deletedAt), inserted, deleted);
@@ -143,8 +152,10 @@ final class Edits {
    * or {@link #DELETED}.
    */
   static Edited all(Element element, String edit) {
-    var tokens = Wording.tokens(element);
-    var words = wordCount(element);
+    var tokens = new ArrayList<String>();
+    var pieces = new ArrayList<Element>();
+    Wording.collect(element, tokens, pieces);
+    var words = words(Wording.said(tokens), pieces, 0, tokens.size());
     var marker = edit.equals(INSERTED) ? "ins" : "del";
     if (element.name().equals("figure")) {
       var wrapped = Runs.wrap(edit, only(element, marker));
@@ -154,23 +165,6 @@ final class Edits {
     Arrays.fill(edited, true);
     var shown = only(Runs.edited(element, edit, edited, Map.of()), marker);
     return edit.equals(INSERTED) ? new Edited(shown, words, 0) : new Edited(shown, 0, words);
-  }
-
-  private static int wordCount(Element element) {
-    if (element.name().equals("figure")) {
-      var src = element.attribute("src");
-      var image = src != null && !src.isEmpty() ? 1 : 0;
-      return image + element.children().stream().mapToInt(Edits::wordCount).sum();
-    }
-    if (hasFigure(element)) {
-      return element.children().stream().mapToInt(Edits::wordCount).sum();
-    }
-    return words(Wording.said(Wording.tokens(element)));
-  }
-
-  private static boolean hasFigure(Element element) {
-    return element.children().stream()
-        .anyMatch(child -> child.name().equals("figure") || hasFigure(child));
   }
 
   /**
@@ -232,8 +226,16 @@ final class Edits {
     return tokens.stream().allMatch(String::isBlank);
   }
 
-  /** Returns how many of {@code tokens} are words. */
-  private static int words(List<String> tokens) {
-    return (int) tokens.stream().filter(WhatCountsAsADifference::whatAWordIs).count();
+  /** Returns how many words {@code tokens[from..to)} hold, counting each figure by its rule. */
+  private static int words(List<String> tokens, List<Element> pieces, int from, int to) {
+    var count = 0;
+    for (var i = from; i < to; i++) {
+      if (pieces.get(i).name().equals("figure")) {
+        count += WhatCountsAsADifference.wordsOfAFigure(tokens.get(i));
+      } else if (WhatCountsAsADifference.whatAWordIs(tokens.get(i))) {
+        count++;
+      }
+    }
+    return count;
   }
 }

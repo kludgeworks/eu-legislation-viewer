@@ -133,6 +133,13 @@ class FigureEditsTest {
     assertThat(edited).isNotNull();
     assertThat(edited.blocks().deleted()).isEqualTo(6);
     assertThat(edited.blocks().inserted()).isEqualTo(3);
+
+    var inParagraph =
+        Edits.between(
+            new Element("p", Map.of(), List.of(before), ""),
+            new Element("div", Map.of(), List.of(after), ""));
+    assertThat(inParagraph.deleted()).isEqualTo(6);
+    assertThat(inParagraph.inserted()).isEqualTo(3);
   }
 
   @Test

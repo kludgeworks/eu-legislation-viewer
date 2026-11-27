@@ -26,9 +26,11 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -52,9 +54,11 @@ class ImageService implements Images {
   private final Semaphore fetches;
   private final Semaphore workers;
   private final Semaphore misses;
+  private final Duration waitTimeout;
   private final ConcurrentMap<FlightKey, CompletableFuture<Rendition>> inFlight =
       new ConcurrentHashMap<>();
 
+  @Autowired
   ImageService(
       ImageStore store,
       SourceFetcher fetcher,
@@ -62,6 +66,29 @@ class ImageService implements Images {
       ImageProperties properties,
       TransactionTemplate transactions,
       ObservationRegistry observations) {
+    this(store, fetcher, renderer, properties, transactions, observations, PERMIT_WAIT_TIMEOUT);
+  }
+
+  static ImageService withWaitTimeout(
+      ImageStore store,
+      SourceFetcher fetcher,
+      ImageRenderer renderer,
+      ImageProperties properties,
+      TransactionTemplate transactions,
+      ObservationRegistry observations,
+      Duration waitTimeout) {
+    return new ImageService(
+        store, fetcher, renderer, properties, transactions, observations, waitTimeout);
+  }
+
+  private ImageService(
+      ImageStore store,
+      SourceFetcher fetcher,
+      ImageRenderer renderer,
+      ImageProperties properties,
+      TransactionTemplate transactions,
+      ObservationRegistry observations,
+      Duration waitTimeout) {
     this.store = store;
     this.fetcher = fetcher;
     this.renderer = renderer;
@@ -71,6 +98,7 @@ class ImageService implements Images {
     this.fetches = new Semaphore(properties.maxFetches());
     this.workers = new Semaphore(properties.maxConversions());
     this.misses = new Semaphore(properties.maxFetches() + properties.maxConversions());
+    this.waitTimeout = waitTimeout;
   }
 
   @Override
@@ -119,7 +147,7 @@ class ImageService implements Images {
     var created = new CompletableFuture<Rendition>();
     var running = inFlight.putIfAbsent(key, created);
     if (running != null) {
-      var rendered = await(running);
+      var rendered = await(running, waitTimeout);
       if (foundSource.sourceSha256() == null) {
         var digest = HexFormat.of().parseHex(rendered.sourceSha256());
         transactions.executeWithoutResult(
@@ -169,16 +197,18 @@ class ImageService implements Images {
       return rechecked.get();
     }
     var started = System.nanoTime();
+    var deadlineNanos = started + waitTimeout.toNanos();
     try {
       acquirePermit(
           misses,
+          deadlineNanos,
           "Timed out waiting for image cache miss slot",
           "Interrupted waiting for image cache miss slot");
       try {
         var tiff =
             Objects.requireNonNull(
                 Observation.createNotStarted("image.fetch", observations)
-                    .observe(() -> fetchWithPermit(source.itemUri())));
+                    .observe(() -> fetchWithPermit(source.itemUri(), deadlineNanos)));
         var sha256 = digest("SHA-256", tiff);
         verifyDigests(source, tiff, sha256);
         var sha256Hex = HexFormat.of().formatHex(sha256);
@@ -191,7 +221,7 @@ class ImageService implements Images {
           });
           return existing.get();
         }
-        var rendered = renderWithPermit(tiff, variant);
+        var rendered = renderWithPermit(tiff, variant, deadlineNanos);
         transactions.executeWithoutResult(status -> {
           store.recordSourceDigest(source.text(), source.file(), sha256);
           store.storeRendition(
@@ -239,9 +269,10 @@ class ImageService implements Images {
     }
   }
 
-  private byte[] fetchWithPermit(URI itemUri) {
+  private byte[] fetchWithPermit(URI itemUri, long deadlineNanos) {
     acquirePermit(
         fetches,
+        deadlineNanos,
         "Timed out waiting for Cellar download slot",
         "Interrupted waiting for Cellar download slot");
     try {
@@ -251,9 +282,11 @@ class ImageService implements Images {
     }
   }
 
-  private ImageRenderer.Rendered renderWithPermit(byte[] tiff, Variant variant) {
+  private ImageRenderer.Rendered renderWithPermit(
+      byte[] tiff, Variant variant, long deadlineNanos) {
     acquirePermit(
         workers,
+        deadlineNanos,
         "Timed out waiting for image conversion worker",
         "Interrupted waiting for image conversion worker");
     try {
@@ -264,9 +297,13 @@ class ImageService implements Images {
   }
 
   private static void acquirePermit(
-      Semaphore permit, String timeoutMessage, String interruptedMessage) {
+      Semaphore permit, long deadlineNanos, String timeoutMessage, String interruptedMessage) {
+    var remainingNanos = deadlineNanos - System.nanoTime();
+    if (remainingNanos <= 0) {
+      throw new ImageUnavailableException(timeoutMessage);
+    }
     try {
-      if (!permit.tryAcquire(PERMIT_WAIT_TIMEOUT.toMillis(), TimeUnit.MILLISECONDS)) {
+      if (!permit.tryAcquire(remainingNanos, TimeUnit.NANOSECONDS)) {
         throw new ImageUnavailableException(timeoutMessage);
       }
     } catch (InterruptedException e) {
@@ -291,9 +328,11 @@ class ImageService implements Images {
     }
   }
 
-  private static Rendition await(CompletableFuture<Rendition> future) {
+  private static Rendition await(CompletableFuture<Rendition> future, Duration timeout) {
     try {
-      return future.get();
+      return future.get(timeout.toNanos(), TimeUnit.NANOSECONDS);
+    } catch (TimeoutException e) {
+      throw new ImageUnavailableException("Timed out waiting for in-flight image", e);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
       throw new ImageUnavailableException("Interrupted waiting for in-flight image", e);
