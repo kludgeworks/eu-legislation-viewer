@@ -133,6 +133,8 @@ maven.install(
         # the texts' chunks, compressed by the app: Postgres compresses with pglz or lz4 only (the content
         # module)
         "com.github.luben:zstd-jni:1.5.7-4",
+        # lossless WebP encoding for Formex TIFF renditions (the image module)
+        "dev.matrixlab.webp4j:webp4j-core:2.5.0",
         # builders and withers for records, generated (an annotation processor: //:tools_build_record_builder)
         "io.soabase.record-builder:record-builder-core:53",
         "io.soabase.record-builder:record-builder-processor:53",

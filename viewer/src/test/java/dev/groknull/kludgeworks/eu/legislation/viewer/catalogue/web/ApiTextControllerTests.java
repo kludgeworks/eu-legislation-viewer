@@ -18,9 +18,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.Images;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -67,9 +69,11 @@ class ApiTextControllerTests {
   @MockitoBean Acts acts;
   @MockitoBean Texts texts;
   @MockitoBean Content content;
+  @MockitoBean Images images;
 
   @BeforeEach
   void act() {
+    when(images.version()).thenReturn("v1");
     when(acts.find(any(ActIdentifier.class))).thenReturn(Optional.empty());
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
     when(content.publicText(STORED))
@@ -108,7 +112,7 @@ class ApiTextControllerTests {
         .hasContentType(MediaTypes.HAL_JSON)
         .headers()
         .hasValue(HttpHeaders.CONTENT_LANGUAGE, "en")
-        .hasValue(HttpHeaders.ETAG, "W/\"7\"");
+        .hasValue(HttpHeaders.ETAG, "W/\"7-v1\"");
     var text = json(result);
     assertThat(text.at("/version").asString()).isEqualTo("2021-03-15");
     assertThat(text.at("/celex").asString()).isEqualTo("02015R1998-20210315");
@@ -131,11 +135,17 @@ class ApiTextControllerTests {
   }
 
   @Test
-  void answersAClientThatHasTheTextWithNotModified() {
+  void answersAClientThatHasTheTextWithNotModifiedUntilImageVersionChanges() {
     textIs(new Text.Ready(STORED));
 
-    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7\""))
+    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7-v1\""))
         .hasStatus(HttpStatus.NOT_MODIFIED);
+
+    when(images.version()).thenReturn("v2");
+    assertThat(mvc.get().uri(TEXT).header(HttpHeaders.IF_NONE_MATCH, "W/\"7-v1\""))
+        .hasStatusOk()
+        .headers()
+        .hasValue(HttpHeaders.ETAG, "W/\"7-v2\"");
   }
 
   @Test
@@ -215,6 +225,33 @@ class ApiTextControllerTests {
         .isEqualTo(VERSION + "/texts/eng/occurrences/anx/pnt_1.2");
     assertThat(occurrence.at("/_links/up/href").asString()).isEqualTo(VERSION + "/texts/eng");
     assertThat(mvc.get().uri(TEXT + "/occurrences/art_99")).hasStatus(HttpStatus.NOT_FOUND);
+  }
+
+  @Test
+  void includesProxyAndSourceUrlsOnFigures() throws UnsupportedEncodingException {
+    var figure =
+        new PublicText.Figure("L_2009330EN.01008102.tif", "form", List.of(), List.of(), List.of());
+    var figOccurrence =
+        new PublicText.Occurrence(
+            "anx/fig_1", "point", null, null, null, List.of(), List.of(figure));
+    when(content.publicOccurrence(STORED, "anx/fig_1"))
+        .thenReturn(Optional.of(new PublicText.OccurrenceWithFootnotes(figOccurrence, List.of())));
+    when(images.sourceUris(STORED))
+        .thenReturn(
+            Map.of(
+                "L_2009330EN.01008102.tif",
+                URI.create("http://publications.europa.eu/resource/cellar/abc.0001.03/DOC_1")));
+    textIs(new Text.Ready(STORED));
+
+    var occurrence = json(mvc.get().uri(TEXT + "/occurrences/anx/fig_1").exchange());
+
+    var entry = occurrence.at("/images/L_2009330EN.01008102.tif");
+    assertThat(entry.at("/preview").asString())
+        .isEqualTo("http://localhost/images/7/L_2009330EN.01008102.tif?v=v1");
+    assertThat(entry.at("/original").asString())
+        .isEqualTo("http://localhost/images/7/L_2009330EN.01008102.tif?variant=original&v=v1");
+    assertThat(entry.at("/source").asString())
+        .isEqualTo("http://publications.europa.eu/resource/cellar/abc.0001.03/DOC_1");
   }
 
   /** Has the preparation in English hold {@code text} for the consolidation of 15 March 2021. */

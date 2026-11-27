@@ -61,6 +61,8 @@ spec:
               value: "1"
             - name: VIEWER_INGEST_WORKERS
               value: "1"
+            - name: VIEWER_IMAGE_MAXCONVERSIONS
+              value: "1"
             # the threads Paketo's memory calculator sets stack aside for (default 250): requests
             # run on virtual threads, so few platform threads, and the rest goes to the heap
             - name: BPL_JVM_THREAD_COUNT

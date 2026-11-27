@@ -347,6 +347,18 @@ it knows nothing of the viewer's domain. The other modules use the shared terms.
 | manifestation | An expression in one format. The viewer reads Formex, `fmx4` (`FormexManifestation`). |
 | item | One file of a manifestation, or one zip that holds all its files. |
 
+### Images (module `image`)
+
+Each image comes from a Formex TIFF file in Cellar. The viewer stores WebP images scaled and
+converted for pages (`ImageRendition`) and records the source files of each stored text.
+
+| Term | Meaning |
+| --- | --- |
+| image | A Formex graphic in a figure or inline block, identified by its Formex file name (`FILEREF`). |
+| preview | A stored WebP image scaled from its TIFF DPI to 120 DPI (longest side at most 1600 px), shown on pages. |
+| full size | A stored WebP image kept at its original Formex pixel dimensions, exposed via the API. |
+| conversion version | A digest of the image scaling and WebP encoding code (`RecipeVersion`). Versioned addresses change when this digest changes. |
+
 ## Principles
 
 **Convention.**
@@ -388,6 +400,7 @@ variable has a light value and a dark value. The colour variables are in
 | Purple | `--corr-…` | A correction by a corrigendum: a difference that only corrigenda made (`corrigendum-corrects`). Its inserted words have a dotted underline and its deleted words are struck through, both purple, not blue and red. |
 | Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
 | Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the divergence note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
+| Image background | `--figure-bg` | Paper background behind Official Journal black-ink images (`transparent` in light mode, `#fff` in dark mode). |
 
 Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. An amber
 bar has words.
@@ -452,6 +465,26 @@ not answer, the page shows the Failed loading state, with Try again.
 - An act with many versions: 2015/1998 has 23.
 - An act with one version: 2016/679.
 - A language that a version does not have: Irish for 2015/1998 on 31 December 2021.
+
+## Images
+
+**Convention.** On Read and Compare, each figure whose Formex image file is saved shows its preview
+WebP image left-aligned, followed by its caption and any text description (`legal/figure.jte`),
+without a link wrapper. Each inline image shows its WebP image directly (`legal/img.jte`).
+
+- Every shown image has non-empty alternative text from its kind (`Character`, `Form`, `Formula`,
+  `Signature`, `Technical diagram`, `Figure` or `Image`) (`LegalRenderer.imageAlt`).
+- Every shown image sits on `--figure-bg`, so dark-mode pages keep black Official Journal line art
+  readable.
+- When a text has no saved location for that image file in Cellar metadata (or a view renders
+  without a text identity), the page keeps the italic `[image]` placeholder and does not request
+  an image URL.
+- In Compare (`image-shows-before-and-after`), two figures with different Formex image files are not
+  pixel-diffed. Differences and Whole text show both the old figure in a `--del-ink` frame and the
+  new figure in an `--ins-ink` frame (or `--corr-ink` when only corrigenda changed it). Synopsis
+  hides inserted figures under From and deleted figures under To. A block that holds a figure
+  compares by its pieces (`block-with-a-figure-compares-by-its-pieces`), so the figure stays in its
+  place while surrounding words and captions show edits word by word.
 
 ## Review scenarios
 

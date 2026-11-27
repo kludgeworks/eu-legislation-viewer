@@ -5,7 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application.Convers
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.Optional;
-import net.sf.saxon.s9api.XdmNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.resilience.annotation.ConcurrencyLimit;
@@ -37,29 +36,31 @@ class FormexConversion implements Conversions {
   }
 
   /**
-   * Returns the legal-text XML of a document. For example, {@code celex} is 32015R1998 or
-   * 02015R1998-20260322.
+   * Returns the legal-text XML and image sources of a document. For example, {@code celex} is
+   * 32015R1998 or 02015R1998-20260322.
    */
   @Override
   @ConcurrencyLimit(limitString = "${viewer.ingest.max-conversions}")
-  public Optional<XdmNode> convert(String celex, Language language) {
+  public Optional<Converted> convert(String celex, Language language) {
     var started = System.nanoTime();
-    var documents = source.fetch(celex, language, converter::parse);
-    if (documents.isEmpty()) {
+    var fetchedPackage = source.fetch(celex, language, converter::parse);
+    if (fetchedPackage.isEmpty()) {
       LOG.info("No Formex of {} in {}", celex, language.code());
       return Optional.empty();
     }
     var fetched = System.nanoTime();
-    var xml = converter.convert(documents.get(), celex);
+    var documents = fetchedPackage.get().documents();
+    var xml = converter.convert(documents, celex);
     LOG.info(
         "Converted {} in {}: {} KB of Formex in {} file(s), fetched in {} ms, converted in {} ms",
         celex,
         language.code(),
-        documents.get().stream().mapToLong(FormexConverter.Document::size).sum() / 1024,
-        documents.get().size(),
+        documents.stream().mapToLong(FormexConverter.Document::size).sum() / 1024,
+        documents.size(),
         Duration.ofNanos(fetched - started).toMillis(),
         Duration.ofNanos(System.nanoTime() - fetched).toMillis());
-    return Optional.of(xml);
+    return Optional.of(
+        new Converted(xml, fetchedPackage.get().manifestation(), fetchedPackage.get().images()));
   }
 
   @Override

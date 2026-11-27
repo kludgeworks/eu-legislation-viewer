@@ -27,7 +27,7 @@ class FormexConversionTest {
 
   @Test
   void convertsTheDocumentsFormex() {
-    var xml = conversion.convert(CONSOLIDATION, Language.ENG).orElseThrow();
+    var xml = conversion.convert(CONSOLIDATION, Language.ENG).orElseThrow().legalText();
     var legalText = xml.select(child(isElement())).asNode();
 
     assertThat(legalText.attribute("act")).isEqualTo("32015R1998");
@@ -45,7 +45,7 @@ class FormexConversionTest {
   @ParameterizedTest
   @ValueSource(strings = {CONSOLIDATION, "32024R2867"})
   void givesWhatTheConverterGivesFromTheFilesOnDisk(String document) throws SaxonApiException {
-    var xml = conversion.convert(document, Language.ENG).orElseThrow();
+    var xml = conversion.convert(document, Language.ENG).orElseThrow().legalText();
 
     var serializer = SAXON.newSerializer();
     serializer.setOutputProperty(Serializer.Property.INDENT, "yes");

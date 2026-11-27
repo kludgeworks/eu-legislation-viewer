@@ -59,6 +59,7 @@ java_library(
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/image",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
@@ -84,6 +85,7 @@ java_test_suite(
     ],
     deps = [
         ":fixtures",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/image",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",

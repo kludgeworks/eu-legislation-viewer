@@ -9,7 +9,8 @@
     "version": { "type": "string", "description": "Where the version is among the versions of the act: oj, or the date from which it applies." },
     "celex": { "type": "string", "description": "The CELEX number of the document that holds the text." },
     "language": { "type": "string", "description": "The language, by the EU's code. For example, eng." },
-    "text": { "$ref": "#/$defs/legalText" }
+    "text": { "$ref": "#/$defs/legalText" },
+    "images": { "$ref": "#/$defs/images" }
   },
   "required": ["_links", "version", "celex", "language", "text"],
   "$defs": {
@@ -168,6 +169,21 @@
         "tags": { "$ref": "#/$defs/tags" }
       },
       "required": ["type", "file"]
+    },
+    "images": {
+      "description": "Addresses of the image files of the text or occurrence, keyed by file name. Absent if there are none.",
+      "type": "object",
+      "additionalProperties": { "$ref": "#/$defs/image" }
+    },
+    "image": {
+      "description": "Addresses of one image file.",
+      "type": "object",
+      "properties": {
+        "preview": { "type": "string", "format": "uri", "description": "Address of the scaled WebP image served by the viewer." },
+        "original": { "type": "string", "format": "uri", "description": "Address of the full-size WebP image served by the viewer." },
+        "source": { "type": "string", "format": "uri", "description": "Address of the original TIFF item in Cellar." }
+      },
+      "required": ["preview", "original"]
     },
     "quotation": {
       "description": "Text that an amending act quotes: the occurrences that it inserts or replaces in another act. It is not law of this act.",

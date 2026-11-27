@@ -1,0 +1,123 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "jooq_tables")
+
+# The image module's API and domain: Images, ImageUrls, and image rendition types
+java_library(
+    name = "image",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_modulith_spring_modulith_api",
+    ],
+)
+
+# model/
+# Domain limits, source metadata, and the generated rendition recipe version
+java_library(
+    name = "model",
+    srcs = glob(["model/*.java"]) + [":recipe_version"],
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        ":image",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
+
+# application/
+# Single-flight coalescing, bounded worker concurrency, and Postgres LRU cache orchestration
+java_library(
+    name = "application",
+    srcs = glob(["application/*.java"]),
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        ":image",
+        ":model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:io_micrometer_micrometer_observation",
+        "@maven//:jakarta_validation_jakarta_validation_api",
+        "@maven//:org_hibernate_validator_hibernate_validator",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_modulith_spring_modulith_events_api",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_tx",
+    ],
+)
+
+# infra/
+# Cellar TIFF downloads, JDK ImageIO + webp4j conversion, and jOOQ Postgres cache storage
+java_library(
+    name = "infra",
+    srcs = glob(["infra/*.java"]),
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        ":application",
+        ":image",
+        ":jooq",
+        ":model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:dev_matrixlab_webp4j_webp4j_core",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
+    ],
+)
+
+# web/
+# Serves converted Formex WebP images over HTTP
+java_library(
+    name = "web",
+    srcs = glob(["web/*.java"]),
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        ":image",
+        ":model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
+        "@maven//:jakarta_servlet_jakarta_servlet_api",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_webmvc",
+    ],
+)
+
+# The module's tables (image_source, image_rendition) as jOOQ classes, from its migrations
+jooq_tables(
+    name = "jooq",
+    config = "infra/jooq.xml",
+    migrations = "//viewer/src/main/resources:image_migrations",
+    package = "dev.groknull.kludgeworks.eu.legislation.viewer.image.infra.jooq",
+    deps = [
+        ":image",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+    ],
+)
+
+# The version of the rendition recipe (model.RecipeVersion): SHA-256 of renderer and limits so any
+# scaling or encoding change automatically invalidates old cached renditions.
+genrule(
+    name = "recipe_version",
+    srcs = [
+        "infra/TiffWebpRenderer.java",
+        "model/ImageLimits.java",
+    ],
+    outs = ["model/RecipeVersion.java"],
+    cmd = "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest) $@ dev.groknull.kludgeworks.eu.legislation.viewer.image.model RecipeVersion $(SRCS)",
+    tools = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest"],
+)

@@ -94,7 +94,8 @@ public class FormexFiles {
                         .orElseThrow(
                             () -> new CellarException("No file name for " + r.get("item"))),
                     URI.create(r.get("item")),
-                    r.get("mime")))
+                    r.get("mime"),
+                    r.find("sha1").map(s -> s.toLowerCase(Locale.ROOT)).orElse(null)))
             .toList();
     LOG.debug("Formex of {} in {}: {} items of {}", celex, language, files.size(), uri);
     return Optional.of(new FormexManifestation(URI.create(uri), files));

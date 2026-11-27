@@ -3,12 +3,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.Images;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.SourceUnavailableException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
+import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -49,7 +51,7 @@ final class FormexFixtures implements FormexSource {
   final List<String> requests = new CopyOnWriteArrayList<>();
 
   @Override
-  public <T> Optional<List<T>> fetch(
+  public <T> Optional<Fetched<T>> fetch(
       String celex, Language language, BiFunction<String, InputStream, T> read) {
     requests.add(celex + " " + language.code());
     if (language == Language.SWE) {
@@ -76,9 +78,11 @@ final class FormexFixtures implements FormexSource {
       return Optional.empty();
     }
     asked.add(celex + " " + language.code());
+    var manifestation = URI.create("urn:fixture:" + celex + ":" + language.code());
     if (refused != null) {
       var bytes = new ByteArrayInputStream(refused.getBytes(StandardCharsets.UTF_8));
-      return Optional.of(List.of(read.apply(celex + ".xml", bytes)));
+      return Optional.of(
+          new Fetched<>(manifestation, List.of(read.apply(celex + ".xml", bytes)), List.of()));
     }
     var documents = new ArrayList<T>();
     try {
@@ -99,7 +103,16 @@ final class FormexFixtures implements FormexSource {
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }
-    return Optional.of(documents);
+    var images = new ArrayList<Images.Source>();
+    try (var files = Files.list(fixture(celex))) {
+      for (var file : files.filter(f -> f.toString().endsWith(".tif")).sorted().toList()) {
+        images.add(
+            new Images.Source(file.getFileName().toString(), file.toUri(), "image/tiff", null));
+      }
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
+    return Optional.of(new Fetched<>(manifestation, documents, images));
   }
 
   /**

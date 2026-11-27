@@ -13,6 +13,7 @@
     "com.mebigfatguy.sb-contrib:sb-contrib": -1065052473,
     "com.networknt:json-schema-validator": -704756318,
     "com.uber.nullaway:nullaway": -1216571949,
+    "dev.matrixlab.webp4j:webp4j-core": 797374564,
     "gg.jte:jte": 1753066982,
     "gg.jte:jte-jspecify-nullmarked": 309952362,
     "gg.jte:jte-models": -1524283569,
@@ -143,6 +144,7 @@
     "commons-codec:commons-codec": 58403102,
     "commons-io:commons-io": 1072619124,
     "commons-logging:commons-logging": -102005530,
+    "dev.matrixlab.webp4j:webp4j-core": -1863978758,
     "gg.jte:jte": 907072816,
     "gg.jte:jte-extension-api": 1072899676,
     "gg.jte:jte-jspecify-nullmarked": 297496520,
@@ -705,6 +707,12 @@
         "jar": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
       },
       "version": "1.3.6"
+    },
+    "dev.matrixlab.webp4j:webp4j-core": {
+      "shasums": {
+        "jar": "bd5462309dd3568135bc90f57b93aebff51c0cb78f0bdfe65cf51e5164cc7be7"
+      },
+      "version": "2.5.0"
     },
     "gg.jte:jte": {
       "shasums": {
@@ -3900,6 +3908,15 @@
     "commons-logging:commons-logging": [
       "org.apache.commons.logging",
       "org.apache.commons.logging.impl"
+    ],
+    "dev.matrixlab.webp4j:webp4j-core": [
+      "dev.matrixlab.webp4j",
+      "dev.matrixlab.webp4j.animation",
+      "dev.matrixlab.webp4j.batch",
+      "dev.matrixlab.webp4j.exception",
+      "dev.matrixlab.webp4j.gif",
+      "dev.matrixlab.webp4j.internal",
+      "dev.matrixlab.webp4j.model"
     ],
     "gg.jte:jte": [
       "gg.jte.compiler",
@@ -7382,6 +7399,7 @@
       "commons-codec:commons-codec",
       "commons-io:commons-io",
       "commons-logging:commons-logging",
+      "dev.matrixlab.webp4j:webp4j-core",
       "gg.jte:jte",
       "gg.jte:jte-extension-api",
       "gg.jte:jte-jspecify-nullmarked",

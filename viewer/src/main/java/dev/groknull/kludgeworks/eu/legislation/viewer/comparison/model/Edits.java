@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.WhatCountsAsADifference.FigureComparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -48,7 +49,12 @@ final class Edits {
    * <p>A table is compared by its pieces: the rule table-row-by-row.
    */
   static Edited between(Element from, Element to) {
-    return HowTwoTextsPair.tableRowByRow(from, to) ? pieces(from, to) : words(from, to);
+    if (HowTwoTextsPair.tableRowByRow(from, to)
+        || WhatCountsAsADifference.imageShowsBeforeAndAfter(from, to) == FigureComparison.BY_PIECES
+        || WhatCountsAsADifference.blockWithAFigureComparesByItsPieces(from, to)) {
+      return pieces(from, to);
+    }
+    return words(from, to);
   }
 
   /**
@@ -70,7 +76,9 @@ final class Edits {
     for (var each : differing) {
       switch (each) {
         case Pieces.Changed(int at, Element was, Element is) -> {
-          if (was.name().equals(is.name())) {
+          if (was.name().equals(is.name())
+              && WhatCountsAsADifference.imageShowsBeforeAndAfter(was, is)
+                  != FigureComparison.BEFORE_AND_AFTER) {
             shown.replace(at, WhatCountsAsADifference.whatTheEditsShow(was, is));
           } else {
             shown.delete(at, WhatCountsAsADifference.whatTheEditsShow(was, null));
@@ -100,9 +108,11 @@ final class Edits {
    */
   private static Edited words(Element from, Element to) {
     var before = new ArrayList<String>();
-    var pieces = new ArrayList<Element>();
-    Wording.collect(from, before, pieces);
-    var after = Wording.tokens(to);
+    var beforePieces = new ArrayList<Element>();
+    Wording.collect(from, before, beforePieces);
+    var after = new ArrayList<String>();
+    var afterPieces = new ArrayList<Element>();
+    Wording.collect(to, after, afterPieces);
     var beforeSaid = Wording.said(before);
     var afterSaid = Wording.said(after);
     var edited = new boolean[after.size()];
@@ -119,12 +129,19 @@ final class Edits {
       for (var i = 0; i < target.size(); i++) {
         edited[target.getPosition() + i] = true;
       }
-      inserted += words(target.getLines());
+      inserted +=
+          words(afterSaid, afterPieces, target.getPosition(), target.getPosition() + target.size());
       if (source.size() > 0) {
         deletedAt
             .computeIfAbsent(target.getPosition(), at -> new ArrayList<>())
-            .addAll(pieces.subList(source.getPosition(), source.getPosition() + source.size()));
-        deleted += words(source.getLines());
+            .addAll(
+                beforePieces.subList(source.getPosition(), source.getPosition() + source.size()));
+        deleted +=
+            words(
+                beforeSaid,
+                beforePieces,
+                source.getPosition(),
+                source.getPosition() + source.size());
       }
     }
     return new Edited(Runs.edited(to, INSERTED, edited, deletedAt), inserted, deleted);
@@ -135,12 +152,18 @@ final class Edits {
    * or {@link #DELETED}.
    */
   static Edited all(Element element, String edit) {
-    var tokens = Wording.tokens(element);
+    var tokens = new ArrayList<String>();
+    var pieces = new ArrayList<Element>();
+    Wording.collect(element, tokens, pieces);
+    var words = words(Wording.said(tokens), pieces, 0, tokens.size());
+    var marker = edit.equals(INSERTED) ? "ins" : "del";
+    if (element.name().equals("figure")) {
+      var wrapped = Runs.wrap(edit, only(element, marker));
+      return edit.equals(INSERTED) ? new Edited(wrapped, words, 0) : new Edited(wrapped, 0, words);
+    }
     var edited = new boolean[tokens.size()];
     Arrays.fill(edited, true);
-    var words = words(Wording.said(tokens));
-    var shown =
-        only(Runs.edited(element, edit, edited, Map.of()), edit.equals(INSERTED) ? "ins" : "del");
+    var shown = only(Runs.edited(element, edit, edited, Map.of()), marker);
     return edit.equals(INSERTED) ? new Edited(shown, words, 0) : new Edited(shown, 0, words);
   }
 
@@ -203,8 +226,16 @@ final class Edits {
     return tokens.stream().allMatch(String::isBlank);
   }
 
-  /** Returns how many of {@code tokens} are words. */
-  private static int words(List<String> tokens) {
-    return (int) tokens.stream().filter(WhatCountsAsADifference::whatAWordIs).count();
+  /** Returns how many words {@code tokens[from..to)} hold, counting each figure by its rule. */
+  private static int words(List<String> tokens, List<Element> pieces, int from, int to) {
+    var count = 0;
+    for (var i = from; i < to; i++) {
+      if (pieces.get(i).name().equals("figure")) {
+        count += WhatCountsAsADifference.wordsOfAFigure(pieces.get(i));
+      } else if (WhatCountsAsADifference.whatAWordIs(tokens.get(i))) {
+        count++;
+      }
+    }
+    return count;
   }
 }

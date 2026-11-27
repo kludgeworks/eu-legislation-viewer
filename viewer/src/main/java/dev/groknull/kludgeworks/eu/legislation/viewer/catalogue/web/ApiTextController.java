@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -9,11 +10,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.Images;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Duration;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
+import org.jspecify.annotations.Nullable;
 import org.springframework.hateoas.MediaTypes;
 import org.springframework.hateoas.RepresentationModel;
 import org.springframework.http.HttpHeaders;
@@ -53,6 +57,7 @@ class ApiTextController {
   private final Catalogued acts;
   private final Texts texts;
   private final Content content;
+  private final Images images;
   private final TextModelAssembler assembler;
   private final OutlineModelAssembler outlineAssembler;
   private final OccurrenceModelAssembler occurrenceAssembler;
@@ -62,6 +67,7 @@ class ApiTextController {
       Catalogued acts,
       Texts texts,
       Content content,
+      Images images,
       TextModelAssembler assembler,
       OutlineModelAssembler outlineAssembler,
       OccurrenceModelAssembler occurrenceAssembler,
@@ -69,6 +75,7 @@ class ApiTextController {
     this.acts = acts;
     this.texts = texts;
     this.content = content;
+    this.images = images;
     this.assembler = assembler;
     this.outlineAssembler = outlineAssembler;
     this.occurrenceAssembler = occurrenceAssembler;
@@ -94,7 +101,12 @@ class ApiTextController {
     var asked = asked(celex, key, language);
     return answer(
         asked,
-        text -> content.publicText(text).map(publicText -> assembler.toModel(asked, publicText)));
+        text ->
+            content
+                .publicText(text)
+                .map(publicText ->
+                    assembler.toModel(
+                        asked, text, publicText, images.sourceUris(text), images.version())));
   }
 
   /**
@@ -127,7 +139,9 @@ class ApiTextController {
         id ->
             content
                 .publicOccurrence(id, eId)
-                .map(occurrence -> occurrenceAssembler.toModel(asked, eId, occurrence)));
+                .map(occurrence ->
+                    occurrenceAssembler.toModel(
+                        asked, id, eId, occurrence, images.sourceUris(id), images.version())));
   }
 
   private ResponseEntity<RepresentationModel<?>> answer(
@@ -136,7 +150,7 @@ class ApiTextController {
     return switch (preparation.texts().get(asked.version())) {
       case Text.Ready(var id) ->
           ResponseEntity.ok()
-              .eTag("W/\"" + id + "\"")
+              .eTag("W/\"" + id + "-" + images.version() + "\"")
               .header(HttpHeaders.CONTENT_LANGUAGE, asked.language().iso())
               .body(ready.apply(id).orElseThrow(Requests::notFound));
       case Text.Failed failed -> throw failed(asked, failed);
@@ -175,14 +189,44 @@ class ApiTextController {
   }
 
   /**
+   * Addresses of an image file in a stored text.
+   *
+   * @param preview address of the scaled WebP image served by the viewer
+   * @param original address of the full-size WebP image served by the viewer
+   * @param source address of the original TIFF item in Cellar, or null
+   */
+  record ImageLinks(
+      String preview,
+      String original,
+      @JsonInclude(JsonInclude.Include.NON_NULL) @Nullable String source) {}
+
+  /**
    * The text of a version in a language, as the API shows it.
    *
    * @param version where the version is among the versions: {@code oj}, or its date
    * @param celex the CELEX number of the document that holds the text
    * @param language the language, by the EU's code. For example, {@code eng}.
    * @param text the text, in the public model
+   * @param images addresses of the image files of the text, keyed by file name
    */
-  record TextModel(String version, String celex, String language, PublicText text) {}
+  record TextModel(
+      String version,
+      String celex,
+      String language,
+      PublicText text,
+      @JsonInclude(JsonInclude.Include.NON_EMPTY) Map<String, ImageLinks> images) {}
+
+  /**
+   * One occurrence of a text and its footnotes, as the API shows it.
+   *
+   * @param occurrence the occurrence
+   * @param footnotes the footnotes that the occurrence refers to, in the order of the text
+   * @param images addresses of the image files referenced in the occurrence, keyed by file name
+   */
+  record OccurrenceModel(
+      PublicText.Occurrence occurrence,
+      @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Footnote> footnotes,
+      @JsonInclude(JsonInclude.Include.NON_EMPTY) Map<String, ImageLinks> images) {}
 
   /**
    * The outline of a text, as the API shows it.

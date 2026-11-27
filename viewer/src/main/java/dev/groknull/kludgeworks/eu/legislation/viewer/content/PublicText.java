@@ -5,7 +5,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import java.util.Collections;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
@@ -306,8 +310,67 @@ public record PublicText(
   @ValueObject
   public record OccurrenceWithFootnotes(
       Occurrence occurrence, @JsonInclude(JsonInclude.Include.NON_EMPTY) List<Footnote> footnotes) {
+    private static final Pattern IMAGE_FILE = Pattern.compile("data-file=\"([^\"]+)\"");
+
     public OccurrenceWithFootnotes {
       footnotes = List.copyOf(footnotes);
+    }
+
+    /**
+     * Returns the image file names referenced anywhere in this occurrence or its footnotes, in
+     * encounter order.
+     */
+    public Set<String> imageFiles() {
+      var found = new LinkedHashSet<String>();
+      collectFromInline(occurrence.heading(), found);
+      collectFromInline(occurrence.subheading(), found);
+      collectFromBlocks(occurrence.content(), found);
+      for (var footnote : footnotes) {
+        collectFromBlocks(footnote.content(), found);
+      }
+      return Collections.unmodifiableSet(found);
+    }
+
+    private static void collectFromInline(@Nullable Inline inline, Set<String> found) {
+      if (inline == null) {
+        return;
+      }
+      var matcher = IMAGE_FILE.matcher(inline.html());
+      while (matcher.find()) {
+        found.add(matcher.group(1));
+      }
+    }
+
+    private static void collectFromBlocks(List<Block> blocks, Set<String> found) {
+      for (var each : blocks) {
+        switch (each) {
+          case Text running -> {
+            var matcher = IMAGE_FILE.matcher(running.html());
+            while (matcher.find()) {
+              found.add(matcher.group(1));
+            }
+          }
+          case Occurrence nested -> {
+            collectFromInline(nested.heading(), found);
+            collectFromInline(nested.subheading(), found);
+            collectFromBlocks(nested.content(), found);
+          }
+          case Table table -> {
+            collectFromBlocks(table.caption(), found);
+            table.footnotes().forEach(fn -> collectFromBlocks(fn.content(), found));
+            table
+                .rows()
+                .forEach(row -> row.cells().forEach(c -> collectFromBlocks(c.content(), found)));
+          }
+          case Figure figure -> {
+            found.add(figure.file());
+            collectFromBlocks(figure.caption(), found);
+            collectFromBlocks(figure.description(), found);
+          }
+          case Quotation quotation -> collectFromBlocks(quotation.content(), found);
+          case KeptDeletion deletion -> collectFromBlocks(deletion.content(), found);
+        }
+      }
     }
   }
 }

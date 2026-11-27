@@ -195,6 +195,7 @@ spring_boot_jar = rule(
 # graph <http://publications.europa.eu/ontology/tdm> (checked 2026-10-30).
 TDM_TERMS = [
     "http://publications.europa.eu/ontology/tdm#fixity_message_digest",
+    "http://publications.europa.eu/ontology/tdm#fixity_message_digest_algorithm",
     "http://publications.europa.eu/ontology/tdm#stream_fixity",
     "http://publications.europa.eu/ontology/tdm#stream_name",
 ]

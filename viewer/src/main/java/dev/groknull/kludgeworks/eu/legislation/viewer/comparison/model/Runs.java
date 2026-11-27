@@ -59,6 +59,14 @@ final class Runs implements Wording.Sink {
   }
 
   @Override
+  public List<Element> figure(Element element) {
+    var out = deletedBefore();
+    out.add(edited[next] ? wrap(edit, element) : element);
+    next++;
+    return out;
+  }
+
+  @Override
   public Wording.QuotationMark quotationMark(String mark) {
     if (mark.isEmpty()) {
       return Wording.QuotationMark.NONE;
@@ -103,7 +111,7 @@ final class Runs implements Wording.Sink {
     return new Element("t", attributes, List.of(), "");
   }
 
-  private static Element wrap(String edit, Element element) {
+  static Element wrap(String edit, Element element) {
     return new Element(edit, Map.of(), List.of(element), "");
   }
 

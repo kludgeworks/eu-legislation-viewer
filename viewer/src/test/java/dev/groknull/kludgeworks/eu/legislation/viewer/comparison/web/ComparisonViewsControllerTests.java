@@ -48,6 +48,8 @@ class ComparisonViewsControllerTests {
   void act() {
     when(acts.find(OneActCellar.ELI)).thenReturn(Optional.of(OneActCellar.ACT));
     when(texts.preparation(any(), any())).thenAnswer(asked -> queued(asked.getArgument(1)));
+    when(html.forComparison(any(), any())).thenReturn(html);
+    when(html.deleted()).thenReturn(html);
   }
 
   @Test

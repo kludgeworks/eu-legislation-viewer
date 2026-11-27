@@ -10,6 +10,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/image",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
         "@maven//:gg_jte_jte_runtime",

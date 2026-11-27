@@ -318,6 +318,32 @@ final class WhatCountsAsADifference {
   }
 
   /**
+   * The words of a figure: an image counts as one word, and each word of its caption and its
+   * description counts as a word.
+   *
+   * @param figure the figure element
+   * @return how many words the figure has
+   */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "words-of-a-figure")
+  static int wordsOfAFigure(Element figure) {
+    var words = figureHasFile(figure) ? 1 : 0;
+    for (var child : figure.children()) {
+      for (var token : Wording.said(Wording.tokens(child))) {
+        if (whatAWordIs(token)) {
+          words++;
+        }
+      }
+    }
+    return words;
+  }
+
+  /** Returns whether {@code figure} references an image file via a non-empty {@code src}. */
+  static boolean figureHasFile(Element figure) {
+    var src = figure.attribute("src");
+    return src != null && !src.isEmpty();
+  }
+
+  /**
    * A formula is one piece. The comparison reads it whole, as one token, not symbol by symbol: the
    * elements of its MathML alone do not read. Thus a changed formula shows whole as deleted, then
    * whole as inserted.
@@ -335,5 +361,73 @@ final class WhatCountsAsADifference {
   private static void text(Element element, StringBuilder out) {
     out.append(element.text());
     element.children().forEach(child -> text(child, out));
+  }
+
+  /**
+   * An image is one piece. The comparison reads it as one token, its file, not by anything in it.
+   * Thus a changed inline image shows whole as deleted, then whole as inserted.
+   *
+   * @param image the image
+   * @return the one token that the image is: {@code [image <src>]}
+   */
+  @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "image-is-one-piece")
+  static String imageIsOnePiece(Element image) {
+    return "[image " + image.attribute("src") + "]";
+  }
+
+  /** How two elements compare under the image difference rule. */
+  enum FigureComparison {
+    /** The image file changed: show the old figure as deleted and the new figure as inserted. */
+    BEFORE_AND_AFTER,
+    /** The image file stayed the same: keep the figure and compare its pieces. */
+    BY_PIECES,
+    /** One of the two elements is not a figure: this rule does not apply. */
+    NOT_FIGURES
+  }
+
+  /**
+   * An image shows before and after when the file of a figure changes: the comparison shows the old
+   * figure as deleted and the new figure as inserted, not edits inside one figure. When two figures
+   * have the same file, the comparison reads them piece by piece so caption edits show in place.
+   *
+   * @param was the element in the earlier text
+   * @param is the element in the later text
+   * @return {@link FigureComparison#BEFORE_AND_AFTER} or {@link FigureComparison#BY_PIECES} when
+   *     both elements are figures, or {@link FigureComparison#NOT_FIGURES} otherwise
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "image-shows-before-and-after")
+  static FigureComparison imageShowsBeforeAndAfter(Element was, Element is) {
+    if (!was.name().equals("figure") || !is.name().equals("figure")) {
+      return FigureComparison.NOT_FIGURES;
+    }
+    return Objects.equals(was.attribute("src"), is.attribute("src"))
+        ? FigureComparison.BY_PIECES
+        : FigureComparison.BEFORE_AND_AFTER;
+  }
+
+  /**
+   * A block that holds a figure compares by its pieces. The comparison reads it piece by piece so
+   * the figure stays in its place and the words around it show their edits word by word.
+   *
+   * @param was the element in the earlier text
+   * @param is the element in the later text
+   * @return whether both elements have the same name, neither is a figure, and at least one holds a
+   *     figure at any depth
+   */
+  @BusinessRule(
+      group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE,
+      name = "block-with-a-figure-compares-by-its-pieces")
+  static boolean blockWithAFigureComparesByItsPieces(Element was, Element is) {
+    return !was.name().equals("figure")
+        && !is.name().equals("figure")
+        && was.name().equals(is.name())
+        && (holdsFigure(was) || holdsFigure(is));
+  }
+
+  private static boolean holdsFigure(Element element) {
+    return element.children().stream()
+        .anyMatch(child -> child.name().equals("figure") || holdsFigure(child));
   }
 }

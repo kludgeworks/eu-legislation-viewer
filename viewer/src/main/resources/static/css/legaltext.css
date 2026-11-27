@@ -483,9 +483,46 @@ p.norm {
   text-align: center;
 }
 
-/* The viewer does not keep images. The text [image] shows in their place, in grey italic. */
-.figure::before,
-.img::before {
+/* Formex figure and inline graphic images (WebP). Official Journal diagrams are black ink on
+ * light or transparent paper, so images keep a light backing in dark mode. */
+.figure {
+  margin: 0.75rem 0;
+  text-align: left;
+}
+
+.figure img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  background: var(--figure-bg);
+  border-radius: 2px;
+}
+
+.figure figcaption,
+.figure .caption {
+  margin-top: 0.4rem;
+  font-size: 0.9em;
+  color: var(--ink2);
+}
+
+.figure .description {
+  margin-top: 0.35rem;
+  text-align: left;
+  font-size: 0.85em;
+  color: var(--muted);
+}
+
+img.img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  background: var(--figure-bg);
+  border-radius: 2px;
+}
+
+.figure:not(:has(img))::before,
+span.img::before {
   content: "[image]";
   color: var(--muted);
   font-style: italic;

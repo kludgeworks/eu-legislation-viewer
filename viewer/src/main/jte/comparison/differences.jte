@@ -50,7 +50,7 @@
         <div class="lead">${html.element(lead.occurrence())}</div>
       @elseif(passage instanceof DifferencesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.comparison.difference(shown = shown, sidenote = sidenote, occurrence = html.element(shown.folded(page)), page = page, pieces = pieces)
+        @template.comparison.difference(shown = shown, sidenote = sidenote, occurrence = (shown.kind().equals("deleted") ? html.deleted() : html).element(shown.folded(page)), page = page, pieces = pieces)
       @endif
     @endfor
   </div>

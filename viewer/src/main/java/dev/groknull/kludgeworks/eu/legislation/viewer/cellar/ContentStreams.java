@@ -39,6 +39,13 @@ public class ContentStreams {
     this.client = client;
   }
 
+  /** Thrown when a Cellar stream exceeds a caller's byte limit. */
+  public static final class StreamTooLargeException extends CellarException {
+    StreamTooLargeException(String message) {
+      super(message);
+    }
+  }
+
   /**
    * Returns what {@code reader} makes of the bytes at {@code uri}. The reader reads them while the
    * response is open. If the read fails, for example because the connection breaks, this method
@@ -46,6 +53,14 @@ public class ContentStreams {
    * returned, so a reader that turns the failure into a result of its own cannot hide it.
    */
   public <T> T read(URI uri, Function<InputStream, T> reader) {
+    return read(uri, Long.MAX_VALUE, reader);
+  }
+
+  /**
+   * Returns what {@code reader} makes of at most {@code maxBytes} unzipped bytes at {@code uri}.
+   * Throws {@link CellarException} if the response exceeds {@code maxBytes}.
+   */
+  public <T> T read(URI uri, long maxBytes, Function<InputStream, T> reader) {
     var started = System.nanoTime();
     return client
         .get()
@@ -60,10 +75,21 @@ public class ContentStreams {
             throw HttpClientErrorException.create(
                 status, response.getStatusText(), response.getHeaders(), new byte[0], null);
           }
+          var contentLength = response.getHeaders().getContentLength();
+          if (contentLength > maxBytes) {
+            throw new StreamTooLargeException(
+                "Stream "
+                    + uri
+                    + " exceeds maximum size ("
+                    + contentLength
+                    + " > "
+                    + maxBytes
+                    + ")");
+          }
           var body = new Watched(response.getBody());
           T read;
           try {
-            read = reader.apply(unzipped(body));
+            read = reader.apply(limited(unzipped(body), uri, maxBytes));
           } catch (RuntimeException e) {
             throw body.failure == null ? e : failed(uri, body.failure);
           }
@@ -77,6 +103,10 @@ public class ContentStreams {
               Duration.ofNanos(System.nanoTime() - started).toMillis());
           return read;
         });
+  }
+
+  private static InputStream limited(InputStream in, URI uri, long maxBytes) {
+    return maxBytes == Long.MAX_VALUE ? in : new Bounded(in, uri, maxBytes);
   }
 
   /** Returns {@code body}, unzipped if it starts with the gzip bytes 0x1f 0x8b. */
@@ -140,6 +170,45 @@ public class ContentStreams {
         failure = e;
       }
       return e;
+    }
+  }
+
+  /** Stops reading if the stream produces more than {@code maxBytes}. */
+  private static final class Bounded extends FilterInputStream {
+    private final URI uri;
+    private final long maxBytes;
+    private long read;
+
+    Bounded(InputStream in, URI uri, long maxBytes) {
+      super(in);
+      this.uri = uri;
+      this.maxBytes = maxBytes;
+    }
+
+    @Override
+    public int read() throws IOException {
+      var b = super.read();
+      if (b >= 0 && ++read > maxBytes) {
+        throw exceeded();
+      }
+      return b;
+    }
+
+    @Override
+    public int read(byte[] bytes, int offset, int length) throws IOException {
+      var n = super.read(bytes, offset, length);
+      if (n > 0) {
+        read += n;
+        if (read > maxBytes) {
+          throw exceeded();
+        }
+      }
+      return n;
+    }
+
+    private StreamTooLargeException exceeded() {
+      return new StreamTooLargeException(
+          "Stream " + uri + " exceeds maximum size (" + maxBytes + ")");
     }
   }
 }

@@ -2,10 +2,14 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.legaltext;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.ImageUrls;
+import dev.groknull.kludgeworks.eu.legislation.viewer.image.Images;
 import gg.jte.Content;
 import gg.jte.TemplateEngine;
 import gg.jte.TemplateOutput;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
@@ -46,19 +50,51 @@ public class LegalRenderer {
   private final Map<String, Map<String, String>> chosen;
 
   private final Map<String, Otherwise> instead;
+  private final @Nullable Images images;
+  private final @Nullable TextId text;
+  private final Set<String> activeFiles;
+  private final @Nullable TextId deleted;
+  private final Set<String> deletedFiles;
+  private final @Nullable String imageVersion;
+
+  LegalRenderer(TemplateEngine templates) {
+    this(
+        templates, new ConcurrentHashMap<>(), Map.of(), null, null, Set.of(), null, Set.of(), null);
+  }
 
   @Autowired
-  LegalRenderer(TemplateEngine templates) {
-    this(templates, new ConcurrentHashMap<>(), Map.of());
+  LegalRenderer(TemplateEngine templates, Images images) {
+    this(
+        templates,
+        new ConcurrentHashMap<>(),
+        Map.of(),
+        images,
+        null,
+        Set.of(),
+        null,
+        Set.of(),
+        null);
   }
 
   private LegalRenderer(
       TemplateEngine templates,
       Map<String, Map<String, String>> chosen,
-      Map<String, Otherwise> instead) {
+      Map<String, Otherwise> instead,
+      @Nullable Images images,
+      @Nullable TextId text,
+      Set<String> activeFiles,
+      @Nullable TextId deleted,
+      Set<String> deletedFiles,
+      @Nullable String imageVersion) {
     this.templates = templates;
     this.chosen = chosen;
     this.instead = Map.copyOf(instead);
+    this.images = images;
+    this.text = text;
+    this.activeFiles = Set.copyOf(activeFiles);
+    this.deleted = deleted;
+    this.deletedFiles = Set.copyOf(deletedFiles);
+    this.imageVersion = imageVersion;
   }
 
   /**
@@ -67,7 +103,98 @@ public class LegalRenderer {
    * renders.
    */
   public LegalRenderer instead(Map<String, Otherwise> instead) {
-    return new LegalRenderer(templates, chosen, instead);
+    return new LegalRenderer(
+        templates, chosen, instead, images, text, activeFiles, deleted, deletedFiles, imageVersion);
+  }
+
+  /** Returns a copy of this renderer bound to {@code text} for registered images. */
+  public LegalRenderer forText(TextId text) {
+    if (images == null) {
+      return this;
+    }
+    var files = images.sourceUris(text).keySet();
+    return forText(text, files, images.version());
+  }
+
+  /** Returns a copy of this renderer bound to {@code text} with explicit {@code availableFiles}. */
+  LegalRenderer forText(TextId text, Set<String> availableFiles, String imageVersion) {
+    return new LegalRenderer(
+        templates,
+        chosen,
+        instead,
+        images,
+        text,
+        availableFiles,
+        text,
+        availableFiles,
+        imageVersion);
+  }
+
+  /**
+   * Returns a copy of this renderer bound to a comparison from {@code before} to {@code after}.
+   * Deleted images use {@code before}, and other images use {@code after}.
+   */
+  public LegalRenderer forComparison(TextId before, TextId after) {
+    if (images == null) {
+      return this;
+    }
+    var beforeFiles = images.sourceUris(before).keySet();
+    var afterFiles = images.sourceUris(after).keySet();
+    return forComparison(before, beforeFiles, after, afterFiles, images.version());
+  }
+
+  /** Returns a copy bound to explicit file sets for {@code before} and {@code after}. */
+  LegalRenderer forComparison(
+      TextId before,
+      Set<String> beforeFiles,
+      TextId after,
+      Set<String> afterFiles,
+      String imageVersion) {
+    return new LegalRenderer(
+        templates, chosen, instead, images, after, afterFiles, before, beforeFiles, imageVersion);
+  }
+
+  /** Returns a copy of this renderer whose active text is the deleted-side text. */
+  public LegalRenderer deleted() {
+    if (deleted == null || (deleted.equals(text) && deletedFiles.equals(activeFiles))) {
+      return this;
+    }
+    return new LegalRenderer(
+        templates,
+        chosen,
+        instead,
+        images,
+        deleted,
+        deletedFiles,
+        deleted,
+        deletedFiles,
+        imageVersion);
+  }
+
+  /**
+   * Returns the viewer address of the preview image for {@code src}, or null if no registered image
+   * exists for that name in the active text.
+   */
+  public @Nullable String imagePreviewUrl(@Nullable String src) {
+    if (text == null || src == null || src.isBlank() || !activeFiles.contains(src)) {
+      return null;
+    }
+    return imageVersion == null
+        ? ImageUrls.preview(text, src)
+        : ImageUrls.preview(text, src, imageVersion);
+  }
+
+  /** Returns non-empty alternative text for a figure or inline graphic element. */
+  public String imageAlt(Element node) {
+    var content = Objects.requireNonNullElse(node.attribute("content"), "");
+    return switch (content) {
+      case "character" -> "Character";
+      case "form" -> "Form";
+      case "formula" -> "Formula";
+      case "signature" -> "Signature";
+      case "techDesign" -> "Technical diagram";
+      default -> node.name().equals("figure") ? "Figure" : "Image";
+    };
   }
 
   /**

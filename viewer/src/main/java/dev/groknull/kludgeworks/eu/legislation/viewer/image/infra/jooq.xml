@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
+  <logging>WARN</logging>
+  <generator>
+    <database>
+      <forcedTypes>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId</userType>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::value</to>
+          </lambdaConverter>
+          <includeExpression>image_source\.text_id</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.image.Images.Variant</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>image_rendition\.variant</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>java.time.Instant</userType>
+          <lambdaConverter>
+            <from>java.time.OffsetDateTime::toInstant</from>
+            <to>instant -> instant.atOffset(java.time.ZoneOffset.UTC)</to>
+          </lambdaConverter>
+          <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
+        </forcedType>
+      </forcedTypes>
+    </database>
+    <generate>
+      <records>true</records>
+      <pojos>false</pojos>
+      <daos>false</daos>
+      <javaTimeTypes>true</javaTimeTypes>
+      <globalObjectReferences>true</globalObjectReferences>
+      <comments>false</comments>
+    </generate>
+  </generator>
+</configuration>

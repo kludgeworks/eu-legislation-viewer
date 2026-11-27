@@ -82,6 +82,16 @@ class ContentStreamsTest {
         .withMessageContaining("connection reset");
   }
 
+  @Test
+  void rejectsAStreamExceedingTheByteLimit() {
+    var mock = Recorded.Mock.of();
+    mock.server().expect(requestTo(ITEM)).andRespond(withSuccess(new byte[1024], FORMEX));
+
+    assertThatExceptionOfType(CellarException.class)
+        .isThrownBy(() -> mock.contentStreams().read(ITEM, 512, ContentStreamsTest::bytes))
+        .withMessageContaining("exceeds maximum size");
+  }
+
   private static byte[] bytes(InputStream in) {
     try {
       return in.readAllBytes();
