@@ -5,6 +5,7 @@ import java.time.Duration;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
+import java.util.concurrent.CompletableFuture;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
@@ -26,9 +27,12 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer.StreamMessageListenerContainerOptions;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer.StreamReadRequest;
+import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.modulith.events.EventExternalizationConfiguration;
 import org.springframework.modulith.events.Externalized;
-import org.springframework.modulith.events.support.EventExternalizerModuleListener;
+import org.springframework.modulith.events.core.ConditionalEventListener;
+import org.springframework.modulith.events.support.EventExternalizationTransport;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.util.ClassUtils;
 import tools.jackson.databind.json.JsonMapper;
 
@@ -61,9 +65,46 @@ class BroadcastConfiguration {
   private static final Duration AFTER_FAILURE = Duration.ofSeconds(5);
 
   @Bean
-  EventExternalizerModuleListener streamExternalizer(
+  StreamExternalizer streamExternalizer(
       EventExternalizationConfiguration configuration, StringRedisTemplate redis, JsonMapper json) {
-    return new EventExternalizerModuleListener(configuration, new StreamTransport(redis, json));
+    return new StreamExternalizer(configuration, new StreamTransport(redis, json));
+  }
+
+  /**
+   * Sends {@code @Externalized} events through {@link StreamTransport} once their transaction
+   * commits. Uses {@link ConditionalEventListener} directly instead of {@code
+   * EventExternalizerModuleListener} whose two-argument constructor is deprecated for removal in
+   * Modulith 2.2.
+   *
+   * <p>Unlike {@code EventExternalizerModuleListener} (and {@code EventExternalizerSupport}), this
+   * listener does not serialize concurrent calls with a semaphore when {@code
+   * serializeExternalization} is set, does not bind a {@code BeanFactoryResolver} when resolving
+   * SpEL targets or keys, and does not wrap results in {@code EventExternalized}.
+   */
+  static class StreamExternalizer implements ConditionalEventListener {
+    private final EventExternalizationConfiguration configuration;
+    private final EventExternalizationTransport transport;
+
+    StreamExternalizer(
+        EventExternalizationConfiguration configuration, EventExternalizationTransport transport) {
+      this.configuration = configuration;
+      this.transport = transport;
+    }
+
+    @Override
+    public boolean supports(Object event) {
+      return configuration.supports(event);
+    }
+
+    @ApplicationModuleListener(propagation = Propagation.SUPPORTS)
+    CompletableFuture<?> externalize(Object event) {
+      try {
+        return transport.externalize(
+            configuration.map(event), configuration.determineTarget(event));
+      } catch (RuntimeException failure) {
+        return CompletableFuture.failedFuture(failure);
+      }
+    }
   }
 
   @Bean

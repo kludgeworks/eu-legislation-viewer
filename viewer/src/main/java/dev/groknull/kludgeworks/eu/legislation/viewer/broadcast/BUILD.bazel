@@ -34,6 +34,7 @@ java_library(
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_core",
         "@maven//:org_springframework_spring_expression",
+        "@maven//:org_springframework_spring_tx",
         "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
