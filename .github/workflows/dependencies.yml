@@ -76,8 +76,6 @@ jobs:
     name: ${{ matrix.title }}
     permissions:
       contents: read
-      issues: write
-      pull-requests: write
     uses: ./.github/workflows/publish-dependency-update.yml
     with:
       base: ${{ needs.plan.outputs.base }}
