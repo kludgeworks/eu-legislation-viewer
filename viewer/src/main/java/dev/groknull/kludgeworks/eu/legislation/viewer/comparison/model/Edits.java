@@ -231,7 +231,7 @@ final class Edits {
     var count = 0;
     for (var i = from; i < to; i++) {
       if (pieces.get(i).name().equals("figure")) {
-        count += WhatCountsAsADifference.wordsOfAFigure(tokens.get(i));
+        count += WhatCountsAsADifference.wordsOfAFigure(pieces.get(i));
       } else if (WhatCountsAsADifference.whatAWordIs(tokens.get(i))) {
         count++;
       }

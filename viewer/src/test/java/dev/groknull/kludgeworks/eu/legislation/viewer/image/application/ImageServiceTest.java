@@ -254,7 +254,12 @@ class ImageServiceTest {
           return uri.toString().getBytes(StandardCharsets.UTF_8);
         };
     var props =
-        new ImageProperties(1, 2, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+        new ImageProperties(
+            1,
+            2,
+            1024 * 1024,
+            Duration.ofSeconds(30),
+            new Cache(1024 * 1024, 10, Duration.ofHours(1)));
     var service =
         service(store, fetcher, (bytes, variant) -> new Rendered(new byte[] {1}, 10, 10), props);
 
@@ -306,7 +311,12 @@ class ImageServiceTest {
           return uri.toString().getBytes(StandardCharsets.UTF_8);
         };
     var props =
-        new ImageProperties(1, 1, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+        new ImageProperties(
+            1,
+            1,
+            1024 * 1024,
+            Duration.ofSeconds(30),
+            new Cache(1024 * 1024, 10, Duration.ofHours(1)));
     var service = service(store, fetcher, renderer, props);
 
     var first =
@@ -362,14 +372,18 @@ class ImageServiceTest {
           return new Rendered(new byte[] {1, 2, 3}, 100, 50);
         };
     var props =
-        new ImageProperties(4, 2, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+        new ImageProperties(
+            4,
+            2,
+            1024 * 1024,
+            Duration.ofMillis(80),
+            new Cache(1024 * 1024, 10, Duration.ofHours(1)));
     var service =
         service(
             store,
             (uri, maxBytes) -> "tiff-bytes".getBytes(StandardCharsets.UTF_8),
             renderer,
-            props,
-            Duration.ofMillis(80));
+            props);
 
     var first =
         CompletableFuture.supplyAsync(
@@ -410,21 +424,17 @@ class ImageServiceTest {
   private static ImageService service(
       ImageStore store, SourceFetcher fetcher, ImageRenderer renderer) {
     var props =
-        new ImageProperties(4, 2, 1024 * 1024, new Cache(1024 * 1024, 10, Duration.ofHours(1)));
+        new ImageProperties(
+            4,
+            2,
+            1024 * 1024,
+            Duration.ofSeconds(30),
+            new Cache(1024 * 1024, 10, Duration.ofHours(1)));
     return service(store, fetcher, renderer, props);
   }
 
   private static ImageService service(
       ImageStore store, SourceFetcher fetcher, ImageRenderer renderer, ImageProperties props) {
-    return service(store, fetcher, renderer, props, Duration.ofSeconds(30));
-  }
-
-  private static ImageService service(
-      ImageStore store,
-      SourceFetcher fetcher,
-      ImageRenderer renderer,
-      ImageProperties props,
-      Duration waitTimeout) {
     var tx =
         new TransactionTemplate() {
           @Override
@@ -432,8 +442,7 @@ class ImageServiceTest {
             action.accept(new SimpleTransactionStatus());
           }
         };
-    return ImageService.withWaitTimeout(
-        store, fetcher, renderer, props, tx, ObservationRegistry.NOOP, waitTimeout);
+    return new ImageService(store, fetcher, renderer, props, tx, ObservationRegistry.NOOP);
   }
 
   private static final class InMemoryStore implements ImageStore {

@@ -321,26 +321,26 @@ final class WhatCountsAsADifference {
    * The words of a figure: an image counts as one word, and each word of its caption and its
    * description counts as a word.
    *
-   * @param figureToken the figure as {@link Wording} reads it
+   * @param figure the figure element
    * @return how many words the figure has
    */
   @BusinessRule(group = RuleGroup.WHAT_COUNTS_AS_A_DIFFERENCE, name = "words-of-a-figure")
-  static int wordsOfAFigure(String figureToken) {
-    var words = 0;
-    var text = figureToken;
-    if (text.startsWith("[image ")) {
-      var end = text.indexOf(']');
-      if (end >= 0) {
-        words++;
-        text = text.substring(end + 1);
-      }
-    }
-    for (var part : Wording.words(text)) {
-      if (LETTER_OR_DIGIT.matcher(part).find()) {
-        words++;
+  static int wordsOfAFigure(Element figure) {
+    var words = figureHasFile(figure) ? 1 : 0;
+    for (var child : figure.children()) {
+      for (var token : Wording.said(Wording.tokens(child))) {
+        if (whatAWordIs(token)) {
+          words++;
+        }
       }
     }
     return words;
+  }
+
+  /** Returns whether {@code figure} references an image file via a non-empty {@code src}. */
+  static boolean figureHasFile(Element figure) {
+    var src = figure.attribute("src");
+    return src != null && !src.isEmpty();
   }
 
   /**

@@ -98,10 +98,37 @@ class FigureEditsTest {
 
   @Test
   void replacedFigureCountsWordsInCaptionAndDescription() {
-    var before =
+    var edited =
+        OccurrenceEdits.of(
+            occurrence(figureWithDescription("old.tif", "Old diagram", "Three deleted words")),
+            occurrence(figure("new.tif", "New diagram")));
+
+    assertThat(edited).isNotNull();
+    assertThat(edited.blocks().deleted()).isEqualTo(6);
+    assertThat(edited.blocks().inserted()).isEqualTo(3);
+  }
+
+  @Test
+  void figureTokenInMixedBlocksCountsFromRule() {
+    var before = figureWithDescription("old.tif", "Old diagram", "Three deleted words");
+    var after = figure("new.tif", "New diagram");
+
+    // Differing block names bypass block-with-a-figure-compares-by-its-pieces so Edits.between
+    // runs Edits.words with a figure token.
+    var inParagraph =
+        Edits.between(
+            new Element("p", Map.of(), List.of(before), ""),
+            new Element("div", Map.of(), List.of(after), ""));
+    assertThat(inParagraph.deleted()).isEqualTo(6);
+    assertThat(inParagraph.inserted()).isEqualTo(3);
+  }
+
+  @Test
+  void figureWithoutFileCountsOnlyCaptionWordsEvenWhenCaptionStartsWithImageMarker() {
+    var figureWithoutSrc =
         new Element(
             "figure",
-            Map.of("src", "old.tif", "content", "techDesign"),
+            Map.of(),
             List.of(
                 new Element(
                     "caption",
@@ -110,36 +137,12 @@ class FigureEditsTest {
                         new Element(
                             "p",
                             Map.of(),
-                            List.of(new Element("t", Map.of("v", "Old diagram"), List.of(), "")),
-                            "")),
-                    ""),
-                new Element(
-                    "description",
-                    Map.of(),
-                    List.of(
-                        new Element(
-                            "p",
-                            Map.of(),
                             List.of(
-                                new Element(
-                                    "t", Map.of("v", "Three deleted words"), List.of(), "")),
+                                new Element("t", Map.of("v", "[image x] One two"), List.of(), "")),
                             "")),
                     "")),
             "");
-    var after = figure("new.tif", "New diagram");
-
-    var edited = OccurrenceEdits.of(occurrence(before), occurrence(after));
-
-    assertThat(edited).isNotNull();
-    assertThat(edited.blocks().deleted()).isEqualTo(6);
-    assertThat(edited.blocks().inserted()).isEqualTo(3);
-
-    var inParagraph =
-        Edits.between(
-            new Element("p", Map.of(), List.of(before), ""),
-            new Element("div", Map.of(), List.of(after), ""));
-    assertThat(inParagraph.deleted()).isEqualTo(6);
-    assertThat(inParagraph.inserted()).isEqualTo(3);
+    assertThat(Edits.all(figureWithoutSrc, Edits.INSERTED).inserted()).isEqualTo(4);
   }
 
   @Test
@@ -171,18 +174,30 @@ class FigureEditsTest {
   }
 
   private static Element figure(String src, String captionText) {
-    var caption =
-        new Element(
-            "caption",
-            Map.of(),
-            List.of(
-                new Element(
-                    "p",
-                    Map.of(),
-                    List.of(new Element("t", Map.of("v", captionText), List.of(), "")),
-                    "")),
-            "");
-    return new Element("figure", Map.of("src", src, "content", "techDesign"), List.of(caption), "");
+    return new Element(
+        "figure",
+        Map.of("src", src, "content", "techDesign"),
+        List.of(section("caption", captionText)),
+        "");
+  }
+
+  private static Element figureWithDescription(
+      String src, String captionText, String descriptionText) {
+    return new Element(
+        "figure",
+        Map.of("src", src, "content", "techDesign"),
+        List.of(section("caption", captionText), section("description", descriptionText)),
+        "");
+  }
+
+  private static Element section(String name, String text) {
+    return new Element(
+        name,
+        Map.of(),
+        List.of(
+            new Element(
+                "p", Map.of(), List.of(new Element("t", Map.of("v", text), List.of(), "")), "")),
+        "");
   }
 
   private static Element img(String src) {

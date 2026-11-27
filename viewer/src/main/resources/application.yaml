@@ -157,6 +157,7 @@ viewer:
     max-fetches: 4
     max-conversions: 2
     max-source-bytes: 52428800
+    wait-timeout: 30s
     cache:
       max-bytes: 5368709120
       eviction-batch: 50

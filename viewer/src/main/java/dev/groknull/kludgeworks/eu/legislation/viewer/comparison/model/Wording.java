@@ -293,8 +293,7 @@ public final class Wording {
 
     @Override
     public List<Element> figure(Element element) {
-      var src = element.attribute("src");
-      if (src != null && !src.isEmpty()) {
+      if (WhatCountsAsADifference.figureHasFile(element)) {
         out.append(' ').append(WhatCountsAsADifference.imageIsOnePiece(element)).append(' ');
       }
       for (var child : element.children()) {
