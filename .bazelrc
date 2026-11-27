@@ -1,6 +1,10 @@
 # SPDX-License-Identifier: MIT
 common --java_language_version=25 --tool_java_language_version=25
 common --java_runtime_version=remotejdk_25 --tool_java_runtime_version=remotejdk_25
+# Fall back to Maven Central mirrors (tools/build/downloader.cfg) quickly when repo1.maven.org
+# rate-limits a runner with 429 Too Many Requests instead of stalling on 8 retries first
+common --downloader_config=tools/build/downloader.cfg
+common --http_connector_attempts=3
 test --test_output=errors
 # Two hours for an eternal test (size enormous), not one: only the corpus test is, whose shards
 # share the cores, a shard with the corpus's longest manifestation (43 minutes) beside its share
