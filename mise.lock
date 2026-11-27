@@ -130,51 +130,50 @@ url = "https://github.com/bazel-contrib/buildtools/releases/download/v10.2.0/bui
 url_api = "https://api.github.com/repos/bazel-contrib/buildtools/releases/assets/684766823"
 
 [[tools."github:bazelbuild/bazelisk"]]
-version = "1.30.0"
+version = "1.31.0"
 backend = "github:bazelbuild/bazelisk"
-specifiers = ["1.30.0"]
+specifiers = ["1.31.0"]
 
 [tools."github:bazelbuild/bazelisk"."platforms.linux-arm64"]
-checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
+checksum = "sha256:202bd85dfd6b427187ffa0cf4892dbae7796ddd37a66f69c75519260492c4aaf"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-linux-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796371921"
 
 [tools."github:bazelbuild/bazelisk"."platforms.linux-arm64-musl"]
-checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
+checksum = "sha256:202bd85dfd6b427187ffa0cf4892dbae7796ddd37a66f69c75519260492c4aaf"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-linux-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796371921"
 
 [tools."github:bazelbuild/bazelisk"."platforms.linux-x64"]
-checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
+checksum = "sha256:37c6c243a5a0d2cb6a16a74012c108c47ae9eb5c0455251881e66e7f393a4ce1"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-linux-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796371176"
 
 [tools."github:bazelbuild/bazelisk"."platforms.linux-x64-musl"]
-checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
+checksum = "sha256:37c6c243a5a0d2cb6a16a74012c108c47ae9eb5c0455251881e66e7f393a4ce1"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-linux-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796371176"
 
 [tools."github:bazelbuild/bazelisk"."platforms.macos-arm64"]
-checksum = "sha256:555d2ff912ccd336d0060bdb5251ef2f62629c6f8fbadb59005a45d5625793ec"
+checksum = "sha256:c3e737c6728970d967a9b0a06d1314fe1b829224f13ffc2360b9b97dae8db0d8"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754005"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-darwin-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796370779"
 
 [tools."github:bazelbuild/bazelisk"."platforms.macos-x64"]
-checksum = "sha256:a0e6468b0c6b812f782d8cbfb05824121f6980c0bd70aaa1774fb8272bb7b2ad"
+checksum = "sha256:27d346ae674aed387a9b6b8f3b6ebd2aca43af9cf0f751b9544def0c95aeda67"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660753873"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-darwin-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796369918"
 
 [tools."github:bazelbuild/bazelisk"."platforms.windows-x64"]
-checksum = "sha256:5d14a31e9d8a363c48ba1900dbd56764d730835232eb0d113cce255856ffe3ef"
+checksum = "sha256:19ec714cfaae7bffbf9379c4f19cf7f7b22fce7f2573950f6815cb0da977e398"
 checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-windows-amd64.exe"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754731"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.31.0/bazelisk-windows-amd64.exe"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/796372387"
 
 [[tools."github:google/addlicense"]]
 version = "1.2.0"
@@ -1281,48 +1280,47 @@ url_api = "https://api.github.com/repos/astral-sh/uv/releases/assets/788885003"
 provenance = "github-attestations"
 
 [[tools.vale]]
-version = "3.28.1"
+version = "3.29.0"
 backend = "aqua:vale-cli/vale"
-specifiers = ["3.28.1"]
+specifiers = ["3.29.0"]
 
 [tools.vale."platforms.linux-arm64"]
-checksum = "sha256:af0ca36ec6133ba20093295591e43ed2823b2632520d1f3811293aa4cbe758f2"
+checksum = "sha256:ffff63b3aaf97ca3c7e0a0c5226a8ddf7c21f21f1695e40461b0037d2189ba74"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120906"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243519"
 
 [tools.vale."platforms.linux-arm64-musl"]
-checksum = "sha256:af0ca36ec6133ba20093295591e43ed2823b2632520d1f3811293aa4cbe758f2"
+checksum = "sha256:ffff63b3aaf97ca3c7e0a0c5226a8ddf7c21f21f1695e40461b0037d2189ba74"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_Linux_arm64.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120906"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_Linux_arm64.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243519"
 
 [tools.vale."platforms.linux-x64"]
-checksum = "sha256:068954ad869ebec24b8dec6ebcd1cbb1fd5f5a83e966a35baedfae8b2cdc093a"
-checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_Linux_64-bit.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120835"
+checksum = "sha256:00356ae1bacd1160aa415664f3ed0d34ce9ef5319c61d31123a97366ea1a2f64"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_Linux_64-bit.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243509"
 
 [tools.vale."platforms.linux-x64-musl"]
-checksum = "sha256:068954ad869ebec24b8dec6ebcd1cbb1fd5f5a83e966a35baedfae8b2cdc093a"
+checksum = "sha256:00356ae1bacd1160aa415664f3ed0d34ce9ef5319c61d31123a97366ea1a2f64"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_Linux_64-bit.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120835"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_Linux_64-bit.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243509"
 
 [tools.vale."platforms.macos-arm64"]
-checksum = "sha256:b5362c16d2c95db9d773078b957f5bd59cef27d05dac34c5248a93fed130e9f1"
+checksum = "sha256:62b0eb911aa9255ad4520afa5284d0b8a27f11eea5ffe40390a1eaaca9baab73"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_macOS_arm64.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120908"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_macOS_arm64.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243521"
 
 [tools.vale."platforms.macos-x64"]
-checksum = "sha256:4a59f52678b4e6bd55846fb6c22371ed531a274a614ea8e4d51a365c365b563e"
+checksum = "sha256:5c983d634074ea0a7a9b40e6450dff1035f2b406a3f79b130ec4cddd8ff14675"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_macOS_64-bit.tar.gz"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120831"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_macOS_64-bit.tar.gz"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243505"
 
 [tools.vale."platforms.windows-x64"]
-checksum = "sha256:5ad37282f16f3903bb2ec89a7b7b9e718ef838577ffc1657f892a0068cd9b0f3"
+checksum = "sha256:5977efcb833248b69c870759c74d368cdaf8845103ac59b986cad1467affc1a0"
 checksum_source = "mise-versions"
-url = "https://github.com/vale-cli/vale/releases/download/v3.28.1/vale_3.28.1_Windows_64-bit.zip"
-url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/768120833"
+url = "https://github.com/vale-cli/vale/releases/download/v3.29.0/vale_3.29.0_Windows_64-bit.zip"
+url_api = "https://api.github.com/repos/vale-cli/vale/releases/assets/796243672"

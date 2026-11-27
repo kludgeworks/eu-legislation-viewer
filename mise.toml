@@ -18,7 +18,7 @@ LICENSE_HOLDER = "The Project Contributors"
 
 [tools]
 # bazelisk as bazel, the name the tasks and hk call; it runs the version in .bazelversion
-"github:bazelbuild/bazelisk" = { version = "1.30.0", bin = "bazel" }
+"github:bazelbuild/bazelisk" = { version = "1.31.0", bin = "bazel" }
 buildifier = "10.2.0"
 "aqua:bazelbuild/buildtools/buildozer" = "10.2.0"
 java = "temurin-25.0.5+8.0.LTS"                                      # for the IDE and jshell; Bazel uses its own remotejdk_25
@@ -54,7 +54,7 @@ gitleaks = "8.30.1"
 "pipx:semgrep" = "1.187.0"
 osv-scanner = "2.7.1"
 "pipx:sqlfluff" = "4.5.0"                 # SQL lint and format, Postgres dialect (.sqlfluff), for the unreleased migrations
-vale = "3.28.1"                           # the business rules' words, in ASD-STE100 English (.vale.ini)
+vale = "3.29.0"                           # the business rules' words, in ASD-STE100 English (.vale.ini)
 
 [hooks]
 postinstall = "hk install --mise"
