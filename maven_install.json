@@ -12,7 +12,7 @@
     "com.h3xstream.findsecbugs:findsecbugs-plugin": -947761330,
     "com.mebigfatguy.sb-contrib:sb-contrib": -1065052473,
     "com.networknt:json-schema-validator": -704756318,
-    "com.uber.nullaway:nullaway": -1216571949,
+    "com.uber.nullaway:nullaway": 1270940884,
     "dev.matrixlab.webp4j:webp4j-core": 797374564,
     "gg.jte:jte": 1753066982,
     "gg.jte:jte-jspecify-nullmarked": 309952362,
@@ -32,9 +32,9 @@
     "io.xspec:xspec": -1230917719,
     "jakarta.servlet:jakarta.servlet-api": 712477102,
     "jakarta.validation:jakarta.validation-api": -1858198223,
-    "name.dmaus.schxslt:schxslt2": 601299804,
+    "name.dmaus.schxslt:schxslt2": 1281358174,
     "net.sf.saxon:Saxon-HE": 211501835,
-    "net.ttddyy.observation:datasource-micrometer-spring-boot": -812390484,
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": 1675122349,
     "org.assertj:assertj-core": 1863574844,
     "org.awaitility:awaitility": -1630939750,
     "org.flywaydb:flyway-core": 1866554074,
@@ -43,14 +43,14 @@
     "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
     "org.jmolecules.integrations:jmolecules-jackson3": -1126255350,
     "org.jmolecules.integrations:jmolecules-spring": -1106265251,
-    "org.jmolecules:jmolecules-bom": -1738962242,
+    "org.jmolecules:jmolecules-bom": -1738932451,
     "org.jmolecules:jmolecules-ddd": 1569514801,
     "org.jmolecules:jmolecules-events": -1329545148,
     "org.jmolecules:jmolecules-onion-architecture": 1660079362,
     "org.jooq:jooq": 5514906,
     "org.jooq:jooq-codegen": -893649392,
     "org.jooq:jooq-meta": -1605077144,
-    "org.jsoup:jsoup": -1622565922,
+    "org.jsoup:jsoup": -1612062818,
     "org.jspecify:jspecify": 1062581018,
     "org.junit.jupiter:junit-jupiter-api": 194920406,
     "org.junit.jupiter:junit-jupiter-engine": -1886863302,
@@ -60,12 +60,12 @@
     "org.junit.platform:junit-platform-suite": 355404036,
     "org.mockito:mockito-core": -554630660,
     "org.postgresql:postgresql": -253651910,
-    "org.slf4j:slf4j-jdk14": 1467713585,
+    "org.slf4j:slf4j-jdk14": 1038479433,
     "org.slf4j:slf4j-simple": -1186176407,
     "org.springframework.boot:spring-boot": 1220394855,
     "org.springframework.boot:spring-boot-autoconfigure": -919298511,
-    "org.springframework.boot:spring-boot-dependencies": 98615043,
-    "org.springframework.boot:spring-boot-loader-tools": -1122518281,
+    "org.springframework.boot:spring-boot-dependencies": 127214403,
+    "org.springframework.boot:spring-boot-loader-tools": -1112015177,
     "org.springframework.boot:spring-boot-restdocs": -791231435,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
     "org.springframework.boot:spring-boot-starter-data-redis": -194155460,
@@ -82,7 +82,7 @@
     "org.springframework.boot:spring-boot-webmvc-test": -490892141,
     "org.springframework.hateoas:spring-hateoas": -609683625,
     "org.springframework.modulith:spring-modulith-api": -1267837964,
-    "org.springframework.modulith:spring-modulith-bom": 1667680144,
+    "org.springframework.modulith:spring-modulith-bom": 1696279504,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
     "org.springframework.modulith:spring-modulith-docs": -1347706499,
     "org.springframework.modulith:spring-modulith-starter-insight": -721434572,
@@ -97,8 +97,8 @@
     "org.testcontainers:testcontainers": -258185670,
     "org.testcontainers:testcontainers-grafana": -2129771727,
     "org.testcontainers:testcontainers-postgresql": 110741309,
-    "org.webjars.npm:highlightjs__cdn-assets": -960016224,
-    "org.webjars.npm:htmx.org": -1535533557,
+    "org.webjars.npm:highlightjs__cdn-assets": -949513120,
+    "org.webjars.npm:htmx.org": 951979276,
     "org.webjars:webjars-locator-lite": 1938239638,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
@@ -106,44 +106,42 @@
     "tools.jackson.core:jackson-databind": 1626308344
   },
   "__RESOLVED_ARTIFACTS_HASH": {
-    "aopalliance:aopalliance": 1403132272,
-    "ch.qos.logback:logback-classic": -974775885,
-    "ch.qos.logback:logback-core": 1703218533,
+    "ch.qos.logback:logback-classic": -809680434,
+    "ch.qos.logback:logback-core": 1665217231,
     "com.ethlo.time:itu": 1234603439,
     "com.fasterxml.jackson.core:jackson-annotations": 1145483352,
-    "com.fasterxml:classmate": 381313761,
-    "com.github.ben-manes.caffeine:caffeine": -1094095223,
-    "com.github.docker-java:docker-java-api": 1073735645,
+    "com.fasterxml:classmate": 426257404,
+    "com.github.ben-manes.caffeine:caffeine": -71104983,
+    "com.github.docker-java:docker-java-api": -485729392,
     "com.github.docker-java:docker-java-transport": -1526601578,
-    "com.github.docker-java:docker-java-transport-zerodep": -168720568,
+    "com.github.docker-java:docker-java-transport-zerodep": -347166331,
     "com.github.luben:zstd-jni": 449488354,
-    "com.github.spotbugs:spotbugs": -564328297,
+    "com.github.spotbugs:spotbugs": 1811850005,
     "com.github.spotbugs:spotbugs-annotations": -1628657191,
     "com.github.stephenc.jcip:jcip-annotations": 2084352561,
     "com.google.code.findbugs:jsr305": 870839855,
-    "com.google.code.gson:gson": 1873367391,
+    "com.google.code.gson:gson": -1663769307,
     "com.google.errorprone:error_prone_annotations": 652227016,
     "com.google.guava:failureaccess": 1715931538,
     "com.google.guava:guava": -1710221766,
     "com.google.guava:listenablefuture": 1079558157,
     "com.google.j2objc:j2objc-annotations": -1008747351,
-    "com.google.protobuf:protobuf-java": 911577887,
     "com.h3xstream.findsecbugs:findsecbugs-plugin": 1411965311,
-    "com.jayway.jsonpath:json-path": -1608107467,
+    "com.jayway.jsonpath:json-path": 1854456359,
     "com.mebigfatguy.sb-contrib:sb-contrib": 203577479,
-    "com.networknt:json-schema-validator": 1368335725,
+    "com.networknt:json-schema-validator": -769249380,
     "com.palantir.javapoet:javapoet": -2014275507,
     "com.samskivert:jmustache": 1730384904,
-    "com.squareup.okhttp3:okhttp-jvm": -1014142857,
-    "com.squareup.okio:okio-jvm": 501270314,
+    "com.squareup.okhttp3:okhttp-jvm": -1257346423,
+    "com.squareup.okio:okio-jvm": -450133069,
     "com.structurizr:structurizr-core": 2104432366,
     "com.structurizr:structurizr-export": 499657505,
-    "com.tngtech.archunit:archunit": -1723949349,
-    "com.uber.nullaway:nullaway": 982946578,
-    "com.zaxxer:HikariCP": -1650230914,
-    "commons-codec:commons-codec": 58403102,
+    "com.tngtech.archunit:archunit": 1978696318,
+    "com.uber.nullaway:nullaway": -1464243352,
+    "com.zaxxer:HikariCP": -266738634,
+    "commons-codec:commons-codec": -1304300711,
     "commons-io:commons-io": 1072619124,
-    "commons-logging:commons-logging": -102005530,
+    "commons-logging:commons-logging": -2039356713,
     "dev.matrixlab.webp4j:webp4j-core": -1863978758,
     "gg.jte:jte": 907072816,
     "gg.jte:jte-extension-api": 1072899676,
@@ -151,8 +149,8 @@
     "gg.jte:jte-models": 96728900,
     "gg.jte:jte-models-runtime": 1758521571,
     "gg.jte:jte-runtime": 1392871138,
-    "gg.jte:jte-spring-boot-starter-4": -1868450011,
-    "gg.jte:jte-spring-boot-starter-4-core": -2012820981,
+    "gg.jte:jte-spring-boot-starter-4": 1817035211,
+    "gg.jte:jte-spring-boot-starter-4-core": 610218398,
     "io.cucumber:ci-environment": 1156668929,
     "io.cucumber:cucumber-core": 889772482,
     "io.cucumber:cucumber-expressions": 1967106455,
@@ -160,7 +158,7 @@
     "io.cucumber:cucumber-gherkin-messages": 1143615394,
     "io.cucumber:cucumber-java": -1042734355,
     "io.cucumber:cucumber-json-formatter": 1837595420,
-    "io.cucumber:cucumber-junit-platform-engine": -1283067372,
+    "io.cucumber:cucumber-junit-platform-engine": -391806461,
     "io.cucumber:cucumber-picocontainer": -14330584,
     "io.cucumber:cucumber-plugin": 1869356427,
     "io.cucumber:datatable": 1337473372,
@@ -177,42 +175,40 @@
     "io.cucumber:testng-xml-formatter": 637728436,
     "io.cucumber:usage-formatter": 1950002596,
     "io.github.java-diff-utils:java-diff-utils": 668781851,
-    "io.github.wimdeblauwe:htmx-spring-boot": -826947741,
-    "io.lettuce:lettuce-core": 1593187343,
+    "io.github.wimdeblauwe:htmx-spring-boot": 1796091638,
+    "io.lettuce:lettuce-core": 2041218359,
     "io.micrometer:context-propagation": 1223423881,
-    "io.micrometer:micrometer-commons": 440746097,
-    "io.micrometer:micrometer-core": -1670822843,
-    "io.micrometer:micrometer-jakarta9": -1610177437,
-    "io.micrometer:micrometer-observation": 161929031,
-    "io.micrometer:micrometer-registry-otlp": -1277943056,
-    "io.micrometer:micrometer-tracing": -1442202412,
-    "io.micrometer:micrometer-tracing-bridge-otel": 65001064,
-    "io.netty:netty-buffer": -294787265,
-    "io.netty:netty-codec-base": -709159638,
-    "io.netty:netty-codec-dns": -2077878597,
-    "io.netty:netty-common": 505449648,
-    "io.netty:netty-handler": -2123705569,
-    "io.netty:netty-resolver": -501408686,
-    "io.netty:netty-resolver-dns": -907771432,
-    "io.netty:netty-transport": 38456572,
-    "io.netty:netty-transport-native-unix-common": 451886035,
-    "io.opentelemetry.proto:opentelemetry-proto": 834225494,
-    "io.opentelemetry.semconv:opentelemetry-semconv": -646851427,
-    "io.opentelemetry:opentelemetry-api": -541719127,
-    "io.opentelemetry:opentelemetry-common": 596563631,
-    "io.opentelemetry:opentelemetry-context": 1419774145,
-    "io.opentelemetry:opentelemetry-exporter-common": 869123396,
-    "io.opentelemetry:opentelemetry-exporter-otlp": -1728564695,
-    "io.opentelemetry:opentelemetry-exporter-otlp-common": 1950053544,
-    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": 2052931778,
-    "io.opentelemetry:opentelemetry-extension-trace-propagators": -787335857,
-    "io.opentelemetry:opentelemetry-sdk": -797477471,
-    "io.opentelemetry:opentelemetry-sdk-common": 970545597,
-    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": 1738784907,
-    "io.opentelemetry:opentelemetry-sdk-logs": -17412482,
-    "io.opentelemetry:opentelemetry-sdk-metrics": -1367295569,
-    "io.opentelemetry:opentelemetry-sdk-trace": -1401077298,
-    "io.projectreactor:reactor-core": 1433497478,
+    "io.micrometer:micrometer-commons": 813817897,
+    "io.micrometer:micrometer-core": 14448946,
+    "io.micrometer:micrometer-jakarta9": -800990433,
+    "io.micrometer:micrometer-observation": 1957251392,
+    "io.micrometer:micrometer-registry-otlp": -1886367747,
+    "io.micrometer:micrometer-tracing": -1319507349,
+    "io.micrometer:micrometer-tracing-bridge-otel": 263815673,
+    "io.netty:netty-buffer": 194929880,
+    "io.netty:netty-codec-base": -1471828612,
+    "io.netty:netty-codec-dns": -2113080008,
+    "io.netty:netty-common": -1525903729,
+    "io.netty:netty-handler": -529744463,
+    "io.netty:netty-resolver": -1600241075,
+    "io.netty:netty-resolver-dns": 1953966491,
+    "io.netty:netty-transport": 1348722655,
+    "io.netty:netty-transport-native-unix-common": 1696334627,
+    "io.opentelemetry.semconv:opentelemetry-semconv": 1561932101,
+    "io.opentelemetry:opentelemetry-api": 35575868,
+    "io.opentelemetry:opentelemetry-common": -628658218,
+    "io.opentelemetry:opentelemetry-context": -893134364,
+    "io.opentelemetry:opentelemetry-exporter-common": -1663235340,
+    "io.opentelemetry:opentelemetry-exporter-otlp": 779514555,
+    "io.opentelemetry:opentelemetry-exporter-otlp-common": -1566304655,
+    "io.opentelemetry:opentelemetry-exporter-sender-okhttp": -1989763243,
+    "io.opentelemetry:opentelemetry-extension-trace-propagators": 1724452210,
+    "io.opentelemetry:opentelemetry-sdk": -604679489,
+    "io.opentelemetry:opentelemetry-sdk-common": -99563096,
+    "io.opentelemetry:opentelemetry-sdk-logs": 1570554130,
+    "io.opentelemetry:opentelemetry-sdk-metrics": -1446973510,
+    "io.opentelemetry:opentelemetry-sdk-trace": -19974944,
+    "io.projectreactor:reactor-core": -1625679890,
     "io.r2dbc:r2dbc-spi": -97897091,
     "io.soabase.record-builder:record-builder-core": -1459491078,
     "io.soabase.record-builder:record-builder-processor": -407928797,
@@ -223,192 +219,192 @@
     "jakarta.validation:jakarta.validation-api": -1708329466,
     "jakarta.xml.bind:jakarta.xml.bind-api": -1145319810,
     "jaxen:jaxen": 482013535,
-    "name.dmaus.schxslt:schxslt2": -2110888029,
-    "net.bytebuddy:byte-buddy": -2144538556,
-    "net.bytebuddy:byte-buddy-agent": -1307562154,
+    "name.dmaus.schxslt:schxslt2": -558892286,
+    "net.bytebuddy:byte-buddy": 858364056,
+    "net.bytebuddy:byte-buddy-agent": -433855907,
     "net.java.dev.jna:jna": 154162148,
-    "net.minidev:accessors-smart": 374817394,
-    "net.minidev:json-smart": -319512320,
+    "net.minidev:accessors-smart": 1361271851,
+    "net.minidev:json-smart": -948840863,
     "net.sf.saxon:Saxon-HE": -1112923966,
-    "net.ttddyy.observation:datasource-micrometer": 153802445,
-    "net.ttddyy.observation:datasource-micrometer-spring-boot": 2054477898,
-    "net.ttddyy:datasource-proxy": -1018826524,
-    "org.apache.bcel:bcel": -1441498783,
-    "org.apache.commons:commons-compress": 622720715,
-    "org.apache.commons:commons-lang3": 1841935436,
-    "org.apache.commons:commons-text": 869132518,
-    "org.apache.logging.log4j:log4j-api": -1710269538,
-    "org.apache.logging.log4j:log4j-core": -1652273887,
-    "org.apache.logging.log4j:log4j-to-slf4j": -997962672,
-    "org.apache.tomcat.embed:tomcat-embed-core": -1299916636,
-    "org.apache.tomcat.embed:tomcat-embed-el": 494223039,
-    "org.apache.tomcat.embed:tomcat-embed-websocket": 1655407058,
+    "net.ttddyy.observation:datasource-micrometer": 301743499,
+    "net.ttddyy.observation:datasource-micrometer-spring-boot": 172709091,
+    "net.ttddyy:datasource-proxy": -1978871167,
+    "org.apache.bcel:bcel": -1563530983,
+    "org.apache.commons:commons-compress": -1180081951,
+    "org.apache.commons:commons-lang3": 348552720,
+    "org.apache.commons:commons-text": 35026164,
+    "org.apache.logging.log4j:log4j-api": -1175312709,
+    "org.apache.logging.log4j:log4j-core": -771291131,
+    "org.apache.logging.log4j:log4j-to-slf4j": -244717076,
+    "org.apache.tomcat.embed:tomcat-embed-core": 1546169801,
+    "org.apache.tomcat.embed:tomcat-embed-el": 1034701215,
+    "org.apache.tomcat.embed:tomcat-embed-websocket": 1696312867,
     "org.apiguardian:apiguardian-api": 1279798469,
-    "org.assertj:assertj-core": -59722598,
+    "org.assertj:assertj-core": -1056735155,
     "org.awaitility:awaitility": 146142818,
     "org.checkerframework:checker-qual": -1543380368,
     "org.checkerframework:dataflow-nullaway": 1153433772,
     "org.dom4j:dom4j": -355280329,
-    "org.flywaydb:flyway-core": -1801489017,
-    "org.flywaydb:flyway-database-postgresql": 180118906,
+    "org.flywaydb:flyway-core": -1104832433,
+    "org.flywaydb:flyway-database-postgresql": 1190473795,
     "org.hamcrest:hamcrest": 1282317766,
     "org.hdrhistogram:HdrHistogram": 310945399,
-    "org.hibernate.validator:hibernate-validator": 1341086113,
+    "org.hibernate.validator:hibernate-validator": 1428941957,
     "org.jboss.logging:jboss-logging": 670094878,
-    "org.jetbrains.kotlin:kotlin-stdlib": -1474384514,
+    "org.jetbrains.kotlin:kotlin-stdlib": -1972629549,
     "org.jetbrains:annotations": -845966580,
-    "org.jmolecules.integrations:jmolecules-archunit": -296919357,
-    "org.jmolecules.integrations:jmolecules-jackson3": 1192958134,
-    "org.jmolecules.integrations:jmolecules-spring": 1517973402,
-    "org.jmolecules:jmolecules-ddd": -1358615692,
-    "org.jmolecules:jmolecules-events": -1249443269,
-    "org.jmolecules:jmolecules-onion-architecture": 940530457,
-    "org.jmolecules:jstereotype": 1595728065,
-    "org.jooq:jooq": -57677037,
-    "org.jooq:jooq-codegen": 1718716008,
-    "org.jooq:jooq-meta": -1565293089,
-    "org.jsoup:jsoup": 1818671647,
+    "org.jmolecules.integrations:jmolecules-archunit": 1819845396,
+    "org.jmolecules.integrations:jmolecules-jackson3": -2073156582,
+    "org.jmolecules.integrations:jmolecules-spring": -1132712752,
+    "org.jmolecules:jmolecules-ddd": 902686563,
+    "org.jmolecules:jmolecules-events": -541986174,
+    "org.jmolecules:jmolecules-onion-architecture": 1305228352,
+    "org.jmolecules:jstereotype": 1627389153,
+    "org.jooq:jooq": -333846444,
+    "org.jooq:jooq-codegen": 1432934238,
+    "org.jooq:jooq-meta": 568192852,
+    "org.jsoup:jsoup": -873373117,
     "org.jspecify:jspecify": -109882726,
-    "org.junit.jupiter:junit-jupiter-api": 972758922,
-    "org.junit.jupiter:junit-jupiter-engine": 1731586075,
-    "org.junit.jupiter:junit-jupiter-params": -1281326584,
-    "org.junit.platform:junit-platform-commons": 411167634,
-    "org.junit.platform:junit-platform-engine": 389656162,
-    "org.junit.platform:junit-platform-launcher": 2084826755,
-    "org.junit.platform:junit-platform-reporting": 2140994334,
-    "org.junit.platform:junit-platform-suite": 318612140,
-    "org.junit.platform:junit-platform-suite-api": 159707866,
-    "org.junit.platform:junit-platform-suite-engine": -1493391530,
-    "org.mockito:mockito-core": -1124945457,
+    "org.junit.jupiter:junit-jupiter-api": 1070908820,
+    "org.junit.jupiter:junit-jupiter-engine": -1247144809,
+    "org.junit.jupiter:junit-jupiter-params": -1550272880,
+    "org.junit.platform:junit-platform-commons": -170148016,
+    "org.junit.platform:junit-platform-engine": 1018032853,
+    "org.junit.platform:junit-platform-launcher": 404918870,
+    "org.junit.platform:junit-platform-reporting": 1588112906,
+    "org.junit.platform:junit-platform-suite": 2073844255,
+    "org.junit.platform:junit-platform-suite-api": -54165639,
+    "org.junit.platform:junit-platform-suite-engine": 1025071011,
+    "org.mockito:mockito-core": 1306476178,
     "org.objenesis:objenesis": 1798216877,
-    "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
+    "org.opentest4j.reporting:open-test-reporting-tooling-spi": -1725000643,
     "org.opentest4j:opentest4j": -1711174392,
-    "org.ow2.asm:asm": -873652610,
-    "org.ow2.asm:asm-analysis": 1677026089,
-    "org.ow2.asm:asm-commons": -836543625,
-    "org.ow2.asm:asm-tree": -1580575629,
-    "org.ow2.asm:asm-util": -1514090026,
+    "org.ow2.asm:asm": -406993722,
+    "org.ow2.asm:asm-analysis": -1642678227,
+    "org.ow2.asm:asm-commons": -605649945,
+    "org.ow2.asm:asm-tree": 1778556475,
+    "org.ow2.asm:asm-util": -64441686,
     "org.picocontainer:picocontainer": -592587358,
-    "org.postgresql:postgresql": -1885180735,
+    "org.postgresql:postgresql": 551358737,
     "org.reactivestreams:reactive-streams": 1281941191,
     "org.rnorth.duct-tape:duct-tape": -1059401544,
-    "org.slf4j:jcl-over-slf4j": 1113513525,
-    "org.slf4j:jul-to-slf4j": 1118476727,
-    "org.slf4j:slf4j-api": 500377983,
-    "org.slf4j:slf4j-jdk14": 183878048,
-    "org.slf4j:slf4j-simple": -1055624668,
+    "org.slf4j:jcl-over-slf4j": 654857378,
+    "org.slf4j:jul-to-slf4j": -1874007883,
+    "org.slf4j:slf4j-api": -736053657,
+    "org.slf4j:slf4j-jdk14": -278434875,
+    "org.slf4j:slf4j-simple": -506243416,
     "org.snakeyaml:snakeyaml-engine": -1273354013,
-    "org.springframework.boot:spring-boot": 276724413,
-    "org.springframework.boot:spring-boot-actuator": 1574461963,
-    "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
-    "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
-    "org.springframework.boot:spring-boot-data-commons": 1999396468,
-    "org.springframework.boot:spring-boot-data-redis": 1412747784,
-    "org.springframework.boot:spring-boot-flyway": 1122814817,
-    "org.springframework.boot:spring-boot-hateoas": -1461622959,
-    "org.springframework.boot:spring-boot-health": -1642279449,
-    "org.springframework.boot:spring-boot-http-client": 227691599,
-    "org.springframework.boot:spring-boot-http-converter": 745525851,
-    "org.springframework.boot:spring-boot-jackson": -1628625085,
-    "org.springframework.boot:spring-boot-jdbc": 1773139283,
-    "org.springframework.boot:spring-boot-jooq": 2050682760,
-    "org.springframework.boot:spring-boot-loader-tools": -1114055359,
-    "org.springframework.boot:spring-boot-micrometer-metrics": 1310591253,
-    "org.springframework.boot:spring-boot-micrometer-observation": 1009262964,
-    "org.springframework.boot:spring-boot-micrometer-tracing": -415431154,
-    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": 2078903607,
-    "org.springframework.boot:spring-boot-netty": 211072766,
-    "org.springframework.boot:spring-boot-opentelemetry": 1123131315,
-    "org.springframework.boot:spring-boot-persistence": -1018883178,
-    "org.springframework.boot:spring-boot-restclient": 1077409218,
-    "org.springframework.boot:spring-boot-restdocs": 463088098,
-    "org.springframework.boot:spring-boot-servlet": 639711912,
-    "org.springframework.boot:spring-boot-sql": -1592924234,
-    "org.springframework.boot:spring-boot-starter": -1905590456,
-    "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
-    "org.springframework.boot:spring-boot-starter-data-redis": 867793389,
-    "org.springframework.boot:spring-boot-starter-flyway": -1250505430,
-    "org.springframework.boot:spring-boot-starter-hateoas": 1770639505,
-    "org.springframework.boot:spring-boot-starter-jackson": 369527275,
-    "org.springframework.boot:spring-boot-starter-jdbc": 683098650,
-    "org.springframework.boot:spring-boot-starter-jooq": -52677315,
-    "org.springframework.boot:spring-boot-starter-logging": -1965325172,
-    "org.springframework.boot:spring-boot-starter-micrometer-metrics": -242434938,
-    "org.springframework.boot:spring-boot-starter-opentelemetry": -204029448,
-    "org.springframework.boot:spring-boot-starter-restclient": 1134993850,
-    "org.springframework.boot:spring-boot-starter-tomcat": 1898694526,
-    "org.springframework.boot:spring-boot-starter-tomcat-runtime": 1798393534,
-    "org.springframework.boot:spring-boot-starter-validation": 727146254,
-    "org.springframework.boot:spring-boot-starter-webmvc": -1923582309,
-    "org.springframework.boot:spring-boot-test": -679692564,
-    "org.springframework.boot:spring-boot-test-autoconfigure": 640840680,
-    "org.springframework.boot:spring-boot-testcontainers": -857207392,
-    "org.springframework.boot:spring-boot-tomcat": 637947697,
-    "org.springframework.boot:spring-boot-transaction": 1590643052,
-    "org.springframework.boot:spring-boot-validation": 75296794,
-    "org.springframework.boot:spring-boot-web-server": 1791077981,
-    "org.springframework.boot:spring-boot-webmvc": 1644292535,
-    "org.springframework.boot:spring-boot-webmvc-test": 479242789,
-    "org.springframework.data:spring-data-commons": 1365953262,
-    "org.springframework.data:spring-data-keyvalue": 1294982872,
-    "org.springframework.data:spring-data-redis": 514606181,
-    "org.springframework.hateoas:spring-hateoas": -1891654200,
-    "org.springframework.modulith:spring-modulith-actuator": -1685703750,
-    "org.springframework.modulith:spring-modulith-api": -1671136456,
-    "org.springframework.modulith:spring-modulith-apt": -203694605,
-    "org.springframework.modulith:spring-modulith-core": 424804072,
-    "org.springframework.modulith:spring-modulith-docs": -1986785091,
-    "org.springframework.modulith:spring-modulith-events-api": -1951733842,
-    "org.springframework.modulith:spring-modulith-events-core": 429329674,
-    "org.springframework.modulith:spring-modulith-events-jackson": 743842480,
-    "org.springframework.modulith:spring-modulith-events-jdbc": 755930182,
-    "org.springframework.modulith:spring-modulith-moments": -767688995,
-    "org.springframework.modulith:spring-modulith-observability-api": 680969470,
-    "org.springframework.modulith:spring-modulith-observability-core": -1035402057,
-    "org.springframework.modulith:spring-modulith-runtime": 1325398580,
-    "org.springframework.modulith:spring-modulith-starter-core": -533285022,
-    "org.springframework.modulith:spring-modulith-starter-insight": -679693304,
-    "org.springframework.modulith:spring-modulith-starter-jdbc": 324956310,
-    "org.springframework.plugin:spring-plugin-core": 218341417,
-    "org.springframework.restdocs:spring-restdocs-core": -559699652,
-    "org.springframework.restdocs:spring-restdocs-mockmvc": -1754863375,
-    "org.springframework:spring-aop": 2140047740,
-    "org.springframework:spring-beans": -52091312,
-    "org.springframework:spring-context": -1592913882,
-    "org.springframework:spring-context-support": -581712494,
-    "org.springframework:spring-core": 1717580005,
-    "org.springframework:spring-expression": -368645642,
-    "org.springframework:spring-jdbc": 594161485,
-    "org.springframework:spring-messaging": -1748332337,
-    "org.springframework:spring-oxm": 1138425481,
-    "org.springframework:spring-test": 439340573,
-    "org.springframework:spring-tx": 1278511811,
-    "org.springframework:spring-web": -1087826926,
-    "org.springframework:spring-webmvc": -1583482181,
-    "org.testcontainers:testcontainers": 218734969,
-    "org.testcontainers:testcontainers-database-commons": 1275723787,
-    "org.testcontainers:testcontainers-grafana": 740736833,
-    "org.testcontainers:testcontainers-jdbc": 361901508,
-    "org.testcontainers:testcontainers-postgresql": 1085468834,
-    "org.webjars.npm:highlightjs__cdn-assets": -779088787,
-    "org.webjars.npm:htmx.org": 1035646194,
-    "org.webjars:webjars-locator-lite": -454234071,
+    "org.springframework.boot:spring-boot": 1603644649,
+    "org.springframework.boot:spring-boot-actuator": 408721085,
+    "org.springframework.boot:spring-boot-actuator-autoconfigure": 1406126905,
+    "org.springframework.boot:spring-boot-autoconfigure": -17857312,
+    "org.springframework.boot:spring-boot-data-commons": 1966675897,
+    "org.springframework.boot:spring-boot-data-redis": 363173135,
+    "org.springframework.boot:spring-boot-flyway": -1528543620,
+    "org.springframework.boot:spring-boot-hateoas": 101084969,
+    "org.springframework.boot:spring-boot-health": -1716306069,
+    "org.springframework.boot:spring-boot-http-client": 225956979,
+    "org.springframework.boot:spring-boot-http-converter": -605034646,
+    "org.springframework.boot:spring-boot-jackson": 1557224214,
+    "org.springframework.boot:spring-boot-jdbc": 28537910,
+    "org.springframework.boot:spring-boot-jooq": -722154960,
+    "org.springframework.boot:spring-boot-loader-tools": 717154818,
+    "org.springframework.boot:spring-boot-micrometer-metrics": 2074706921,
+    "org.springframework.boot:spring-boot-micrometer-observation": -418742719,
+    "org.springframework.boot:spring-boot-micrometer-tracing": -1828637014,
+    "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": -65318087,
+    "org.springframework.boot:spring-boot-netty": 278420765,
+    "org.springframework.boot:spring-boot-opentelemetry": 1599660910,
+    "org.springframework.boot:spring-boot-persistence": 1062394410,
+    "org.springframework.boot:spring-boot-restclient": 1291620717,
+    "org.springframework.boot:spring-boot-restdocs": 1921351899,
+    "org.springframework.boot:spring-boot-servlet": 175172948,
+    "org.springframework.boot:spring-boot-sql": -1831304459,
+    "org.springframework.boot:spring-boot-starter": -1117132795,
+    "org.springframework.boot:spring-boot-starter-actuator": 1727364264,
+    "org.springframework.boot:spring-boot-starter-data-redis": -1505021971,
+    "org.springframework.boot:spring-boot-starter-flyway": 623956967,
+    "org.springframework.boot:spring-boot-starter-hateoas": 300929944,
+    "org.springframework.boot:spring-boot-starter-jackson": 566039723,
+    "org.springframework.boot:spring-boot-starter-jdbc": -1887527565,
+    "org.springframework.boot:spring-boot-starter-jooq": 1832548364,
+    "org.springframework.boot:spring-boot-starter-logging": -1743384851,
+    "org.springframework.boot:spring-boot-starter-micrometer-metrics": -1820539616,
+    "org.springframework.boot:spring-boot-starter-opentelemetry": 28566675,
+    "org.springframework.boot:spring-boot-starter-restclient": 1804142599,
+    "org.springframework.boot:spring-boot-starter-tomcat": 1671108901,
+    "org.springframework.boot:spring-boot-starter-tomcat-runtime": 950744179,
+    "org.springframework.boot:spring-boot-starter-validation": 1631158788,
+    "org.springframework.boot:spring-boot-starter-webmvc": 1941948610,
+    "org.springframework.boot:spring-boot-test": -718772875,
+    "org.springframework.boot:spring-boot-test-autoconfigure": -709795486,
+    "org.springframework.boot:spring-boot-testcontainers": 735429826,
+    "org.springframework.boot:spring-boot-tomcat": -521385655,
+    "org.springframework.boot:spring-boot-transaction": 771219460,
+    "org.springframework.boot:spring-boot-validation": 204606369,
+    "org.springframework.boot:spring-boot-web-server": -2064602331,
+    "org.springframework.boot:spring-boot-webmvc": -1391988553,
+    "org.springframework.boot:spring-boot-webmvc-test": -1807720504,
+    "org.springframework.data:spring-data-commons": -355882899,
+    "org.springframework.data:spring-data-keyvalue": 575611503,
+    "org.springframework.data:spring-data-redis": -229940580,
+    "org.springframework.hateoas:spring-hateoas": -1563449500,
+    "org.springframework.modulith:spring-modulith-actuator": 1617407968,
+    "org.springframework.modulith:spring-modulith-api": 2111112395,
+    "org.springframework.modulith:spring-modulith-apt": -1046996282,
+    "org.springframework.modulith:spring-modulith-core": -774508541,
+    "org.springframework.modulith:spring-modulith-docs": 1270214750,
+    "org.springframework.modulith:spring-modulith-events-api": -1330936117,
+    "org.springframework.modulith:spring-modulith-events-core": 1746279169,
+    "org.springframework.modulith:spring-modulith-events-jackson": -303174271,
+    "org.springframework.modulith:spring-modulith-events-jdbc": 1053309395,
+    "org.springframework.modulith:spring-modulith-moments": -712555618,
+    "org.springframework.modulith:spring-modulith-observability-api": -1478699813,
+    "org.springframework.modulith:spring-modulith-observability-core": -1569001008,
+    "org.springframework.modulith:spring-modulith-runtime": 816058159,
+    "org.springframework.modulith:spring-modulith-starter-core": 269229843,
+    "org.springframework.modulith:spring-modulith-starter-insight": -2146504395,
+    "org.springframework.modulith:spring-modulith-starter-jdbc": -1174700451,
+    "org.springframework.plugin:spring-plugin-core": -1072863309,
+    "org.springframework.restdocs:spring-restdocs-core": 1513807242,
+    "org.springframework.restdocs:spring-restdocs-mockmvc": -1118669627,
+    "org.springframework:spring-aop": 1877751208,
+    "org.springframework:spring-beans": -1676299335,
+    "org.springframework:spring-context": 574378887,
+    "org.springframework:spring-context-support": -1279547205,
+    "org.springframework:spring-core": 1632252657,
+    "org.springframework:spring-expression": -1230335494,
+    "org.springframework:spring-jdbc": 1393427187,
+    "org.springframework:spring-messaging": 1630233980,
+    "org.springframework:spring-oxm": 1196118009,
+    "org.springframework:spring-test": 206088117,
+    "org.springframework:spring-tx": -2061980822,
+    "org.springframework:spring-web": -26152055,
+    "org.springframework:spring-webmvc": -1413350320,
+    "org.testcontainers:testcontainers": -644638173,
+    "org.testcontainers:testcontainers-database-commons": 1778528749,
+    "org.testcontainers:testcontainers-grafana": -1921164937,
+    "org.testcontainers:testcontainers-jdbc": -207941649,
+    "org.testcontainers:testcontainers-postgresql": 1983367456,
+    "org.webjars.npm:highlightjs__cdn-assets": 1719363119,
+    "org.webjars.npm:htmx.org": -1444881978,
+    "org.webjars:webjars-locator-lite": 2039948928,
     "org.xmlresolver:xmlresolver": 602572078,
     "org.xmlresolver:xmlresolver:jar:data": 1791221573,
-    "org.xmlunit:xmlunit-assertj3": -1691431030,
-    "org.xmlunit:xmlunit-core": -1543079851,
-    "org.yaml:snakeyaml": 1068613154,
-    "redis.clients.authentication:redis-authx-core": 1112364113,
+    "org.xmlunit:xmlunit-assertj3": 317360602,
+    "org.xmlunit:xmlunit-core": 1830941074,
+    "org.yaml:snakeyaml": -1766780312,
+    "redis.clients.authentication:redis-authx-core": 711753116,
     "tech.picnic.error-prone-support:error-prone-contrib": 618715265,
     "tech.picnic.error-prone-support:error-prone-utils": -1035496961,
     "tech.picnic.error-prone-support:refaster-support": -1353830760,
-    "tools.jackson.core:jackson-core": -435916916,
-    "tools.jackson.core:jackson-databind": 1277331618,
-    "tools.jackson.dataformat:jackson-dataformat-yaml": 187021870
+    "tools.jackson.core:jackson-core": -2112091795,
+    "tools.jackson.core:jackson-databind": -521137759,
+    "tools.jackson.dataformat:jackson-dataformat-yaml": -1268612553
   },
   "conflict_resolution": {
-    "com.github.ben-manes.caffeine:caffeine": "com.github.ben-manes.caffeine:caffeine:3.2.4",
-    "com.google.code.gson:gson:2.8.9": "com.google.code.gson:gson:2.13.2",
+    "com.github.ben-manes.caffeine:caffeine": "com.github.ben-manes.caffeine:caffeine:3.3.1",
+    "com.google.code.gson:gson:2.8.9": "com.google.code.gson:gson:2.14.0",
     "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.50.0",
     "com.google.guava:guava:32.0.1-jre": "com.google.guava:guava:33.6.0-jre",
     "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
@@ -422,81 +418,75 @@
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
     "org.awaitility:awaitility": "org.awaitility:awaitility:4.3.0",
-    "org.flywaydb:flyway-core": "org.flywaydb:flyway-core:12.4.0",
-    "org.flywaydb:flyway-database-postgresql": "org.flywaydb:flyway-database-postgresql:12.4.0",
+    "org.flywaydb:flyway-core": "org.flywaydb:flyway-core:12.11.0",
+    "org.flywaydb:flyway-database-postgresql": "org.flywaydb:flyway-database-postgresql:12.11.0",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
     "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
     "org.jmolecules.integrations:jmolecules-jackson3": "org.jmolecules.integrations:jmolecules-jackson3:0.33.0",
     "org.jmolecules.integrations:jmolecules-spring": "org.jmolecules.integrations:jmolecules-spring:0.33.0",
-    "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.1",
-    "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.0.1",
-    "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.1",
-    "org.jooq:jooq": "org.jooq:jooq:3.21.7",
-    "org.jooq:jooq-codegen": "org.jooq:jooq-codegen:3.21.7",
-    "org.jooq:jooq-meta": "org.jooq:jooq-meta:3.21.7",
+    "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.2",
+    "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.0.2",
+    "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.2",
+    "org.jooq:jooq": "org.jooq:jooq:3.21.9",
+    "org.jooq:jooq-codegen": "org.jooq:jooq-codegen:3.21.9",
+    "org.jooq:jooq-meta": "org.jooq:jooq-meta:3.21.9",
     "org.jspecify:jspecify": "org.jspecify:jspecify:1.0.1",
-    "org.junit.jupiter:junit-jupiter-api": "org.junit.jupiter:junit-jupiter-api:6.0.3",
-    "org.junit.jupiter:junit-jupiter-engine": "org.junit.jupiter:junit-jupiter-engine:6.0.3",
-    "org.junit.jupiter:junit-jupiter-params": "org.junit.jupiter:junit-jupiter-params:6.0.3",
-    "org.junit.platform:junit-platform-launcher": "org.junit.platform:junit-platform-launcher:6.0.3",
-    "org.junit.platform:junit-platform-reporting": "org.junit.platform:junit-platform-reporting:6.0.3",
-    "org.junit.platform:junit-platform-suite": "org.junit.platform:junit-platform-suite:6.0.3",
-    "org.mockito:mockito-core": "org.mockito:mockito-core:5.23.0",
-    "org.postgresql:postgresql": "org.postgresql:postgresql:42.7.13",
-    "org.slf4j:slf4j-simple": "org.slf4j:slf4j-simple:2.0.18",
-    "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
-    "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
-    "org.springframework.boot:spring-boot-restdocs": "org.springframework.boot:spring-boot-restdocs:4.1.1",
-    "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
-    "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.1.1",
-    "org.springframework.boot:spring-boot-starter-flyway": "org.springframework.boot:spring-boot-starter-flyway:4.1.1",
-    "org.springframework.boot:spring-boot-starter-hateoas": "org.springframework.boot:spring-boot-starter-hateoas:4.1.1",
-    "org.springframework.boot:spring-boot-starter-jooq": "org.springframework.boot:spring-boot-starter-jooq:4.1.1",
-    "org.springframework.boot:spring-boot-starter-opentelemetry": "org.springframework.boot:spring-boot-starter-opentelemetry:4.1.1",
-    "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
-    "org.springframework.boot:spring-boot-starter-validation": "org.springframework.boot:spring-boot-starter-validation:4.1.1",
-    "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.1.1",
-    "org.springframework.boot:spring-boot-test": "org.springframework.boot:spring-boot-test:4.1.1",
-    "org.springframework.boot:spring-boot-test-autoconfigure": "org.springframework.boot:spring-boot-test-autoconfigure:4.1.1",
-    "org.springframework.boot:spring-boot-testcontainers": "org.springframework.boot:spring-boot-testcontainers:4.1.1",
-    "org.springframework.boot:spring-boot-webmvc-test": "org.springframework.boot:spring-boot-webmvc-test:4.1.1",
-    "org.springframework.hateoas:spring-hateoas": "org.springframework.hateoas:spring-hateoas:3.1.2",
-    "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
-    "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
-    "org.springframework.modulith:spring-modulith-docs": "org.springframework.modulith:spring-modulith-docs:2.1.1",
-    "org.springframework.modulith:spring-modulith-starter-insight": "org.springframework.modulith:spring-modulith-starter-insight:2.1.1",
-    "org.springframework.modulith:spring-modulith-starter-jdbc": "org.springframework.modulith:spring-modulith-starter-jdbc:2.1.1",
-    "org.springframework.restdocs:spring-restdocs-mockmvc": "org.springframework.restdocs:spring-restdocs-mockmvc:4.0.1",
-    "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
-    "org.springframework:spring-context-support": "org.springframework:spring-context-support:7.0.9",
-    "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
-    "org.springframework:spring-test": "org.springframework:spring-test:7.0.9",
-    "org.springframework:spring-web": "org.springframework:spring-web:7.0.9",
-    "org.springframework:spring-webmvc": "org.springframework:spring-webmvc:7.0.9",
+    "org.junit.jupiter:junit-jupiter-api": "org.junit.jupiter:junit-jupiter-api:6.1.3",
+    "org.junit.jupiter:junit-jupiter-engine": "org.junit.jupiter:junit-jupiter-engine:6.1.3",
+    "org.junit.jupiter:junit-jupiter-params": "org.junit.jupiter:junit-jupiter-params:6.1.3",
+    "org.junit.platform:junit-platform-launcher": "org.junit.platform:junit-platform-launcher:6.1.3",
+    "org.junit.platform:junit-platform-reporting": "org.junit.platform:junit-platform-reporting:6.1.3",
+    "org.junit.platform:junit-platform-suite": "org.junit.platform:junit-platform-suite:6.1.3",
+    "org.mockito:mockito-core": "org.mockito:mockito-core:5.24.0",
+    "org.postgresql:postgresql": "org.postgresql:postgresql:42.7.14",
+    "org.slf4j:slf4j-simple": "org.slf4j:slf4j-simple:2.0.20",
+    "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.2.0",
+    "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.2.0",
+    "org.springframework.boot:spring-boot-restdocs": "org.springframework.boot:spring-boot-restdocs:4.2.0",
+    "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.2.0",
+    "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.2.0",
+    "org.springframework.boot:spring-boot-starter-flyway": "org.springframework.boot:spring-boot-starter-flyway:4.2.0",
+    "org.springframework.boot:spring-boot-starter-hateoas": "org.springframework.boot:spring-boot-starter-hateoas:4.2.0",
+    "org.springframework.boot:spring-boot-starter-jooq": "org.springframework.boot:spring-boot-starter-jooq:4.2.0",
+    "org.springframework.boot:spring-boot-starter-opentelemetry": "org.springframework.boot:spring-boot-starter-opentelemetry:4.2.0",
+    "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.2.0",
+    "org.springframework.boot:spring-boot-starter-validation": "org.springframework.boot:spring-boot-starter-validation:4.2.0",
+    "org.springframework.boot:spring-boot-starter-webmvc": "org.springframework.boot:spring-boot-starter-webmvc:4.2.0",
+    "org.springframework.boot:spring-boot-test": "org.springframework.boot:spring-boot-test:4.2.0",
+    "org.springframework.boot:spring-boot-test-autoconfigure": "org.springframework.boot:spring-boot-test-autoconfigure:4.2.0",
+    "org.springframework.boot:spring-boot-testcontainers": "org.springframework.boot:spring-boot-testcontainers:4.2.0",
+    "org.springframework.boot:spring-boot-webmvc-test": "org.springframework.boot:spring-boot-webmvc-test:4.2.0",
+    "org.springframework.hateoas:spring-hateoas": "org.springframework.hateoas:spring-hateoas:3.2.0",
+    "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.2.0",
+    "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.2.0",
+    "org.springframework.modulith:spring-modulith-docs": "org.springframework.modulith:spring-modulith-docs:2.2.0",
+    "org.springframework.modulith:spring-modulith-starter-insight": "org.springframework.modulith:spring-modulith-starter-insight:2.2.0",
+    "org.springframework.modulith:spring-modulith-starter-jdbc": "org.springframework.modulith:spring-modulith-starter-jdbc:2.2.0",
+    "org.springframework.restdocs:spring-restdocs-mockmvc": "org.springframework.restdocs:spring-restdocs-mockmvc:4.1.0",
+    "org.springframework:spring-context": "org.springframework:spring-context:7.1.0",
+    "org.springframework:spring-context-support": "org.springframework:spring-context-support:7.1.0",
+    "org.springframework:spring-core": "org.springframework:spring-core:7.1.0",
+    "org.springframework:spring-test": "org.springframework:spring-test:7.1.0",
+    "org.springframework:spring-web": "org.springframework:spring-web:7.1.0",
+    "org.springframework:spring-webmvc": "org.springframework:spring-webmvc:7.1.0",
     "org.testcontainers:testcontainers": "org.testcontainers:testcontainers:2.0.5",
     "org.testcontainers:testcontainers-grafana": "org.testcontainers:testcontainers-grafana:2.0.5",
     "org.testcontainers:testcontainers-postgresql": "org.testcontainers:testcontainers-postgresql:2.0.5",
-    "org.webjars:webjars-locator-lite": "org.webjars:webjars-locator-lite:1.1.4",
-    "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.5"
+    "org.webjars:webjars-locator-lite": "org.webjars:webjars-locator-lite:1.1.5",
+    "tools.jackson.core:jackson-databind": "tools.jackson.core:jackson-databind:3.1.8"
   },
   "artifacts": {
-    "aopalliance:aopalliance": {
-      "shasums": {
-        "jar": "0addec670fedcd3f113c5c8091d783280d23f75e3acb841b61a9cdb079376a08"
-      },
-      "version": "1.0"
-    },
     "ch.qos.logback:logback-classic": {
       "shasums": {
-        "jar": "afb439c61fa287c9e1925523b13baab03617e724406a389d48b61c2c3e46b700"
+        "jar": "5230217ccba7a9d31dda1dd878e5606037a7972282c7d3f8eac1efa80e9463d9"
       },
-      "version": "1.5.38"
+      "version": "1.6.6"
     },
     "ch.qos.logback:logback-core": {
       "shasums": {
-        "jar": "a855a0fc97b1d06f4efb1c3bba5ebd0eb508d8b58e68e89e4bbc23a85135c883"
+        "jar": "5458415d5d58a97ab670632f9b2bdac2d6f7e0e11455b45dd4e64e90d12670ab"
       },
-      "version": "1.5.38"
+      "version": "1.6.6"
     },
     "com.ethlo.time:itu": {
       "shasums": {
@@ -512,15 +502,15 @@
     },
     "com.fasterxml:classmate": {
       "shasums": {
-        "jar": "75fbda45456f123fb6e2028a6189442d8d0730b357adce4c0a6d7e789f70669b"
+        "jar": "87356fc32fbb01f8cffd826281abe4f0677d9643c7e2912de11b11789a43aa62"
       },
-      "version": "1.7.3"
+      "version": "1.8.0"
     },
     "com.github.ben-manes.caffeine:caffeine": {
       "shasums": {
-        "jar": "9d9d2cfd681fd9272ded3d27c9930db12f89f732345975aa113ebc223bbf1224"
+        "jar": "1f916d052a3f8c0c10951f343f043f176ff2d3c2f9e380e15f0be673c5e67c48"
       },
-      "version": "3.2.4"
+      "version": "3.3.1"
     },
     "com.github.docker-java:docker-java-api": {
       "shasums": {
@@ -572,9 +562,9 @@
     },
     "com.google.code.gson:gson": {
       "shasums": {
-        "jar": "dd0ce1b55a3ed2080cb70f9c655850cda86c206862310009dcb5e5c95265a5e0"
+        "jar": "2cbd119bf1961c28788310963dc80ba65f58cdeec1dd139c8bdb1240faa2c36f"
       },
-      "version": "2.13.2"
+      "version": "2.14.0"
     },
     "com.google.errorprone:error_prone_annotations": {
       "shasums": {
@@ -606,12 +596,6 @@
       },
       "version": "3.1"
     },
-    "com.google.protobuf:protobuf-java": {
-      "shasums": {
-        "jar": "a4345ba2aa009912ff6f90467fea2d104605256b72c50840d75f13256638a472"
-      },
-      "version": "4.35.1"
-    },
     "com.h3xstream.findsecbugs:findsecbugs-plugin": {
       "shasums": {
         "jar": "6fa340344fa433ff46c2985dab1010e8bc739f9395c983594a5240095e92abc8"
@@ -620,9 +604,9 @@
     },
     "com.jayway.jsonpath:json-path": {
       "shasums": {
-        "jar": "890daa95dd3892d34d9fabc27cd5153656e6f369358625c88f4dc7b79cbd6c5a"
+        "jar": "e4e49440701674ace75af44a98840d9e13f53b34aab280446707661318405dc8"
       },
-      "version": "2.10.0"
+      "version": "3.0.0"
     },
     "com.mebigfatguy.sb-contrib:sb-contrib": {
       "shasums": {
@@ -650,15 +634,15 @@
     },
     "com.squareup.okhttp3:okhttp-jvm": {
       "shasums": {
-        "jar": "c771f48075b763f6c322055e21129a94b7de4c1faf3f8f58ace320b0c9517a30"
+        "jar": "4039527bd1f2e40b66e20b0e52c689cf56074b938ea02678141495f5160f1047"
       },
-      "version": "5.3.2"
+      "version": "5.5.1"
     },
     "com.squareup.okio:okio-jvm": {
       "shasums": {
-        "jar": "2196b993cd34dbbd919e7e01f57a4781b58bee80f86106163e287c20343a96a7"
+        "jar": "b97b640557a650d15411f2be29aef558c4e422a83653cb18ba494311dbed18be"
       },
-      "version": "3.16.4"
+      "version": "3.18.1"
     },
     "com.structurizr:structurizr-core": {
       "shasums": {
@@ -674,27 +658,27 @@
     },
     "com.tngtech.archunit:archunit": {
       "shasums": {
-        "jar": "6d8adf69a3f109ebe1b395764feb07f919e9e0e2ab5e2ea141d2e6251ba7d17f"
+        "jar": "a4dbfc51c90005ad6ac9967672a7efb43aa6928287a57238b28e60e0a75c5c6f"
       },
-      "version": "1.4.2"
+      "version": "1.5.1"
     },
     "com.uber.nullaway:nullaway": {
       "shasums": {
-        "jar": "440d3217f6a74d3b8dab766b0c63dbfbb87bea36d798879865218249dc3f1604"
+        "jar": "98c2efffc689fe6061b62da5390f6bbd53ddd88445b22d46e8946665669044ed"
       },
-      "version": "0.14.3"
+      "version": "0.14.4"
     },
     "com.zaxxer:HikariCP": {
       "shasums": {
-        "jar": "f1e612fa27345be3107a85431e8a8aeb205c15364ab2f2d411e40a9d7bb08095"
+        "jar": "2be45c641b841e81df87292e181f2c203500c5f0e9a1676f135927387f3cf40b"
       },
-      "version": "7.0.2"
+      "version": "7.1.0"
     },
     "commons-codec:commons-codec": {
       "shasums": {
-        "jar": "4da851cb6abfb98bfe9eb77c5e5fc47f5414fa28b94e21b7fd9a646705dc167f"
+        "jar": "78a5d732fbd715e2d10bd7150d2f8030bae57267f8aacc5c88f642cb6c2e5d3f"
       },
-      "version": "1.21.0"
+      "version": "1.22.1"
     },
     "commons-io:commons-io": {
       "shasums": {
@@ -704,9 +688,9 @@
     },
     "commons-logging:commons-logging": {
       "shasums": {
-        "jar": "f8ead8943401081dea0aa824b5b1ba40a0e4ed297a572a0f02258150a0b62357"
+        "jar": "d175dbd751dd782a63bde28c7a039520e971f25e84b79c19b8435edc3603e0dc"
       },
-      "version": "1.3.6"
+      "version": "1.4.0"
     },
     "dev.matrixlab.webp4j:webp4j-core": {
       "shasums": {
@@ -914,9 +898,9 @@
     },
     "io.lettuce:lettuce-core": {
       "shasums": {
-        "jar": "86e245a6cfc36a40aaa1f54027e639a70cb4008d12717164041aefe9bbd072c1"
+        "jar": "5b9b9f80bf04f20b1eb30b0f7f63dfd15024f4843d5a595a70e6cd5bfbfe791e"
       },
-      "version": "7.5.2.RELEASE"
+      "version": "7.8.0.RELEASE"
     },
     "io.micrometer:context-propagation": {
       "shasums": {
@@ -926,201 +910,189 @@
     },
     "io.micrometer:micrometer-commons": {
       "shasums": {
-        "jar": "f2cee6ef046e72eec8128474c7f58c6217173b45ae373c30de0289f2a56ab0fd"
+        "jar": "5cdeac0b935d3d669f5f10c7e5eca4150dc20c4f31681efb9052d2a384b2f8b0"
       },
-      "version": "1.17.1"
+      "version": "1.18.0"
     },
     "io.micrometer:micrometer-core": {
       "shasums": {
-        "jar": "9ca47dfa831409b40253c8dc98c17b9d3e050ebbde4d1543c5521dca2b95ad56"
+        "jar": "5683cfb4ac9627165805b8dd9f327688a22fd0529f1af5db222954de2c953c86"
       },
-      "version": "1.17.1"
+      "version": "1.18.0"
     },
     "io.micrometer:micrometer-jakarta9": {
       "shasums": {
-        "jar": "37fbb0a98ba92e185ae7ebe0804fe6c1394bf7fba7573b204fa6fc3998c2e246"
+        "jar": "0c217927ec74d1d9f3b32ede7005d4c174a9f04c01d2a51aca616db45cb3a25f"
       },
-      "version": "1.17.1"
+      "version": "1.18.0"
     },
     "io.micrometer:micrometer-observation": {
       "shasums": {
-        "jar": "eb34f0cd84a879393ae5c21160fc06385ccdc74f36a4d1e31b199f59acfdaf71"
+        "jar": "b79fc1c35c67623ec4c40c5a6b50409c2c8085bc8d3b82267be09b96b9ccec77"
       },
-      "version": "1.17.1"
+      "version": "1.18.0"
     },
     "io.micrometer:micrometer-registry-otlp": {
       "shasums": {
-        "jar": "c991036f05cf1a84b02bcc95b9a686ac39a584b01e7afdab1562a5c1dc71d0c9"
+        "jar": "542b864d60e9c6799733233aebb0f84139ebe28d2768c6c659e09a15c60f4a3a"
       },
-      "version": "1.17.1"
+      "version": "1.18.0"
     },
     "io.micrometer:micrometer-tracing": {
       "shasums": {
-        "jar": "435e97807c1e14ae66e6265a0f713b1525e51b8f3531e63b09d9697494010d89"
+        "jar": "28fae9797dabe370d32588a0428d06bd3dcee3898d28fde4cd6de678c482ee4b"
       },
-      "version": "1.7.1"
+      "version": "1.8.0"
     },
     "io.micrometer:micrometer-tracing-bridge-otel": {
       "shasums": {
-        "jar": "3c9de2464049c10ed2f2575de51c15dab79cbe4487ec13e65687e57db9c233b6"
+        "jar": "17fa745bce6ab1504c7b4daaf351990ca56edec834e68abea45e5367b1dad014"
       },
-      "version": "1.7.1"
+      "version": "1.8.0"
     },
     "io.netty:netty-buffer": {
       "shasums": {
-        "jar": "0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7"
+        "jar": "794136fc6be78e44a286c2b1420a182e135c6d06eb8c397030c1551ee50acccd"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-codec-base": {
       "shasums": {
-        "jar": "3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352"
+        "jar": "5a66da26b86d7eecedd9e0d8fe0e22ef1733bbf873e476cb9b860afbed22210c"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-codec-dns": {
       "shasums": {
-        "jar": "394f4649a824683735f28b299d0a48caff059ae30e654e2abf8b3f392af4d374"
+        "jar": "8296127e74eb871eea6e17520ad5d12aec37700252a61165057b28df6e5f9499"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-common": {
       "shasums": {
-        "jar": "502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a"
+        "jar": "5807fef7eb619bc0a5d1c0e6c83199ea9bca8503203a3eb73cfdccec2d215743"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-handler": {
       "shasums": {
-        "jar": "4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126"
+        "jar": "211dbbba074298046b37f841ad9ca89ed91968f6b9e97400c99ab4e6177b1f96"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-resolver": {
       "shasums": {
-        "jar": "7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623"
+        "jar": "cb7a6027e4f366fb28dcea7e1f7088ca16bd23c2cc38e8ddfdac77a77bd144dc"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-resolver-dns": {
       "shasums": {
-        "jar": "d332481c22136a68c2ee9e45e86212174932587d93a5dd4d201e196828bf9f91"
+        "jar": "9a1dc5abc7f146bf0ff0938dceb384f7c972dc052cd9cd2f367cb30a0718fa71"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-transport": {
       "shasums": {
-        "jar": "d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc"
+        "jar": "ff4f1f8158c714c1b485ef10cf2456fbd3c1b2930256b70287aeb7dc3ad94783"
       },
-      "version": "4.2.17.Final"
+      "version": "4.2.20.Final"
     },
     "io.netty:netty-transport-native-unix-common": {
       "shasums": {
-        "jar": "e01aa467b9104de54a57c08c290f70b22e53ec97cf5583c87c112170ef5832cc"
+        "jar": "6f600d5cbd3ce39e50680de66b00d7e6a9652dac7d08a5b022101d717cb7fb52"
       },
-      "version": "4.2.17.Final"
-    },
-    "io.opentelemetry.proto:opentelemetry-proto": {
-      "shasums": {
-        "jar": "931e84b0802d77ae963e26c6ad6129b4ad0f2510fe907f019f5c988c2a869c3a"
-      },
-      "version": "1.10.0-alpha"
+      "version": "4.2.20.Final"
     },
     "io.opentelemetry.semconv:opentelemetry-semconv": {
       "shasums": {
-        "jar": "636ad7dac093d22fb84bf8d928ef836694f2d63c92d72b3df21b86002e8becef"
+        "jar": "e2f29c8b11472ce8bbdb2a320ea73ffb19a703e780dc553f6e4e662b706cf207"
       },
-      "version": "1.41.1"
+      "version": "1.45.0"
     },
     "io.opentelemetry:opentelemetry-api": {
       "shasums": {
-        "jar": "d58143928c049233653e6bf1282ff8a767ebdd5e6a82b3f336158c30e40b431d"
+        "jar": "921398d19e2723a356a4e86442daa8e7cb3d8edd84e97e44f5e34807e9b46c2a"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-common": {
       "shasums": {
-        "jar": "d6310bebde67d65c1519696728d8604005315ed08ab14071956fc0826fd71815"
+        "jar": "c69addeb5de9c96c4ca036ed6935f21c12949032d2798698d76c5931f2b4bc2a"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-context": {
       "shasums": {
-        "jar": "8ec86c3609222b9b6307bf40154c1f1c288d1f18ada0155409e7797adbdbe517"
+        "jar": "9ca2a322fbe6736c610086e2fecec8d292daca6fd755bd5670f751bb373c2b70"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-exporter-common": {
       "shasums": {
-        "jar": "50f84b5b58048f69bd684ec874413944209995e01c177200555c151dabfe1ec9"
+        "jar": "9cbfd22a19bea6e75cf88ba680340b06c267b073ee16e1d57effd1bbdd2dd406"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-exporter-otlp": {
       "shasums": {
-        "jar": "59df47fdc4bef6866ed39eb6a04892c68e28d7938eaeaa21801ac5dd2dcb0d65"
+        "jar": "a4344bb7341317cfb239356b20fa836926c8c96531df2e90ab029e04b2204f9e"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-exporter-otlp-common": {
       "shasums": {
-        "jar": "79eaaaf044df15209ee1461b668f7c93547734a793d6cf6ad5e57290d3f8c0ea"
+        "jar": "0503fe2df299e0623c102a451da95efed3b82e86076b58bae46c2d7120f9abf6"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-exporter-sender-okhttp": {
       "shasums": {
-        "jar": "8c9b2c4394543c4f28e0a6c66d16259a1bfaf67a47a689fb001bd9a92dafb6ea"
+        "jar": "69f4735527c2fe5afffce96f1f32375ad0485ef07c10deeec9b3211e4399ca0d"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-extension-trace-propagators": {
       "shasums": {
-        "jar": "d301b26215e8f18553b62759d2c17493f321b8c74d9782841446ab8d2d716b9f"
+        "jar": "a80ae72a3b4ca0bfd61c86d8b7202ae78f2856fc2ac8c4b6c07ca14ef10c0b67"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-sdk": {
       "shasums": {
-        "jar": "99d421ea0e5a1ca8e45cb67f1d5db7f0e8a718dd55eeb86c1323597e1f10aed3"
+        "jar": "49a59f222fa2c676e5868a67077ce06fc30f428de6e0eb542691c7b555f6cd33"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-sdk-common": {
       "shasums": {
-        "jar": "bf9d13df9a50e49a5db664ba8ebfad79f73f03219d2ac6f6709d432f6896eba0"
+        "jar": "430c03d5c19d025209856bbb5492aa45db617625df32f0adcb5cc0d3e5f80be6"
       },
-      "version": "1.62.0"
-    },
-    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": {
-      "shasums": {
-        "jar": "220c22bcf420faae59b7225c789f572eaa22e7af2304d55508aaf2a3efcfecf8"
-      },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-sdk-logs": {
       "shasums": {
-        "jar": "51c94329bc8e335ed79027d29d49c075c11b91b39e48679edf590e784a392406"
+        "jar": "dab55661dd2bc3c2bae39f5b6c505c1508602975ec1f7d0d05600f2723eefc18"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-sdk-metrics": {
       "shasums": {
-        "jar": "50b057fbf063f6801f623212f4b51b6a3fefc77837314a1316b2f54894c8b5d4"
+        "jar": "c9ff85bd4ba89e0431bd39d8b6ad5d409f9351881abff87e3002a7ee0e890787"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.opentelemetry:opentelemetry-sdk-trace": {
       "shasums": {
-        "jar": "fb6c0953b229a6da1db813135ae11a621bf9da56b7356c1e93049ed4b088c232"
+        "jar": "101b87e9a95838e75771d4f07c4f04eacd9b95612de3ebaf744b3642404764e8"
       },
-      "version": "1.62.0"
+      "version": "1.68.0"
     },
     "io.projectreactor:reactor-core": {
       "shasums": {
-        "jar": "9a5f1bfc5ad0416a410ff63beaa279cc30c2da3ae9b111a678c83c99298a1551"
+        "jar": "545d1f6da7e326568bbf71b56954785c4a88c4256206bb6f3294b79a7577c792"
       },
-      "version": "3.8.7"
+      "version": "3.9.0"
     },
     "io.r2dbc:r2dbc-spi": {
       "shasums": {
@@ -1184,21 +1156,21 @@
     },
     "name.dmaus.schxslt:schxslt2": {
       "shasums": {
-        "jar": "7dbddd901b044e4005912d2fd5524dbecfd1b5315c61c64c1fd8e4f1049ea476"
+        "jar": "65f09bec453ab3a4291d14334aecd1c1264ad6859195587bdfc0e3c494e947d6"
       },
-      "version": "1.11.2"
+      "version": "1.11.4"
     },
     "net.bytebuddy:byte-buddy": {
       "shasums": {
-        "jar": "e32f454c2c1f4aca982f9ec764ed892d9a6eee7e8a77f435cbdd180f6ffdb821"
+        "jar": "bb78cc9d290d13e27e86fe89fb171521516a33c9822a528c0f151bece5790276"
       },
-      "version": "1.18.11"
+      "version": "1.18.17"
     },
     "net.bytebuddy:byte-buddy-agent": {
       "shasums": {
-        "jar": "780b3601c34150ab9fb822673c472f7229c1041e8e2a12facf6a5de9ba7a2d64"
+        "jar": "4d72f491b272f461d9476018aada019fa366ddb07a6feece9340bb5b5ab64bdd"
       },
-      "version": "1.18.11"
+      "version": "1.18.17"
     },
     "net.java.dev.jna:jna": {
       "shasums": {
@@ -1208,15 +1180,15 @@
     },
     "net.minidev:accessors-smart": {
       "shasums": {
-        "jar": "222c9f547bb20a99fc486403a398352d1306fb671b38abd7ecab6401df170e61"
+        "jar": "05d0bbc1ca20163b8ed60a45596d95ed526a71732c47e5cc58e6454d6a5c9694"
       },
-      "version": "2.6.0"
+      "version": "2.6.1"
     },
     "net.minidev:json-smart": {
       "shasums": {
-        "jar": "1ae4b561458afb540be8ec5c6dbb4f2e715a319a7ae64854998aaf924770d61b"
+        "jar": "30f83e94e2ed0fe0e090b5d00fcae8bc0c95aa6883d3b9601ea67fc51418237e"
       },
-      "version": "2.6.0"
+      "version": "2.6.1"
     },
     "net.sf.saxon:Saxon-HE": {
       "shasums": {
@@ -1226,21 +1198,21 @@
     },
     "net.ttddyy.observation:datasource-micrometer": {
       "shasums": {
-        "jar": "d025940ce0fd1a81114aa089c4bbf558b60271f4f66c86493d85988d2aa5a83b"
+        "jar": "2878f4e9fcf08d035b72e37bc417cb57e4077f96972147d371f0727a31c4f96b"
       },
-      "version": "2.3.0"
+      "version": "2.3.1"
     },
     "net.ttddyy.observation:datasource-micrometer-spring-boot": {
       "shasums": {
-        "jar": "3c63d07d28ee20e769488574d1d012da99df54fda00f4633b8b0829d30fd2501"
+        "jar": "1bc1a10f7fa3cebc8493f83d2b02aefe7b0e37b313cf76dbd04a152b347b3446"
       },
-      "version": "2.3.0"
+      "version": "2.3.1"
     },
     "net.ttddyy:datasource-proxy": {
       "shasums": {
-        "jar": "eb3bb7eb6caa0896ca583ebe938452738fc7774ffec27c6bb385e9789acfdedf"
+        "jar": "c7e89a7686e3facd1486dfa2e3fa3cabe63ca8cb13fdddcd7c901f915f6f6cce"
       },
-      "version": "1.11.0"
+      "version": "1.11.1"
     },
     "org.apache.bcel:bcel": {
       "shasums": {
@@ -1256,9 +1228,9 @@
     },
     "org.apache.commons:commons-lang3": {
       "shasums": {
-        "jar": "69e5c9fa35da7a51a5fd2099dfe56a2d8d32cf233e2f6d770e796146440263f4"
+        "jar": "a2af247ec4db6eb8947e18e23e0433e4871a7c5d0a40e1f92e46ede54ae1defe"
       },
-      "version": "3.20.0"
+      "version": "3.21.0"
     },
     "org.apache.commons:commons-text": {
       "shasums": {
@@ -1268,39 +1240,39 @@
     },
     "org.apache.logging.log4j:log4j-api": {
       "shasums": {
-        "jar": "64777f73ea0b3104c04eb82befbdccc30a425a19e83ad06cb2f93aa303511863"
+        "jar": "f1810a4704ccce019d02bba029dc02a4f2ac0c997f647b465e7d409c1927f822"
       },
-      "version": "2.25.5"
+      "version": "2.26.1"
     },
     "org.apache.logging.log4j:log4j-core": {
       "shasums": {
-        "jar": "050c4f85deb48b055e9c041ac39043fbb79ce477841a11a1eb2969c86c6a0072"
+        "jar": "2ec8c3bf5a6d7c89be8620116a2fc973f7dda1ad0261ad393c4d4726edfd3dcb"
       },
-      "version": "2.25.5"
+      "version": "2.26.1"
     },
     "org.apache.logging.log4j:log4j-to-slf4j": {
       "shasums": {
-        "jar": "b68e8b47342dbc9b35644a14fe2efc0b7bf18da703910cd05ad5501ffe07bba1"
+        "jar": "6b10bc838a3c773b3fd02979c7ef4e7a443371fa89bda4415d89099bbee224df"
       },
-      "version": "2.25.5"
+      "version": "2.26.1"
     },
     "org.apache.tomcat.embed:tomcat-embed-core": {
       "shasums": {
-        "jar": "e7b966dcaac8c5ffa4f10e44031ebf5b71f2123560c08ac8b7120028615aea08"
+        "jar": "b71785ff101c0df501064b3e3b8c4a02e4f9cc3047a7fa686c41fc4edc2f0cb4"
       },
-      "version": "11.0.24"
+      "version": "11.0.27"
     },
     "org.apache.tomcat.embed:tomcat-embed-el": {
       "shasums": {
-        "jar": "ad0546f12dace008aacce18ba13222137760b310ca719e173d3e13021b9af6c6"
+        "jar": "206d6c6b1b6ce67b1c9af9ed0f6f43b4dbbc26164dd47bb49b9aad1583191f33"
       },
-      "version": "11.0.24"
+      "version": "11.0.27"
     },
     "org.apache.tomcat.embed:tomcat-embed-websocket": {
       "shasums": {
-        "jar": "825160101f0da4a10e19b5730c2ae2f99f8c2c7a7211ac05562726c5e97ab91e"
+        "jar": "cbcd7ed6d7428fa71af6572d541a3ef74ceff42dfc523273950fe586062dc60f"
       },
-      "version": "11.0.24"
+      "version": "11.0.27"
     },
     "org.apiguardian:apiguardian-api": {
       "shasums": {
@@ -1340,15 +1312,15 @@
     },
     "org.flywaydb:flyway-core": {
       "shasums": {
-        "jar": "c3f93df1f3e0c9d14652adb5ade97401f2ede503859ac693c2af5c06e2797799"
+        "jar": "34c9696e6fd4ebae87ba36e021fa491dfcb853c72e8dbe3e4177da22a1e9eacc"
       },
-      "version": "12.4.0"
+      "version": "12.11.0"
     },
     "org.flywaydb:flyway-database-postgresql": {
       "shasums": {
-        "jar": "abc075a5c3cbf37dc64b28fec7e2398fb14f31109f7ab6271854738797407b85"
+        "jar": "38836ae3d6851869e7235d5e2093c0eb4c45b97507b625de5cc38701f56a0439"
       },
-      "version": "12.4.0"
+      "version": "12.11.0"
     },
     "org.hamcrest:hamcrest": {
       "shasums": {
@@ -1364,9 +1336,9 @@
     },
     "org.hibernate.validator:hibernate-validator": {
       "shasums": {
-        "jar": "0497ebbe23fafe4180b74bd0b96a67eee8556552decc4d3c120c1dc737a2b5fb"
+        "jar": "cfd28c001c726db7a4ff68c25c8cfe4cf85af067cb068fca539c33d492339ff6"
       },
-      "version": "9.1.3.Final"
+      "version": "9.1.6.Final"
     },
     "org.jboss.logging:jboss-logging": {
       "shasums": {
@@ -1376,9 +1348,9 @@
     },
     "org.jetbrains.kotlin:kotlin-stdlib": {
       "shasums": {
-        "jar": "6f64eac736db9434dd6925b4a518b9d1d17177652320c37916cf9ba3ce7d7d7a"
+        "jar": "bd8250210584cb659847dce9cda660f8e9906e5def7fbebcea93dc6dcb6a88a3"
       },
-      "version": "2.3.21"
+      "version": "2.4.21"
     },
     "org.jetbrains:annotations": {
       "shasums": {
@@ -1406,51 +1378,51 @@
     },
     "org.jmolecules:jmolecules-ddd": {
       "shasums": {
-        "jar": "29c9013e9110ef169a9564bc13fdf3f77e6bcece19fa2938cb11b9f29d497d78"
+        "jar": "a31f64b1dfe21b984af54600c66958544fc5df556cfdf9c18fa93181bd9ab732"
       },
-      "version": "2.0.1"
+      "version": "2.0.2"
     },
     "org.jmolecules:jmolecules-events": {
       "shasums": {
-        "jar": "2dd20f02039c825de38c381d76a0f5cc912b9ab85f9fb6dabf7b10c1c3c9e983"
+        "jar": "b1605057a0d95ec93318c7faeb1a47076526fc60be2128b37561ff658533b431"
       },
-      "version": "2.0.1"
+      "version": "2.0.2"
     },
     "org.jmolecules:jmolecules-onion-architecture": {
       "shasums": {
-        "jar": "c877958d02ce09fe6be9e817d07428f7f21cc73b2e8fe6f6feda0a63c53386bc"
+        "jar": "63ad7ee2ce4e4bcc394ab6da37b8697f3f83576a89ae5dfe675a20b0b5b310eb"
       },
-      "version": "2.0.1"
+      "version": "2.0.2"
     },
     "org.jmolecules:jstereotype": {
       "shasums": {
-        "jar": "8ee2277ede551ba969c381b2f90fb697a0fad610d1d1d2e432947c9bdcf19e7e"
+        "jar": "a7a496e68912c832de4f98713f3322220f23d7ac281605883dac100721c1f95f"
       },
-      "version": "2.0.1"
+      "version": "2.0.2"
     },
     "org.jooq:jooq": {
       "shasums": {
-        "jar": "4ee61c1e71b16e00363fb60c0cd8c9fb6a1a2e8797df6e09b8e01c1c63db68d0"
+        "jar": "e6cde9651d6795c8a6d3b10043c1edb1f3c2211fa28b15e6d537f078b1584583"
       },
-      "version": "3.21.7"
+      "version": "3.21.9"
     },
     "org.jooq:jooq-codegen": {
       "shasums": {
-        "jar": "9aab9d25bfa2d9fd6a1347be72e913aee583c8fd70a66075a700a7f9e2f516a7"
+        "jar": "363273aa2cb7fcc320170330dad8e84627c8b4edbffb26e17e6a1628b8f9abd3"
       },
-      "version": "3.21.7"
+      "version": "3.21.9"
     },
     "org.jooq:jooq-meta": {
       "shasums": {
-        "jar": "822a5c01549657790ffd70b072d3163a1e4fe4020e6cb9882e421deb4ac89560"
+        "jar": "dc29003b1fade93315294546d589373b9c5a90110e2ba3f8440c59cd3643adf0"
       },
-      "version": "3.21.7"
+      "version": "3.21.9"
     },
     "org.jsoup:jsoup": {
       "shasums": {
-        "jar": "e9d8c856856680427f096d156f02a414289985c930998fcb519ce5be39b42003"
+        "jar": "fabbb4aaf7fb5340aed0613826ecd110427999d765d8e0367cedde2950d7097c"
       },
-      "version": "1.23.2"
+      "version": "1.24.1"
     },
     "org.jspecify:jspecify": {
       "shasums": {
@@ -1460,69 +1432,69 @@
     },
     "org.junit.jupiter:junit-jupiter-api": {
       "shasums": {
-        "jar": "d655d7e6f0c7ae07f10a2f3bbaaebb6d30e9b26204a068ad9e9b3950aa28792c"
+        "jar": "555d6cf20fa1710884dd01b86cc5785397ba73e21ada2d4b784f5f1a14dcafc4"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.jupiter:junit-jupiter-engine": {
       "shasums": {
-        "jar": "1e2fab61ad27ea08fc7c70dd9677cf8c6d1ae5434d42dcfdd633b12c7e7c04d0"
+        "jar": "414559e78bbfa3bdb2eab009ac3ab1e22369ac31117c270a0bd666da115c5c6c"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.jupiter:junit-jupiter-params": {
       "shasums": {
-        "jar": "cf2947e2302b9f8c8a059259a277881c1cadae8fbc2514c16a925cfeb7beb2e5"
+        "jar": "05c51cedba2c06a9770707391e006cee825876937dea580b94a265ce145d4939"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-commons": {
       "shasums": {
-        "jar": "39f262d09c3d52719fe0b77f080e90a3695e285d779a41b232e17963ae5da200"
+        "jar": "a4774ae923c109544034aeae7c762cf017fbcdd1342403ba90e0921984b608c3"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-engine": {
       "shasums": {
-        "jar": "491e9e4f745f161b8a8e4186a1a7c6a450ea12c70930c9aedae427215301d947"
+        "jar": "21ad7ad3a35beda16387979317be1833a72a71d812f9a66ee4b9a7bafb56334c"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-launcher": {
       "shasums": {
-        "jar": "315608372e4dc44bca0ccb3ae8a07ecc206b3367033fa05748a03ccd563f1301"
+        "jar": "1dec64b1fc0b7c47a11302aa5b4d37d8160c041b396e27067709ce775601a7b6"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-reporting": {
       "shasums": {
-        "jar": "f19c5be871c37ebed493f3152b67a909f89a44dff67c2db8016dfe34167d5730"
+        "jar": "d584a16cd87da5609af5e35428ed4f40b192681a2487dc59d02ecb62f6c417c2"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-suite": {
       "shasums": {
-        "jar": "c5e290fcb7b876f6612cf451503156a3d2468b1894a2f7b6ea12c318d583f4ec"
+        "jar": "cf282810206f63c6382eb3d2ff98bbfcfc31412db55397ac642849aae31e5be6"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-suite-api": {
       "shasums": {
-        "jar": "687fa996cd33b92311d156b13ac864772dd8ea0f18366903cf2a3bcbc2a2965e"
+        "jar": "55ee464c0846fa4a695e5c2fc8d8ea8f16fb3d92b04746831b7a428519436c11"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.junit.platform:junit-platform-suite-engine": {
       "shasums": {
-        "jar": "82a769b71805f2222958b44b1b5f1ca121214970e30deb58c8579ce9aebe485d"
+        "jar": "6334e2ca2ac26febda4f72b1ae739661124a6cc3396448a43e72334841843e2d"
       },
-      "version": "6.0.3"
+      "version": "6.1.3"
     },
     "org.mockito:mockito-core": {
       "shasums": {
-        "jar": "ae295bebd5d11fab97ab297815dc7617188b86003cbce3dfd5c0d5c3a6cc4a0c"
+        "jar": "97a1f835ad84075255aa37809e4379eff541273c02c6201cbad49bd5950932cd"
       },
-      "version": "5.23.0"
+      "version": "5.24.0"
     },
     "org.objenesis:objenesis": {
       "shasums": {
@@ -1532,9 +1504,9 @@
     },
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": {
       "shasums": {
-        "jar": "04ac4ecfcaf60abe0e6d5b18e8306320aec7cd9cbf15e59eeac54fa9faa16902"
+        "jar": "df237b68847637747f0bfdb88fa9cdd9c72cc85550fad0c41ddb33869a5ca516"
       },
-      "version": "0.2.4"
+      "version": "0.2.5"
     },
     "org.opentest4j:opentest4j": {
       "shasums": {
@@ -1544,9 +1516,9 @@
     },
     "org.ow2.asm:asm": {
       "shasums": {
-        "jar": "5fe3b469b8646e5bc53a897840952d63b712d4923d2a7a26aebc585f1fec7676"
+        "jar": "ae4e6e10d59d0a1500317764b21881ad883f8550e33c66e6142f7032c6fb566c"
       },
-      "version": "9.11"
+      "version": "9.11.1"
     },
     "org.ow2.asm:asm-analysis": {
       "shasums": {
@@ -1580,9 +1552,9 @@
     },
     "org.postgresql:postgresql": {
       "shasums": {
-        "jar": "6e0e4cc2d8cae902084f8a2b18728b073a6fd9d1f87c9d8bff8f298c18185b93"
+        "jar": "73914527305a40cce504b0d3d90b23caf565136912d607ae8ae7c5895512332c"
       },
-      "version": "42.7.13"
+      "version": "42.7.14"
     },
     "org.reactivestreams:reactive-streams": {
       "shasums": {
@@ -1598,33 +1570,33 @@
     },
     "org.slf4j:jcl-over-slf4j": {
       "shasums": {
-        "jar": "ec5c36d57d2dbe100f84878f944575cb7871da32c7a115b8d7e0721277045d67"
+        "jar": "32f95628a4baa60ea8a5b052c8cb6e51d07b0fee3e6092414070874f69daf710"
       },
-      "version": "2.0.18"
+      "version": "2.0.20"
     },
     "org.slf4j:jul-to-slf4j": {
       "shasums": {
-        "jar": "cbb7d1aaaa9e871eb1a06594abd911bf97027152976edf1edc315be75239204e"
+        "jar": "062249d0677a0e08039120a2292a8db064c69d04282bf562af2e54c53ff06976"
       },
-      "version": "2.0.18"
+      "version": "2.0.20"
     },
     "org.slf4j:slf4j-api": {
       "shasums": {
-        "jar": "44508fd1576500688c790b190acdd16fec4f8c79a3e0b900afd70503cf055f55"
+        "jar": "7e1446499b359675d8aabe6af2de86b85e72ae8a2a932c0b40d0e5ba57097439"
       },
-      "version": "2.0.18"
+      "version": "2.0.20"
     },
     "org.slf4j:slf4j-jdk14": {
       "shasums": {
-        "jar": "ead25c1b15f59db1fb5552b76fe63de4164f0df40024d19287b75dece47ad3be"
+        "jar": "f02f2e6015daea6bac93ab68dfa1af0c6601b33f5a2bd934275626c55a0332c7"
       },
-      "version": "2.0.17"
+      "version": "2.0.20"
     },
     "org.slf4j:slf4j-simple": {
       "shasums": {
-        "jar": "8268bd018a5709b07209e0d8ca6221a37584ba1bc12ba985b8335a82c648bdd0"
+        "jar": "8e701404786a4f87219d39d4853c86dfe4e86ae99376a39749df6c08e75022e0"
       },
-      "version": "2.0.18"
+      "version": "2.0.20"
     },
     "org.snakeyaml:snakeyaml-engine": {
       "shasums": {
@@ -1634,525 +1606,525 @@
     },
     "org.springframework.boot:spring-boot": {
       "shasums": {
-        "jar": "0d92b532b1d4020640e72d78c31af175c23db8e0ddd45b81855b7fdf4c9c70f0"
+        "jar": "8c74737b2d6cc9fd3f7c8d0f7677fdef8e7b18ba484de571f867720e09f30661"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-actuator": {
       "shasums": {
-        "jar": "2bbb38417af25cfc6f57a9b01a85db9b6ccdcadb9e5d40f6b1b2f54a08f8b798"
+        "jar": "a9eeb9ebcf029ced657842f065e785b8c01b733c84b0a4dfa918788581b3de7f"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-actuator-autoconfigure": {
       "shasums": {
-        "jar": "bedbd4282a0f0c6a08bd5342d3940b50d8a013420d8a536695aedb1421b5e0f5"
+        "jar": "4fde0484540303a57cdd7219b1d5472297e37a04475b2dc91f8dc66e3ca34efa"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-autoconfigure": {
       "shasums": {
-        "jar": "59228756ddd76cea050f95d86deff334789bc53b6688beaa673b1af2b9794592"
+        "jar": "08457337540344ea3878ed3d20d9a576f8392b4850b3147ca42e13d10f59d488"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-data-commons": {
       "shasums": {
-        "jar": "e9911b99825ea5650827ec1e2d2fc1890c7e63b6f048c1f4dba2c8e85ff6d354"
+        "jar": "8ddaab24bf7c099238bb8aa23d77fdd4fc7c4b8e48e066422ed0ba38760b0801"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-data-redis": {
       "shasums": {
-        "jar": "8df7709a73616c85f12fbee0476a2856a766cda70c6ad87c9a24062b8fe34c91"
+        "jar": "daafbdd11d49813a69562d6b54fdc6658820c8edd7662240dd0d4340f2facfec"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-flyway": {
       "shasums": {
-        "jar": "61db32d08f2b1b04cf006e916575da22ecee0a2e0bb0604aca26c04f7bd4aa0e"
+        "jar": "5eae33dd8791a51388f682392b0a82c9c55acd9008c1354d00342416eb7c6f98"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-hateoas": {
       "shasums": {
-        "jar": "191dade29a858fcd8e801c90605c96744e3a10c08a37e3cbfac051d8b51a5565"
+        "jar": "5600c6fac4951638507e7c32e13bb4f6d41b7844e09ea3e06197fb69b2b7f0ee"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-health": {
       "shasums": {
-        "jar": "f60151e1f014b40761d0644be1cb04f82df7fc3e9b7bf6e946848547eec399e7"
+        "jar": "17987b271ec037f47e71c6e53da706668d3917bae49658d65434bd00f571022a"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-http-client": {
       "shasums": {
-        "jar": "a7bae90c3d39eb318fee764d8a18dfa4009d62a9b0d6843c3ce987f4c0ad606e"
+        "jar": "64b99b66af9877de2a0212d584ae0a2886102ddb507d95f828062bb7bbf9cb89"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-http-converter": {
       "shasums": {
-        "jar": "52a167430a918c223b2ccd2eb62aff91a8e43e6daebe5a07caa37b9a04c61cb9"
+        "jar": "f2bdcbeb09bd53321e9d334c8d599af8f0bdfb65caa85b51c1480398d119123f"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-jackson": {
       "shasums": {
-        "jar": "69a9b4d8850a0532a5e44ff7306a03621485b26596e7f9481de7d28e68a2dd42"
+        "jar": "5a4a0b02353f299e92b100779b9ae40faa4b1a7a1b8ee7a6d0831536b72d4b5b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-jdbc": {
       "shasums": {
-        "jar": "30de56a06ccedb40245fd3a69a5107c7b3c0500447bb982a54a3b5da2859ae2c"
+        "jar": "9d73a58cffbed2507cbbba2d8fdd92cbdbe22a6a790375d4610f201d1cc1ea8a"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-jooq": {
       "shasums": {
-        "jar": "284852ab95614e6eacfc108bdf6e0a46d785f8f3dcb7c84fda08406752fab9d8"
+        "jar": "c2ff1d4e21f790dfbc58d82866232603f337825e96b39526a213d38e1dc7ec29"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-loader-tools": {
       "shasums": {
-        "jar": "b26911978c785fcb894b398c5a781e409682309bf083b9587083fdd02be06a96"
+        "jar": "9f8051384d4cf71609872718542e0b8467358c033190f94db4a45b2f208be94d"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-micrometer-metrics": {
       "shasums": {
-        "jar": "70dd91dcc319d00998ce5e410b03b841e682aa2f60e4bab159c78ff0ecdb7d0f"
+        "jar": "9056301b649b4a6e8d54437c7fb275ef2dadeedd5cb71f97668246583ed8ec50"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-micrometer-observation": {
       "shasums": {
-        "jar": "09ebd9ff7de21d10b1f11c70ca0ea8766a8a727affd19642584bee5a314ea11a"
+        "jar": "62b4ed9fbb69fa7cbaec27d7226861066f7e413b1d6237f722134ca69e35b06f"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-micrometer-tracing": {
       "shasums": {
-        "jar": "78802babfbe19ccc5c1e49782219e2540fbfe905f7a94e2aea432372e29ca60a"
+        "jar": "3829527fb8e5a6ee5a3caf9abd172074e97d45d943de38cbe82821e27c3bb163"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": {
       "shasums": {
-        "jar": "d918f554b585348bbfbab29709b7e7eea77682800015616f17ccfe7625bc6cdf"
+        "jar": "b8009456f112d1588473a19c62f1a6d5bf65805ac686f7c9f7c100fd3325c81b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-netty": {
       "shasums": {
-        "jar": "09f218966bcdc79014269b2e79fc705761d9d15113ad7cecc5333ebf0e7ee630"
+        "jar": "5b59b073841c180d27673b2b0abda31181f4c5023abc3817664f1a6c4d28d42d"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-opentelemetry": {
       "shasums": {
-        "jar": "ad9c45771cc8ce7af0e5abdf1ebd083777335b097acbbbc260d4c604eb8ec342"
+        "jar": "156883b3c82130a40dac5424199370bc7402a9118290a205a3d4de9b6c7ad1ab"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-persistence": {
       "shasums": {
-        "jar": "0f78d2556ac3ed75f9eaf3134a1fba94ad1ec3414b52aa279c1f690217e71e3c"
+        "jar": "6c4d44cd77181f9126250f0b497aea09f1a5eead90c84c579bb2cc31682ced0c"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-restclient": {
       "shasums": {
-        "jar": "e613f02dafc91120634aff26272e77fe1e56d6a644967bd74ed7beb7f199b17e"
+        "jar": "61e821e19a7bcb6b1526209ad18291e8f18f9498c29379f2e908f4d9730b3422"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-restdocs": {
       "shasums": {
-        "jar": "04ef081a63192074e0a40ee2039f6f89837e1e2f5d210bc52d5984f88a62ce34"
+        "jar": "6619a6517ca7cc909c4330c901ee754bdd4f5566c4dba4535c9b60438e5c9625"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-servlet": {
       "shasums": {
-        "jar": "4dcb156e311a4c1ad5f1ed7eabd94a78ea74510b05c429a4fcfdcf8beb9d5882"
+        "jar": "2a9bda03dcc1e6ba278b0481a7c68cf51db4db2923339c00504cfa85892ff921"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-sql": {
       "shasums": {
-        "jar": "fa4f6ddded1bb3bbc496897686336d8433e34f1f22daa886872be2aa184def23"
+        "jar": "45ae99889c793f90858a01b2a7cc1309fa9f4e3148fa77f3c305cdf4aa7800be"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter": {
       "shasums": {
-        "jar": "de5b2dd28400eda20914fd4a6054d0c201e68d2e4de35a25a4d89f054ccc2e63"
+        "jar": "12d4d94b182555a6efe91bf69f1e5d8d1c94ea36e224e0a4c7339a987c3d0549"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-actuator": {
       "shasums": {
-        "jar": "d26bb8461ccc417c97a869fbd2e9f0067ce8a56a9ab6058093097ca16e4cc128"
+        "jar": "59eb96eac28b5a012f8cb9170b3e3e4ea6ceeba2468cbea192ede8917580955e"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-data-redis": {
       "shasums": {
-        "jar": "98b8367cff4cc11005e43452c45dafd0ce9c7f66d20411e6f0850c99bc79575d"
+        "jar": "53a2cb78f9daf575521d98f5bd161517e3dd402bf79f6754304f951ccbe3fcc5"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-flyway": {
       "shasums": {
-        "jar": "d9a454f49cc844b1c2940f645f659c506322d02444912422a19ba619de60e6c7"
+        "jar": "3b304119eeffe811e28955743bef812811d645f8e128fabffbad17fa13712071"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-hateoas": {
       "shasums": {
-        "jar": "02924f44b6617d97272de07ca72d6cb283cabf67e146e4ff2a9c1926f5a28a37"
+        "jar": "e3e271de83e35c11f1993e4d2daf5e0e8458743cb59cc8200a91c705eaf9641c"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-jackson": {
       "shasums": {
-        "jar": "d30e594a3e0f3a090438fc22000a87ab577a3b80c674180a10544ca331207f24"
+        "jar": "78faa8d3f7bbc9ea7188afaa7b5a9dded210f73f7a4ff3bdf3c286a25a6c52b2"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-jdbc": {
       "shasums": {
-        "jar": "c51b28a3793168bff837eea90b1ae641efc3a28d6cdb980dd2b0b230914e93ee"
+        "jar": "a18c5c500064fa374cbd8df8bcb4555d6aa6432bb25873272e55eaefcf96ce5b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-jooq": {
       "shasums": {
-        "jar": "fd1cc2c78ce31c0309079351cac95238445e88797c6e5525b2e04182f2acfaf5"
+        "jar": "fe50d9cd5e773b828f7b01a3c7148750af93e439982a36e725c471a7277f888b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-logging": {
       "shasums": {
-        "jar": "8eca7d72c8434f5c3b935385c656cd5337f473434bdbcb4913b3b3a34897d178"
+        "jar": "c0202b51c553043be6c0b9398ad4ece630180fec7b14bdff836a50e3b8c60779"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-micrometer-metrics": {
       "shasums": {
-        "jar": "ad34ce3535a82b3920efea7f9c5d6322de484969f3ab5fa6da05030edd7c14d4"
+        "jar": "14e0d66735dbfc695f495b6f3060e2a6359d09dcfc7a6fbdea671b1deb4b49d0"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-opentelemetry": {
       "shasums": {
-        "jar": "f54d0caaad40304cd79e24372cc3a2499fbd2b8c954ef06d4d57abf36214e40c"
+        "jar": "2e54bd7c8c0c5354d3d08f9811d2cb1f63bf19b54cc345c8b1c665b42482b09c"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-restclient": {
       "shasums": {
-        "jar": "453502f3b357b98257d38220f1a89768e75a157d305499b1425b0620956e72e1"
+        "jar": "848c692438f3e907887130e3b67b48aea95c746fe0a0f8d3fce2b7b3a2f469af"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-tomcat": {
       "shasums": {
-        "jar": "f224d8504be3b413825ee85ef549a7b1598ee8512e062c6bd5ddce1043cd388a"
+        "jar": "26a39b43ece94508f67cf2551fa588f142e52a636698b5e22ed2dcb3a3f33153"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-tomcat-runtime": {
       "shasums": {
-        "jar": "580f0d9a9d02a1a6e387640e422af42f9dbdf302836d562ec595fdb2b31a1c29"
+        "jar": "d90fa8b91ddb0a88845383daf4bd3597c5be1c82fca10e4cb8633444baf5bd4f"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-validation": {
       "shasums": {
-        "jar": "f86edd0ba377e67f1549359d936756e727d23944b4399d7682462b6717d0ded6"
+        "jar": "3b8b9d5e19a62e59e9f852fc4a300d5acded7f67e9ba67dd159c27eab53d6d6c"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-starter-webmvc": {
       "shasums": {
-        "jar": "4aec3edbdf6317fefe23db1b989d8bba143a45a51c1fc32346146ecebf67d625"
+        "jar": "0f67d533d1475c6e190eb342aec918eded8543620fe799ff608bbb34fbd7b0f3"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-test": {
       "shasums": {
-        "jar": "c16efcceaf7c0f7fff6c2cbac5ba1e7e47ee68bacc6a446f8adfe07ffe4ea579"
+        "jar": "052136ac95da493e5f320cceb9158cb76ca862cdfbc795d2f215be820ec2543b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-test-autoconfigure": {
       "shasums": {
-        "jar": "fcae103bb2ca65226f225b846b210ba19fbfc42bdec1bf7009d3083baeb819b8"
+        "jar": "41648749f2a6cf5d9156b3ce236180828946be808eb5d83cc5a559c6eb62a855"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-testcontainers": {
       "shasums": {
-        "jar": "649aa8fb59153268e83e14b95b5652f8a4b26020bdf79c957eb12bc6c7807418"
+        "jar": "38077f31128b63de491b1e34d2b8f2e6bc214c550187980f57d9862bcaf89598"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-tomcat": {
       "shasums": {
-        "jar": "17f65629e4eb3c979c0572b69b57d630bb12e64869e9d7520adddaa6734256b6"
+        "jar": "ed43f79debac1dab730c1a7488d3ef65adf251a2f98fc8c78494222d1966eb1b"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-transaction": {
       "shasums": {
-        "jar": "e7f2fad4fe65bf6aaf1b1a538a68a1cf69988adb558f4a0fc0992a8be4fddf64"
+        "jar": "090ae4fa524edef287fece42cfe3bd79dadbbe61c5d6c96692f0c7fe89e208d1"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-validation": {
       "shasums": {
-        "jar": "c2546a81b6b7a39f51d889c99047f24567e4b28d1717fb53a65e9327cfc436f1"
+        "jar": "21906e9ec2a6dd2178beeaefc0443122612b808bd2291d5298830c51c7e68bd4"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-web-server": {
       "shasums": {
-        "jar": "6912fb1fdf7f657a61ac050760fa835fb1e7496399291697e2901f82887a4fee"
+        "jar": "38f2cfe620bc71a7bccc830427cb49d1e668503702f84c7aa29a3bc21bf3b1bf"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-webmvc": {
       "shasums": {
-        "jar": "9f08c1fb938c45a8693fec5f3065be3aca203948a7ab4d56b06444986f75a6b2"
+        "jar": "77b45cde534b64eac289f5b6916ea9a840d2ca1872d22cd41ea683eabab39fce"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.boot:spring-boot-webmvc-test": {
       "shasums": {
-        "jar": "46811c1d4307e9d54e9f41aaab69cea79d9785f2ba4257b92375a7621b35dfea"
+        "jar": "360c483edc3e08a848b40b577f8e292cf38be0939d0d8de0cd502593c38ad453"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.data:spring-data-commons": {
       "shasums": {
-        "jar": "cf2a3f9bfabefca1a8c2c0f0a65c393d9ff83b0cb1cf7b705accac18a6ed0ee4"
+        "jar": "18e269370542d133f084269d4f28f9395703e02f4fcc19276418172982d3ce19"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.data:spring-data-keyvalue": {
       "shasums": {
-        "jar": "e8986c8e2577d271096266335a798c8fb5df91fd2fdf85607252056884fb554d"
+        "jar": "390b0b5063690e70762d0d3ca2dd1eec092b2f90eb23783e5d735340bcfab14f"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.data:spring-data-redis": {
       "shasums": {
-        "jar": "ad609b5a51bb8591cd923d358125a65d9bea193f79480a37ae60a1d0d5ae55b2"
+        "jar": "ef0abd000f1121086960d524237c534638b71e7e897a508c2a515f34a44dd326"
       },
-      "version": "4.1.1"
+      "version": "4.2.0"
     },
     "org.springframework.hateoas:spring-hateoas": {
       "shasums": {
-        "jar": "7d5fb2f00f856465486e9367c2d33373f32cfac90b21a2c1151a28022705e840"
+        "jar": "e17d149a38172e54f5987b01f7d0c0c18f95e1cc8684579aca972ff2bd9bcda5"
       },
-      "version": "3.1.2"
+      "version": "3.2.0"
     },
     "org.springframework.modulith:spring-modulith-actuator": {
       "shasums": {
-        "jar": "49f749e1461ad8024cd3e987bbe9b3b3d5dd1cf31034b59c60dda4b9fb41c3e4"
+        "jar": "b7c2a088db2c1aa609c666daca306b5d6e7c3d984d0211e1a73000d3613b8e0c"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-api": {
       "shasums": {
-        "jar": "b8d083929e9f2078287619a81e01c9efc7bea5830fe03341608d283faffb37b2"
+        "jar": "7ffc51519c7dc13cb26bd04742d6300df05030bd926af7a7b38a5d38536abd95"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-apt": {
       "shasums": {
-        "jar": "4aa6d1ef0d932c99a648bb73665e4c89f17938574f1102e9bf27709199b9f5e2"
+        "jar": "26efa286d18d0a285ad97310e3caf2b1726466c1b9156c7ee5a40652dfe810e2"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-core": {
       "shasums": {
-        "jar": "235b6d0a3cc43c2b5ece010df0e34a69bc0662982d4de9cc741185c73bff6c4a"
+        "jar": "488029583f10bee7583d1c5530ed94c1e13b9a6f5958268f8d24e1610742edf8"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-docs": {
       "shasums": {
-        "jar": "a793cd9f56e65726031c55c9da5b75023838e2f6ed2de65d2005f743fccac176"
+        "jar": "7130e1edd113227e1038077415724beb5a2a9670c853a65b88068be5842962ac"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-events-api": {
       "shasums": {
-        "jar": "63c7dd956121c01da5ce32072acf61da2c70b4fae0b510c359c61e915d5a877c"
+        "jar": "2ff505b90e00e9d7e28453554891f21ff5d9dc04fca4b0ae0f0dbf01938a37f5"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-events-core": {
       "shasums": {
-        "jar": "dbf64a359d94a776ffcc22bcab26fbd2a1fe4f529171ac3ec0343f472bf9daef"
+        "jar": "2728e6c89e59d0231745169659877c88fbde080a74d217994805d8414b62319c"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-events-jackson": {
       "shasums": {
-        "jar": "ab922d47ff15a42798d054ff2eab4e720e5bf96d1a497f1c235175c582c97f81"
+        "jar": "ba54f8c936d133ee3be72196233cd1472432ee195b42c57695162c9805360b4f"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-events-jdbc": {
       "shasums": {
-        "jar": "730edbcff692d600fb93469c09f6c69394f1bd6825c1732ab1a3eac217665a15"
+        "jar": "9032c6c96aa7a98449699e28fb2ff8225e57d68234dd8e9aaa2f07e60954cad8"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-moments": {
       "shasums": {
-        "jar": "ba89cc2edefc997ddab319aa0839709ab3647108296f53e00fcb1d13e91fef42"
+        "jar": "1a4addf4212abe984da56eae72ba17f008321923ef88e33de29ead6aa62830d3"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-observability-api": {
       "shasums": {
-        "jar": "54ba199a8370c46b8edf664449dbace2bb8392430f9a70300b635d31dde6c75e"
+        "jar": "d68f861f9ee1ff20582a5ba838d96e2eec60bca08f250116bd5fa01ab1a15d5d"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-observability-core": {
       "shasums": {
-        "jar": "3c946cd7df1b701b9b6a922f14ab9d76d47dcab0f46b9ac30e06ebf9656df18e"
+        "jar": "d841d4cc46e0e02f27ff5bf1455d5833f55f8073653fdea7c41075f51613368d"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-runtime": {
       "shasums": {
-        "jar": "a70f9e6437ce9d640bdce1914857456e12333f3cede588974641da09bcc08d10"
+        "jar": "4ab60fdce5a7174d2be62ea41f2f299f39220cbe3d5c562dc2e7f0c2f825005a"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-starter-core": {
       "shasums": {
-        "jar": "9e22b7dc3b3e5959a081d8ce8d16c453267db86826c138e4f0cc32539b0297de"
+        "jar": "64379b8571b406c26fb73f2771face3c662587c1d4eaedbd3c20413f66ef22e8"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-starter-insight": {
       "shasums": {
-        "jar": "b27f907835a5dab336b09ec47b82db5e44b144a7d3ef378f16f42ca0862f679d"
+        "jar": "cd7dc2ac0fda85305c51ed8a49e7d7fcf307637cabaec287dd84b08712b95061"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.modulith:spring-modulith-starter-jdbc": {
       "shasums": {
-        "jar": "e074243cc659b3c8846515de8c20ce589e1fce7a811a7fbc140f6b1eb4f1cac9"
+        "jar": "a00f32b04faf981241c74a34277575a75e65b6b979dda5ca92b54f2796ac0cc3"
       },
-      "version": "2.1.1"
+      "version": "2.2.0"
     },
     "org.springframework.plugin:spring-plugin-core": {
       "shasums": {
-        "jar": "7e48dac2e47dded5e6fa2cdf37786c5ba3f09dcf44000770e4513a47e63da6fe"
+        "jar": "2ba828cd6295ff14bb091b768a71d5e33b7fa61c5a728f437f56fa6ecd8f27dc"
       },
-      "version": "4.1.0"
+      "version": "4.2.0-RC1"
     },
     "org.springframework.restdocs:spring-restdocs-core": {
       "shasums": {
-        "jar": "3a1a6dfd64f2d443534dff8addf89318858ca031e33ddbf780602bc4e1418807"
+        "jar": "db3558d8b93a318932d51d43a4197de2ac5c5da18dcff2e3f1ecda710490d15a"
       },
-      "version": "4.0.1"
+      "version": "4.1.0"
     },
     "org.springframework.restdocs:spring-restdocs-mockmvc": {
       "shasums": {
-        "jar": "d3a27e9086c0e39b673302cc097a7ff5d168ebbebdd453bd676850e530a0c999"
+        "jar": "31371366c14e351b84fd7f187a4f625a65a11241fa7c9180da45a02af869fd70"
       },
-      "version": "4.0.1"
+      "version": "4.1.0"
     },
     "org.springframework:spring-aop": {
       "shasums": {
-        "jar": "b8c5d6bfcb1f4993f2cc124f7ab7fac40edf5256b9e43c2f7250a733cb5510e9"
+        "jar": "30832db7b40fe67a264b8a07734c731826d39c5cf7f3094371031ef2cd57932d"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-beans": {
       "shasums": {
-        "jar": "ff218b827a25c9e8929b0cd56dfb56916cea9d5b669ed97dc7cb262508ff548b"
+        "jar": "1bca5ec9840bd3d1d3b528170161c2eb263cb2614fdf07be433a023d826d4e8a"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-context": {
       "shasums": {
-        "jar": "7552a2fcfa30cea53eb14d7a65a7a8e1b1dd82e832a7164fb7e6fb105f438858"
+        "jar": "f55ed294901b43de40a74742dd3c900241540bbcd729c561c3679f76735ddc33"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-context-support": {
       "shasums": {
-        "jar": "3c0c35a0371539f5e7d4e9d0226b9a009a4109cd0e20e805e27132dd6ae0727d"
+        "jar": "e43a8d9c978adecb48be00f4ef334208cd852671fc5629eb46a3ce582d34ebb8"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-core": {
       "shasums": {
-        "jar": "5195f4722699b39878d99a832549fe65df2890b159d063b88fff31b1ca65ae36"
+        "jar": "f4781a7ef0eba4aa520a35d877bef72db7aa64cc7c9fe692d3bb4d1898aa778a"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-expression": {
       "shasums": {
-        "jar": "046434c40f43819729b9b1db0e6c659dfa68184c1c2c2efa5f7b3a5b27c4e2e2"
+        "jar": "8f17a06baf7087911469dbcccc723ba4744cf4e5a0af0dc55af5dcb713a9d20e"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-jdbc": {
       "shasums": {
-        "jar": "ca0d9af1c5721eef8cac1f94c8b9d27a753248bc33c86e3472bd3d1dbd78f450"
+        "jar": "9d2929524c910394e4a1f66c16dd447f9a601eba2a534e5d0b94314e5568305d"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-messaging": {
       "shasums": {
-        "jar": "19ea7561e5d61e19bee0c94733d03bbf9384c9356eea2d4e90cce7ba3c0ab01b"
+        "jar": "1501d7568c6dbc57580f6b916aced8a5d86eabc6afba2133d83980c48cca5b67"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-oxm": {
       "shasums": {
-        "jar": "213b742973516a7ae0846c79757cf905b634e2367ee0bdc0c34a067d365f922b"
+        "jar": "0f260634ab4aa9fc451f4ef9ceef6c7e93fd1671930002724a5c103f14e5a0d9"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-test": {
       "shasums": {
-        "jar": "6ce8fc116f5d309b9ac50a6738bd1b15ea4012a4a5563c0ee89b795bfc9af0dc"
+        "jar": "052d1526801edee13a6a04d48ab4d6d3cb08facea39f5772675f12496d6ad1a2"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-tx": {
       "shasums": {
-        "jar": "bfb15da6e096e2c0752e9db9987d2415bf0da1d744efc988535c10c6b6c2eedd"
+        "jar": "3a0ad69661225aa20f0d824b23da86a281e6ae42d26ff79c304db3c4c211cf13"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-web": {
       "shasums": {
-        "jar": "941ced476427bde2533872f293da535fd0258de3f3a650a7f1bfe01ed2927302"
+        "jar": "ef4359e641b60aeeb5d3d2cdb0de7d0bad1f37a5f2e47c51b908539475d5f833"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.springframework:spring-webmvc": {
       "shasums": {
-        "jar": "8f114c1461692c5e534e82b27de23b7fb23370db8dee7ce0c92d5106906c9555"
+        "jar": "0bff1971b95adae9a26d8f292a717912a4f9a3e0b077349f9aae7b23449255ee"
       },
-      "version": "7.0.9"
+      "version": "7.1.0"
     },
     "org.testcontainers:testcontainers": {
       "shasums": {
@@ -2186,21 +2158,21 @@
     },
     "org.webjars.npm:highlightjs__cdn-assets": {
       "shasums": {
-        "jar": "446ee7df545a31c43ee155f69f57f400199659bf881841a7194e24e8e8ac4d69"
+        "jar": "6e3be9951ee62f17596e7ded7e0cd38da658f5a5b94645d994095ab51099bea1"
       },
-      "version": "11.11.1"
+      "version": "11.12.0"
     },
     "org.webjars.npm:htmx.org": {
       "shasums": {
-        "jar": "d8384bd35a00f04714a399fee8fd4de9f82830e7350a5415c1906ca8394d1b85"
+        "jar": "6a12015e6bb10010e9d2019bc3b68255ff3c032a4fb3fe86d1f5ed0ab5c6cc22"
       },
-      "version": "4.0.1"
+      "version": "4.0.2"
     },
     "org.webjars:webjars-locator-lite": {
       "shasums": {
-        "jar": "9f03705a0cb6adb8ef54c881f24c9433b83b88d4af2da12db97d8c5148521ded"
+        "jar": "bc1f179e84dec24525110527a6afaed7e2c1546cb18d5f7966cba9fc3e62f4cf"
       },
-      "version": "1.1.4"
+      "version": "1.1.5"
     },
     "org.xmlresolver:xmlresolver": {
       "shasums": {
@@ -2217,15 +2189,15 @@
     },
     "org.xmlunit:xmlunit-core": {
       "shasums": {
-        "jar": "50970e6069c21182689eb44ae9f8193970e080b6f37fc13f22aa4201cca2dfe4"
+        "jar": "93f975e2bb1e35db5a88c687e7899fd850e7c6d883a2afa011adcd7a671eb724"
       },
-      "version": "2.11.0"
+      "version": "2.14.0"
     },
     "org.yaml:snakeyaml": {
       "shasums": {
-        "jar": "c8f7a98e7394adda02f6317249710e4d1b4c7a25aa8c7eace0c2eea52eb8bf85"
+        "jar": "2e194eba45a67dee19a4e272f4a04b18de8054e9f598b094382f6dae0b0e4b5e"
       },
-      "version": "2.6"
+      "version": "2.7"
     },
     "redis.clients.authentication:redis-authx-core": {
       "shasums": {
@@ -2253,21 +2225,21 @@
     },
     "tools.jackson.core:jackson-core": {
       "shasums": {
-        "jar": "9431b7fa2673bbb618c11d865fe15e13222fd182a214ff998cb7e56afd8f35d2"
+        "jar": "762caa009970e8c35527fcc2cfbde50afed0d6a195ee4a7fac22d80fea72c471"
       },
-      "version": "3.1.5"
+      "version": "3.1.8"
     },
     "tools.jackson.core:jackson-databind": {
       "shasums": {
-        "jar": "3a2338d996fd3056791df8d335fa9ba8a62a706ed4245ecf81b3e583df37d08a"
+        "jar": "2e7583c96f3eaf11591a727c75278b25a0f1227d29a7c5e8306f252f441bfb58"
       },
-      "version": "3.1.5"
+      "version": "3.1.8"
     },
     "tools.jackson.dataformat:jackson-dataformat-yaml": {
       "shasums": {
-        "jar": "afef22789b0a0915b544c6749c71770788d20821c30d574c1210e2b6cffc91ae"
+        "jar": "d9af45708a554b36a79eff6ca3f6740bffb5a1e9e64294dd91aff329996917a4"
       },
-      "version": "3.1.5"
+      "version": "3.1.8"
     }
   },
   "dependencies": {
@@ -2534,7 +2506,6 @@
     ],
     "io.micrometer:micrometer-registry-otlp": [
       "io.micrometer:micrometer-core",
-      "io.opentelemetry.proto:opentelemetry-proto",
       "org.jspecify:jspecify"
     ],
     "io.micrometer:micrometer-tracing": [
@@ -2598,9 +2569,6 @@
       "io.netty:netty-common",
       "io.netty:netty-transport"
     ],
-    "io.opentelemetry.proto:opentelemetry-proto": [
-      "com.google.protobuf:protobuf-java"
-    ],
     "io.opentelemetry:opentelemetry-api": [
       "io.opentelemetry:opentelemetry-context"
     ],
@@ -2608,13 +2576,11 @@
       "io.opentelemetry:opentelemetry-common"
     ],
     "io.opentelemetry:opentelemetry-exporter-common": [
-      "io.opentelemetry:opentelemetry-api",
-      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi"
+      "io.opentelemetry:opentelemetry-api"
     ],
     "io.opentelemetry:opentelemetry-exporter-otlp": [
       "io.opentelemetry:opentelemetry-exporter-otlp-common",
       "io.opentelemetry:opentelemetry-exporter-sender-okhttp",
-      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi",
       "io.opentelemetry:opentelemetry-sdk-logs",
       "io.opentelemetry:opentelemetry-sdk-metrics",
       "io.opentelemetry:opentelemetry-sdk-trace"
@@ -2639,9 +2605,6 @@
     ],
     "io.opentelemetry:opentelemetry-sdk-common": [
       "io.opentelemetry:opentelemetry-api"
-    ],
-    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": [
-      "io.opentelemetry:opentelemetry-sdk"
     ],
     "io.opentelemetry:opentelemetry-sdk-logs": [
       "io.opentelemetry:opentelemetry-api",
@@ -3352,9 +3315,6 @@
       "org.assertj:assertj-core",
       "org.xmlunit:xmlunit-core"
     ],
-    "org.xmlunit:xmlunit-core": [
-      "jakarta.xml.bind:jakarta.xml.bind-api"
-    ],
     "redis.clients.authentication:redis-authx-core": [
       "org.slf4j:slf4j-api"
     ],
@@ -3377,10 +3337,6 @@
     ]
   },
   "packages": {
-    "aopalliance:aopalliance": [
-      "org.aopalliance.aop",
-      "org.aopalliance.intercept"
-    ],
     "ch.qos.logback:logback-classic": [
       "ch.qos.logback.classic",
       "ch.qos.logback.classic.boolex",
@@ -3665,10 +3621,6 @@
     "com.google.j2objc:j2objc-annotations": [
       "com.google.j2objc.annotations"
     ],
-    "com.google.protobuf:protobuf-java": [
-      "com.google.protobuf",
-      "com.google.protobuf.compiler"
-    ],
     "com.h3xstream.findsecbugs:findsecbugs-plugin": [
       "com.h3xstream.findsecbugs",
       "com.h3xstream.findsecbugs.android",
@@ -3767,9 +3719,10 @@
       "okhttp3.internal",
       "okhttp3.internal.authenticator",
       "okhttp3.internal.cache",
-      "okhttp3.internal.cache2",
       "okhttp3.internal.concurrent",
       "okhttp3.internal.connection",
+      "okhttp3.internal.dns",
+      "okhttp3.internal.ech",
       "okhttp3.internal.graal",
       "okhttp3.internal.http",
       "okhttp3.internal.http1",
@@ -3907,7 +3860,8 @@
     ],
     "commons-logging:commons-logging": [
       "org.apache.commons.logging",
-      "org.apache.commons.logging.impl"
+      "org.apache.commons.logging.impl",
+      "org.apache.commons.logging.jakarta"
     ],
     "dev.matrixlab.webp4j:webp4j-core": [
       "dev.matrixlab.webp4j",
@@ -4148,6 +4102,7 @@
       "io.lettuce.core.api.push",
       "io.lettuce.core.api.reactive",
       "io.lettuce.core.api.sync",
+      "io.lettuce.core.array",
       "io.lettuce.core.cluster",
       "io.lettuce.core.cluster.api",
       "io.lettuce.core.cluster.api.async",
@@ -4196,6 +4151,8 @@
       "io.lettuce.core.models.role",
       "io.lettuce.core.models.stream",
       "io.lettuce.core.output",
+      "io.lettuce.core.probabilistic",
+      "io.lettuce.core.probabilistic.arguments",
       "io.lettuce.core.protocol",
       "io.lettuce.core.pubsub",
       "io.lettuce.core.pubsub.api.async",
@@ -4292,7 +4249,68 @@
       "io.micrometer.observation.transport"
     ],
     "io.micrometer:micrometer-registry-otlp": [
-      "io.micrometer.registry.otlp"
+      "io.micrometer.registry.otlp",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.baggage",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.baggage.propagation",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.common",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.impl",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.logs",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.trace",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.trace.propagation",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.api.trace.propagation.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.common",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.common.impl",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.context",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.context.internal.shaded",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.context.propagation",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.context.propagation.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.grpc",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.marshal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.otlp",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.otlp.logs",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.otlp.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.internal.otlp.traces",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.all.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.http.logs",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.http.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.http.trace",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.logs",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.trace",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.collector.logs.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.collector.metrics.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.collector.profiles.v1development.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.collector.trace.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.common.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.logs.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.metrics.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.profiles.v1development.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.resource.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.proto.trace.v1.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.common",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.common.export",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.common.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.data",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.export",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.aggregator",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.concurrent",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.data",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.debug",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.descriptor",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.exemplar",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.export",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.state",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.metrics.internal.view",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.resources",
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.resources.internal"
     ],
     "io.micrometer:micrometer-tracing": [
       "io.micrometer.tracing",
@@ -4336,6 +4354,8 @@
       "io.netty.util.internal.shaded.org.jctools.queues.atomic",
       "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded",
       "io.netty.util.internal.shaded.org.jctools.queues.unpadded",
+      "io.netty.util.internal.shaded.org.jctools.queues.varhandle",
+      "io.netty.util.internal.shaded.org.jctools.queues.varhandle.unpadded",
       "io.netty.util.internal.shaded.org.jctools.util",
       "io.netty.util.internal.svm"
     ],
@@ -4375,18 +4395,6 @@
     "io.netty:netty-transport-native-unix-common": [
       "io.netty.channel.unix"
     ],
-    "io.opentelemetry.proto:opentelemetry-proto": [
-      "io.opentelemetry.proto.collector.logs.v1",
-      "io.opentelemetry.proto.collector.metrics.v1",
-      "io.opentelemetry.proto.collector.profiles.v1development",
-      "io.opentelemetry.proto.collector.trace.v1",
-      "io.opentelemetry.proto.common.v1",
-      "io.opentelemetry.proto.logs.v1",
-      "io.opentelemetry.proto.metrics.v1",
-      "io.opentelemetry.proto.profiles.v1development",
-      "io.opentelemetry.proto.resource.v1",
-      "io.opentelemetry.proto.trace.v1"
-    ],
     "io.opentelemetry.semconv:opentelemetry-semconv": [
       "io.opentelemetry.semconv"
     ],
@@ -4395,6 +4403,7 @@
       "io.opentelemetry.api.baggage",
       "io.opentelemetry.api.baggage.propagation",
       "io.opentelemetry.api.common",
+      "io.opentelemetry.api.impl",
       "io.opentelemetry.api.internal",
       "io.opentelemetry.api.logs",
       "io.opentelemetry.api.metrics",
@@ -4414,9 +4423,7 @@
     ],
     "io.opentelemetry:opentelemetry-exporter-common": [
       "io.opentelemetry.exporter.internal",
-      "io.opentelemetry.exporter.internal.compression",
       "io.opentelemetry.exporter.internal.grpc",
-      "io.opentelemetry.exporter.internal.http",
       "io.opentelemetry.exporter.internal.marshal",
       "io.opentelemetry.exporter.internal.metrics"
     ],
@@ -4461,19 +4468,12 @@
       "io.opentelemetry.sdk.common",
       "io.opentelemetry.sdk.common.export",
       "io.opentelemetry.sdk.common.internal",
-      "io.opentelemetry.sdk.resources"
-    ],
-    "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi": [
-      "io.opentelemetry.sdk.autoconfigure.spi",
-      "io.opentelemetry.sdk.autoconfigure.spi.internal",
-      "io.opentelemetry.sdk.autoconfigure.spi.logs",
-      "io.opentelemetry.sdk.autoconfigure.spi.metrics",
-      "io.opentelemetry.sdk.autoconfigure.spi.traces"
+      "io.opentelemetry.sdk.resources",
+      "io.opentelemetry.sdk.resources.internal"
     ],
     "io.opentelemetry:opentelemetry-sdk-logs": [
       "io.opentelemetry.sdk.logs",
       "io.opentelemetry.sdk.logs.data",
-      "io.opentelemetry.sdk.logs.data.internal",
       "io.opentelemetry.sdk.logs.export",
       "io.opentelemetry.sdk.logs.internal"
     ],
@@ -4493,13 +4493,13 @@
       "io.opentelemetry.sdk.metrics.internal.view"
     ],
     "io.opentelemetry:opentelemetry-sdk-trace": [
-      "io.opentelemetry.internal.shaded.jctools.queues",
-      "io.opentelemetry.internal.shaded.jctools.queues.atomic",
-      "io.opentelemetry.internal.shaded.jctools.util",
       "io.opentelemetry.sdk.trace",
       "io.opentelemetry.sdk.trace.data",
       "io.opentelemetry.sdk.trace.export",
       "io.opentelemetry.sdk.trace.internal",
+      "io.opentelemetry.sdk.trace.internal.shaded.jctools.queues",
+      "io.opentelemetry.sdk.trace.internal.shaded.jctools.queues.atomic",
+      "io.opentelemetry.sdk.trace.internal.shaded.jctools.util",
       "io.opentelemetry.sdk.trace.samplers"
     ],
     "io.projectreactor:reactor-core": [
@@ -5140,7 +5140,6 @@
       "org.flywaydb.core.extensibility",
       "org.flywaydb.core.internal",
       "org.flywaydb.core.internal.authentication",
-      "org.flywaydb.core.internal.authentication.postgres",
       "org.flywaydb.core.internal.callback",
       "org.flywaydb.core.internal.clazz",
       "org.flywaydb.core.internal.command",
@@ -5169,7 +5168,6 @@
       "org.flywaydb.core.internal.nc.schemahistory",
       "org.flywaydb.core.internal.parser",
       "org.flywaydb.core.internal.plugin",
-      "org.flywaydb.core.internal.proprietaryInterfaces",
       "org.flywaydb.core.internal.proprietaryStubs",
       "org.flywaydb.core.internal.publishing",
       "org.flywaydb.core.internal.reports",
@@ -5192,7 +5190,8 @@
     ],
     "org.flywaydb:flyway-database-postgresql": [
       "org.flywaydb.database.cockroachdb",
-      "org.flywaydb.database.postgresql"
+      "org.flywaydb.database.postgresql",
+      "org.flywaydb.database.postgresql.authentication"
     ],
     "org.hamcrest:hamcrest": [
       "org.hamcrest",
@@ -5320,6 +5319,7 @@
       "kotlin.contracts",
       "kotlin.coroutines",
       "kotlin.coroutines.cancellation",
+      "kotlin.coroutines.debug",
       "kotlin.coroutines.intrinsics",
       "kotlin.coroutines.jvm.internal",
       "kotlin.enums",
@@ -5499,6 +5499,7 @@
       "org.junit.jupiter.api.function",
       "org.junit.jupiter.api.io",
       "org.junit.jupiter.api.parallel",
+      "org.junit.jupiter.api.timeout",
       "org.junit.jupiter.api.util"
     ],
     "org.junit.jupiter:junit-jupiter-engine": [
@@ -6011,7 +6012,8 @@
       "org.springframework.boot.micrometer.metrics.testcontainers.otlp"
     ],
     "org.springframework.boot:spring-boot-micrometer-observation": [
-      "org.springframework.boot.micrometer.observation.autoconfigure"
+      "org.springframework.boot.micrometer.observation.autoconfigure",
+      "org.springframework.boot.micrometer.observation.autoconfigure.condition"
     ],
     "org.springframework.boot:spring-boot-micrometer-tracing": [
       "org.springframework.boot.micrometer.tracing.autoconfigure",
@@ -6021,7 +6023,6 @@
     "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": [
       "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure",
       "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.otlp",
-      "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.zipkin",
       "org.springframework.boot.micrometer.tracing.opentelemetry.docker.compose.otlp",
       "org.springframework.boot.micrometer.tracing.opentelemetry.testcontainers.otlp"
     ],
@@ -6206,6 +6207,7 @@
       "org.springframework.data.redis.connection",
       "org.springframework.data.redis.connection.convert",
       "org.springframework.data.redis.connection.jedis",
+      "org.springframework.data.redis.connection.json",
       "org.springframework.data.redis.connection.lettuce",
       "org.springframework.data.redis.connection.lettuce.aot",
       "org.springframework.data.redis.connection.stream",
@@ -6688,6 +6690,7 @@
       "org.springframework.http.converter.cbor",
       "org.springframework.http.converter.feed",
       "org.springframework.http.converter.json",
+      "org.springframework.http.converter.multipart",
       "org.springframework.http.converter.protobuf",
       "org.springframework.http.converter.smile",
       "org.springframework.http.converter.support",
@@ -7270,7 +7273,6 @@
       "org.yaml.snakeyaml.env",
       "org.yaml.snakeyaml.error",
       "org.yaml.snakeyaml.events",
-      "org.yaml.snakeyaml.extensions.compactnotation",
       "org.yaml.snakeyaml.external.com.google.gdata.util.common.base",
       "org.yaml.snakeyaml.inspector",
       "org.yaml.snakeyaml.internal",
@@ -7361,7 +7363,6 @@
   },
   "repositories": {
     "https://repo1.maven.org/maven2/": [
-      "aopalliance:aopalliance",
       "ch.qos.logback:logback-classic",
       "ch.qos.logback:logback-core",
       "com.ethlo.time:itu",
@@ -7382,7 +7383,6 @@
       "com.google.guava:guava",
       "com.google.guava:listenablefuture",
       "com.google.j2objc:j2objc-annotations",
-      "com.google.protobuf:protobuf-java",
       "com.h3xstream.findsecbugs:findsecbugs-plugin",
       "com.jayway.jsonpath:json-path",
       "com.mebigfatguy.sb-contrib:sb-contrib",
@@ -7451,7 +7451,6 @@
       "io.netty:netty-resolver-dns",
       "io.netty:netty-transport",
       "io.netty:netty-transport-native-unix-common",
-      "io.opentelemetry.proto:opentelemetry-proto",
       "io.opentelemetry.semconv:opentelemetry-semconv",
       "io.opentelemetry:opentelemetry-api",
       "io.opentelemetry:opentelemetry-common",
@@ -7463,7 +7462,6 @@
       "io.opentelemetry:opentelemetry-extension-trace-propagators",
       "io.opentelemetry:opentelemetry-sdk",
       "io.opentelemetry:opentelemetry-sdk-common",
-      "io.opentelemetry:opentelemetry-sdk-extension-autoconfigure-spi",
       "io.opentelemetry:opentelemetry-sdk-logs",
       "io.opentelemetry:opentelemetry-sdk-metrics",
       "io.opentelemetry:opentelemetry-sdk-trace",
@@ -7732,6 +7730,25 @@
         "io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor"
       ]
     },
+    "io.micrometer:micrometer-registry-otlp": {
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.autoconfigure.spi.internal.ComponentProvider": [
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpGrpcLogRecordExporterComponentProvider",
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpGrpcMetricExporterComponentProvider",
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpGrpcSpanExporterComponentProvider",
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpHttpLogRecordExporterComponentProvider",
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpHttpMetricExporterComponentProvider",
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpHttpSpanExporterComponentProvider"
+      ],
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.autoconfigure.spi.logs.ConfigurableLogRecordExporterProvider": [
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpLogRecordExporterProvider"
+      ],
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.autoconfigure.spi.metrics.ConfigurableMetricExporterProvider": [
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpMetricExporterProvider"
+      ],
+      "io.micrometer.registry.otlp.shaded.io.opentelemetry.sdk.autoconfigure.spi.traces.ConfigurableSpanExporterProvider": [
+        "io.micrometer.registry.otlp.shaded.io.opentelemetry.exporter.otlp.internal.OtlpSpanExporterProvider"
+      ]
+    },
     "io.netty:netty-common": {
       "reactor.blockhound.integration.BlockHoundIntegration": [
         "io.netty.util.internal.Hidden$NettyBlockHoundIntegration"
@@ -7849,18 +7866,26 @@
         "org.flywaydb.core.internal.database.base.TestContainersDatabaseType",
         "org.flywaydb.core.internal.database.h2.H2DatabaseType",
         "org.flywaydb.core.internal.database.sqlite.SQLiteDatabaseType",
-        "org.flywaydb.core.internal.jdbc.ErrorOverrideInitializerStub",
         "org.flywaydb.core.internal.proprietaryStubs.AuthCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.AwsSecretsManagerSupportStub",
         "org.flywaydb.core.internal.proprietaryStubs.CheckCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.CherryPickConfigurationExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.CherryPickSupportStub",
         "org.flywaydb.core.internal.proprietaryStubs.DeployCommandExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.DiffCommandExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.DiffTextCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.DryRunConfigurationExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.DryRunSupportStub",
+        "org.flywaydb.core.internal.proprietaryStubs.ErrorOverrideInitializerStub",
+        "org.flywaydb.core.internal.proprietaryStubs.ErrorOverridesSupportStub",
         "org.flywaydb.core.internal.proprietaryStubs.GenerateCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.LicenseSupportStub",
         "org.flywaydb.core.internal.proprietaryStubs.LicensingConfigurationExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.ModelCommandExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.OfflinePermitConfigurationExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.PATTokenConfigurationExtensionStub",
         "org.flywaydb.core.internal.proprietaryStubs.PrepareCommandExtensionStub",
+        "org.flywaydb.core.internal.proprietaryStubs.ShouldExecuteEvaluatorStub",
         "org.flywaydb.core.internal.proprietaryStubs.UndoCommandExtensionStub",
         "org.flywaydb.core.internal.publishing.PublishingConfigurationExtension",
         "org.flywaydb.core.internal.resource.CoreResourceTypeProvider",

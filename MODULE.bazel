@@ -53,9 +53,9 @@ maven.install(
         "net.sf.saxon:Saxon-HE:13.1",
         "io.xspec:xspec:4.1.2",
         # Schematron (legal-text.sch) with the XSLT 3.0 binding
-        "name.dmaus.schxslt:schxslt2:1.11.2",
+        "name.dmaus.schxslt:schxslt2:1.11.4",
         # NullAway: JSpecify nullness checked at compile time, as an Error Prone plugin
-        "com.uber.nullaway:nullaway:0.14.3",
+        "com.uber.nullaway:nullaway:0.14.4",
         # Picnic's Error Prone checks, as a plugin: built on Error Prone 2.50.0, the one in rules_java's
         # JavaBuilder, so the two are upgraded together
         "tech.picnic.error-prone-support:error-prone-contrib:0.30.0",
@@ -100,9 +100,9 @@ maven.install(
         # modules' actuator (Modulith's insight starter), JDBC spans (datasource-micrometer)
         "org.springframework.boot:spring-boot-starter-opentelemetry",
         "org.springframework.modulith:spring-modulith-starter-insight",
-        "net.ttddyy.observation:datasource-micrometer-spring-boot:2.3.0",  # not in the BOMs
+        "net.ttddyy.observation:datasource-micrometer-spring-boot:2.3.1",  # not in the BOMs
         # the app as Spring Boot's executable jar, by the Repackager its Maven and Gradle plugins use
-        "org.springframework.boot:spring-boot-loader-tools:4.1.1",  # not in the BOM: keep it at Boot's version
+        "org.springframework.boot:spring-boot-loader-tools:4.2.0",  # not in the BOM: keep it at Boot's version
         "org.springframework.modulith:spring-modulith-api",
         "tools.jackson.core:jackson-databind",
         # jMolecules: the DDD building blocks and the sliced onion's rings, as annotations, and their ArchUnit
@@ -121,9 +121,9 @@ maven.install(
         "gg.jte:jte-models:3.2.5",
         "gg.jte:jte-jspecify-nullmarked:3.2.5",
         "gg.jte:jte-spring-boot-starter-4:3.2.5",
-        "org.webjars.npm:htmx.org:4.0.1",
+        "org.webjars.npm:htmx.org:4.0.2",
         # the API documentation's examples, tokenised for colour in the browser (catalogue/api.jte)
-        "org.webjars.npm:highlightjs__cdn-assets:11.11.1",
+        "org.webjars.npm:highlightjs__cdn-assets:11.12.0",
         # htmx's requests in Spring MVC: @HxRequest handlers for fragments, Vary: HX-Request on their
         # responses (not on the full page's: that one sets it itself)
         "io.github.wimdeblauwe:htmx-spring-boot:6.0.1",
@@ -156,7 +156,7 @@ maven.install(
         "io.cucumber:messages-ndjson",
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
-        "org.jsoup:jsoup:1.23.2",  # the rendered pages' text, as a browser reads it
+        "org.jsoup:jsoup:1.24.1",  # the rendered pages' text, as a browser reads it
         # the public text model, checked against its JSON Schema (api/schemas/v1/*.schema.json)
         "com.networknt:json-schema-validator:3.0.9",
         "org.springframework:spring-test",
@@ -186,12 +186,12 @@ maven.install(
         "com.github.spotbugs:spotbugs:4.10.5",
         "com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0",
         "com.mebigfatguy.sb-contrib:sb-contrib:7.7.4",
-        "org.slf4j:slf4j-jdk14:2.0.17",
+        "org.slf4j:slf4j-jdk14:2.0.20",
     ],
     boms = [
-        "org.springframework.boot:spring-boot-dependencies:4.1.1",
-        "org.springframework.modulith:spring-modulith-bom:2.1.1",
-        "org.jmolecules:jmolecules-bom:2025.0.2",
+        "org.springframework.boot:spring-boot-dependencies:4.2.0",
+        "org.springframework.modulith:spring-modulith-bom:2.2.0",
+        "org.jmolecules:jmolecules-bom:2025.0.3",
         "io.cucumber:cucumber-bom:8.1.0",
     ],
     known_contributing_modules = ["protobuf"],
@@ -211,9 +211,9 @@ maven.artifact(
 maven.install(
     name = "pmd_maven",
     artifacts = [
-        "net.sourceforge.pmd:pmd-dist:7.28.0",
+        "net.sourceforge.pmd:pmd-dist:7.30.0",
         "net.sf.saxon:Saxon-HE:12.10",
-        "org.slf4j:slf4j-jdk14:2.0.17",
+        "org.slf4j:slf4j-jdk14:2.0.20",
     ],
     repositories = ["https://repo1.maven.org/maven2"],
 )
