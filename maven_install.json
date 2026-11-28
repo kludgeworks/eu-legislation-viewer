@@ -43,7 +43,7 @@
     "org.jmolecules.integrations:jmolecules-archunit": -1728251600,
     "org.jmolecules.integrations:jmolecules-jackson3": -1126255350,
     "org.jmolecules.integrations:jmolecules-spring": -1106265251,
-    "org.jmolecules:jmolecules-bom": -1738962242,
+    "org.jmolecules:jmolecules-bom": 3788511,
     "org.jmolecules:jmolecules-ddd": 1569514801,
     "org.jmolecules:jmolecules-events": -1329545148,
     "org.jmolecules:jmolecules-onion-architecture": 1660079362,
@@ -138,7 +138,7 @@
     "com.squareup.okio:okio-jvm": 501270314,
     "com.structurizr:structurizr-core": 2104432366,
     "com.structurizr:structurizr-export": 499657505,
-    "com.tngtech.archunit:archunit": -1723949349,
+    "com.tngtech.archunit:archunit": -509334737,
     "com.uber.nullaway:nullaway": 982946578,
     "com.zaxxer:HikariCP": -1650230914,
     "commons-codec:commons-codec": 58403102,
@@ -257,13 +257,13 @@
     "org.jboss.logging:jboss-logging": 670094878,
     "org.jetbrains.kotlin:kotlin-stdlib": -1474384514,
     "org.jetbrains:annotations": -845966580,
-    "org.jmolecules.integrations:jmolecules-archunit": -296919357,
-    "org.jmolecules.integrations:jmolecules-jackson3": 1192958134,
-    "org.jmolecules.integrations:jmolecules-spring": 1517973402,
-    "org.jmolecules:jmolecules-ddd": -1358615692,
-    "org.jmolecules:jmolecules-events": -1249443269,
-    "org.jmolecules:jmolecules-onion-architecture": 940530457,
-    "org.jmolecules:jstereotype": 1595728065,
+    "org.jmolecules.integrations:jmolecules-archunit": 409002763,
+    "org.jmolecules.integrations:jmolecules-jackson3": 1374858984,
+    "org.jmolecules.integrations:jmolecules-spring": 2061271685,
+    "org.jmolecules:jmolecules-ddd": -1721722958,
+    "org.jmolecules:jmolecules-events": 546696926,
+    "org.jmolecules:jmolecules-onion-architecture": -1476837830,
+    "org.jmolecules:jstereotype": -1462380880,
     "org.jooq:jooq": -57677037,
     "org.jooq:jooq-codegen": 1718716008,
     "org.jooq:jooq-meta": -1565293089,
@@ -353,22 +353,22 @@
     "org.springframework.data:spring-data-keyvalue": 1294982872,
     "org.springframework.data:spring-data-redis": 514606181,
     "org.springframework.hateoas:spring-hateoas": -1891654200,
-    "org.springframework.modulith:spring-modulith-actuator": -1685703750,
+    "org.springframework.modulith:spring-modulith-actuator": 267985632,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-apt": -203694605,
-    "org.springframework.modulith:spring-modulith-core": 424804072,
-    "org.springframework.modulith:spring-modulith-docs": -1986785091,
+    "org.springframework.modulith:spring-modulith-core": 1505195258,
+    "org.springframework.modulith:spring-modulith-docs": 993432281,
     "org.springframework.modulith:spring-modulith-events-api": -1951733842,
     "org.springframework.modulith:spring-modulith-events-core": 429329674,
     "org.springframework.modulith:spring-modulith-events-jackson": 743842480,
     "org.springframework.modulith:spring-modulith-events-jdbc": 755930182,
-    "org.springframework.modulith:spring-modulith-moments": -767688995,
+    "org.springframework.modulith:spring-modulith-moments": 1365297361,
     "org.springframework.modulith:spring-modulith-observability-api": 680969470,
-    "org.springframework.modulith:spring-modulith-observability-core": -1035402057,
-    "org.springframework.modulith:spring-modulith-runtime": 1325398580,
-    "org.springframework.modulith:spring-modulith-starter-core": -533285022,
-    "org.springframework.modulith:spring-modulith-starter-insight": -679693304,
-    "org.springframework.modulith:spring-modulith-starter-jdbc": 324956310,
+    "org.springframework.modulith:spring-modulith-observability-core": 1127593597,
+    "org.springframework.modulith:spring-modulith-runtime": -1624981844,
+    "org.springframework.modulith:spring-modulith-starter-core": 162263355,
+    "org.springframework.modulith:spring-modulith-starter-insight": 284394038,
+    "org.springframework.modulith:spring-modulith-starter-jdbc": 1914971684,
     "org.springframework.plugin:spring-plugin-core": 218341417,
     "org.springframework.restdocs:spring-restdocs-core": -559699652,
     "org.springframework.restdocs:spring-restdocs-mockmvc": -1754863375,
@@ -425,12 +425,12 @@
     "org.flywaydb:flyway-core": "org.flywaydb:flyway-core:12.4.0",
     "org.flywaydb:flyway-database-postgresql": "org.flywaydb:flyway-database-postgresql:12.4.0",
     "org.hamcrest:hamcrest": "org.hamcrest:hamcrest:3.0",
-    "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.33.0",
-    "org.jmolecules.integrations:jmolecules-jackson3": "org.jmolecules.integrations:jmolecules-jackson3:0.33.0",
-    "org.jmolecules.integrations:jmolecules-spring": "org.jmolecules.integrations:jmolecules-spring:0.33.0",
-    "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.0.1",
-    "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.0.1",
-    "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.0.1",
+    "org.jmolecules.integrations:jmolecules-archunit": "org.jmolecules.integrations:jmolecules-archunit:0.34.0",
+    "org.jmolecules.integrations:jmolecules-jackson3": "org.jmolecules.integrations:jmolecules-jackson3:0.34.0",
+    "org.jmolecules.integrations:jmolecules-spring": "org.jmolecules.integrations:jmolecules-spring:0.34.0",
+    "org.jmolecules:jmolecules-ddd": "org.jmolecules:jmolecules-ddd:2.1.0",
+    "org.jmolecules:jmolecules-events": "org.jmolecules:jmolecules-events:2.1.0",
+    "org.jmolecules:jmolecules-onion-architecture": "org.jmolecules:jmolecules-onion-architecture:2.1.0",
     "org.jooq:jooq": "org.jooq:jooq:3.21.7",
     "org.jooq:jooq-codegen": "org.jooq:jooq-codegen:3.21.7",
     "org.jooq:jooq-meta": "org.jooq:jooq-meta:3.21.7",
@@ -674,9 +674,9 @@
     },
     "com.tngtech.archunit:archunit": {
       "shasums": {
-        "jar": "6d8adf69a3f109ebe1b395764feb07f919e9e0e2ab5e2ea141d2e6251ba7d17f"
+        "jar": "a4dbfc51c90005ad6ac9967672a7efb43aa6928287a57238b28e60e0a75c5c6f"
       },
-      "version": "1.4.2"
+      "version": "1.5.1"
     },
     "com.uber.nullaway:nullaway": {
       "shasums": {
@@ -1388,45 +1388,45 @@
     },
     "org.jmolecules.integrations:jmolecules-archunit": {
       "shasums": {
-        "jar": "5291177ba1d1c9c430a7630fa64c0bcfc3d74b432ccd4362d12bf227d96cb99a"
+        "jar": "ab92553f72c6f71c5e3cd2f28398bbba8c0d8405418652df8085f1296ffdc7b6"
       },
-      "version": "0.33.0"
+      "version": "0.34.0"
     },
     "org.jmolecules.integrations:jmolecules-jackson3": {
       "shasums": {
-        "jar": "ad8dbb99026e0b675b95dbbe8836b7c37fac2cde4b2034a6de541b9d8f653116"
+        "jar": "d9cc1458fd3f68927a683e4ccba60a3c705e165e2fc43a8fa491ccd23629bad1"
       },
-      "version": "0.33.0"
+      "version": "0.34.0"
     },
     "org.jmolecules.integrations:jmolecules-spring": {
       "shasums": {
-        "jar": "faa2e1346b3b2e4333422ff2d82c1a3cdba5c0a0f4c7907b348a4a70eab566c5"
+        "jar": "ca7d358c46db2b6be98072de21d7b2fce1ae7cf59fae42a5d44dcf15e4843d59"
       },
-      "version": "0.33.0"
+      "version": "0.34.0"
     },
     "org.jmolecules:jmolecules-ddd": {
       "shasums": {
-        "jar": "29c9013e9110ef169a9564bc13fdf3f77e6bcece19fa2938cb11b9f29d497d78"
+        "jar": "4ccf22a66b3d1844756e4e46d4d7836464227429e099b44de24e5f67bda7e807"
       },
-      "version": "2.0.1"
+      "version": "2.1.0"
     },
     "org.jmolecules:jmolecules-events": {
       "shasums": {
-        "jar": "2dd20f02039c825de38c381d76a0f5cc912b9ab85f9fb6dabf7b10c1c3c9e983"
+        "jar": "52445f3d02545cd2b9e8976bf47776dc15e660e941cfe043a1e76f8afa4fca41"
       },
-      "version": "2.0.1"
+      "version": "2.1.0"
     },
     "org.jmolecules:jmolecules-onion-architecture": {
       "shasums": {
-        "jar": "c877958d02ce09fe6be9e817d07428f7f21cc73b2e8fe6f6feda0a63c53386bc"
+        "jar": "de03932efd813f12c1f5b3b7b3cfe69ab86651d6020c49a474cee751d767b433"
       },
-      "version": "2.0.1"
+      "version": "2.1.0"
     },
     "org.jmolecules:jstereotype": {
       "shasums": {
-        "jar": "8ee2277ede551ba969c381b2f90fb697a0fad610d1d1d2e432947c9bdcf19e7e"
+        "jar": "c13c7c49a046fbf452d218f0680391f2925f99f39f8e1fc5a6ad4c0606081562"
       },
-      "version": "2.0.1"
+      "version": "2.1.0"
     },
     "org.jooq:jooq": {
       "shasums": {
@@ -2741,6 +2741,7 @@
     ],
     "org.jmolecules.integrations:jmolecules-archunit": [
       "com.tngtech.archunit:archunit",
+      "org.jspecify:jspecify",
       "org.slf4j:slf4j-api"
     ],
     "org.jmolecules.integrations:jmolecules-jackson3": [
@@ -5387,6 +5388,7 @@
       "org.jmolecules.event.types"
     ],
     "org.jmolecules:jmolecules-onion-architecture": [
+      "org.jmolecules.architecture.onion",
       "org.jmolecules.architecture.onion.classical",
       "org.jmolecules.architecture.onion.simplified"
     ],
