@@ -53,16 +53,19 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
       Pattern.compile("(?<!\\bNo)(?<!\\bArt)\\.(?:\\s+|$)");
   private static final Pattern DATE_MARKER = Pattern.compile("\u0000(\\d{4}-\\d{2}-\\d{2})\u0000");
 
+  private static final String PUBLICATION_PREFIX =
+      "\\A\\s*(?:(?:as\\s+from|from|on)\\s+)?(?:the\\s+)?";
   private static final Pattern DAY_OF_PUB =
       Pattern.compile(
-          "(?:on\\s+)?(?:the\\s+)?day\\s+of\\s+its\\s+publication\\b", Pattern.CASE_INSENSITIVE);
+          PUBLICATION_PREFIX + "day\\s+of\\s+its\\s+publication\\b", Pattern.CASE_INSENSITIVE);
   private static final Pattern DAY_FOLLOWING =
       Pattern.compile(
-          "(?:on\\s+)?(?:the\\s+)?day\\s+following(?:\\s+that\\s+of)?\\s+its\\s+publication\\b",
+          PUBLICATION_PREFIX + "day\\s+following(?:\\s+that\\s+of)?\\s+its\\s+publication\\b",
           Pattern.CASE_INSENSITIVE);
   private static final Pattern NTH_DAY_FOLLOWING =
       Pattern.compile(
-          "(?:on\\s+)?(?:the\\s+)?([a-z0-9-]+)\\s+day\\s+following(?:\\s+that\\s+of)?\\s+its\\s+publication\\b",
+          PUBLICATION_PREFIX
+              + "([a-z0-9-]+)\\s+day\\s+following(?:\\s+that\\s+of)?\\s+its\\s+publication\\b",
           Pattern.CASE_INSENSITIVE);
   private static final Pattern NUMERIC_ORDINAL = Pattern.compile("^(\\d+)(?:st|nd|rd|th)?$");
 
@@ -78,6 +81,12 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
   private static final Pattern PROVISION_SUBJECT =
       Pattern.compile(
           "\\b(?:articles?|paragraphs?|subparagraphs?|points?|indents?|annex(?:es)?|chapters?"
+              + "|sections?|titles?|parts?)\\b",
+          Pattern.CASE_INSENSITIVE);
+  private static final Pattern PART_SUBJECT_START =
+      Pattern.compile(
+          "^(?:however,\\s+)?(?:the\\s+(?:first|second|third|fourth|fifth)\\s+)?"
+              + "(?:articles?|paragraphs?|subparagraphs?|points?|indents?|annex(?:es)?|chapters?"
               + "|sections?|titles?|parts?)\\b",
           Pattern.CASE_INSENSITIVE);
   private static final Pattern ACT_SUBJECT =
@@ -440,7 +449,11 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
                 article.paragraphs().stream()
                     .filter(p -> paraNo.equalsIgnoreCase(p.number()))
                     .toList();
-            selected.addAll(matchingPara.isEmpty() ? article.paragraphs() : matchingPara);
+            if (!matchingPara.isEmpty()) {
+              selected.addAll(matchingPara);
+            } else if (article.paragraphs().stream().noneMatch(p -> p.number() != null)) {
+              selected.addAll(article.paragraphs());
+            }
           } else {
             selected.addAll(article.paragraphs());
           }
@@ -478,25 +491,22 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
     return Optional.of(new ProvisionParts(artNo, paraNo));
   }
 
-  private static boolean matchesKind(String sentence, Kind kind) {
-    var lower = sentence.toLowerCase(Locale.ROOT);
+  private static @Nullable Pattern verbPattern(Kind kind) {
     return switch (kind) {
-      case ENTRY_INTO_FORCE ->
-          lower.contains("enter into force") || lower.contains("enters into force");
-      case APPLICATION -> lower.contains("shall apply") || lower.contains("applicable from");
-      case TAKING_EFFECT -> lower.contains("take effect") || lower.contains("takes effect");
-      case TRANSPOSITION -> false;
+      case ENTRY_INTO_FORCE -> ENTRY_INTO_FORCE_VERB;
+      case APPLICATION -> APPLICATION_VERB;
+      case TAKING_EFFECT -> TAKING_EFFECT_VERB;
+      case TRANSPOSITION -> null;
     };
   }
 
+  private static boolean matchesKind(String sentence, Kind kind) {
+    var verb = verbPattern(kind);
+    return verb != null && verb.matcher(sentence).find();
+  }
+
   private static boolean matchesSubject(String sentence, Kind kind, boolean forPart) {
-    var verb =
-        switch (kind) {
-          case ENTRY_INTO_FORCE -> ENTRY_INTO_FORCE_VERB;
-          case APPLICATION -> APPLICATION_VERB;
-          case TAKING_EFFECT -> TAKING_EFFECT_VERB;
-          case TRANSPOSITION -> null;
-        };
+    var verb = verbPattern(kind);
     if (verb == null) {
       return false;
     }
@@ -505,8 +515,10 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
       return false;
     }
     var beforeVerb = sentence.substring(0, matcher.start());
-    var namesProvision = PROVISION_SUBJECT.matcher(beforeVerb).find();
-    return forPart ? namesProvision : !namesProvision && ACT_SUBJECT.matcher(beforeVerb).find();
+    if (forPart) {
+      return PART_SUBJECT_START.matcher(beforeVerb.trim()).find();
+    }
+    return !PROVISION_SUBJECT.matcher(beforeVerb).find() && ACT_SUBJECT.matcher(beforeVerb).find();
   }
 
   static EnactedDate classifySentence(Sentence sentence, Kind kind) {
@@ -522,10 +534,19 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
     if (!dates.isEmpty()) {
       return new EnactedDate.Unknown();
     }
-    if (DAY_OF_PUB.matcher(text).find()) {
+    var verb = verbPattern(kind);
+    if (verb == null) {
+      return new EnactedDate.Unknown();
+    }
+    var verbMatcher = verb.matcher(text);
+    if (!verbMatcher.find()) {
+      return new EnactedDate.Unknown();
+    }
+    var afterVerb = text.substring(verbMatcher.end());
+    if (DAY_OF_PUB.matcher(afterVerb).find()) {
       return new EnactedDate.OnPublication(0);
     }
-    var nth = NTH_DAY_FOLLOWING.matcher(text);
+    var nth = NTH_DAY_FOLLOWING.matcher(afterVerb);
     if (nth.find()) {
       var days = parseOrdinal(nth.group(1));
       if (days != null) {
@@ -535,7 +556,7 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
         return new EnactedDate.Unknown();
       }
     }
-    if (DAY_FOLLOWING.matcher(text).find()) {
+    if (DAY_FOLLOWING.matcher(afterVerb).find()) {
       return new EnactedDate.OnPublication(1);
     }
     return new EnactedDate.Unknown();
@@ -543,7 +564,9 @@ class EnactedDates implements CellarDates.EnactedDateLookup {
 
   private static boolean hasExplicitDateClause(String markedText, Kind kind) {
     var lower = markedText.toLowerCase(Locale.ROOT);
-    if (lower.contains("except") || lower.contains("however") || lower.contains("until")) {
+    if (lower.contains("except")
+        || lower.contains("until")
+        || lower.replaceFirst("^however,\\s+", "").contains("however")) {
       return false;
     }
     return switch (kind) {

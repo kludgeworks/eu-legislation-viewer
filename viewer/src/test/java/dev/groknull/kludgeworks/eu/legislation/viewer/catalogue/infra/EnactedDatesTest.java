@@ -191,6 +191,89 @@ class EnactedDatesTest {
   }
 
   @Test
+  void returnsUnknownWhenCitedNumberedParagraphDoesNotExist() {
+    var numberedParagraphs =
+        enactingArticle(
+            "6",
+            "<PARAG IDENTIFIER=\"006.001\"><NO.PARAG>1.</NO.PARAG><ALINEA>This Regulation shall"
+                + " enter into force on the day of its publication.</ALINEA></PARAG>"
+                + "<PARAG IDENTIFIER=\"006.002\"><NO.PARAG>2.</NO.PARAG><ALINEA>Article 3 shall"
+                + " apply from <DATE ISO=\"20210401\">1 April 2021</DATE>.</ALINEA></PARAG>");
+    var unnumberedAlinea =
+        enactingArticle(
+            "6",
+            "This Regulation shall enter into force on the day following that of its"
+                + " publication.");
+
+    assertThat(classify(numberedParagraphs, Kind.APPLICATION, List.of(article("6(3)")), true))
+        .isEqualTo(new EnactedDate.Unknown());
+    assertThat(classify(unnumberedAlinea, Kind.ENTRY_INTO_FORCE, List.of(article("6(1)")), false))
+        .isEqualTo(new EnactedDate.OnPublication(1));
+  }
+
+  @Test
+  void classifiesPresentTenseAppliesFormula() {
+    var xml =
+        enactingArticle(
+            "6",
+            "This Regulation applies from the day following that of its publication in the Official"
+                + " Journal of the European Union.");
+
+    assertThat(classify(xml, Kind.APPLICATION, List.of(article("6")), false))
+        .isEqualTo(new EnactedDate.OnPublication(1));
+  }
+
+  @Test
+  void partDateRequiresProvisionAsSentenceSubject() {
+    var articleSubject =
+        enactingArticle(
+            "6", "Article 3 shall apply from the day following that of its publication.");
+    var afterHowever =
+        enactingArticle(
+            "6", "However, Article 3 shall apply from the day following that of its publication.");
+    var withoutPrejudice =
+        enactingArticle(
+            "6",
+            "Without prejudice to Article 5, this Regulation shall apply from the day following"
+                + " that of its publication.");
+    var indirectReference =
+        enactingArticle(
+            "6",
+            "The competent authority referred to in Article 3 shall apply this Regulation on the"
+                + " day following that of its publication.");
+
+    assertThat(classify(articleSubject, Kind.APPLICATION, List.of(article("6")), true))
+        .isEqualTo(new EnactedDate.OnPublication(1));
+    assertThat(classify(afterHowever, Kind.APPLICATION, List.of(article("6")), true))
+        .isEqualTo(new EnactedDate.OnPublication(1));
+    assertThat(classify(withoutPrejudice, Kind.APPLICATION, List.of(article("6")), true))
+        .isEqualTo(new EnactedDate.Unknown());
+    assertThat(classify(indirectReference, Kind.APPLICATION, List.of(article("6")), true))
+        .isEqualTo(new EnactedDate.Unknown());
+    assertThat(classify(indirectReference, Kind.APPLICATION, List.of(article("6")), false))
+        .isEqualTo(new EnactedDate.Unknown());
+  }
+
+  @Test
+  void requiresPublicationFormulaDirectlyAfterVerb() {
+    var direct =
+        enactingArticle(
+            "5",
+            "This Regulation shall enter into force on the day following that of its"
+                + " publication.");
+    var embeddedEvent =
+        enactingArticle(
+            "6",
+            "This Regulation shall apply from the date on which Decision (EU) 2020/1 takes effect,"
+                + " which is the day of its publication in the Official Journal.");
+
+    assertThat(classify(direct, Kind.ENTRY_INTO_FORCE, List.of(article("5")), false))
+        .isEqualTo(new EnactedDate.OnPublication(1));
+    assertThat(classify(embeddedEvent, Kind.APPLICATION, List.of(article("6")), false))
+        .isEqualTo(new EnactedDate.Unknown());
+  }
+
+  @Test
   void returnsEmptyArticlesWhenNoEnglishManifestationExists() {
     var articles =
         EnactedDates.lookup(

@@ -132,3 +132,10 @@ enacted-32020R0910.xml: the enacted English Formex XML document (DOC_2, L_202020
 Commission Implementing Regulation (EU) 2020/910, downloaded from Cellar on 2026-11-27. Article 5
 enters it into force on the day following that of its publication in the Official Journal (2 July
 2020), while Cellar's date metadata records 6 July 2020.
+
+32020R0910: Commission Implementing Regulation (EU) 2020/910, which has no consolidation
+(versions-32020R0910.json has 0 rows). Recorded on 2026-11-28 with act.rq, versions.rq,
+languages.rq, dates.rq, titles.rq, amendments.rq and publications.rq: act-, versions-,
+languages-, dates-, titles-, amendments- and publications-32020R0910.json. Its own publication
+in publications-32020R0910.json comes from the act's CELEX branch in publications.rq, and its
+originalFrom (2 July 2020) comes from verifying that date against its publication and enacted text.

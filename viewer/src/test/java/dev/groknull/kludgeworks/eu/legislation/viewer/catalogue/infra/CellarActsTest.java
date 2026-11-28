@@ -835,6 +835,20 @@ class CellarActsTest {
   }
 
   @Test
+  void readsAnUnconsolidatedActWithItsOwnPublicationAndCheckedOriginalFrom() {
+    var amendingAct = new ActIdentifier("32020R0910");
+    var act = RecordedActs.act(amendingAct);
+
+    assertThat(reference(act, amendingAct.celex())).hasValue("OJ L 208, 1.7.2020");
+    assertThat(act.timeline().versions())
+        .singleElement()
+        .satisfies(original -> {
+          assertThat(original.kind()).isEqualTo(Version.Kind.ORIGINAL);
+          assertThat(original.date()).isEqualTo(LocalDate.of(2020, 7, 2));
+        });
+  }
+
+  @Test
   void keepsTreatyEditionDocumentDateAheadOfCheckedEntryIntoForce() {
     var treaty = new ActIdentifier("12016E/TXT");
     var work =
