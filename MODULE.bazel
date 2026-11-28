@@ -191,7 +191,7 @@ maven.install(
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
-        "org.jmolecules:jmolecules-bom:2025.0.2",
+        "org.jmolecules:jmolecules-bom:2026.0.0",
         "io.cucumber:cucumber-bom:8.1.0",
     ],
     known_contributing_modules = ["protobuf"],
