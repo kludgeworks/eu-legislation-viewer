@@ -57,4 +57,46 @@ class WordingTest {
             "The data does not say from which of these days this change applies: 1 August 2022 or"
                 + " 15 October 2026");
   }
+
+  @Test
+  void writesDateSourceNotesNextToEachDay() {
+    var day1 = LocalDate.of(2022, 8, 1);
+    var day2 = LocalDate.of(2026, 10, 15);
+    var clause =
+        new ActDate.Clause(
+            ActDate.Anchor.PUBLICATION,
+            1,
+            List.of(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "2")),
+            List.of(),
+            List.of(),
+            "DATPUB +1 V ART 2");
+    var fromJournal =
+        new ActDate(
+            day1, ActDate.Kind.ENTRY_INTO_FORCE, false, clause, ActDate.Source.CLAUSE_AND_JOURNAL);
+    var notConfirmed =
+        new ActDate(day2, ActDate.Kind.APPLICATION, true, clause, ActDate.Source.NOT_CONFIRMED);
+    var fromText = new ActDate(day1, ActDate.Kind.APPLICATION, false, clause, ActDate.Source.TEXT);
+
+    assertThat(Wording.dates(PHASED, new Applying.From(day1, false, List.of(fromJournal))))
+        .isEqualTo("From 1 August 2022 (from the Official Journal) · Article 2 of 2022/1190");
+    assertThat(Wording.dates(PHASED, new Applying.InForce(day1, List.of(fromText))))
+        .isEqualTo(
+            "In force from 1 August 2022 (from the enacted text) · Article 2 of 2022/1190."
+                + " The data does not give the day from which it applies.");
+
+    var parts =
+        new Applying.FromMoreThanOneDay(
+            List.of(new Applying.Start(day1, true, true), new Applying.Start(day2, false, true)),
+            day1,
+            List.of(fromJournal, notConfirmed));
+    assertThat(Wording.dates(PHASED, parts))
+        .isEqualTo(
+            "Applies from more than one day: 1 August 2022 (from the Official Journal) and 15"
+                + " October 2026 (not confirmed) · Article 2 of 2022/1190");
+    assertThat(Wording.unknown(PHASED, parts))
+        .isEqualTo(
+            "The data does not say from which of these days this change applies: 1 August 2022"
+                + " (from the Official Journal) or 15 October 2026 (not confirmed) · Article 2 of"
+                + " 2022/1190");
+  }
 }

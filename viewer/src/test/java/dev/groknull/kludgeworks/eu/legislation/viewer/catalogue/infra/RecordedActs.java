@@ -32,8 +32,18 @@ public final class RecordedActs {
             answer("titles-" + id.celex() + ".json"),
             answer("amendments-" + id.celex() + ".json"),
             answer("publications-" + id.celex() + ".json"),
-            setting(id))
+            setting(id),
+            RecordedActs::enacted)
         .orElseThrow();
+  }
+
+  private static List<EnactedDates.Article> enacted(ActIdentifier act) {
+    var resource = "/acts/enacted-" + act.celex() + ".xml";
+    try (var in = RecordedActs.class.getResourceAsStream(resource)) {
+      return in == null ? List.of() : EnactedDates.parseArticles(act, in);
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
   }
 
   /**

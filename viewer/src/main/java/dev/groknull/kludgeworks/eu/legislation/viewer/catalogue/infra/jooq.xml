@@ -77,6 +77,11 @@
           <includeExpression>act_date\.anchor</includeExpression>
         </forcedType>
         <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Source</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>act_date\.source</includeExpression>
+        </forcedType>
+        <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
           <includeTypes>language_code</includeTypes>

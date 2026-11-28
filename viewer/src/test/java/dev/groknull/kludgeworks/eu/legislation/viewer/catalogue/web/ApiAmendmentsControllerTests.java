@@ -96,6 +96,7 @@ class ApiAmendmentsControllerTests {
     assertThat(amendments.at("/dates/32019R0103/1/forPart").asBoolean()).isTrue();
     assertThat(amendments.at("/dates/32019R0103/1/clause").asString())
         .isEqualTo("MA/PART V ART 2 ET 32020R0910");
+    assertThat(amendments.at("/dates/32019R0103/1/source").asString()).isEqualTo("cellar");
     assertThat(amendments.at("/_links/up/href").asString()).isEqualTo(ACT);
   }
 }

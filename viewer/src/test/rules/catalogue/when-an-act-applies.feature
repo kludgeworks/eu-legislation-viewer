@@ -151,3 +151,36 @@ Feature: When an act applies
         | from            | what                 |
         | 22 March 2026   | its entry into force |
         | 1 October 2026  | a part               |
+
+  Rule: a-date-checked-against-the-text · A date whose publication anchor contradicts Cellar
+    When Cellar's stored date disagrees with the Official Journal publication date plus the days
+    in Cellar's comment, only the enacted text settles it:
+    - If the text agrees with the clause, the date comes from the clause and Journal.
+    - If the text agrees with Cellar's stored date, Cellar's date stands.
+    - If the text names another date or offset, the date comes from the text.
+    - If no rule matches or no text is available, keep Cellar's date and mark it as "not confirmed".
+
+    Example: Text agrees with the publication clause
+      Given Cellar gives 6 July 2020 for 1 day after publication on 1 July 2020
+      And the enacted text states 1 day after publication
+      Then the resolved date is 2 July 2020 from clause_and_journal
+
+    Example: Text agrees with Cellar's stored date over a wrong offset in Cellar's comment
+      Given Cellar gives 14 June 2018 for 20 days after publication on 13 June 2018
+      And the enacted text states 1 day after publication
+      Then the resolved date is 14 June 2018 from cellar
+
+    Example: Text states a fixed retroactive date instead of publication
+      Given Cellar gives 18 February 2017 for 0 days after publication on 1 December 2017
+      And the enacted text states the fixed date 18 February 2017
+      Then the resolved date is 18 February 2017 from cellar
+
+    Example: Text names a different fixed date than both Cellar and the clause
+      Given Cellar gives 6 July 2020 for 1 day after publication on 1 July 2020
+      And the enacted text states the fixed date 3 July 2020
+      Then the resolved date is 3 July 2020 from text
+
+    Example: Text gives no known rule or is unavailable
+      Given Cellar gives 28 July 2017 for 20 days after publication on 13 July 2017
+      And the enacted text gives no known rule
+      Then the resolved date is 28 July 2017 from not_confirmed

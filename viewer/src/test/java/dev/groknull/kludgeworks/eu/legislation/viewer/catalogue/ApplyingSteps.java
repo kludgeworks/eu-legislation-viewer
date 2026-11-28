@@ -22,6 +22,9 @@ public class ApplyingSteps {
   private final TheAct the;
   private @Nullable ActIdentifier changed;
   private Set<LocalDate> placeDays = Set.of();
+  private @Nullable ActDate rawDate;
+  private @Nullable LocalDate publishedDay;
+  private @Nullable ActDate resolvedDate;
 
   public ApplyingSteps(TheAct the) {
     this.the = the;
@@ -201,5 +204,57 @@ public class ApplyingSteps {
     var applying = the.dated(act).applying(days);
     assertThat(applying).as("when a change of %s applies", act.cited()).isPresent();
     return applying.orElseThrow();
+  }
+
+  @Given("Cellar gives {day} for {int} day(s) after publication on {day}")
+  public void cellarPublicationDate(LocalDate day, int days, LocalDate published) {
+    this.rawDate =
+        new ActDate(
+            day,
+            ActDate.Kind.ENTRY_INTO_FORCE,
+            false,
+            new ActDate.Clause(
+                ActDate.Anchor.PUBLICATION,
+                days,
+                List.of(),
+                List.of(),
+                List.of(),
+                "DATPUB +" + days));
+    this.publishedDay = published;
+  }
+
+  @Given("the enacted text states {int} day(s) after publication")
+  public void enactedDaysAfterPublication(int days) {
+    this.resolvedDate =
+        WhenAnActApplies.resolveAgainstEnactedText(
+            Objects.requireNonNull(rawDate),
+            publishedDay,
+            new WhenAnActApplies.EnactedDate.OnPublication(days));
+  }
+
+  @Given("the enacted text states the fixed date {day}")
+  public void enactedFixedDate(LocalDate day) {
+    this.resolvedDate =
+        WhenAnActApplies.resolveAgainstEnactedText(
+            Objects.requireNonNull(rawDate),
+            publishedDay,
+            new WhenAnActApplies.EnactedDate.Fixed(day));
+  }
+
+  @Given("the enacted text gives no known rule")
+  public void enactedUnknown() {
+    this.resolvedDate =
+        WhenAnActApplies.resolveAgainstEnactedText(
+            Objects.requireNonNull(rawDate),
+            publishedDay,
+            new WhenAnActApplies.EnactedDate.Unknown());
+  }
+
+  @Then("the resolved date is {day} from {word}")
+  public void resolvedDateIs(LocalDate expectedDay, String expectedSource) {
+    var actual = Objects.requireNonNull(resolvedDate);
+    assertThat(actual.date()).isEqualTo(expectedDay);
+    assertThat(actual.source())
+        .isEqualTo(ActDate.Source.valueOf(expectedSource.toUpperCase(java.util.Locale.ROOT)));
   }
 }

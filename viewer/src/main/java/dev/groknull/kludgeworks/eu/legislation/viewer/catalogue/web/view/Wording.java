@@ -88,7 +88,8 @@ public final class Wording {
     var clause = clause(applying.dates(), act);
     var cited = clause.isEmpty() ? "" : " · " + clause;
     return switch (applying) {
-      case Applying.From from -> "From " + Dates.inWords(from.day()) + cited;
+      case Applying.From from ->
+          "From " + Dates.inWords(from.day()) + sourceNote(from.dates(), from.day()) + cited;
       case Applying.FromMoreThanOneDay parts ->
           "Applies from more than one day: " + days(parts, " and ") + cited;
       case Applying.SetBy _ ->
@@ -100,6 +101,7 @@ public final class Wording {
       case Applying.InForce inForce ->
           "In force from "
               + Dates.inWords(inForce.day())
+              + sourceNote(inForce.dates(), inForce.day())
               + cited
               + ". The data does not give the day from which it applies.";
     };
@@ -107,10 +109,28 @@ public final class Wording {
 
   /** Returns the days of {@code parts} in words, with {@code last} before the last day. */
   private static String days(Applying.FromMoreThanOneDay parts, String last) {
-    var days = parts.starts().stream().map(part -> Dates.inWords(part.day())).toList();
+    var days =
+        parts.starts().stream()
+            .map(part -> Dates.inWords(part.day()) + sourceNote(parts.dates(), part.day()))
+            .toList();
     return days.size() < 2
         ? String.join("", days)
         : String.join(", ", days.subList(0, days.size() - 1)) + last + days.getLast();
+  }
+
+  /** Returns a parenthetical source note next to {@code day}, or empty if Cellar gave the day. */
+  static String sourceNote(List<ActDate> dates, LocalDate day) {
+    return ActDate.Source.on(dates, day).map(Wording::sourceNote).orElse("");
+  }
+
+  /** Returns a parenthetical source note for {@code source}, or empty if Cellar gave the date. */
+  static String sourceNote(ActDate.Source source) {
+    return switch (source) {
+      case CELLAR -> "";
+      case CLAUSE_AND_JOURNAL -> " (from the Official Journal)";
+      case TEXT -> " (from the enacted text)";
+      case NOT_CONFIRMED -> " (not confirmed)";
+    };
   }
 
   /**

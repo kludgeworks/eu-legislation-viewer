@@ -22,6 +22,8 @@ SELECT DISTINCT ?subject ?eli ?code ?title ?collection ?number ?published ?issue
 WHERE {
   ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
   {
+    ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  } UNION {
     ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
          cdm:act_consolidated_consolidates_resource_legal ?work .
   } UNION {

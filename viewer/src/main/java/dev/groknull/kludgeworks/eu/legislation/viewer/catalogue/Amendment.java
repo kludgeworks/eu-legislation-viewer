@@ -43,6 +43,11 @@ public record Amendment(
     languages = Set.copyOf(languages);
   }
 
+  /** Returns a copy of this amendment with {@code from} as the day it applies from. */
+  public Amendment withFrom(LocalDate from) {
+    return new Amendment(act, location, place, role, from, until, languages);
+  }
+
   /**
    * Returns whether it changes the text in {@code language}. It must change the words, not only
    * when they apply.

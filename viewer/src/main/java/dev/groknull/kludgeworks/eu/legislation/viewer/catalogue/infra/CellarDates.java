@@ -14,6 +14,7 @@ import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -53,7 +54,9 @@ final class CellarDates {
    */
   private static final Pattern CODE = Pattern.compile("\\{([^|}]*)\\|[^}]*}");
 
-  private static final Pattern DAYS = Pattern.compile("\\+?(\\d+)");
+  private static final Pattern PLUS_DAYS = Pattern.compile("\\+(\\d+)");
+  private static final Pattern PLAIN_DAYS = Pattern.compile("\\d{1,3}");
+  private static final Pattern DIGITS = Pattern.compile("\\d+");
 
   /**
    * The first year of a real date. Cellar writes a date that it does not know as 1001-01-01 or
@@ -133,45 +136,128 @@ final class CellarDates {
     return acts;
   }
 
+  /** Reads the enacted articles of an act when Cellar contradicts its publication date. */
+  @FunctionalInterface
+  interface EnactedDateLookup {
+    List<EnactedDates.Article> read(ActIdentifier act);
+  }
+
+  /**
+   * Checked dates together with each act's raw-to-corrected date mapping ({@code Optional.empty()}
+   * marks a raw day that resolved ambiguously across multiple dates of the same act).
+   */
+  record CheckedDates(
+      Map<ActIdentifier, List<ActDate>> dates,
+      Map<ActIdentifier, Map<LocalDate, Optional<LocalDate>>> corrections) {}
+
   /**
    * Verifies each date whose clause is anchored on publication against the act's publication date
-   * in the Official Journal, if known. Where Cellar's recorded date does not match {@code
-   * publication + days}, it logs at debug and adopts the date given by the clause.
+   * in the Official Journal, if known, consulting {@code enactedLookup} once per act only on a
+   * mismatch and classifying each contradicted date from the act's parsed articles.
    */
-  static Map<ActIdentifier, List<ActDate>> checkAgainstPublication(
-      Map<ActIdentifier, List<ActDate>> dates, Map<ActIdentifier, Publication> publications) {
+  static CheckedDates checkAgainstPublication(
+      Map<ActIdentifier, List<ActDate>> dates,
+      Map<ActIdentifier, Publication> publications,
+      EnactedDateLookup enactedLookup) {
+    var cache = new HashMap<ActIdentifier, List<EnactedDates.Article>>();
+    EnactedDateLookup memoized = act -> cache.computeIfAbsent(act, enactedLookup::read);
     var checked = new LinkedHashMap<ActIdentifier, List<ActDate>>();
-    for (var entry : dates.entrySet()) {
-      var act = entry.getKey();
-      var actDates = entry.getValue();
-      var publication = publications.get(act);
-      var published =
-          publication != null && publication.journal() != null
-              ? publication.journal().published()
-              : null;
-      var list = new ArrayList<ActDate>(actDates.size());
-      for (var actDate : actDates) {
-        if (published != null && actDate.clause().from() == Anchor.PUBLICATION) {
-          int days = actDate.clause().days() == null ? 0 : actDate.clause().days();
-          var fromClause = published.plusDays(days);
-          if (actDate.date() != null && !actDate.date().equals(fromClause)) {
-            LOG.debug(
-                "{}: Cellar's date {} doesn't match publication date {} + {} day(s) ({}); using {}",
-                act,
-                actDate.date(),
-                published,
-                days,
-                actDate.clause().text(),
-                fromClause);
-            list.add(new ActDate(fromClause, actDate.kind(), actDate.forPart(), actDate.clause()));
-            continue;
-          }
-        }
-        list.add(actDate);
+    var corrections = new LinkedHashMap<ActIdentifier, Map<LocalDate, Optional<LocalDate>>>();
+    dates.forEach(
+        (act, actDates) -> checkAct(act, actDates, publications, memoized, checked, corrections));
+    return new CheckedDates(checked, corrections);
+  }
+
+  private static void checkAct(
+      ActIdentifier act,
+      List<ActDate> actDates,
+      Map<ActIdentifier, Publication> publications,
+      EnactedDateLookup enactedLookup,
+      Map<ActIdentifier, List<ActDate>> checked,
+      Map<ActIdentifier, Map<LocalDate, Optional<LocalDate>>> corrections) {
+    var publication = publications.get(act);
+    var published =
+        publication != null && publication.journal() != null
+            ? publication.journal().published()
+            : null;
+    var list = new ArrayList<ActDate>(actDates.size());
+    var targetsByRaw = new HashMap<LocalDate, Set<LocalDate>>();
+    for (var actDate : actDates) {
+      var resolved = resolveDate(act, actDate, published, enactedLookup);
+      list.add(resolved);
+      if (actDate.date() != null && resolved.date() != null) {
+        targetsByRaw
+            .computeIfAbsent(actDate.date(), _ -> new LinkedHashSet<>())
+            .add(resolved.date());
       }
-      checked.put(act, list);
     }
-    return checked;
+    checked.put(act, list);
+    var actCorrections = new LinkedHashMap<LocalDate, Optional<LocalDate>>();
+    targetsByRaw.forEach((rawDay, resolvedDays) -> {
+      if (resolvedDays.size() > 1) {
+        LOG.info(
+            "{}: raw date {} resolved to several days ({}); leaving matching amendments alone",
+            act,
+            rawDay,
+            resolvedDays);
+        actCorrections.put(rawDay, Optional.empty());
+      } else if (resolvedDays.size() == 1) {
+        var target = resolvedDays.iterator().next();
+        if (!target.equals(rawDay)) {
+          actCorrections.put(rawDay, Optional.of(target));
+        }
+      }
+    });
+    if (!actCorrections.isEmpty()) {
+      corrections.put(act, actCorrections);
+    }
+  }
+
+  private static ActDate resolveDate(
+      ActIdentifier act,
+      ActDate actDate,
+      @Nullable LocalDate published,
+      EnactedDateLookup enactedLookup) {
+    if (!WhenAnActApplies.contradictsPublication(actDate, published)) {
+      return actDate;
+    }
+    int days = actDate.clause().days() == null ? 0 : actDate.clause().days();
+    var articles = enactedLookup.read(act);
+    var enacted =
+        EnactedDates.classifyArticles(
+            articles, actDate.kind(), actDate.clause().provisions(), actDate.forPart());
+    var resolved = WhenAnActApplies.resolveAgainstEnactedText(actDate, published, enacted);
+    if (resolved.source() == ActDate.Source.NOT_CONFIRMED) {
+      LOG.info(
+          "{}: Cellar's date {} does not match publication date {} + {} day(s) ({}), and"
+              + " enacted text did not settle it; marking NOT_CONFIRMED",
+          act,
+          actDate.date(),
+          published,
+          days,
+          actDate.clause().text());
+    } else if (resolved.source() == ActDate.Source.CELLAR) {
+      LOG.info(
+          "{}: Cellar's date {} confirmed by enacted text over publication comment ({} + {}"
+              + " day(s): {})",
+          act,
+          actDate.date(),
+          published,
+          days,
+          actDate.clause().text());
+    } else {
+      LOG.info(
+          "{}: Cellar's date {} disagrees with publication date {} + {} day(s) ({}); using {}"
+              + " ({})",
+          act,
+          actDate.date(),
+          published,
+          days,
+          actDate.clause().text(),
+          resolved.date(),
+          resolved.source());
+    }
+    return resolved;
   }
 
   /**
@@ -260,13 +346,22 @@ final class CellarDates {
                 case "DATNOT" -> Anchor.NOTIFICATION;
                 default -> Anchor.DOCUMENT;
               };
-          // The days are one token "+20", or two tokens "+" and "20".
-          if (next != null && next.startsWith("+")) {
-            var number = next.length() > 1 ? next : i + 2 < tokens.length ? tokens[i + 2] : "";
-            var matcher = DAYS.matcher(number);
-            if (matcher.matches()) {
-              days = Integer.valueOf(matcher.group(1));
-              i += next.length() > 1 ? 1 : 2;
+          // The days are one token "+20", two tokens "+" and "20", or digits only up to 3 digits.
+          if (next != null) {
+            if (next.equals("+")
+                && i + 2 < tokens.length
+                && DIGITS.matcher(tokens[i + 2]).matches()) {
+              days = Integer.valueOf(tokens[i + 2]);
+              i += 2;
+            } else {
+              var plus = PLUS_DAYS.matcher(next);
+              if (plus.matches()) {
+                days = Integer.valueOf(plus.group(1));
+                i++;
+              } else if (PLAIN_DAYS.matcher(next).matches()) {
+                days = Integer.valueOf(next);
+                i++;
+              }
             }
           }
         }

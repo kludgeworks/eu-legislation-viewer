@@ -89,9 +89,11 @@ class CellarActs implements ActSource {
   private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
   private final Sparql sparql;
+  private final CellarDates.EnactedDateLookup enactedDates;
 
-  CellarActs(Sparql sparql) {
+  CellarActs(Sparql sparql, CellarDates.EnactedDateLookup enactedDates) {
     this.sparql = sparql;
+    this.enactedDates = enactedDates;
   }
 
   @Override
@@ -116,7 +118,8 @@ class CellarActs implements ActSource {
             Sparql.join(titles),
             Sparql.join(amendments),
             Sparql.join(publications),
-            Sparql.join(setting));
+            Sparql.join(setting),
+            enactedDates);
     var took = Duration.ofNanos(System.nanoTime() - started).toMillis();
     act.ifPresentOrElse(
         a ->
@@ -225,8 +228,19 @@ class CellarActs implements ActSource {
       SparqlResult dates,
       SparqlResult titles,
       SparqlResult amendments,
-      SparqlResult publications) {
-    return act(id, work, consolidations, languages, dates, titles, amendments, publications, NONE);
+      SparqlResult publications,
+      CellarDates.EnactedDateLookup enacted) {
+    return act(
+        id,
+        work,
+        consolidations,
+        languages,
+        dates,
+        titles,
+        amendments,
+        publications,
+        NONE,
+        enacted);
   }
 
   /**
@@ -246,7 +260,8 @@ class CellarActs implements ActSource {
       SparqlResult titles,
       SparqlResult amendments,
       SparqlResult publications,
-      SparqlResult setting) {
+      SparqlResult setting,
+      CellarDates.EnactedDateLookup enacted) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
@@ -260,7 +275,8 @@ class CellarActs implements ActSource {
               formexByVersion(languages),
               CellarDates.byAct(id, dates),
               CellarAmendments.of(id, amendments),
-              publications(publications, setting)));
+              publications(publications, setting),
+              enacted));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
@@ -285,9 +301,12 @@ class CellarActs implements ActSource {
       SparqlResult consolidations,
       Map<String, Map<Language, Version.Formex>> formex,
       Map<ActIdentifier, List<ActDate>> rawDates,
-      List<Amendment> amendments,
-      Map<ActIdentifier, Publication> publications) {
-    var dates = CellarDates.checkAgainstPublication(rawDates, publications);
+      List<Amendment> rawAmendments,
+      Map<ActIdentifier, Publication> publications,
+      CellarDates.EnactedDateLookup enacted) {
+    var checked = CellarDates.checkAgainstPublication(rawDates, publications, enacted);
+    var dates = checked.dates();
+    var amendments = reconcileAmendments(rawAmendments, checked.corrections());
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1) {
@@ -297,7 +316,12 @@ class CellarActs implements ActSource {
     if (elis.size() > 1) {
       throw new IllegalArgumentException("several ELIs: " + elis);
     }
-    var entryIntoForce =
+    var checkedEntryIntoForce =
+        dates.getOrDefault(id, List.of()).stream()
+            .filter(d -> d.kind() == ActDate.Kind.ENTRY_INTO_FORCE && d.date() != null)
+            .map(ActDate::date)
+            .min(Comparator.naturalOrder());
+    var rawEntryIntoForce =
         dates(work, "entryIntoForce").stream()
             .filter(d -> !d.equals(UNKNOWN))
             .min(Comparator.naturalOrder());
@@ -313,7 +337,7 @@ class CellarActs implements ActSource {
     var originalFrom =
         type.equals(TREATY) && dateOfDocument != null
             ? dateOfDocument
-            : entryIntoForce.orElse(dateOfDocument);
+            : checkedEntryIntoForce.or(() -> rawEntryIntoForce).orElse(dateOfDocument);
     if (originalFrom == null) {
       throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
@@ -352,6 +376,44 @@ class CellarActs implements ActSource {
         new ActDates(id, dates.getOrDefault(id, List.of()), amendingDates),
         amendments,
         published);
+  }
+
+  private record AmbiguousDay(ActIdentifier act, LocalDate day) {}
+
+  private static List<Amendment> reconcileAmendments(
+      List<Amendment> rawAmendments,
+      Map<ActIdentifier, Map<LocalDate, Optional<LocalDate>>> corrections) {
+    if (corrections.isEmpty() || rawAmendments.isEmpty()) {
+      return rawAmendments;
+    }
+    var reconciled = new ArrayList<Amendment>(rawAmendments.size());
+    var leftUnchanged = new LinkedHashMap<AmbiguousDay, Integer>();
+    for (var amendment : rawAmendments) {
+      var from = amendment.from();
+      if (from == null) {
+        reconciled.add(amendment);
+        continue;
+      }
+      var mapping = corrections.get(amendment.act());
+      if (mapping == null || !mapping.containsKey(from)) {
+        reconciled.add(amendment);
+        continue;
+      }
+      var corrected = mapping.get(from);
+      if (corrected.isEmpty()) {
+        leftUnchanged.merge(new AmbiguousDay(amendment.act(), from), 1, Integer::sum);
+        reconciled.add(amendment);
+      } else {
+        reconciled.add(amendment.withFrom(corrected.get()));
+      }
+    }
+    leftUnchanged.forEach((ambiguous, count) ->
+        LOG.info(
+            "{}: leaving {} amendment(s) from {} unchanged (ambiguous date correction)",
+            ambiguous.act(),
+            count,
+            ambiguous.day()));
+    return reconciled;
   }
 
   /**

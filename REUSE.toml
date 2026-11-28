@@ -52,6 +52,7 @@ SPDX-License-Identifier = "MIT"
 [[annotations]]
 path = [
   "libs/formex-converter/src/test/resources/fixtures/**/*.xml",
+  "viewer/src/test/resources/acts/*.xml",
   "viewer/src/test/resources/cellar/*.xml",
 ]
 precedence = "override"

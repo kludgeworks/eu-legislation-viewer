@@ -120,7 +120,10 @@ public record PreparingView(
    */
   private static String date(ActDate date) {
     var clause = date.clause();
-    var when = date.date() != null ? "from " + Dates.inWords(date.date()) : relative(clause);
+    var when =
+        date.date() != null
+            ? "from " + Dates.inWords(date.date()) + Wording.sourceNote(date.source())
+            : relative(clause);
     var where =
         clause.provisions().stream()
             .map(ActDate.Provision::cited)

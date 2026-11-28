@@ -139,12 +139,19 @@ final class ApiActResources {
    * @param kind {@code entry_into_force}, {@code application} or {@code taking_effect}
    * @param forPart whether it is for a part of the act only
    * @param clause what sets it, as Cellar writes it. For example, {@code DATPUB +20 V ART 2}.
+   * @param source which source settled {@code date}: {@code cellar}, {@code clause_and_journal},
+   *     {@code text} or {@code not_confirmed}
    */
-  record DateModel(@Nullable LocalDate date, String kind, boolean forPart, String clause) {
+  record DateModel(
+      @Nullable LocalDate date, String kind, boolean forPart, String clause, String source) {
 
     static DateModel of(ActDate date) {
       return new DateModel(
-          date.date(), code(date.kind().name()), date.forPart(), date.clause().text());
+          date.date(),
+          code(date.kind().name()),
+          date.forPart(),
+          date.clause().text(),
+          code(date.source().name()));
     }
   }
 }

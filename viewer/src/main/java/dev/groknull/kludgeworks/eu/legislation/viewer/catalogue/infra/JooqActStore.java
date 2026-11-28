@@ -424,7 +424,8 @@ class JooqActStore implements ActStore {
         clause.amendedBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
         clause.text(),
         date.forPart(),
-        clause.setBy().stream().map(ActIdentifier::celex).toArray(String[]::new));
+        clause.setBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
+        date.source());
   }
 
   private static Act act(
@@ -473,7 +474,8 @@ class JooqActStore implements ActStore {
             Arrays.stream(date.getProvisions()).map(Provision::parse).toList(),
             Arrays.stream(date.getAmendedBy()).map(ActIdentifier::new).toList(),
             Arrays.stream(date.getSetBy()).map(ActIdentifier::new).toList(),
-            date.getRemark()));
+            date.getRemark()),
+        date.getSource());
   }
 
   private static Version version(VersionRecord version, Map<Language, Version.Formex> formex) {
