@@ -240,6 +240,8 @@ ELI where these have a term.
 | day | A day of the calendar that a rule or a page reasons about: "the day" of a page, the day from which an act applies, the day asked of the API (`/law`). |
 | in force | An act is in force from its entry into force (JPG 20). It can be in force before it applies. |
 | apply | An act applies from its date of application (JPG 20). Before that day, it is in force but does not apply yet. An act applies from more than one day where its parts apply from different days. |
+| enacted text | The Official Journal text of an act in Formex (`fmx4`), read from Cellar only when Cellar's stored date contradicts its publication-anchored clause. |
+| source of a date | Which source settled an `ActDate` (`ActDate.Source`): Cellar's stored date (`CELLAR`), the clause and Official Journal publication date (`CLAUSE_AND_JOURNAL`), the enacted text (`TEXT`), or left as Cellar gave it when a conflict could not be confirmed (`NOT_CONFIRMED`). |
 | state | The legal state of an act, or of one change, on a day (`State`). It is the legal state only: how far a text or a preparation is, is its progress. It is never a loading state of a page. |
 | deferred application | The state of an act that is in force but does not apply in full on the day yet (JPG 20.11). If a part of it applies already, its application is partial (JPG 20.12). The status line names the day from which it applies in full. It is a state of the act, not a divergence. |
 

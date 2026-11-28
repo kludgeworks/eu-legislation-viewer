@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The feature "When an act applies": one function for each of its rules, in the order of the
@@ -269,5 +270,74 @@ public final class WhenAnActApplies {
 
   private static List<LocalDate> days(List<ActDate> dates) {
     return dates.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
+  }
+
+  /**
+   * What the enacted text of an act states about when it enters into force or applies, fetched only
+   * when Cellar's stored date and publication-anchored clause contradict one another.
+   */
+  public sealed interface EnactedDate {
+
+    /** Enters into force or applies {@code daysAfter} days after Official Journal publication. */
+    record OnPublication(int daysAfter) implements EnactedDate {}
+
+    /** Enters into force or applies on an explicit fixed or retroactive date named in the text. */
+    record Fixed(LocalDate date) implements EnactedDate {}
+
+    /** The enacted text matched no classified formula or was unavailable in a parsed language. */
+    record Unknown() implements EnactedDate {}
+  }
+
+  /**
+   * Returns whether {@code date} has a publication-anchored clause whose computed day ({@code
+   * published + days}) disagrees with Cellar's stored day.
+   */
+  public static boolean contradictsPublication(ActDate date, @Nullable LocalDate published) {
+    if (date.date() == null
+        || date.clause().from() != ActDate.Anchor.PUBLICATION
+        || published == null) {
+      return false;
+    }
+    return !date.date().equals(fromPublicationClause(date, published));
+  }
+
+  private static LocalDate fromPublicationClause(ActDate date, LocalDate published) {
+    int days = date.clause().days() == null ? 0 : date.clause().days();
+    return published.plusDays(days);
+  }
+
+  /**
+   * Checks a publication-anchored {@code ActDate} against the Official Journal publication date
+   * {@code published}. When Cellar's stored date disagrees with {@code published + days}, the
+   * classified formula from the enacted text settles the conflict: confirming the clause uses
+   * {@link ActDate.Source#CLAUSE_AND_JOURNAL}, confirming Cellar's date keeps {@link
+   * ActDate.Source#CELLAR}, naming another date or offset uses {@link ActDate.Source#TEXT}, and
+   * anything unclassified keeps Cellar's date as {@link ActDate.Source#NOT_CONFIRMED}.
+   */
+  @BusinessRule(group = RuleGroup.WHEN_AN_ACT_APPLIES, name = "a-date-checked-against-the-text")
+  public static ActDate resolveAgainstEnactedText(
+      ActDate date, @Nullable LocalDate published, @Nullable EnactedDate enacted) {
+    if (!contradictsPublication(date, published)) {
+      return date;
+    }
+    var stored = Objects.requireNonNull(date.date());
+    var fromClause = fromPublicationClause(date, Objects.requireNonNull(published));
+    return switch (enacted) {
+      case EnactedDate.OnPublication(int textDays) -> {
+        var fromText = published.plusDays(textDays);
+        if (fromText.equals(stored)) {
+          yield date.resolved(stored, ActDate.Source.CELLAR);
+        }
+        if (fromText.equals(fromClause)) {
+          yield date.resolved(fromClause, ActDate.Source.CLAUSE_AND_JOURNAL);
+        }
+        yield date.resolved(fromText, ActDate.Source.TEXT);
+      }
+      case EnactedDate.Fixed(LocalDate textDate) ->
+          textDate.equals(stored)
+              ? date.resolved(stored, ActDate.Source.CELLAR)
+              : date.resolved(textDate, ActDate.Source.TEXT);
+      case null, default -> date.resolved(stored, ActDate.Source.NOT_CONFIRMED);
+    };
   }
 }

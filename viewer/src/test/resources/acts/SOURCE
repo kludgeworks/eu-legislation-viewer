@@ -127,3 +127,8 @@ The act-*.json of every act above were recorded again on 2026-11-25, with act.rq
 each row also has the acts that repeal the act (repealedBy), by their CELEX. The other values are
 the same as before. 31976L0207 is repealed by 32006L0054, 32004R0917 by 32015R1366, and
 32010R0185 by 32015R1998. The others have none.
+
+enacted-32020R0910.xml: the enacted English Formex XML document (DOC_2, L_2020208EN.01004301.xml) of
+Commission Implementing Regulation (EU) 2020/910, downloaded from Cellar on 2026-11-27. Article 5
+enters it into force on the day following that of its publication in the Official Journal (2 July
+2020), while Cellar's date metadata records 6 July 2020.

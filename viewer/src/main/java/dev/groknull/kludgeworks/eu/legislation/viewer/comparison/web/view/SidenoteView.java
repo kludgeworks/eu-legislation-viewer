@@ -240,6 +240,7 @@ public record SidenoteView(
               "");
       case Applicability.Applies applies -> {
         var name = named(act, applies.act());
+        var dates = applies.applying().dates();
         yield switch (applies.applying()) {
           case Applying.SetBy _ ->
               applies(act, name + " applies from a date set in", applies, language, "");
@@ -249,6 +250,7 @@ public record SidenoteView(
                   name
                       + " applies from "
                       + Dates.inWords(from.day())
+                      + sourceNote(dates, from.day())
                       + (from.entryIntoForce() ? ", its entry into force" : ""),
                   applies,
                   language,
@@ -256,7 +258,10 @@ public record SidenoteView(
           case Applying.InForce inForce ->
               applies(
                   act,
-                  name + " in force from " + Dates.inWords(inForce.day()),
+                  name
+                      + " in force from "
+                      + Dates.inWords(inForce.day())
+                      + sourceNote(dates, inForce.day()),
                   applies,
                   language,
                   "");
@@ -266,7 +271,7 @@ public record SidenoteView(
                   name
                       + " applies from more than one day: "
                       + parts.starts().stream()
-                          .map(SidenoteView::part)
+                          .map(part -> part(part, dates))
                           .collect(Collectors.joining("; ")),
                   applies,
                   language,
@@ -277,11 +282,23 @@ public record SidenoteView(
   }
 
   /** Returns a part in words. For example, "a part from 1 October 2026". */
-  private static String part(Applying.Start part) {
-    var from = "from " + Dates.inWords(part.day());
+  private static String part(Applying.Start part, List<ActDate> dates) {
+    var from = "from " + Dates.inWords(part.day()) + sourceNote(dates, part.day());
     return part.entryIntoForce()
         ? from + ", its entry into force"
         : part.forPart() ? "a part " + from : from;
+  }
+
+  private static String sourceNote(List<ActDate> dates, LocalDate day) {
+    return ActDate.Source.on(dates, day)
+        .map(source ->
+            switch (source) {
+              case CELLAR -> "";
+              case CLAUSE_AND_JOURNAL -> " (from the Official Journal)";
+              case TEXT -> " (from the enacted text)";
+              case NOT_CONFIRMED -> " (not confirmed)";
+            })
+        .orElse("");
   }
 
   private static Applies applies(

@@ -223,4 +223,23 @@ class ActDatesTest {
     assertThat(DatedAct.of(ACT, UNTITLED).state(Set.of()).on(IN_PART).state())
         .isEqualTo(State.NOT_KNOWN);
   }
+
+  @Test
+  void sourceConstantsAreOrderedFromMostCertainToLeastCertain() {
+    assertThat(ActDate.Source.values())
+        .containsExactly(
+            ActDate.Source.CELLAR,
+            ActDate.Source.CLAUSE_AND_JOURNAL,
+            ActDate.Source.TEXT,
+            ActDate.Source.NOT_CONFIRMED);
+    assertThat(ActDate.Source.lessCertain(ActDate.Source.CELLAR, ActDate.Source.CLAUSE_AND_JOURNAL))
+        .isEqualTo(ActDate.Source.CLAUSE_AND_JOURNAL);
+    assertThat(ActDate.Source.lessCertain(ActDate.Source.NOT_CONFIRMED, ActDate.Source.TEXT))
+        .isEqualTo(ActDate.Source.NOT_CONFIRMED);
+
+    var cellar = date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false);
+    var text = cellar.resolved(IN_PART, ActDate.Source.TEXT);
+    assertThat(ActDate.Source.on(List.of(cellar, text), IN_PART)).contains(ActDate.Source.TEXT);
+    assertThat(ActDate.Source.on(List.of(cellar), IN_FULL)).isEmpty();
+  }
 }

@@ -4,13 +4,16 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
  * One of an act's own dates, as Cellar types it. It is the date when the act enters into force,
  * applies or takes effect, wholly or in part. For a directive, it can also be the date from which
- * the Member States apply it. It comes with the clause that sets it.
+ * the Member States apply it. It comes with the clause that sets it, and the source that settled
+ * its day.
  *
  * <p>Cellar keeps these dates up to date when a later act amends one, or sets a day that a clause
  * leaves to it. For example, a part of 2019/103 applies from 31 December 2021, by its Article 2 as
@@ -23,9 +26,60 @@ import org.jspecify.annotations.Nullable;
  * @param kind what happens on it
  * @param forPart whether it is for a part of the act only. Cellar's code is {@code MA/PART}.
  * @param clause what sets it
+ * @param source which source settled {@link #date}
  */
 @ValueObject
-public record ActDate(@Nullable LocalDate date, Kind kind, boolean forPart, Clause clause) {
+public record ActDate(
+    @Nullable LocalDate date, Kind kind, boolean forPart, Clause clause, Source source) {
+
+  public ActDate {
+    Objects.requireNonNull(source, "source");
+  }
+
+  /** Creates a date whose source is Cellar. */
+  public ActDate(@Nullable LocalDate date, Kind kind, boolean forPart, Clause clause) {
+    this(date, kind, forPart, clause, Source.CELLAR);
+  }
+
+  /** Returns a copy of this date with {@code resolvedDate} and {@code resolvedSource}. */
+  public ActDate resolved(@Nullable LocalDate resolvedDate, Source resolvedSource) {
+    return new ActDate(resolvedDate, kind, forPart, clause, resolvedSource);
+  }
+
+  /**
+   * Which source gave {@link #date}. The constants are declared in order from most certain to least
+   * certain, so when more than one date settles a day a page shows the last (least certain) one
+   * ({@link #lessCertain}).
+   */
+  public enum Source {
+    /** Recorded by Cellar without conflict, or confirmed by the enacted text. */
+    CELLAR,
+    /**
+     * Computed from the Official Journal publication date and clause, confirmed by the enacted
+     * text.
+     */
+    CLAUSE_AND_JOURNAL,
+    /** Read directly from the enacted text of the act. */
+    TEXT,
+    /**
+     * Cellar's stored date and its publication clause contradicted each other and the enacted text
+     * did not confirm either.
+     */
+    NOT_CONFIRMED;
+
+    /** Returns whichever of {@code first} and {@code second} is less certain. */
+    public static Source lessCertain(Source first, Source second) {
+      return first.ordinal() >= second.ordinal() ? first : second;
+    }
+
+    /** Returns the least certain source among {@code dates} that fall on {@code day}. */
+    public static Optional<Source> on(List<ActDate> dates, LocalDate day) {
+      return dates.stream()
+          .filter(d -> day.equals(d.date()))
+          .map(ActDate::source)
+          .reduce(Source::lessCertain);
+    }
+  }
 
   /** What happens on an act's date. */
   public enum Kind {

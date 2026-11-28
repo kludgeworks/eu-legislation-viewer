@@ -78,6 +78,59 @@ class SidenoteViewTest {
   }
 
   @Test
+  void writesDateSourceNotesNextToEachDay() {
+    var day1 = LocalDate.of(2026, 3, 22);
+    var day2 = LocalDate.of(2026, 10, 1);
+    var clause =
+        new ActDate.Clause(
+            ActDate.Anchor.PUBLICATION,
+            1,
+            List.of(article("2")),
+            List.of(),
+            List.of(),
+            "DATPUB +1 V ART 2");
+    var fromJournal =
+        new ActDate(
+            day1, ActDate.Kind.ENTRY_INTO_FORCE, false, clause, ActDate.Source.CLAUSE_AND_JOURNAL);
+    var notConfirmed =
+        new ActDate(day2, ActDate.Kind.APPLICATION, true, clause, ActDate.Source.NOT_CONFIRMED);
+
+    var oneDay =
+        sidenote(
+            step(Modification.REPLACED, A2026_449),
+            new Applicability.Applies(
+                A2026_449,
+                new Applying.From(day1, true, List.of(fromJournal)),
+                List.of(article("2")),
+                List.of(),
+                List.of()));
+    assertThat(oneDay.dates().getFirst().when())
+        .isEqualTo(
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from 22 March 2026"
+                + " (from the Official Journal), its entry into force");
+
+    var twoDays =
+        sidenote(
+            step(Modification.REPLACED, A2026_449),
+            new Applicability.Applies(
+                A2026_449,
+                new Applying.FromMoreThanOneDay(
+                    List.of(
+                        new Applying.Start(day1, true, false),
+                        new Applying.Start(day2, false, true)),
+                    day1,
+                    List.of(fromJournal, notConfirmed)),
+                List.of(article("2")),
+                List.of(),
+                List.of()));
+    assertThat(twoDays.dates().getFirst().when())
+        .isEqualTo(
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from more than one day: from 22 March"
+                + " 2026 (from the Official Journal), its entry into force; a part from 1 October"
+                + " 2026 (not confirmed)");
+  }
+
+  @Test
   void datesACorrectionFromTheStartOfTheActItCorrectsAndTheTextThatFirstHasIt() {
     var corrigendum = new ActIdentifier("32019R0103R(01)");
     var corrects =

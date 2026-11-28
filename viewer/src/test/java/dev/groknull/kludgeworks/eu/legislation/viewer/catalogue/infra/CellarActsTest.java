@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Source;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
@@ -24,6 +25,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
@@ -33,6 +38,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -45,6 +51,7 @@ class CellarActsTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
   static final Set<Language> ALL_BUT_IRISH = EnumSet.complementOf(EnumSet.of(Language.GLE));
+  private static final CellarDates.EnactedDateLookup UNKNOWN = _ -> List.of();
 
   @Test
   void readsHowItAndTheActsItsVersionsIntegrateWerePublished() {
@@ -137,7 +144,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications())
+                noPublications(),
+                UNKNOWN)
             .orElseThrow()
             .timeline();
 
@@ -238,7 +246,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications())
+                noPublications(),
+                UNKNOWN)
             .orElseThrow()
             .timeline();
 
@@ -296,13 +305,38 @@ class CellarActsTest {
   }
 
   @Test
-  void correctsADateCountedFromPublicationAgainstThePublicationDate() {
+  void marksContradictedPublicationDateNotConfirmedWhenEnactedTextIsUnavailable() {
+    var act =
+        CellarActs.act(
+                AVSEC,
+                recorded("act-" + AVSEC.celex() + ".json"),
+                recorded("versions-" + AVSEC.celex() + ".json"),
+                recorded("languages-" + AVSEC.celex() + ".json"),
+                recorded("dates-" + AVSEC.celex() + ".json"),
+                recorded("titles-" + AVSEC.celex() + ".json"),
+                recorded("amendments-" + AVSEC.celex() + ".json"),
+                recorded("publications-" + AVSEC.celex() + ".json"),
+                new SparqlResult(List.of(), List.of()),
+                UNKNOWN)
+            .orElseThrow();
+    var date = act.dates().datesOf(new ActIdentifier("32020R0910")).getFirst();
+
+    // Without the enacted text to settle 2020-07-06 vs DATPUB +1 (2020-07-02), it does not guess.
+    assertThat(date.date()).isEqualTo(LocalDate.of(2020, 7, 6));
+    assertThat(date.kind()).isEqualTo(Kind.ENTRY_INTO_FORCE);
+    assertThat(date.source()).isEqualTo(Source.NOT_CONFIRMED);
+    assertThat(date.clause().text()).contains("DATPUB +1");
+  }
+
+  @Test
+  void correctsADateCountedFromPublicationWhenEnactedTextConfirmsTheClause() {
     var act = act(AVSEC);
     var date = act.dates().datesOf(new ActIdentifier("32020R0910")).getFirst();
 
-    // Published 1 July 2020, DATPUB +1: clause sets 2 July 2020; Cellar recorded 6 July 2020.
+    // Published 1 July 2020, DATPUB +1 confirmed by Article 5 Formex: 6 July -> 2 July 2020.
     assertThat(date.date()).isEqualTo(LocalDate.of(2020, 7, 2));
     assertThat(date.kind()).isEqualTo(Kind.ENTRY_INTO_FORCE);
+    assertThat(date.source()).isEqualTo(Source.CLAUSE_AND_JOURNAL);
     assertThat(date.clause().text()).contains("DATPUB +1");
   }
 
@@ -483,11 +517,14 @@ class CellarActsTest {
 
     var checked =
         CellarDates.checkAgainstPublication(
-            Map.of(actId, List.of(date)), Map.of(actId, publication));
+            Map.of(actId, List.of(date)), Map.of(actId, publication), UNKNOWN);
 
-    assertThat(checked.get(actId))
+    assertThat(checked.dates().get(actId))
         .singleElement()
-        .satisfies(d -> assertThat(d.date()).isEqualTo(LocalDate.of(2015, 11, 15)));
+        .satisfies(d -> {
+          assertThat(d.date()).isEqualTo(LocalDate.of(2015, 11, 15));
+          assertThat(d.source()).isEqualTo(Source.CELLAR);
+        });
   }
 
   @Test
@@ -508,14 +545,576 @@ class CellarActsTest {
 
     var checked =
         CellarDates.checkAgainstPublication(
-            Map.of(actId, List.of(wrongDate)), Map.of(actId, publication));
+            Map.of(actId, List.of(wrongDate)),
+            Map.of(actId, publication),
+            act ->
+                enactedArticle(
+                    act,
+                    "5",
+                    "This Regulation shall enter into force on the day following that of its"
+                        + " publication."));
 
-    assertThat(checked.get(actId))
+    assertThat(checked.dates().get(actId))
         .singleElement()
         .satisfies(d -> {
           assertThat(d.date()).isEqualTo(LocalDate.of(2020, 7, 2));
           assertThat(d.clause()).isEqualTo(clause);
+          assertThat(d.source()).isEqualTo(Source.CLAUSE_AND_JOURNAL);
         });
+  }
+
+  @Test
+  void readsDaysAfterPublicationWithoutPlusSign() {
+    var date =
+        CellarDates.date(
+                "2019-03-11",
+                "EV",
+                "{DATPUB|http://publications.europa.eu/resource/authority/fd_335/DATPUB} 20"
+                    + " {V|http://publications.europa.eu/resource/authority/fd_335/V}"
+                    + " {ART|http://publications.europa.eu/resource/authority/fd_335/ART} 2",
+                Set.of())
+            .orElseThrow();
+
+    assertThat(date.clause().from()).isEqualTo(Anchor.PUBLICATION);
+    assertThat(date.clause().days()).isEqualTo(20);
+  }
+
+  @Test
+  void ignoresNonOffsetTokensAfterDatpubAndRequiresAtMostThreeDigitsWithoutPlus() {
+    var fourDigits =
+        CellarDates.date(
+                "2020-07-02",
+                "EV",
+                "{DATPUB|http://publications.europa.eu/resource/authority/fd_335/DATPUB} 2020"
+                    + " {V|http://publications.europa.eu/resource/authority/fd_335/V}"
+                    + " {ART|http://publications.europa.eu/resource/authority/fd_335/ART} 2",
+                Set.of())
+            .orElseThrow();
+    var nonNumeric =
+        CellarDates.date(
+                "2020-07-02",
+                "EV",
+                "{DATPUB|http://publications.europa.eu/resource/authority/fd_335/DATPUB}"
+                    + " {V|http://publications.europa.eu/resource/authority/fd_335/V}"
+                    + " {ART|http://publications.europa.eu/resource/authority/fd_335/ART} 2",
+                Set.of())
+            .orElseThrow();
+
+    assertThat(fourDigits.clause().from()).isEqualTo(Anchor.PUBLICATION);
+    assertThat(fourDigits.clause().days()).isNull();
+    assertThat(fourDigits.clause().provisions()).containsExactly(article("2"));
+    assertThat(nonNumeric.clause().from()).isEqualTo(Anchor.PUBLICATION);
+    assertThat(nonNumeric.clause().days()).isNull();
+    assertThat(nonNumeric.clause().provisions()).containsExactly(article("2"));
+  }
+
+  @Test
+  void readsActAndMarksDateNotConfirmedWhenEnactedLookupFails() {
+    var act =
+        CellarActs.act(
+                AVSEC,
+                recorded("act-" + AVSEC.celex() + ".json"),
+                recorded("versions-" + AVSEC.celex() + ".json"),
+                recorded("languages-" + AVSEC.celex() + ".json"),
+                recorded("dates-" + AVSEC.celex() + ".json"),
+                recorded("titles-" + AVSEC.celex() + ".json"),
+                recorded("amendments-" + AVSEC.celex() + ".json"),
+                recorded("publications-" + AVSEC.celex() + ".json"),
+                new SparqlResult(List.of(), List.of()),
+                actId ->
+                    EnactedDates.lookup(
+                        actId,
+                        () -> {
+                          throw new CellarException("Cellar unavailable");
+                        },
+                        new EnactedDates.XmlReader() {
+                          @Override
+                          public <T> T read(URI uri, Function<InputStream, T> reader) {
+                            throw new AssertionError("should not read stream");
+                          }
+                        }))
+            .orElseThrow();
+    var date = act.dates().datesOf(new ActIdentifier("32020R0910")).getFirst();
+
+    assertThat(date.date()).isEqualTo(LocalDate.of(2020, 7, 6));
+    assertThat(date.source()).isEqualTo(Source.NOT_CONFIRMED);
+  }
+
+  @Test
+  void readsEnactedTextOncePerActAcrossTwoContradictedKinds() {
+    var actId = new ActIdentifier("32020R0910");
+    var entryClause =
+        new Clause(
+            Anchor.PUBLICATION,
+            1,
+            List.of(article("5")),
+            List.of(),
+            List.of(),
+            "DATPUB +1 V ART 5");
+    var applyClause =
+        new Clause(
+            Anchor.PUBLICATION,
+            1,
+            List.of(article("6")),
+            List.of(),
+            List.of(),
+            "DATPUB +1 V ART 6");
+    var entry = new ActDate(LocalDate.of(2020, 7, 6), Kind.ENTRY_INTO_FORCE, false, entryClause);
+    var apply = new ActDate(LocalDate.of(2020, 7, 6), Kind.APPLICATION, false, applyClause);
+    var publication =
+        new Publication(
+            null, Map.of(), new Publication.Journal("L", null, 208, LocalDate.of(2020, 7, 1)));
+    var xml =
+        """
+        <?xml version="1.0" encoding="utf-8"?>
+        <ACT>
+          <ENACTING.TERMS>
+            <ARTICLE IDENTIFIER="005">
+              <TI.ART>Article 5</TI.ART>
+              <ALINEA>This Regulation shall enter into force on the day following that of its publication.</ALINEA>
+            </ARTICLE>
+            <ARTICLE IDENTIFIER="006">
+              <TI.ART>Article 6</TI.ART>
+              <ALINEA>It shall apply from <DATE ISO="20200801">1 August 2020</DATE>.</ALINEA>
+            </ARTICLE>
+          </ENACTING.TERMS>
+        </ACT>
+        """;
+    var calls = new int[1];
+
+    var checked =
+        CellarDates.checkAgainstPublication(
+            Map.of(actId, List.of(entry, apply)),
+            Map.of(actId, publication),
+            act -> {
+              calls[0]++;
+              return EnactedDates.parseArticles(
+                  act, new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
+            });
+
+    assertThat(calls[0]).isEqualTo(1);
+    assertThat(checked.dates().get(actId))
+        .extracting(ActDate::kind, ActDate::date, ActDate::source)
+        .containsExactly(
+            tuple(Kind.ENTRY_INTO_FORCE, LocalDate.of(2020, 7, 2), Source.CLAUSE_AND_JOURNAL),
+            tuple(Kind.APPLICATION, LocalDate.of(2020, 8, 1), Source.TEXT));
+  }
+
+  @Test
+  void keepsCellarsRightDateWhenPublicationCommentHasWrongOffset() {
+    var actId = new ActIdentifier("32018R0863");
+    var clause =
+        new Clause(
+            Anchor.PUBLICATION,
+            20,
+            List.of(article("3")),
+            List.of(),
+            List.of(),
+            "DATPUB +20 V ART 3");
+    var cellarDate = new ActDate(LocalDate.of(2018, 6, 14), Kind.ENTRY_INTO_FORCE, false, clause);
+    var publication =
+        new Publication(
+            null, Map.of(), new Publication.Journal("L", null, 148, LocalDate.of(2018, 6, 13)));
+
+    var checked =
+        CellarDates.checkAgainstPublication(
+            Map.of(actId, List.of(cellarDate)),
+            Map.of(actId, publication),
+            act ->
+                enactedArticle(
+                    act,
+                    "3",
+                    "This Regulation shall enter into force on the day following that of its"
+                        + " publication."));
+
+    assertThat(checked.dates().get(actId))
+        .singleElement()
+        .satisfies(d -> {
+          assertThat(d.date()).isEqualTo(LocalDate.of(2018, 6, 14));
+          assertThat(d.source()).isEqualTo(Source.CELLAR);
+        });
+  }
+
+  @Test
+  void confirmsRetroactiveDateAndMarksUnclassifiedConflictAsNotConfirmed() {
+    var retroactiveAct = new ActIdentifier("32017R2213");
+    var retroactive =
+        new ActDate(
+            LocalDate.of(2017, 2, 18),
+            Kind.ENTRY_INTO_FORCE,
+            false,
+            new Clause(
+                Anchor.PUBLICATION,
+                null,
+                List.of(article("2")),
+                List.of(),
+                List.of(),
+                "DATPUB V ART 2"));
+    var retroactivePub =
+        new Publication(
+            null, Map.of(), new Publication.Journal("L", null, 316, LocalDate.of(2017, 12, 1)));
+
+    var unknownAct = new ActIdentifier("32017D0713(01)");
+    var unknownDate =
+        new ActDate(
+            LocalDate.of(2017, 7, 28),
+            Kind.ENTRY_INTO_FORCE,
+            false,
+            new Clause(Anchor.PUBLICATION, 20, List.of(), List.of(), List.of(), "DATPUB +20"));
+    var unknownPub =
+        new Publication(
+            null, Map.of(), new Publication.Journal("C", null, 224, LocalDate.of(2017, 7, 13)));
+
+    var checked =
+        CellarDates.checkAgainstPublication(
+            Map.of(retroactiveAct, List.of(retroactive), unknownAct, List.of(unknownDate)),
+            Map.of(retroactiveAct, retroactivePub, unknownAct, unknownPub),
+            act ->
+                act.equals(retroactiveAct)
+                    ? enactedArticle(
+                        act,
+                        "2",
+                        "This Regulation shall enter into force with retroactive effect as from"
+                            + " <DATE ISO=\"20170218\">18 February 2017</DATE>.")
+                    : List.of());
+
+    assertThat(checked.dates().get(retroactiveAct))
+        .singleElement()
+        .satisfies(d -> {
+          assertThat(d.date()).isEqualTo(LocalDate.of(2017, 2, 18));
+          assertThat(d.source()).isEqualTo(Source.CELLAR);
+        });
+    assertThat(checked.dates().get(unknownAct))
+        .singleElement()
+        .satisfies(d -> {
+          assertThat(d.date()).isEqualTo(LocalDate.of(2017, 7, 28));
+          assertThat(d.source()).isEqualTo(Source.NOT_CONFIRMED);
+        });
+  }
+
+  @Test
+  void usesCheckedEntryIntoForceDateForOriginalVersion() {
+    var id = new ActIdentifier("32020R0910");
+    var work =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "eli",
+                        "http://data.europa.eu/eli/reg_impl/2020/910/oj",
+                        "type",
+                        "http://publications.europa.eu/resource/authority/resource-type/REG_IMPL",
+                        "dateOfDocument",
+                        "2020-06-30",
+                        "entryIntoForce",
+                        "2020-07-06"))));
+    var dates = datesResult("32020R0910", "2020-07-06");
+    var publications = publication2020_910();
+
+    var act =
+        CellarActs.act(
+                id,
+                work,
+                result(),
+                noLanguages(),
+                dates,
+                noTitles(),
+                noAmendments(),
+                publications,
+                new SparqlResult(List.of(), List.of()),
+                a ->
+                    enactedArticle(
+                        a,
+                        "5",
+                        "This Regulation shall enter into force on the day following that of its"
+                            + " publication."))
+            .orElseThrow();
+
+    assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2020, 7, 2));
+  }
+
+  @Test
+  void keepsTreatyEditionDocumentDateAheadOfCheckedEntryIntoForce() {
+    var treaty = new ActIdentifier("12016E/TXT");
+    var work =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "eli",
+                        "http://data.europa.eu/eli/treaty/tfeu_2016/oj",
+                        "type",
+                        "http://publications.europa.eu/resource/authority/resource-type/TREATY",
+                        "dateOfDocument",
+                        "2016-06-07",
+                        "entryIntoForce",
+                        "1958-01-01"))));
+    var dates =
+        new SparqlResult(
+            List.of("subject", "property", "date", "type", "comment"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "subject",
+                        "12016E/TXT",
+                        "property",
+                        CDM + "resource_legal_date_entry-into-force",
+                        "date",
+                        "1958-01-01",
+                        "type",
+                        "{EV|http://publications.europa.eu/resource/authority/fd_335/EV}",
+                        "comment",
+                        ""))));
+
+    var act =
+        CellarActs.act(
+                treaty,
+                work,
+                result(),
+                noLanguages(),
+                dates,
+                noTitles(),
+                noAmendments(),
+                noPublications(),
+                UNKNOWN)
+            .orElseThrow();
+
+    assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2016, 6, 7));
+  }
+
+  @Test
+  void fallsBackFromCheckedDateToActQueryThenDocumentDateForOriginalVersion() {
+    var id = new ActIdentifier("32020R0910");
+    var workWithRaw =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "eli",
+                        "http://data.europa.eu/eli/reg_impl/2020/910/oj",
+                        "type",
+                        "http://publications.europa.eu/resource/authority/resource-type/REG_IMPL",
+                        "dateOfDocument",
+                        "2020-06-30",
+                        "entryIntoForce",
+                        "2020-07-06"))));
+    var workOnlyDoc =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "eli",
+                        "http://data.europa.eu/eli/reg_impl/2020/910/oj",
+                        "type",
+                        "http://publications.europa.eu/resource/authority/resource-type/REG_IMPL",
+                        "dateOfDocument",
+                        "2020-06-30",
+                        "entryIntoForce",
+                        "1001-01-01"))));
+
+    var fromRaw =
+        CellarActs.act(
+                id,
+                workWithRaw,
+                result(),
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications(),
+                UNKNOWN)
+            .orElseThrow();
+    var fromDoc =
+        CellarActs.act(
+                id,
+                workOnlyDoc,
+                result(),
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications(),
+                UNKNOWN)
+            .orElseThrow();
+
+    assertThat(fromRaw.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2020, 7, 6));
+    assertThat(fromDoc.timeline().versions().getFirst().date())
+        .isEqualTo(LocalDate.of(2020, 6, 30));
+  }
+
+  @Test
+  void correctsAmendmentFromDateWhenAmendingActDateIsCorrectedAndSkipsAmbiguousMapping() {
+    var work =
+        new SparqlResult(
+            List.of("eli", "type", "dateOfDocument", "entryIntoForce"),
+            List.of(workRow("http://data.europa.eu/eli/reg_impl/2015/1998/oj")));
+    var dates = datesResult("32020R0910", "2020-07-06");
+    var amendments =
+        new SparqlResult(
+            List.of("subject", "location", "role", "from", "until", "languages"),
+            List.of(
+                new SparqlResult.Row(
+                    Map.of(
+                        "subject",
+                        "32020R0910",
+                        "location",
+                        "{AN|http://publications.europa.eu/resource/authority/fd_370/AN}"
+                            + " {PO|http://publications.europa.eu/resource/authority/fd_370/PO}"
+                            + " 11.1.2",
+                        "role",
+                        "{R|http://publications.europa.eu/resource/authority/fd_375/R}",
+                        "from",
+                        "2020-07-06",
+                        "until",
+                        "2020-07-06")),
+                new SparqlResult.Row(
+                    Map.of(
+                        "subject",
+                        "32020R0910",
+                        "location",
+                        "{AN|http://publications.europa.eu/resource/authority/fd_370/AN}"
+                            + " {PO|http://publications.europa.eu/resource/authority/fd_370/PO}"
+                            + " 11.1.3",
+                        "role",
+                        "{R|http://publications.europa.eu/resource/authority/fd_375/R}",
+                        "from",
+                        "2020-07-06"))));
+    var publications = publication2020_910();
+
+    var act =
+        CellarActs.act(
+                AVSEC,
+                work,
+                result(),
+                noLanguages(),
+                dates,
+                noTitles(),
+                amendments,
+                publications,
+                new SparqlResult(List.of(), List.of()),
+                a ->
+                    enactedArticle(
+                        a,
+                        "5",
+                        "This Regulation shall enter into force on the day following that of its"
+                            + " publication."))
+            .orElseThrow();
+
+    assertThat(act.amendments())
+        .hasSize(2)
+        .allSatisfy(a -> assertThat(a.from()).isEqualTo(LocalDate.of(2020, 7, 2)));
+    assertThat(act.amendments().getFirst().until()).isEqualTo(LocalDate.of(2020, 7, 6));
+
+    // When the same amending act also has a non-publication date on 2020-07-06, mapping is
+    // ambiguous.
+    var ambiguousDates =
+        new SparqlResult(
+            List.of("subject", "property", "date", "type", "comment"),
+            List.of(
+                dates.rows().getFirst(),
+                new SparqlResult.Row(
+                    Map.of(
+                        "subject",
+                        "32020R0910",
+                        "property",
+                        CDM + "resource_legal_date_entry-into-force",
+                        "date",
+                        "2020-07-06",
+                        "type",
+                        "{MA/PART|http://publications.europa.eu/resource/authority/fd_335/MA%2FPART}",
+                        "comment",
+                        "{V|http://publications.europa.eu/resource/authority/fd_335/V}"
+                            + " {ART|http://publications.europa.eu/resource/authority/fd_335/ART}"
+                            + " 6"))));
+
+    var untouched =
+        CellarActs.act(
+                AVSEC,
+                work,
+                result(),
+                noLanguages(),
+                ambiguousDates,
+                noTitles(),
+                amendments,
+                publications,
+                new SparqlResult(List.of(), List.of()),
+                a ->
+                    enactedArticle(
+                        a,
+                        "5",
+                        "This Regulation shall enter into force on the day following that of its"
+                            + " publication."))
+            .orElseThrow();
+
+    assertThat(untouched.amendments())
+        .hasSize(2)
+        .allSatisfy(a -> assertThat(a.from()).isEqualTo(LocalDate.of(2020, 7, 6)));
+  }
+
+  private static List<EnactedDates.Article> enactedArticle(
+      ActIdentifier act, String articleNumber, String body) {
+    var xml =
+        """
+        <?xml version="1.0" encoding="utf-8"?>
+        <ACT>
+          <ENACTING.TERMS>
+            <ARTICLE IDENTIFIER="00%s">
+              <TI.ART>Article %s</TI.ART>
+              <ALINEA>%s</ALINEA>
+            </ARTICLE>
+          </ENACTING.TERMS>
+        </ACT>
+        """
+            .formatted(articleNumber, articleNumber, body);
+    return EnactedDates.parseArticles(
+        act, new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
+  }
+
+  private static SparqlResult datesResult(String celex, String date) {
+    return new SparqlResult(
+        List.of("subject", "property", "date", "type", "comment"),
+        List.of(
+            new SparqlResult.Row(
+                Map.of(
+                    "subject",
+                    celex,
+                    "property",
+                    CDM + "resource_legal_date_entry-into-force",
+                    "date",
+                    date,
+                    "type",
+                    "{EV|http://publications.europa.eu/resource/authority/fd_335/EV}",
+                    "comment",
+                    "{DATPUB|http://publications.europa.eu/resource/authority/fd_335/DATPUB} +1"
+                        + " {V|http://publications.europa.eu/resource/authority/fd_335/V}"
+                        + " {ART|http://publications.europa.eu/resource/authority/fd_335/ART}"
+                        + " 5"))));
+  }
+
+  private static SparqlResult publication2020_910() {
+    return new SparqlResult(
+        List.of("subject", "eli", "code", "title", "issueCollection", "issue", "issuePublished"),
+        List.of(
+            new SparqlResult.Row(
+                Map.of(
+                    "subject",
+                    "32020R0910",
+                    "eli",
+                    "http://data.europa.eu/eli/reg_impl/2020/910/oj",
+                    "code",
+                    "ENG",
+                    "title",
+                    "Commission Implementing Regulation (EU) 2020/910",
+                    "issueCollection",
+                    "http://publications.europa.eu/resource/authority/document-collection/OJ-L",
+                    "issue",
+                    "208",
+                    "issuePublished",
+                    "2020-07-01"))));
   }
 
   @Test
@@ -552,7 +1151,8 @@ class CellarActsTest {
                 noDates(),
                 twice,
                 noAmendments(),
-                noPublications()))
+                noPublications(),
+                UNKNOWN))
         .withMessageStartingWith("Cellar's data for 32015R1998: several titles in ENG");
   }
 
@@ -635,7 +1235,7 @@ class CellarActsTest {
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none, none, none, none, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none, none, none, none, none, UNKNOWN)).isEmpty();
   }
 
   @Test
@@ -673,7 +1273,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications()))
+                noPublications(),
+                UNKNOWN))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -697,7 +1298,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications())
+                noPublications(),
+                UNKNOWN)
             .orElseThrow()
             .timeline();
 
@@ -733,7 +1335,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications()))
+                noPublications(),
+                UNKNOWN))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -753,7 +1356,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications()))
+                noPublications(),
+                UNKNOWN))
         .hasValueSatisfying(
             act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
   }
@@ -773,7 +1377,8 @@ class CellarActsTest {
                 noDates(),
                 noTitles(),
                 noAmendments(),
-                noPublications()))
+                noPublications(),
+                UNKNOWN))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
